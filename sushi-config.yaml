@@ -24,7 +24,11 @@ publisher:
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
 #
-# dependencies:
+dependencies:
+  fhir.org.nz.ig.base:
+    uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
+    version: 1.1.0
+
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in

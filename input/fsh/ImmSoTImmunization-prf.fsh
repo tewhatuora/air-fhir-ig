@@ -13,6 +13,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // remove statusReason, since it's mostly or only used for things not done and those are out of scope
 * statusReason 0..0
 
+// make patient point to NZ Base Patient
+* patient only Reference(NzPatient)
+
 // remove encounter
 * encounter 0..0
 

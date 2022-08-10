@@ -16,6 +16,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 
+// add a simple string for showing patient name if a referenceable object (e.g. NHI) is not available or as a belt and braces to check
+* patient.extension contains immsot-patient-name named PatientName 0..*
+
 // remove encounter
 * encounter 0..0
 

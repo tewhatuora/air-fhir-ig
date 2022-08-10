@@ -19,6 +19,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // add a simple string for showing patient name if a referenceable object (e.g. NHI) is not available or as a belt and braces to check
 * patient.extension contains immsot-patient-name named PatientName 0..*
 
+// add a date of birth field again either if there's not an NHI patient available or as a double-check
+* patient.extension contains immsot-patient-dob named PatientDOB 0..1
+
 // remove encounter
 * encounter 0..0
 

@@ -19,6 +19,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // add a field to capture a string version of the vaccine name
 * extension contains immsot-vaccine-name named VaccineName 0..1
 
+// add a field to capture a string name of the vaccine programme from NIR
+* extension contains immsot-programme-name named ProgrammeName 0..1
+
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 

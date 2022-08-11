@@ -34,6 +34,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // remove reportOrigin
 * reportOrigin 0..0
 
+// make location point to NZ Base location
+* location only Reference(NzLocation)
+
 // remove site
 // what value set do we want to use for body site after we bring it back in scope?
 * site 0..0

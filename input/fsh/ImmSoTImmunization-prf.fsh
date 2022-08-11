@@ -16,6 +16,9 @@ Description: "This is the ImmSoT Immunization Profile."
 // bind the vaccine to the ImmSoT vaccine value set
 * vaccineCode from ImmSoTVaccineVS
 
+// add a field to capture a string version of the vaccine name
+* extension contains immsot-vaccine-name named VaccineName 0..1
+
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 

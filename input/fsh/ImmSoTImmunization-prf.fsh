@@ -49,6 +49,7 @@ Description: "This is the ImmSoT Immunization Profile."
 * doseQuantity 0..0
 
 // point performer at local content
+* performer.function from ImmSoTVaccinatorFunctionVS
 * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
 
 // remove note

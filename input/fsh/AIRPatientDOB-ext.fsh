@@ -1,9 +1,9 @@
-Extension: ImmSoTPatientDOB
-Id: immsot-patient-dob
+Extension: AIRPatientDOB
+Id: air-patient-dob
 Title: "Patient DOB"
 Description: "Patient Date of Birth"
 
-* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/immsot-vaccine-name"
+* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-vaccine-name"
 
 // set status to draft
 * ^status = #draft

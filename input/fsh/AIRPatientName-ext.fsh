@@ -1,9 +1,9 @@
-Extension: ImmSoTPatientName
-Id: immsot-patient-name
+Extension: AIRPatientName
+Id: air-patient-name
 Title: "Patient Name"
 Description: "Patient name text"
 
-* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/immsot-patient-name"
+* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-patient-name"
 
 // set status to draft
 * ^status = #draft

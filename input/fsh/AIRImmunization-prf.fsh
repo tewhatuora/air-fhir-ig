@@ -1,8 +1,8 @@
-Profile: ImmSoTImmunization
+Profile: AIRImmunization
 Parent: Immunization
-Id: immsot-immunization
-Title: "ImmSoT Immunization"
-Description: "This is the ImmSoT Immunization Profile."
+Id: air-immunization
+Title: "AIR Immunization"
+Description: "This is the AIR Immunization Profile."
 
 // set status to draft
 * ^status = #draft
@@ -13,23 +13,23 @@ Description: "This is the ImmSoT Immunization Profile."
 // remove statusReason, since it's mostly or only used for things not done and those are out of scope
 * statusReason 0..0
 
-// bind the vaccine to the ImmSoT vaccine value set
-* vaccineCode from ImmSoTVaccineVS
+// bind the vaccine to the AIR vaccine value set
+* vaccineCode from AIRVaccineVS
 
 // add a field to capture a string version of the vaccine name
-* extension contains immsot-vaccine-name named VaccineName 0..1
+* extension contains air-vaccine-name named VaccineName 0..1
 
 // add a field to capture a string name of the vaccine programme from NIR
-* extension contains immsot-programme-name named ProgrammeName 0..1
+* extension contains air-programme-name named ProgrammeName 0..1
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 
 // add a simple string for showing patient name if a referenceable object (e.g. NHI) is not available or as a belt and braces to check
-* patient.extension contains immsot-patient-name named PatientName 0..*
+* patient.extension contains air-patient-name named PatientName 0..*
 
 // add a date of birth field again either if there's not an NHI patient available or as a double-check
-* patient.extension contains immsot-patient-dob named PatientDOB 0..1
+* patient.extension contains air-patient-dob named PatientDOB 0..1
 
 // remove encounter
 * encounter 0..0
@@ -58,7 +58,7 @@ Description: "This is the ImmSoT Immunization Profile."
 * doseQuantity 0..0
 
 // point performer at local content
-* performer.function from ImmSoTVaccinatorFunctionVS
+* performer.function from AIRVaccinatorFunctionVS
 * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
 
 // remove note

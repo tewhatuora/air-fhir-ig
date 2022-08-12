@@ -1,9 +1,9 @@
-Extension: ImmSoTVaccineName
-Id: immsot-vaccine-name
+Extension: AIRVaccineName
+Id: air-vaccine-name
 Title: "Vaccine Name"
 Description: "Vaccine name text"
 
-* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/immsot-vaccine-name"
+* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-vaccine-name"
 
 // set status to draft
 * ^status = #draft

@@ -1,9 +1,9 @@
-Extension: ImmSoTProgrammeName
-Id: immsot-programme-name
+Extension: AIRProgrammeName
+Id: air-programme-name
 Title: "Programme Name"
 Description: "Programme name text"
 
-* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/immsot-programme-name"
+* ^url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-programme-name"
 
 // set status to draft
 * ^status = #draft

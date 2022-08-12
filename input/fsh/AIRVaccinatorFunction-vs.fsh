@@ -1,5 +1,5 @@
-ValueSet: ImmSoTVaccinatorFunctionVS
-Id: immsot-vaccinator-function-vs
+ValueSet: AIRVaccinatorFunctionVS
+Id: air-vaccinator-function-vs
 Title: "The functions performed by vaccinators"
 
 // the initial value set is defined by HL7, and the basic binding is extensible

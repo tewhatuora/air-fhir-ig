@@ -7,11 +7,7 @@ Description: "This is the AIR Immunization Profile."
 // set status to draft
 * ^status = #draft
 
-// fix the value of status to completed
-* status = #completed
 
-// remove statusReason, since it's mostly or only used for things not done and those are out of scope
-* statusReason 0..0
 
 // bind the vaccine to the AIR vaccine value set
 * vaccineCode from AIRVaccineVS

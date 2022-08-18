@@ -4,10 +4,7 @@ Id: air-immunization
 Title: "AIR Immunization"
 Description: "This is the AIR Immunization Profile."
 
-// set status to draft
-* ^status = #draft
-
-
+* insert StandardMetadata
 
 // bind the vaccine to the AIR vaccine value set
 * vaccineCode from AIRVaccineVS

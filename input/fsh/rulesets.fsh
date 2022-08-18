@@ -1,0 +1,3 @@
+RuleSet: StandardMetadata
+* ^status = #draft
+* ^jurisdiction.coding = urn:iso:std:iso:3166#NZ

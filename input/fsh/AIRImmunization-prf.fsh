@@ -4,23 +4,13 @@ Id: air-immunization
 Title: "AIR Immunization"
 Description: "This is the AIR Immunization Profile."
 
-// set status to draft
-* ^status = #draft
-
-// fix the value of status to completed
-* status = #completed
-
-// remove statusReason, since it's mostly or only used for things not done and those are out of scope
-* statusReason 0..0
+* insert StandardMetadata
 
 // bind the vaccine to the AIR vaccine value set
 * vaccineCode from AIRVaccineVS
 
 // add a field to capture a string version of the vaccine name
 * extension contains air-vaccine-name named VaccineName 0..1
-
-// add a field to capture a string name of the vaccine programme from NIR
-* extension contains air-programme-name named ProgrammeName 0..1
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
@@ -30,6 +20,9 @@ Description: "This is the AIR Immunization Profile."
 
 // add a date of birth field again either if there's not an NHI patient available or as a double-check
 * patient.extension contains air-patient-dob named PatientDOB 0..1
+
+// add a diluent extension for use by ISM
+* extension contains air-diluent named Diluent 0..1
 
 // remove encounter
 * encounter 0..0
@@ -63,10 +56,6 @@ Description: "This is the AIR Immunization Profile."
 
 // remove note
 * note 0..0
-
-// remove reason for vax
-* reasonCode 0..0
-* reasonReference 0..0
 
 // remove subpotent reason code
 * subpotentReason 0..0

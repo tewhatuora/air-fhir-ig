@@ -7,7 +7,7 @@ Description: "This is the AIR Immunization Profile."
 * insert StandardMetadata
 
 // bind the vaccine to the AIR vaccine value set
-* vaccineCode from AIRVaccineVS
+* vaccineCode from air-vaccine-product-code
 
 // add a field to capture a string version of the vaccine name
 * extension contains air-vaccine-name named VaccineName 0..1

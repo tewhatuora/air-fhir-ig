@@ -15,4 +15,4 @@ Description: "The disease which a vaccine coveres. Needed in ActivityDefinition 
 * ^context[1].expression = "ImmunizationRecommendation.recommendation"
 
 * value[x] only CodeableConcept
-* valueCodeableConcept from air-disease-covered-vs
+* valueCodeableConcept from air-disease-covered-code

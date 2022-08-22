@@ -114,7 +114,7 @@ Usage: #example
 //===================== Paed plan definition
 
 Instance: pd2
-InstanceOf: PlanDefinition
+InstanceOf: AIRImmunizationSchedule
 Description: "Paediatric plan definition for children 15 months and younger"
 Usage: #example
 

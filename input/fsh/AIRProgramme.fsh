@@ -21,7 +21,7 @@ Usage: #example
 
 * productCodeableConcept = $NZMT#29455411000116105 // MPUU [generic) for Infanrix Hexa
 * dosage.doseAndRate.doseQuantity = 0.5 'ml'
-* dosage.route = $SCT#78421000 "Intramuscular route [qualifier value)"
+* dosage.route = $SCT#78421000 "Intramuscular route"
 
 
 Instance: adPcv10
@@ -38,7 +38,7 @@ Usage: #example
 
 * productCodeableConcept = $NZMT#31116301000116107 // MPUU (generic) for Synflorix
 * dosage.doseAndRate.doseQuantity = 0.5 'ml'
-* dosage.route = $SCT#78421000 "Intramuscular route (qualifier value)"
+* dosage.route = $SCT#78421000 "Intramuscular route"
 
 
 Instance: adRv1

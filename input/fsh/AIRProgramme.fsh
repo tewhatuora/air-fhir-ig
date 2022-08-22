@@ -7,6 +7,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer DTap vaccine"
 Usage: #example
 
+* name = "AdDtap"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/addtap"
 * title = "Administer DTap vaccine"
 * status = #draft
@@ -28,6 +29,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer PCV10 vaccine"
 Usage: #example
 
+* name = "AdPcv10"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/adpcv10"
 * title = "Administer PCV10 vaccine"
 * status = #draft
@@ -44,6 +46,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer RV1 vaccine"
 Usage: #example
 
+* name = "AdRv1"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/adrv1"
 * title = "Administer RV1 vaccine"
 * status = #draft
@@ -60,6 +63,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer MMR vaccine"
 Usage: #example
 
+* name = "AdMmr"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/admmr"
 * title = "Administer MMR vaccine"
 * status = #draft
@@ -77,6 +81,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer Hib vaccine"
 Usage: #example
 
+* name = "AdHib"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/adhib"
 * title = "Administer Hib vaccine"
 * status = #draft
@@ -93,6 +98,7 @@ InstanceOf: AIRImmunizationAction
 Description: "Administer VV vaccine"
 Usage: #example
 
+* name = "AdVv"
 * url = "https://standards.digital.health.nz/fhir/StructureDefinition/advv"
 * title = "Administer VV vaccine"
 * status = #draft
@@ -112,6 +118,7 @@ InstanceOf: PlanDefinition
 Description: "Paediatric plan definition for children 15 months and younger"
 Usage: #example
 
+* name = "PdPaediatricPlan"
 * status = #draft
 * description = "The New Zealand Paediatric Immunization program"
 * url = "http://standards.digital.health.nz/fhir/StructureDefinition/PlanDefinition/paediatric"

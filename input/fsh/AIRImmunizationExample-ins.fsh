@@ -17,7 +17,13 @@ Description: "An example of the AIR Immunization resource showing the irst admin
 // using the reference to vaccine name
 * vaccineCode = $NZMT#29455411000116105 // MPUU [generic) for Infanrix Hexa
 
-* manufacturer = Reference(Organization/12345) // not sure where we're going to get these organizations truth be told.
+// using the diluent extension
+* extension[Diluent].extension[diluentName].valueString = "Sterile water"
+* extension[Diluent].extension[diluentLotNumber].valueString = "DL-98765"
+* extension[Diluent].extension[diluentExpiryDate].valueDate = 2023-11-05
+
+// deemed out of scope for v1 so commented out
+// * manufacturer = Reference(Organization/12345) // not sure where we're going to get these organizations truth be told.
 
 * lotNumber = "AB123-2-FF"
 

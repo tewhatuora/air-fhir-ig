@@ -14,9 +14,10 @@ Description: "An example of the AIR Immunization resource showing the first admi
 
 * identifier.use = #official
 * identifier.value = "0234-3456-6789" // whatever comes from the source system
-* identifier.assigner.display = "CIR"
+// use system here instead... ???
+* identifier.system = "CIR"
 
-* status = #completed // this is required by the FHIR artifact
+* status = #completed // a value here is required by the FHIR artifact
 
 * statusReason.coding[0].system = $SCT
 * statusReason.coding[0].code = #127785005
@@ -29,13 +30,9 @@ Description: "An example of the AIR Immunization resource showing the first admi
 * vaccineCode.coding[0].display = "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepatitis B, haemophilus influenzae type b"
 * vaccineCode.text = "Infanrix Hexa"
 
-// reference to patient with hard-coded values
-* patient.identifier.system = "http://hl7.org.nz/fhir/ig/nhi/ImplementationGuide/hl7.org.nz.fhir.ig.nhi"
-* patient.identifier.value = "VUY1111"
-* patient.display = "Joseph M. Bloggs, a fictitious patient, DOB 11-11-1918"
-
-// here's a reference to an externally defined patient instance
-// * patient = Reference(pat)
+// here's a reference to a contained patient instance
+// which is down at the bottom of the FSH
+* patient = Reference(PatientJoeBloggs)
 
 * occurrenceDateTime = "2012-12-25"
 
@@ -70,4 +67,26 @@ Description: "An example of the AIR Immunization resource showing the first admi
 
 * isSubpotent = false
 
-* performer.actor = Reference(NzPractitionerRole/HPI-12345) // to be argued whether to use Prac or PracRole
+// * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
+* performer.actor = Reference(DoctorMarcusWelby)
+
+// Contained performer reference
+
+Instance: DoctorMarcusWelby
+InstanceOf: NzPractitioner
+Usage: #inline
+
+* identifier.value = "HPI-12345"
+* name.text = "Dr Marcus Welby, a fictitious provider"
+
+// Contained patient reference
+
+Instance: PatientJoeBloggs
+InstanceOf: NzPatient
+Usage: #inline
+
+// * identifier.system = https://standards.digital.health.nz/ns/nhi-id
+* identifier.value = "VUY1111"
+* name.given = "Joseph M"
+* name.family = "Bloggs"
+* birthDate.value = 1918-11-11

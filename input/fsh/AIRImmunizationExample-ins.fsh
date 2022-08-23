@@ -2,9 +2,8 @@ Instance: example-AIRImmunization
 InstanceOf: air-immunization
 Usage: #example
 Title: "AIR Immunization v1 Example"
-Description: "An example of the AIR Immunization resource showing the irst administration of DTaP-IPV-HepB/Hib, conforming to the v1 service as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3308028001/Immunisation+History ."
+Description: "An example of the AIR Immunization resource showing the first administration of DTaP-IPV-HepB/Hib, conforming to the v1 service as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3308028001/Immunisation+History ."
 
-* insert StandardMetadata
 
 * status = #completed // this is required by the FHIR artifact
 
@@ -12,9 +11,6 @@ Description: "An example of the AIR Immunization resource showing the irst admin
 // TODO add source system maybe in identifier type or just a string extension
 
 * occurrenceDateTime = "2012-12-25"
-
-// using the string version of vaccine name in case no code is available
-* extension[VaccineName].valueString = "Infanrix"
 
 // using the reference to vaccine name
 * vaccineCode = $NZMT#29455411000116105 // MPUU [generic) for Infanrix Hexa

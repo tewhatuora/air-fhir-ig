@@ -1,5 +1,3 @@
-* insert StandardMetadata
-
 Instance: pat
 InstanceOf: NzPatient
 Description: "demo patient"

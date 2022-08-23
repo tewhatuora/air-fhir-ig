@@ -5,7 +5,7 @@ Title:          "NZ Base Immunization Recommendation"
 Description:    "An immunizationRecommendation derived from the NZ Base immunization PlanDefinition and applied to an invividual."
 
 * ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/paediatric-immunization-plan"
-* ^jurisdiction.coding = urn:iso:std:iso:3166#NZ
+* insert StandardMetadata
 
 * ^purpose = "To form the base plan upon which individual immunization recommendations for a patient can be derived."
 * ^text.status = #additional

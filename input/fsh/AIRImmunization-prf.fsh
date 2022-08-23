@@ -9,8 +9,10 @@ Description: "This is the AIR Immunization Profile."
 // bind the vaccine to the AIR vaccine value set
 * vaccineCode from air-vaccine-product-code
 
+// this extension has been commented out because we've 
+// now landed on using the VaccineCode.valueCodeableConcept.text field
 // add a field to capture a string version of the vaccine name
-* extension contains air-vaccine-name named VaccineName 0..1
+// * extension contains air-vaccine-name named VaccineName 0..1
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)

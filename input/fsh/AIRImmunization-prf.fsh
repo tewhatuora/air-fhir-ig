@@ -17,8 +17,10 @@ Description: "This is the AIR Immunization Profile."
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 
+// this extension has been commented out because we've 
+// now landed on using the Patient Reference display instead.
 // add a simple string for showing patient name if a referenceable object (e.g. NHI) is not available or as a belt and braces to check
-* patient.extension contains air-patient-name named PatientName 0..*
+// * patient.extension contains air-patient-name named PatientName 0..*
 
 // add a date of birth field again either if there's not an NHI patient available or as a double-check
 * patient.extension contains air-patient-dob named PatientDOB 0..1

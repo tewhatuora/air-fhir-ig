@@ -4,32 +4,59 @@ Usage: #example
 Title: "AIR Immunization v1 Example"
 Description: "An example of the AIR Immunization resource showing the first administration of DTaP-IPV-HepB/Hib, conforming to the v1 service as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3308028001/Immunisation+History ."
 
+// metadata fields
+
+* id = "history-cache-id"
+
+// the lastUpdated property is not working due to a SUSHI problem, see
+// this thread in Github: https://github.com/FHIR/sushi/issues/1126
+// * meta.lastUpdated = "21-08-2022"
+
+* identifier.use = #official
+* identifier.value = "0234-3456-6789" // whatever comes from the source system
+* identifier.assigner.display = "CIR"
 
 * status = #completed // this is required by the FHIR artifact
 
-* identifier.value = "0234-3456-6789" // whatever comes from the source system
-// TODO add source system maybe in identifier type or just a string extension
+* statusReason.coding[0].system = $SCT
+* statusReason.coding[0].code = #127785005
+* statusReason.coding[0].display = "Administration of substance to produce immunity, either active or passive"
+* statusReason.text = "Vaccine Administered"
+
+// using the reference to vaccine name
+* vaccineCode.coding[0].system = $NZVX
+* vaccineCode.coding[0].code = #210307 
+* vaccineCode.coding[0].display = "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepatitis B, haemophilus influenzae type b"
+* vaccineCode.text = "Infanrix Hexa"
+
+// reference to patient with hard-coded values
+* patient.identifier.system = "http://hl7.org.nz/fhir/ig/nhi/ImplementationGuide/hl7.org.nz.fhir.ig.nhi"
+* patient.identifier.value = "VUY1111"
+* patient.display = "Joseph M. Bloggs, a fictitious patient, DOB 11-11-1918"
+
+// here's a reference to an externally defined patient instance
+// * patient = Reference(pat)
 
 * occurrenceDateTime = "2012-12-25"
 
-// using the reference to vaccine name
-* vaccineCode = $NZMT#29455411000116105 // MPUU [generic) for Infanrix Hexa
-
 // using the diluent extension
-* extension[Diluent].extension[diluentName].valueString = "Sterile water"
-* extension[Diluent].extension[diluentLotNumber].valueString = "DL-98765"
-* extension[Diluent].extension[diluentExpiryDate].valueDate = 2023-11-05
+// out of scope for version 1
+// * extension[Diluent].extension[diluentName].valueString = "Sterile water"
+// * extension[Diluent].extension[diluentLotNumber].valueString = "DL-98765"
+// * extension[Diluent].extension[diluentExpiryDate].valueDate = 2023-11-05
 
 // deemed out of scope for v1 so commented out
 // * manufacturer = Reference(Organization/12345) // not sure where we're going to get these organizations truth be told.
 
-* lotNumber = "AB123-2-FF"
+// Out of scope for version 1
+// * lotNumber = "AB123-2-FF"
 
-* location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
+* location.type = "NzLocation"
+* location.identifier.value = "F05021-J"
+* location.display = "Southland Hospital, Invercargill"
 
-* patient = Reference(pat)
-* occurrenceDateTime = "2021-01-20"
-* vaccineCode = $NZMT#29455411000116105 // MPUU [generic) for Infanrix Hexa
+// * location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
+
 // This is not referenced in V1 of the service, but it might be useful so I'm leaving it in here but commented out for now. 
 // * protocolApplied.series = "DTaP-IPV-HepB/Hib"
 

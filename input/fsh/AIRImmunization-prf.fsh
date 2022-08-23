@@ -26,7 +26,7 @@ Description: "This is the AIR Immunization Profile."
 * patient.extension contains air-patient-dob named PatientDOB 0..1
 
 // add a diluent extension for use by ISM
-* extension contains air-diluent named Diluent 0..1
+// * extension contains air-diluent named Diluent 0..1
 
 // remove encounter
 * encounter 0..0

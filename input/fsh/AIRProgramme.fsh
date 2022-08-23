@@ -1,3 +1,4 @@
+* insert StandardMetadata
 
 // ======================== Activity Definitions
 //One for each vaccine

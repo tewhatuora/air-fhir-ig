@@ -4,6 +4,8 @@ Usage: #example
 Title: "AIR Immunization v1 Example"
 Description: "An example of the AIR Immunization resource showing the irst administration of DTaP-IPV-HepB/Hib, conforming to the v1 service as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3308028001/Immunisation+History ."
 
+* insert StandardMetadata
+
 * status = #completed // this is required by the FHIR artifact
 
 * identifier.value = "0234-3456-6789" // whatever comes from the source system

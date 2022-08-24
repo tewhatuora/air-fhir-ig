@@ -12,7 +12,7 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // record identifier from the source system
 * identifier.use = #official
 * identifier.value = "0234-3456-6789" // whatever comes from the source system
-* identifier.system = "CIR" // this should be a URI
+* identifier.system = "https://uri/for/CIR" // this should be a URI
 
 * status = #completed // must be one of completed, not-done, or entered-in-error
 

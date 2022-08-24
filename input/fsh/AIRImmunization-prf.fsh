@@ -23,7 +23,7 @@ Description: "This is the AIR Immunization Profile."
 // * patient.extension contains air-patient-name named PatientName 0..*
 
 // add a date of birth field again either if there's not an NHI patient available or as a double-check
-* patient.extension contains air-patient-dob named PatientDOB 0..1
+// * patient.extension contains air-patient-dob named PatientDOB 0..1
 
 // add a diluent extension for use by ISM
 // * extension contains air-diluent named Diluent 0..1

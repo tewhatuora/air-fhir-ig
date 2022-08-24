@@ -63,19 +63,19 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
 * performer.actor = Reference(DoctorMarcusWelby)
 
-* reasonCode.coding[0].code = #STD
-* reasonCode.text = "Standard"
+// reason code taken out of scope24 August
+// * reasonCode.coding[0].code = #STD
+// * reasonCode.text = "Standard"
 
 // This is not referenced in V1 of the service, but it might be useful so I'm leaving it in here but commented out for now. 
 // * protocolApplied.series = "DTaP-IPV-HepB/Hib"
-
-* protocolApplied.doseNumberPositiveInt = 1
-* protocolApplied.targetDisease = $SCT#397428000 "Diphtheria"
-* protocolApplied.targetDisease = $SCT#76902006 "Tetanus"
-* protocolApplied.targetDisease = $SCT#27836007 "Pertussis"
-* protocolApplied.targetDisease = $SCT#398102009 "Poliomyelitis"
-* protocolApplied.targetDisease = $SCT#66071002 "Viral Hepatitis type B"
-* protocolApplied.targetDisease = $SCT#91428005 "Haemophilus influenzae infection"
+// * protocolApplied.doseNumberPositiveInt = 1
+// * protocolApplied.targetDisease = $SCT#397428000 "Diphtheria"
+// * protocolApplied.targetDisease = $SCT#76902006 "Tetanus"
+// * protocolApplied.targetDisease = $SCT#27836007 "Pertussis"
+// * protocolApplied.targetDisease = $SCT#398102009 "Poliomyelitis"
+// * protocolApplied.targetDisease = $SCT#66071002 "Viral Hepatitis type B"
+// * protocolApplied.targetDisease = $SCT#91428005 "Haemophilus influenzae infection"
 
 // commented out for v1
 // * isSubpotent = false

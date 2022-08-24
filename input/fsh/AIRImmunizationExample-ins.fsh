@@ -60,6 +60,12 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // this is an alternate syntax for location reference
 // * location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
 
+// * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
+* performer.actor = Reference(DoctorMarcusWelby)
+
+* reasonCode.coding[0].code = #STD
+* reasonCode.text = "Standard"
+
 // This is not referenced in V1 of the service, but it might be useful so I'm leaving it in here but commented out for now. 
 // * protocolApplied.series = "DTaP-IPV-HepB/Hib"
 
@@ -74,8 +80,7 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // commented out for v1
 // * isSubpotent = false
 
-// * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
-* performer.actor = Reference(DoctorMarcusWelby)
+
 
 // Contained performer reference
 

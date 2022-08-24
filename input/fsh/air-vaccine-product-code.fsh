@@ -16,9 +16,9 @@ Description: "Allowable values for vaccine products in AIR."
 // Display names edited by John C... need these to be ratified and possibly
 // expanded to include a Preferred Term and some number of Display Names
 
-* $CVX#3 "Measles, Mumps, Rubella"
-* $CVX#8 "Hepatitis B"
-* $CVX#9 "Tetanus and diphtheria toxoids"
+* $CVX#03 "Measles, Mumps, Rubella"
+* $CVX#08 "Hepatitis B"
+* $CVX#09 "Tetanus and diphtheria toxoids"
 * $CVX#10 "Inactivated Poliovirus"
 * $CVX#19 "BCG"
 * $CVX#20 "Diphtheria, tetanus toxoids and acellular pertussis"

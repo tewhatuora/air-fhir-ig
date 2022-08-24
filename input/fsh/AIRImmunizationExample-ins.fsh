@@ -2,29 +2,31 @@ Instance: example-AIRImmunization
 InstanceOf: air-immunization
 Usage: #example
 Title: "AIR Immunization v1 Example"
-Description: "An example of the AIR Immunization resource showing the first administration of DTaP-IPV-HepB/Hib, conforming to the v1 service as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3308028001/Immunisation+History ."
+Description: "An example of the AIR Immunization resource showing a single vaccine administration, conforming to the history cache version as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3360064739/Immunisation+Sync+data+Mapping ."
 
 // metadata fields
 
-* id = "history-cache-id"
+* id = "history-cache-id" // local id for internal use only
+* meta.lastUpdated = "2022-08-22T13:28:17+12:00"
 
-// the lastUpdated property is not working due to a SUSHI problem, see
-// this thread in Github: https://github.com/FHIR/sushi/issues/1126
-// * meta.lastUpdated = "21-08-2022"
-
+// record identifier from the source system
 * identifier.use = #official
 * identifier.value = "0234-3456-6789" // whatever comes from the source system
-// use system here instead... ???
-* identifier.system = "CIR"
+* identifier.system = "CIR" // this should be a URI
 
-* status = #completed // a value here is required by the FHIR artifact
+* status = #completed // must be one of completed, not-done, or entered-in-error
 
+// statusReasons are brought into ImmSoT from source systems
+// according to mapping table available at 
+// https://mohits.atlassian.net/wiki/spaces/NIS/pages/3360064739/Immunisation+Sync+data+Mapping
 * statusReason.coding[0].system = $SCT
 * statusReason.coding[0].code = #127785005
 * statusReason.coding[0].display = "Administration of substance to produce immunity, either active or passive"
 * statusReason.text = "Vaccine Administered"
 
-// using the reference to vaccine name
+// this is the vaccine product that was administered
+// Note that even though this is a codeableConcept datatype it is acceptable 
+// to only populate the .text element, meaning you can store free text if needed
 * vaccineCode.coding[0].system = $NZVX
 * vaccineCode.coding[0].code = #210307 
 * vaccineCode.coding[0].display = "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepatitis B, haemophilus influenzae type b"
@@ -34,6 +36,7 @@ Description: "An example of the AIR Immunization resource showing the first admi
 // which is down at the bottom of the FSH
 * patient = Reference(PatientJoeBloggs)
 
+// this is when the vaccine was administered
 * occurrenceDateTime = "2012-12-25"
 
 // using the diluent extension
@@ -48,10 +51,13 @@ Description: "An example of the AIR Immunization resource showing the first admi
 // Out of scope for version 1
 // * lotNumber = "AB123-2-FF"
 
+
+// this is the facility where the vaccine was administered
 * location.type = "NzLocation"
 * location.identifier.value = "F05021-J"
 * location.display = "Southland Hospital, Invercargill"
 
+// this is an alternate syntax for location reference
 // * location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
 
 // This is not referenced in V1 of the service, but it might be useful so I'm leaving it in here but commented out for now. 
@@ -65,7 +71,8 @@ Description: "An example of the AIR Immunization resource showing the first admi
 * protocolApplied.targetDisease = $SCT#66071002 "Viral Hepatitis type B"
 * protocolApplied.targetDisease = $SCT#91428005 "Haemophilus influenzae infection"
 
-* isSubpotent = false
+// commented out for v1
+// * isSubpotent = false
 
 // * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
 * performer.actor = Reference(DoctorMarcusWelby)

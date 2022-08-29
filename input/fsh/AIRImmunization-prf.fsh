@@ -55,8 +55,11 @@ Description: "This is the AIR Immunization Profile."
 * doseQuantity 0..0
 
 // point performer at local content
-* performer.function from air-vaccinator-function-code
-* performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+// * performer.function from air-vaccinator-function-code
+// * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+
+// remove performer
+* performer 0..0
 
 // remove note
 * note 0..0

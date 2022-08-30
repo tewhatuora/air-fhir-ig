@@ -64,7 +64,8 @@ Description: "This is the AIR Immunization Profile."
 // remove note
 * note 0..0
 
-// remove subpotent reason code
+// remove subpotent and subpotent reason code
+* isSubpotent 0..0
 * subpotentReason 0..0
 
 // remove educational materials reference

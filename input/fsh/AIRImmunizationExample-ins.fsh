@@ -39,19 +39,6 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // this is when the vaccine was administered
 * occurrenceDateTime = "2012-12-25"
 
-// using the diluent extension
-// out of scope for version 1
-// * extension[Diluent].extension[diluentName].valueString = "Sterile water"
-// * extension[Diluent].extension[diluentLotNumber].valueString = "DL-98765"
-// * extension[Diluent].extension[diluentExpiryDate].valueDate = 2023-11-05
-
-// deemed out of scope for v1 so commented out
-// * manufacturer = Reference(Organization/12345) // not sure where we're going to get these organizations truth be told.
-
-// Out of scope for version 1
-// * lotNumber = "AB123-2-FF"
-
-
 // this is the facility where the vaccine was administered
 * location.type = "NzLocation"
 * location.identifier.value = "F05021-J"
@@ -59,37 +46,6 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 
 // this is an alternate syntax for location reference
 // * location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
-
-// * performer.actor.system = "https://build.fhir.org/ig/HL7NZ/hpi/"
-* performer.actor = Reference(DoctorMarcusWelby)
-
-// reason code taken out of scope24 August
-// * reasonCode.coding[0].code = #STD
-// * reasonCode.text = "Standard"
-
-// This is not referenced in V1 of the service, but it might be useful so I'm leaving it in here but commented out for now. 
-// * protocolApplied.series = "DTaP-IPV-HepB/Hib"
-// * protocolApplied.doseNumberPositiveInt = 1
-// * protocolApplied.targetDisease = $SCT#397428000 "Diphtheria"
-// * protocolApplied.targetDisease = $SCT#76902006 "Tetanus"
-// * protocolApplied.targetDisease = $SCT#27836007 "Pertussis"
-// * protocolApplied.targetDisease = $SCT#398102009 "Poliomyelitis"
-// * protocolApplied.targetDisease = $SCT#66071002 "Viral Hepatitis type B"
-// * protocolApplied.targetDisease = $SCT#91428005 "Haemophilus influenzae infection"
-
-// commented out for v1
-// * isSubpotent = false
-
-
-
-// Contained performer reference
-
-Instance: DoctorMarcusWelby
-InstanceOf: NzPractitioner
-Usage: #inline
-
-* identifier.value = "HPI-12345"
-* name.text = "Dr Marcus Welby, a fictitious provider"
 
 // Contained patient reference
 

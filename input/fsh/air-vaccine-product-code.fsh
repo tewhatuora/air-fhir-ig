@@ -1,21 +1,24 @@
-ValueSet: AIRVaccineVS
-Id: air-vaccine-vs
-Title: "AIR Vaccine Value Set"
+ValueSet: AIRVaccineProductCode
+Id: air-vaccine-product-code
+Title: "AIR Vaccine Product Value Set"
 Description: "Allowable values for vaccine products in AIR."
+
+* insert StandardMetadata
 
 // SNOMED vaccines
 * include codes from system $SCT where concept is-a #787859002 "Vaccine product (medicinal product)"
 
 // NZMT all codes
-* include codes from system $NZMT
+// commented out since can't resolve anyway
+// * include codes from system $NZMT
 
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names edited by John C... need these to be ratified and possibly
 // expanded to include a Preferred Term and some number of Display Names
 
-* $CVX#3 "Measles, Mumps, Rubella"
-* $CVX#8 "Hepatitis B"
-* $CVX#9 "Tetanus and diphtheria toxoids"
+* $CVX#03 "Measles, Mumps, Rubella"
+* $CVX#08 "Hepatitis B"
+* $CVX#09 "Tetanus and diphtheria toxoids"
 * $CVX#10 "Inactivated Poliovirus"
 * $CVX#19 "BCG"
 * $CVX#20 "Diphtheria, tetanus toxoids and acellular pertussis"
@@ -35,7 +38,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $CVX#116 "Rotavirus Pentavalent"
 * $CVX#119 "Rotavirus, live, monovalent vaccine"
 * $CVX#121 "Zoster (shingles) vaccine, live, for subcutaneous injection"
-* $CVX#133 "Pneumococcal conjugate vaccine, 13 valent "
+* $CVX#133 "Pneumococcal conjugate vaccine, 13 valent"
 * $CVX#163 "Meningococcal B conjugate vaccine"
 * $CVX#165 "Human papillomavirus, 9-valent vaccine"
 * $CVX#208 "SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose"

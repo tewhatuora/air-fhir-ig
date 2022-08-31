@@ -43,6 +43,15 @@ Description: "This is the AIR Immunization Profile."
 // make location point to NZ Base location
 * location only Reference(NzLocation)
 
+// remove manufacturer
+* manufacturer 0..0
+
+// remove lotNumber
+* lotNumber 0..0
+
+// remove expirationDate
+* expirationDate 0..0
+
 // remove site
 // what value set do we want to use for body site after we bring it back in scope?
 * site 0..0
@@ -79,3 +88,6 @@ Description: "This is the AIR Immunization Profile."
 
 // remove reaction
 * reaction 0..0
+
+// remove protocolApplied
+* protocolApplied 0..0

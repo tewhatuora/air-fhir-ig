@@ -5,7 +5,8 @@ Title:          "NZ Base Immunization Vaccine Administration"
 Description:    "The ActivityDefinition used by the New Zealand NZ Base immunization plan to describe a vaccine administration."
 
 * ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/immunization-action"
-* ^jurisdiction.coding = urn:iso:std:iso:3166#NZ
+
+* insert StandardMetadata
 
 * ^purpose = "To form the base plan upon which individual immunization recommendations for a patient can be derived."
 * ^text.status = #additional

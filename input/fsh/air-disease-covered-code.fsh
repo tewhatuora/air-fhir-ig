@@ -1,7 +1,9 @@
-ValueSet: AIRDiseaseCoveredVS
-Id: air-disease-covered-vs
-Title: "AIR Diseases Covered Value Set"
-Description: "Diseases that are covered by the immunizstion programme"
+ValueSet: AIRDiseaseCoveredCode
+Id: air-disease-covered-code
+Title: "AIR Diseases Covered"
+Description: "Diseases that are covered by the immunization programmes and schedules that are managed or referred to in the AIR system."
+
+* insert StandardMetadata
 
 // Consumer-facing, short, friendly, display names put in as suggestions in the comments
 

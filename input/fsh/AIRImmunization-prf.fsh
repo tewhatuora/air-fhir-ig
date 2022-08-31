@@ -7,22 +7,26 @@ Description: "This is the AIR Immunization Profile."
 * insert StandardMetadata
 
 // bind the vaccine to the AIR vaccine value set
-* vaccineCode from AIRVaccineVS
+* vaccineCode from air-vaccine-product-code
 
+// this extension has been commented out because we've 
+// now landed on using the VaccineCode.valueCodeableConcept.text field
 // add a field to capture a string version of the vaccine name
-* extension contains air-vaccine-name named VaccineName 0..1
+// * extension contains air-vaccine-name named VaccineName 0..1
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
 
+// this extension has been commented out because we've 
+// now landed on using the Patient Reference display instead.
 // add a simple string for showing patient name if a referenceable object (e.g. NHI) is not available or as a belt and braces to check
-* patient.extension contains air-patient-name named PatientName 0..*
+// * patient.extension contains air-patient-name named PatientName 0..*
 
 // add a date of birth field again either if there's not an NHI patient available or as a double-check
-* patient.extension contains air-patient-dob named PatientDOB 0..1
+// * patient.extension contains air-patient-dob named PatientDOB 0..1
 
 // add a diluent extension for use by ISM
-* extension contains air-diluent named Diluent 0..1
+// * extension contains air-diluent named Diluent 0..1
 
 // remove encounter
 * encounter 0..0
@@ -39,6 +43,15 @@ Description: "This is the AIR Immunization Profile."
 // make location point to NZ Base location
 * location only Reference(NzLocation)
 
+// remove manufacturer
+* manufacturer 0..0
+
+// remove lotNumber
+* lotNumber 0..0
+
+// remove expirationDate
+* expirationDate 0..0
+
 // remove site
 // what value set do we want to use for body site after we bring it back in scope?
 * site 0..0
@@ -51,13 +64,17 @@ Description: "This is the AIR Immunization Profile."
 * doseQuantity 0..0
 
 // point performer at local content
-* performer.function from AIRVaccinatorFunctionVS
-* performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+// * performer.function from air-vaccinator-function-code
+// * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+
+// remove performer
+* performer 0..0
 
 // remove note
 * note 0..0
 
-// remove subpotent reason code
+// remove subpotent and subpotent reason code
+* isSubpotent 0..0
 * subpotentReason 0..0
 
 // remove educational materials reference
@@ -71,3 +88,6 @@ Description: "This is the AIR Immunization Profile."
 
 // remove reaction
 * reaction 0..0
+
+// remove protocolApplied
+* protocolApplied 0..0

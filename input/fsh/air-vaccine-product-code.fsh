@@ -226,6 +226,8 @@ Description: "Allowable values for vaccine products in AIR."
 // * $NZMT#47407751000116105 // Comirnaty purple
 // * $NZMT#47547081000116102 // Comirnaty orange
 // * $NZMT#47572291000116106 // Comirnaty gray
+// * $NZMT#46580461000116107 // Bexsero
+// * $NZMT#46580601000116106 // Bexsero
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names edited by John C... need these to be ratified and possibly
@@ -276,6 +278,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $CVX#165 "HPV9"
 * $CVX#202 "Influenza, Southern Hemisphere, quadrivalent, with preservative"
 * $CVX#205 "Influenza vaccine, quadrivalent, adjuvanted"
+* $CVX#206 "Vaccinia, smallpox monkeypox vaccine live, PF, SQ or ID injection"
 * $CVX#207 "COVID-19, mRNA, LNP-S, PF, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"
 * $CVX#208 "SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose"
 * $CVX#210 "COVID-19 vaccine, vector-nr, rS-ChAdOx1, PF, 0.5 mL"

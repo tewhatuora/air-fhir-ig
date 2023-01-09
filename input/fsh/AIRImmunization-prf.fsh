@@ -36,6 +36,9 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
+// point route at local value set
+* route from air-route-of-administration-vs
+
 // point performer at local content
 * performer.function from air-vaccinator-function-vs
 * performer.actor only Reference(NzPractitioner or NzPractitionerRole)

@@ -33,20 +33,12 @@ Description: "This is the AIR Immunization Profile."
 // remove manufacturer
 * manufacturer 0..0
 
-// remove site
-// what value set do we want to use for body site after we bring it back in scope?
-* site 0..0
-
-// remove route
-// what value set do we want to use for body site after we bring it back in scope?
-* route 0..0
-
 // remove doseQuantity
 * doseQuantity 0..0
 
 // point performer at local content
-// * performer.function from air-vaccinator-function-code
-// * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+* performer.function from air-vaccinator-function-vs
+* performer.actor only Reference(NzPractitioner or NzPractitionerRole)
 
 // remove note
 * note 0..0
@@ -66,3 +58,6 @@ Description: "This is the AIR Immunization Profile."
 
 // remove reaction
 * reaction 0..0
+
+// add reporting system extension
+* extension contains air-reporting-system named ReportingSystem 0..1

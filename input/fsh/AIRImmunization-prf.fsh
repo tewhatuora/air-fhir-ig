@@ -49,6 +49,9 @@ Description: "This is the AIR Immunization Profile."
 // remove note
 * note 0..0
 
+// point reasonCode to local content
+* reasonCode from air-reason-code-vs
+
 // remove subpotent and subpotent reason code
 * isSubpotent 0..0
 * subpotentReason 0..0

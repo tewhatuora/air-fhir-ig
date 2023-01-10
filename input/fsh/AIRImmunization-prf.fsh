@@ -36,6 +36,9 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
+// point site at local value set
+* site from air-site-of-administration-vs
+
 // point route at local value set
 * route from air-route-of-administration-vs
 

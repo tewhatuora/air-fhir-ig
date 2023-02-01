@@ -6,8 +6,16 @@ Description: "This is the AIR Immunization Profile."
 
 * insert StandardMetadata
 
-// bind the vaccine to the AIR vaccine value set
+// restrict coding fields on statusReason
+* statusReason.coding.display 0..0
+* statusReason.coding.userSelected 0..0
+* statusReason.coding.text 0..0
+
+// bind the vaccineCode to the AIR vaccine value set
 * vaccineCode from air-vaccine-vs
+// restrict coding fields on vaccineCode
+* vaccineCode.coding.display 0..0
+* vaccineCode.coding.userSelected 0..0
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
@@ -38,19 +46,35 @@ Description: "This is the AIR Immunization Profile."
 
 // point site at local value set
 * site from air-site-of-administration-vs
+// restrict coding fields on site
+* site.coding.display 0..0
+* site.coding.userSelected 0..0
+* site.coding.text 0..0
 
 // point route at local value set
 * route from air-route-of-administration-vs
+// restrict coding fields on route
+* route.coding.display 0..0
+* route.coding.userSelected 0..0
+* route.coding.text 0..0
 
 // point performer at local content
 * performer.function from air-vaccinator-function-vs
 * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
+// restrict coding fields on performer.function
+* performer.function.coding.display 0..0
+* performer.function.coding.userSelected 0..0
+* performer.function.coding.text 0..0
 
 // remove note
 * note 0..0
 
 // point reasonCode to local content
 * reasonCode from air-reason-code-vs
+// restrict coding fields on reasonCode
+* reasonCode.coding.display 0..0
+* reasonCode.coding.userSelected 0..0
+* reasonCode.coding.text 0..0
 
 // remove subpotent and subpotent reason code
 * isSubpotent 0..0

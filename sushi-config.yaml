@@ -27,7 +27,7 @@ publisher:
 dependencies:
   fhir.org.nz.ig.base:
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
-    version: 1.1.0
+    version: 2.0.0
 
 #
 # The pages property corresponds to IG.definition.page. SUSHI can

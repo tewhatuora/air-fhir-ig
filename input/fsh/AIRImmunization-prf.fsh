@@ -9,7 +9,7 @@ Description: "This is the AIR Immunization Profile."
 // restrict coding fields on statusReason
 * statusReason.coding.display 0..0
 * statusReason.coding.userSelected 0..0
-* statusReason.coding.text 0..0
+* statusReason.text 0..0
 // require a SNOMED code for StatusReason
 * statusReason.coding.system = "http://snomed.info/sct"
 
@@ -44,7 +44,7 @@ Description: "This is the AIR Immunization Profile."
 // restrict location identifier to ESAM
 * location.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 // restrict location managingOrganization to HPI-F
-* location.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+// * location.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 
 // remove manufacturer
 * manufacturer 0..0
@@ -57,14 +57,14 @@ Description: "This is the AIR Immunization Profile."
 // restrict coding fields on site
 * site.coding.display 0..0
 * site.coding.userSelected 0..0
-* site.coding.text 0..0
+* site.text 0..0
 
 // point route at local value set
 * route from air-route-of-administration-vs
 // restrict coding fields on route
 * route.coding.display 0..0
 * route.coding.userSelected 0..0
-* route.coding.text 0..0
+* route.text 0..0
 
 // point performer at local content
 * performer.function from air-vaccinator-function-vs
@@ -72,7 +72,7 @@ Description: "This is the AIR Immunization Profile."
 // restrict coding fields on performer.function
 * performer.function.coding.display 0..0
 * performer.function.coding.userSelected 0..0
-* performer.function.coding.text 0..0
+* performer.function.text 0..0
 
 // remove note
 * note 0..0
@@ -82,7 +82,7 @@ Description: "This is the AIR Immunization Profile."
 // restrict coding fields on reasonCode
 * reasonCode.coding.display 0..0
 * reasonCode.coding.userSelected 0..0
-* reasonCode.coding.text 0..0
+* reasonCode.text 0..0
 
 // remove subpotent and subpotent reason code
 * isSubpotent 0..0

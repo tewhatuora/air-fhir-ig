@@ -10,15 +10,19 @@ Description: "This is the AIR Immunization Profile."
 * statusReason.coding.display 0..0
 * statusReason.coding.userSelected 0..0
 * statusReason.coding.text 0..0
+// require a SNOMED code for StatusReason
+* statusReason.coding.system = "http://snomed.info/sct"
 
 // bind the vaccineCode to the AIR vaccine value set
 * vaccineCode from air-vaccine-vs
 // restrict coding fields on vaccineCode
+* vaccineCode.coding 1..1
 * vaccineCode.coding.display 0..0
 * vaccineCode.coding.userSelected 0..0
 
 // make patient point to NZ Base Patient
 * patient only Reference(NzPatient)
+* patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 
 // add a diluent extension for use by ISM
 * extension contains air-diluent named Diluent 0..1
@@ -37,6 +41,10 @@ Description: "This is the AIR Immunization Profile."
 
 // make location point to NZ Base location
 * location only Reference(NzLocation)
+// restrict location identifier to ESAM
+* location.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+// restrict location managingOrganization to HPI-F
+* location.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 
 // remove manufacturer
 * manufacturer 0..0

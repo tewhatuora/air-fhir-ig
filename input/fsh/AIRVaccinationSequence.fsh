@@ -3,7 +3,7 @@ Id: air-vacc-sequence
 Description: "The sequence of this vaccination within the plan"
 
 * ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/AIRVaccinationSequence"
-* ^jurisdiction.coding = urn:iso:std:iso:3166#NZ
+* insert StandardMetadata
 
 * ^context.type = #element
 * ^context.expression = "PlanDefinition.action.action"

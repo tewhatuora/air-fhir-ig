@@ -7,7 +7,7 @@ Description: "Codes for Routes of Administration for use by the immunization pro
 
 // Eventually it may make sense to trim this list down to only the ones we use. But then again, if we integrate across the sector we may need to be a bit more inclusive.
 
-* include codes from system http://terminology.hl7.org/CodeSystem/v2-0162
+// * include codes from system http://terminology.hl7.org/CodeSystem/v2-0162
 
 // SNOMED Codes referenced by ISD/ISM on
 // https://mohits.atlassian.net/wiki/spaces/NIS/pages/3365175358/ISD+and+ISM+Codesets#Vaccine-Code

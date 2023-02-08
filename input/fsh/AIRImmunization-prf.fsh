@@ -25,7 +25,7 @@ Description: "This is the AIR Immunization Profile."
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 
 // add a diluent extension for use by ISM
-* extension contains air-diluent named Diluent 0..1
+// * extension contains air-diluent named Diluent 0..1
 
 // remove encounter
 * encounter 0..0
@@ -40,9 +40,9 @@ Description: "This is the AIR Immunization Profile."
 * reportOrigin 0..0
 
 // make location point to NZ Base location
-* location only Reference(NzLocation)
+* location only Reference(AIRLocation)
 // restrict location identifier to ESAM
-* location.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+// * location.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 // restrict location managingOrganization to HPI-F
 // * location.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 
@@ -55,6 +55,7 @@ Description: "This is the AIR Immunization Profile."
 // point site at local value set
 * site from air-site-of-administration-vs
 // restrict coding fields on site
+* site.coding.system = $SCT
 * site.coding.display 0..0
 * site.coding.userSelected 0..0
 * site.text 0..0
@@ -67,7 +68,7 @@ Description: "This is the AIR Immunization Profile."
 * route.text 0..0
 
 // point performer at local content
-* performer.function from air-vaccinator-function-vs
+* performer.function from air-vaccinator-function-code
 * performer.actor only Reference(NzPractitioner or NzPractitionerRole)
 // restrict coding fields on performer.function
 * performer.function.coding.display 0..0

@@ -1,35 +1,30 @@
 Instance: example-AIRImmunization
 InstanceOf: air-immunization
 Usage: #example
-Title: "AIR Immunization v1 Example"
-Description: "An example of the AIR Immunization resource showing a single vaccine administration, conforming to the history cache version as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3360064739/Immunisation+Sync+data+Mapping ."
+Title: "AIR Immunization v2.0 Example"
+Description: "An example of the AIR Immunization resource showing the irst administration of DTaP-IPV-HepB/Hib, conforming to the Imms service data spec as defined at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3445141172/Immunisation+Record+Data+Fields."
+
+* identifier.value = "0234-3456-6789" // whatever comes from the source system
 
 // metadata fields
 
-* id = "history-cache-id" // local id for internal use only
-* meta.lastUpdated = "2022-08-22T13:28:17+12:00"
+* vaccineCode = $NZVX#210307
 
-// record identifier from the source system
-* identifier.use = #official
-* identifier.value = "0234-3456-6789" // whatever comes from the source system
-* identifier.system = "https://uri/for/CIR" // this should be a URI
+* patient = Reference(pat)
 
 * status = #completed // must be one of completed, not-done, or entered-in-error
 
 // statusReasons are brought into ImmSoT from source systems
 // according to mapping table available at 
 // https://mohits.atlassian.net/wiki/spaces/NIS/pages/3360064739/Immunisation+Sync+data+Mapping
-* statusReason.coding[0].system = $SCT
 * statusReason.coding[0].code = #127785005
-* statusReason.coding[0].display = "Administration of substance to produce immunity, either active or passive"
-* statusReason.text = "Vaccine Administered"
+
 
 // this is the vaccine product that was administered
 // Note that even though this is a codeableConcept datatype it is acceptable 
 // to only populate the .text element, meaning you can store free text if needed
 * vaccineCode.coding[0].system = $NZVX
 * vaccineCode.coding[0].code = #210307 
-* vaccineCode.coding[0].display = "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepatitis B, haemophilus influenzae type b"
 * vaccineCode.text = "Infanrix Hexa"
 
 // here's a reference to a contained patient instance
@@ -39,22 +34,25 @@ Description: "An example of the AIR Immunization resource showing a single vacci
 // this is when the vaccine was administered
 * occurrenceDateTime = "2012-12-25"
 
-// this is the facility where the vaccine was administered
-* location.type = "NzLocation"
-* location.identifier.value = "F05021-J"
-* location.display = "Southland Hospital, Invercargill"
+* location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
 
-// this is an alternate syntax for location reference
-// * location = Reference(NzLocation/F05021-J) // Southland Hospital, Invercargill
+* expirationDate = "2013-12-31"
 
-// Contained patient reference
+* site = $SCT#78421000 // Intramuscular route
+* route = $SCT#16217701000119102 // Left deltoid
 
-Instance: PatientJoeBloggs
-InstanceOf: NzPatient
-Usage: #inline
+* performer.actor = Reference(NzPractitionerRole/HPI-12345) // to be argued whether to use Prac or PracRole
 
-// * identifier.system = https://standards.digital.health.nz/ns/nhi-id
-* identifier.value = "VUY1111"
-* name.given = "Joseph M"
-* name.family = "Bloggs"
-* birthDate.value = 1918-11-11
+// TODO: the following code doesn't make clinical sense in the context of the example. Fix that.
+// The correct indication code is 6W, 'Six weeks' to be added after I make a codesystem for indication codes.
+* reasonCode = $SCT#164641000210109 // Eligible medical condition
+
+// * protocolApplied.series = "DTaP-IPV-HepB/Hib"
+
+* protocolApplied.doseNumberPositiveInt = 1
+* protocolApplied.targetDisease = $SCT#397428000 "Diphtheria"
+* protocolApplied.targetDisease = $SCT#76902006 "Tetanus"
+* protocolApplied.targetDisease = $SCT#27836007 "Pertussis"
+* protocolApplied.targetDisease = $SCT#398102009 "Poliomyelitis"
+* protocolApplied.targetDisease = $SCT#66071002 "Viral Hepatitis type B"
+* protocolApplied.targetDisease = $SCT#91428005 "Haemophilus influenzae infection"

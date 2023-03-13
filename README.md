@@ -20,20 +20,28 @@ In order to install Ruby, I would suggest that you use the Ruby Version Manager(
     ```shell
     curl -sSL https://get.rvm.io | bash -s stable
     ```
-3. Install Ruby via rvm
+3. Download required packages via rvm
+    ```shell
+    rvm requirements run
+    ```
+    Note - this may fail due to a yum repo connection timeout error in which case you can find, in the output log file, the yum command that was used and the required packages, and run that command outside of rvm with the appropriate flag to pick up the proxy environment variables, e.g:
+    ```shell
+    sudo -E yum install -y autoconf automake bison libffi-devel libtool readline-devel ruby sqlite-devel zlib-devel libyaml-devel openssl-devel
+    ```
+4. Install Ruby via rvm
     ```shell
     rvm install 3.1.3
     ```
-4. Ensure your terminal profile has `Run command as a login shell` checked
-5. Switch to use installed Ruby(restart terminal if you had to enable step 4)
+5. Ensure your terminal profile has `Run command as a login shell` checked
+6. Switch to use installed Ruby(restart terminal if you had to enable step 4)
     ```shell
    rvm use 3.1.3
    ```
-6. Install OpenSSL(unsure if we need this step)
+7. Install OpenSSL(unsure if we need this step)
     ```shell
     gem install openssl
     ```
-7. Install Jekyll & Bundler
+8. Install Jekyll & Bundler
     ```shell
     gem install jekyll bundler
     ```

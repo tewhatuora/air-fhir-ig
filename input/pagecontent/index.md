@@ -1,0 +1,1 @@
+This Implementation Guide describes the FHIR artifacts used to communicate with the Aotearoa Immunisation Register (AIR) Immunisation Source of Truth (ImmSoT) register. ImmSot and other AIR components are superseding legacy systems including the National Immunisation Register (NIR) and ImmuniseNow.

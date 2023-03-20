@@ -8,11 +8,11 @@ canonical: https://standards.digital.health.nz/fhir/air
 name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.
-status: active # draft | active | retired | unknown
-version: 1.0.0
+status: draft # draft | active | retired | unknown
+version: 2.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2022+
-releaseLabel: release # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#NZ "New Zealand" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 publisher:
@@ -28,7 +28,7 @@ publisher:
 dependencies:
   fhir.org.nz.ig.base:
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
-    version: 1.1.0
+    version: 2.0.0
 
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
@@ -72,8 +72,9 @@ dependencies:
 # │ property below.                                                                                │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
-  Home: index.html
-  Artifacts: artifacts.html
+  AIR Implementation Guide Home: index.html
+  Contents List: toc.html
+  FHIR Artifact Summary: artifacts.html
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

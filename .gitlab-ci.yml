@@ -1,0 +1,36 @@
+default:
+  tags:
+    - azure
+
+image: ubuntu:22.04
+
+stages:
+  - build
+  - deploy
+
+build-ig:
+  image: registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.1
+  stage: build
+  script:
+    - ./_updatePublisher.sh -y
+    - ./build-ig.sh
+  artifacts:
+    paths:
+      - output
+    expire_in: 1 week
+
+mvn-deploy-package:
+  image: maven:3-amazoncorretto-17
+  stage: deploy
+  script:
+    # Very annoying but maven complains there is a missing pom if we turn this into a multi line command...
+    - mvn $JVM_PROXY_OPTS deploy:deploy-file -s ci_settings.xml -Dfile=output/package.r4.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-immunisation -Dversion=2.0.0-SNAPSHOT -Dpackaging=tgz
+
+pages:
+  stage: deploy
+  script:
+    - mv output public
+  artifacts:
+    paths:
+      - public
+

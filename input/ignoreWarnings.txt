@@ -1,0 +1,6 @@
+== Suppressed Messages ==
+# Errors to suppress
+
+# Warnings to suppress
+
+# Info messages to suppress

@@ -4,7 +4,7 @@ Id:             air-immunization-action
 Title:          "NZ Base Immunization Vaccine Administration"
 Description:    "The ActivityDefinition used by the New Zealand NZ Base immunization plan to describe a vaccine administration."
 
-* ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/immunization-action"
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-action"
 
 * insert StandardMetadata
 

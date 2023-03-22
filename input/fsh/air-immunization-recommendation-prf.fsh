@@ -4,7 +4,7 @@ Id:             air-immunization-recommendation
 Title:          "NZ Base Immunization Recommendation"
 Description:    "An immunizationRecommendation derived from the NZ Base immunization PlanDefinition and applied to an invividual."
 
-* ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/paediatric-immunization-plan"
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
 
 * ^purpose = "To form the base plan upon which individual immunization recommendations for a patient can be derived."

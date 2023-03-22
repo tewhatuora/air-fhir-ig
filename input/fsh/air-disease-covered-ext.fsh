@@ -4,7 +4,7 @@ Description: "The disease which a vaccine coveres. Needed in ActivityDefinition 
 
 * insert StandardMetadata
 
-* ^url = "http://standards.digital.health.nz/StructureDefinition/disease-covered"
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-disease-covered"
 
 * ^context.type = #element
 * ^context.expression = "ActivityDefinition"

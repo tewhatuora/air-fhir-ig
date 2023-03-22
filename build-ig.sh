@@ -4,7 +4,7 @@
 # rm -r  ./temp
 
 echo running sushi ...
-./runSushi.sh
+ ./runSushi.sh
 
 echo running ig publisher
 java -jar input-cache/publisher.jar -ig . \

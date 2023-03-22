@@ -1,0 +1,57 @@
+ValueSet: AIRIndicationCode
+Id: air-indication-code
+Title: "AIR Indication Codes"
+Description: "Coded values to describe the reason an immunisation was given. Initially drawn from legacy NIR codes and CIR SNOMED codes."
+
+* ^experimental = false
+
+* insert StandardMetadata
+
+* $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
+* $SCT#161641000210109 "Publicly funded vaccination given due to medical condition included in criteria list"
+* $SCT#161631000210101 "Publicly funded vaccination given due to pregnancy"
+* $SCT#161801000210105 "Publicly funded vaccination given for child four years of age or under due to history of hospitalisation with respiratory condition"
+* $SCT#161811000210107 "Privately funded vaccination given"
+* $SCT#161791000210106 "Publicly funded vaccination given to Māori and Pacific people aged 55 to 64 years of age"
+* $SCT#201581000210101 "Alternate vaccination given"
+* $SCT#72011000210108 "Pertussis vaccination given"
+* $SCT#101631000210102 "COVID-19 vaccine given"
+
+// These next three are not published at SNOMED browser as of 27 Feb 2023
+// * $SCT#231731000210103 ""
+// * $SCT#231741000210106 ""
+// * $SCT#263781000210105 ""
+
+* $AIRTerms#1 "Over 65 years (Influenza)"
+* $AIRTerms#2 "Under 18 years, eligible condition (Influenza)"
+* $AIRTerms#3 "Eligible condition (Influenza)"
+* $AIRTerms#4 "Sexual or household contact"
+* $AIRTerms#5 "Primary course"
+* $AIRTerms#6 "Booster or extra dose"
+* $AIRTerms#7 "Postpartum"
+* $AIRTerms#8 "Low birth weight"
+* $AIRTerms#9 "HepB carrier mother"
+* $AIRTerms#10 "At risk for TB"
+* $AIRTerms#11 "Pre- or post-splenectomy"
+* $AIRTerms#12 "At risk for pneumococcal, no previous history"
+* $AIRTerms#13 "At risk for pneumococcal, previous conjugate/PCV7 history"
+* $AIRTerms#14 "At risk for pneumococcal, previous polysaccharide/23PPV history"
+* $AIRTerms#15 "Pre-emergency"
+* $AIRTerms#16 "Pregnant woman"
+* $AIRTerms#21 "Pneumococcal vaccine given on catch-up schedule"
+* $AIRTerms#Pre "Pre-primary course (vaccines required before any primary course)"
+* $AIRTerms#Stn "Standard"
+* $AIRTerms#6W "6 weeks"
+* $AIRTerms#3M "3 months"
+* $AIRTerms#5M "5 months"
+* $AIRTerms#12M "12 months"
+* $AIRTerms#15M "15 months"
+* $AIRTerms#4Y "4 years"
+* $AIRTerms#11Y "11 years"
+* $AIRTerms#14Y "14 years"
+* $AIRTerms#45Y "45 years"
+* $AIRTerms#65Y "65 years"
+* $AIRTerms#96 "HepB high risk - booster or extra dose"
+* $AIRTerms#TPW "Tetanus-prone wound"
+
+

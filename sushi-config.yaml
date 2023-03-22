@@ -74,7 +74,6 @@ dependencies:
 menu:
   Home: index.html
   Artifacts: artifacts.html
-  Naming Systems: namingSystems.html
   Support:
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG : full-ig.zip

@@ -2,7 +2,7 @@ Extension: AIRVaccinationSequence
 Id: air-vacc-sequence
 Description: "The sequence of this vaccination within the plan"
 
-* ^url = "http://standards.digital.health.nz/fhir/StructureDefinition/AIRVaccinationSequence"
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-vacc-sequence"
 * insert StandardMetadata
 
 * ^context.type = #element

@@ -3,6 +3,7 @@ Id: air-vaccine-product-code
 Title: "AIR Vaccine Product Value Set"
 Description: "Allowable values for vaccine products in AIR."
 
+* ^experimental = false
 * insert StandardMetadata
 
 // SNOMED vaccines

@@ -2,6 +2,7 @@ ValueSet: AIRDiseaseCoveredCode
 Id: air-disease-covered-code
 Title: "AIR Diseases Covered"
 Description: "Diseases that are covered by the immunization programmes and schedules that are managed or referred to in the AIR system."
+* ^experimental = false
 
 * insert StandardMetadata
 

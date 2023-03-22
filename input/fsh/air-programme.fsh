@@ -7,7 +7,7 @@ Description: "Administer DTap vaccine"
 Usage: #example
 
 * name = "AdDtap"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/addtap"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/adDtap"
 * title = "Administer DTap vaccine"
 * status = #draft
 
@@ -23,13 +23,13 @@ Usage: #example
 * dosage.route = $SCT#78421000 "Intramuscular route"
 
 
-Instance: adPcv10
+Instance: AdPCV10
 InstanceOf: AIRImmunizationAction
 Description: "Administer PCV10 vaccine"
 Usage: #example
 
-* name = "AdPcv10"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/adpcv10"
+* name = "AdPCV10"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdPCV10"
 * title = "Administer PCV10 vaccine"
 * status = #draft
 
@@ -40,13 +40,13 @@ Usage: #example
 * dosage.route = $SCT#78421000 "Intramuscular route"
 
 
-Instance: adRv1
+Instance: AdRv1
 InstanceOf: AIRImmunizationAction
 Description: "Administer RV1 vaccine"
 Usage: #example
 
 * name = "AdRv1"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/adrv1"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdRv1"
 * title = "Administer RV1 vaccine"
 * status = #draft
 
@@ -57,13 +57,13 @@ Usage: #example
 * dosage.route = $SCT#78421000 "Intramuscular route"
 
 //----
-Instance: adMmr
+Instance: AdMMR
 InstanceOf: AIRImmunizationAction
 Description: "Administer MMR vaccine"
 Usage: #example
 
-* name = "AdMmr"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/admmr"
+* name = "AdMMR"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdMMR"
 * title = "Administer MMR vaccine"
 * status = #draft
 
@@ -75,13 +75,13 @@ Usage: #example
 * dosage.doseAndRate.doseQuantity = 0.5 'ml'
 * dosage.route = $SCT#78421000 "Intramuscular route"
 
-Instance: adHib
+Instance: AdHib
 InstanceOf: AIRImmunizationAction
 Description: "Administer Hib vaccine"
 Usage: #example
 
 * name = "AdHib"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/adhib"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdHib"
 * title = "Administer Hib vaccine"
 * status = #draft
 
@@ -92,13 +92,13 @@ Usage: #example
 * dosage.doseAndRate.doseQuantity = 0.5 'ml'
 * dosage.route = $SCT#78421000 "Intramuscular route"
 
-Instance: adVv
+Instance: AdVv
 InstanceOf: AIRImmunizationAction
 Description: "Administer VV vaccine"
 Usage: #example
 
 * name = "AdVv"
-* url = "https://standards.digital.health.nz/fhir/StructureDefinition/advv"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdVv"
 * title = "Administer VV vaccine"
 * status = #draft
 
@@ -120,7 +120,7 @@ Usage: #example
 * name = "PdPaediatricPlan"
 * status = #draft
 * description = "The New Zealand Paediatric Immunization program"
-* url = "http://standards.digital.health.nz/fhir/StructureDefinition/PlanDefinition/paediatric"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/PlanDefinition/pd2"
 
 * goal.description.text = "Ensure child is immunized from childhood illnesses"
 * relatedArtifact.type = #derived-from
@@ -138,17 +138,17 @@ Usage: #example
 
 // --- 6 week vaccines
 * action[0].action[0].title = "DTap administration at 6 weeks"
-* action[0].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/addtap"
+* action[0].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/adDtap"
 * action[0].action[0].extension[air-vacc-sequence].extension[series].valueString = "DTaP-IPV-HepB/Hib"
 * action[0].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
 * action[0].action[1].title = "PCV10 administration at 6 weeks"
-* action[0].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adpcv10"
+* action[0].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdPCV10"
 * action[0].action[1].extension[air-vacc-sequence].extension[series].valueString = "PCV10"
 * action[0].action[1].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
 * action[0].action[2].title = "RV1 administration at 6 weeks"
-* action[0].action[2].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adrv1"
+* action[0].action[2].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdRv1"
 * action[0].action[2].extension[air-vacc-sequence].extension[series].valueString = "RV1"
 * action[0].action[2].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
@@ -162,12 +162,12 @@ Usage: #example
 
 //3 month vaccines
 * action[1].action[0].title = "DTap administration at 3 months"
-* action[1].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/addtap"
+* action[1].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/air/adDtap"
 * action[1].action[0].extension[air-vacc-sequence].extension[series].valueString = "DTaP-IPV-HepB/Hib"
 * action[1].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 2
 
 * action[1].action[1].title = "RV1 administration at 3 months"
-* action[1].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adrv1"
+* action[1].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdRv1"
 * action[1].action[1].extension[air-vacc-sequence].extension[series].valueString = "RV1"
 * action[1].action[1].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
@@ -182,12 +182,12 @@ Usage: #example
 
 //5 month vaccines
 * action[2].action[0].title = "DTap administration at 5 months"
-* action[2].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/addtap"
+* action[2].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/adDtap"
 * action[2].action[0].extension[air-vacc-sequence].extension[series].valueString = "DTaP-IPV-HepB/Hib"
 * action[2].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 3
 
 * action[2].action[1].title = "PCV10 administration at 5 months"
-* action[2].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adpcv10"
+* action[2].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdPCV10"
 * action[2].action[1].extension[air-vacc-sequence].extension[series].valueString = "PCV10"
 * action[2].action[1].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 2
 
@@ -201,12 +201,12 @@ Usage: #example
 
 // 12 month vaccines
 * action[3].action[0].title = "PCV10 administration at 12 months"
-* action[3].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adpcv10"
+* action[3].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdPCV10"
 * action[3].action[0].extension[air-vacc-sequence].extension[series].valueString = "PCV10"
 * action[3].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 3
 
 * action[3].action[0].title = "MMR administration at 12 months"
-* action[3].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/admmr"
+* action[3].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdMMR"
 * action[3].action[0].extension[air-vacc-sequence].extension[series].valueString = "MMR"
 * action[3].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
@@ -220,16 +220,16 @@ Usage: #example
 
 //15 month vaccines
 * action[4].action[0].title = "MMR administration at 15 months"
-* action[4].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/admmr"
+* action[4].action[0].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdMMR"
 * action[4].action[0].extension[air-vacc-sequence].extension[series].valueString = "MMR"
 * action[4].action[0].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 2
 
 * action[4].action[1].title = "Hib administration at 15 months"
-* action[4].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/adhib"
+* action[4].action[1].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdHib"
 * action[4].action[1].extension[air-vacc-sequence].extension[series].valueString = "HIB"
 * action[4].action[1].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1
 
 * action[4].action[2].title = "VV administration at 15 months"
-* action[4].action[2].definitionCanonical = "https://standards.digital.health.nz/fhir/StructureDefinition/advv"
+* action[4].action[2].definitionCanonical = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AdVv"
 * action[4].action[2].extension[air-vacc-sequence].extension[series].valueString = "VV"
 * action[4].action[2].extension[air-vacc-sequence].extension[sequence].valuePositiveInt = 1

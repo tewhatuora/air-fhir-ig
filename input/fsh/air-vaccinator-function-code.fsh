@@ -1,11 +1,11 @@
 ValueSet: AIRVaccinatorFunctionCode
 Id: air-vaccinator-function-code
-Title: "AIR Vacciniator Function"
+Title: "AIR Vaccinator Function"
 Description: "A value set of codes for the functions performed by vaccinators."
-
+* ^experimental = false
 * insert StandardMetadata
 
-// the initial value set is defined by HL7, and the basic binding is extensible
-* include codes from valueset http://hl7.org/fhir/ValueSet/immunization-function
+* $v2ImmFunc#AP "Administering Provider"
 
-// we might need some NZ codes of our own, such as to describe specific provider types like fully qualified vaccinator, vaccinator-in-training, etc
+* $AIRTerms#VC "Vaccinator"
+* $AIRTerms#VHW "Vaccinating health worker"

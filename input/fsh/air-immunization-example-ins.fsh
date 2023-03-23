@@ -92,6 +92,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-1
 InstanceOf: Patient
 Usage: #inline
+Description: "A contained patient for use in a bundle example"
 * id = "ImmPatientExample"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient"
 * identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -100,6 +101,7 @@ Usage: #inline
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-2
 InstanceOf: Location
 Usage: #inline
+Description: "A contained location for use in a bundle example"
 * id = "ImmLocationExample"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
 * identifier.system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
@@ -109,6 +111,7 @@ Usage: #inline
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-3
 InstanceOf: NzOrganization
 Usage: #inline
+Description: "A contained organization for use in a bundle example"
 * id = "ImmOrganizationExample"
 * identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * identifier.value = "FZZ835-E"
@@ -116,6 +119,7 @@ Usage: #inline
 Instance: 5c5f6a1c-234e-46e5-815b-312152cf98f7
 InstanceOf: Bundle
 Usage: #example
+Description: "An example bundle as would be received from a search of ImmSoT."
 * meta.lastUpdated = "2023-03-21T22:18:12.137+00:00"
 * type = #searchset
 * total = 2
@@ -129,6 +133,7 @@ Usage: #example
 Instance: Inline-Instance-for-5c5f6a1c-234e-46e5-815b-312152cf98f7-1
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "02e2b41b-c25f-4b32-a478-c7eaaa761f9e"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:16:06.970+00:00"
@@ -171,6 +176,7 @@ Usage: #inline
 Instance: Inline-Instance-for-5c5f6a1c-234e-46e5-815b-312152cf98f7-2
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "21892644-fafc-42bb-887c-d925fa992fee"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:18:08.473+00:00"
@@ -213,6 +219,7 @@ Usage: #inline
 Instance: Imm-Bundle-Example
 InstanceOf: Bundle
 Usage: #example
+Description: "An example search bundle response."
 * meta.lastUpdated = "2023-03-21T22:18:12.137+00:00"
 * type = #searchset
 * total = 2
@@ -226,6 +233,7 @@ Usage: #example
 Instance: Inline-Instance-for-Imm-Bundle-Example-1
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "02e2b41b-c25f-4b32-a478-c7eaaa761f9e"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:16:06.970+00:00"
@@ -268,6 +276,7 @@ Usage: #inline
 Instance: Inline-Instance-for-Imm-Bundle-Example-2
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "21892644-fafc-42bb-887c-d925fa992fee"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:18:08.473+00:00"

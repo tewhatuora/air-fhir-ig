@@ -3,6 +3,8 @@ Id: air-route-code
 Title: "AIR Route of Administration Value Set"
 Description: "Route of administration value set for AIR immunisations"
 
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code"
+
 * ^experimental = false
 
 // The below list taken from ISD and ISM Codesets on https://mohits.atlassian.net/wiki/spaces/NIS/pages/3365175358/ISD+and+ISM+Codesets

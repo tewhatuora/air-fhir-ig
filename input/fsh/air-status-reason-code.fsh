@@ -3,6 +3,7 @@ Id: air-status-reason-code
 Title: "AIR Status Reason Code"
 Description: "Values to use in the status reason field of an immunisation event."
 
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-status-reason-code"
 * ^experimental = false
 
 * insert StandardMetadata

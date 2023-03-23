@@ -50,12 +50,14 @@ Description: "This is the AIR Immunization Profile."
 
 // body site value set
 * site from air-site-code (preferred)
+* site ^short = "The body site of the vaccine administration (SNOMED code)."
 * site.coding 1..1
 * obeys nz-site-1
 * obeys nz-site-2
 
 // route of admin value set
 * route from air-route-code (preferred)
+* route ^short = "The route of administation of the vaccine."
 * route.coding 1..1
 * obeys nz-route-1
 * obeys nz-route-2
@@ -66,6 +68,7 @@ Description: "This is the AIR Immunization Profile."
 // point performer at local content
 * performer.actor only Reference(air-practitioner)
 * performer.function from air-vaccinator-function-code (required)
+* performer.function ^short = "The person most responsible for the administration of the vaccine into the patient."
 * performer.function.coding 1..1
 * obeys nz-worker-function-1
 * obeys nz-worker-function-2

@@ -5,7 +5,7 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 
 * insert StandardMetadata
 
-* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms"
+* ^url = "https://standards.digital.health.nz/ns/air-terms-code"
 
 * ^experimental = false
 * ^caseSensitive = false
@@ -72,3 +72,11 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #RESCHO "Parental/individual choice to reschedule"
 * #RESREF "Referred elsewhere for immunisation eg specialist"
 * #RESTC "Temporary contraindication"
+
+// legacy HL7v2 Route codes from the Message Spec v4.5 2020
+// These are in HL7v2 table 0162
+
+* #PO "Oral"
+* #IM "Intramuscular"
+* #SC "Subcutaneous"
+* #ID "Intradermal"

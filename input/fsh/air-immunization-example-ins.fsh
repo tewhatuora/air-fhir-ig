@@ -92,6 +92,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-1
 InstanceOf: Patient
 Usage: #inline
+Description: "A contained patient for use in a bundle example"
 * id = "ImmPatientExample"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient"
 * identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -100,6 +101,7 @@ Usage: #inline
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-2
 InstanceOf: Location
 Usage: #inline
+Description: "A contained location for use in a bundle example"
 * id = "ImmLocationExample"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
 * identifier.system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
@@ -109,6 +111,7 @@ Usage: #inline
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-3
 InstanceOf: NzOrganization
 Usage: #inline
+Description: "A contained organization for use in a bundle example"
 * id = "ImmOrganizationExample"
 * identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * identifier.value = "FZZ835-E"
@@ -116,6 +119,7 @@ Usage: #inline
 Instance: 5c5f6a1c-234e-46e5-815b-312152cf98f7
 InstanceOf: Bundle
 Usage: #example
+Description: "An example bundle as would be received from a search of ImmSoT."
 * meta.lastUpdated = "2023-03-21T22:18:12.137+00:00"
 * type = #searchset
 * total = 2
@@ -129,6 +133,7 @@ Usage: #example
 Instance: Inline-Instance-for-5c5f6a1c-234e-46e5-815b-312152cf98f7-1
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "02e2b41b-c25f-4b32-a478-c7eaaa761f9e"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:16:06.970+00:00"
@@ -146,7 +151,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -157,20 +162,21 @@ Usage: #inline
 * expirationDate = "2024-01-31"
 * site.coding.version = "1.1"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 1
 
 Instance: Inline-Instance-for-5c5f6a1c-234e-46e5-815b-312152cf98f7-2
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "21892644-fafc-42bb-887c-d925fa992fee"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:18:08.473+00:00"
@@ -188,7 +194,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -199,20 +205,21 @@ Usage: #inline
 * expirationDate = "2024-05-31"
 * site.coding.version = "1.1"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 2
 
 Instance: Imm-Bundle-Example
 InstanceOf: Bundle
 Usage: #example
+Description: "An example search bundle response."
 * meta.lastUpdated = "2023-03-21T22:18:12.137+00:00"
 * type = #searchset
 * total = 2
@@ -226,6 +233,7 @@ Usage: #example
 Instance: Inline-Instance-for-Imm-Bundle-Example-1
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "02e2b41b-c25f-4b32-a478-c7eaaa761f9e"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:16:06.970+00:00"
@@ -252,22 +260,23 @@ Usage: #inline
 * location = Reference(1)
 * lotNumber = "555123"
 * expirationDate = "2024-01-31"
-* site.coding.version = "1.1"
+* site.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 1
 
 Instance: Inline-Instance-for-Imm-Bundle-Example-2
 InstanceOf: Immunization
 Usage: #inline
+Description: "An immunization included in a search bundle response."
 * id = "21892644-fafc-42bb-887c-d925fa992fee"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-03-21T22:18:08.473+00:00"
@@ -285,7 +294,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -294,15 +303,15 @@ Usage: #inline
 * location = Reference(1)
 * lotNumber = "555123"
 * expirationDate = "2024-05-31"
-* site.coding.version = "1.1"
+* site.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 2

@@ -146,7 +146,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -157,14 +157,14 @@ Usage: #inline
 * expirationDate = "2024-01-31"
 * site.coding.version = "1.1"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 1
 
@@ -188,7 +188,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -199,14 +199,14 @@ Usage: #inline
 * expirationDate = "2024-05-31"
 * site.coding.version = "1.1"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 2
 
@@ -252,16 +252,16 @@ Usage: #inline
 * location = Reference(1)
 * lotNumber = "555123"
 * expirationDate = "2024-01-31"
-* site.coding.version = "1.1"
+* site.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 1
 
@@ -285,7 +285,7 @@ Usage: #inline
 * extension.extension[=].valueDate = "2026-01-01"
 * status = #completed
 * statusReason = http://snomed.info/sct#127785005
-* vaccineCode.coding.version = "1.0.0"
+* vaccineCode.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Priorix"
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -294,15 +294,15 @@ Usage: #inline
 * location = Reference(1)
 * lotNumber = "555123"
 * expirationDate = "2024-05-31"
-* site.coding.version = "1.1"
+* site.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * site.coding = http://snomed.info/sct#16217701000119102
-* route.coding.version = "1.2"
+* route.coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * route.coding = http://snomed.info/sct#78421000
 * performer.function.coding.version = "1.0.0"
 * performer.function.coding = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/nursing-council-id"
 * performer.actor.identifier.value = "477616"
 * reasonCode[0] = http://snomed.info#359953009
-* reasonCode[+].coding.version = "1"
+* reasonCode[+].coding.version = "http://snomed.info/sct/11000146104/version/20220930"
 * reasonCode[=].coding = http://snomed.info#359953009
 * protocolApplied.doseNumberPositiveInt = 2

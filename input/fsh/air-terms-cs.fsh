@@ -51,8 +51,6 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 
 // NIR Status Reason Codes
 
-
-
 * #AEFIOT "Other AFEI or concern"
 * #AEFISA "Serious and/or Severe AEFI - other - indicating contraindication"
 * #AEFISO "Serious and/or Severe AEFI - indicating caution"
@@ -80,3 +78,22 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #IM "Intramuscular"
 * #SC "Subcutaneous"
 * #ID "Intradermal"
+
+// from  http://terminology.hl7.org/CodeSystem/v2-0163
+// the below list taken from NIR File Specification version 4.5 24 Sept 2020
+
+* #LD "Left Deltoid"
+* #LVL "Left Vastus Lateralis"
+* #RD "Right Deltoid"
+* #RVL "Right Vastus Lateralis"
+* #OTH "Other"
+* #LA "Left Arm"
+* #RA "Right Arm"
+* #LUA "Left Upper Arm"
+* #RUA "Right Upper Arm"
+* #LG "Left Gluteus Medius"
+* #RG "Right Gluteus Medius"
+* #LT "Left Thigh"
+* #LVG "Left Ventragluteal"
+* #RVG "Right Ventragluteal"
+* #BU "Buttock" 

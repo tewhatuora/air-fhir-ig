@@ -9,7 +9,7 @@ name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.
 status: draft # draft | active | retired | unknown
-# version: 2.0.0
+version: 0.0.1
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2022+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -18,7 +18,7 @@ jurisdiction: urn:iso:std:iso:3166#NZ "New Zealand" # https://www.hl7.org/fhir/v
 publisher:
   name: Te Whatu Ora
   url: https://tewhatuora.govt.nz
-# removed personal email, awaiting guidace on what email to use.
+# removed personal email, awaiting guidance on what email to use.
 #  email: john.carter@health.govt.nz
 
 # The dependencies property corresponds to IG.dependsOn. The key is the

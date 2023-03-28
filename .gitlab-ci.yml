@@ -2,14 +2,37 @@ default:
   tags:
     - azure
 
-image: ubuntu:22.04
+image: registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.2
 
 stages:
+  - build-prepare
   - build
+  - release
   - deploy
+  - post-release
+
+variables:
+  RELEASE:
+    value: "true"
+    description: "Set to true in order to build a new release."
+  RELEASE_MAJOR:
+    value: "false"
+    description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
+
+ig-build-prepare:
+  stage: build-prepare
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+  script:
+    - ./ci-scripts/pre-build.sh
+  artifacts:
+    paths:
+      - sushi-config.yaml
+    reports:
+      dotenv: version.env
+    expire_in: 1 week
 
 build-ig:
-  image: registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.1
   stage: build
   script:
     - ./_updatePublisher.sh -y
@@ -17,20 +40,38 @@ build-ig:
   artifacts:
     paths:
       - output
+      - sushi-config.yaml
     expire_in: 1 week
+
+ig-release:
+  stage: release
+  rules:
+    - if: $RELEASE == "true"
+  script:
+    - ./ci-scripts/create-release.sh
 
 mvn-deploy-package:
   image: maven:3-amazoncorretto-17
   stage: deploy
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   script:
     # Very annoying but maven complains there is a missing pom if we turn this into a multi line command...
-    - mvn $JVM_PROXY_OPTS deploy:deploy-file -s ci_settings.xml -Dfile=output/package.r4.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=2.0.0-SNAPSHOT -Dpackaging=tgz
+    - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.r4.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
 
 pages:
   stage: deploy
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   script:
     - mv output public
   artifacts:
     paths:
       - public
 
+ig-post-release:
+  stage: post-release
+  rules:
+    - if: $RELEASE == "true"
+  script:
+    - ./ci-scripts/post-release.sh

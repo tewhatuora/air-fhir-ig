@@ -13,7 +13,7 @@ stages:
 
 variables:
   RELEASE:
-    value: "true"
+    value: "false"
     description: "Set to true in order to build a new release."
   RELEASE_MAJOR:
     value: "false"

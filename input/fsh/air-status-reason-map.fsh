@@ -14,23 +14,7 @@ Description: "This maps the immunization status reason codes across various code
 * group.target = $SCT 
 
 * group.element[0].code = #GIVNOS
-* group.element[=].target.code = #127785005
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #AEFISX
-* group.element[=].target.code = #171277005
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #AEFIOT
-* group.element[=].target.code = #171277005
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #AEFISO
-* group.element[=].target.code = #171277005
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #AEFISA
-* group.element[=].target.code = #171277005
+* group.element[=].target.code = #201571000210103
 * group.element[=].target.equivalence = #equivalent
 
 * group.element[+].code = #ALTGVN

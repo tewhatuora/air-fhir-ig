@@ -31,7 +31,7 @@ Description: "Values to use in the status reason field of an immunisation event.
 * $AIRTerms#AEFIOT "Other AFEI or concern"
 * $AIRTerms#AEFISA "Serious and/or Severe AEFI - other - indicating contraindication"
 * $AIRTerms#AEFISO "Serious and/or Severe AEFI - indicating caution"
-* $AIRTerms#AEFISX "Serious and/or Severe AEFI anaphylax is indication contradiction"
+* $AIRTerms#AEFISX "Serious and/or Severe AEFI anaphylaxis indication contradiction"
 * $AIRTerms#ALTGIVN "Alternate given"
 * $AIRTerms#CIS "Change in Schedule"
 * $AIRTerms#CPI "Provider Instruction"

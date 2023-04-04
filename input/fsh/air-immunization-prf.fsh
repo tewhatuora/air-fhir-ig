@@ -23,6 +23,9 @@ Description: "This is the AIR Immunization Profile."
 
 // make patient point to AIR Patient profile
 * patient only Reference(air-patient)
+* obeys nz-pat-1
+* obeys nz-pat-2
+* obeys nz-pat-3
 
 // add a diluent extension
 * extension contains air-diluent named Diluent 0..1
@@ -160,5 +163,27 @@ XPath: ""
 Invariant: nz-reasonCode-2
 Description: "if the reasonCode aka indicationhas a code, then it must have a system."
 Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.exists()"
+Severity: #error
+XPath: ""
+
+
+
+
+// This rule says you must have 1 official NHI
+Invariant: nz-pat-1
+Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id') and patient.identifier.count() = 1"
+Severity: #error
+Description: "Patient identifier is limited to a single NHI."
+XPath: ""
+
+Invariant: nz-pat-2
+Description: "if the patient identifier has a system, then it must have a value."
+Expression: "patient.identifier.system.exists() implies patient.identifier.value.exists()"
+Severity: #error
+XPath: ""
+
+Invariant: nz-pat-3
+Description: "if the patient identifier has a value, then it must have a system."
+Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
 Severity: #error
 XPath: ""

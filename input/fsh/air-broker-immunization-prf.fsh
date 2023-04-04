@@ -1,8 +1,8 @@
-Profile: AIRImmunization
+Profile: AIRBrokerImmunization
 Parent: Immunization
-Id: air-immunization
+Id: air-broker-immunization
 Title: "AIR Immunization"
-Description: "This is the AIR Immunization Profile."
+Description: "This is the AIR Broker Immunization Profile. It relaxes many of the lean data model constraints on the main AIR Immunization Profile. Relzsing these constraints allows the inclusion of more fields pertaining to elements including patient, location, and provider from other sources including NHI, HPI and ESAM. These fields are needed to populate the HL7v2 messages used by the broker service as part of the FHIR and v2 co-existence strategy."
 
 * insert StandardMetadata
 
@@ -54,7 +54,7 @@ Description: "This is the AIR Immunization Profile."
 * doseQuantity 0..0
 
 // point performer at local content
-* performer.actor only Reference(air-practitioner)
+* performer.actor only Reference(NzPractitioner)
 * performer.function from air-vaccinator-function-code (required)
 * performer.function ^short = "The person most responsible for the administration of the vaccine into the patient."
 
@@ -84,4 +84,3 @@ Description: "This is the AIR Immunization Profile."
 * protocolApplied 0..1
 // dose number can only be represented by a number
 * protocolApplied.doseNumber[x] only positiveInt
-

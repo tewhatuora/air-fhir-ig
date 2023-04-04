@@ -7,7 +7,7 @@ Description: "This is the AIR Immunization Profile."
 * insert StandardMetadata
 
 // insert metadata extension for data quality
-* meta.extension contains air-data-quality-score named DQScore 0..1
+* meta.extension contains air-data-quality-assessment named DataQualityAssessment 0..1
 
 // bind status reason to local value set
 * statusReason from air-status-reason-code (preferred)

@@ -171,19 +171,19 @@ XPath: ""
 
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1
-Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id') and Patient.identifier.count() = 1"
+Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id') and patient.identifier.count() = 1"
 Severity: #error
 Description: "Patient identifier is limited to a single NHI."
 XPath: ""
 
 Invariant: nz-pat-2
 Description: "if the patient identifier has a system, then it must have a value."
-Expression: "patient.identifier.system.exists() implies Patient.identifier.value.exists()"
+Expression: "patient.identifier.system.exists() implies patient.identifier.value.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-pat-3
 Description: "if the patient identifier has a value, then it must have a system."
-Expression: "patient.identifier.value.exists() implies Patient.identifier.system.exists()"
+Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
 Severity: #error
 XPath: ""

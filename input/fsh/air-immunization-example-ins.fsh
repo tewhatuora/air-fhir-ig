@@ -61,7 +61,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * meta.extension[air-data-quality-assessment][0].extension[dqScore][0].valueInteger = 25
 * meta.extension[air-data-quality-assessment][0].extension[dqLastUpdated][0].valueDateTime = "2023-04-03"
-* meta.extension[air-data-quality-assessment][0].extension[DqViolations][0].extension[DqViolation][0].extension[violationCode][0].valueString = "200"
+* meta.extension[air-data-quality-assessment][0].extension[DqViolations][0].extension[DqViolation][0].extension[violationCode][0].valueString = "170"
 * meta.extension[air-data-quality-assessment][0].extension[DqViolations][0].extension[DqViolation][0].extension[violationType][0].valueString = "dataQuality"
 * meta.extension[air-data-quality-assessment][0].extension[DqViolations][0].extension[DqViolation][0].extension[violationMessage][0].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
 * meta.extension[air-data-quality-assessment][0].extension[DqViolations][0].extension[DqViolation][0].extension[violationElement][0].valueString = "occurrence.vaccine.code"

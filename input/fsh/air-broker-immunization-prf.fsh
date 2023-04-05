@@ -1,7 +1,7 @@
 Profile: AIRBrokerImmunization
 Parent: Immunization
 Id: air-broker-immunization
-Title: "AIR Immunization"
+Title: "AIR Broker Immunization"
 Description: "This is the AIR Broker Immunization Profile. It relaxes many of the lean data model constraints on the main AIR Immunization Profile. Relzsing these constraints allows the inclusion of more fields pertaining to elements including patient, location, and provider from other sources including NHI, HPI and ESAM. These fields are needed to populate the HL7v2 messages used by the broker service as part of the FHIR and v2 co-existence strategy."
 
 * insert StandardMetadata

@@ -11,7 +11,7 @@ Description: "The data quality assessment of this immunization record as calcula
 * extension contains
     dqScore 1..1 and
     dqLastUpdated 1..1 and
-    DqViolations 1..1
+    DataQualityViolations 1..1
 * extension[dqScore].value[x] only integer
 * extension[dqLastUpdated].value[x] only dateTime
 
@@ -27,7 +27,7 @@ Description: "This describes an instance of an immunisation record violating one
 
 * value[x] 0..0
 * extension contains
-    DqViolation 1..* 
+    DataQualityViolation 1..* 
 
 
 Extension: DataQualityViolation

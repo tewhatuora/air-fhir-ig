@@ -1,0 +1,812 @@
+openapi: 3.0.1
+info:
+  title: AIR Immunisation Service
+  description: "This API provides the ability to create, modify and retrieve Immunisation\
+    \ records in AIR ImmSoT database"
+  version: "0.1"
+servers:
+- url: https://air.api.digital.health.nz
+  description: PROD - ImmSoT Service endpoint
+- url: https://air.api-sit.digital.health.nz
+  description: SIT - ImmSoT Service endpoint
+- url: https://air.api-uat.digital.health.nz
+  description: UAT - ImmSoT Service endpoint
+- url: https://air.api-dev.digital.health.nz
+  description: DEV - ImmSoT Service endpoint
+paths:
+  /v2/fhir/Immunization:
+    post:
+      operationId: create
+      parameters:
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/AirImmunization'
+            examples:
+              createExample:
+                description: createExample
+                $ref: '#/components/examples/CreatePayload'
+      responses:
+        "201":
+          $ref: '#/components/responses/201'
+        "422":
+          $ref: '#/components/responses/422'
+        "403":
+          description: Forbidden
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.c
+        - air-test/Immunization.c
+  /v2/fhir/Immunization/{ID}:
+    get:
+      operationId: read
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      responses:
+        "200":
+          $ref: '#/components/responses/200'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "404":
+          $ref: '#/components/responses/404'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.r
+        - air-test/Immunization.r
+    put:
+      operationId: update
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      - $ref: '#/components/parameters/If-Match'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/AirImmunization'
+            examples:
+              updateExample:
+                description: updateExample
+                $ref: '#/components/examples/UpdatePayload'
+      responses:
+        "200":
+          $ref: '#/components/responses/200'
+        "422":
+          $ref: '#/components/responses/422'
+        "400":
+          $ref: '#/components/responses/400'
+        "401":
+          $ref: '#/components/responses/401'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.u
+        - air-admin/Immunization
+        - air-test/Immunization.u
+  /v2/fhir/Immunization/_search:
+    post:
+      operationId: search
+      parameters:
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+            examples:
+              Search by NHI number:
+                description: Search by NHI number
+                $ref: '#/components/examples/SearchNhi'
+        required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirImmunizationBundle'
+              examples:
+                Multiple records returned:
+                  description: Multiple records returned
+                  $ref: '#/components/examples/SearchResult'
+                No records found for NHI:
+                  description: No records found for NHI
+                  $ref: '#/components/examples/SearchNoMatch'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.s
+        - air-test/Immunization.s
+components:
+  schemas:
+    LogicalReference:
+      type: object
+      properties:
+        identifier:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+              value:
+                type: string
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+              code:
+                type: string
+              version:
+                type: string
+        text:
+          type: string
+    OperationOutcome:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+              code:
+                type: string
+              diagnostics:
+                type: string
+    AirImmunizationBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        meta:
+          type: object
+          properties:
+            lastUpdated:
+              type: string
+        type:
+          type: string
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirImmunization'
+    AirImmunization:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        patient:
+          $ref: '#/components/schemas/LogicalReference'
+        vaccineCode:
+          $ref: '#/components/schemas/CodeableConcept'
+        occurrenceDateTime:
+          type: string
+        protocolApplied:
+          type: array
+          items:
+            type: object
+            properties:
+              doseNumberPositiveInt:
+                type: integer
+        lotNumber:
+          type: string
+        expirationDate:
+          type: string
+          format: date-time
+        extension:
+          type: object
+          properties:
+            url:
+              type: string
+            extension:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                  value:
+                    type: string
+        route:
+          $ref: '#/components/schemas/CodeableConcept'
+        site:
+          $ref: '#/components/schemas/CodeableConcept'
+        location:
+          type: object
+          properties:
+            reference:
+              type: string
+        contained:
+          type: array
+          items:
+            type: object
+            properties:
+              resourceType:
+                type: string
+              id:
+                type: string
+              identifier:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    system:
+                      type: string
+                    value:
+                      type: string
+              managingOrganization:
+                $ref: '#/components/schemas/LogicalReference'
+        status:
+          type: string
+        statusReason:
+          $ref: '#/components/schemas/CodeableConcept'
+        reasonCode:
+          $ref: '#/components/schemas/CodeableConcept'
+        performer:
+          type: array
+          items:
+            type: object
+            properties:
+              actor:
+                type: object
+                properties:
+                  identifier:
+                    type: object
+                    properties:
+                      system:
+                        type: string
+                      value:
+                        type: string
+                      assigner:
+                        type: object
+                        properties:
+                          display:
+                            type: string
+                  function:
+                    $ref: '#/components/schemas/CodeableConcept'
+  responses:
+    "200":
+      description: Ok
+      headers:
+        Location:
+          $ref: '#/components/headers/Location'
+        ETag:
+          $ref: '#/components/headers/ETag'
+    "201":
+      description: Created
+      headers:
+        Location:
+          $ref: '#/components/headers/Location'
+        ETag:
+          $ref: '#/components/headers/ETag'
+    "400":
+      description: Bad Request
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    "401":
+      description: Unauthorized
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    "403":
+      description: Forbidden
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    "404":
+      description: Not Found
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            NotFoundEg:
+              $ref: '#/components/examples/NotFound'
+    "422":
+      description: Failed Data Validation
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            InvalidDataEg:
+              $ref: '#/components/examples/InvalidData'
+    "500":
+      description: Internal Server Error
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            InternalError:
+              $ref: '#/components/examples/InternalError'
+  parameters:
+    ID:
+      name: ID
+      in: path
+      description: The logical id of the immunization event
+      required: true
+      schema:
+        type: string
+      example: a-unique-id-of-some-sort
+    X-Correlation-ID:
+      name: X-Correlation_ID
+      in: header
+      description: "A Correlation-ID to be used for logging and request tracing. \
+        \ A UUID  is suggested, but not required.  Note that this header name is a\
+        \ FHIR  standard, but deprecated by Health NZ; it might change in the future"
+      schema:
+        type: string
+      example: a-unique-id-of-some-sort
+    UserID:
+      name: UserID
+      in: header
+      description: An identifier of the end user who submitted this event
+      schema:
+        type: string
+      example: Lionel.Messi
+    FacilityID:
+      name: FacilityID
+      in: header
+      description: An identifier of the facility where the vaccination took place
+      schema:
+        type: string
+      example: HSAPP0232
+    SourceSystemID:
+      name: SourceSystemID
+      in: header
+      description: An identifier for the system that modified the event (ApplicationID
+        as per  the HIP Integration Application list)
+      schema:
+        type: string
+      example: ISM
+    If-Match:
+      name: If-Match
+      in: header
+      description: Version ID of the Immunization event
+      required: true
+      schema:
+        type: string
+      example: "1"
+  examples:
+    InvalidData:
+      summary: A 422 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+        - severity: error
+          code: invariant
+          diagnostics: NHI cannot be blank
+        - severity: error
+          code: invariant
+          diagnostics: Immunisation event date cannot be in the future
+    InternalError:
+      summary: A 500 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+        - severity: error
+          code: exception
+          diagnostics: Internal Server Error
+    NotFound:
+      summary: A 404 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+        - severity: error
+          code: not-found
+          diagnostics: Immunisation event not found
+    CreatePayload:
+      summary: Create request payload example
+      value:
+        resourceType: Immunization
+        patient:
+          identifier:
+          - system: https://standards.digital.health.nz/ns/nhi-id
+            value: ZZZ0008
+        occurrenceDateTime: 2023-01-26
+        vaccineCode:
+          text: Priorix
+          coding:
+          - system: http://hl7.org/fhir/sid/cvx
+            code: "03"
+            version: 1.0.0
+        protocolApplied:
+        - doseNumberPositiveInt: "1"
+        lotNumber: "555123"
+        expirationDate: 2024-01-31
+        extension:
+        - url: https://standards.digital.health.nz/fhir/StructureDefinition/air-diluent
+          extension:
+          - url: diluentLotNumber
+            valueString: "33332222"
+          - url: diluentExpiryDate
+            valueDate: 2026-01-01
+        route:
+          coding:
+          - system: http://snomed.info/sct
+            code: "78421000"
+        site:
+          coding:
+          - system: http://snomed.info/sct
+            code: "16217701000119102"
+        location:
+          reference: '#l1'
+        contained:
+        - resourceType: Location
+          id: l1
+          identifier:
+          - system: http://hl7.org.nz/fhir/StructureDefinition/esam-id
+            value: "123456"
+          managingOrganization:
+            identifier:
+            - system: https://standards.digital.health.nz/ns/hpi-facility-id
+              value: F1V083-B
+        status: completed
+        statusReason:
+          coding:
+          - system: http://snomed.info/sct
+            code: "127785005"
+        reasonCode:
+        - coding:
+          - system: http://snomed.info
+            code: "359953009"
+        performer:
+        - actor:
+            identifier:
+              system: https://standards.digital.health.nz/ns/nursing-council-id
+              value: 92ZZRR
+          function:
+            coding:
+            - code: VR
+        - actor:
+            identifier:
+              assigner:
+                display: Te Whatu Ora AIR
+              value: xyz123abc
+          function:
+            coding:
+            - code: VC
+    UpdatePayload:
+      summary: Update request payload example
+      value:
+        resourceType: Immunization
+        id: "1"
+        patient:
+          identifier:
+          - system: https://standards.digital.health.nz/ns/nhi-id
+            value: ZZZ0008
+        occurrenceDateTime: 2023-01-26
+        vaccineCode:
+          text: Priorix
+          coding:
+          - system: http://hl7.org/fhir/sid/cvx
+            code: "03"
+            version: 1.0.0
+        protocolApplied:
+        - doseNumberPositiveInt: "1"
+        lotNumber: "555123"
+        expirationDate: 2024-01-31
+        extension:
+        - url: https://standards.digital.health.nz/fhir/StructureDefinition/air-diluent
+          extension:
+          - url: diluentLotNumber
+            valueString: "33332222"
+          - url: diluentExpiryDate
+            valueDate: 2026-01-01
+        route:
+          coding:
+          - system: http://snomed.info/sct
+            code: "78421000"
+        site:
+          coding:
+          - system: http://snomed.info/sct
+            code: "16217701000119102"
+        location:
+          reference: '#l1'
+        contained:
+        - resourceType: Location
+          id: l1
+          identifier:
+          - system: http://hl7.org.nz/fhir/StructureDefinition/esam-id
+            value: "123456"
+          managingOrganization:
+            identifier:
+            - system: https://standards.digital.health.nz/ns/hpi-facility-id
+              value: F1V083-B
+        status: completed
+        statusReason:
+          coding:
+          - system: http://snomed.info/sct
+            code: "127785005"
+        reasonCode:
+        - coding:
+          - system: http://snomed.info
+            code: "359953009"
+        performer:
+        - actor:
+            identifier:
+              system: https://standards.digital.health.nz/ns/nursing-council-id
+              value: 92ZZRR
+          function:
+            coding:
+            - code: VR
+        - actor:
+            identifier:
+              assigner:
+                display: Te Whatu Ora AIR
+              value: xyz123abc
+          function:
+            coding:
+            - code: VC
+    SearchResult:
+      summary: Search returns multiple records
+      value:
+        resourceType: Bundle
+        id: da561b69-18ee-412b-b1f5-2ed9a5c7d2e5
+        meta:
+          lastUpdated: 2023-03-08T14:35:51.968+13:00
+        type: searchset
+        total: "2"
+        link:
+        - relation: self
+          url: https://localhost:8443/v2/fhir/Immunization/_search
+        entry:
+        - fullUrl: https://localhost:8443/v2/fhir/Immunization/b1d78bfc-8286-4c30-9336-d1452900317c
+          resource:
+            resourceType: Immunization
+            id: b1d78bfc-8286-4c30-9336-d1452900317c
+            meta:
+              versionId: "1"
+              lastUpdated: 2023-03-08T14:27:25.938+13:00
+              profile:
+              - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
+            contained:
+            - resourceType: Location
+              id: "1"
+              identifier:
+              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
+                value: "123456"
+              managingOrganization:
+                identifier:
+                  system: https://standards.digital.health.nz/ns/hpi-facility-id
+                  value: FZZ835-E
+            status: completed
+            statusReason:
+              coding:
+              - system: http://snomed.info/sct
+                code: "127785005"
+            vaccineCode:
+              coding:
+              - system: http://hl7.org/fhir/sid/cvx
+                version: 1.0.0
+                code: "03"
+              text: Priorix
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7545
+            occurrenceDateTime: 2023-01-26T00:00:00+13:00
+            location:
+              reference: '#1'
+            lotNumber: "555123"
+            expirationDate: 2024-01-31
+            site:
+              coding:
+              - system: http://snomed.info/sct
+                version: "1.1"
+                code: "16217701000119102"
+            route:
+              coding:
+              - system: http://snomed.info/sct
+                version: "1.2"
+                code: "78421000"
+            performer:
+            - function:
+                coding:
+                - system: http://terminology.hl7.org/CodeSystem/v2-0443
+                  version: 1.0.0
+                  code: VC
+              actor:
+                identifier:
+                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  value: "477616"
+            reasonCode:
+            - coding:
+              - system: http://snomed.info
+                code: "359953009"
+            - coding:
+              - system: http://snomed.info
+                version: "1"
+                code: "359953009"
+            protocolApplied:
+            - doseNumberPositiveInt: "1"
+        - fullUrl: https://localhost:8443/v2/fhir/Immunization/655494cc-49c1-4cfc-b897-676caade86ed
+          resource:
+            resourceType: Immunization
+            id: 655494cc-49c1-4cfc-b897-676caade86ed
+            meta:
+              versionId: "1"
+              lastUpdated: 2023-03-08T14:30:58.780+13:00
+              profile:
+              - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
+            contained:
+            - resourceType: Location
+              id: "1"
+              identifier:
+              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
+                value: "123456"
+              managingOrganization:
+                identifier:
+                  system: https://standards.digital.health.nz/ns/hpi-facility-id
+                  value: FZZ835-E
+            status: completed
+            statusReason:
+              coding:
+              - system: http://snomed.info/sct
+                code: "127785005"
+            vaccineCode:
+              coding:
+              - system: http://hl7.org/fhir/sid/cvx
+                version: 1.0.0
+                code: "03"
+              text: Priorix
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7545
+            occurrenceDateTime: 2023-01-26T00:00:00+13:00
+            location:
+              reference: '#1'
+            lotNumber: "555123"
+            expirationDate: 2024-01-31
+            site:
+              coding:
+              - system: http://snomed.info/sct
+                version: "1.1"
+                code: "16217701000119102"
+            route:
+              coding:
+              - system: http://snomed.info/sct
+                version: "1.2"
+                code: "78421000"
+            performer:
+            - function:
+                coding:
+                - system: http://terminology.hl7.org/CodeSystem/v2-0443
+                  version: 1.0.0
+                  code: V'C'
+              actor:
+                identifier:
+                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  value: "477616"
+            reasonCode:
+            - coding:
+              - system: http://snomed.info
+                code: "359953009"
+            - coding:
+              - system: http://snomed.info
+                version: "1"
+                code: "359953009"
+            protocolApplied:
+            - doseNumberPositiveInt: "1"
+    SearchNoMatch:
+      summary: No records found for NHI
+      value:
+        resourceType: Bundle
+        id: da561b69-18ee-412b-b1f5-2ed9a5c7d2e5
+        meta:
+          lastUpdated: 2023-03-08T14:35:51.968+13:00
+        type: searchset
+        total: "0"
+        link:
+        - relation: self
+          url: https://localhost:8443/v2/fhir/Immunization/_search
+    SearchNhi:
+      summary: A Search by NHI example
+      value: patient=ZZZ9999
+  headers:
+    X-Correlation-ID:
+      description: "A Correlation-ID to be used for logging and request tracing. \
+        \ A UUID  is suggested, but not required.  Note that this header name is a\
+        \ FHIR  standard, but deprecated by Health NZ; it might change in the future"
+      schema:
+        type: string
+      example: a-unique-id-of-some-sort
+    Location:
+      description: The ImmSoT record ID
+      schema:
+        type: string
+        format: uri
+      example: https://air.api.digital.health.nz/v2/fhir/Immunization/A80B69D0-DF65-4323-A75B-5818438BCBCE/_history/4
+    ETag:
+      description: Identifier for the specific version of an ImmSoT record
+      schema:
+        type: string
+  securitySchemes:
+    apikey_header:
+      type: apiKey
+      description: API key for the Gateway
+      name: x-api-key
+      in: header
+    client_credentials:
+      type: oauth2
+      description: "Intended for the server-to-server authentication, this flow describes\
+        \ an approach when the client application acts on its own behalf rather than\
+        \ on behalf of any individual user. In most scenarios, this flow provides\
+        \ the means to allow users to specify their credentials in the client application,\
+        \ so it can access the resources under the client’s control"
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.test.hub/oauth2/token/
+          refreshUrl: ""
+          scopes:
+            system/Immunization.c: create scope
+            system/Immunization.r: read scope
+            system/Immunization.s: search scope
+            system/Immunization.u: update scope
+            air-test/Immunization.c: create scope for test only(NHI should start with
+              Z)
+            air-test/Immunization.r: read scope for test only(NHI should start with
+              Z)
+            air-test/Immunization.u: update scope for test only(NHI should start with
+              Z)
+            air-test/Immunization.s: search scope for test only(NHI should start with
+              Z)
+            air-admin/Immunization: update scope for admins only

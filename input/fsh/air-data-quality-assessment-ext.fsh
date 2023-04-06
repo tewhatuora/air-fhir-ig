@@ -16,7 +16,7 @@ Description: "The data quality assessment of this immunization record as calcula
 * extension[dqLastUpdated].value[x] only dateTime
 
 
-Extension: DqViolations
+Extension: DataQualityViolations
 Id: dq-violations
 Title: "AIR Data Quality Violation Array"
 Description: "This describes an instance of an immunisation record violating one or more AIR data quality rules. Each such violation is described by a codes, a type, a message, a pointer to the targeted element, and a weight."
@@ -30,7 +30,7 @@ Description: "This describes an instance of an immunisation record violating one
     DqViolation 1..* 
 
 
-Extension: DqViolation
+Extension: DataQualityViolation
 Id: dq-violation
 Title: "AIR Data Quality Violation Detail"
 Description: "This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule."

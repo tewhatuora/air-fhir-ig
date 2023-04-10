@@ -12,6 +12,6 @@ Description: "This profile derived from NZPractitioner implements the requiremen
 
 // This rule says you must have 1 official NHI
 Invariant: nz-prac-1
-Expression: "Practitioner.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id') and Practitioner.identifier.count() = 1"
+Expression: "practitioner.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id') and practitioner.identifier.count() = 1"
 Severity: #error
-Description: "Practitioner identifier is limited to a single identifier which must be the CPN from the NHI (identifier system is https://standards.digital.health.nz/ns/nhi-id) or, for Vaccinating Health Workers only, have been assigned by the vaccinator platform (identifier system is https://standards.digital.health.nz/ns/air-vhw-id)."
+Description: "practitioner identifier is limited to a single identifier which must be the CPN from the NHI (identifier system is https://standards.digital.health.nz/ns/nhi-id) or, for Vaccinating Health Workers only, have been assigned by the vaccinator platform (identifier system is https://standards.digital.health.nz/ns/air-vhw-id)."

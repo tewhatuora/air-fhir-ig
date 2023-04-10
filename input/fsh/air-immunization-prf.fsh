@@ -171,9 +171,9 @@ XPath: ""
 
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1
-Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id') and patient.identifier.count() = 1"
+Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id') and patient.identifier.count() = 1"
 Severity: #error
-Description: "Patient identifier is limited to a single NHI."
+Description: "Patient identifier is limited to a single identifier which must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
 XPath: ""
 
 Invariant: nz-pat-2

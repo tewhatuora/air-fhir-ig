@@ -172,7 +172,7 @@ XPath: ""
 
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1
-Expression: "patient.identifier.system.exists() implies (patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id')"
+Expression: "patient.identifier.system.exists() implies (patient.identifier.system='https://standards.digital.health.nz/ns/nhi-id' or patient.identifier.system='https://standards.digital.health.nz/ns/air-vhw-id')"
 Severity: #error
 Description: "Patient identifier must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
 XPath: ""

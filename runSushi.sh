@@ -21,10 +21,6 @@ echo "SUSHI successful! That's eely good news!"
 #echo "Making NamingSystem summary"
 #../scripts/makeNamingSystemSummary.js nhi
 
-echo "copying open api yaml file into template content so it can be accessed from the menu"
-mkdir -p $HOME/.fhir/packages/fhir.base.template#current/package/content
-cp ./openapi/ImmunisationServiceAPI.yaml $HOME/.fhir/packages/fhir.base.template#current/package/content
-
 else 
 echo
 echo

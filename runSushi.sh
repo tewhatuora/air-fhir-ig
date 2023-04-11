@@ -21,7 +21,6 @@ echo "SUSHI successful! That's eely good news!"
 #echo "Making NamingSystem summary"
 #../scripts/makeNamingSystemSummary.js nhi
 
-
 else 
 echo
 echo

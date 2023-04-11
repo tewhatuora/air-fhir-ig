@@ -24,6 +24,7 @@ Description: "This is the AIR Immunization Profile."
 // make patient point to AIR Patient profile
 * patient only Reference(air-patient)
 * obeys nz-pat-1
+* obeys nz-pat-1-1
 * obeys nz-pat-2
 * obeys nz-pat-3
 
@@ -171,9 +172,15 @@ XPath: ""
 
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1
-Expression: "patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id') and patient.identifier.count() = 1"
+Expression: "patient.identifier.system.exists() implies (patient.identifier.where(system='https://standards.digital.health.nz/ns/nhi-id' or system='https://standards.digital.health.nz/ns/air-vhw-id')"
 Severity: #error
-Description: "Patient identifier is limited to a single identifier which must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
+Description: "Patient identifier must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
+XPath: ""
+
+Invariant: nz-pat-1-1
+Expression: "patient.identifier.count() = 1"
+Severity: #error
+Description: "There must be exactly one patient identifier."
 XPath: ""
 
 Invariant: nz-pat-2

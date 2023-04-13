@@ -156,7 +156,7 @@ paths:
         - air-test/Immunization.s
 components:
   schemas:
-    AirExtension:
+    Extension:
       type: array
       items:
         type: object
@@ -250,7 +250,7 @@ components:
           properties:
             extension:
               description: 'Contains the DQ violations of any created or updated Immunisation Event'
-              $ref: '#/components/schemas/AirExtension'
+              $ref: '#/components/schemas/Extension'
             versionId: 
               description: 'The version number of the Immunisation Event in Immsot'
               type: number
@@ -281,7 +281,7 @@ components:
           type: string
           format: date-time
         extension:
-          $ref: '#/components/schemas/AirExtension'
+          $ref: '#/components/schemas/Extension'
         route:
           $ref: '#/components/schemas/CodeableConcept'
         site:
@@ -351,8 +351,9 @@ components:
         application/fhir+json:
           schema:
             $ref: '#/components/schemas/AirImmunization'
-          # examples:
-          #   $ref: '' //TODO
+          examples:
+            UpdatedWithDQResult:
+              $ref: '#/components/examples/ImmsEventResult'
     "201":
       description: Created
       headers:
@@ -366,7 +367,7 @@ components:
             $ref: '#/components/schemas/AirImmunization'
           examples:
             CreatedWithDQResponse:
-              $ref: '#/components/examples/CreatedDQ'
+              $ref: '#/components/examples/ImmsEventResult'
     "400":
       description: Bad Request
       content:
@@ -461,8 +462,8 @@ components:
         type: string
       example: "1"
   examples:
-    CreatedDQ:
-      summary: Created response with DQ violations
+    ImmsEventResult:
+      summary: Response body on successful creation or update
       value:
         resourceType: Immunization
         id: acb2dac0-e23a-42e9-b84c-05a23d68a3e3

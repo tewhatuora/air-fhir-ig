@@ -109,7 +109,7 @@ paths:
       - apikey_header: []
       - client_credentials:
         - system/Immunization.u
-        - air-admin/Immunization
+        - air-admin/Immunization.u
         - air-test/Immunization.u
   /v2/fhir/Immunization/_search:
     post:
@@ -156,6 +156,22 @@ paths:
         - air-test/Immunization.s
 components:
   schemas:
+    Extension:
+      type: array
+      items:
+        type: object
+        properties:
+          url:
+            type: string
+          extension: 
+            type: array
+            items:
+              type: object
+              properties:
+                url:
+                  type: string
+                valueString:
+                  type: string
     LogicalReference:
       type: object
       properties:
@@ -226,7 +242,26 @@ components:
         resourceType:
           type: string
         id:
+          description: 'The ImmSOT record ID for the Immunisation Event'
           type: string
+        meta:
+          type: object
+          description: 'This includes metadata related to the Immunisation Event'
+          properties:
+            extension:
+              description: 'Contains the DQ violations of any created or updated Immunisation Event'
+              $ref: '#/components/schemas/Extension'
+            versionId: 
+              description: 'The version number of the Immunisation Event in Immsot'
+              type: number
+            lastUpdated:
+              type: string
+              format: date-time
+            profile:
+              description: 'The AIR FHIR profile against which the Immunisation Service is validated'
+              type: array
+              items:
+                type: string
         patient:
           $ref: '#/components/schemas/LogicalReference'
         vaccineCode:
@@ -246,19 +281,7 @@ components:
           type: string
           format: date-time
         extension:
-          type: object
-          properties:
-            url:
-              type: string
-            extension:
-              type: array
-              items:
-                type: object
-                properties:
-                  url:
-                    type: string
-                  value:
-                    type: string
+          $ref: '#/components/schemas/Extension'
         route:
           $ref: '#/components/schemas/CodeableConcept'
         site:
@@ -314,8 +337,8 @@ components:
                         properties:
                           display:
                             type: string
-                  function:
-                    $ref: '#/components/schemas/CodeableConcept'
+              function:
+                $ref: '#/components/schemas/CodeableConcept'     
   responses:
     "200":
       description: Ok
@@ -324,6 +347,13 @@ components:
           $ref: '#/components/headers/Location'
         ETag:
           $ref: '#/components/headers/ETag'
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/AirImmunization'
+          examples:
+            UpdatedWithDQResult:
+              $ref: '#/components/examples/ImmsEventResult'
     "201":
       description: Created
       headers:
@@ -331,6 +361,13 @@ components:
           $ref: '#/components/headers/Location'
         ETag:
           $ref: '#/components/headers/ETag'
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/AirImmunization'
+          examples:
+            CreatedWithDQResponse:
+              $ref: '#/components/examples/ImmsEventResult'
     "400":
       description: Bad Request
       content:
@@ -425,6 +462,118 @@ components:
         type: string
       example: "1"
   examples:
+    ImmsEventResult:
+      summary: Response body on successful creation or update
+      value:
+        resourceType: Immunization
+        id: acb2dac0-e23a-42e9-b84c-05a23d68a3e3
+        meta:
+            extension:
+                - 
+                    url: 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-score'
+                    extension:
+                        - 
+                            url: code
+                            valueString: '170'
+                        - 
+                            url: type
+                            valueString: DataQuality
+                        - 
+                            url: message
+                            valueString: The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set.
+                        - 
+                            url: fhirPath
+                            valueString: 'http://hl7.org/fhir/sid/cvx'
+                        - 
+                            url: weighting
+                            valueString: '3'
+            versionId: '1'
+            lastUpdated: '2023-04-13T01:35:43.570+00:00'
+            profile:
+                - 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization'
+        contained:
+            - 
+                resourceType: Location
+                id: '1'
+                identifier:
+                    - 
+                        system: 'https://hl7.org.nz/fhir/StructureDefinition/esam-id'
+                        value: '123456'
+                managingOrganization:
+                    identifier:
+                        system: 'https://standards.digital.health.nz/ns/hpi-facility-id'
+                        value: FZZ835-E
+        extension:
+            - 
+                url: 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent'
+                extension:
+                    - 
+                        url: diluentLotNumber
+                        valueString: '33332222'
+                    - 
+                        url: diluentExpiryDate
+                        valueDate: '2026-01-01'
+        status: completed
+        statusReason:
+            coding:
+                - 
+                    system: 'http://snomed.info/sct'
+                    code: '127785005'
+        vaccineCode:
+            coding:
+                - 
+                    system: 'http://hl7.org/fhir/sid/cvx'
+                    version: 1.0.0
+                    code: '03'
+            text: Priorix
+        patient:
+            identifier:
+                system: 'https://standards.digital.health.nz/ns/nhi-id'
+                value: ZZZ7541
+        occurrenceDateTime: '2023-01-26T00:00:00+00:00'
+        location:
+            reference: '#1'
+        lotNumber: '555123'
+        expirationDate: '2024-01-31'
+        site:
+            coding:
+                - 
+                    system: 'http://snomed.info/sct'
+                    version: '1.1'
+                    code: '16217701000119102'
+        route:
+            coding:
+                - 
+                    system: 'http://snomed.info/sct'
+                    version: '1.2'
+                    code: '78421000'
+        performer:
+            - 
+                function:
+                    coding:
+                        - 
+                            system: 'https://standards.digital.health.nz/ns/air-terms-code'
+                            version: 1.0.0
+                            code: VC
+                actor:
+                    identifier:
+                        system: 'https://standards.digital.health.nz/ns/nursing-council-id'
+                        value: '477616'
+        reasonCode:
+            - 
+                coding:
+                    - 
+                        system: 'http://snomed.info'
+                        code: '359953009'
+            - 
+                coding:
+                    - 
+                        system: 'http://snomed.info'
+                        version: '1'
+                        code: '359953009'
+        protocolApplied:
+            - 
+                doseNumberPositiveInt: 1
     InvalidData:
       summary: A 422 response example
       value:
@@ -795,7 +944,6 @@ components:
       flows:
         clientCredentials:
           tokenUrl: https://auth.test.hub/oauth2/token/
-          refreshUrl: ""
           scopes:
             system/Immunization.c: create scope
             system/Immunization.r: read scope
@@ -809,4 +957,4 @@ components:
               Z)
             air-test/Immunization.s: search scope for test only(NHI should start with
               Z)
-            air-admin/Immunization: update scope for admins only
+            air-admin/Immunization.u: update scope for admins only

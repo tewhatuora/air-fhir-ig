@@ -2,9 +2,12 @@ Instance: AIRCapabilityStatement
 InstanceOf: CapabilityStatement
 Usage: #definition
 
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/capabilityStatement"
+* version = "0.3.0"
 * name = "AIRCapabilityStatement"
 * title = "AIR FHIR Server Capability Statement"
 * status = #draft
+* experimental = false
 * date = "2023-02-14"
 * publisher = "Te Whatu Ora"
 * description = "The Aotearoa Immunisation Register (AIR) FHIR v4.0.1 API"
@@ -23,12 +26,12 @@ Usage: #definition
 * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
 * rest.resource[0].type = #Immunization
 * rest.resource[=].profile = Canonical(AIRImmunization)
-// * rest.resource[=].interaction[0].code = #create
+* rest.resource[=].interaction[0].code = #create
 * rest.resource[=].interaction[+].code = #read
-// * rest.resource[=].interaction[+].code = #update
+* rest.resource[=].interaction[+].code = #update
 // * rest.resource[=].interaction[+].code = #delete
 // * rest.resource[=].interaction[+].code = #vread
-// * rest.resource[=].interaction[+].code = #search-type
+* rest.resource[=].interaction[+].code = #search-type
 * rest.resource[=].versioning = #versioned
 * rest.resource[=].readHistory = false
 * rest.resource[=].updateCreate = false
@@ -36,8 +39,8 @@ Usage: #definition
 * rest.resource[=].conditionalRead = #not-supported
 * rest.resource[=].conditionalUpdate = false
 * rest.resource[=].conditionalDelete = #not-supported
-* rest.resource[=].searchInclude[0] = "*"
-* rest.resource[=].searchInclude[+] = "Immunization.identifier"
+// * rest.resource[=].searchInclude[0] = "*"
+// * rest.resource[=].searchInclude[+] = "Immunization.identifier"
 * rest.resource[=].searchParam[0].name = "identifier"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
 * rest.resource[=].searchParam[=].type = #reference
@@ -54,6 +57,7 @@ Usage: #definition
 // * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 // * rest.resource[=].searchParam[=].type = #token
 // * rest.resource[=].searchParam[=].documentation = "Logical id of this artifact"
-* rest.resource[=].searchInclude[0] = "*"
-* rest.resource[=].searchRevInclude[0] = "*"
+// * rest.resource[=].searchInclude[0] = "*"
+// * rest.resource[=].searchRevInclude[0] = "*"
 * rest.interaction.code = #transaction
+* rest.interaction.code = #search-system

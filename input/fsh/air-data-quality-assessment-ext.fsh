@@ -1,6 +1,6 @@
 Extension: AIRDataQualityAssessment
 Id: air-data-quality-assessment
-Title: "Data Quality Score"
+Title: "Data Quality Assessment"
 Description: "The data quality assessment of this immunization record as calculated by AIR rules."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment"
@@ -10,15 +10,17 @@ Description: "The data quality assessment of this immunization record as calcula
 * value[x] 0..0
 * extension contains
     dqIgnore 0..1 and
+    dqStatus 1..1 and
     dqScore 1..1 and
     dqLastUpdated 1..1 and
-    DataQualityViolations 1..1
+    DQViolations 0..1
 * extension[dqIgnore].value[x] only boolean
+* extension[dqStatus].value[x] only string
 * extension[dqScore].value[x] only integer
 * extension[dqLastUpdated].value[x] only dateTime
 
 
-Extension: DataQualityViolations
+Extension: DQViolations
 Id: dq-violations
 Title: "AIR Data Quality Violation Array"
 Description: "This describes an instance of an immunisation record violating one or more AIR data quality rules. Each such violation is described by a codes, a type, a message, a pointer to the targeted element, and a weight."
@@ -29,10 +31,10 @@ Description: "This describes an instance of an immunisation record violating one
 
 * value[x] 0..0
 * extension contains
-    DataQualityViolation 1..* 
+    DQViolation 1..* 
 
 
-Extension: DataQualityViolation
+Extension: DQViolation
 Id: dq-violation
 Title: "AIR Data Quality Violation Detail"
 Description: "This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule."
@@ -48,9 +50,9 @@ Description: "This describes one particular AIR data quality rule violation for 
     violationType 1..1 and
     violationMessage 1..1 and
     violationElement 1..1 and
-    violationWeight 1..1
+    violationWeighting 1..1
 * extension[violationCode].value[x] only string
 * extension[violationType].value[x] only string
 * extension[violationMessage].value[x] only string
 * extension[violationElement].value[x] only string
-* extension[violationWeight].value[x] only integer
+* extension[violationWeighting].value[x] only integer

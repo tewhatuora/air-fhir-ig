@@ -10,9 +10,9 @@ Description: "The data quality assessment of this immunization record as calcula
 * value[x] 0..0
 * extension contains
     dqIgnore 0..1 and
-    dqStatus 1..1 and
-    dqScore 1..1 and
-    dqLastUpdated 1..1 and
+    dqStatus 0..1 and
+    dqScore 0..1 and
+    dqLastUpdated 0..1 and
     DQViolations 0..1
 * extension[dqIgnore].value[x] only boolean
 * extension[dqStatus].value[x] only string

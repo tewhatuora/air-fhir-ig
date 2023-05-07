@@ -72,7 +72,7 @@ Description: "This is the AIR Immunization Profile."
 // point performer at local content
 * performer.actor only Reference(air-practitioner)
 * performer.function from air-vaccinator-function-code (required)
-* performer.function ^short = "The person most responsible for the administration of the vaccine into the patient."
+* performer.function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
 * performer.function.coding 1..1
 * obeys nz-worker-function-1
 * obeys nz-worker-function-2

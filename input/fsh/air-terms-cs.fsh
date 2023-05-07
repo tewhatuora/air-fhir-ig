@@ -15,6 +15,14 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
     "A person who administers vaccinations and has an additional practicing credential, such as a nurse or doctor."
 * #VHW "Vaccinating health worker"
     "A person who administers vaccinations but does not have a higher credential such as a nurse or doctor."
+* #GP "General practitioner"
+    "A General Practitioner"
+* #IP "Immunisation Provider"
+* #LMC "Lead Maternity Caregiver"
+* #OIS "Outreach Immunisation Services"
+* #PV "Pharmacist Vaccinator"
+* #V "Vaccinator (NIR)"
+* #WCP "Well Child Provider"
 
 // NIR Indications
 * #1 "Over 65 years (Influenza)"

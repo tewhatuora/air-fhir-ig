@@ -73,6 +73,13 @@ dependencies:
 menu:
   Home: index.html
   Artifacts: artifacts.html
+  Business Context: business-context.html
+  Use Cases: use-cases.html
+  Onboarding: onboarding.html
+  Profiles: profiles.html
+  Extensions: extensions.html
+  Terminology: terminology.html
+
   Support:
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG: full-ig.zip

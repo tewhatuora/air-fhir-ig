@@ -206,29 +206,36 @@ Description: "Allowable values for vaccine products in AIR."
 
 
 // NZMT TPUU codes
-// commented out since can't resolve anyway
-// * $NZMT#// template line for reuse
-// * $NZMT#10443641000116108 // MMR
-// * $NZMT#29455561000116106 // Infanrix Hexa powder for injection
-// * $NZMT#29455501000116107 // Infanrix Hexa suspension
-// * $NZMT#31116511000116103 // Synflorix
-// * $NZMT#10598271000116109 // Rotarix
-// * $NZMT#44016911000116108 // Priorix
-// * $NZMT#10319251000116109 // Hiberix
-// * $NZMT#10695781000116100 // Varilrix
-// * $NZMT#10347971000116105 // Infanrix-IPV
-// * $NZMT#10101121000116104 // Boostrix
-// * $NZMT#46101011000116102 // Gardasil-9
-// * $NZMT#47648581000116104 // Afluria Quad
-// * $NZMT#47649511000116103 // Afluria Quad Junior
-// * $NZMT#47648881000116102 // Fluad Quad
-// * $NZMT#47664751000116102 // FluQuadri
-// * $NZMT#29448821000116105 // Zostavax
-// * $NZMT#47407751000116105 // Comirnaty purple
-// * $NZMT#47547081000116102 // Comirnaty orange
-// * $NZMT#47572291000116106 // Comirnaty gray
-// * $NZMT#46580461000116107 // Bexsero
-// * $NZMT#46580601000116106 // Bexsero
+
+// * $NZMT# template line for reuse
+* $NZMT#10443641000116108 // MMR
+* $NZMT#29455561000116106 // Infanrix Hexa powder for injection
+* $NZMT#29455501000116107 // Infanrix Hexa suspension
+* $NZMT#31116511000116103 // Synflorix
+* $NZMT#10598271000116109 // Rotarix
+* $NZMT#44016911000116108 // Priorix
+* $NZMT#10319251000116109 // Hiberix
+* $NZMT#10695781000116100 // Varilrix
+* $NZMT#10347971000116105 // Infanrix-IPV
+* $NZMT#10101121000116104 // Boostrix
+* $NZMT#46101011000116102 // Gardasil-9
+* $NZMT#47648581000116104 // Afluria Quad
+* $NZMT#47649511000116103 // Afluria Quad Junior
+* $NZMT#47648881000116102 // Fluad Quad
+* $NZMT#47664751000116102 // FluQuadri
+* $NZMT#29448821000116105 // Zostavax
+* $NZMT#47407751000116105 // Comirnaty purple
+* $NZMT#47547081000116102 // Comirnaty orange
+* $NZMT#47572291000116106 // Comirnaty gray
+* $NZMT#46580461000116107 // Bexsero with needle
+* $NZMT#46580601000116106 // Bexsero without needle
+* $NZMT#29458231000116105 // Menactra
+* $NZMT#47768031000116109 // JYNNEOS
+* $NZMT#47972211000116109 // Afluria Quad 2023
+* $NZMT#47972411000116108 // Afluria Quad Junior 2023
+* $NZMT#47972611000116106 // Fluad Quad 2023
+* $NZMT#47988151000116108 // FluQuadri 2023
+* $NZMT#46100801000116102 // Gardasil 9
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names edited by John C... need these to be ratified and possibly

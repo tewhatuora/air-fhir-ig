@@ -16,11 +16,9 @@ Description: "Coded values to describe the reason an immunisation was given. Ini
 * $SCT#201581000210101 "Alternate vaccination given"
 * $SCT#72011000210108 "Pertussis vaccination given"
 * $SCT#101631000210102 "COVID-19 vaccine given"
-
-// These next three are not published at SNOMED browser as of 27 Feb 2023
-// * $SCT#231731000210103 ""
-// * $SCT#231741000210106 ""
-// * $SCT#263781000210105 ""
+* $SCT#231731000210103 "Publicly funded vaccination given for child three to twelve years of age"
+* $SCT#231741000210106 "Publicly funded vaccination given for serious mental health and addiction"
+* $SCT#263781000210105 "Publicly funded vaccination given for child six months to twelve years of age"
 
 * $AIRTerms#1 "Over 65 years (Influenza)"
 * $AIRTerms#2 "Under 18 years, eligible condition (Influenza)"

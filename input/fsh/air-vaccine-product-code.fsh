@@ -224,6 +224,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#47648881000116102 "Fluad Quad"
 * $NZMT#47664751000116102 "FluQuadri"
 * $NZMT#29448821000116105 "Zostavax"
+* $NZMT#46770131000116100 "Shingrix"
 * $NZMT#47407751000116105 "Comirnaty purple"
 * $NZMT#47547081000116102 "Comirnaty orange"
 * $NZMT#47572291000116106 "Comirnaty gray"
@@ -236,6 +237,8 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#47972611000116106 "Fluad Quad 2023"
 * $NZMT#47988151000116108 "FluQuadri 2023"
 * $NZMT#46100801000116102 "Gardasil 9"
+* $NZMT#46044951000116103 "Pneumovax 23"
+* $NZMT#20077561000116105 "Prevenar 13"
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names edited by John C... need these to be ratified and possibly

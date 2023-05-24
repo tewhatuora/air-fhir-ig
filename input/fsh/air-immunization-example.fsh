@@ -1,10 +1,10 @@
-
-Instance: a8dac655-0469-48ab-8570-fd3a7033c78f
+Instance: ImmSoTImmunizationExample
 InstanceOf: Immunization
 Usage: #example
-Title: "AIR Immunization v2 Example"
-Description: "An example of an AIR v2 immunization resource, including contained patient and location resources."
+Title: "AIR Immunization Example"
+Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. This example also includes extended data quality information that is only visible to selected admin users."
 
+* id = "imm-example-1"
 * meta.versionId = "null"
 * meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"

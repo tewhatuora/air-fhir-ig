@@ -58,6 +58,7 @@ Description: "A contained patient for use in a bundle example"
 * identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * identifier.value = "ABC1234"
 
+/*
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-2
 InstanceOf: Location
 Usage: #inline
@@ -67,7 +68,9 @@ Description: "A contained location for use in a bundle example"
 * identifier.system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * identifier.value = "11111111"
 * managingOrganization = Reference(ImmOrganizationExample)
+*/
 
+/*
 Instance: Inline-Instance-for-a8dac655-0469-48ab-8570-fd3a7033c78f-3
 InstanceOf: NzOrganization
 Usage: #inline
@@ -75,6 +78,7 @@ Description: "A contained organization for use in a bundle example"
 * id = "ImmOrganizationExample"
 * identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * identifier.value = "FZZ835-E"
+*/
 
 Instance: 5c5f6a1c-234e-46e5-815b-312152cf98f7
 InstanceOf: Bundle

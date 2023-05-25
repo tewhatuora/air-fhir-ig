@@ -23,7 +23,6 @@ Description: "Ths profile constrains the NZ Location Profile to meet the require
 
 * managingOrganization 1..1
 * managingOrganization.identifier 1..1
-* managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id" (exactly)
 
 Invariant: nz-loc1
 Description: "if the location identifier has a system, then it must have a value."

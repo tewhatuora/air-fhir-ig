@@ -494,6 +494,8 @@ components:
           examples:
             UpdatedWithDQResult:
               $ref: '#/components/examples/UpdateSuccessDQIdentified'
+            UpdatedWithDuplicateDQResult:
+              $ref: '#/components/examples/UpdateSuccessDuplicateDQIdentified'
     "201":
       description: Created
       headers:
@@ -703,6 +705,107 @@ components:
             code: '359953009'
         protocolApplied:
         - doseNumberPositiveInt: 1
+    UpdateSuccessDuplicateDQIdentified:
+      summary: Updated with duplicate identified data quality issues
+      value:
+        resourceType: Immunization
+        id: e062d627-b565-48ae-9d7a-417db33ca64f
+        meta:
+          extension:
+          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment
+            extension:
+            - url: dqScore
+              valueInteger: 90
+            - url: dqLastUpdated
+              valueDateTime: '2023-05-08T02:38:34+00:00'
+            - url: dqStatus
+              valueString: I
+            - url: DQViolations
+              extension:
+              - url: DQViolation
+                extension:
+                - url: violationCode
+                  valueString: '800'
+                - url: violationType
+                  valueString: duplicate
+                - url: violationMessage
+                  valueString: 'This immunisation event has been identified as duplicate of the
+                    immunisation event/s ImmSOT id/s : c00f2a11-7db5-4f4e-9d5e-1d9645a72a5c.'
+                - url: violationElement
+                  valueString: 
+                - url: violationWeighting
+                  valueInteger: 0
+          versionId: '3'
+          lastUpdated: '2023-05-08T02:38:33.959+00:00'
+          profile:
+          - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
+        contained:
+        - resourceType: Location
+          id: '1'
+          identifier:
+          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
+            value: '123456'
+          managingOrganization:
+            identifier:
+              system: https://standards.digital.health.nz/ns/hpi-facility-id
+              value: FZZ835-E
+        extension:
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
+          extension:
+          - url: diluentLotNumber
+            valueString: '33332222'
+          - url: diluentExpiryDate
+            valueDate: '2022-01-01'
+        status: completed
+        statusReason:
+          coding:
+          - system: http://snomed.info/sct
+            code: '127785005'
+        vaccineCode:
+          coding:
+          - system: http://hl7.org/fhir/sid/cvx
+            version: 1.0.0
+            code: '03'
+          text: Priorix
+        patient:
+          identifier:
+            system: https://standards.digital.health.nz/ns/nhi-id
+            value: ZZZ7541
+        occurrenceDateTime: '2023-01-26T00:00:00+00:00'
+        location:
+          reference: "#1"
+        lotNumber: '555123'
+        expirationDate: '2024-01-31'
+        site:
+          coding:
+          - system: http://snomed.info/sct
+            version: '1.1'
+            code: '16217701000119102'
+        route:
+          coding:
+          - system: http://snomed.info/sct
+            version: '1.2'
+            code: '78421000'
+        performer:
+        - function:
+            coding:
+            - system: https://standards.digital.health.nz/ns/air-terms-code
+              version: 1.0.0
+              code: VC
+          actor:
+            identifier:
+              system: https://standards.digital.health.nz/ns/nursing-council-id
+              value: '477616'
+        reasonCode:
+        - coding:
+          - system: http://snomed.info
+            code: '359953009'
+        - coding:
+          - system: http://snomed.info
+            version: '1'
+            code: '359953009'
+        protocolApplied:
+        - doseNumberPositiveInt: 1        
     CreateSuccessDQPass:
       summary: Created with no data quality issues
       value:

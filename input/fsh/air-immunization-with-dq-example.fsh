@@ -2,12 +2,21 @@ Instance: ImmSoTImmunizationExample
 InstanceOf: Immunization
 Usage: #example
 Title: "AIR Immunization Example"
-Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. "
+Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. This example also includes extended data quality information that is only visible to selected admin users."
 
 * id = "imm-example-1"
 * meta.versionId = "null"
 * meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+
+* meta.extension[air-data-quality-assessment][0].extension[dqStatus][0].valueString = "Accepted"
+* meta.extension[air-data-quality-assessment][0].extension[dqScore][0].valueInteger = 25
+* meta.extension[air-data-quality-assessment][0].extension[dqLastUpdated][0].valueDateTime = "2023-04-03"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationCode][0].valueString = "170"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationType][0].valueString = "dataQuality"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationMessage][0].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationElement][0].valueString = "occurrence.vaccine.code"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationWeighting][0].valueInteger = 1
 
 * extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
 * extension.extension[0].url = "diluentLotNumber"

@@ -3,7 +3,7 @@ InstanceOf: Bundle
 Title: "AIR Immunisation Bundle Example"
 Description: "This is an example of a how multiple immunisation records will be returned from the AIR service. This example includes the data quality information which is only available to certain administrative users."
 Usage: #example
-* type = #searchset
+* type = #message
 * total = 2
 * link.relation = "self"
 * link.url = "http://example.com/fhir/Immunization?patient=1234"

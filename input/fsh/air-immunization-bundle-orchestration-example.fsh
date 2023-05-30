@@ -1,24 +1,54 @@
-Instance: AIRBundleExample
+Instance: AIRBundleOrchestrationExample
 InstanceOf: Bundle
-Title: "AIR Immunisation Bundle Example"
-Description: "This is an example of a how multiple immunisation records will be returned from the AIR service. One of the example immunisations includes the data quality information which is only available to certain administrative users."
+Title: "AIR Orchestration Service Immunisation Bundle Example"
+Description: "This is an example of a how multiple immunisation records will be returned from the Orchestration Service, which receives a payload from ImmSoT and adds a MessageHeader resource and additional data from the NHI, HPI and other services. One of the example immunisations includes the data quality information which is only available to certain administrative users."
 Usage: #example
-* type = #searchset
-* total = 2
+* type = #message
 * link.relation = "self"
 * link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZZZ7545"
-* entry[0].resource = ImmSoTImmunizationExampleForBundle-1
-* entry[=].search.mode = #match
-* entry[+].resource = ImmSoTImmunizationExampleForBundleWithDQ-2
-* entry[=].search.mode = #match
+* entry[0].resource = ImmSoTImmunizationExampleForOrchBundle-1
+// * entry[=].search.mode = #match
+* entry[+].resource = ImmSoTImmunizationExampleForOrchBundleWithDQ-2
+// * entry[=].search.mode = #match
 
-Instance: ImmSoTImmunizationExampleForBundle-1
+Instance: OrchestrationBundleMessageHeader
+InstanceOf: MessageHeader
+Usage: #example
+Title: "Orchestration Bundle MessageHeader"
+Description: "This is an example of the MessageHeader resource that will be included in Immunisation bundle payloads send by the Orchestration service to the Broker Service."
+
+* meta.tag.code = #N
+* meta.tag.system = "http://terminology.hl7.org/CodeSystem/v2-0103"
+* source.endpoint = "https://digital.health.nz/orchestrationService"
+
+* sender = Reference(immsot-orchestration-service)
+
+* destination.name = "HealthLink"
+* destination.endpoint = "Broker"
+* destination.receiver = Reference(healthlink-broker-service)
+
+* eventCoding.code = #V04
+* eventCoding.system = "http://terminology.hl7.org/CodeSystem/v2-0003"
+
+* contained[0].resourceType = "Organization"
+* contained[=].id = "immsot-orchestration-service"
+* contained[=].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/edi-address"
+* contained[=].identifier.value = "fhirorch"
+
+* contained[+].resourceType = "Organization"
+* contained[=].id = "healthlink-broker-service"
+* contained[=].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/edi-address"
+* contained[=].identifier.value = "hlkbrokr"
+
+
+
+Instance: ImmSoTImmunizationExampleForOrchBundle-1
 InstanceOf: Immunization
 Usage: #example
 Title: "AIR Immunization Example"
 Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. "
 
-* id = "imm-example-for-bundle-1"
+* id = "imm-example-for-bundle-orch-1"
 * meta.versionId = "null"
 * meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
@@ -67,13 +97,13 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * protocolApplied.doseNumberPositiveInt = 1
 
-Instance: ImmSoTImmunizationExampleForBundleWithDQ-2
+Instance: ImmSoTImmunizationExampleForOrchBundleWithDQ-2
 InstanceOf: Immunization
 Usage: #example
 Title: "AIR Immunization Example with Data Quality Extension"
 Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. This example also includes extended data quality information that is only visible to selected admin users. In this example, the immunisation record has an invalid vaccine code."
 
-* id = "imm-example-for-bundle-with-dq-2"
+* id = "imm-example-for-bundle-orch-with-dq-2"
 * meta.versionId = "null"
 * meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
@@ -105,16 +135,16 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(l-dq-bundle-1)
+* location = Reference(l-dq-bundle-orch-1)
 
 * contained[0].resourceType = "Location"
-* contained[0].id = "l-dq-bundle-1"
+* contained[0].id = "l-dq-bundle-orch-1"
 * contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * contained[0].identifier.value = "123456"
-* contained[0].managingOrganization = Reference(mo-dq-bundle-1)
+* contained[0].managingOrganization = Reference(mo-dq-bundle-orch-1)
 
 * contained[1].resourceType = "Organization"
-* contained[1].id = "mo-dq-bundle-1"
+* contained[1].id = "mo-dq-bundle-orch-1"
 * contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * contained[1].identifier.value = "FZZ835-E"
 

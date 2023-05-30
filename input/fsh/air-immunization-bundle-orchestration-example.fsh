@@ -5,11 +5,12 @@ Description: "This is an example of a how multiple immunisation records will be 
 Usage: #example
 * type = #message
 * link.relation = "self"
-* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZZZ7545"
-* entry[0].resource = ImmSoTImmunizationExampleForOrchBundle-1
-// * entry[=].search.mode = #match
+* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZAA0792"
+
+* entry[0].resource = OrchestrationBundleMessageHeader
+* entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-1
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundleWithDQ-2
-// * entry[=].search.mode = #match
+* entry[+].resource = ZAA0792
 
 Instance: OrchestrationBundleMessageHeader
 InstanceOf: MessageHeader
@@ -67,7 +68,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
-* patient.identifier.value = "ZZZ7545"
+* patient.identifier.value = "ZAA0792"
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
@@ -131,7 +132,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
-* patient.identifier.value = "ZZZ7545"
+* patient.identifier.value = "ZAA0792"
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
@@ -160,3 +161,76 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * reasonCode = http://snomed.info/sct#161651000210107
 
 * protocolApplied.doseNumberPositiveInt = 1
+
+Instance: ZAA0792
+InstanceOf: Patient
+Usage: #example
+Title: "ImmunizationPatient-1"
+Description: "Sample patient from NHI examples."
+
+* meta.versionId = "3368251"
+* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient"
+* extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-ethnicity"
+* extension[=].valueCodeableConcept.coding.version = "2.0"
+* extension[=].valueCodeableConcept.coding = $ethnic-group-level-4-code#11111 "New Zealand European"
+* extension[=].valueCodeableConcept.text = "New Zealand European"
+* extension[+].extension.url = "status"
+* extension[=].extension.valueCodeableConcept.coding.version = "1.0.0"
+* extension[=].extension.valueCodeableConcept.coding = $nz-citizenship-status-code#unknown "The citizenship status is unknown"
+* extension[=].extension.valueCodeableConcept.text = "The citizenship status is unknown"
+* extension[=].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-citizenship"
+* extension[+].extension[0].url = "source"
+* extension[=].extension[=].valueCodeableConcept.coding.version = "1.0.0"
+* extension[=].extension[=].valueCodeableConcept.coding = $information-source-code#HL7 "HL7 applied"
+* extension[=].extension[=].valueCodeableConcept.text = "HL7 applied"
+* extension[=].extension[+].url = "status"
+* extension[=].extension[=].valueCodeableConcept.coding.version = "1.0.0"
+* extension[=].extension[=].valueCodeableConcept.coding = $nz-residency-code#yes "Permanent Resident"
+* extension[=].extension[=].valueCodeableConcept.text = "Permanent Resident"
+* extension[=].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-residency"
+* identifier[0].use = #official
+* identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
+* identifier[=].value = "ZAA0792"
+* identifier[=].assigner = Reference(Organization/G00001-G)
+* identifier[+].use = #old
+* identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
+* identifier[=].value = "ZAA0806"
+* identifier[=].assigner = Reference(Organization/G00001-G)
+* name.id = "5"
+* name.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-preferred"
+* name.extension.valueBoolean = true
+* name.family = "NEWMUM"
+* name.given = "BABY OF TESTING"
+* gender = #female
+* birthDate = "2015-09-09"
+* birthDate.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/information-source"
+* birthDate.extension.valueCodeableConcept.coding.version = "1.0.0"
+* birthDate.extension.valueCodeableConcept.coding = $information-source-code#HL7 "HL7 applied"
+* birthDate.extension.valueCodeableConcept.text = "HL7 applied"
+* address[0].id = "17"
+* address[=].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/not-validated-address-reason"
+* address[=].extension[=].valueCodeableConcept.coding.version = "1.1"
+* address[=].extension[=].valueCodeableConcept.coding = $address-not-validated-reason-code#OSEA "Overseas Address"
+* address[=].extension[=].valueCodeableConcept.text = "Overseas Address"
+* address[=].extension[+].url = "http://hl7.org.nz/fhir/StructureDefinition/suburb"
+* address[=].extension[=].valueString = "Moutsamoudou"
+* address[=].use = #home
+* address[=].type = #physical
+* address[=].line = "Rue Mtsangani"
+* address[=].city = "Bandrele "
+* address[=].postalCode = "0606"
+* address[+].id = "18"
+* address[=].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-address-id"
+* address[=].extension[=].valueString = "3571798"
+* address[=].extension[+].url = "http://hl7.org.nz/fhir/StructureDefinition/domicile-code"
+* address[=].extension[=].valueCodeableConcept = $domicile-code#0504 "Auckland Harbourside"
+* address[=].extension[=].valueCodeableConcept.text = "Auckland Harbourside"
+* address[=].extension[+].url = "http://hl7.org.nz/fhir/StructureDefinition/suburb"
+* address[=].extension[=].valueString = "Auckland Central"
+* address[=].use = #home
+* address[=].type = #postal
+* address[=].line = "147 Quay Street"
+* address[=].city = "Auckland"
+* address[=].postalCode = "1010"
+* address[=].country = "NZ"
+

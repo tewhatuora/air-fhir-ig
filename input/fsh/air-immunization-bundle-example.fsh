@@ -6,7 +6,7 @@ Usage: #example
 * type = #searchset
 * total = 2
 * link.relation = "self"
-* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZZZ7545"
+* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZAA0792"
 * entry[0].resource = ImmSoTImmunizationExampleForBundle-1
 * entry[=].search.mode = #match
 * entry[+].resource = ImmSoTImmunizationExampleForBundleWithDQ-2
@@ -37,7 +37,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
-* patient.identifier.value = "ZZZ7545"
+* patient.identifier.value = "ZAA0792"
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
@@ -101,7 +101,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
-* patient.identifier.value = "ZZZ7545"
+* patient.identifier.value = "ZAA0792"
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 

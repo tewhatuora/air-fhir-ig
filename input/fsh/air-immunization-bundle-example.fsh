@@ -1,7 +1,7 @@
 Instance: AIRBundleExample
 InstanceOf: Bundle
 Title: "AIR Immunisation Bundle Example"
-Description: "This is an example of a how multiple immunisation records will be returned from the AIR service. This example includes the data quality information which is only available to certain administrative users."
+Description: "This is an example of a how multiple immunisation records will be returned from the AIR service. One of the example immunisations includes the data quality information which is only available to certain administrative users."
 Usage: #example
 * type = #message
 * total = 2

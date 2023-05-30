@@ -7,133 +7,126 @@ Usage: #example
 * total = 2
 * link.relation = "self"
 * link.url = "http://example.com/fhir/Immunization?patient=1234"
-* entry[0].resource = Inline-Instance-for-AIRBundleExample-1
+* entry[0].resource = ImmSoTImmunizationExampleForBundle-1
 * entry[=].search.mode = #match
-* entry[+].resource = Inline-Instance-for-AIRBundleExample-2
+* entry[+].resource = ImmSoTImmunizationExampleForBundleWithDQ-2
 * entry[=].search.mode = #match
 
-Instance: Inline-Instance-for-AIRBundleExample-1
+Instance: ImmSoTImmunizationExampleForBundle-1
 InstanceOf: Immunization
-Usage: #inline
-* meta.versionId = "2"
-* meta.lastUpdated = "2023-03-14T04:12:28.983+00:00"
+Usage: #example
+Title: "AIR Immunization Example"
+Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. "
+
+* id = "imm-example-for-bundle-1"
+* meta.versionId = "null"
+* meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
-* meta.extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment"
-* meta.extension.extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-score"
-* meta.extension.extension.extension[0].url = "dqScore"
-* meta.extension.extension.extension[=].valueInteger = 90
-* meta.extension.extension.extension[+].url = "dqLastUpdated"
-* meta.extension.extension.extension[=].valueDateTime = "2023-03-14T04:12:28.983+00:00"
-* meta.extension.extension.extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-dq-violations"
-* meta.extension.extension.extension[=].extension[0].url = "DataQualityViolation"
-* meta.extension.extension.extension[=].extension[=].extension[0].url = "violationCode"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "200"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationType"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "dataQuality"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationMessage"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationElement"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "occurrence.vaccine.code"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationWeight"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "2"
-* meta.extension.extension.extension[=].extension[+].url = "DataQualityViolation"
-* meta.extension.extension.extension[=].extension[=].extension[0].url = "violationCode"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "300"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationType"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "dataQuality"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationMessage"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "An immunisation event should have a vaccine batch expiry date, and the vaccine batch expiry date should not be before the immunisation event date."
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationElement"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "lotNumber"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationWeight"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "1"
-* patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
-* patient.identifier.value = "ZZZ7545"
-* occurrenceDateTime = "2023-01-26"
-* vaccineCode.text = "Priorix"
-* vaccineCode.coding = $CVX#03
-* protocolApplied.doseNumberPositiveInt = 1
-* lotNumber = "555123"
-* expirationDate = "2024-01-31"
-* extension.url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-diluent"
+
+* extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
 * extension.extension[0].url = "diluentLotNumber"
 * extension.extension[=].valueString = "33332222"
 * extension.extension[+].url = "diluentExpiryDate"
 * extension.extension[=].valueDate = "2026-01-01"
-* route.coding = $SCT#78421000
-* site.coding = $SCT#16217701000119102
-* location = Reference(l1)
-* contained.resourceType = "Location"
-* contained.id = "l1"
-* contained.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained.identifier.value = "123456"
-* contained.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained.managingOrganization.identifier.value = "FZZ835-E"
-* status = #completed
-* statusReason = $SCT#127785005
-* reasonCode[0] = $SCT#359953009
-* reasonCode[+].coding = $SCT#359953009
 
-Instance: Inline-Instance-for-AIRBundleExample-2
-InstanceOf: Immunization
-Usage: #inline
-* meta.versionId = "2"
-* meta.lastUpdated = "2023-03-14T04:12:28.983+00:00"
-* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
-* meta.extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment"
-* meta.extension.extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-score"
-* meta.extension.extension.extension[0].url = "dqScore"
-* meta.extension.extension.extension[=].valueInteger = 90
-* meta.extension.extension.extension[+].url = "dqLastUpdated"
-* meta.extension.extension.extension[=].valueDateTime = "2023-03-14T04:12:28.983+00:00"
-* meta.extension.extension.extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-dq-violations"
-* meta.extension.extension.extension[=].extension[0].url = "DataQualityViolation"
-* meta.extension.extension.extension[=].extension[=].extension[0].url = "violationCode"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "200"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationType"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "dataQuality"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationMessage"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationElement"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "occurrence.vaccine.code"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationWeight"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "2"
-* meta.extension.extension.extension[=].extension[+].url = "DataQualityViolation"
-* meta.extension.extension.extension[=].extension[=].extension[0].url = "violationCode"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "300"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationType"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "dataQuality"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationMessage"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "An immunisation event should have a vaccine batch expiry date, and the vaccine batch expiry date should not be before the immunisation event date."
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationElement"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "lotNumber"
-* meta.extension.extension.extension[=].extension[=].extension[+].url = "violationWeight"
-* meta.extension.extension.extension[=].extension[=].extension[=].valueString = "1"
+* status = #completed
+
+* statusReason.coding = http://snomed.info/sct#127785005
+
+* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#3
+* vaccineCode.text = "Measles, Mumps, Rubella"
+
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZZZ7545"
-* occurrenceDateTime = "2023-01-26"
-* vaccineCode.text = "Priorix"
-* vaccineCode.coding = $CVX#03
+
+* occurrenceDateTime = "2023-03-01T16:45:46+13:00"
+
+* location = Reference(l1-bundle)
+
+* contained[0].resourceType = "Location"
+* contained[0].id = "l1-bundle"
+* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* contained[0].identifier.value = "123456"
+* contained[0].managingOrganization = Reference(mo1-bundle)
+
+* contained[1].resourceType = "Organization"
+* contained[1].id = "mo1-bundle"
+* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* contained[1].identifier.value = "FZZ835-E"
+
+* site.coding = http://snomed.info/sct#16217701000119102
+
+* route.coding = http://snomed.info/sct#54471007
+
+* performer.function = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
+* performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* performer.actor.identifier.value = "90ZZLP"
+* performer.actor.identifier.assigner = Reference("https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G")
+
+* reasonCode = http://snomed.info/sct#161651000210107
+
 * protocolApplied.doseNumberPositiveInt = 1
-* lotNumber = "555123"
-* expirationDate = "2024-01-31"
-* extension.url = "https://standards.digital.health.nz/fhir/StructureDefinition/air-diluent"
+
+Instance: ImmSoTImmunizationExampleForBundleWithDQ-2
+InstanceOf: Immunization
+Usage: #example
+Title: "AIR Immunization Example with Data Quality Extension"
+Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. This example also includes extended data quality information that is only visible to selected admin users. In this example, the immunisation record has an invalid vaccine code."
+
+* id = "imm-example-for-bundle-with-dq-2"
+* meta.versionId = "null"
+* meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+
+* meta.extension[air-data-quality-assessment][0].extension[dqStatus][0].valueString = "Accepted"
+* meta.extension[air-data-quality-assessment][0].extension[dqScore][0].valueInteger = 25
+* meta.extension[air-data-quality-assessment][0].extension[dqLastUpdated][0].valueDateTime = "2023-04-03"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationCode][0].valueString = "170"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationType][0].valueString = "dataQuality"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationMessage][0].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationElement][0].valueString = "occurrence.vaccine.code"
+* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationWeighting][0].valueInteger = 1
+
+* extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
 * extension.extension[0].url = "diluentLotNumber"
 * extension.extension[=].valueString = "33332222"
 * extension.extension[+].url = "diluentExpiryDate"
 * extension.extension[=].valueDate = "2026-01-01"
-* route.coding = $SCT#78421000
-* route.coding.version = "1.2"
-* site.coding = $SCT#16217701000119102
-* site.coding.version = "1.1"
-* location = Reference(l1)
-* contained.resourceType = "Location"
-* contained.id = "l1"
-* contained.identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained.identifier.value = "123456"
-* contained.managingOrganization.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained.managingOrganization.identifier.value = "FZZ835-E"
+
 * status = #completed
-* statusReason = $SCT#127785005
-* reasonCode[0] = $SCT#359953009
-* reasonCode[+].coding = $SCT#359953009
+
+* statusReason.coding = http://snomed.info/sct#127785005
+
+* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#333
+* vaccineCode.text = "Measles, Mumps, Rubella"
+
+* patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
+* patient.identifier.value = "ZZZ7545"
+
+* occurrenceDateTime = "2023-03-01T16:45:46+13:00"
+
+* location = Reference(l-dq-bundle-1)
+
+* contained[0].resourceType = "Location"
+* contained[0].id = "l-dq-bundle-1"
+* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* contained[0].identifier.value = "123456"
+* contained[0].managingOrganization = Reference(mo-dq-1)
+
+* contained[1].resourceType = "Organization"
+* contained[1].id = "mo-dq-bundle-1"
+* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* contained[1].identifier.value = "FZZ835-E"
+
+* site.coding = http://snomed.info/sct#16217701000119102
+
+* route.coding = http://snomed.info/sct#54471007
+
+* performer.function = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
+* performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* performer.actor.identifier.value = "90ZZLP"
+* performer.actor.identifier.assigner = Reference("https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G")
+
+* reasonCode = http://snomed.info/sct#161651000210107
+
+* protocolApplied.doseNumberPositiveInt = 1

@@ -39,7 +39,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 * location = Reference(l-dq-1)
 
 * contained[0].resourceType = "Location"
-* contained[0].id = "l-dq-11"
+* contained[0].id = "l-dq-1"
 * contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * contained[0].identifier.value = "123456"
 * contained[0].managingOrganization = Reference(mo-dq-1)

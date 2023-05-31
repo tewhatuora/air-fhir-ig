@@ -10,7 +10,8 @@ Usage: #example
 * entry[0].resource = OrchestrationBundleMessageHeader
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-1
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundleWithDQ-2
-* entry[+].resource = ZAA0792
+* entry[+].resource = ZAA0792 // Patient NHI Patient
+* entry[+].resource = GZZ956-B // Location Managing Org HPI Organization
 
 Instance: OrchestrationBundleMessageHeader
 InstanceOf: MessageHeader
@@ -72,18 +73,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(l1-bundle)
-
-* contained[0].resourceType = "Location"
-* contained[0].id = "l1-bundle"
-* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained[0].identifier.value = "123456"
-* contained[0].managingOrganization = Reference(mo1-bundle)
-
-* contained[1].resourceType = "Organization"
-* contained[1].id = "mo1-bundle"
-* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained[1].identifier.value = "FZZ835-E"
+* location.managingOrganization = Reference(GZZ956-B) // HPI Organization example ID
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -136,18 +126,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(l-dq-bundle-orch-1)
-
-* contained[0].resourceType = "Location"
-* contained[0].id = "l-dq-bundle-orch-1"
-* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained[0].identifier.value = "123456"
-* contained[0].managingOrganization = Reference(mo-dq-bundle-orch-1)
-
-* contained[1].resourceType = "Organization"
-* contained[1].id = "mo-dq-bundle-orch-1"
-* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained[1].identifier.value = "FZZ835-E"
+* location.managingOrganization = Reference(GZZ956-B)
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -165,7 +144,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 Instance: ZAA0792
 InstanceOf: Patient
 Usage: #example
-Title: "ImmunizationPatient-1"
+Title: "Immunization Patient 1"
 Description: "Sample patient from NHI examples."
 
 * meta.versionId = "3368251"
@@ -234,3 +213,35 @@ Description: "Sample patient from NHI examples."
 * address[=].postalCode = "1010"
 * address[=].country = "NZ"
 
+Instance: GZZ956-B
+InstanceOf: Organization
+Usage: #example
+Title: "Immunization Organization 1"
+Description: "Sample Organization from HPI Organization examples."
+* meta.versionId = "8910"
+* meta.lastUpdated = "2022-04-05T15:04:16.000+12:00"
+* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPIOrganization"
+* extension.url = "http://hl7.org.nz/fhir/StructureDefinition/established"
+* extension.valuePeriod.start = "2018-05-20"
+* identifier[0].use = #official
+* identifier[=].system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* identifier[=].value = "GZZ956-B"
+* identifier[=].assigner = Reference(Organization/G00001-G)
+* identifier[+].use = #official
+* identifier[=].system = "https://standards.digital.health.nz/ns/hpi-nzbn"
+* identifier[=].value = "9999999999041"
+* identifier[=].assigner = Reference(Organization/MBIE)
+* active = true
+* type.coding.version = "1.1"
+* type.coding = $organisation-type-code#999 "Other"
+* name = "Flat-Unit Address Org"
+* alias = "Flat-Unit Address Org"
+* alias.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/alias-type"
+* alias.extension.valueCodeableConcept.coding.version = "1.0.0"
+* alias.extension.valueCodeableConcept.coding = $alias-type-code#legal "Legal"
+* alias.extension.valueCodeableConcept.text = "Legal"
+* telecom.system = #phone
+* telecom.value = "021 101010"
+* telecom.use = #work
+* telecom.rank = 1
+* telecom.period.start = "1970-01-01"

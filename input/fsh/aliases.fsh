@@ -20,3 +20,8 @@ Alias: $information-source-code = https://standards.digital.health.nz/ns/informa
 Alias: $nz-residency-code = https://standards.digital.health.nz/ns/nz-residency-code
 Alias: $address-not-validated-reason-code = https://standards.digital.health.nz/ns/address-not-validated-reason-code
 Alias: $domicile-code = https://standards.digital.health.nz/ns/domicile-code
+
+// HPI aliases
+Alias: $organisation-type-code = https://standards.digital.health.nz/ns/organisation-type-code
+Alias: $alias-type-code = https://standards.digital.health.nz/ns/alias-type-code
+

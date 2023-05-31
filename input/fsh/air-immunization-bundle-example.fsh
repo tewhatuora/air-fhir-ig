@@ -41,18 +41,19 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(l1-bundle)
+* location = Reference(bundle-loc-1)
 
 * contained[0].resourceType = "Location"
-* contained[0].id = "l1-bundle"
+* contained[0].id = "bundle-loc-1"
 * contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * contained[0].identifier.value = "123456"
-* contained[0].managingOrganization = Reference(mo1-bundle)
+
+* contained[0].managingOrganization = Reference(bundle-org-1)
 
 * contained[1].resourceType = "Organization"
-* contained[1].id = "mo1-bundle"
-* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained[1].identifier.value = "FZZ835-E"
+* contained[1].id = "bundle-org-1"
+* contained[=].identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* contained[=].identifier.value = "GZZ956-B"
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -105,18 +106,19 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(l-dq-bundle-1)
+* location = Reference(bundle-loc-2)
 
 * contained[0].resourceType = "Location"
-* contained[0].id = "l-dq-bundle-1"
+* contained[0].id = "bundle-loc-2"
 * contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * contained[0].identifier.value = "123456"
-* contained[0].managingOrganization = Reference(mo-dq-bundle-1)
+
+* contained[0].managingOrganization = Reference(bundle-org-2)
 
 * contained[1].resourceType = "Organization"
-* contained[1].id = "mo-dq-bundle-1"
-* contained[1].identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* contained[1].identifier.value = "FZZ835-E"
+* contained[1].id = "bundle-org-2"
+* contained[=].identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* contained[=].identifier.value = "GZZ956-B"
 
 * site.coding = http://snomed.info/sct#16217701000119102
 

@@ -73,7 +73,14 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location.managingOrganization = Reference(GZZ956-B) // HPI Organization example ID
+* location = Reference(bundle-orch-loc-1)
+
+* contained[0].resourceType = "Location"
+* contained[0].id = "bundle-orch-loc-1"
+* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* contained[0].identifier.value = "123456"
+
+* contained[0].managingOrganization = Reference(GZZ956-2)
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -126,7 +133,14 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location.managingOrganization = Reference(GZZ956-B)
+* location = Reference(bundle-orch-loc-2)
+
+* contained[0].resourceType = "Location"
+* contained[0].id = "bundle-orch-loc-2"
+* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* contained[0].identifier.value = "123456"
+
+* contained[0].managingOrganization = Reference(GZZ956-2)
 
 * site.coding = http://snomed.info/sct#16217701000119102
 

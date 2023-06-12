@@ -24,4 +24,4 @@ Alias: $domicile-code = https://standards.digital.health.nz/ns/domicile-code
 // HPI aliases
 Alias: $organisation-type-code = https://standards.digital.health.nz/ns/organisation-type-code
 Alias: $alias-type-code = https://standards.digital.health.nz/ns/alias-type-code
-
+Alias: $location-type-code = https://standards.digital.health.nz/ns/location-type-code

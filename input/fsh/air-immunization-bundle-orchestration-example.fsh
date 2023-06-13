@@ -1,23 +1,31 @@
 Instance: AIRBundleOrchestrationExample
 InstanceOf: Bundle
 Title: "AIR Orchestration Service Immunisation Bundle Example"
-Description: "This is an example of a how multiple immunisation records will be returned from the Orchestration Service, which receives a payload from ImmSoT and adds a MessageHeader resource and additional data from the NHI, HPI and other services. One of the example immunisations includes the data quality information which is only available to certain administrative users."
+Description: "This is an example of a how multiple immunisation records will be returned from the Orchestration Service, which receives a payload from ImmSoT and adds a MessageHeader resource and additional data from the NHI, HPI and other services. "
 Usage: #example
 * type = #message
 * link.relation = "self"
-* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?patient=ZAA0792"
+* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?_include=*&patient=ZAA0792"
 
 * entry[0].resource = OrchestrationBundleMessageHeader
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-1
-* entry[+].resource = ImmSoTImmunizationExampleForOrchBundleWithDQ-2
+* entry[=].search.mode = #match
+* entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-2
+* entry[=].search.mode = #match
 * entry[+].resource = ZAA0792 // Patient NHI Patient
-* entry[+].resource = GZZ956-B // Location Managing Org HPI Organization
+* entry[=].search.mode = #include
+* entry[+].resource = FZZ958-K // Location ESAM Location
+* entry[=].search.mode = #include
+* entry[+].resource = 1112139 // Location HPI Location
+* entry[=].search.mode = #include
+* entry[+].resource = GZZ956-B // Organization HPI Organization
+* entry[=].search.mode = #include
 
 Instance: OrchestrationBundleMessageHeader
 InstanceOf: MessageHeader
 Usage: #example
 Title: "Orchestration Bundle MessageHeader"
-Description: "This is an example of the MessageHeader resource that will be included in Immunisation bundle payloads send by the Orchestration service to the Broker Service."
+Description: "This is an example of the MessageHeader resource that will be included in Immunisation bundle payloads sent by the Orchestration service to the Broker Service."
 
 * meta.tag.code = #N
 * meta.tag.system = "http://terminology.hl7.org/CodeSystem/v2-0103"
@@ -47,8 +55,8 @@ Description: "This is an example of the MessageHeader resource that will be incl
 Instance: ImmSoTImmunizationExampleForOrchBundle-1
 InstanceOf: Immunization
 Usage: #example
-Title: "AIR Immunization Example"
-Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. "
+Title: "AIR Immunization Example 1"
+Description: "An example of an AIR v2 immunization resource, with patient and location resources expanded as per _include syntax. "
 
 * id = "imm-example-for-bundle-orch-1"
 * meta.versionId = "null"
@@ -73,14 +81,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(bundle-orch-loc-1)
-
-* contained[0].resourceType = "Location"
-* contained[0].id = "bundle-orch-loc-1"
-* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained[0].identifier.value = "123456"
-
-* contained[0].managingOrganization = Reference(GZZ956-2)
+* location = Reference(1112139)
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -95,25 +96,16 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * protocolApplied.doseNumberPositiveInt = 1
 
-Instance: ImmSoTImmunizationExampleForOrchBundleWithDQ-2
+Instance: ImmSoTImmunizationExampleForOrchBundle-2
 InstanceOf: Immunization
 Usage: #example
-Title: "AIR Immunization Example with Data Quality Extension"
-Description: "An example of an AIR v2 immunization resource, including contained patient and location resources. This example also includes extended data quality information that is only visible to selected admin users. In this example, the immunisation record has an invalid vaccine code."
+Title: "AIR Immunization Example 2"
+Description: "An example of an AIR v2 immunization resource, with patient and location resources expanded as per _include syntax."
 
-* id = "imm-example-for-bundle-orch-with-dq-2"
+* id = "imm-example-for-bundle-orch-2"
 * meta.versionId = "null"
 * meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
-
-* meta.extension[air-data-quality-assessment][0].extension[dqStatus][0].valueString = "Accepted"
-* meta.extension[air-data-quality-assessment][0].extension[dqScore][0].valueInteger = 25
-* meta.extension[air-data-quality-assessment][0].extension[dqLastUpdated][0].valueDateTime = "2023-04-03"
-* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationCode][0].valueString = "170"
-* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationType][0].valueString = "dataQuality"
-* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationMessage][0].valueString = "The vaccine code is unrecognised. A vaccine code should be part of the air-vaccine-product-code value set."
-* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationElement][0].valueString = "occurrence.vaccine.code"
-* meta.extension[air-data-quality-assessment][0].extension[DQViolations][0].extension[DQViolation][0].extension[violationWeighting][0].valueInteger = 1
 
 * extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
 * extension.extension[0].url = "diluentLotNumber"
@@ -133,14 +125,7 @@ Description: "An example of an AIR v2 immunization resource, including contained
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(bundle-orch-loc-2)
-
-* contained[0].resourceType = "Location"
-* contained[0].id = "bundle-orch-loc-2"
-* contained[0].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/esam-id"
-* contained[0].identifier.value = "123456"
-
-* contained[0].managingOrganization = Reference(GZZ956-2)
+* location = Reference(FZZ958-K)
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -159,7 +144,7 @@ Instance: ZAA0792
 InstanceOf: Patient
 Usage: #example
 Title: "Immunization Patient 1"
-Description: "Sample patient from NHI examples."
+Description: "Sample patient from NHI examples. Based on the patient reference in the ImmSoT immunisation, this info is retrieved from NHI by the Orchestration service and added to the bundle."
 
 * meta.versionId = "3368251"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient"
@@ -226,6 +211,63 @@ Description: "Sample patient from NHI examples."
 * address[=].city = "Auckland"
 * address[=].postalCode = "1010"
 * address[=].country = "NZ"
+
+
+Instance: 1112139
+InstanceOf: Location
+Usage: #example
+Title: "Example ESAM location 1112139"
+Description: "This is an example of a location that is identified by its ESAM ID. It is provided by ImmSoT as a stand-alone resource to facilitate the inclusion of Managing Organization data."
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
+* identifier[0].use = #official
+* identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* identifier[=].value = "1112139"
+* managingOrganization = Reference(GZZ956-B)
+
+
+Instance: FZZ958-K
+InstanceOf: Location
+Usage: #example
+* meta.versionId = "10803"
+* meta.lastUpdated = "2022-11-09T12:00:14.000+13:00"
+* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPILocation"
+* extension.url = "http://hl7.org.nz/fhir/StructureDefinition/established"
+* extension.valuePeriod.start = "1980-12-12"
+* identifier[0].use = #official
+* identifier[=].system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* identifier[=].value = "FZZ958-K"
+* identifier[=].assigner = Reference(Organization/G00001-G)
+* identifier[+].use = #official
+* identifier[=].system = "https://standards.digital.health.nz/ns/nzhis-facility-id"
+* identifier[=].value = "9987"
+* identifier[=].assigner = Reference(Organization/G00001-G)
+* status = #active
+* name = "Medical Centre Flat-Unit"
+* alias = "Medical Centre Flat-Unit"
+* alias.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/alias-type"
+* alias.extension.valueCodeableConcept.coding.version = "1.0.0"
+* alias.extension.valueCodeableConcept.coding = $alias-type-code#current "Current unverified or unofficial name"
+* alias.extension.valueCodeableConcept.text = "Current unverified or unofficial name"
+* type.coding.version = "1.0"
+* type.coding = $location-type-code#gpenrol "Enrolling GP Practice"
+* telecom[0].system = #phone
+* telecom[=].value = "021 555558"
+* telecom[=].use = #temp
+* telecom[=].rank = 1
+* telecom[=].period.start = "1980-12-12"
+* telecom[+].system = #phone
+* telecom[=].value = "021 464646"
+* telecom[=].use = #work
+* telecom[=].rank = 1
+* telecom[=].period.start = "1980-12-12"
+* address.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/suburb"
+* address.extension.valueString = "Wellington 6011"
+* address.use = #work
+* address.type = #physical
+* address.text = "2C/123 Molesworth Street, Thorndon, Wellington 6011"
+* address.line[0] = "Thorndon"
+* address.line[+] = "2C/123 Molesworth Street"
+* managingOrganization = Reference(Organization/GZZ956-B) "Flat-Unit Address Org"
 
 Instance: GZZ956-B
 InstanceOf: Organization

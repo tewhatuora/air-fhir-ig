@@ -1,7 +1,7 @@
 Instance: AIRBundleOrchestrationExample
 InstanceOf: Bundle
 Title: "AIR Orchestration Service Immunisation Bundle Example"
-Description: "This is an example of a how multiple immunisation records will be returned from the Orchestration Service, which receives a payload from ImmSoT and adds a MessageHeader resource and additional data from the NHI, HPI and other services. One of the example immunisations includes the data quality information which is only available to certain administrative users."
+Description: "This is an example of a how multiple immunisation records will be returned from the Orchestration Service, which receives a payload from ImmSoT and adds a MessageHeader resource and additional data from the NHI, HPI and other services. "
 Usage: #example
 * type = #message
 * link.relation = "self"
@@ -25,7 +25,7 @@ Instance: OrchestrationBundleMessageHeader
 InstanceOf: MessageHeader
 Usage: #example
 Title: "Orchestration Bundle MessageHeader"
-Description: "This is an example of the MessageHeader resource that will be included in Immunisation bundle payloads send by the Orchestration service to the Broker Service."
+Description: "This is an example of the MessageHeader resource that will be included in Immunisation bundle payloads sent by the Orchestration service to the Broker Service."
 
 * meta.tag.code = #N
 * meta.tag.system = "http://terminology.hl7.org/CodeSystem/v2-0103"
@@ -144,7 +144,7 @@ Instance: ZAA0792
 InstanceOf: Patient
 Usage: #example
 Title: "Immunization Patient 1"
-Description: "Sample patient from NHI examples."
+Description: "Sample patient from NHI examples. Based on the patient reference in the ImmSoT immunisation, this info is retrieved from NHI by the Orchestration service and added to the bundle."
 
 * meta.versionId = "3368251"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient"
@@ -217,7 +217,7 @@ Instance: 1112139
 InstanceOf: Location
 Usage: #example
 Title: "Example ESAM location 1112139"
-Description: "This is an example of a location that is identified by its ESAM ID."
+Description: "This is an example of a location that is identified by its ESAM ID. It is provided by ImmSoT as a stand-alone resource to facilitate the inclusion of Managing Organization data."
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
 * identifier[0].use = #official
 * identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"

@@ -239,6 +239,12 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#46100801000116102 "Gardasil 9"
 * $NZMT#46044951000116103 "Pneumovax 23"
 * $NZMT#20077561000116105 "Prevenar 13"
+* $NZMT#10380351000116108 "IPOL"
+* $NZMT#47666491000116106 "BCG Vaccine AJV"
+* $NZMT#10336221000116104 "Engerix B (20 mcg)"
+* $NZMT#31171221000116106 "Havrix"
+* $NZMT#44630041000116108 "Nimenrix"
+
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names edited by John C... need these to be ratified and possibly
@@ -282,6 +288,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $CVX#119 "Rotavirus, monovalent"
 * $CVX#120 "DTaP-IPV-Hib"
 * $CVX#121 "Zoster live"
+* $CVX#130 "Diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus vaccine, inactivated"
 * $CVX#133 "Pneumococcal conjugate PCV 13"
 * $CVX#150 "Influenza, injectable, quadrivalent, preservative free"
 * $CVX#161 "Influenza, injectable,quadrivalent, preservative free, pediatric"

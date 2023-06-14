@@ -34,6 +34,11 @@ ig-build-prepare:
 
 build-ig:
   stage: build
+  variables:
+    KUBERNETES_CPU_REQUEST: "1"
+    KUBERNETES_CPU_LIMIT: "2"
+    KUBERNETES_MEMORY_REQUEST: "4G"
+    KUBERNETES_MEMORY_LIMIT: "4G"
   script:
     - ./_updatePublisher.sh -y
     - ./build-ig.sh

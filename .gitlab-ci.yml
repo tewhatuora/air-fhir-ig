@@ -2,7 +2,7 @@ default:
   tags:
     - azure
 
-image: registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.2
+image: registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.3
 
 stages:
   - build-prepare

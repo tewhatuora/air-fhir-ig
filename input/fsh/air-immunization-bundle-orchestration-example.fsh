@@ -95,6 +95,16 @@ Description: "An example of an AIR v2 immunization resource, with patient and lo
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
+* extension[1].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
+* extension[1].extension[0].url = "years"
+* extension[1].extension[0].valueInteger = 7
+* extension[1].extension[1].url = "months"
+* extension[1].extension[1].valueInteger = 5
+* extension[1].extension[2].url = "days"
+* extension[1].extension[2].valueInteger = 20
+* extension[1].extension[3].url = "daysSinceBirth"
+* extension[1].extension[3].valueInteger = 2730
+
 * location = Reference(1112139)
 
 * site.coding = http://snomed.info/sct#16217701000119102
@@ -118,14 +128,14 @@ Description: "An example of an AIR v2 immunization resource, with patient and lo
 
 * id = "imm-example-for-bundle-orch-2"
 * meta.versionId = "null"
-* meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
+* meta.lastUpdated = "2022-07-01T16:45:46.781+13:00"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
 
-* extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
-* extension.extension[0].url = "diluentLotNumber"
-* extension.extension[=].valueString = "33332222"
-* extension.extension[+].url = "diluentExpiryDate"
-* extension.extension[=].valueDate = "2026-01-01"
+* extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
+* extension[0].extension[0].url = "diluentLotNumber"
+* extension[0].extension[=].valueString = "33332222"
+* extension[0].extension[+].url = "diluentExpiryDate"
+* extension[0].extension[=].valueDate = "2026-01-01"
 
 * status = #completed
 
@@ -139,6 +149,15 @@ Description: "An example of an AIR v2 immunization resource, with patient and lo
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
+* extension[1].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
+* extension[1].extension[0].url = "years"
+* extension[1].extension[0].valueInteger = 6
+* extension[1].extension[1].url = "months"
+* extension[1].extension[1].valueInteger = 9
+* extension[1].extension[2].url = "days"
+* extension[1].extension[2].valueInteger = 1
+* extension[1].extension[3].url = "daysSinceBirth"
+* extension[1].extension[3].valueInteger = 2487
 * location = Reference(FZZ958-K)
 
 * site.coding = http://snomed.info/sct#16217701000119102

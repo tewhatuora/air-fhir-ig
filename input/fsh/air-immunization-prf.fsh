@@ -37,6 +37,9 @@ Description: "This is the AIR Immunization Profile."
 // occurrence only dateTime 
 * occurrence[x] only dateTime
 
+// add AgeGiven extension
+* extension contains air-age-given named AgeGiven 0..1
+
 // remove recorded date
 * recorded 0..0
 

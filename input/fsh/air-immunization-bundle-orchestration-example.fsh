@@ -8,18 +8,32 @@ Usage: #example
 * link.url = "https://standards.digital.health.nz/fhir/air/Immunization?_include=*&patient=ZAA0792"
 
 * entry[0].resource = OrchestrationBundleMessageHeader
+* entry[=].fullUrl = "https://standards.digital.health.nz/fhir/air/MH1234"
+
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-1
 * entry[=].search.mode = #match
+* entry[=].fullUrl = "https://standards.digital.health.nz/fhir/air/imm-example-for-bundle-orch-1"
+
 * entry[+].resource = ImmSoTImmunizationExampleForOrchBundle-2
 * entry[=].search.mode = #match
+* entry[=].fullUrl = "https://standards.digital.health.nz/fhir/air/imm-example-for-bundle-orch-2"
+
 * entry[+].resource = ZAA0792 // Patient NHI Patient
 * entry[=].search.mode = #include
-* entry[+].resource = FZZ958-K // Location ESAM Location
+* entry[=].fullUrl = "https://nhi-ig.hip.digital.health.nz/patient/ZAA0792"
+
+* entry[+].resource = 1112139 // Location ESAM Location
 * entry[=].search.mode = #include
-* entry[+].resource = 1112139 // Location HPI Location
+* entry[=].fullUrl = "https://esamServiceURL/1112139"
+
+* entry[+].resource =  FZZ958-K // Location HPI Location
 * entry[=].search.mode = #include
+* entry[=].fullUrl = "https://hpi-ig.hip.digital.health.nz/location/FZZ958-K"
+
 * entry[+].resource = GZZ956-B // Organization HPI Organization
 * entry[=].search.mode = #include
+* entry[=].fullUrl = "https://hpi-ig.hip.digital.health.nz/organization/GZZ956-B"
+
 
 Instance: OrchestrationBundleMessageHeader
 InstanceOf: MessageHeader
@@ -146,6 +160,7 @@ Usage: #example
 Title: "Immunization Patient 1"
 Description: "Sample patient from NHI examples. Based on the patient reference in the ImmSoT immunisation, this info is retrieved from NHI by the Orchestration service and added to the bundle."
 
+
 * meta.versionId = "3368251"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient"
 * extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-ethnicity"
@@ -228,6 +243,9 @@ Description: "This is an example of a location that is identified by its ESAM ID
 Instance: FZZ958-K
 InstanceOf: Location
 Usage: #example
+Title: "Example HPI Location FZZ958-K"
+Description: "This is an example of a location that is identified by its HPI-F id. Based on the location reference in the ImmSoT immunization, this info is retrieved from HPI by the Orchestration service and added to the bundle."
+
 * meta.versionId = "10803"
 * meta.lastUpdated = "2022-11-09T12:00:14.000+13:00"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPILocation"
@@ -273,7 +291,8 @@ Instance: GZZ956-B
 InstanceOf: Organization
 Usage: #example
 Title: "Immunization Organization 1"
-Description: "Sample Organization from HPI Organization examples."
+Description: "Sample Organization from HPI Organization examples. Based on the managingOrganization reference in the ImmSoT immunization.location, this info is retrieved from HPI by the Orchestration service and added to the bundle."
+
 * meta.versionId = "8910"
 * meta.lastUpdated = "2022-04-05T15:04:16.000+12:00"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPIOrganization"

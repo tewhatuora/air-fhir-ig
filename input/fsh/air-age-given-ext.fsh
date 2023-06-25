@@ -3,7 +3,7 @@ Id: air-age-given
 Title: "AIR Age Given Extension"
 Description: "This extension calculates the patient age when a vaccination was administered. Although this could be calculated by the client based on patient date of birth, it is provided as a convenience."
 
-* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
 
 * insert StandardMetadata 
 

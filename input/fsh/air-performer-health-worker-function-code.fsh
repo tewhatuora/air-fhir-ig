@@ -1,7 +1,7 @@
-ValueSet: AIRVaccinatorFunctionCode
-Id: air-vaccinator-function-code
-Title: "AIR Vaccinator Function"
-Description: "A value set of codes for the functions performed by vaccinators. Note that the preferred terms are VC, VHW and IP. The other terms in this value set will be deprecated in the future."
+ValueSet: AIRPerformerHealthWorkerFunctionCode
+Id: air-performer-health-worker-function-code
+Title: "AIR Performer Health Worker Function"
+Description: "A value set of codes for the functions performed by the people who are involved in administering immunisations in Aotearoa. Note that the preferred terms are VC, VHW and IP. The other terms in this value set will be deprecated in the future."
 
 * ^experimental = false
 * insert StandardMetadata

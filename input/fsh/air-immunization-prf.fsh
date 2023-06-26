@@ -49,9 +49,6 @@ Description: "This is the AIR Immunization Profile."
 // remove reportOrigin
 * reportOrigin 0..0
 
-// make location point to AIR Location profile
-* location only Reference(air-location)
-
 // remove manufacturer
 * manufacturer 0..0
 
@@ -72,14 +69,31 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
-// point performer at local content
-* performer.actor only Reference(air-practitioner)
-* performer.function from air-vaccinator-function-code (required)
-* performer.function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
-* performer.function.coding 1..1
+// slice performer into person and organization types
+* performer ^slicing.discriminator.type = #pattern
+* performer ^slicing.discriminator.path = "function"
+* performer ^slicing.rules = #closed
+* performer ^slicing.description = "Slicing patter for immunization.performer... either a person or an org."
+* performer ^slicing.ordered = false
+
+* performer contains
+    performerHealthWorker 0..1 and
+    performerOrganization 0..1
+
+* performer[performerHealthWorker].actor only Reference(air-practitioner)
+* performer[performerHealthWorker].function from air-performer-health-worker-function-code (required)
+* performer[performerHealthWorker].function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
+* performer[performerHealthWorker].function.coding 1..1
+
+* performer[performerOrganization].actor only Reference(air-organization)
+* performer[performerOrganization].function from air-performer-organization-code (required)
+* performer[performerOrganization].function ^short = "The organization responsible for sponsoring / performing the vaccination event. This field is only needed when the location.managingOrganization is not populated."
+* performer[performerOrganization].function.coding 1..1
+
+
 * obeys nz-worker-function-1
 * obeys nz-worker-function-2
-* performer.actor 1..1
+
 
 // remove note
 * note 0..0
@@ -147,13 +161,13 @@ Severity: #error
 XPath: ""
 
 Invariant: nz-worker-function-1
-Description: "if the health worker function has a system, then it must have a code."
+Description: "if the performer function has a system, then it must have a code."
 Expression: "performer.function.coding.system.exists() implies performer.function.coding.code.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-worker-function-2
-Description: "if the health worker function has a code, then it must have a system."
+Description: "if the performer function has a code, then it must have a system."
 Expression: "performer.function.coding.code.exists() implies performer.function.coding.system.exists()"
 Severity: #error
 XPath: ""

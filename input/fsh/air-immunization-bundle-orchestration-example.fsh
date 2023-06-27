@@ -70,7 +70,7 @@ Instance: ImmSoTImmunizationExampleForOrchBundle-1
 InstanceOf: Immunization
 Usage: #example
 Title: "AIR Immunization Example 1"
-Description: "An example of an AIR v2 immunization resource, with patient and location resources expanded as per _include syntax. "
+Description: "An example of an AIR v2 immunization resource, using an ESAM identifier for the location. "
 
 * id = "imm-example-for-bundle-orch-1"
 * meta.versionId = "null"
@@ -95,7 +95,9 @@ Description: "An example of an AIR v2 immunization resource, with patient and lo
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(1112139)
+* location.identifier.use = #official
+* location.identifier.system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* location.identifier.value = "1112139"
 
 * site.coding = http://snomed.info/sct#16217701000119102
 
@@ -114,7 +116,7 @@ Instance: ImmSoTImmunizationExampleForOrchBundle-2
 InstanceOf: Immunization
 Usage: #example
 Title: "AIR Immunization Example 2"
-Description: "An example of an AIR v2 immunization resource, with patient and location resources expanded as per _include syntax."
+Description: "An example of an AIR v2 immunization resource, with an HPI-O location specified."
 
 * id = "imm-example-for-bundle-orch-2"
 * meta.versionId = "null"
@@ -139,7 +141,9 @@ Description: "An example of an AIR v2 immunization resource, with patient and lo
 
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
-* location = Reference(FZZ958-K)
+* location.identifier[0].use = #official
+* location.identifier[=].system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* location.identifier[=].value = "FZZ958-K"
 
 * site.coding = http://snomed.info/sct#16217701000119102
 

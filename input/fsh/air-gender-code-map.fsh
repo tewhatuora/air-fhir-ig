@@ -7,8 +7,8 @@ Description: "This maps the gender codes listed in the NIR Message Spec v4.5, Se
 * status = #draft
 
 // the source and target value sets
-* sourceCanonical = "http://terminology.hl7.org/CodeSystem/v2-0001"
-* targetCanonical = "http://hl7.org/fhir/administrative-gender"
+* sourceCanonical = "http://terminology.hl7.org/ValueSet/v2-0001"
+* targetCanonical = "http://hl7.org/fhir/ValueSet/administrative-gender"
 
 * group.source = "http://terminology.hl7.org/CodeSystem/v2-0001"
 * group.target = "http://hl7.org/fhir/administrative-gender"

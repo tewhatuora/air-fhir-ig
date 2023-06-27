@@ -2,7 +2,7 @@ Instance: AIRCapabilityStatement
 InstanceOf: CapabilityStatement
 Usage: #definition
 
-* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/capabilityStatement"
+* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AIRCapabilityStatement"
 * version = "0.3.0"
 * name = "AIRCapabilityStatement"
 * title = "AIR FHIR Server Capability Statement"

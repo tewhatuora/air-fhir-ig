@@ -105,3 +105,6 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #LVG "Left Ventragluteal"
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 
+
+// Terms for the function played by an organization in vaccine administration
+* #MO "Managing Organisation"

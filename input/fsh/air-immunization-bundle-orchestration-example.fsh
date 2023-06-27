@@ -45,24 +45,27 @@ Description: "This is an example of the MessageHeader resource that will be incl
 * meta.tag.system = "http://terminology.hl7.org/CodeSystem/v2-0103"
 * source.endpoint = "https://digital.health.nz/orchestrationService"
 
-* sender = Reference(immsot-orchestration-service)
+// In my mind, this identifies who is sending this bundle
+// but HL wants to keep the original PMS EDI message info in here
+// if we need all that, I guess it's an extension
+// the big question... where do we maintain state???
+// the EDI system is http://hl7.org.nz/fhir/StructureDefinition/edi-address
+* sender.identifier.system = "https://standards.digital.health.nz/healthlink.net/endpoint"
+* sender.identifier.value "broker-service"
 
 * destination.name = "HealthLink"
 * destination.endpoint = "Broker"
-* destination.receiver = Reference(healthlink-broker-service)
+* destination.receiver = Reference(https://healthlink.net/healthlink-broker-service)
 
 * eventCoding.code = #V04
 * eventCoding.system = "http://terminology.hl7.org/CodeSystem/v2-0003"
 
 * contained[0].resourceType = "Organization"
-* contained[=].id = "immsot-orchestration-service"
+* contained[=].id = "https://healthlink.net/immsot-orchestration-service"
 * contained[=].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/edi-address"
 * contained[=].identifier.value = "fhirorch"
 
-* contained[+].resourceType = "Organization"
-* contained[=].id = "healthlink-broker-service"
-* contained[=].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/edi-address"
-* contained[=].identifier.value = "hlkbrokr"
+
 
 
 
@@ -87,7 +90,7 @@ Description: "An example of an AIR v2 immunization resource, using an ESAM ident
 
 * statusReason.coding = http://snomed.info/sct#127785005
 
-* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#3
+* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -106,7 +109,7 @@ Description: "An example of an AIR v2 immunization resource, using an ESAM ident
 * performer.function = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * performer.actor.identifier.value = "90ZZLP"
-* performer.actor.identifier.assigner = Reference("https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G")
+* performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
 
 * reasonCode = http://snomed.info/sct#161651000210107
 
@@ -133,7 +136,7 @@ Description: "An example of an AIR v2 immunization resource, with an HPI-O locat
 
 * statusReason.coding = http://snomed.info/sct#127785005
 
-* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#333
+* vaccineCode.coding = http://hl7.org/fhir/sid/cvx#03
 * vaccineCode.text = "Measles, Mumps, Rubella"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -152,7 +155,7 @@ Description: "An example of an AIR v2 immunization resource, with an HPI-O locat
 * performer.function = https://standards.digital.health.nz/fhir/air/StructureDefinition/air-terms#VC
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * performer.actor.identifier.value = "90ZZLP"
-* performer.actor.identifier.assigner = Reference("https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G")
+* performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
 
 * reasonCode = http://snomed.info/sct#161651000210107
 

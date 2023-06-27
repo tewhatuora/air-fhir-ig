@@ -8,12 +8,9 @@ Description: "Ths profile constrains the NZ Location Profile to meet the require
 
 * obeys nz-loc1
 * obeys nz-loc2
-* obeys nz-loc3
-* obeys nz-loc4
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
-
 * identifier ^slicing.rules = #open
 
 * identifier contains 
@@ -22,9 +19,6 @@ Description: "Ths profile constrains the NZ Location Profile to meet the require
 
 * identifier[ESAM].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id" (exactly)
 * identifier[HPI-F].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id" (exactly)
-
-* managingOrganization 1..1
-* managingOrganization.identifier 1..1
 
 Invariant: nz-loc1
 Description: "if the location identifier has a system, then it must have a value."
@@ -35,17 +29,5 @@ XPath: ""
 Invariant: nz-loc2
 Description: "if the location identifier has a value, then it must have a system."
 Expression: "identifier.value.exists() implies identifier.system.exists()"
-Severity: #error
-XPath: ""
-
-Invariant: nz-loc3
-Description: "if the managing organization identifier has a system, then it must have a value."
-Expression: "managingOrganization.identifier.system.exists() implies managingOrganization.identifier.value.exists()"
-Severity: #error
-XPath: ""
-
-Invariant: nz-loc4
-Description: "if the managing organization identifier has a value, then it must have a system."
-Expression: "managingOrganization.identifier.value.exists() implies managingOrganization.identifier.system.exists()"
 Severity: #error
 XPath: ""

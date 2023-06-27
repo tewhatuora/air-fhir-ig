@@ -1,7 +1,7 @@
 Instance: route-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map -- Route of Administration HL7v2 < -- > SNOMED "
+Title: "Concept Map -- Route of Administration HL7v2 < -- > SNOMED"
 Description: "This maps the Route codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ."
 
 * status = #draft

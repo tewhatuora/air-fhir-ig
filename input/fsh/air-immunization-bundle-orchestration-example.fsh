@@ -51,22 +51,18 @@ Description: "This is an example of the MessageHeader resource that will be incl
 // the big question... where do we maintain state???
 // the EDI system is http://hl7.org.nz/fhir/StructureDefinition/edi-address
 * sender.identifier.system = "https://standards.digital.health.nz/healthlink.net/endpoint"
-* sender.identifier.value "broker-service"
+* sender.identifier.value = "broker-service"
 
 * destination.name = "HealthLink"
 * destination.endpoint = "Broker"
 * destination.receiver = Reference(https://healthlink.net/healthlink-broker-service)
 
-* eventCoding.code = #V04
-* eventCoding.system = "http://terminology.hl7.org/CodeSystem/v2-0003"
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#V04
 
 * contained[0].resourceType = "Organization"
 * contained[=].id = "https://healthlink.net/immsot-orchestration-service"
 * contained[=].identifier.system = "http://hl7.org.nz/fhir/StructureDefinition/edi-address"
 * contained[=].identifier.value = "fhirorch"
-
-
-
 
 
 Instance: ImmSoTImmunizationExampleForOrchBundle-1
@@ -161,12 +157,12 @@ Description: "An example of an AIR v2 immunization resource, with an HPI-O locat
 
 * protocolApplied.doseNumberPositiveInt = 1
 
+
 Instance: ZAA0792
 InstanceOf: Patient
 Usage: #example
 Title: "Immunization Patient 1"
 Description: "Sample patient from NHI examples. Based on the patient reference in the ImmSoT immunisation, this info is retrieved from NHI by the Orchestration service and added to the bundle."
-
 
 * meta.versionId = "3368251"
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient"

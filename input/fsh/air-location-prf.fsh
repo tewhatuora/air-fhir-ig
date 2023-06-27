@@ -18,7 +18,7 @@ Description: "Ths profile constrains the NZ Location Profile to meet the require
     HPI-F 0..1
 
 * identifier[ESAM].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id" (exactly)
-* identifier[HPI-F].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id" (exactly)
+* identifier[HPI-F].system = "https://standards.digital.health.nz/ns/hpi-facility-id" (exactly)
 
 Invariant: nz-loc1
 Description: "if the location identifier has a system, then it must have a value."

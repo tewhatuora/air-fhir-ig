@@ -243,7 +243,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#47666491000116106 "BCG Vaccine AJV"
 * $NZMT#10336221000116104 "Engerix B (20 mcg)"
 * $NZMT#31171221000116106 "Havrix"
-* $NZMT#44630041000116108 "Nimenrix"
+* $NZMT#47562481000116104 "MenQuadfi"
 
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR

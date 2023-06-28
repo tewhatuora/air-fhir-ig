@@ -50,12 +50,13 @@ Description: "This is an example of the MessageHeader resource that will be incl
 // if we need all that, I guess it's an extension
 // the big question... where do we maintain state???
 // the EDI system is http://hl7.org.nz/fhir/StructureDefinition/edi-address
-* sender.identifier.system = "https://standards.digital.health.nz/healthlink.net/endpoint"
-* sender.identifier.value = "broker-service"
+* sender.identifier.system = "https://standards.digital.health.nz/ns/orchestration-service"
+* sender.identifier.value = "orchestration-service"
 
 * destination.name = "HealthLink"
 * destination.endpoint = "Broker"
-* destination.receiver = Reference(https://healthlink.net/healthlink-broker-service)
+* destination.receiver.identifier.system = "https://standards.digital.health.nz/healthlink.net/endpoint"
+* destination.receiver.identifier.value = "broker-service"
 
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#V04
 

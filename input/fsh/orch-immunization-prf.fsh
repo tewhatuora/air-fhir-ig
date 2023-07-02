@@ -65,28 +65,6 @@ Description: "This is the Immunization Profile for use in outbound messages from
 // remove doseQuantity
 * doseQuantity 0..0
 
-// slice performer into person and organization types
-* performer ^slicing.discriminator.type = #value
-* performer ^slicing.discriminator.path = "actor.identifier.system"
-* performer ^slicing.rules = #closed
-* performer ^slicing.description = "Slicing patter for immunization.performer... either a person or an org."
-* performer ^slicing.ordered = false
-
-* performer contains
-    performerHealthWorker 0..1 and
-    performerOrganization 0..1
-
-* performer[performerHealthWorker].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" (exactly)
-* performer[performerHealthWorker].function from air-performer-health-worker-function-code (required)
-* performer[performerHealthWorker].function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
-* performer[performerHealthWorker].function.coding 1..1
-
-* performer[performerOrganization].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
-* performer[performerOrganization].function from air-performer-organization-code (required)
-* performer[performerOrganization].function ^short = "The organization responsible for sponsoring / performing the vaccination event. This field is only needed when the location.managingOrganization is not populated."
-* performer[performerOrganization].function.coding 1..1
-
-
 * obeys nz-worker-function-1
 * obeys nz-worker-function-2
 

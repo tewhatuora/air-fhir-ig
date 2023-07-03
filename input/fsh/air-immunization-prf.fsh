@@ -21,6 +21,9 @@ Description: "This is the AIR Immunization Profile."
 * vaccineCode.coding.code 1..1
 * vaccineCode.coding.system 1..1
 
+// add a diluent extension
+* extension contains air-diluent named Diluent 0..1
+
 // make patient point to AIR Patient profile
 * patient only Reference(air-patient)
 * obeys nz-pat-1
@@ -28,14 +31,14 @@ Description: "This is the AIR Immunization Profile."
 * obeys nz-pat-2
 * obeys nz-pat-3
 
-// add a diluent extension
-* extension contains air-diluent named Diluent 0..1
-
 // remove encounter
 * encounter 0..0
 
 // occurrence only dateTime 
 * occurrence[x] only dateTime
+
+// point to AIR-location profile
+* location only Reference(air-location)
 
 // add AgeGiven extension
 * extension contains air-age-given named AgeGiven 0..1
@@ -70,9 +73,9 @@ Description: "This is the AIR Immunization Profile."
 * doseQuantity 0..0
 
 // slice performer into person and organization types
-* performer ^slicing.discriminator.type = #pattern
+* performer ^slicing.discriminator.type = #value
 * performer ^slicing.discriminator.path = "identifier.system"
-* performer ^slicing.rules = #closed
+* performer ^slicing.rules = #open
 * performer ^slicing.description = "Slicing patter for immunization.performer... either a person or an org."
 * performer ^slicing.ordered = false
 

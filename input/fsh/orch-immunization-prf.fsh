@@ -65,8 +65,8 @@ Description: "This is the Immunization Profile for use in outbound messages from
 // remove doseQuantity
 * doseQuantity 0..0
 
-* obeys nz-worker-function-1
-* obeys nz-worker-function-2
+* obeys nz-performer-function-1
+* obeys nz-performer-function-2
 
 
 // remove note

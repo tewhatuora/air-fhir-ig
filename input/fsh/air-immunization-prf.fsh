@@ -203,6 +203,6 @@ XPath: ""
 
 Invariant: perf-type
 Description: "If the value of performer.function comes from the set of health worker codes then the performer.actor must reference an air-practitioner."
-Expression: "performer.function.where(code.memberOf(air-performer-health-worker-function-code)) implies performer.actor.resolve().is(FHIR.Practitioner)"
+Expression: "performer.function.where(code.memberOf(air-performer-health-worker-function-code)) implies performer.actor.resolve() is Practitioner"
 Severity: #error
 XPath: ""

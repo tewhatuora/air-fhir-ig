@@ -1,3 +1,4 @@
+/*
 Instance: test-imm
 InstanceOf: air-immunization
 Usage: #example
@@ -11,4 +12,4 @@ Description: "playing around with performer"
 * performer(performerHealthWorker).function = $AIRTerms#VC "Vaccinator"
 * performer(performerHealthWorker).actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * performer(performerHealthWorker).actor.identifier.value = "90ZZLP"
-
+*/

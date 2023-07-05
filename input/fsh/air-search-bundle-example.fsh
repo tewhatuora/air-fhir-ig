@@ -53,6 +53,7 @@ Usage: #example
 * entry[=].resource[=].location = Reference(Location/1112139)
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
+
 * entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
 * entry[=].resource[=].performer.actor = Reference(Practitioner/90ZZLP)
 // How to reference the Assigner without expanding the reference? 

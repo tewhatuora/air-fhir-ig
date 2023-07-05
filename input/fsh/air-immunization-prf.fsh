@@ -75,8 +75,8 @@ Description: "This is the AIR Immunization Profile."
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa
- * obeys nz-performer-function-1
- * obeys nz-performer-function-2
+* obeys nz-performer-function-1
+* obeys nz-performer-function-2
 
 // performer actor restricted to air-practitioner or air-organization
 * performer.actor only Reference(air-practitioner or air-organization)

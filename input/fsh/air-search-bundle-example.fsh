@@ -36,7 +36,7 @@ Usage: #example
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 // AIR only wants one identifier, so this patient reference throws an error
 // do we need two profiles after all?
-* entry[=].resource[=].patient = Reference(Patient/ZAA0792)
+* entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
 // ageGiven extension
@@ -50,11 +50,11 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
 * entry[=].resource[=].extension[=].extension[=].valueInteger = 2730
 
-* entry[=].resource[=].location = Reference(Location/1112139)
+* entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/1112139)
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 * entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
-* entry[=].resource[=].performer.actor = Reference(Practitioner/90ZZLP)
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 // How to reference the Assigner without expanding the reference? 
 // * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
 * entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
@@ -85,7 +85,7 @@ Usage: #example
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 // AIR only wants one identifier, so this patient reference throws an error
 // do we need two profiles after all?
-* entry[=].resource[=].patient = Reference(Patient/ZAA0792)
+* entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
 // ageGiven extension
@@ -99,12 +99,12 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
 * entry[=].resource[=].extension[=].extension[=].valueInteger = 2487
 
-* entry[=].resource[=].location = Reference(Location/FZZ958-K)
+* entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
-* entry[=].resource[=].performer.actor = Reference(Practitioner/90ZZLP)
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 // If the Assigner Org is there in this format, don't we need to expand the reference?
 // * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
 * entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
@@ -115,7 +115,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Patient/ZAA0792"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792"
 
 // data about the actual resource here
 * entry[=].resource[0].resourceType = "Patient"
@@ -212,7 +212,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Practitioner/90ZZLP"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP"
 
 // data about the actual resource here
 
@@ -236,7 +236,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Location/FZZ958-K"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K"
 
 // data about the actual resource here
 
@@ -285,14 +285,14 @@ Usage: #example
 * entry[=].resource[=].address.text = "2C/123 Molesworth Street, Thorndon, Wellington 6011"
 * entry[=].resource[=].address.line[0] = "Thorndon"
 * entry[=].resource[=].address.line[+] = "2C/123 Molesworth Street"
-* entry[=].resource[=].managingOrganization = Reference(Organization/GZZ956-B) "Flat-Unit Address Org"
+* entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B) "Flat-Unit Address Org"
 
 
 // Organization HPI Organization
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Organization/GZZ956-B"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B"
 
 // data about the actual resource here
 

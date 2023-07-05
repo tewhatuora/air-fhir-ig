@@ -73,26 +73,16 @@ Description: "This is the AIR Immunization Profile."
 * doseQuantity 0..0
 
 
-* performer contains
-    performerHealthWorker 0..1 and
-    performerOrganization 0..1
+// performer function coding rules
+// if the function has a code, it must have a system and vice versa
+ * obeys nz-performer-function-1
+ * obeys nz-performer-function-2
 
-* performer[performerHealthWorker].actor.targetProfile = "air-practitioner"
-* performer[performerHealthWorker].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" (exactly)
-* performer[performerHealthWorker].function from air-performer-health-worker-function-code (required)
-* performer[performerHealthWorker].function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
-* performer[performerHealthWorker].function.coding 1..1
+// performer actor restricted to air-practitioner or air-organization
+* performer.actor only Reference(air-practitioner or air-organization)
 
-* performer[performerOrganization].actor.targetProfile = "air-organization"
-* performer[performerOrganization].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
-* performer[performerOrganization].function from air-performer-organization-code (required)
-* performer[performerOrganization].function ^short = "The organization responsible for sponsoring / performing the vaccination event. This field is only needed when the location.managingOrganization is not populated."
-* performer[performerOrganization].function.coding 1..1
-
-
-* obeys nz-worker-function-1
-* obeys nz-worker-function-2
-
+// tie the value of the function coding to the type of performer
+* obeys perf-type
 
 // remove note
 * note 0..0
@@ -208,11 +198,5 @@ XPath: ""
 Invariant: nz-pat-3
 Description: "if the patient identifier has a value, then it must have a system."
 Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
-Severity: #error
-XPath: ""
-
-Invariant: perf-type
-Description: "If the value of performer.function comes from the set of health worker codes then the performer.actor must reference an air-practitioner."
-Expression: "performer.function.where(code.memberOf(air-performer-health-worker-function-code)) implies performer.actor.resolve() is Practitioner"
 Severity: #error
 XPath: ""

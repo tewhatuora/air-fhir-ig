@@ -50,7 +50,7 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
 * entry[=].resource[=].extension[=].extension[=].valueInteger = 2730
 
-* entry[=].resource[=].location = Reference(https://esam.endpoint/v1/Location/1112139)
+* entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/1112139)
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 * entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"

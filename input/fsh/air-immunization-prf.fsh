@@ -72,33 +72,17 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
-/*
-// slice performer into person and organization types
-* performer ^slicing.discriminator.type = #pattern
-* performer ^slicing.discriminator.path = "identifier.system"
-* performer ^slicing.rules = #closed
-* performer ^slicing.description = "Slicing patter for immunization.performer... either a person or an org."
-* performer ^slicing.ordered = false
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa
-* obeys nz-performer-function-1
-* obeys nz-performer-function-2
+ * obeys nz-performer-function-1
+ * obeys nz-performer-function-2
 
-* performer[performerHealthWorker].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" (exactly)
-* performer[performerHealthWorker].function from air-performer-health-worker-function-code (required)
-* performer[performerHealthWorker].function ^short = "The person most responsible for the administration of the vaccine into the patient. While the full set of NIR performer codes is still permitted, implementations SHOULD only use the codes IP, VC, or VHW going forward, as all other codes will be deprecated."
-* performer[performerHealthWorker].function.coding 1..1
+// performer actor restricted to air-practitioner or air-organization
+* performer.actor only Reference(air-practitioner or air-organization)
 
-* performer[performerOrganization].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
-* performer[performerOrganization].function from air-performer-organization-code (required)
-* performer[performerOrganization].function ^short = "The organization responsible for sponsoring / performing the vaccination event. This field is only needed when the location.managingOrganization is not populated."
-* performer[performerOrganization].function.coding 1..1
-
-
-* obeys nz-worker-function-1
-* obeys nz-worker-function-2
-*/
+// tie the value of the function coding to the type of performer
+* obeys perf-type
 
 // remove note
 * note 0..0

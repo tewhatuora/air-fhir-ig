@@ -69,6 +69,7 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
+/*
 // slice performer into person and organization types
 * performer ^slicing.discriminator.type = #profile
 * performer ^slicing.discriminator.path = "performer.actor.resolve()"
@@ -95,7 +96,7 @@ Description: "This is the AIR Immunization Profile."
 
 * obeys nz-worker-function-1
 * obeys nz-worker-function-2
-
+*/
 
 // remove note
 * note 0..0

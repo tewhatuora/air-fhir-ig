@@ -81,9 +81,6 @@ Description: "This is the AIR Immunization Profile."
 // performer actor restricted to air-practitioner or air-organization
 * performer.actor only Reference(air-practitioner or air-organization)
 
-// tie the value of the function coding to the type of performer
-* obeys perf-type
-
 // remove note
 * note 0..0
 

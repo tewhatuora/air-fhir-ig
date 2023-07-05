@@ -72,6 +72,20 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
+// slice performer on practitioner vs org
+
+* performer ^slicing.discriminator.type = #type
+* performer ^slicing.discriminator.path = "actor.resolve()"
+* performer ^slicing.rules = #open
+* performer ^slicing.description = "Slice based on referenced actor."
+
+* performer contains organization 0..* and practitioner 0..*
+* performer[organization].actor only Reference(air-organization)
+* performer[practitioner].actor only Reference(air-practitioner)
+
+* performer[organization].function from air-performer-organization-function-code
+* performer[practitioner].function from air-performer-health-worker-function-code
+
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa

@@ -2,7 +2,7 @@ Profile: AIRImmunization
 Parent: Immunization
 Id: air-immunization
 Title: "AIR Immunization"
-Description: "This is the AIR Immunization Profile."
+Description: "This is the AIR Immunization Profile, to be used for immunisation records inbound to ImmSoT. It includes a number of constraints designed to enforce ImmSoT's lean data model approach."
 
 * insert StandardMetadata
 

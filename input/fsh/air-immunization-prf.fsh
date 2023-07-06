@@ -76,7 +76,7 @@ Description: "This is the AIR Immunization Profile."
 
 * performer ^slicing.discriminator.type = #type
 * performer ^slicing.discriminator.path = "actor.resolve()"
-* performer ^slicing.rules = #open
+* performer ^slicing.rules = #closed
 * performer ^slicing.description = "Slice based on referenced actor."
 
 * performer contains organization 0..* and practitioner 0..*

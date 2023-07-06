@@ -36,7 +36,7 @@ Usage: #example
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 // AIR only wants one identifier, so this patient reference throws an error
 // do we need two profiles after all?
-* entry[=].resource[=].patient = Reference(Patient/ZAA0792)
+* entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
 // ageGiven extension
@@ -50,14 +50,19 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
 * entry[=].resource[=].extension[=].extension[=].valueInteger = 2730
 
-* entry[=].resource[=].location = Reference(Location/1112139)
+// this is an ESAM location type
+* entry[=].resource[=].location = Reference(http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139)
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
-* entry[=].resource[=].performer.actor = Reference(Practitioner/90ZZLP)
-// How to reference the Assigner without expanding the reference? 
-// * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+
+// Because this record has an ESAM location, we need a performer organisation as well
+* entry[=].resource[=].performer.function = $AIRTerms#MO "Managing Organisation"
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
+
 * entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
@@ -86,7 +91,7 @@ Usage: #example
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 // AIR only wants one identifier, so this patient reference throws an error
 // do we need two profiles after all?
-* entry[=].resource[=].patient = Reference(Patient/ZAA0792)
+* entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
 
 // ageGiven extension
@@ -100,14 +105,13 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
 * entry[=].resource[=].extension[=].extension[=].valueInteger = 2487
 
-* entry[=].resource[=].location = Reference(Location/FZZ958-K)
+* entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
-* entry[=].resource[=].performer.actor = Reference(Practitioner/90ZZLP)
-// If the Assigner Org is there in this format, don't we need to expand the reference?
-// * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 * entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
@@ -116,7 +120,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Patient/ZAA0792"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792"
 
 // data about the actual resource here
 * entry[=].resource[0].resourceType = "Patient"
@@ -144,15 +148,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0792"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #old
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0806"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].name.id = "5"
 * entry[=].resource[=].name.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-preferred"
 * entry[=].resource[=].name.extension.valueBoolean = true
@@ -206,14 +206,14 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * entry[=].resource[=].identifier[=].value = "1112139"
-* entry[=].resource[=].managingOrganization = Reference(Organization/GZZ956-B)
+* entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
 
 
 // Practitioner HPI Practitioner
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Practitioner/90ZZLP"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP"
 
 // data about the actual resource here
 
@@ -227,17 +227,14 @@ Usage: #example
 * entry[=].resource[0].identifier.use = #official
 * entry[=].resource[0].identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * entry[=].resource[0].identifier.value = "90ZZLP"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
-
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 
 
 // Location HPI Location
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Location/FZZ958-K"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K"
 
 // data about the actual resource here
 
@@ -251,15 +248,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * entry[=].resource[=].identifier[=].value = "FZZ958-K"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nzhis-facility-id"
 * entry[=].resource[=].identifier[=].value = "9987"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].status = #active
 * entry[=].resource[=].name = "Medical Centre Flat-Unit"
 * entry[=].resource[=].alias = "Medical Centre Flat-Unit"
@@ -293,7 +286,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Organization/GZZ956-B"
+* entry[=].fullUrl = "https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B"
 
 // data about the actual resource here
 
@@ -307,15 +300,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
 * entry[=].resource[=].identifier[=].value = "GZZ956-B"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-nzbn"
 * entry[=].resource[=].identifier[=].value = "9999999999041"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
 * entry[=].resource[=].active = true
 * entry[=].resource[=].type.coding.version = "1.1"
 * entry[=].resource[=].type.coding = $organisation-type-code#999 "Other"

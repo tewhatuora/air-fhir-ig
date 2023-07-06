@@ -6,4 +6,4 @@ Description: "A value set of codes for the functions performed by the organisati
 * ^experimental = false
 * insert StandardMetadata
 
-* $AIRTerms#MO "Managing Organization"
+* $AIRTerms#MO "Managing Organisation"

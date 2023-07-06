@@ -92,12 +92,6 @@ Description: "This is the AIR Immunization Profile."
 * obeys nz-performer-function-1
 * obeys nz-performer-function-2
 
-// performer actor restricted to air-practitioner or air-organization
-* performer.actor only Reference(air-practitioner or air-organization)
-
-// tie the value of the function coding to the type of performer
-* obeys perf-type
-
 // remove note
 * note 0..0
 
@@ -187,9 +181,6 @@ Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.ex
 Severity: #error
 XPath: ""
 
-
-
-
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1
 Expression: "patient.identifier.system.exists() implies (patient.identifier.system='https://standards.digital.health.nz/ns/nhi-id' or patient.identifier.system='https://standards.digital.health.nz/ns/air-vhw-id')"
@@ -212,11 +203,5 @@ XPath: ""
 Invariant: nz-pat-3
 Description: "if the patient identifier has a value, then it must have a system."
 Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
-Severity: #error
-XPath: ""
-
-Invariant: perf-type
-Description: "If the value of performer.function comes from the set of health worker codes then the performer.actor must reference an air-practitioner."
-Expression: "performer.function.where(code.memberOf(air-performer-health-worker-function-code)) implies performer.actor.resolve() is Practitioner"
 Severity: #error
 XPath: ""

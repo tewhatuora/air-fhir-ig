@@ -102,6 +102,7 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #LG "Left Gluteus Medius"
 * #RG "Right Gluteus Medius"
 * #LT "Left Thigh"
+* #RT "Right Thigh"
 * #LVG "Left Ventragluteal"
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 

@@ -2,7 +2,7 @@ Instance: AIRCapabilityStatement
 InstanceOf: CapabilityStatement
 Usage: #definition
 
-* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/AIRCapabilityStatement"
+* url = "https://standards.digital.health.nz/fhir/air/CapabilityStatement/AIRCapabilityStatement"
 * version = "0.3.0"
 * name = "AIRCapabilityStatement"
 * title = "AIR FHIR Server Capability Statement"
@@ -39,8 +39,12 @@ Usage: #definition
 * rest.resource[=].conditionalRead = #not-supported
 * rest.resource[=].conditionalUpdate = false
 * rest.resource[=].conditionalDelete = #not-supported
-// * rest.resource[=].searchInclude[0] = "*"
-// * rest.resource[=].searchInclude[+] = "Immunization.identifier"
+
+* rest.resource[=].searchInclude[0] = "*"
+* rest.resource[=].searchInclude[+] = "Immunization.patient"
+* rest.resource[=].searchInclude[+] = "Immunization.performer.actor"
+* rest.resource[=].searchInclude[+] = "Immunization.location"
+
 * rest.resource[=].searchParam[0].name = "identifier"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
 * rest.resource[=].searchParam[=].type = #reference

@@ -29,6 +29,14 @@ Description: "This maps the vaccination site codes listed in the NIR Message Spe
 * group.element[=].target.code = #1217006009
 * group.element[=].target.equivalence = #equivalent
 
+* group.element[+].code = #LT
+* group.element[=].target.code = #1217007000
+* group.element[=].target.equivalence = #equivalent
+
+* group.element[+].code = #RT
+* group.element[=].target.code = #1217006009
+* group.element[=].target.equivalence = #equivalent
+
 * group.element[+].code = #LUA
 * group.element[=].target.code = #368208006
 * group.element[=].target.equivalence = #equivalent

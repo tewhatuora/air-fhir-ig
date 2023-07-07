@@ -1,5 +1,5 @@
 CodeSystem: AIRTerms
-Id: air-terms
+Id: air-terms-code
 Title: "AIR Terms"
 Description: "This is a code system for all the terms needed in AIR ImmSoT that don't come from an external standard"
 

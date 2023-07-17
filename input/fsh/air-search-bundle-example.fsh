@@ -196,7 +196,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "Location/1112139"
+* entry[=].fullUrl = "https://esam.endpoint/v1/Location/1112139"
 
 // data about the actual resource here
 
@@ -279,7 +279,7 @@ Usage: #example
 * entry[=].resource[=].address.text = "2C/123 Molesworth Street, Thorndon, Wellington 6011"
 * entry[=].resource[=].address.line[0] = "Thorndon"
 * entry[=].resource[=].address.line[+] = "2C/123 Molesworth Street"
-* entry[=].resource[=].managingOrganization = Reference(Organization/GZZ956-B) "Flat-Unit Address Org"
+* entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B) "Flat-Unit Address Org"
 
 
 // Organization HPI Organization

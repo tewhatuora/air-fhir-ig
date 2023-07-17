@@ -41,10 +41,12 @@ echo running sushi ...
  ./runSushi.sh
 
 if [[ "$sushi_only" != "true" ]]; then
+    JAVA_OPTS="-Xms2g -Xmx2g -Dfile.encoding=UTF-8"
+
     if [[ -v HTTP_PROXY && "$no_proxy" != "true" ]]; then
       IG_OPTS="-proxy ${HTTP_PROXY//http:\/\/}"
     fi
 
     echo running ig publisher
-    java -Xms2g -Xmx2g -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi
+    java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi
 fi

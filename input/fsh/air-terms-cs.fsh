@@ -1,5 +1,5 @@
 CodeSystem: AIRTerms
-Id: air-terms
+Id: air-terms-code
 Title: "AIR Terms"
 Description: "This is a code system for all the terms needed in AIR ImmSoT that don't come from an external standard"
 
@@ -102,6 +102,7 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #LG "Left Gluteus Medius"
 * #RG "Right Gluteus Medius"
 * #LT "Left Thigh"
+* #RT "Right Thigh"
 * #LVG "Left Ventragluteal"
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 

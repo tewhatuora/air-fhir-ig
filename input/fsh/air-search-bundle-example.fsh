@@ -4,22 +4,19 @@ Title: "AIR Orchestration Service Immunisation Bundle Example"
 Description: "This is an example of a how multiple immunisation records will be returned from ImmSoT, inclusive of and following the expansion functions performed by the Orchestration Service."
 Usage: #example
 
-// trying out the syntax for the entries as done in 
-// https://github.com/HL7NZ/nes-ig/blob/master/input/fsh/examples/enrolment-nomination-request-message-1.fsh
-
 * type = #searchset
 * link.relation = "self"
-* link.url = "https://standards.digital.health.nz/fhir/air/Immunization?_include=*&patient=ZAA0792"
+* link.url = "https://air.api-dev.digital.health.nz/fhir/R4/Immunization?_include=*&patient=ZAA0792"
 
 // Immunisation record #1
 
 // data about the bundle entry here
 * entry[+].search.mode = #match
-* entry[=].fullUrl = "Immunization/imm-example-for-bundle-orch-1"
+* entry[=].fullUrl = "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/a757a62c-ef57-4480-85de-ac012a1ee1a9"
 
 // data about the actual resource here
 * entry[=].resource[0].resourceType = "Immunization"
-* entry[=].resource[=].id = "imm-example-for-bundle-orch-1"
+* entry[=].resource[=].id = "a757a62c-ef57-4480-85de-ac012a1ee1a9"
 * entry[=].resource[=].meta.versionId = "null"
 * entry[=].resource[=].meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * entry[=].resource[=].meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/orch-immunization"
@@ -34,41 +31,48 @@ Usage: #example
 * entry[=].resource[=].status = #completed
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
-// AIR only wants one identifier, so this patient reference throws an error
-// do we need two profiles after all?
+
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
-* entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
+* entry[=].resource[=].occurrenceDateTime = "2016-12-02T13:21:46+13:00"
 
 // ageGiven extension
 * entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
 * entry[=].resource[=].extension[=].extension[0].url = "years"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 7
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 1
 * entry[=].resource[=].extension[=].extension[+].url = "months"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 5
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 2
 * entry[=].resource[=].extension[=].extension[+].url = "days"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 20
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 22
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 2730
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 445
+* entry[=].resource[=].extension[=].extension[+].url = "precision"
+* entry[=].resource[=].extension[=].extension[=].valueString = "Day"
 
-* entry[=].resource[=].location = Reference(https://esam.endpoint/v1/Location/1112139)
+// this is an ESAM location type
+* entry[=].resource[=].location = Reference(http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139)
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
+
 * entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
 * entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
-// How to reference the Assigner without expanding the reference? 
-// * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
-* entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
-* entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
+
+// Because this record has an ESAM location, we need a performer organisation as well
+* entry[=].resource[=].performer.function = $AIRTerms#MO "Managing Organisation"
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
+
+* entry[=].resource[=].reasonCode = $AIRTerms#15M "15 months"
+* entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 2
 
 // Immunisation record #2
 
 // data about the bundle entry here
 * entry[+].search.mode = #match
-* entry[=].fullUrl = "Immunization/imm-example-for-bundle-orch-2"
+* entry[=].fullUrl = "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/b868b73d-ef57-4480-85de-ac012a1ee1a9"
 
 // data about the actual resource here
 * entry[=].resource[0].resourceType = "Immunization"
-* entry[=].resource[=].id = "imm-example-for-bundle-orch-2"
+* entry[=].resource[=].id = "b868b73d-ef57-4480-85de-ac012a1ee1a9"
 * entry[=].resource[=].meta.versionId = "null"
 * entry[=].resource[=].meta.lastUpdated = "2023-03-01T16:45:46.781+13:00"
 * entry[=].resource[=].meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/orch-immunization"
@@ -86,28 +90,29 @@ Usage: #example
 // AIR only wants one identifier, so this patient reference throws an error
 // do we need two profiles after all?
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
-* entry[=].resource[=].occurrenceDateTime = "2023-03-01T16:45:46+13:00"
+* entry[=].resource[=].occurrenceDateTime = "2016-09-01T16:45:46+13:00"
 
 // ageGiven extension
 * entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
 * entry[=].resource[=].extension[=].extension[0].url = "years"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 9
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 0
 * entry[=].resource[=].extension[=].extension[+].url = "months"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 9
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 11
 * entry[=].resource[=].extension[=].extension[+].url = "days"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 1
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 20
 * entry[=].resource[=].extension[=].extension[+].url = "daysSinceBirth"
-* entry[=].resource[=].extension[=].extension[=].valueInteger = 2487
+* entry[=].resource[=].extension[=].extension[=].valueInteger = 355
+* entry[=].resource[=].extension[=].extension[+].url = "precision"
+* entry[=].resource[=].extension[=].extension[=].valueString = "Day"
 
 * entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
 * entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
-// If the Assigner Org is there in this format, don't we need to expand the reference?
-// * entry[=].resource[=].performer.actor.identifier.assigner = Reference(https://standards.digital.health.nz/ns/hpi-organisation-id/G00001-G)
-* entry[=].resource[=].reasonCode = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
+* entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
 
@@ -143,15 +148,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0792"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #old
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0806"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].name.id = "5"
 * entry[=].resource[=].name.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-preferred"
 * entry[=].resource[=].name.extension.valueBoolean = true
@@ -205,7 +206,7 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * entry[=].resource[=].identifier[=].value = "1112139"
-* entry[=].resource[=].managingOrganization = Reference(Organization/GZZ956-B)
+* entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
 
 
 // Practitioner HPI Practitioner
@@ -226,10 +227,7 @@ Usage: #example
 * entry[=].resource[0].identifier.use = #official
 * entry[=].resource[0].identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * entry[=].resource[0].identifier.value = "90ZZLP"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
-
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 
 
 // Location HPI Location
@@ -250,15 +248,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-facility-id"
 * entry[=].resource[=].identifier[=].value = "FZZ958-K"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nzhis-facility-id"
 * entry[=].resource[=].identifier[=].value = "9987"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].status = #active
 * entry[=].resource[=].name = "Medical Centre Flat-Unit"
 * entry[=].resource[=].alias = "Medical Centre Flat-Unit"
@@ -306,15 +300,11 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
 * entry[=].resource[=].identifier[=].value = "GZZ956-B"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-nzbn"
 * entry[=].resource[=].identifier[=].value = "9999999999041"
-// This is how identifier assigner comes back from NHI... but do we need it?
-// * entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
-// If it's there in this format, don't we need to expand the reference?
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
 * entry[=].resource[=].active = true
 * entry[=].resource[=].type.coding.version = "1.1"
 * entry[=].resource[=].type.coding = $organisation-type-code#999 "Other"

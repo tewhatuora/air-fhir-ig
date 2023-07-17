@@ -12,17 +12,17 @@ Description: "Values to use in the status reason field of an immunisation event.
 * $SCT#127785005 "Administration of substance to produce immunity, either active or passive"
 // CIR calls this "Administered Overseas", maps to GIVNOS
 * $SCT#201571000210103 "History of vaccination given in another country"
-* $SCT#171277005 "Sensitivity contraindicated - immunization"
-// maps to ALTGVN
+* $SCT#171277005 "Sensitivity contraindicated - immunisation"
+// maps to ALTGIVN
 * $SCT#201581000210101 "Alternate or non national immunisation schedule vaccination given"
-* $SCT#266758009 "Immunization contraindicated"
+* $SCT#266758009 "Immunisation contraindicated"
 * $SCT#90311000119107 "Vaccination declined by caregiver"
 * $SCT#591000119102 "Vaccine declined by patient"
 * $SCT#168276008 "Serology positive"
 // CIR calls this "Medically Unfit"
 * $SCT#702370009 "Patient unsuitable for procedure"
 //CIR calls this "Consent Declined"
-* $SCT#310376006 "Immunization consent not given"
+* $SCT#310376006 "Immunisation consent not given"
 // CIR calls this "Others"
 * $SCT#74964007 "Other"
 // For ticket IMM-1283

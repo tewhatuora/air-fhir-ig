@@ -13,8 +13,10 @@ Description: "This extension calculates the patient age when a vaccination was a
     and months 0..1
     and days 0..1
     and daysSinceBirth 0..1
+    and precision 0..1
 
 * extension[years].value[x] only integer
 * extension[months].value[x] only integer
 * extension[days].value[x] only integer
 * extension[daysSinceBirth].value[x] only integer
+* extension[precision].value[x] only string

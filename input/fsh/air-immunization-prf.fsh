@@ -2,7 +2,7 @@ Profile: AIRImmunization
 Parent: Immunization
 Id: air-immunization
 Title: "AIR Immunization"
-Description: "This is the AIR Immunization Profile."
+Description: "This is the AIR Immunization Profile, to be used for immunisation records inbound to ImmSoT. It includes a number of constraints designed to enforce ImmSoT's lean data model approach."
 
 * insert StandardMetadata
 
@@ -72,14 +72,25 @@ Description: "This is the AIR Immunization Profile."
 // remove doseQuantity
 * doseQuantity 0..0
 
+// slice performer on practitioner vs org
+
+* performer ^slicing.discriminator.type = #type
+* performer ^slicing.discriminator.path = "actor.resolve()"
+* performer ^slicing.rules = #closed
+* performer ^slicing.description = "Slice based on referenced actor."
+
+* performer contains organization 0..* and practitioner 0..*
+* performer[organization].actor only Reference(air-organization)
+* performer[practitioner].actor only Reference(air-practitioner)
+
+* performer[organization].function from air-performer-organization-function-code
+* performer[practitioner].function from air-performer-health-worker-function-code
+
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa
 * obeys nz-performer-function-1
 * obeys nz-performer-function-2
-
-// performer actor restricted to air-practitioner or air-organization
-* performer.actor only Reference(air-practitioner or air-organization)
 
 // remove note
 * note 0..0
@@ -169,9 +180,6 @@ Description: "if the reasonCode aka indicationhas a code, then it must have a sy
 Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.exists()"
 Severity: #error
 XPath: ""
-
-
-
 
 // This rule says you must have 1 official NHI
 Invariant: nz-pat-1

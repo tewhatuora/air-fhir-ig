@@ -8,6 +8,7 @@ Usage: #example
 * link.relation = "self"
 * link.url = "https://air.api-dev.digital.health.nz/fhir/R4/Immunization?_include=*&patient=ZAA0792"
 
+//----------------------------------------------------
 // Immunisation record #1
 
 // data about the bundle entry here
@@ -51,19 +52,23 @@ Usage: #example
 // this is an ESAM location type
 * entry[=].resource[=].location = Reference(http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139)
 
+* entry[=].resource[=].lotNumber = "1234567"
+* entry[=].resource[=].expirationDate = "2025-07-21"
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
-* entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
-* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer[0].function = $AIRTerms#VC "Vaccinator"
+* entry[=].resource[=].performer[0].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 
 // Because this record has an ESAM location, we need a performer organisation as well
-* entry[=].resource[=].performer.function = $AIRTerms#MO "Managing Organisation"
-* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
+* entry[=].resource[=].performer[+].function = $AIRTerms#MO "Managing Organisation"
+* entry[=].resource[=].performer[=].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
 
 * entry[=].resource[=].reasonCode = $AIRTerms#15M "15 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 2
 
+//----------------------------------------------------
 // Immunisation record #2
 
 // data about the bundle entry here
@@ -107,6 +112,9 @@ Usage: #example
 
 * entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
 
+* entry[=].resource[=].lotNumber = "ABCDEFG"
+* entry[=].resource[=].expirationDate = "2024-08-11"
+
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
@@ -115,7 +123,7 @@ Usage: #example
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
-
+//----------------------------------------------------
 // Patient NHI Patient Example
 
 // data about the bundle entry here
@@ -191,12 +199,12 @@ Usage: #example
 * entry[=].resource[=].address[=].postalCode = "1010"
 * entry[=].resource[=].address[=].country = "NZ"
 
-
+//----------------------------------------------------
 // Location ESAM Location
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "https://esam.endpoint/v1/Location/1112139"
+* entry[=].fullUrl = "http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139"
 
 // data about the actual resource here
 
@@ -206,9 +214,8 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
 * entry[=].resource[=].identifier[=].value = "1112139"
-* entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
 
-
+//----------------------------------------------------
 // Practitioner HPI Practitioner
 
 // data about the bundle entry here
@@ -229,7 +236,7 @@ Usage: #example
 * entry[=].resource[0].identifier.value = "90ZZLP"
 * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 
-
+//----------------------------------------------------
 // Location HPI Location
 
 // data about the bundle entry here
@@ -281,7 +288,7 @@ Usage: #example
 * entry[=].resource[=].address.line[+] = "2C/123 Molesworth Street"
 * entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B) "Flat-Unit Address Org"
 
-
+//----------------------------------------------------
 // Organization HPI Organization
 
 // data about the bundle entry here

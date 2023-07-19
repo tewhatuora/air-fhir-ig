@@ -5,7 +5,7 @@ InstanceOf: Bundle
 Description: "Example enrolment nomination request message"
 Usage: #example
 
-* id = "update-immunistation-request1"
+* id = "update-immunisation-request1"
 * type = #message
 * timestamp = 2023-05-14T11:15:33+10:00
 * entry[0].resource.resourceType = "MessageHeader"

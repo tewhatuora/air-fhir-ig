@@ -1,8 +1,8 @@
 Alias: $ethnic-group-level-4-code = https://standards.digital.health.nz/ns/ethnic-group-level-4-code
 
-Instance: enrolment-nomination-request-message-2
+Instance: immunisation-update-request-message-2
 InstanceOf: Bundle
-Description: "Example enrolment nomination request message"
+Description: "Example immunisation update request message"
 Usage: #example
 
 * id = "update-immunisation-request1"

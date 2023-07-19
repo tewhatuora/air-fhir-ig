@@ -74,7 +74,8 @@ menu:
   Home: index.html
   Artifacts: artifacts.html
   Business Context: business-context.html
-  Use Cases: use-cases.html
+  Use Cases: 
+    Immunusation Update Message:  immunusationUpdateMessage.html
   Onboarding: onboarding.html
   Profiles: profiles.html
   Extensions: extensions.html

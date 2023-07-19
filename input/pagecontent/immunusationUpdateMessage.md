@@ -41,11 +41,11 @@ At a later time , after the health provider has processed the request, they send
 3.  Orchestration server returns a synchronous 200 response to the Messaging Hub.
 
 ####  Immunisation Update Message Response Example
-[update-immunisation-response-message-1](update-immunisation-response-message-1.json.html)
+[update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
 
 ### To do
 1. add flag to indicate message is to be sent to all interested parties
 
 
 ### Questions
-1. how does orchestation server determine the target PMSs?
+1. how does orchestration server determine the target PMSs?

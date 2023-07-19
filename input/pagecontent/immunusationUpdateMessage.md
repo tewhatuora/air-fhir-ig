@@ -10,7 +10,7 @@ At a later time , after the health provider has processed the request, they send
 
 
 <div>
-{% include Immunisation-update-requestt.svg %}
+{% include Immunisation-update-request.svg %}
 </div>
 
 

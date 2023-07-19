@@ -1,0 +1,19 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 5
+skinparam maxmessagesize 180
+skinparam sequenceParticipant bold
+title  Immunisation Update Response
+participant "ISM" as AA #CornflowerBlue
+participant "ImmSOT" as A #CornflowerBlue
+participant "Orchestration" as B #CornflowerBlue
+participant "<FHIR API> Messaging Hub" as C #CornflowerBlue
+participant "PMS" as D #CornflowerBlue
+|||
+
+D -> C :VXU^V04 ACK Response
+activate C
+|||
+C -> C: Transform HL7 v2 to FHIR
+C -> B: POST [base]/$process-message
+

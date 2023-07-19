@@ -15,5 +15,5 @@ Description: "Identifies AIR events."
 * ^versionNeeded = false
 * ^content = #complete
 * ^count = 2
-* #IMMUNISATION_UPDATE "Immunisation Update"
-* #IMMUNISATION_UPDATE_ACK "Immunisation Update acknowledgement"
+* #IMMUNISATION_UPDATE "Immunisation Update Request"
+* #IMMUNISATION_UPDATE_ACK "Immunisation Update Response"

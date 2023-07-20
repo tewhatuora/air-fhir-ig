@@ -41,3 +41,6 @@ Description: "Body sites value set for AIR immunisations"
 * $SCT#368208006 "Left upper arm"
 * $SCT#368209003 "Right upper arm"
 * $SCT#74964007 "Other"
+
+// Added for NAT-3746
+* $SCT#74262004 "Oral cavity structure"

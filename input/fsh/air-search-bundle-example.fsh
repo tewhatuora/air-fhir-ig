@@ -50,7 +50,7 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueString = "Day"
 
 // this is an ESAM location type
-* entry[=].resource[=].location = Reference(http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139)
+* entry[=].resource[=].location = Reference(http://esam.co.nz/eSAMMoHAddress_v01/1112139)
 
 * entry[=].resource[=].lotNumber = "1234567"
 * entry[=].resource[=].expirationDate = "2025-07-21"
@@ -204,7 +204,7 @@ Usage: #example
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
-* entry[=].fullUrl = "http://rest.moh.health.nz/services/eSAMMoHAddressREST_v01Location/1112139"
+* entry[=].fullUrl = "http://esam.co.nz/eSAMMoHAddress_v01/1112139"
 
 // data about the actual resource here
 
@@ -212,7 +212,7 @@ Usage: #example
 * entry[=].resource[=].id = "1112139"
 * entry[=].resource[=].meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
 * entry[=].resource[=].identifier[0].use = #official
-* entry[=].resource[=].identifier[=].system = "https://hl7.org.nz/fhir/StructureDefinition/esam-id"
+* entry[=].resource[=].identifier[=].system = "http://esam.co.nz/eSAMMoHAddress_v01"
 * entry[=].resource[=].identifier[=].value = "1112139"
 
 //----------------------------------------------------

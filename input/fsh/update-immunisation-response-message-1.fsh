@@ -5,7 +5,7 @@ InstanceOf: Bundle
 Description: "Example enrolment nomination request message"
 Usage: #example
 
-* id = "34567"
+* id = "update-immunisation-response-message-1"
 * type = #message
 * entry[0].resource.resourceType = "MessageHeader"
 //sending pms facility id

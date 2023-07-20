@@ -32,6 +32,6 @@ Usage: #example
 * entry[1].resource.issue.severity =  #information
 * entry[1].resource.issue.code =  #informational
 * entry[1].resource.issue.details.text = "accepted"
-* entry[1].resource.issue.details.coding.code = #ACCEPTED
-* entry[1].resource.issue.details.coding.system = "https://standards.digital.health.nz/ns/hl7v2-result"
+* entry[1].resource.issue.details.coding.code = #AA
+* entry[1].resource.issue.details.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0008"
 

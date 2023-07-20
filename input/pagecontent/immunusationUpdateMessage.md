@@ -5,7 +5,7 @@ An ‘Immunisation Update Message ’ interaction is initiated by a user who wis
 The request includes details of the patient who recieved the immunisation, the immunisation itself,  and the PMS  systems to which the message should be sent
 At a later time , after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
-###Immunisation Update Message 
+###Immunisation Update Message Request
 
 
 
@@ -30,12 +30,22 @@ At a later time , after the health provider has processed the request, they send
 [update-immunisation-request1](update-immunisation-request1.json.html)
 
 
+###Immunisation Update Message Response
+<div>
+{% include Immunisation-update-response.svg %}
+</div>
 
+####  Immunisation Update Message Response processing steps:
+1. The PMS sends an HL7v2.0 VXU^V04 ACK message to the Messaging Hub indicating if the immunisation update  request has been accepted or not
+2. The Messaging Hub creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the  Orchestration server $process-message endpoint.
+3.  Orchestration server returns a synchronous 200 response to the Messaging Hub.
 
+####  Immunisation Update Message Response Example
+[update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
 
 ### To do
 1. add flag to indicate message is to be sent to all interested parties
-2. add response use case
+
 
 ### Questions
-1. how does orchestation server determine the target PMSs?
+1. how does orchestration server determine the target PMSs?

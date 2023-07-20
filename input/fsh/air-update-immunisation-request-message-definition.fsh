@@ -9,7 +9,7 @@ Usage: #definition
 * date = "2020-04-21"
 * focus[0].code = #Patient
 * focus[0].profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient"
-* focus[0].min = 1
+* focus[0].min = 0
 * focus[0].max = "1"
 
 * focus[1].code = #Immunisation

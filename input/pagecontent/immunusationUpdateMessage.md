@@ -20,14 +20,17 @@ At a later time, after the health provider has processed the request, they send 
 1. ISM sends a REST create request to the ImmSot Immunization endpoint, passing in the details of the immunisation
 2.  ImmSOT creates the immunisation record
 3.  ImmSOT  creates a message bundle containing a Patient reference and Immunisation resources, and sends it it to the AIR Orchestration server's $process-message endpoint. (EventType=IMMUNISATION_UPDATE)
-3. The Orchestration server enriches the Patient refernece with additional patient detils
+3. The Orchestration server enriches the Patient refernece with additional patient details
 The Orchestration server determines which  PMS systems should be notified of the new Immunisation
 4. The Orchestration server looks up the EDI address's of the nominated target PMS systems 
 5. The Orchestration server creates a message for  each target PMS  and sends it to the Messaging Hub
 6. The Messaging hub transforms the message to an HL7v2.0  VXU^V04 request and sends it to the PMS
 6. The Messaging Hub returns a synchronous 200 response to NES
 
-####  Immunisation Update Message Request Example
+####  Immunisation Update Message Request Example - ImmSot To Orchestration
+[update-immunisation-request1](update-immunisation-request1.json.html)
+
+####  Immunisation Update Message Request Example - Orchestration To HealthLink
 [update-immunisation-request1](update-immunisation-request1.json.html)
 
 
@@ -44,9 +47,12 @@ The Orchestration server determines which  PMS systems should be notified of the
 ####  Immunisation Update Message Response Example
 [update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
 
-### To do
-1. add flag to indicate message is to be sent to all interested parties
+### Notes
+1. flag to indicate message is to be sent to all interested parties
 
+This has been done as an extensionm to messgaeheader, but there is  nno to state imn the messgaedefineition that teh AirMessgaeHeader profiel should be used.
+We might consider havign a ddifferne_event type instead - e.g IMMUNISATION_UPDATE_ALL
 
+2. I have used Davids scripst to generate profile and extensiosn .xml which menas the IG menus fro those get properly rendered. Do you ewwnat teh scripst included in the codebase and run as aprt of the pipeline?
 ### Questions
-1. how does orchestration server determine the target PMSs?
+1.look at error codes

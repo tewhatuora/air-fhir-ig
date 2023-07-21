@@ -1,0 +1,71 @@
+<div xmlns='http://www.w3.org/1999/xhtml'>
+<br/><strong>Extensions defined in this guide</strong><br/><br/>
+<table width='100%' border='1' cellspacing='0' cellpadding='5px'>
+<tr><th>Id</th><th>Url</th><th>Context of Use</th><th>Description</th><th>Purpose</th>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-age-given.html'>air-age-given</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>This extension calculates the patient age when a vaccination was administered. Although this could be calculated by the client based on patient date of birth, it is provided as a convenience.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-data-quality-assessment.html'>air-data-quality-assessment</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>The data quality assessment of this immunization record as calculated by AIR rules.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-diluent.html'>air-diluent</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Immunization Diluent</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-disease-covered.html'>air-disease-covered</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-disease-covered</td>
+<td>
+<div>ActivityDefinition</div>
+<div>ImmunizationRecommendation.recommendation</div>
+</td>
+<td><p>The disease which a vaccine coveres. Needed in ActivityDefinition and ImmunizationRecommendation as the cardinality there is only single.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-all-parties-flag.html'>all-parties-flag</a></td>
+<td>http://hl7.org.nz/fhir/StructureDefinition/all-parties-flag</td>
+<td>
+<div>MessageHeader</div>
+</td>
+<td><p>Indicates that all interested parties should be notified of the event</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-dq-violation.html'>dq-violation</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-dq-violation</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-dq-violations.html'>dq-violations</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-dq-violations</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>This describes an instance of an immunisation record violating one or more AIR data quality rules. Each such violation is described by a codes, a type, a message, a pointer to the targeted element, and a weight.</p></td>
+<td></td>
+</tr>
+</table>
+</div>

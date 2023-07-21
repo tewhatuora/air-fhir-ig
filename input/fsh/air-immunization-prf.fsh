@@ -74,14 +74,17 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 // slice performer on practitioner vs org
 
-* performer ^slicing.discriminator.type = #type
-* performer ^slicing.discriminator.path = "actor.resolve()"
+* performer ^slicing.discriminator.type = #value
+* performer ^slicing.discriminator.path = "identifier.system"
 * performer ^slicing.rules = #closed
-* performer ^slicing.description = "Slice based on referenced actor."
+* performer ^slicing.description = "Slice based on identifier system: organisation vs practitioner."
 
 * performer contains organization 0..* and practitioner 0..*
-* performer[organization].actor only Reference(air-organization)
-* performer[practitioner].actor only Reference(air-practitioner)
+
+* performer[organization].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id" 
+// or "https://standards.digital.health.nz/ns/hpi-nzbn"
+* performer[practitioner].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" 
+// or "https://standards.digital.health.nz/ns/air-vhw-id"
 
 * performer[organization].function from air-performer-organization-function-code
 * performer[practitioner].function from air-performer-health-worker-function-code

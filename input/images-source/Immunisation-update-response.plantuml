@@ -16,4 +16,5 @@ activate C
 |||
 C -> C: Transform HL7 v2 to FHIR
 C -> B: POST [base]/$process-message
+B -[dashed]-> C: 200 Response
 @enduml

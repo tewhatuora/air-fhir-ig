@@ -75,7 +75,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // slice performer on practitioner vs org
 
 * performer ^slicing.discriminator.type = #value
-* performer ^slicing.discriminator.path = "identifier.system"
+* performer ^slicing.discriminator.path = "actor.identifier.system"
 * performer ^slicing.rules = #closed
 * performer ^slicing.description = "Slice based on identifier system: organisation vs practitioner."
 

@@ -27,7 +27,10 @@ The Orchestration server determines which  PMS systems should be notified of the
 6. The Messaging hub transforms the message to an HL7v2.0  VXU^V04 request and sends it to the PMS
 6. The Messaging Hub returns a synchronous 200 response to NES
 
-####  Immunisation Update Message Request Example
+####  Immunisation Update Message Request Example - ImmSot To Orchestration
+[update-immunisation-request1](update-immunisation-request1.json.html)
+
+####  Immunisation Update Message Request Example - Orchestration To HealthLink
 [update-immunisation-request1](update-immunisation-request1.json.html)
 
 
@@ -49,4 +52,4 @@ The Orchestration server determines which  PMS systems should be notified of the
 
 
 ### Questions
-1. how does orchestration server determine the target PMSs?
+1.look at error codes

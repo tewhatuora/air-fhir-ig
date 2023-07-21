@@ -14,16 +14,19 @@ participant "PMS" as D #CornflowerBlue
 AA -> A: POST [base]/Immunization
 A -> A: Create Immunisation record 
 A -> A: construct Immunisation Update Request message (empty destination)
+A -[dashed]-> AA:  200 Response 
 A -> B: POST [base]/$process-message
+
 activate B
 |||
 B -> B: Determine destinations
+B -> B: Populate Patient resource
 B -> B: Get EDI for  each destination
 |||
 B -> C: POST [base]/$process-message
 C -> C:  transform to HL7 VXU^V04
 C -> D: VXU^V04 request
-C [dashed]-> B:  200 Response 
+C -[dashed]-> B:  200 Response 
 B -[dashed]-> A: 200 Response 
 activate C
 |||

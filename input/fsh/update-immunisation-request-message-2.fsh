@@ -21,6 +21,8 @@ Usage: #example
 //generated guuid
 * entry[0].fullUrl = "https://air.api-dev.digital.health.nz/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
+* entry[0].resource[0].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/all-parties-flag"
+* entry[0].resource[0].extension[0].ValueBoolean="false"
 
 * entry[1].resource.resourceType = "Immunization" 
 * entry[1].resource.id = "IMM-ABCDE"

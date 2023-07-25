@@ -25,7 +25,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * extension contains air-diluent named Diluent 0..1
 
 // make patient point to AIR Patient profile
-* patient only Reference(air-patient)
+// * patient only Reference(air-patient)
+* patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The preferred identification system is the HPI-F. See the HPI Implementation Guide at https://nhi-ig.hip.digital.health.nz/index.html."
 * obeys nz-pat-1
 * obeys nz-pat-1-1
 * obeys nz-pat-2
@@ -38,7 +39,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * occurrence[x] only dateTime
 
 // point to AIR-location profile
-* location only Reference(air-location)
+// * location only Reference(air-location)
+* location ^short = "The location where the immunisation was administered."
+* location ^definition = "The location should be sent using the logical reference format, specifically an identifier with a system and a value. The preferred identification system is the HPI-F. See the HPI Implementation Guide at https://hpi-ig.hip.digital.health.nz/index.html. If the HPI-F is not available, an ESAM identifier may be sent."
 
 // add AgeGiven extension
 * extension contains air-age-given named AgeGiven 0..1
@@ -76,7 +79,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 * performer ^slicing.discriminator.type = #value
 * performer ^slicing.discriminator.path = "actor.identifier.system"
-* performer ^slicing.rules = #closed
+* performer ^slicing.rules = #open
 * performer ^slicing.description = "Slice based on identifier system: organisation vs practitioner."
 
 * performer contains organization 0..* and practitioner 0..*
@@ -89,6 +92,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * performer[organization].function from air-performer-organization-function-code
 * performer[practitioner].function from air-performer-health-worker-function-code
 
+* performer[organization].function.coding 1..1
+* performer[practitioner].function.coding 1..1
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa
@@ -125,7 +130,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * protocolApplied.doseNumber[x] only positiveInt
 
 Invariant: nz-route-1
-Description: "if the route of admin has a system, then it must have a code."
+Description: "If the route of admin has a system, then it must have a code."
 Expression: "route.coding.system.exists() implies route.coding.code.exists()"
 Severity: #error
 XPath: ""
@@ -137,60 +142,61 @@ Severity: #error
 XPath: ""
 
 Invariant: nz-site-1
-Description: "if the body site has a system, then it must have a code."
+Description: "If the body site has a system, then it must have a code."
 Expression: "site.coding.system.exists() implies site.coding.code.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-site-2
-Description: "if the body site has a code, then it must have a system."
+Description: "If the body site has a code, then it must have a system."
 Expression: "site.coding.code.exists() implies site.coding.system.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-status-reason-1
-Description: "if the status reason has a system, then it must have a code."
+Description: "If the status reason has a system, then it must have a code."
 Expression: "statusReason.coding.system.exists() implies statusReason.coding.code.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-status-reason-2
-Description: "if the status reason has a code, then it must have a system."
+Description: "If the status reason has a code, then it must have a system."
 Expression: "statusReason.coding.code.exists() implies statusReason.coding.system.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-performer-function-1
-Description: "if the performer function has a system, then it must have a code."
+Description: "If the performer function has a system, then it must have a code."
 Expression: "performer.function.coding.system.exists() implies performer.function.coding.code.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-performer-function-2
-Description: "if the performer function has a code, then it must have a system."
+Description: "If the performer function has a code, then it must have a system."
 Expression: "performer.function.coding.code.exists() implies performer.function.coding.system.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-reasonCode-1
-Description: "if the reasonCode aka indication has a system, then it must have a code."
+Description: "If the reasonCode aka indication has a system, then it must have a code."
 Expression: "reasonCode.coding.system.exists() implies reasonCode.coding.code.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-reasonCode-2
-Description: "if the reasonCode aka indicationhas a code, then it must have a system."
+Description: "If the reasonCode aka indication has a code, then it must have a system."
 Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.exists()"
 Severity: #error
 XPath: ""
 
-// This rule says you must have 1 official NHI
+// This rule says you must have 1 official NHI or a SalesForce ID
 Invariant: nz-pat-1
 Expression: "patient.identifier.system.exists() implies (patient.identifier.system='https://standards.digital.health.nz/ns/nhi-id' or patient.identifier.system='https://standards.digital.health.nz/ns/air-vhw-id')"
 Severity: #error
 Description: "Patient identifier must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
 XPath: ""
 
+// Note this constraint may need to change to accommodate HPI reality of multiple IDs
 Invariant: nz-pat-1-1
 Expression: "patient.identifier.count() = 1"
 Severity: #error
@@ -198,13 +204,13 @@ Description: "There must be exactly one patient identifier."
 XPath: ""
 
 Invariant: nz-pat-2
-Description: "if the patient identifier has a system, then it must have a value."
+Description: "If the patient identifier has a system, then it must have a value."
 Expression: "patient.identifier.system.exists() implies patient.identifier.value.exists()"
 Severity: #error
 XPath: ""
 
 Invariant: nz-pat-3
-Description: "if the patient identifier has a value, then it must have a system."
+Description: "If the patient identifier has a value, then it must have a system."
 Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
 Severity: #error
 XPath: ""

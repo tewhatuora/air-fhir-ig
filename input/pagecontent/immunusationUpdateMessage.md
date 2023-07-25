@@ -67,4 +67,3 @@ This has been done as an extension to messgaeheader, but there is  no to place i
 We might consider having a differennt event type instead - e.g IMMUNISATION_UPDATE_ALL
 
 2. I have used David's scripst to generate profile and extensions .xml which means the IG menus for those get properly rendered. Do we want the scripts included in the codebase and run as part of the pipeline?
-### Questions

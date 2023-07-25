@@ -1,3 +1,5 @@
+Alias: $EventCapabilityMode = http://hl7.org/fhir/event-capability-mode
+
 Instance: AIRCapabilityStatement
 InstanceOf: CapabilityStatement
 Usage: #definition
@@ -65,3 +67,7 @@ Usage: #definition
 // * rest.resource[=].searchRevInclude[0] = "*"
 * rest.interaction.code = #transaction
 * rest.interaction.code = #search-system
+* messaging.supportedMessage[0].mode = $EventCapabilityMode#sender
+* messaging.supportedMessage[0].definition = "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationRequestMessageDefinition"
+* messaging.supportedMessage[1].mode = $EventCapabilityMode#sender
+* messaging.supportedMessage[1].definition = "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationResponsetMessageDefinition"

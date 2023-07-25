@@ -29,9 +29,9 @@ Usage: #example
 
 * entry[1].resource.resourceType = "OperationOutcome"
 * entry[1].resource.id = "success"
-* entry[1].resource.issue.severity =  #information
-* entry[1].resource.issue.code =  #informational
-* entry[1].resource.issue.details.text = "accepted"
+* entry[1].resource.issue.severity =  #success
+* entry[1].resource.issue.code =  #success
+* entry[1].resource.issue.diagnostics = "accepted"
 * entry[1].resource.issue.details.coding.code = #AA
 * entry[1].resource.issue.details.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0008"
 

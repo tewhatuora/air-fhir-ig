@@ -34,6 +34,9 @@ Usage: #example
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
+* entry[=].resource[=].patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
+* entry[=].resource[=].patient.identifier.value = "ZAA0792"
+
 * entry[=].resource[=].occurrenceDateTime = "2016-12-02T13:21:46+13:00"
 
 // ageGiven extension
@@ -51,6 +54,9 @@ Usage: #example
 
 // this is an ESAM location type
 * entry[=].resource[=].location = Reference(http://esam.co.nz/eSAMMoHAddress_v01/1112139)
+* entry[=].resource[=].location.identifier.system = "http://esam.co.nz/eSAMMoHAddress_v01/"
+* entry[=].resource[=].location.identifier.value = "1112139"
+
 
 * entry[=].resource[=].lotNumber = "1234567"
 * entry[=].resource[=].expirationDate = "2025-07-21"
@@ -60,10 +66,15 @@ Usage: #example
 
 * entry[=].resource[=].performer[0].function = $AIRTerms#VC "Vaccinator"
 * entry[=].resource[=].performer[0].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer[0].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* entry[=].resource[=].performer[0].actor.identifier.value = "90ZZLP"
+
 
 // Because this record has an ESAM location, we need a performer organisation as well
 * entry[=].resource[=].performer[+].function = $AIRTerms#MO "Managing Organisation"
 * entry[=].resource[=].performer[=].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
+* entry[=].resource[=].performer[=].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* entry[=].resource[=].performer[=].actor.identifier.value = "GZZ956-B"
 
 * entry[=].resource[=].reasonCode = $AIRTerms#15M "15 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 2
@@ -92,9 +103,11 @@ Usage: #example
 * entry[=].resource[=].status = #completed
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
-// AIR only wants one identifier, so this patient reference throws an error
-// do we need two profiles after all?
+
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
+* entry[=].resource[=].patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
+* entry[=].resource[=].patient.identifier.value = "ZAA0792"
+
 * entry[=].resource[=].occurrenceDateTime = "2016-09-01T16:45:46+13:00"
 
 // ageGiven extension
@@ -111,6 +124,8 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueString = "Day"
 
 * entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
+* entry[=].resource[=].location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* entry[=].resource[=].location.identifier.value = "FZZ958-K"
 
 * entry[=].resource[=].lotNumber = "ABCDEFG"
 * entry[=].resource[=].expirationDate = "2024-08-11"
@@ -119,7 +134,10 @@ Usage: #example
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
-* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer[0].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer[0].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* entry[=].resource[=].performer[0].actor.identifier.value = "90ZZLP"
+
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
@@ -323,6 +341,78 @@ Usage: #example
 * entry[=].resource[=].alias.extension.valueCodeableConcept.text = "Legal"
 * entry[=].resource[=].telecom.system = #phone
 * entry[=].resource[=].telecom.value = "021 101010"
+* entry[=].resource[=].telecom.use = #work
+* entry[=].resource[=].telecom.rank = 1
+* entry[=].resource[=].telecom.period.start = "1970-01-01"
+
+// data about the bundle entry here
+* entry[+].search.mode = #include
+* entry[=].fullUrl = "Reference(Organization/G00001-G)"
+
+// data about the actual resource here
+
+* entry[=].resource[0].resourceType = "Organization"
+* entry[=].resource[=].id = "G00001-G"
+* entry[=].resource[=].meta.versionId = "101"
+* entry[=].resource[=].meta.lastUpdated = "2022-04-05T15:04:16.000+12:00"
+* entry[=].resource[=].meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPIOrganization"
+* entry[=].resource[=].extension.url = "http://hl7.org.nz/fhir/StructureDefinition/established"
+* entry[=].resource[=].extension.valuePeriod.start = "2018-05-20"
+* entry[=].resource[=].identifier[0].use = #official
+* entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* entry[=].resource[=].identifier[=].value = "G00001-G"
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
+* entry[=].resource[=].identifier[+].use = #official
+* entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-nzbn"
+* entry[=].resource[=].identifier[=].value = "9999999999051"
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
+* entry[=].resource[=].active = true
+* entry[=].resource[=].type.coding.version = "1.1"
+* entry[=].resource[=].type.coding = $organisation-type-code#999 "Other"
+* entry[=].resource[=].name = "Flat-Unit Address Org"
+* entry[=].resource[=].alias = "Flat-Unit Address Org"
+* entry[=].resource[=].alias.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/alias-type"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.coding.version = "1.0.0"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.coding = $alias-type-code#legal "Legal"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.text = "Legal"
+* entry[=].resource[=].telecom.system = #phone
+* entry[=].resource[=].telecom.value = "027 123456"
+* entry[=].resource[=].telecom.use = #work
+* entry[=].resource[=].telecom.rank = 1
+* entry[=].resource[=].telecom.period.start = "1970-01-01"
+
+// data about the bundle entry here
+* entry[+].search.mode = #include
+* entry[=].fullUrl = "Reference(Organization/MBIE)"
+
+// data about the actual resource here
+
+* entry[=].resource[0].resourceType = "Organization"
+* entry[=].resource[=].id = "MBIE"
+* entry[=].resource[=].meta.versionId = "101"
+* entry[=].resource[=].meta.lastUpdated = "2022-04-05T15:04:16.000+12:00"
+* entry[=].resource[=].meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/HPIOrganization"
+* entry[=].resource[=].extension.url = "http://hl7.org.nz/fhir/StructureDefinition/established"
+* entry[=].resource[=].extension.valuePeriod.start = "2018-05-20"
+* entry[=].resource[=].identifier[0].use = #official
+* entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
+* entry[=].resource[=].identifier[=].value = "G00001-G"
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
+* entry[=].resource[=].identifier[+].use = #official
+* entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/hpi-nzbn"
+* entry[=].resource[=].identifier[=].value = "9999999999061"
+* entry[=].resource[=].identifier[=].assigner = Reference(Organization/MBIE)
+* entry[=].resource[=].active = true
+* entry[=].resource[=].type.coding.version = "1.1"
+* entry[=].resource[=].type.coding = $organisation-type-code#999 "Other"
+* entry[=].resource[=].name = "Flat-Unit Address Org"
+* entry[=].resource[=].alias = "Flat-Unit Address Org"
+* entry[=].resource[=].alias.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/alias-type"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.coding.version = "1.0.0"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.coding = $alias-type-code#legal "Legal"
+* entry[=].resource[=].alias.extension.valueCodeableConcept.text = "Legal"
+* entry[=].resource[=].telecom.system = #phone
+* entry[=].resource[=].telecom.value = "027 123456"
 * entry[=].resource[=].telecom.use = #work
 * entry[=].resource[=].telecom.rank = 1
 * entry[=].resource[=].telecom.period.start = "1970-01-01"

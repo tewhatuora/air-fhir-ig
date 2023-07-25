@@ -76,7 +76,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 * performer ^slicing.discriminator.type = #value
 * performer ^slicing.discriminator.path = "actor.identifier.system"
-* performer ^slicing.rules = #closed
+* performer ^slicing.rules = #open
 * performer ^slicing.description = "Slice based on identifier system: organisation vs practitioner."
 
 * performer contains organization 0..* and practitioner 0..*
@@ -89,6 +89,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * performer[organization].function from air-performer-organization-function-code
 * performer[practitioner].function from air-performer-health-worker-function-code
 
+* performer[organization].function.coding 1..1
+* performer[practitioner].function.coding 1..1
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa

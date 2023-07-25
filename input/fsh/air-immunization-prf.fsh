@@ -89,6 +89,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * performer[organization].function from air-performer-organization-function-code
 * performer[practitioner].function from air-performer-health-worker-function-code
 
+* performer[organization].function.coding 1..1
+* performer[practitioner].function.coding 1..1
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa

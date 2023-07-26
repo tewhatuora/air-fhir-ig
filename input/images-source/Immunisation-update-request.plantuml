@@ -29,8 +29,8 @@ B -> C: POST [base]/$process-message
 activate C
 C -> C:  transform to HL7 VXU^V04
 C -> D: VXU^V04 request
-C -[dashed]-> B:  200 Response 
-B -[dashed]-> A: 200 Response 
+C -[dashed]-> B:  202 Response 
+B -[dashed]-> A: 202 Response 
 deactivate B
 |||
 deactivate C

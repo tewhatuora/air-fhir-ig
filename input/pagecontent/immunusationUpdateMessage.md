@@ -28,10 +28,15 @@ At a later time, after the health provider has processed the request, they send 
 8. The Healthlink Air Broker returns a synchronous 202 response to NES
 
 ####  Immunisation Update Message Request Example - ImmSot To Orchestration
-[update-immunisation-request1](Bundle-update-immunisation-request1.json.html)
+[update-immunisation-request1](Bundle-update-immunisation-request2.json.html)
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
 [update-immunisation-request1](Bundle-update-immunisation-request2.json.html)
+
+#### Business Rules
+
+1. Requests which specify a processing flag value of 'D' in the bundle *meta.tag[0].code* element should be treated as debug messages. The server must ensure that processing these messages results in no change to production data.
+
 
 #### Responses Codes
 
@@ -70,3 +75,7 @@ This has been done as an extension to messgaeheader, but there is  no to place i
 We might consider having a differennt event type instead - e.g IMMUNISATION_UPDATE_ALL
 
 2. I have used David's scripst to generate profile and extensions .xml which means the IG menus for those get properly rendered. Do we want the scripts included in the codebase and run as part of the pipeline?
+
+3. added business rules
+
+4. added processing flag to examples

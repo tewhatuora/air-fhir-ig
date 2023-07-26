@@ -6,6 +6,8 @@ Description: "This maps the Route codes listed in the NIR Message Spec v4.5, Sep
 
 * status = #draft
 
+* ^experimental = false
+
 // the source and target value sets
 * sourceCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code-legacy"
 * targetCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code"

@@ -5,6 +5,9 @@ Description: "This extension calculates the patient age when a vaccination was a
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
 
+* ^context.type = #element
+* ^context.expression = "Immunization"
+
 * insert StandardMetadata 
 
 * value[x] 0..0

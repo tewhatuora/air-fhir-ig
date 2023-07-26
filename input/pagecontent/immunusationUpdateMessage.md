@@ -21,7 +21,7 @@ At a later time, after the health provider has processed the request, they send 
 2. ImmSOT creates the immunisation record
 3. ImmSOT  creates a message bundle containing an Immunisation resource, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
 4. The Orchestration server enriches the Patient reference with additional patient details
-5. The Orchestration server determines which PMS systems should be notified of the new Immunisation. If the AllPartiesFlag is true it will send both to the enrolled facility and to the facility which adminsitered the vaccine. Otherwise it will just send to the enrolled facility
+5. The Orchestration server determines which PMS systems should be notified of the new Immunisation. If the AllPartiesFlag is true it will send both to the enrolled facility and to the facility which administered the immunisation. Otherwise it will just send to the enrolled facility
 6. The Orchestration server gets the facility id of the nominated target PMS systems 
 7. The Orchestration server creates a message for  each target PMS  and sends it to the Healthlink Air Broker
 8. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS

@@ -14,7 +14,7 @@ Usage: #example
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
 * entry[0].resource.focus[0] = Reference(Patient/ZKC4633)
 * entry[0].resource.focus[1] = Reference(Immunisation/IMM-ABCDE)
-* entry[0].resource.focus[2] = Reference(RelatedPerson/ZJM9397)
+
 
 //AIR HPI appid 
 * entry[0].resource.source.software =  "HSAP11111"
@@ -103,11 +103,5 @@ Usage: #example
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
-
-* entry[+].resource.resourceType = "RelatedPerson"
-* entry[=].resource.id = "ZJM9397"
-* entry[=].resource.name.given = "Mary"
-* entry[=].resource.name.family = "Jones"
-* entry[=].resource.relationship.coding.code = #MTH
 
 

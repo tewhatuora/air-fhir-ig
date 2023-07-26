@@ -5,6 +5,9 @@ Description: "Immunization Diluent"
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
 
+* ^context.type = #element
+* ^context.expression = "Immunization"
+
 * insert StandardMetadata 
 
 

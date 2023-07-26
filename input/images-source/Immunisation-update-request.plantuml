@@ -14,16 +14,20 @@ activate AA
 AA -> A: POST [base]/Immunization
 activate A
 A -> A: Create Immunisation record 
+A -[dashed]-> AA:  200 Response 
+deactivate A
+
 A -> A: construct Immunisation Update Request message (empty destination)
-A -[dashed]-> AA:  202 Response 
+activate A
 deactivate AA
+
 A -> B: POST [base]/$process-message
 
 activate B
 |||
 B -> B: Determine destinations
 B -> B: Populate Patient resource
-B -> B: Get EDI for  each destination
+B -> B: Get facility id for  each destination
 |||
 B -> C: POST [base]/$process-message
 activate C

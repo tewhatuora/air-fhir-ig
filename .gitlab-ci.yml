@@ -62,7 +62,7 @@ mvn-deploy-package:
     - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   script:
     # Very annoying but maven complains there is a missing pom if we turn this into a multi line command...
-    - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.r4.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
+    - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
 
 pages:
   stage: deploy

@@ -7,14 +7,16 @@ title  Immunisation Update Request
 participant "ISM" as AA #CornflowerBlue
 participant "ImmSOT" as A #CornflowerBlue
 participant "Orchestration" as B #CornflowerBlue
-participant "<FHIR API> Messaging Hub" as C #CornflowerBlue
+participant "Healthlink Air Broker" as C #CornflowerBlue
 participant "PMS" as D #CornflowerBlue
 |||
-
+activate AA
 AA -> A: POST [base]/Immunization
+activate A
 A -> A: Create Immunisation record 
 A -> A: construct Immunisation Update Request message (empty destination)
-A -[dashed]-> AA:  200 Response 
+A -[dashed]-> AA:  202 Response 
+deactivate AA
 A -> B: POST [base]/$process-message
 
 activate B
@@ -24,12 +26,14 @@ B -> B: Populate Patient resource
 B -> B: Get EDI for  each destination
 |||
 B -> C: POST [base]/$process-message
+activate C
 C -> C:  transform to HL7 VXU^V04
 C -> D: VXU^V04 request
 C -[dashed]-> B:  200 Response 
 B -[dashed]-> A: 200 Response 
-activate C
+deactivate B
 |||
 deactivate C
+deactivate A
 |||
 @enduml

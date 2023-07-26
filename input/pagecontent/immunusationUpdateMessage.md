@@ -28,10 +28,10 @@ At a later time, after the health provider has processed the request, they send 
 8. The Healthlink Air Broker returns a synchronous 202 response to NES
 
 ####  Immunisation Update Message Request Example - ImmSot To Orchestration
-[update-immunisation-request1](Bundle-update-immunisation-request2.json.html)
+[update-immunisation-request2](Bundle-update-immunisation-request2.json.html)
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
-[update-immunisation-request1](Bundle-update-immunisation-request2.json.html)
+[update-immunisation-request1](Bundle-update-immunisation-request1.json.html)
 
 #### Business Rules
 
@@ -60,7 +60,7 @@ One of the following a synchronous error response may be returned by the server
 
 ####  Immunisation Update Message Response processing steps:
 1. The PMS sends an HL7v2.0 VXU^V04 ACK message to the  Healthlink Air Broker indicating if the immunisation update  request has been accepted or not
-2. The Healthlink Air Broker creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the Orchestration server's *$process-message* endpoint.
+2. The Healthlink Air Broker creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the Orchestration server's *$process-message* endpoint (eventType=IMMUNISATION_UPDATE_ACK)
 3. The Orchestration server returns a synchronous 200 response to the  Healthlink Air Broker.
 3. The Orchestration server forwards the response message to the ImmSOT server's *$process-message* endpoint.
 
@@ -69,13 +69,7 @@ One of the following a synchronous error response may be returned by the server
 [update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
 
 ### Notes
-1. flag to indicate message is to be sent to all interested parties
-
-This has been done as an extension to messgaeheader, but there is  no to place in the messgae definition that the AirMessgaeHeader profile should be used.
-We might consider having a differennt event type instead - e.g IMMUNISATION_UPDATE_ALL
-
-2. I have used David's scripst to generate profile and extensions .xml which means the IG menus for those get properly rendered. Do we want the scripts included in the codebase and run as part of the pipeline?
-
+1. flag to indicate message is to be sent to all interested parties. This has been done as an extension to messageheader, but there is  no to place in the message definition that the AirMessgaeHeader profile should be used. We might consider having a different event type instead - e.g IMMUNISATION_UPDATE_ALL
+2. I have used David's scripts to generate profile and extensions .xml which means the IG menus for those get properly rendered. Do we want the scripts included in the codebase and run as part of the pipeline?
 3. added business rules
-
 4. added processing flag to examples

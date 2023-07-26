@@ -174,10 +174,12 @@ Usage: #example
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0792"
+// Note that this reference really isn't valid here, since it refers to an HPI object with a relative reference instead of using a canonical
 * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].identifier[+].use = #old
 * entry[=].resource[=].identifier[=].system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].identifier[=].value = "ZAA0806"
+// Note that this reference really isn't valid here, since it refers to an HPI object with a relative reference instead of using a canonical
 * entry[=].resource[=].identifier[=].assigner = Reference(Organization/G00001-G)
 * entry[=].resource[=].name.id = "5"
 * entry[=].resource[=].name.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-preferred"
@@ -200,7 +202,7 @@ Usage: #example
 * entry[=].resource[=].address[=].use = #home
 * entry[=].resource[=].address[=].type = #physical
 * entry[=].resource[=].address[=].line = "Rue Mtsangani"
-* entry[=].resource[=].address[=].city = "Bandrele "
+* entry[=].resource[=].address[=].city = "Bandrele"
 * entry[=].resource[=].address[=].postalCode = "0606"
 * entry[=].resource[=].address[+].id = "18"
 * entry[=].resource[=].address[=].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-address-id"
@@ -345,6 +347,9 @@ Usage: #example
 * entry[=].resource[=].telecom.rank = 1
 * entry[=].resource[=].telecom.period.start = "1970-01-01"
 
+/*
+// The following section is two resources that are Referenced in #included resources. Phillip at HealthLink thinks these must be expanded in the bundle; Swithin at Te Whatu Ora does not think so.
+
 // data about the bundle entry here
 * entry[+].search.mode = #include
 * entry[=].fullUrl = "Reference(Organization/G00001-G)"
@@ -416,3 +421,4 @@ Usage: #example
 * entry[=].resource[=].telecom.use = #work
 * entry[=].resource[=].telecom.rank = 1
 * entry[=].resource[=].telecom.period.start = "1970-01-01"
+*/

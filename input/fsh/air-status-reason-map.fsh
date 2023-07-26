@@ -1,8 +1,8 @@
 Instance: air-status-reason-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map --Immunization Status Reason Codes"
-Description: "This maps the immunization status reason codes across various code systems. The AIR target is to record these using SNOMED CT NZ Edition."
+Title: "Concept Map --Immunisation Status Reason Codes"
+Description: "This maps the immunisation status reason codes across various code systems. The AIR target is to record these using SNOMED CT NZ Edition."
 
 * status = #draft
 
@@ -17,7 +17,7 @@ Description: "This maps the immunization status reason codes across various code
 * group.element[=].target.code = #201571000210103
 * group.element[=].target.equivalence = #equivalent
 
-* group.element[+].code = #ALTGVN
+* group.element[+].code = #ALTGIVN
 * group.element[=].target.code = #201581000210101
 * group.element[=].target.equivalence = #equivalent
 

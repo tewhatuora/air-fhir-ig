@@ -7,7 +7,7 @@ title  Immunisation Update Response
 participant "ISM" as AA #CornflowerBlue
 participant "ImmSOT" as A #CornflowerBlue
 participant "Orchestration" as B #CornflowerBlue
-participant "<FHIR API> Messaging Hub" as C #CornflowerBlue
+participant "Healthlink Air Broker" as C #CornflowerBlue
 participant "PMS" as D #CornflowerBlue
 |||
 
@@ -15,6 +15,10 @@ D -> C :VXU^V04 ACK Response
 activate C
 |||
 C -> C: Transform HL7 v2 to FHIR
+activate B
 C -> B: POST [base]/$process-message
 B -[dashed]-> C: 200 Response
+B -> A: POST [base]/$process-message
+A -[dashed]-> B: 200 Response
+deactivate B
 @enduml

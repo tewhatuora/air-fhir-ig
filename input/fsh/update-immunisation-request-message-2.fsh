@@ -7,18 +7,19 @@ Usage: #example
 //skinny example - this is what ImmSott would need to populate for sending to Orchestration layer
 * id = "update-immunisation-request2"
 * type = #message
-
+* meta.tag[0].code = http://terminology.hl7.org/CodeSystem/v3-ProcessingID#P
 * timestamp = 2023-05-14T11:15:33+10:00
 * entry[0].resource.resourceType = "MessageHeader"
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
 * entry[0].resource.focus[0] = Reference(Immunisation/IMM-ABCDE)
+* entry[0].resource.focus[1] = Reference(RelatedPerson/ZJM9397)
+
 //Immsot HPI appid 
-* entry[0].resource.source.software =  "HSAP11111"
+* entry[0].resource.source.software =  "HSAP4444"
  //might be used if ImmSott needs an asynch response to track if PMS has received  update
 * entry[0].resource.source.endpoint =  "{immsot-base-address}/$process-messages"
 
-//generated guuid
 * entry[0].fullUrl = "https://air.api-dev.digital.health.nz/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
 * entry[0].resource[0].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/all-parties-flag"
@@ -72,4 +73,14 @@ Usage: #example
 * entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
+
+
+* entry[+].resource.resourceType = "RelatedPerson"
+
+* entry[=].resource.id = "ZJM9397"
+* entry[=].resource.name.given = "Mary"
+* entry[=].resource.name.family = "Jones"
+* entry[=].resource.relationship.coding.code = #MTH
+
+
 

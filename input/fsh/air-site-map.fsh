@@ -6,7 +6,7 @@ Description: "This maps the vaccination site codes listed in the NIR Message Spe
 
 * status = #draft
 
-* ^experimental = false
+* experimental = false
 
 // the source and target value sets
 * sourceCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-site-code"

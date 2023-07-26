@@ -1,7 +1,7 @@
 
 ## Immunisation Update Message Overview
 
-An ‘Immunisation Update Message’ interaction is initiated by a user who wishes to notify interested parties that an immunisation has occurred.
+An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existg immunisation is updated.
 The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself,  and the PMS systems to which the message should be sent
 At a later time, after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
@@ -17,17 +17,17 @@ At a later time, after the health provider has processed the request, they send 
 
 ####  Immunisation Update Message Request processing steps:
 
-1. ISM sends a REST create request to the ImmSot Immunization endpoint, passing in the details of the immunisation
+1. ISM sends a REST create request to the ImmSOT Immunization endpoint, passing in the details of the immunisation
 2. ImmSOT creates the immunisation record
-3. ImmSOT  creates a message bundle containing a Patient reference and Immunisation resources, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
+3. ImmSOT  creates a message bundle containing an Immunisation resource, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
 4. The Orchestration server enriches the Patient reference with additional patient details
-   The Orchestration server determines which PMS systems should be notified of the new Immunisation
-5. The Orchestration server looks up the EDI address's of the nominated target PMS systems 
-6. The Orchestration server creates a message for  each target PMS  and sends it to the  Healthlink Air Broker
-7. The Healthlink Air Broker transforms the message to an HL7v2.0  VXU^V04 request and sends it to the PMS
-8. The Healthlink Air Broker returns a synchronous 202 response to NES
+5. The Orchestration server determines which PMS systems should be notified of the new Immunisation. If the AllPartiesFlag is true it will send both to the enrolled facility and to the facility which adminsitered the vaccine. Otherwise it will just send to the enrolled facility
+6. The Orchestration server gets the facility id of the nominated target PMS systems 
+7. The Orchestration server creates a message for  each target PMS  and sends it to the Healthlink Air Broker
+8. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS
+9. The Healthlink Air Broker returns a synchronous 202 response to the Orchestration server
 
-####  Immunisation Update Message Request Example - ImmSot To Orchestration
+####  Immunisation Update Message Request Example - ImmSOT To Orchestration
 [update-immunisation-request2](Bundle-update-immunisation-request2.json.html)
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
@@ -68,8 +68,3 @@ One of the following a synchronous error response may be returned by the server
 ####  Immunisation Update Message Response Example
 [update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
 
-### Notes
-1. flag to indicate message is to be sent to all interested parties. This has been done as an extension to messageheader, but there is  no to place in the message definition that the AirMessgaeHeader profile should be used. We might consider having a different event type instead - e.g IMMUNISATION_UPDATE_ALL
-2. I have used David's scripts to generate profile and extensions .xml which means the IG menus for those get properly rendered. Do we want the scripts included in the codebase and run as part of the pipeline?
-3. added business rules
-4. added processing flag to examples

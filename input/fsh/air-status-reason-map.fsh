@@ -17,7 +17,7 @@ Description: "This maps the immunisation status reason codes across various code
 * group.element[=].target.code = #201571000210103
 * group.element[=].target.equivalence = #equivalent
 
-* group.element[+].code = #ALTGVN
+* group.element[+].code = #ALTGIVN
 * group.element[=].target.code = #201581000210101
 * group.element[=].target.equivalence = #equivalent
 

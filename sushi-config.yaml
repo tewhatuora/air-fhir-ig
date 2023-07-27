@@ -78,6 +78,9 @@ menu:
     Immunusation Update Message:  immunusationUpdateMessage.html
   Onboarding: onboarding.html
   Profiles: profiles.html
+  Message Definitions:
+    Update Immunisation Request: MessageDefinition-UpdateImmunisationRequestMessageDefinition.html
+    Update Immunisation Response: MessageDefinition-UpdateImmunisationResponseMessageDefinition.html
   Extensions: extensions.html
   Terminology: terminology.html
   Support:

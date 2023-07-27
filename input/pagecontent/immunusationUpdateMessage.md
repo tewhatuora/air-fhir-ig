@@ -66,5 +66,4 @@ One of the following a synchronous error response may be returned by the server
 
 
 ####  Immunisation Update Message Response Example
-[update-immunisation-response-message-1](Bundle-update-immunisation-response1.html)
-
+[update-immunisation-response-message-1](Bundle-update-immunisation-response-message-1.json.html)

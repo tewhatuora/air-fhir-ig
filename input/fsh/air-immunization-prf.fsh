@@ -27,10 +27,13 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // make patient point to AIR Patient profile
 // * patient only Reference(air-patient)
 * patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The preferred identification system is the HPI-F. See the HPI Implementation Guide at https://nhi-ig.hip.digital.health.nz/index.html."
+
+/*
 * obeys nz-pat-1
 * obeys nz-pat-1-1
 * obeys nz-pat-2
 * obeys nz-pat-3
+*/
 
 // remove encounter
 * encounter 0..0
@@ -189,6 +192,7 @@ Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.ex
 Severity: #error
 XPath: ""
 
+/*
 // This rule says you must have 1 official NHI or a SalesForce ID
 Invariant: nz-pat-1
 Expression: "patient.identifier.system.exists() implies (patient.identifier.system='https://standards.digital.health.nz/ns/nhi-id' or patient.identifier.system='https://standards.digital.health.nz/ns/air-vhw-id')"
@@ -214,3 +218,4 @@ Description: "If the patient identifier has a value, then it must have a system.
 Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
 Severity: #error
 XPath: ""
+*/

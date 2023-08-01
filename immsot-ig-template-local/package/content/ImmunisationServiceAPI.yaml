@@ -296,26 +296,13 @@ components:
           properties:
             reference:
               type: string
-        contained:
-          type: array
-          items:
-            type: object
-            properties:
-              resourceType:
-                type: string
-              id:
-                type: string
-              identifier:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    system:
-                      type: string
-                    value:
-                      type: string
-              managingOrganization:
-                $ref: '#/components/schemas/LogicalReference'
+            identifier:
+              type: object
+              properties:
+                system:
+                  type: string
+                value:
+                  type: string
         status:
           type: string
         statusReason:
@@ -671,16 +658,11 @@ components:
           lastUpdated: '2023-05-08T02:38:33.959+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -704,8 +686,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -771,16 +751,11 @@ components:
           lastUpdated: '2023-05-08T02:38:33.959+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -804,8 +779,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -857,16 +830,11 @@ components:
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -890,8 +858,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -957,16 +923,11 @@ components:
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -990,8 +951,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -1088,17 +1047,10 @@ components:
             code: '16217701000119102'
             version: '1.1'
         location:
-          reference: "#l1"
-        contained:
-        - resourceType: Location
-          id: l1
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-            - system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         status: completed
         statusReason:
           coding:
@@ -1132,16 +1084,11 @@ components:
           lastUpdated: '2023-03-08T03:26:00.970+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1165,8 +1112,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -1214,16 +1159,11 @@ components:
             extension:
             - url: dqIgnore
               valueBoolean: true
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1247,8 +1187,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -1291,16 +1229,11 @@ components:
           lastUpdated: '2023-05-08T02:49:52.172+00:00'
           profile:
           - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-        contained:
-        - resourceType: Location
-          id: '1'
+        location:
+          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
-          - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-            value: '123456'
-          managingOrganization:
-            identifier:
-              system: https://standards.digital.health.nz/ns/hpi-facility-id
-              value: FZZ835-E
+            system: https://standards.digital.health.nz/ns/hpi-facility-id
+            value: FZZ835-E
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1324,8 +1257,6 @@ components:
             system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
         occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        location:
-          reference: "#1"
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         site:
@@ -1380,16 +1311,11 @@ components:
               lastUpdated: '2023-05-09T00:50:08.177+00:00'
               profile:
               - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-            contained:
-            - resourceType: Location
-              id: '1'
+            location:
+              reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
               identifier:
-              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-                value: '123456'
-              managingOrganization:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
+                system: https://standards.digital.health.nz/ns/hpi-facility-id
+                value: FZZ835-E
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -1413,8 +1339,6 @@ components:
                 system: https://standards.digital.health.nz/ns/nhi-id
                 value: ZZZ7541
             occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-            location:
-              reference: "#1"
             lotNumber: '555123'
             expirationDate: '2024-01-31'
             site:
@@ -1456,16 +1380,11 @@ components:
               lastUpdated: '2023-05-08T02:49:52.172+00:00'
               profile:
               - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-            contained:
-            - resourceType: Location
-              id: '1'
+            location:
+              reference: http://esam.co.nz/eSAMMoHAddress_v01/123456
               identifier:
-              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
+                system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
                 value: '123456'
-              managingOrganization:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -1489,8 +1408,6 @@ components:
                 system: https://standards.digital.health.nz/ns/nhi-id
                 value: ZZZ7541
             occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-            location:
-              reference: "#1"
             lotNumber: '555123'
             expirationDate: '2024-01-31'
             site:
@@ -1557,16 +1474,11 @@ components:
               lastUpdated: '2023-05-10T00:50:08.177+00:00'
               profile:
               - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-            contained:
-            - resourceType: Location
-              id: '1'
+            location:
+              reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
               identifier:
-              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-                value: '123456'
-              managingOrganization:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
+                system: https://standards.digital.health.nz/ns/hpi-facility-id
+                value: FZZ835-E
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -1590,8 +1502,6 @@ components:
                 system: https://standards.digital.health.nz/ns/nhi-id
                 value: ZZZ7541
             occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-            location:
-              reference: "#1"
             lotNumber: '555123'
             expirationDate: '2024-01-31'
             site:
@@ -1633,16 +1543,11 @@ components:
               lastUpdated: '2023-05-09T00:50:08.177+00:00'
               profile:
               - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-            contained:
-            - resourceType: Location
-              id: '1'
+            location:
+              reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
               identifier:
-              - system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-                value: '123456'
-              managingOrganization:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
+                system: https://standards.digital.health.nz/ns/hpi-facility-id
+                value: FZZ835-E
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -1666,8 +1571,6 @@ components:
                 system: https://standards.digital.health.nz/ns/nhi-id
                 value: ZZZ7541
             occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-            location:
-              reference: "#1"
             lotNumber: '555123'
             expirationDate: '2024-01-31'
             site:

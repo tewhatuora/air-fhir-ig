@@ -705,8 +705,9 @@ components:
               version: 1.0.0
               code: VC
           actor:
+            reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -798,8 +799,9 @@ components:
               version: 1.0.0
               code: VC
           actor:
+            reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -877,8 +879,9 @@ components:
               version: 1.0.0
               code: VC
           actor:
+            reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -970,8 +973,9 @@ components:
               version: 1.0.0
               code: VC
           actor:
+            reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -1067,7 +1071,7 @@ components:
         performer:
         - actor:
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
           function:
             coding:
@@ -1132,7 +1136,7 @@ components:
               code: VC
           actor:
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -1207,7 +1211,7 @@ components:
               code: VC
           actor:
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -1276,8 +1280,9 @@ components:
               version: 1.0.0
               code: VC
           actor:
+            reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
             identifier:
-              system: https://standards.digital.health.nz/ns/nursing-council-id
+              system: https://standards.digital.health.nz/ns/hpi-person-id
               value: '477616'
         reasonCode:
         - coding:
@@ -1358,8 +1363,9 @@ components:
                   version: 1.0.0
                   code: VC
               actor:
+                reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
                 identifier:
-                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  system: https://standards.digital.health.nz/ns/hpi-person-id
                   value: '477616'
             reasonCode:
             - coding:
@@ -1428,7 +1434,7 @@ components:
                   code: VC
               actor:
                 identifier:
-                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  system: https://standards.digital.health.nz/ns/hpi-person-id
                   value: '477616'
             reasonCode:
             - coding:
@@ -1521,8 +1527,9 @@ components:
                   version: 1.0.0
                   code: VC
               actor:
+                reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
                 identifier:
-                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  system: https://standards.digital.health.nz/ns/hpi-person-id
                   value: '477616'
             reasonCode:
             - coding:
@@ -1591,7 +1598,7 @@ components:
                   code: P
               actor:
                 identifier:
-                  system: https://standards.digital.health.nz/ns/nursing-council-id
+                  system: https://standards.digital.health.nz/ns/hpi-person-id
                   value: '477616'
             reasonCode:
             - coding:

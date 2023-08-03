@@ -12,7 +12,7 @@ Usage: #example
 * entry[0].resource.resourceType = "MessageHeader"
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
-* entry[0].resource.focus[0] = Reference(Immunisation/IMM-ABCDE)
+* entry[0].resource.focus[0] = Reference( https://air.api-test.digital.health.nz/fhir/R4/Immunization/IMM-ABCDE)
 
 
 //Immsot HPI appid 
@@ -27,6 +27,7 @@ Usage: #example
 
 * entry[1].resource.resourceType = "Immunization" 
 * entry[1].resource.id = "IMM-ABCDE"
+* entry[1].fullUrl = "https://air.api-test.digital.health.nz/fhir/R4/Immunization/IMM-ABCDE"
 // Immunisation record #2
 
 // data about the actual resource here

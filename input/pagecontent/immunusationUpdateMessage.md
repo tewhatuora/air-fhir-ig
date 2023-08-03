@@ -22,7 +22,7 @@ At a later time, after the health provider has processed the request, they send 
 3. ImmSOT  creates a message bundle containing an Immunisation resource, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
 4. The Orchestration server enriches the Patient reference with additional patient details
 5. The Orchestration server determines which PMS systems should be notified of the new Immunisation. If the AllPartiesFlag is true it will send both to the enrolled facility and to the facility which administered the immunisation. Otherwise it will just send to the enrolled facility
-6. The Orchestration server gets the facility id of the nominated target PMS systems 
+6. The Orchestration server gets the facility id and edi of the nominated target PMS systems 
 7. The Orchestration server creates a message for  each target PMS  and sends it to the Healthlink Air Broker
 8. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS
 9. The Healthlink Air Broker returns a synchronous 202 response to the Orchestration server
@@ -35,8 +35,8 @@ At a later time, after the health provider has processed the request, they send 
 
 #### Business Rules
 
-1. Requests which specify a processing flag value of 'D' in the bundle *meta.tag[0].code* element should be treated as debug messages. The server must ensure that processing these messages results in no change to production data.
-
+1. Requests which specify a processing flag value of 'D' in the bundle *meta.tag[0].code* element should be treated as debug messages. The server must ensure that processing these messages results in no change to production data. They server should return a success response to indicate that it is healthy, and failure  response to indicate that it is unhealthy
+2. If the ID of the Immunisation resource matches an ID held in the receiving  system then the message should be treated as an update rather than a create. This should be regarded as a full update rather than a delta, so the existing Immunisation record should be replaced with the Immunisation resource  in the request 
 
 #### Responses Codes
 

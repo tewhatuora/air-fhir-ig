@@ -1,0 +1,81 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Validation Results</title>
+  <link href="http://hl7.org/fhir/fhir.css" rel="stylesheet"/>
+  <style>
+    span.flip  { background-color: #4CAF50; color: white; border: solid 1px #a6d8a8; padding: 2px }
+  </style>
+  <script>
+    function flip(id) {
+      var span = document.getElementById('s'+id);
+      var div = document.getElementById(id);
+      if (document.getElementById('s'+id).innerHTML == 'Show Reasoning') {
+        div.style.display = 'block';
+        span.innerHTML = 'Hide Reasoning';
+      } else {
+        div.style.display = 'none';
+        span.innerHTML = 'Show Reasoning';
+      }
+    }
+  </script>
+</head>
+<body style="margin: 20px; background-color: #ffffff">
+ <h1>Validation Results</h1>
+ <p>0 errors, 5 warnings, 1 hint. Generated Aug 3, 2023, 2:58:35 AM by Validator Version 6.0.23 (Git# db5d2b07c3ba). Built 2023-07-27T14:23:49.680Z (6 days old) (10890ms)</p>
+ <table class="grid">
+   <tr>
+     <td><b>Filename</b></td><td><b>Errors</b></td><td><b>Warnings</b></td><td><b>Hints</b></td>
+   </tr>
+   <tr style="background-color: #EFFFEF">
+     <td><a href="#;1"><b>.\temp2\Bundle-update-immunisation-request1.json</b></a></td><td><b>0</b></td><td><b>2</b></td><td><b>0</b></td>
+   </tr>
+   <tr style="background-color: #EFFFEF">
+     <td><a href="#;2"><b>.\temp2\Bundle-update-immunisation-request2.json</b></a></td><td><b>0</b></td><td><b>2</b></td><td><b>0</b></td>
+   </tr>
+   <tr style="background-color: #EFFFEF">
+     <td><a href="#;3"><b>.\temp2\Bundle-update-immunisation-response-message-1.json</b></a></td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td>
+   </tr>
+</table>
+<hr/>
+<a name="l1"> </a>
+<h2><a href="file:.\temp2\Bundle-update-immunisation-request1.json">.\temp2\Bundle-update-immunisation-request1.json</a></h2>
+ <table class="grid">
+   <tr>
+     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>
+   </tr>
+   <tr style="background-color: #ffebcc">
+     <td><b>Bundle.meta.tag[0] (l6/c8)</b></td><td><b>warning</b></td><td title="TERMINOLOGY_TX_SYSTEM_NO_CODE"><b>A code with no system has no defined meaning. A system should be provided</b></td>
+   </tr>
+   <tr style="background-color: #ffebcc">
+     <td><b>Bundle.entry[2].resource/*Immunization/b868b73d-ef57-4480-85de-ac012a1ee1a9*/.performer[0].function (l194/c14)</b></td><td><b>warning</b></td><td title="Terminology_TX_NoValid_2_CC"><b>None of the codings provided are in the value set 'Immunization Function Codes' (http://hl7.org/fhir/ValueSet/immunization-function|4.0.1), and a coding should come from this value set unless it has no suitable code (note that the validator cannot judge what is suitable) (codes = https://standards.digital.health.nz/ns/air-terms-code#VC)</b></td>
+   </tr>
+</table>
+<hr/>
+<a name="l2"> </a>
+<h2><a href="file:.\temp2\Bundle-update-immunisation-request2.json">.\temp2\Bundle-update-immunisation-request2.json</a></h2>
+ <table class="grid">
+   <tr>
+     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>
+   </tr>
+   <tr style="background-color: #ffebcc">
+     <td><b>Bundle.meta.tag[0] (l6/c8)</b></td><td><b>warning</b></td><td title="TERMINOLOGY_TX_SYSTEM_NO_CODE"><b>A code with no system has no defined meaning. A system should be provided</b></td>
+   </tr>
+   <tr style="background-color: #ffebcc">
+     <td><b>Bundle.entry[1].resource/*Immunization/b868b73d-ef57-4480-85de-ac012a1ee1a9*/.performer[0].function (l136/c14)</b></td><td><b>warning</b></td><td title="Terminology_TX_NoValid_2_CC"><b>None of the codings provided are in the value set 'Immunization Function Codes' (http://hl7.org/fhir/ValueSet/immunization-function|4.0.1), and a coding should come from this value set unless it has no suitable code (note that the validator cannot judge what is suitable) (codes = https://standards.digital.health.nz/ns/air-terms-code#VC)</b></td>
+   </tr>
+</table>
+<hr/>
+<a name="l3"> </a>
+<h2><a href="file:.\temp2\Bundle-update-immunisation-response-message-1.json">.\temp2\Bundle-update-immunisation-response-message-1.json</a></h2>
+ <table class="grid">
+   <tr>
+     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>
+   </tr>
+   <tr style="background-color: #ffffe6">
+     <td><b>Bundle.entry[0].resource/*MessageHeader/null*/.event.ofType(Coding) (l23/c10)</b></td><td><b>information</b></td><td title="Terminology_TX_System_NotKnown"><b>Code System URI 'https://standards.digital.health.nz/ns/nes-event-type' is unknown so the code cannot be validated</b></td>
+   </tr>
+   <tr style="background-color: #ffebcc">
+     <td><b>Bundle.entry[0].resource/*MessageHeader/null*/.focus[0]</b></td><td><b>warning</b></td><td title="BUNDLE_BUNDLE_POSSIBLE_MATCH_WRONG_FU"><b>Entry 1 matches the reference OperationOutcome/success by type and id but it's fullUrl OperationOutcome/success does not match the full target URL https://example.com/OperationOutcome/success by Bundle resolution rules</b></td>
+   </tr>
+</table>

@@ -6,14 +6,14 @@ Description: "Example immunisation update request message"
 Usage: #example
 
 * id = "update-immunisation-request1"
-* type = #example
+* type = #message
 * meta.tag[0].code = http://terminology.hl7.org/CodeSystem/v3-ProcessingID#P
 * timestamp = 2023-05-14T11:15:33+10:00
 * entry[0].resource.resourceType = "MessageHeader"
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
-* entry[0].resource.focus[0] = Reference(Patient/ZKC4633)
-* entry[0].resource.focus[1] = Reference(Immunisation/IMM-ABCDE)
+* entry[0].resource.focus[0] = Reference(https://api.hip-uat.digital.health.nz/fhir/nhi/v1/Patient/ZKC4633)
+* entry[0].resource.focus[1] = Reference(https://air.api-test.digital.health.nz/fhir/R4/Immunization/IMM-ABCDE)
 
 
 //AIR HPI appid 
@@ -50,11 +50,13 @@ Usage: #example
 * entry[1].resource.address.city = "Waipu"
 * entry[1].resource.address.extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/suburb"
 * entry[1].resource.address.extension[0].valueString = "Waipu river"
-* entry[1].fullUrl = "Patient/ZKC4633"
+* entry[1].fullUrl = "https://api.hip-uat.digital.health.nz/fhir/nhi/v1/Patient/ZKC4633"
 
 
 * entry[2].resource.resourceType = "Immunization" 
 * entry[2].resource.id = "IMM-ABCDE"
+* entry[2].fullUrl = "https://air.api-test.digital.health.nz/fhir/R4/Immunization/IMM-ABCDE"
+
 // Immunisation record #2
 
 

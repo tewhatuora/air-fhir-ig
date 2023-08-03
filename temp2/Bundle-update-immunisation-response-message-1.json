@@ -1,0 +1,58 @@
+{
+  "resourceType": "Bundle",
+  "id": "update-immunisation-response-message-1",
+  "type": "message",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MessageHeader",
+        "source": {
+          "name": "pmsfacid",
+          "endpoint": "pmsedi"
+        },
+        "response": {
+          "code": "ok",
+          "identifier": "update-immunisation-request1"
+        },
+        "destination": [
+          {
+            "endpoint": "Mohedi",
+            "name": "Mohfacid"
+          }
+        ],
+        "eventCoding": {
+          "system": "https://standards.digital.health.nz/ns/nes-event-type",
+          "code": "IMMUNISATION_UPDATE_ACK"
+        },
+        "focus": [
+          {
+            "reference": "OperationOutcome/success"
+          }
+        ]
+      },
+      "fullUrl": "https://example.com/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
+    },
+    {
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "id": "success",
+        "issue": [
+          {
+            "severity": "information",
+            "code": "informational",
+            "diagnostics": "accepted",
+            "details": {
+              "coding": [
+                {
+                  "code": "AA",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0008"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "fullUrl": "OperationOutcome/success"
+    }
+  ]
+}

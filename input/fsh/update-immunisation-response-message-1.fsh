@@ -12,6 +12,7 @@ Usage: #example
 * entry[0].resource.source.name =  "pmsfacid"
 //EDI account of sending facility
 * entry[0].resource.source.endpoint =  "pmsedi"
+* entry[0].resource.response.code = #ok
 
 //EDI account of receiving facility 
 * entry[0].resource.destination.endpoint = "Mohedi"
@@ -22,15 +23,19 @@ Usage: #example
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/nes-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE_ACK
 * entry[0].resource.focus[0] = Reference(OperationOutcome/success)
+//generated guuid
+* entry[0].fullUrl = "https://example.com/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
 //the Bundle.id of the request message
 * entry[0].resource.response.identifier = "update-immunisation-request1"
 
 
 * entry[1].resource.resourceType = "OperationOutcome"
+* entry[1].fullUrl = "OperationOutcome/success"
 * entry[1].resource.id = "success"
-* entry[1].resource.issue.severity =  #success
-* entry[1].resource.issue.code =  #success
+* entry[1].resource.id = "success"
+* entry[1].resource.issue.severity =  #information
+* entry[1].resource.issue.code =  #informational
 * entry[1].resource.issue.diagnostics = "accepted"
 * entry[1].resource.issue.details.coding.code = #AA
 * entry[1].resource.issue.details.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0008"

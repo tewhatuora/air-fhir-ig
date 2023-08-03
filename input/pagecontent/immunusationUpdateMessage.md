@@ -36,7 +36,7 @@ At a later time, after the health provider has processed the request, they send 
 #### Business Rules
 
 1. Requests which specify a processing flag value of 'D' in the bundle *meta.tag[0].code* element should be treated as debug messages. The server must ensure that processing these messages results in no change to production data. They server should return a success response to indicate that it is healthy, and failure  response to indicate that it is unhealthy
-2. If the ID of the Immunisation resource matches an ID held in the receiving  system then the message should be treated as an update rather than a create. This should be regarded as a full update rather than a delta, so the existing Immunisation record should be replaced with the Immunisation resource  in the request 
+2. If the ID of the Immunisation resource matches an ID held in the receiving system then the message should be treated as an update rather than a create. This should be regarded as a full update rather than a delta, so the existing Immunisation record should be replaced with the Immunisation resource  in the request 
 
 #### Responses Codes
 

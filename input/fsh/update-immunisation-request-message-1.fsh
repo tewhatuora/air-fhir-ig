@@ -5,7 +5,7 @@ InstanceOf: Bundle
 Description: "Example immunisation update request message"
 Usage: #example
 
-* id = "update-immunisation-request1"
+* id = "72178030"
 * type = #message
 * meta.tag[0].code = http://terminology.hl7.org/CodeSystem/v3-ProcessingID#P
 * timestamp = 2023-05-14T11:15:33+10:00

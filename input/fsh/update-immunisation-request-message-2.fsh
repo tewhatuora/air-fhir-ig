@@ -5,7 +5,7 @@ InstanceOf: Bundle
 Description: "Example immunisation update request message"
 Usage: #example
 //skinny example - this is what ImmSott would need to populate for sending to Orchestration layer
-* id = "update-immunisation-request2"
+* id = "82020189"
 * type = #message
 * meta.tag[0].code = http://terminology.hl7.org/CodeSystem/v3-ProcessingID#P
 * timestamp = 2023-05-14T11:15:33+10:00

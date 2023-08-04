@@ -27,7 +27,7 @@ Usage: #example
 * entry[0].fullUrl = "https://example.com/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
 //the Bundle.id of the request message
-* entry[0].resource.response.identifier = "update-immunisation-request1"
+* entry[0].resource.response.identifier = "72178030"
 
 
 * entry[1].resource.resourceType = "OperationOutcome"

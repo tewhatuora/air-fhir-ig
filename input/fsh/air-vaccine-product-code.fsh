@@ -208,7 +208,7 @@ Description: "Allowable values for vaccine products in AIR."
 // NZMT TPUU codes
 
 // * $NZMT# template line for reuse
-* $NZMT#10443641000116108 "MMR"
+* $NZMT#10443641000116108 "MMR Vaccine"
 * $NZMT#29455561000116106 "Infanrix Hexa powder for injection"
 * $NZMT#29455501000116107 "Infanrix Hexa suspension"
 * $NZMT#31116511000116103 "Synflorix"
@@ -245,95 +245,99 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#31171221000116106 "Havrix"
 * $NZMT#47562481000116104 "MenQuadfi"
 
+// added 4 aug 23 for ticket IMM-2103
+* $NZMT#46083691000116109 "Engerix-B (10mcg)"
+* $NZMT#31128931000116109 "NeisVac-C"
+* $NZMT#43964841000116102 "Havrix Junior"
+* $NZMT#10695851000116103 "Varivax"
+
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names for these codes taken from NIR Spec v4_5, RXA-5, page 47. 
 // Long description.
 // For codes not on that list, used a corresponding long description from somewhere else.
 
-* $CVX#03 "Measles, mumps and rubella virus vaccine"
-* $CVX#06 "Rubella virus vaccine"
-* $CVX#08 "Hepatitis B vaccine, paediatric dosage"
+* $CVX#03 "MMR"
+* $CVX#06 "Rubella"
+* $CVX#08 "HepB, paed"
 * $CVX#09 "Tetanus and diphtheria toxoids, adsorbed for adult use"
-* $CVX#10 "Poliovirus vaccine, inactivated"
-* $CVX#19 "Bacillus Calmette-Guerin vaccine"
-* $CVX#20 "Diphtheria, tetanus toxoids and acellular pertussis vaccine"
-* $CVX#21 "Varicella virus vaccine"
-* $CVX#22 "Diphtheria, tetanus toxoid and whole cell pertussis - Haemophilus influenzae type b conjugate vaccine"
-* $CVX#26 "Cholera vaccine"
-* $CVX#28 "Diphtheria and tetanus toxoids, adsorbed for paediatric use"
-* $CVX#30 "Hepatitis B immune globulin" // missing from CDC list
-* $CVX#33 "Pneumococcal polysaccharide (23PPV)"
-* $CVX#35 "Tetanus toxoid, adsorbed"
-* $CVX#37 "Yellow fever vaccine"
-* $CVX#39 "Japanese encephalitis vaccine"
-* $CVX#43 "Hepatitis B vaccine, adult dosage"
-* $CVX#44 "hepatitis B vaccine, dialysis patient dosage"
-* $CVX#48 "Haemophilus influenzae type b vaccine, PRP-T conjugate"
-* $CVX#50 "DTaP-Haemophilus influenzae type b conjugate vaccine"
-* $CVX#51 "Haemophilus influenzae type b conjugate and hepatitis B vaccine"
-* $CVX#52 "Hep A, adult dosage"
-* $CVX#62 "Human papilloma virus vaccine, quadrivalent"
-* $CVX#66 "Lyme disease vaccine"
+* $CVX#10 "IPV"
+* $CVX#100 "Pneum, conjugate"
+* $CVX#101 "Typhoid, ViCPS"
+* $CVX#103 "MenC"
+* $CVX#104 "HepA-B"
+* $CVX#110 "DTaP-Hep B-IPV"
+* $CVX#114 "MenACYW-135"
+* $CVX#115 "Diphtheria adult dosage, tetanus, acellular pertussis adult dosage"
+* $CVX#116 "Rotavirus, pentavalent"
+* $CVX#118 "HPV, bivalent"
+* $CVX#119 "Rotavirus, monovalent"
+* $CVX#120 "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepati"
+* $CVX#121 "Zoster"
+* $CVX#130 "Diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus"
+* $CVX#133 "Pneumococcal conjugate PCV 13"
+* $CVX#150 "Influenza, injectable, quadrivalent, preservative free"
+* $CVX#161 "Influenza, injectable,quadrivalent, preservative free, pediatric"
+* $CVX#163 "Meningococcal B, OMV"
+* $CVX#165 "HPV9"
+* $CVX#187 "Zoster recombinant"
+* $CVX#19 "BCG"
+* $CVX#20 "DTaP"
+* $CVX#202 "Influenza, Southern Hemisphere, quadrivalent, with preservative"
+* $CVX#205 "Influenza vaccine, quadrivalent, adjuvanted"
+* $CVX#206 "Vaccinia (smallpox)"
+* $CVX#207 "COVID-19, mRNA, LNP-S, PF, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"
+* $CVX#208 "SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free,"
+* $CVX#21 "Varicella"
+* $CVX#210 "COVID-19 vaccine, vector-nr, rS-ChAdOx1, PF, 0.5 mL"
+* $CVX#211 "COVID-19, subunit, rS-nanoparticle+Matrix-M1 Adjuvant, PF, 0.5 mL"
+* $CVX#212 "COVID-19 vaccine, vector-nr, rS-Ad26, PF, 0.5 mL"
+* $CVX#218 "COVID-19, mRNA, LNP-S, PF, 10 mcg/0.2 mL dose, tris-sucrose"
+* $CVX#22 "DTP-Hib"
+* $CVX#229 "COVID-19, mRNA, LNP-S, bivalent booster, PF, 50 mcg/0.5 mL or 25mcg/0.25 mL"
+* $CVX#26 "Cholera"
+* $CVX#28 "DT, paed"
+* $CVX#30 "HBIG"
+* $CVX#33 "Pneum, polysacch"
+* $CVX#35 "Tetanus toxoid"
+* $CVX#37 "Yellow fever"
+* $CVX#39 "Japanese encephalitis"
+* $CVX#43 "HepB, adult"
+* $CVX#44 "Hep B, dialysis"
+* $CVX#48 "Hib (PRP-T)"
+* $CVX#50 "DTaP/Hib"
+* $CVX#500 "COVID-19 Non-US Vaccine, Product Unknown"
+* $CVX#501 "COVID-19 IV Non-US Vaccine (QAZCOVID-IN)"
+* $CVX#502 "COVID-19 IV Non-US Vaccine (COVAXIN)"
+* $CVX#504 "COVID-19 VVnr Non-US Vaccine (Sputnik Light)"
+* $CVX#505 "COVID-19 VVnr Non-US Vaccine (Sputnik V)"
+* $CVX#506 "COVID-19 VVnr Non-US Vaccine (CanSino Biological Inc./Beijing Institute of"
+* $CVX#507 "COVID-19 PS Non-US Vaccine (Anhui Zhifei Longcom Biopharm + Inst of Micro,"
+* $CVX#509 "COVID-19 PS Non-US Vaccine (EpiVacCorona)"
+* $CVX#51 "Hib-HepB"
+* $CVX#510 "COVID-19 IV Non-US Vaccine (BIBP, Sinopharm)"
+* $CVX#511 "COVID-19 IV Non-US Vaccine (CoronaVac, Sinovac)"
+* $CVX#52 "Hep A, adult"
+* $CVX#62 "HPV, quadrivalent"
+* $CVX#66 "Lyme"
 * $CVX#75 "Vaccinia (smallpox) vaccine"
-* $CVX#83 "Hepatitis A vaccine, paediatric. adolescent dosage"
-* $CVX#100 "Pneumococcal conjugate vaccine, polyvalent  (PCV7)"
-* $CVX#101 "Typhoid Vi capsular polysaccharide vaccine"
-* $CVX#103 "Meningococcal C conjugate vaccine"
-* $CVX#104 "Hepatitis A and hepatitis B vaccine"
-* $CVX#110 "DTaP-hepatitis B and poliovirus vaccine"
-* $CVX#114 "Meningococcal polysaccharide (groups A,C,Y and W-135) diphtheria toxoid conjugate vaccine (MCV4P)"
-* $CVX#115 "Diphtheria adult dosage, tetanus, acellular pertussis adult dosage" // used description from 99012
-* $CVX#116 "Rotavirus, pentavalent" // not in NIR list
-* $CVX#118 "Human papilloma virus vaccine, bivalent"
-* $CVX#119 "Rotavirus, live, monovalent vaccine"
-* $CVX#120 "Diphtheria, tetanus, acellular pertussis,  inactivated polio vaccine, hepatitis B, haemophilus influenzae type b" // used description from 210307
-* $CVX#121 "Zoster (shingles) vaccine, live, for subcutaneous injection"
-* $CVX#130 "Diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus vaccine, inactivated" // not in NIR list
-* $CVX#133 "Pneumococcal conjugate vaccine, 13 valent"
-* $CVX#150 "Influenza, injectable, quadrivalent, preservative free" // not in NIR list
-* $CVX#161 "Influenza, injectable,quadrivalent, preservative free, pediatric" // not in NIR list
-* $CVX#163 "Meningococcal B vaccine, recombinant, OMV, adjuvanted"
-* $CVX#165 "Human papilloma virus 9-valent vaccine"
-* $CVX#187 "Zoster recombinant" // not in NIR list
-* $CVX#202 "Influenza, Southern Hemisphere, quadrivalent, with preservative" // not in NIR list
-* $CVX#205 "Influenza vaccine, quadrivalent, adjuvanted" // not in NIR list
-* $CVX#206 "Vaccinia, smallpox monkeypox vaccine live, PF, SQ or ID injection" // not in NIR list
-* $CVX#207 "COVID-19, mRNA, LNP-S, PF, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose" // not in NIR list
-* $CVX#208 "SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose" // not in NIR list
-* $CVX#210 "COVID-19 vaccine, vector-nr, rS-ChAdOx1, PF, 0.5 mL" // not in NIR list
-* $CVX#211 "COVID-19, subunit, rS-nanoparticle+Matrix-M1 Adjuvant, PF, 0.5 mL" // not in NIR list
-* $CVX#212 "COVID-19 vaccine, vector-nr, rS-Ad26, PF, 0.5 mL" // not in NIR list
-* $CVX#218 "COVID-19, mRNA, LNP-S, PF, 10 mcg/0.2 mL dose, tris-sucrose" // not in NIR list
-* $CVX#229 "COVID-19, mRNA, LNP-S, bivalent booster, PF, 50 mcg/0.5 mL or 25mcg/0.25 mL dose" // not in NIR list
-* $CVX#500 "COVID-19 Non-US Vaccine, Product Unknown" // not in NIR list
-* $CVX#501 "COVID-19 IV Non-US Vaccine (QAZCOVID-IN)" // not in NIR list
-* $CVX#502 "COVID-19 IV Non-US Vaccine (COVAXIN)" // not in NIR list
-* $CVX#504 "COVID-19 VVnr Non-US Vaccine (Sputnik Light)" // not in NIR list
-* $CVX#505 "COVID-19 VVnr Non-US Vaccine (Sputnik V)" // not in NIR list
-* $CVX#506 "COVID-19 VVnr Non-US Vaccine (CanSino Biological Inc./Beijing Institute of Biotechnology)" // not in NIR list
-* $CVX#507 "COVID-19 PS Non-US Vaccine (Anhui Zhifei Longcom Biopharm + Inst of Micro, Chinese Acad of Sciences)" // not in NIR list
-* $CVX#509 "COVID-19 PS Non-US Vaccine (EpiVacCorona)" // not in NIR list
-* $CVX#510 "COVID-19 IV Non-US Vaccine (BIBP, Sinopharm)" // not in NIR list
-* $CVX#511 "COVID-19 IV Non-US Vaccine (CoronaVac, Sinovac)" // not in NIR list
-* $NZVX#90306 "Pneumococcal generic vaccine"
-* $NZVX#90906 "PCV-1" // not in NIR list
-* $NZVX#99001 "Diphtheria, tetanus, acellular pertussis, inactivated polio"
-* $NZVX#99002 "Meningococcal B"
-* $NZVX#99003 "Diphtheria, adsorbed paediatric dosage"
-
-* $NZVX#99004 "Acellular pertussis"
-* $NZVX#99005 "Diphtheria, adsorbed adult dosage"
+* $CVX#83 "Hep A, paed./adol., 2 dose"
+* $NZVX#090306 "Pneumococcal generic PCV"
+* $NZVX#210307 "DTaP-IPV-Hep B/Hib"
+* $NZVX#260209 "Pneumococcal conjugate PCV 10"
+* $NZVX#90906 "Td, adult"
+* $NZVX#99001 "DTaP-IPV"
+* $NZVX#99002 "MeNZB"
+* $NZVX#99003 "D, paed"
+* $NZVX#99004 "aP"
+* $NZVX#99005 "d, adult"
 * $NZVX#99006 "Influenza"
-* $NZVX#99007 "Hep A, paediatric dosage"
-* $NZVX#99008 "MenACYW-135" // not in NIR list
-* $NZVX#99009 "Rabies vaccine, inactivated"
-* $NZVX#99010 "Rabies immune globulin"
-* $NZVX#99011 "Diphtheria adult dosage, tetanus, acellular pertussis adult dosage, inactivated polio"
-* $NZVX#99012 "Diphtheria adult dosage, Tetanus, acellular Pertussis adult dosage"
-* $NZVX#99013 "Meningococcal C conjugate vaccine"
-* $NZVX#210307 "Diphtheria, tetanus, acellular pertussis, inactivated polio vaccine, hepatitis B, haemophilus influenzae type b"
-* $NZVX#260209 "Pneumococcal conjugate vaccine, 10 valent"
-* $NZVX#EVP "Emergency (pandemic) vaccine programme"
-* $NZVX#EVPMnC "Emergency vaccine programme meningococcal C conjugate vaccine"
-
+* $NZVX#99007 "HepA, paed"
+* $NZVX#99008 "MenACYW-135"
+* $NZVX#99009 "Rabies, inactivated"
+* $NZVX#99010 "Rabies, IG"
+* $NZVX#99011 "dTap-IPV"
+* $NZVX#99012 "Tdap"
+* $NZVX#99013 "MenCCV"
+* $NZVX#EVP "EVP"
+* $NZVX#EVPMnC "EVP meningococcal C conjugate"

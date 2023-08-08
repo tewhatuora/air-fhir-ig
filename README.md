@@ -37,15 +37,14 @@ In order to install Ruby, I would suggest that you use the Ruby Version Manager(
     ```shell
    rvm use 3.1.3
    ```
-7. Install OpenSSL(unsure if we need this step)
-    ```shell
-    gem install openssl
-    ```
-8. Install Jekyll & Bundler
+7. Install Jekyll & Bundler
     ```shell
     gem install jekyll bundler
     ```
-
+8. Install sushi
+    ```shell
+    npm install -g sushi
+    ```
 ### Running the publisher
 1. run `_updatePublisher.sh` to get the latest publisher jar 
 2. run `build-ig.sh` to generate the IG(artifacts should appear under `output` folder)

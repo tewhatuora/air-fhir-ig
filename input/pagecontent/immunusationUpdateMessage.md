@@ -21,18 +21,18 @@ At a later time, after the health provider has processed the request, they send 
 2. ImmSOT creates the immunisation record
 3. ImmSOT  creates a message bundle containing an Immunisation resource, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
 4. The Orchestration server enriches the Patient reference with additional patient details
-5. The Orchestration server determines which PMS systems should be notified of the new Immunisation, based on the valoue of the *air-immunisation-notification-action-code*. If the *air-immunisation-notification-action-code*  is *SENDTOALL* it will send both to the enrolled facility and to the facility which administered the immunisation. Otherwise it will just send to the enrolled facility
+5. The Orchestration server determines which PMS systems should be notified of the new Immunisation, based on the value of the *air-immunisation-notification-action-code*. 
 6. The Orchestration server gets the facility id and edi of the nominated target PMS systems 
 7. The Orchestration server creates a message for  each target PMS  and sends it to the Healthlink Air Broker
 8. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS
 9. The Healthlink Air Broker returns a synchronous 202 response to the Orchestration server
-10. Once it has recieved responses form each request sent to the HealthLink AIR broker, the Orchestration  server sendsa  synchronous 202 response to  ImmSOT, containing information about each message which was sent to the Healthlink Air Broke
+10. Once it has recieved responses form each request sent to the HealthLink AIR broker, the Orchestration  server sendsa  synchronous 202 response to  ImmSOT, containing information about each message which was sent.
 
 ####  Immunisation Update Message Request Example - ImmSOT To Orchestration
-[update-immunisation-request2](Bundle-update-immunisation-request2.json.html)
+[update-immunisation-request2](Bundle-82020189.json.html)
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
-[update-immunisation-request1](Bundle-update-immunisation-request1.json.html)
+[update-immunisation-request1](Bundle-72178030.json.html)
 
 #### Business Rules
 
@@ -40,7 +40,7 @@ At a later time, after the health provider has processed the request, they send 
 
 2. If the ID of the Immunisation resource matches an ID held in the receiving system then the message should be treated as an update rather than a create. This should be regarded as a full update rather than a delta, so the existing Immunisation record should be replaced with the Immunisation resource  in the request 
 
-3. The *air-immunisation-notification-action-code* is used by Orchestration server to determine which PMS systems messages should be sent to as describe din the table below
+3. The *air-immunisation-notification-action-code* is used by Orchestration server to determine which PMS systems messages should be sent to as described in the table below
 
    | Value            |                                          |
    | ---------------- | ---------------------------------------- |
@@ -66,7 +66,7 @@ One of the following a synchronous error response may be returned by the server
 
 #### Response Body
 The Response body may contain an OperationOutcome resource describing the result of the request message processing.
-Since the Orchestration server may have sent two separate messages to HealthLink for a single ImmSOT request, the OperationOutcome it returns to ImmSOT  may contain two Issue elements, each describing the outcome of a separate notification message. The `OperationOutcome.Issue[n].expression` field should be used to hold the facility id of the target PMS to which the message was sent. The table below describes how the OperationOutcome should be populated
+Since the Orchestration server may have sent two separate messages to HealthLink for a single ImmSOT request, the OperationOutcome it returns to ImmSOT  may contain two Issue elements, each describing the outcome of a separate notification message. The *OperationOutcome.Issue[n].expression* field should be used to hold the facility id of the target PMS to which the message was sent. The table below describes how the OperationOutcome should be populated
 
 
 
@@ -74,14 +74,14 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | ---------------------------------------- | ---------------------------------------- | ----------- |
 | OperationOutcome.issue                   |                                          | 0..n        |
 | OperationOutcome.issue[]. diagnostics    | Details of the error                     | 0..1        |
-| OperationOutcome.issue[]. expression     | FacilityId of the PMS to which th message was sent | 0..1        |
+| OperationOutcome.issue[]. expression     | FacilityId of the PMS to which the message was sent | 0..1        |
 | OperationOutcome.issue[]. coding.code    | AA or AE                                 | 0..1        |
 | OperationOutcome.issue[n]. coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
 
 
 
 #### Example Response from Orchestration to ImmSOT
-[update-immunisation-request-response1](Bundle-update-immunisation-request-response-message-1..json.html)
+[update-immunisation-request-response1](Bundle-update-immunisation-request-response-message-1.json.html)
 
 
 ### Immunisation Update Message Response

@@ -18,5 +18,5 @@ Description: "Describes the action taken by Orchestration server in response to 
 * ^count = 3
 * #RESEND "Send to destination identified in message header"
 * #SENDTOALL "Send to all interested parties"
-* #SENDTOENROLLED "Send to all enrolled GP"
+* #SENDTOENROLLED "Send to enrolled GP"
 

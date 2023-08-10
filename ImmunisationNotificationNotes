@@ -1,0 +1,7 @@
+
+
+The Orcestation layer may  create two mess immunisation notification messgaes to HealtlhLink for a sinlgle  mmunisation notification request messgae from immsot.
+Imssot needs to know to whcih PMS ssyetms teh message was sent so that it can track them.
+
+So the Immsot resposne should be am OperationOutcome issue fro  each message sent
+Issue.code indicates if it was sent ot not. Issue.detaisl holds the facility id 

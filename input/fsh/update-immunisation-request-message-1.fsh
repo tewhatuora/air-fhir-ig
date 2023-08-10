@@ -7,7 +7,8 @@ Usage: #example
 
 * id = "72178030"
 * type = #message
-* meta.tag[0].code = http://terminology.hl7.org/CodeSystem/v3-ProcessingID#P
+* meta.tag[0].code = #P
+* meta.tag[0].system = "http://terminology.hl7.org/CodeSystem/v3-ProcessingID"
 * timestamp = 2023-05-14T11:15:33+10:00
 * entry[0].resource.resourceType = "MessageHeader"
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"

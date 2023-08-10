@@ -8,6 +8,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-event-type">https://standards.digital.health.nz/ns/air-event-type</a></td>
 </tr>
 <tr>
+<td><a href="CodeSystem-air-immunisation-notification-action-code-1.0.html">AIR Immunisation Notification Action Code-1.0</a> </td>
+<td> <p>Describes the action taken by Orchestration server in response to an Immunisation Notification request message</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-immunisation-notification-action-code">https://standards.digital.health.nz/ns/air-immunisation-notification-action-code</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-terms-code.html">AIR Terms-0.7.0</a> </td>
 <td> <p>This is a code system for all the terms needed in AIR ImmSoT that don&#39;t come from an external standard</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-terms-code">https://standards.digital.health.nz/ns/air-terms-code</a></td>

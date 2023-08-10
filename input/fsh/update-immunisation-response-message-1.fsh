@@ -20,7 +20,7 @@ Usage: #example
 * entry[0].resource.destination.name = "Mohfacid"
 
 
-* entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/nes-event-type"
+* entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE_ACK
 * entry[0].resource.focus[0] = Reference(OperationOutcome/success)
 //generated guuid

@@ -27,13 +27,15 @@ activate B
 |||
 B -> B: Determine destinations
 B -> B: Populate Patient resource
-B -> B: Get facility id and edi for  each destination
 |||
-B -> C: POST [base]/$process-message
-activate C
-C -> C:  transform to HL7 VXU^V04
-C -> D: VXU^V04 request
-C -[dashed]-> B:  202 Response 
+group for each destination
+ B -> B: Get facility id and edi 
+ B -> C: POST [base]/$process-message
+ activate C
+ C -> C:  transform to HL7 VXU^V04
+ C -> D: VXU^V04 request
+ C -[dashed]-> B:  202 Response 
+end
 B -[dashed]-> A: 202 Response 
 deactivate B
 |||

@@ -9,4 +9,4 @@ Description: "This profile derived from MessageHeader implements extensions to m
 * extension contains
 	$ImmunisationNotificationAction named ImmunisationNotificationAction 0..1
 	
-* extension[ImmunisationNotificationAction] ^short = "If true, indicates that message should be sent to all interested parties"
+* extension[ImmunisationNotificationAction] ^short = "Indicates to which parties the Immunisation Notification message should be sent"

@@ -1,5 +1,6 @@
 Extension: AirImmunisationNotificationAction
 Id: air-immunisation-notification-action
+Title:  "Air Immunisation Notification Action"
 Description: "Indicates which parties should be notified of the event"
 
 * ^url = "http://hl7.org.nz/fhir/StructureDefinition/air-immunisation-notification-action"

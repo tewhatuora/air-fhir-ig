@@ -2,7 +2,9 @@ Extension: AIRRelatedPerson
 Id: air-related-person
 Title: "AIR Related Person"
 Description: "This extension is to be used for communicating related person info in an AIR Immunisation Event. It holds the information transmitted in the HL7v2 NK1 segment."
-Context: "Immunization"
+
+* ^context.type = #element
+* ^context.expression = "Immunization"
 
 * insert StandardMetadata 
 

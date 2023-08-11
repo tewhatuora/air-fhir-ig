@@ -73,12 +73,24 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | Field                                    | Description                              | Cardinality |
 | ---------------------------------------- | ---------------------------------------- | ----------- |
 | OperationOutcome.issue                   |                                          | 0..n        |
-| OperationOutcome.issue[]. diagnostics    | Details of the error                     | 0..1        |
-| OperationOutcome.issue[]. expression     | FacilityId of the PMS to which the message was sent | 0..1        |
-| OperationOutcome.issue[]. coding.code    | AA or AE                                 | 0..1        |
-| OperationOutcome.issue[n]. coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
+| OperationOutcome.issue[].diagnostics     | Details of the error                     | 0..1        |
+| OperationOutcome.issue[].expression      | FacilityId of the PMS to which the message was sent | 0..1        |
+| OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
+| OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
 
+If the error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
 
+| Field                                    | Description                              | Cardinality |
+| ---------------------------------------- | ---------------------------------------- | ----------- |
+| OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
+| OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
+
+If the error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
+
+| Field                                    | Description                              | Cardinality |
+| ---------------------------------------- | ---------------------------------------- | ----------- |
+| OperationOutcome.issue[].details.coding.code | a code from https://standards.digital.health.nz/ns/air-operationoutcome-code | 0..1        |
+| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/air-operationoutcome-code | 0..1        |
 
 #### Example Response from Orchestration to ImmSOT
 [update-immunisation-request-response1](Bundle-update-immunisation-request-response-message-1.json.html)

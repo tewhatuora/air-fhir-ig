@@ -286,7 +286,7 @@ components:
           type: string
           format: date-time
         extension:
-          $ref: '#/components/schemas/DiluentExtension'
+          $ref: '#/components/schemas/AirExtension'
         route:
           $ref: '#/components/schemas/CodeableConcept'
         site:
@@ -367,7 +367,7 @@ components:
                 type: string
         text:
           type: string
-    DiluentExtension:
+    AirExtension:
       type: array
       items:
         type: object
@@ -379,9 +379,10 @@ components:
           extension:
             type: array            
             items:
-              allOf:
+              anyOf:
               - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDate'      
+              - $ref: '#/components/schemas/ExtensionDate'
+              - $ref: '#/components/schemas/ExtensionInteger'
     DQExtension:
       type: array
       items:

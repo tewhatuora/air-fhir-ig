@@ -286,7 +286,7 @@ components:
           type: string
           format: date-time
         extension:
-          $ref: '#/components/schemas/DiluentExtension'
+          $ref: '#/components/schemas/AirExtension'
         route:
           $ref: '#/components/schemas/CodeableConcept'
         site:
@@ -367,7 +367,7 @@ components:
                 type: string
         text:
           type: string
-    DiluentExtension:
+    AirExtension:
       type: array
       items:
         type: object
@@ -379,9 +379,10 @@ components:
           extension:
             type: array            
             items:
-              allOf:
+              anyOf:
               - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDate'      
+              - $ref: '#/components/schemas/ExtensionDate'
+              - $ref: '#/components/schemas/ExtensionInteger'
     DQExtension:
       type: array
       items:
@@ -450,15 +451,18 @@ components:
     LogicalReference:
       type: object
       properties:
+        reference:
+          type: string
+          example: https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541
         identifier:
-          type: array
-          items:
-            type: object
-            properties:
-              system:
-                type: string
-              value:
-                type: string
+          type: object
+          properties:
+            system:
+              type: string
+              example: https://standards.digital.health.nz/ns/nhi-id
+            value:
+              type: string
+              example: ZZZ7541
     OperationOutcome:
       type: object
       properties:
@@ -670,6 +674,18 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2022-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+          extension:
+            - url: years
+              valueInteger: 24
+            - url: months
+              valueInteger: 1
+            - url: days
+              valueInteger: 12
+            - url: daysSinceBirth
+              valueInteger: 8790
+            - url: precision
+              valueString: DAY
         status: completed
         statusReason:
           coding:
@@ -764,6 +780,18 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2022-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+          extension:
+            - url: years
+              valueInteger: 24
+            - url: months
+              valueInteger: 1
+            - url: days
+              valueInteger: 12
+            - url: daysSinceBirth
+              valueInteger: 8790
+            - url: precision
+              valueString: DAY
         status: completed
         statusReason:
           coding:
@@ -844,6 +872,18 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+          extension:
+            - url: years
+              valueInteger: 24
+            - url: months
+              valueInteger: 1
+            - url: days
+              valueInteger: 12
+            - url: daysSinceBirth
+              valueInteger: 8790
+            - url: precision
+              valueString: DAY
         status: completed
         statusReason:
           coding:
@@ -938,6 +978,18 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+          extension:
+            - url: years
+              valueInteger: 24
+            - url: months
+              valueInteger: 1
+            - url: days
+              valueInteger: 12
+            - url: daysSinceBirth
+              valueInteger: 8790
+            - url: precision
+              valueString: DAY
         status: completed
         statusReason:
           coding:
@@ -1020,9 +1072,9 @@ components:
         resourceType: Immunization
         patient:
           identifier:
-          - system: https://standards.digital.health.nz/ns/nhi-id
+            system: https://standards.digital.health.nz/ns/nhi-id
             value: ZZZ7541
-        occurrenceDateTime: '2023-01-26'
+        occurrenceDateTime: '2023-01-26T00:00:00Z'
         vaccineCode:
           text: Priorix
           coding:
@@ -1062,17 +1114,17 @@ components:
             code: '127785005'
         reasonCode:
         - coding:
-          - system: http://snomed.info
-            code: '359953009'
+          - system: http://snomed.info/sct
+            code: '161651000210107'
         - coding:
-          - system: http://snomed.info
-            code: '359953009'
+          - system: http://snomed.info/sct
+            code: '161641000210109'
             version: '1'
         performer:
         - actor:
             identifier:
               system: https://standards.digital.health.nz/ns/hpi-person-id
-              value: '477616'
+              value: '18ABCD'
           function:
             coding:
             - system: https://standards.digital.health.nz/ns/air-terms-code
@@ -1137,15 +1189,15 @@ components:
           actor:
             identifier:
               system: https://standards.digital.health.nz/ns/hpi-person-id
-              value: '477616'
+              value: '18ABCD'
         reasonCode:
         - coding:
-          - system: http://snomed.info
-            code: '359953009'
+          - system: http://snomed.info/sct
+            code: '161651000210107'
         - coding:
-          - system: http://snomed.info
+          - system: http://snomed.info/sct
             version: '1'
-            code: '359953009'
+            code: '161641000210109'
         protocolApplied:
         - doseNumberPositiveInt: 1
     UpdateDQIgnore:
@@ -1212,15 +1264,15 @@ components:
           actor:
             identifier:
               system: https://standards.digital.health.nz/ns/hpi-person-id
-              value: '477616'
+              value: '18ABCD'
         reasonCode:
         - coding:
-          - system: http://snomed.info
-            code: '359953009'
+            - system: http://snomed.info/sct
+              code: '161651000210107'
         - coding:
-          - system: http://snomed.info
-            version: '1'
-            code: '359953009'
+            - system: http://snomed.info/sct
+              version: '1'
+              code: '161641000210109'
         protocolApplied:
         - doseNumberPositiveInt: 1
     ReadResult:
@@ -1245,6 +1297,18 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+          extension:
+            - url: years
+              valueInteger: 24
+            - url: months
+              valueInteger: 1
+            - url: days
+              valueInteger: 12
+            - url: daysSinceBirth
+              valueInteger: 8790
+            - url: precision
+              valueString: DAY
         status: completed
         statusReason:
           coding:
@@ -1328,6 +1392,18 @@ components:
                 valueString: '33332222'
               - url: diluentExpiryDate
                 valueDate: '2026-01-01'
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+              extension:
+                - url: years
+                  valueInteger: 24
+                - url: months
+                  valueInteger: 1
+                - url: days
+                  valueInteger: 12
+                - url: daysSinceBirth
+                  valueInteger: 8790
+                - url: precision
+                  valueString: DAY
             status: completed
             statusReason:
               coding:
@@ -1398,6 +1474,18 @@ components:
                 valueString: '33332222'
               - url: diluentExpiryDate
                 valueDate: '2026-01-01'
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+              extension:
+                - url: years
+                  valueInteger: 24
+                - url: months
+                  valueInteger: 1
+                - url: days
+                  valueInteger: 12
+                - url: daysSinceBirth
+                  valueInteger: 8790
+                - url: precision
+                  valueString: DAY
             status: completed
             statusReason:
               coding:
@@ -1492,6 +1580,18 @@ components:
                 valueString: '33332222'
               - url: diluentExpiryDate
                 valueDate: '2026-01-01'
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
+              extension:
+                - url: years
+                  valueInteger: 24
+                - url: months
+                  valueInteger: 1
+                - url: days
+                  valueInteger: 12
+                - url: daysSinceBirth
+                  valueInteger: 8790
+                - url: precision
+                  valueString: DAY
             status: completed
             statusReason:
               coding:

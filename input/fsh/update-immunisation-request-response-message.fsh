@@ -10,12 +10,12 @@ Usage: #example
 
 * issue[0].severity = #information
 * issue[0].code = #informational
-* issue[0].diagnostics = "pmsfacid1"
+* issue[0].extensions = "pmsfacid1"
 * issue[0].details.coding.code = #AA
 * issue[0].details.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0008"
 
 * issue[1].severity = #information
 * issue[1].code = #informational
-* issue[1].diagnostics = "pmsfacid2"
+* issue[1].extensions = "pmsfacid2"
 * issue[1].details.coding.code = #UNKNOWN
 * issue[1].details.coding.system = "https://standards.digital.health.nz/ns/air-operationoutcome-code"

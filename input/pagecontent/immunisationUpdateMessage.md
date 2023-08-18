@@ -1,8 +1,8 @@
 
 ## Immunisation Update Message Overview
 
-An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existg immunisation is updated.
-The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself,  and the PMS systems to which the message should be sent
+An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existingg immunisation is updated.
+The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself,  and the PMS systems to which the message should be sent.
 At a later time, after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
 ### Immunisation Update Message Request
@@ -45,10 +45,13 @@ At a later time, after the health provider has processed the request, they send 
    | Value            |                                          |
    | ---------------- | ---------------------------------------- |
    | *SENDTOALL*      | send immunisation notification  messages both to the enrolled facility and to the facility which administered the immunisation. |
-   | *SENDTOENROLLED* | send an  immunisation notification  messages only to the enrolled facility |
+   | *SENDTOENROLLED* | send an immunisation notification  messages only to the enrolled facility |
    | *RESEND*         | send an immunisation notification  message to the facilityId in *MessageHeader.destination.name* |
 
    ​
+4. The Orchestration server will return a 202 if one or messages are successfully sent
+5. If one message fails with a 50x (from Healthlink or HIP) and the other succeeds or gets a 40x, the Orchestration server returns a 202 response with an OperationOutcpome. The message which returns a 50x will have error code *TBC* within the OperationOucome issue
+6. If Orchestration server fails with a 50x for both messages it should return a 50x response and raise an operational alert
 
 
 #### Response Codes
@@ -58,8 +61,7 @@ One of the following a synchronous error response may be returned by the server
 
 | **Scenarios**           | **http status code** | **body**           | **description**                          |
 | ----------------------- | -------------------- | ------------------ | ---------------------------------------- |
-| Success                 | 200                  | empty              | The message has been successfully processed |
-| Success                 | 202                  | [OperationOutcome] | The message has been accepted for processing |
+| Success                 | 202                  | OperationOutcome   | The message has been accepted for processing |
 | Server Error            | 50x                  | empty              | An unexpected error occurred on the part of the server. The client may resend the message at a later time once the server is issue is resolved |
 | Data  Error             | 400                  | OperationOutcome   | If the server cannot process the message due to a data error, it should return a 400 error with an OperationOutcome in the body describing the error |
 | Other processing errors | 40x                  | empty              | Other 40x errors may be returned by intermediary gateways (e.g. 401 Unauthorized). These may not provide an OperationOutcome |
@@ -78,22 +80,17 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
 | OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
 
-If the error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
+If an error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
 
 | Field                                    | Description                              | Cardinality |
 | ---------------------------------------- | ---------------------------------------- | ----------- |
 | OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
 | OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
 
-If the error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
 
-| Field                                    | Description                              | Cardinality |
-| ---------------------------------------- | ---------------------------------------- | ----------- |
-| OperationOutcome.issue[].details.coding.code | a code from https://standards.digital.health.nz/ns/air-operationoutcome-code | 0..1        |
-| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/air-operationoutcome-code | 0..1        |
 
 #### Example Response from Orchestration to ImmSOT
-[update-immunisation-request-response1](Bundle-update-immunisation-request-response-message-1.json.html)
+[update-immunisation-request-response1](OperationOutcome-update-immunisation-request-response-message-1.json.html)
 
 
 ### Immunisation Update Message Response

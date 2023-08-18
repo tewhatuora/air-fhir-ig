@@ -11,6 +11,7 @@ Usage: #example
 * meta.tag[0].system = "http://terminology.hl7.org/CodeSystem/v3-ProcessingID"
 * timestamp = 2023-05-14T11:15:33+10:00
 * entry[0].resource.resourceType = "MessageHeader"
+* entry[0].resource.id = "9876543"
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
 * entry[0].resource.focus[0] = Reference(https://api.hip-uat.digital.health.nz/fhir/nhi/v1/Patient/ZKC4633)

@@ -57,7 +57,6 @@ Usage: #example
 * entry[=].resource[=].location.identifier.system = "http://esam.co.nz/eSAMMoHAddress_v01/"
 * entry[=].resource[=].location.identifier.value = "1112139"
 
-
 * entry[=].resource[=].lotNumber = "1234567"
 * entry[=].resource[=].expirationDate = "2025-07-21"
 

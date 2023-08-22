@@ -6,6 +6,8 @@ Alias: $CVX = http://hl7.org/fhir/sid/cvx
 Alias: $v2Site = http://terminology.hl7.org/CodeSystem/v2-0163
 Alias: $v2ImmFunc =  http://terminology.hl7.org/CodeSystem/v2-0443
 Alias: $AIRTerms = https://standards.digital.health.nz/ns/air-terms-code
+Alias: $v2ContactRole = http://terminology.hl7.org/CodeSystem/v2-0131
+Alias: $v3RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 
 // Variables
 Alias: $forecastStatus = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status

@@ -76,6 +76,10 @@ menu:
   Business Context: business-context.html
   Use Cases: 
     Immunisation Update Message:  immunisationUpdateMessage.html
+    Create Immunisation Event:  immunisationEventCreate.html
+    Read Immunisation Event:  immunisationEventRead.html
+    Update Immunisation Event:  immunisationEventUpdate.html
+    Search Immunisation Events:  immunisationEventSearch.html
   Onboarding: onboarding.html
   Profiles: profiles.html
   Message Definitions:

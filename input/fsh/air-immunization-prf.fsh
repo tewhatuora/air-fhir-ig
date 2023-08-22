@@ -26,7 +26,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 // make patient point to AIR Patient profile
 // * patient only Reference(air-patient)
-* patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The preferred identification system is the HPI-F. See the HPI Implementation Guide at https://nhi-ig.hip.digital.health.nz/index.html."
+* patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The identifier must be the NZ NHI number."
 
 /*
 * obeys nz-pat-1

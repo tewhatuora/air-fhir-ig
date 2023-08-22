@@ -265,6 +265,9 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#10215541000116100 "Dukoral"
 * $NZMT#44741471000116105 "TicoVac"
 
+// Added 22 Aug for NAT-4143
+* $NZMT#44881101000116100 "HyperHEP B"
+
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR
 // Display names for these codes taken from NIR Spec v4_5, RXA-5, page 47. 

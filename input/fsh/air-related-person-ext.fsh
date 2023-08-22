@@ -6,10 +6,18 @@ Description: "This extension is to be used for communicating related person info
 * ^context.type = #element
 * ^context.expression = "Immunization"
 
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person"
+
 * insert StandardMetadata 
 
-* value[x] 0..0
-* extension contains
+* value[x] only Reference(RelatedPerson)
+
+
+
+
+
+/* * extension contains
     relatedPerson 0..*
 
 * extension[relatedPerson].value[x] only Reference(RelatedPerson) 
+ */

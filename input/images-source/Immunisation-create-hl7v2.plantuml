@@ -1,0 +1,34 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 5
+skinparam maxmessagesize 180
+skinparam sequenceParticipant bold
+title "Create Immunisation to\nHL7 v2.0 Legacy API\nv1"
+actor "Consumer" as consumer
+box "Healthlink Air\nBroker"
+  participant "HL7v2 API" as broker_pub_api #CornflowerBlue
+end box
+box "FHIR API"
+  participant "AIR" as air_pub_api #CornflowerBlue
+end box
+
+activate broker_pub_api
+consumer -> broker_pub_api: via EDI\n[VXU^V04 Message]
+broker_pub_api -> broker_pub_api: Transform\ninto FHIR
+alt Encountered an Error
+  broker_pub_api -> consumer: [ACK^V04 NACK Message]
+end
+group FHIR API
+  broker_pub_api -> air_pub_api: POST [FHIR Bundle]
+  activate air_pub_api
+  air_pub_api -> air_pub_api: (process)
+  air_pub_api -> broker_pub_api: Response\n[FHIR Message or error]
+  deactivate air_pub_api
+end
+broker_pub_api -> broker_pub_api: Transform\ninto HL7v2
+alt Not Authorised] or\n[Encountered an Error
+  broker_pub_api -> consumer: [ACK^V04 NACK Message]
+end
+broker_pub_api -> consumer: Success Response [ACK^V04 Message]
+deactivate broker_pub_api
+@enduml

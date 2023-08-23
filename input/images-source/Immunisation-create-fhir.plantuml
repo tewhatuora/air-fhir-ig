@@ -1,0 +1,26 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 5
+skinparam maxmessagesize 180
+skinparam sequenceParticipant bold
+title "Create Immunisation to AIR FHIR API\nv1"
+actor "Consumer" as consumer
+box "FHIR API"
+  participant "FHIR API" as air_pub_api #CornflowerBlue
+end box
+
+consumer -> air_pub_api: POST /{envpath}/{resourcepath}\n[FHIR bundle]
+activate air_pub_api
+air_pub_api -> air_pub_api: Check token
+alt Not Authorised
+  air_pub_api -[dashed]-> consumer: [403, 405] Forbidden
+end
+air_pub_api -> air_pub_api: Validate
+air_pub_api -> air_pub_api: Store
+air_pub_api -> air_pub_api: Prepare Response
+alt Encountered an Error
+  air_pub_api -[dashed]-> consumer: [4xx,5xx] Error Response
+end
+air_pub_api -> consumer: [201] Success Response [FHIR Message]
+deactivate air_pub_api
+@enduml

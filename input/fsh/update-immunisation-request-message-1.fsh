@@ -16,7 +16,7 @@ Usage: #example
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE
 * entry[0].resource.focus[0] = Reference(https://api.hip-uat.digital.health.nz/fhir/nhi/v1/Patient/ZKC4633)
 * entry[0].resource.focus[1] = Reference(https://air.api-test.digital.health.nz/fhir/R4/Immunization/IMM-ABCDE)
-
+* entry[0].resource.focus[2] = Reference(https://api.hip-uat.health.digital//fhir/hpi/v1/Practitioner/90ZZLP)
 
 //AIR HPI appid 
 * entry[0].resource.source.software =  "HSAP11111"
@@ -103,9 +103,20 @@ Usage: #example
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
-* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer.actor = Reference(https://api.hip-uat.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
 
 
+* entry[+].resource.resourceType = "Practitioner" 
+* entry[=].resource.identifier.use = #official
+* entry[=].resource.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* entry[=].resource.identifier.value = "90ZZLP"
+* entry[=].resource.identifier.assigner = Reference(Organization/G00001-G)
+* entry[=].resource.name[0].use = #official
+* entry[=].resource.name[=].family = "O'Reilly"
+* entry[=].resource.name[=].given[0] = "Walter"
+* entry[=].resource.name[=].given[+] = "Eugene"
+* entry[=].resource.name[=].prefix = "cpl"
+* entry[=].fullUrl = "https://api.hip-uat.health.digital//fhir/hpi/v1/Practitioner/90ZZLP"
 

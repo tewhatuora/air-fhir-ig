@@ -2,7 +2,7 @@ Alias: $ethnic-group-level-4-code = https://standards.digital.health.nz/ns/ethni
 
 Instance: update-immunisation-response-message-1
 InstanceOf: Bundle
-Description: "Example enrolment nomination request message"
+Description: "Example immunisation nomination response message"
 Usage: #example
 
 * id = "update-immunisation-response-message-1"
@@ -22,7 +22,7 @@ Usage: #example
 
 * entry[0].resource.eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * entry[0].resource.eventCoding.code = #IMMUNISATION_UPDATE_ACK
-* entry[0].resource.focus[0] = Reference(OperationOutcome/success)
+* entry[0].resource.focus[0] = Reference(OperationOutcome/success1)
 //generated guuid
 * entry[0].fullUrl = "https://example.com/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
@@ -31,9 +31,8 @@ Usage: #example
 
 
 * entry[1].resource.resourceType = "OperationOutcome"
-* entry[1].fullUrl = "OperationOutcome/success"
-* entry[1].resource.id = "success"
-* entry[1].resource.id = "success"
+* entry[1].fullUrl = "OperationOutcome/success1"
+* entry[1].resource.id = "success1"
 * entry[1].resource.issue.severity =  #information
 * entry[1].resource.issue.code =  #informational
 * entry[1].resource.issue.diagnostics = "accepted"

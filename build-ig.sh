@@ -39,10 +39,6 @@ done
 
 echo running sushi ...
  ./runSushi.sh
- 
-echo running local scripts....
- node ./localscripts/makeProfilesAndExtensions.js
- node ./localscripts/makeTerminologySummary.js
 
 if [[ "$sushi_only" != "true" ]]; then
     JAVA_OPTS="-Xms2g -Xmx2g -Dfile.encoding=UTF-8"

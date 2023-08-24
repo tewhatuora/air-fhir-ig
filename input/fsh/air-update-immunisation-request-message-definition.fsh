@@ -21,6 +21,10 @@ Usage: #definition
 * focus[2].min = 0
 * focus[2].max = "2"
 
+* focus[3].code = #Practitioner
+* focus[3].min = 1
+* focus[3].max = "1"
+* focus[3].profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-practitioner"
 
 * eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * eventCoding.code = #IMMUNISATION_UPDATE

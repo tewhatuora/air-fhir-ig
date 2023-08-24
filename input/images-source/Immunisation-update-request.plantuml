@@ -27,6 +27,7 @@ activate B
 |||
 B -> B: Determine destinations
 B -> B: Populate Patient resource
+B -> B: Populate Practitioner resource
 |||
 group for each destination
  B -> B: Get facility id and edi 

@@ -12,6 +12,5 @@ _genonce.sh
 /.idea/
 /.project
 /immsot-ig-template-local/
-/localscripts/
 /node_modules/
 /validation.html

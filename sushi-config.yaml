@@ -78,6 +78,7 @@ menu:
     Immunisation Update Message:  immunisationUpdateMessage.html
   Onboarding: onboarding.html
   Profiles: profiles.html
+  API: API.html
   Message Definitions:
     Update Immunisation Request: MessageDefinition-UpdateImmunisationRequestMessageDefinition.html
     Update Immunisation Response: MessageDefinition-UpdateImmunisationResponseMessageDefinition.html

@@ -14,7 +14,8 @@ Usage: #example
 * issue[0].details.coding.code = #AA
 * issue[0].details.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0008"
 
-* issue[1].severity = #information
+* issue[1].severity = #error
+* issue[1].code = #processing
 * issue[1].code = #informational
 * issue[1].expression = "FZZ065-D"
 * issue[1].details.coding.code = #UNKNOWN

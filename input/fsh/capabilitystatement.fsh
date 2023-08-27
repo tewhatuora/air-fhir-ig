@@ -75,3 +75,7 @@ Usage: #definition
 * messaging.supportedMessage[0].definition = "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationRequestMessageDefinition"
 * messaging.supportedMessage[1].mode = $EventCapabilityMode#sender
 * messaging.supportedMessage[1].definition = "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationResponsetMessageDefinition"
+
+* rest.operation[0].name = "process-message"
+* rest.operation[0].definition = "http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message"
+* rest.operation[0].documentation = "POST, [base]/$process-message, http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message, system/Immunization.c"

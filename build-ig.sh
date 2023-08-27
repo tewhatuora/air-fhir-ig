@@ -43,6 +43,7 @@ echo running sushi ...
 echo running local scripts....
  node ./localscripts/makeProfilesAndExtensions.js
  node ./localscripts/makeTerminologySummary.js
+ node ./localscripts/makeCapabilityStatement.js
 
 if [[ "$sushi_only" != "true" ]]; then
     JAVA_OPTS="-Xms2g -Xmx2g -Dfile.encoding=UTF-8"

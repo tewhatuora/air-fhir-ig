@@ -29,11 +29,15 @@ Usage: #definition
 * rest.resource[0].type = #Immunization
 * rest.resource[=].profile = Canonical(AIRImmunization)
 * rest.resource[=].interaction[0].code = #create
+* rest.resource[=].interaction[0].documentation = "POST,[base]/Immunization/, create a new Immunisation record ,system/Immunization.c"
 * rest.resource[=].interaction[+].code = #read
+* rest.resource[=].interaction[=].documentation = "GET,[base]/Immunization/[id], get an Immunisation record by id ,system/Immunization.r"
 * rest.resource[=].interaction[+].code = #update
+* rest.resource[=].interaction[=].documentation = "POST,[base]/Immunization/[id], update an Immunisation record ,system/Immunization.u"
 // * rest.resource[=].interaction[+].code = #delete
 // * rest.resource[=].interaction[+].code = #vread
 * rest.resource[=].interaction[+].code = #search-type
+* rest.resource[=].interaction[=].documentation = "GET,[base]/Immunization/[id], search for  an Immunisation record ,system/Immunization.r"
 * rest.resource[=].versioning = #versioned
 * rest.resource[=].readHistory = false
 * rest.resource[=].updateCreate = false

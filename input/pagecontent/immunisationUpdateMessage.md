@@ -60,12 +60,12 @@ At a later time, after the health provider has processed the request, they send 
 One of the following a synchronous error response may be returned by the server 
 
 
-| **Scenarios**           | **http status code** | **body**           | **description**                          |
-| ----------------------- | -------------------- | ------------------ | ---------------------------------------- |
-| Success                 | 202                  | OperationOutcome   | The message has been accepted for processing |
-| Server Error            | 50x                  | empty              | An unexpected error occurred on the part of the server. The client may resend the message at a later time once the server is issue is resolved |
-| Data  Error             | 400                  | OperationOutcome   | If the server cannot process the message due to a data error, it should return a 400 error with an OperationOutcome in the body describing the error |
-| Other processing errors | 40x                  | empty              | Other 40x errors may be returned by intermediary gateways (e.g. 401 Unauthorized). These may not provide an OperationOutcome |
+| **Scenarios**           | **http status code** | **body**         | **description**                          |
+| ----------------------- | -------------------- | ---------------- | ---------------------------------------- |
+| Success                 | 202                  | OperationOutcome | The message has been accepted for processing |
+| Server Error            | 50x                  | empty            | An unexpected error occurred on the part of the server. The client may resend the message at a later time once the server is issue is resolved |
+| Data  Error             | 400                  | OperationOutcome | If the server cannot process the message due to a data error, it should return a 400 error with an OperationOutcome in the body describing the error |
+| Other processing errors | 40x                  | empty            | Other 40x errors may be returned by intermediary gateways (e.g. 401 Unauthorized). These may not provide an OperationOutcome |
 
 #### Response Body
 The Response body may contain an OperationOutcome resource describing the result of the request message processing.
@@ -76,6 +76,8 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | Field                                    | Description                              | Cardinality |
 | ---------------------------------------- | ---------------------------------------- | ----------- |
 | OperationOutcome.issue                   |                                          | 0..n        |
+| OperationOutcome.issue[].severity        | error                                    | 0..1        |
+| OperationOutcome.issue[].code            | processing                               | 0..1        |
 | OperationOutcome.issue[].diagnostics     | Details of the error                     | 0..1        |
 | OperationOutcome.issue[].expression      | FacilityId of the PMS to which the message was sent | 0..1        |
 | OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
@@ -91,6 +93,9 @@ If an error comes from the HealthLink Broker, the issue.details will element  be
 
 
 #### Example Response from Orchestration to ImmSOT
+
+This is an example of a case where Orchestration server sends two immunisation update messages to two PMS systems in response to a single request from ImmSOT. One of the messages is successfully sent to health link and one fails
+
 [update-immunisation-request-response1](OperationOutcome-update-immunisation-request-response-message-1.json.html)
 
 

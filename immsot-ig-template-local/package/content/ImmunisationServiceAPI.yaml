@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: AIR Immunisation Service
   description: "This API provides the ability to create, modify and retrieve Immunisation\
-    \ records in AIR ImmSoT database"
+    \ records from AIR ImmSoT database"
   version: "0.3.0"
 servers:
 - url: https://air.api.digital.health.nz
@@ -241,6 +241,37 @@ paths:
       - client_credentials:
         - system/Immunization.r
         - air-admin/Immunization.r
+  /v2/fhir/Patient/{NHI}:
+    get:
+      operationId: read
+      parameters:
+        - $ref: '#/components/parameters/NHI'
+        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/SourceSystemID'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirPatient'
+              examples:
+                Patient:
+                  $ref: '#/components/examples/PatientReadResponse'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "404":
+          $ref: '#/components/responses/404'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - apikey_header: [ ]
+        - client_credentials:
+            - system/Patient.r
+            - air-test/Patient.r
 components:
   schemas:
     Address:
@@ -359,6 +390,51 @@ components:
                             type: string
               function:
                 $ref: '#/components/schemas/CodeableConcept'
+    AirPatient:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          description: 'Patient/consumer NHI'
+          type: string
+        meta:
+          type: object
+          properties:
+            versionId:
+              description: 'The version number of the patient/consumer in Immsot'
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+            profile:
+              description: 'The AIR FHIR profile used to validate patient/consumer service'
+              type: array
+              items:
+                type: string
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        extension:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              valueCodeableConcept:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+          link:
+            $ref: '#/components/schemas/Link'
     AirImmunizationBundle:
       type: object
       properties:
@@ -440,6 +516,29 @@ components:
               - $ref: '#/components/schemas/ExtensionString'
               - $ref: '#/components/schemas/ExtensionDate'
               - $ref: '#/components/schemas/ExtensionInteger'
+    Identifier:
+      type: array
+      items:
+        type: object
+        properties:
+          use:
+            type: string
+          system:
+            type: string
+          value:
+            type: string
+    Link:
+      type: array
+      items:
+        type: object
+        properties:
+          other:
+            type: object
+            properties:
+              reference:
+                type: string
+          type:
+            type: string
     DQExtension:
       type: array
       items:
@@ -679,6 +778,14 @@ components:
       name: ID
       in: path
       description: The logical id of the immunization event
+      required: true
+      schema:
+        type: string
+      example: a-unique-id-of-some-sort
+    NHI:
+      name: NHI
+      in: path
+      description: The logical id to identify patient/consumer
       required: true
       schema:
         type: string
@@ -1788,7 +1895,31 @@ components:
             version: '1'
             code: '359953009'
         protocolApplied:
-        - doseNumberPositiveInt: 1  
+        - doseNumberPositiveInt: 1
+    PatientReadResponse:
+      resourceType: Patient
+      id: ZZZ8541
+      meta:
+        lastUpdated: '2023-08-23T12:34:54'
+        profile:
+          - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient
+      identifier:
+        - use: official
+          system: 'https://standards.digital.health.nz/ns/nhi-id'
+          value: ZZZ8541
+        - use: old
+          system: 'https://standards.digital.health.nz/ns/nhi-id'
+          value: ZZZ8545
+      extension:
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state
+          valueCodeableConcept:
+            coding:
+              - system: 'https://standards.digital.health.nz/ns/air-consumer-state-code'
+                code: ACTIVE
+      link:
+        - other:
+            reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'
+          type: refer
     SearchResult:
       summary: Search returns multiple records
       value:

@@ -243,6 +243,32 @@ paths:
         - air-admin/Immunization.r
 components:
   schemas:
+    Address:
+      type: object
+      properties:
+        extension:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExtensionString"
+        use:
+          type: string
+          enum:
+            - home
+            - work
+        type:
+          type: string
+          enum:
+            - postal
+            - physical
+        line:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        postalCode:
+          type: string
+
     AirImmunization:
       type: object
       properties:
@@ -285,6 +311,8 @@ components:
         expirationDate:
           type: string
           format: date-time
+        contained:
+          $ref: "#/components/schemas/Contained"
         extension:
           $ref: '#/components/schemas/AirExtension'
         route:
@@ -367,6 +395,29 @@ components:
                 type: string
         text:
           type: string
+
+    ContactPoint:
+      type: object
+      properties:
+        system:
+          enum:
+            - phone
+            - email
+          type: string
+        value:
+          type: string
+        use:
+          enum:
+            - home
+            - work
+          type: string
+
+    Contained:
+      type: array
+      items:
+        anyOf:
+          - $ref: "#/components/schemas/RelatedPerson"
+
     AirExtension:
       type: array
       items:
@@ -376,6 +427,12 @@ components:
             type: string
             example:
               "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent"
+          valueReference:
+            type: object
+            nullable: true
+            properties:
+              reference:
+                type: string
           extension:
             type: array            
             items:
@@ -479,6 +536,44 @@ components:
                 type: string
               diagnostics:
                 type: string
+
+    RelatedPerson:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - "RelatedPerson"
+        id:
+          type: string
+        patient:
+          $ref: "#/components/schemas/LogicalReference"
+        relationship:
+          type: array
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
+        name:
+          type: array
+          items:
+            type: object
+            properties:
+              family:
+                type: string
+              given:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+        telecom:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactPoint"
+        address:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+
     ViolationExtension:
       type: object
       properties:
@@ -667,6 +762,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -674,6 +806,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2022-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -773,6 +908,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -780,6 +952,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2022-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -865,6 +1040,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -872,6 +1084,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -971,6 +1186,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -978,6 +1230,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -1085,6 +1340,43 @@ components:
         - doseNumberPositiveInt: 1
         lotNumber: '555123'
         expirationDate: '2024-01-31'
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1092,6 +1384,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         route:
           coding:
           - system: http://snomed.info/sct
@@ -1145,6 +1440,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1152,6 +1484,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2022-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         status: completed
         statusReason:
           coding:
@@ -1220,6 +1555,43 @@ components:
           identifier:
             system: https://standards.digital.health.nz/ns/hpi-facility-id
             value: FZZ835-E
+        contained:
+          - resourceType: RelatedPerson
+            id: '1'
+            patient:
+              identifier:
+                system: https://standards.digital.health.nz/ns/nhi-id
+                value: ZZZ7541
+            relationship:
+              - coding:
+                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
+                    code: FTH
+            name:
+              - family: Doe
+                given:
+                  - John
+                  - Jon
+            telecom:
+              - system: phone
+                value: '041234567'
+                use: home
+              - system: phone
+                value: '091234567'
+                use: work
+              - system: email
+                value: jodoe@moh.govt.nz
+                use: home
+            address:
+              - extension:
+                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
+                    valueString: Johnsonville
+                use: home
+                type: physical
+                line:
+                  - 123 Main St
+                  - Neverland
+                city: Wellington
+                postalCode: '6001'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1227,6 +1599,9 @@ components:
             valueString: '33332222'
           - url: diluentExpiryDate
             valueDate: '2026-01-01'
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person
+          valueReference:
+            reference: "#1"
         status: completed
         statusReason:
           coding:

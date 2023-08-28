@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: AIR Immunisation Service
+  title: AIR ImmSoT API Service
   description: "This API provides the ability to create, modify and retrieve Immunisation\
-    \ records from AIR ImmSoT database"
+    \ records from AIR ImmSoT database. It also allows reading and updating consumer records"
   version: "0.3.0"
 servers:
 - url: https://air.api.digital.health.nz

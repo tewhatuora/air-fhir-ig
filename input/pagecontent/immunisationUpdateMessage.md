@@ -30,7 +30,8 @@ At a later time, after the health provider has processed the request, they send 
 11. Once it has recieved responses form each request sent to the HealthLink AIR broker, the Orchestration  server sendsa  synchronous 202 response to  ImmSOT, containing information about each message which was sent.
 
 ####  Immunisation Update Message Request Example - ImmSOT To Orchestration
-[update-immunisation-request2](Bundle-82020189.json.html)
+[update-immunisation-request2](Bundle-82020189.json.html) - SENDTOALL
+[update-immunisation-request3](Bundle-82020190.json.html) - RESEND
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
 [update-immunisation-request1](Bundle-72178030.json.html)

@@ -1,11 +1,11 @@
 Alias: $ethnic-group-level-4-code = https://standards.digital.health.nz/ns/ethnic-group-level-4-code
 
-Instance: immunisation-update-request-message-2
+Instance: immunisation-update-request-message-3
 InstanceOf: Bundle
 Description: "Example immunisation update request message"
 Usage: #example
-//skinny example - this is what ImmSott would need to populate for sending to Orchestration layer, with an action of SENDTOALL
-* id = "82020189"
+//skinny example - this is what ImmSott would need to populate for sending to Orchestration layer, with an action of RESEND. Note the destination facilityid is included in the message header
+* id = "82020190"
 * type = #message
 * meta.tag[0].code = #P
 * meta.tag[0].system = "http://terminology.hl7.org/CodeSystem/v3-ProcessingID"
@@ -24,7 +24,10 @@ Usage: #example
 * entry[0].fullUrl = "https://air.api-dev.digital.health.nz/fhir/R48182fbd6-c7a5-43a4-bbfc-b1443e493ca39"
 
 * entry[0].resource[0].extension[0].url = "http://hl7.org.nz/fhir/StructureDefinition/air-immunisation-notification-action"
-* entry[0].resource[0].extension[0].valueCoding = #SENDTOALL
+* entry[0].resource[0].extension[0].valueCoding = #RESEND
+
+//The receiving facility’s Health Facility Code 
+* entry[0].resource.destination.name = "FZZ968-B"
 
 * entry[1].resource.resourceType = "Immunization" 
 * entry[1].resource.id = "IMM-ABCDE"

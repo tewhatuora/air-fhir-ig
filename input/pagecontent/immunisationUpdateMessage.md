@@ -31,6 +31,7 @@ At a later time, after the health provider has processed the request, they send 
 
 ####  Immunisation Update Message Request Example - ImmSOT To Orchestration
 [update-immunisation-request2](Bundle-82020189.json.html) - SENDTOALL
+
 [update-immunisation-request3](Bundle-82020190.json.html) - RESEND
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink

@@ -266,7 +266,8 @@ Description: "Allowable values for vaccine products in AIR."
 * $NZMT#44741471000116105 "TicoVac"
 
 // Added 22 Aug for NAT-4143
-* $NZMT#44881101000116100 "HyperHEP B"
+// description updated 30 aug 23
+* $NZMT#44881101000116100 "HyperHEP B 110 IU/0.5mL"
 
  
 // enumerated list of CVX and NZVX codes from Terminz and from NIR

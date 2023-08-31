@@ -8,34 +8,30 @@
 <h5>Immunization</h5>
 <strong>Interactions</strong>
 <table class='table table-bordered table-condensed'>
-<tr><th width='10%'>Name</th><th width='10%'>Verb</th><th width='20%'>URL</th><th width='50%'>Documentation</th><th width='10%'>Scope</th></tr>
+<tr><th width='20%'>Code</th><th width='10%'>Verb</th><th width='20%'>URL</th><th width='50%'>Documentation</th></tr>
 <tr>
 <td>create</td>
 <td>POST</td>
 <td>[base]/Immunization/</td>
 <td> create a new Immunisation record </td>
-<td>system/Immunization.c</td>
 </tr>
 <tr>
 <td>read</td>
 <td>GET</td>
 <td>[base]/Immunization/[id]</td>
 <td> get an Immunisation record by id </td>
-<td>system/Immunization.r</td>
 </tr>
 <tr>
 <td>update</td>
 <td>POST</td>
 <td>[base]/Immunization/[id]</td>
 <td> update an Immunisation record </td>
-<td>system/Immunization.u</td>
 </tr>
 <tr>
 <td>search-type</td>
 <td>GET</td>
 <td>[base]/Immunization/[id]</td>
 <td> search for  an Immunisation record </td>
-<td>system/Immunization.r</td>
 </tr>
 </table>
 <strong>Search Parameters</strong>
@@ -66,6 +62,18 @@
 </table>
 <em>These are the _include parameters that are supported on searches</em>
 <br/><br/>
+<br/><h4>Server Level Interactions</h4>
+<strong>Operations</strong>
+<table class='table table-bordered table-condensed'>
+<tr><th width='30%'>Name</th><th width='70%'>Definitions</th></tr>
+<tr>
+<td><p>process-message</p>
+</td>
+<td><p>http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message</p>
+</td>
+<br></br>
+</tr>
+</table>
 <br/><h3>Messages</h3>
 <strong>Definitions</strong>
 <table class='table table-bordered table-condensed'>

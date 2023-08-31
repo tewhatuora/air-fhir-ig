@@ -6,7 +6,7 @@ Description: "This extension is used in AIR to record the system or software use
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system"
 
 * ^context.type = #element
-* ^context.expression = "Immunization"
+* ^context.expression = "Immunization.meta"
 
 * insert StandardMetadata 
 

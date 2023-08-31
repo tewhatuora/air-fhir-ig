@@ -11,7 +11,7 @@
 <tr>
 <td><a href='StructureDefinition-air-immunization-recommendation.html'>air-immunization-recommendation</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation</td>
-<td><p>An immunizationRecommendation derived from the NZ Base immunization PlanDefinition and applied to an invividual.</p></td>
+<td><p>An immunizationRecommendation profile based on the blog posts by David Hay, see https://fhirblog.com/2021/03/26/fhir-enabling-an-immunization-registry/</p></td>
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-immunization.html'>air-immunization</a></td>
@@ -44,9 +44,9 @@
 <td><p>This profile derived from NZPractitioner implements the requirements of the Aotearoa Immunisation Register (AIR) Immunisation Source of Truth (ImmSoT).</p></td>
 </tr>
 <tr>
-<td><a href='StructureDefinition-orch-immunization.html'>orch-immunization</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/orch-immunization</td>
-<td><p>This is the Immunization Profile for use in outbound messages from the Orchestration Service. It relaxes nearly of the constraints found in the AIR Immunization profile, because those constraints were applied on the way in to ImmSoT and don&#39;t need to be validated again on the way out. Relaxing these constraints also allows the easy insertion of _included resources from NHI, HPI, and other services.</p></td>
+<td><a href='StructureDefinition-test-air-immunization-recommendation.html'>test-air-immunization-recommendation</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/test-air-immunization-recommendation</td>
+<td><p>This profile is for testing the design of the ImmunizationRecommendation profile that will be used to convey information about planned events.</p></td>
 </tr>
 </table>
 </div>

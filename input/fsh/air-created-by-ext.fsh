@@ -6,7 +6,7 @@ Description: "This extension is used in AIR to record the user who created the i
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by"
 
 * ^context.type = #element
-* ^context.expression = "Immunization"
+* ^context.expression = "Immunization.meta"
 
 * insert StandardMetadata 
 

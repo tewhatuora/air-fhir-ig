@@ -9,6 +9,10 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // insert metadata extension for data quality
 * meta.extension contains air-data-quality-assessment named DataQualityAssessment 0..1
 
+* meta.extension contains air-created-source-system named CreatedSourceSystem 0..1
+* meta.extension contains air-created-by named CreatedBy 0..1
+* meta.extension contains http://hl7.org/fhir/StructureDefinition/firstCreated named CreatedDate 0..1
+
 // bind status reason to local value set
 * statusReason from air-status-reason-code (preferred)
 * statusReason.coding 1..1
@@ -28,12 +32,6 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // * patient only Reference(air-patient)
 * patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The identifier must be the NZ NHI number."
 
-/*
-* obeys nz-pat-1
-* obeys nz-pat-1-1
-* obeys nz-pat-2
-* obeys nz-pat-3
-*/
 
 // remove encounter
 * encounter 0..0
@@ -194,31 +192,3 @@ Description: "If the reasonCode aka indication has a code, then it must have a s
 Expression: "reasonCode.coding.code.exists() implies reasonCode.coding.system.exists()"
 Severity: #error
 XPath: ""
-
-/*
-// This rule says you must have 1 official NHI or a SalesForce ID
-Invariant: nz-pat-1
-Expression: "patient.identifier.system.exists() implies (patient.identifier.system='https://standards.digital.health.nz/ns/nhi-id' or patient.identifier.system='https://standards.digital.health.nz/ns/air-vhw-id')"
-Severity: #error
-Description: "Patient identifier must be either the NHI Common Person Number or the vaccinating health worker id assigned by Salesforce."
-XPath: ""
-
-// Note this constraint may need to change to accommodate HPI reality of multiple IDs
-Invariant: nz-pat-1-1
-Expression: "patient.identifier.count() = 1"
-Severity: #error
-Description: "There must be exactly one patient identifier."
-XPath: ""
-
-Invariant: nz-pat-2
-Description: "If the patient identifier has a system, then it must have a value."
-Expression: "patient.identifier.system.exists() implies patient.identifier.value.exists()"
-Severity: #error
-XPath: ""
-
-Invariant: nz-pat-3
-Description: "If the patient identifier has a value, then it must have a system."
-Expression: "patient.identifier.value.exists() implies patient.identifier.system.exists()"
-Severity: #error
-XPath: ""
-*/

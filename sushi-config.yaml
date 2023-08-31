@@ -29,6 +29,9 @@ dependencies:
   fhir.org.nz.ig.base:
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
     version: 2.0.0
+  hl7.fhir.uv.extensions:
+    uri: http://hl7.org/fhir/extensions
+    version: 1.0.0
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in

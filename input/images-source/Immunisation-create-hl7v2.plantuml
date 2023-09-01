@@ -3,32 +3,37 @@ skinparam sequenceArrowThickness 2
 skinparam roundcorner 5
 skinparam maxmessagesize 180
 skinparam sequenceParticipant bold
-title "Create Immunisation to\nHL7 v2.0 Legacy API\nv1"
-actor "Consumer" as consumer
-box "Healthlink Air\nBroker"
-  participant "HL7v2 API" as broker_pub_api #CornflowerBlue
+title "Create Immunisation using\nlegacy HL7 v2.0 messaging\nv1"
+actor "Integrating application user" as user #CornflowerBlue
+participant "Integrating application\n(PMS)" as integrating_app #CornflowerBlue
+box "Healthlink"
+  participant "AIR Broker\n<HL7v2>-<FHIR>" as broker #CornflowerBlue
 end box
-box "FHIR API"
-  participant "AIR" as air_pub_api #CornflowerBlue
+box "AIR"
+  participant "Immunisation API\n<FHIR>" as air_pub_api #CornflowerBlue
 end box
 
-activate broker_pub_api
-consumer -> broker_pub_api: via EDI\n[VXU^V04 Message]
-broker_pub_api -> broker_pub_api: Transform\ninto FHIR
-alt Encountered an Error
-  broker_pub_api -> consumer: [ACK^V04 NACK Message]
+user -> integrating_app: Enter immunisation
+integrating_app -> broker: VXU^V04 request
+alt Not Authorised
+  broker -> integrating_app: ACK^V04 NACK response
 end
-group FHIR API
-  broker_pub_api -> air_pub_api: POST [FHIR Bundle]
+broker -> broker: Transform\nto FHIR
+alt Encountered an Error
+  broker -> integrating_app: ACK^V04 NACK response
+end
+
+group FHIR API Flow
+  broker -> air_pub_api: POST [FHIR Bundle]
   activate air_pub_api
   air_pub_api -> air_pub_api: (process)
-  air_pub_api -> broker_pub_api: Response\n[FHIR Message or error]
+  air_pub_api -> broker: Response
   deactivate air_pub_api
 end
-broker_pub_api -> broker_pub_api: Transform\ninto HL7v2
-alt Not Authorised] or\n[Encountered an Error
-  broker_pub_api -> consumer: [ACK^V04 NACK Message]
+broker -> broker: Transform\nto HL7 ACK^V04
+alt Encountered an Error] or\n[Rejected
+  broker -> integrating_app: ACK^V04 NACK response
 end
-broker_pub_api -> consumer: Success Response [ACK^V04 Message]
-deactivate broker_pub_api
+broker -> integrating_app: ACK^V04 ACK response (success)
+integrating_app -> user: Display outcome
 @enduml

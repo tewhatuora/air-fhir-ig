@@ -4,23 +4,37 @@ skinparam roundcorner 5
 skinparam maxmessagesize 180
 skinparam sequenceParticipant bold
 title "Create Immunisation to AIR FHIR API\nv1"
-actor "Consumer" as consumer
-box "FHIR API"
-  participant "FHIR API" as air_pub_api #CornflowerBlue
+actor "Integrating application user" as user #CornflowerBlue
+participant "Integrating application" as integrating_app #CornflowerBlue
+box "AIR"
+  participant "Immunisation API\n<FHIR>" as air_pub_api #CornflowerBlue
 end box
 
-consumer -> air_pub_api: POST /{envpath}/{resourcepath}\n[FHIR bundle]
+user -> integrating_app: Enter immunisation details
+integrating_app -> air_pub_api: POST /{envpath}/{resourcepath}\n[FHIR bundle]
 activate air_pub_api
+alt Bad or invalid
+  air_pub_api -[dashed]-> integrating_app: [4xx,5xx] Error Response\npossible [OperationOutcome]
+end
 air_pub_api -> air_pub_api: Check token
 alt Not Authorised
-  air_pub_api -[dashed]-> consumer: [403, 405] Forbidden
+  air_pub_api -[dashed]-> integrating_app: [401, 403] Denied
 end
 air_pub_api -> air_pub_api: Validate
+alt Rejected
+  air_pub_api -[dashed]-> integrating_app: [400, 412, 422] Error Response\n[OperationOutcome]
+end
+air_pub_api -> air_pub_api: Assess Data Quality
+note left
+  Calculate score  
+  Exact duplicate: status=entered-in-error
+end note
 air_pub_api -> air_pub_api: Store
 air_pub_api -> air_pub_api: Prepare Response
 alt Encountered an Error
-  air_pub_api -[dashed]-> consumer: [4xx,5xx] Error Response
+  air_pub_api -[dashed]-> integrating_app: [5xx] Error Response\n[OperationOutcome]
 end
-air_pub_api -> consumer: [201] Success Response [FHIR Message]
+air_pub_api -> integrating_app: [201] Success Response\n[OperationOutcome]
+integrating_app -> user: Display outcome
 deactivate air_pub_api
 @enduml

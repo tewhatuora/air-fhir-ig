@@ -1,16 +1,14 @@
-## Create Immunisation Event Overview
+## Create (record) Immunisation Event Overview
 
-The "create" operation is used to create a new immunisation record (event) in AIR, within the context of a plan. The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the facility where the immunisation was administered, the provider who administered it, the immunisation product administered, and optional information such as the route of administration. Matching to the patient’s planned events such as those defined by the NZ National Immunisation Schedule is outside the scope of this use case.
+The "create" operation is used to create a new immunisation record (event) in AIR, often within the context of a plan. The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the facility where the immunisation was administered, the provider who administered it, the immunisation product administered, and optional information such as the route of administration and serology results. Refer to [Resource Profile: AIR Immunization](StructureDefinition-air-immunization.html) for details.
 
-Normally this is used once the  [Patient](https://fhir.org.nz/ig/base/StructureDefinition-NzPatient.html) has been uniquely identified and no prior record exists of the event. Validation checks identify whether the event is valid and/or a duplicate.
+Normally this is used once the [Patient](StructureDefinition-air-patient.html) has been uniquely identified and no prior record exists of the event. Validation checks identify whether the event is valid and/or a duplicate. Matching to the patient’s planned events such as those defined by the NZ National Immunisation Schedule is outside the scope of this use case.
 
-Current data from NHI, NES and other data providers is used.
+It is the responsibility of the integrating application to supply correct Patient NHI number, facility and other codes. AIR will save a record provided the integrating application is authorised, the request is valid, the bundle passes FHIR validation and code/id format and checksums are correct. Exact duplicates received less than 60 minutes apart are marked with status ‘entered-in-error’.
 
-Failure conditions documented in this IG only include those that affect AIR or its responses.
+The [__FHIR API Flow__](#fhir-api-create-immunisation-event-flow) occurs when a new immunisation event is submitted from a system compliant with the version of FHIR currently in use, e.g. when an AIR Administrator submits event data via ISM. This uses the AIR Immunisation endpoint.
 
-The __FHIR API Flow__ occurs when a new immunisation event is submitted from a system compliant with the version of FHIR currently in use, e.g. when an AIR Administrator submits event data via ISM. This uses the AIR FHIR endpoint.
-
-The __HL7v2 Flow__ occurs when event data is received from a system that requires transformation from another standard, such as a PMS using legacy HL7v2 messaging. A broker transforms requests into FHIR before invoking the main flow and provides ACK (or NACK) responses to the calling system. This uses the Healthlink Air Broker public API.
+The [__HL7 v2.0 Flow__](#hl7-v20-create-immunisation-event-flow-vx04) occurs when event data is received from a system that requires transformation from another standard, such as a PMS using legacy HL7v2 messaging. A broker transforms requests into FHIR before invoking the main flow and provides (N)ACK responses to the calling system. This uses the Healthlink Air Broker public API.
 
 ### FHIR API Create Immunisation Event Flow
 
@@ -24,29 +22,27 @@ The __HL7v2 Flow__ occurs when event data is received from a system that require
 
 ##### FHIR Create Immunisation Event Flow
 
-   1. Consumer sends a REST request to the AIR FHIR endpoint, passing details of the immunisation event.
+   1. Integrating application sends a REST POST request to the AIR Immunisation endpoint, passing details of the immunisation event in a FHIR bundle.
    1. AIR checks that the authorization token contains the required permission; if invalid, then flow continues to [E1](#e1-create-immunisation-event-authorisation-denial).
-   1. AIR checks that validation rules are met. If processing encounters a fatal error, then flow continues to [E2](#e2-create-immunisation-event-exception).
-      - This could require calls to other Te Whatu Ora Health Identity data providers (not shown).
+      - If at any stage the server encounters an unrecoverable internal error, then flow continues to [E2](#e2-create-immunisation-event-exception).
+   1. AIR checks that validation rules are met. If a critical fault exists in the request, then it is rejected and flow continues to [E2](#e2-create-immunisation-event-exception).
       - In most cases AIR will persist the event without error, though it will include issues in the [DataQualityAssessment](StructureDefinition-air-data-quality-assessment.html) segment of the response.
-      - DataQualityAssessment information is not persisted in AIR.
-   1. AIR checks for duplicates of the event; if an exact duplicate, then AIR will accept the event but return an [entered-in-error](http://hl7.org/fhir/codesystem-flag-status.html) status in the response.
-   1. AIR saves the new version of the event to its database.
-   1. AIR prepares the response, which includes the Immunisation Event enriched with data from other data providers (not shown).
-      - The response body takes the form of a FHIR message containing a bundle that includes the [OperationOutcome](http://hl7.org/fhir/R4/operationoutcome.html) and its [DataQualityAssessment](StructureDefinition-air-data-quality-assessment.html). [FHIR messaging](https://www.hl7.org/fhir/R4/messaging.html) structure is used to enable support for legacy message-based HL7v2 systems using the broker (refer to [HL7v2 Flow](#hl7v2-create-immunisation-event-flow) below).
-      - This could add further issues to the DataQualityAssessment.
-      - FHIR R4 specifies that the id from the message header provides control that links to the original request.
-   1. AIR returns the Immunisation Event to the Consumer.
+      - DQ information is persisted in AIR for reporting and problem resolution.
+      - AIR checks for duplicates of the event; if an exact duplicate is received within a specific period (60 minutes), then AIR will accept the record but return an [entered-in-error](http://hl7.org/fhir/codesystem-flag-status.html) status in the response.
+   1. AIR saves the new event to its database.
+   1. AIR prepares the response, which includes a DQ segment if the score is not 100%.
+      - The response body takes the form of a FHIR bundle that includes the [OperationOutcome](http://hl7.org/fhir/R4/operationoutcome.html) and its [DataQualityAssessment](StructureDefinition-air-data-quality-assessment.html). 
+   1. AIR returns a 201 status with the response to the Integrating application.
    1. Flow ends.
 
 ##### E1 Create Immunisation Event Authorisation Denial
 
-   1. AIR returns a relevant error message and response to the Consumer (4xx), such as indicating that the user does not have the required scope to create an immunisation record.
+   1. AIR returns a relevant HTTP status code to the Integrating application (4xx), indicating that the user does not have the required scope to create an immunisation record.
    1. Flow ends.
 
 ##### E2 Create Immunisation Event Exception
 
-   1. AIR returns a relevant error message to Consumer, such as an internal server error (5xx).
+   1. AIR returns a relevant error message to Integrating application, such as an internal server error (5xx) or rejection (4xx).
    1. Flow ends.
 
 
@@ -54,7 +50,7 @@ The __HL7v2 Flow__ occurs when event data is received from a system that require
 
 #### HL7v2 Sequence Diagram
 
-Where a PMS communicates with NIR via Healthlink and is still in the process of implementing the FHIR API, event data is delivered legacy HL7v2 messaging. The Healthlink AIR Broker transforms requests into FHIR before invoking the FHIR API, and provides ACK (or NACK) responses to the calling system. This API will be sunsetted in the future.
+Where a PMS communicates with NIR via Healthlink and is still in the process of implementing FHIR, event data is delivered (asynchronously) via legacy HL7v2 messaging. The Healthlink AIR Broker transforms requests into FHIR before invoking the FHIR synchronous API, and provides ACK (or NACK) responses to the calling system. This API will be sunsetted in the future.
 
 <div>
 {% include Immunisation-create-hl7v2.svg %}
@@ -66,19 +62,24 @@ Where a PMS communicates with NIR via Healthlink and is still in the process of 
 
 ##### HL7v2 Create Immunisation Event Flow
 
-   1. The Consumer sends a message to the Healthlink Air Broker public end point (eg. a HL7v2 PMS via EDI), passing details of the immunisation event.
-   1. The broker transforms the request into FHIR. If an error occurs, flow continues in [E3](#e3-hl7v2-create-immunisation-event-exception).
-   1. The broker sends the transformed request to the AIR FHIR endpoint in a synchronous request.
-   1. Invoke FHIR API Flow with the broker as its Consumer. If an error or authorisation denial occurs, flow continues in [E3](#e3-hl7v2-create-immunisation-event-exception).
-   1. The broker transforms the FHIR bundle into an ACK^V04 positive acknowledgement message.
-   1. The broker sends the acknowledgement message to the Consumer.
+   1. The Legacy application sends a message to the Healthlink Air Broker public end point (eg. a HL7v2 PMS via EDI), passing details of the immunisation event.
+   1. The Broker checks authorisation of the request. If not permitted, flow continues in [E3](#e3-hl7v2-create-immunisation-event-failure).
+   1. The Broker transforms the request into FHIR. If an error occurs, flow continues in [E3](#e3-hl7v2-create-immunisation-event-failure).
+   1. The Broker sends the transformed request to the AIR Immunisation endpoint in a synchronous request.
+      - To identify Facility, the Broker maps between the EDI mailbox identifier, HPI-f and Health ID when transforming requests.
+   1. The Broker sends the transformed request to the AIR FHIR endpoint in a synchronous request.
+      - This invokes the [FHIR API Flow](#fhir-create-immunisation-event-flow) with the broker as the Integrating application.
+      - If a permanent error or rejection occurs, flow continues in [E3](#e3-hl7v2-create-immunisation-event-failure).
+      - If a temporary error occurs, the Broker will retry the request later.
+   1. The Broker transforms the FHIR bundle into an ACK^V04 positive acknowledgement message.
+   1. The Broker sends the acknowledgement message to the Legacy application.
    1. Flow ends.
 
 
-##### E3 HL7v2 Create Immunisation Event Exception
+##### E3 HL7v2 Create Immunisation Event Failure
 
-   1. The broker prepares a negative ACK^V04 acknowledgement message (NACK).
-   1. The broker sends the negative acknowledgement message to the Consumer.
+   1. The Broker prepares a negative ACK^V04 message (NACK).
+   1. The Broker sends the negative acknowledgement message to the Legacy application.
    1. Flow ends.
 
 

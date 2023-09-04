@@ -46,7 +46,7 @@ echo running local scripts....
  node ./localscripts/makeCapabilityStatement.js
 
 if [[ "$sushi_only" != "true" ]]; then
-    JAVA_OPTS="-Xms2g -Xmx2g -Dfile.encoding=UTF-8"
+    JAVA_OPTS="-Xms2g -Xmx2g -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8"
 
     if [[ -v HTTP_PROXY && "$no_proxy" != "true" ]]; then
       IG_OPTS="-proxy ${HTTP_PROXY//http:\/\/}"

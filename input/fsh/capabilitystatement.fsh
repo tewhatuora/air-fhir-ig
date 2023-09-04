@@ -55,6 +55,12 @@ Usage: #definition
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
 * rest.resource[=].searchParam[=].type = #reference
 * rest.resource[=].searchParam[=].documentation = "NHI number of the patient"
+
+* rest.resource[=].searchParam[0].name = "protocolApplied.targetDisease"
+* rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/target-disease"
+* rest.resource[=].searchParam[=].type = #token
+* rest.resource[=].searchParam[=].documentation = "Vaccine-preventable disease being targeted by an immunisation."
+
 // * rest.resource[=].searchParam[+].name = "status"
 // * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/CarePlan-status"
 // * rest.resource[=].searchParam[=].type = #token

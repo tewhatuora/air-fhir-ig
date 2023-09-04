@@ -11,6 +11,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 * meta.extension contains air-created-source-system named CreatedSourceSystem 0..1
 * meta.extension contains air-created-by named CreatedBy 0..1
+* meta.extension contains air-modified-source-system named ModifiedSourceSystem 0..1
+* meta.extension contains air-created-by named ModifiedBy 0..1
 * meta.extension contains http://hl7.org/fhir/StructureDefinition/firstCreated named CreatedDate 0..1
 
 // bind status reason to local value set

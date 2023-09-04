@@ -131,7 +131,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * protocolApplied.doseNumber[x] only positiveInt
 
 // relatedPerson extension to account for Next of Kin aka Caregiver info
-* extension contains air-related-person named RelatedPerson 0..*
+* extension contains air-related-person-extension named relatedPersonExtension 0..*
 
 Invariant: nz-route-1
 Description: "If the route of admin has a system, then it must have a code."

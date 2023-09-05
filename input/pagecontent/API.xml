@@ -38,9 +38,9 @@
 <table class='table table-bordered table-condensed'>
 <tr><th width='30%'>Name</th><th>Type</th><th width='70%'>Documentation</th></tr>
 <tr>
-<td>identifier</td>
-<td><a target='_blank' href="http://hl7.org/fhir/search.html#reference">reference</a></td>
-<td><div>Definition: http://hl7.org/fhir/SearchParameter/clinical-patient</div><p>NHI number of the patient</p>
+<td>protocolApplied.targetDisease</td>
+<td><a target='_blank' href="http://hl7.org/fhir/search.html#token">token</a></td>
+<td><div>Definition: http://hl7.org/fhir/SearchParameter/target-disease</div><p>Vaccine-preventable disease being targeted by an immunisation.</p>
 </td>
 </tr>
 </table>

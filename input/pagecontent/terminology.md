@@ -113,4 +113,9 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <p>This maps the Route codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ.</p> </td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/route-map">https://standards.digital.health.nz/fhir/air/ConceptMap/route-map</a></td>
 </tr>
+<tr>
+<td><a href="ConceptMap-target-disease-map.html">Concept Map -- Target Disease (SNOMED) < -- > Vaccine (CVX)-undefined</a> </td>
+<td> <p>This map connects vaccine-preventable diseases (identified by SNOMED codes) to the vaccines that target them (identified by CVX codes). This mapping facilitates searching ImmSOT using the targetDisease search parameter.</p> </td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/target-disease-map">https://standards.digital.health.nz/fhir/air/ConceptMap/target-disease-map</a></td>
+</tr>
 </table>

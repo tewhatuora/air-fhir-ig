@@ -14,7 +14,7 @@ servers:
 - url: https://air.api-dev.digital.health.nz
   description: DEV - ImmSoT Service endpoint
 paths:
-  /v2/fhir/R4/Immunization:
+  /v2/fhir/Immunization:
     post:
       operationId: create
       parameters:
@@ -48,7 +48,7 @@ paths:
       - client_credentials:
         - system/Immunization.c
         - air-test/Immunization.c
-  /v2/fhir/R4/Immunization/{ID}:
+  /v2/fhir/Immunization/{ID}:
     get:
       operationId: read
       parameters:
@@ -118,7 +118,7 @@ paths:
         - system/Immunization.u
         - air-admin/Immunization.u
         - air-test/Immunization.u
-  /v2/fhir/R4/Immunization/_search:
+  /v2/fhir/Immunization/_search:
     post:      
       operationId: search
       description:  |
@@ -210,7 +210,7 @@ paths:
       - client_credentials:
         - system/Immunization.s
         - air-admin/Immunization.s
-  /v2/fhir/R4/Immunization/{ID}/_history:
+  /v2/fhir/Immunization/{ID}/_history:
     get:
       operationId: history
       description: Returns the history of a single immunisation event
@@ -241,7 +241,7 @@ paths:
       - client_credentials:
         - system/Immunization.r
         - air-admin/Immunization.r
-  /v2/fhir/R4/Patient/{NHI}:
+  /v2/fhir/Patient/{NHI}:
     get:
       operationId: readPatient
       parameters:
@@ -1933,9 +1933,9 @@ components:
         total: 2
         link:
         - relation: self
-          url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/_search
+          url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/_search
         entry:
-        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/db298d16-1519-4c9f-8424-124090c15784
           resource:
             resourceType: Immunization
             id: db298d16-1519-4c9f-8424-124090c15784
@@ -2059,7 +2059,7 @@ components:
                 code: '359953009'
             protocolApplied:
             - doseNumberPositiveInt: 1
-        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
+        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
           resource:
             resourceType: Immunization
             id: e062d627-b565-48ae-9d7a-417db33ca64f
@@ -2153,7 +2153,7 @@ components:
         total: "0"
         link:
         - relation: self
-          url: https://localhost:8443/v2/fhir/R4/Immunization/_search
+          url: https://localhost:8443/v2/fhir/Immunization/_search
     HistoryResult:
       summary: History returns multiple records
       value:
@@ -2165,9 +2165,9 @@ components:
         total: 2
         link:
         - relation: self
-          url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784/_history
+          url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/db298d16-1519-4c9f-8424-124090c15784/_history
         entry:
-        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/db298d16-1519-4c9f-8424-124090c15784
           resource:
             resourceType: Immunization
             id: db298d16-1519-4c9f-8424-124090c15784
@@ -2291,7 +2291,7 @@ components:
                 code: '359953009'
             protocolApplied:
             - doseNumberPositiveInt: 1
-        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+        - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/v2/fhir/Immunization/db298d16-1519-4c9f-8424-124090c15784
           resource:
             resourceType: Immunization
             id: db298d16-1519-4c9f-8424-124090c15784
@@ -2418,7 +2418,7 @@ components:
       schema:
         type: string
         format: uri
-      example: https://air.api.digital.health.nz/v2/fhir/R4/Immunization/A80B69D0-DF65-4323-A75B-5818438BCBCE/_history/4
+      example: https://air.api.digital.health.nz/v2/fhir/Immunization/A80B69D0-DF65-4323-A75B-5818438BCBCE/_history/4
     ETag:
       description: Identifier for the specific version of an ImmSoT record
       schema:

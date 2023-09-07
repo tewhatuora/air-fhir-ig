@@ -417,22 +417,9 @@ components:
         extension:
           type: array
           items:
-            type: object
-            properties:
-              url:
-                type: string
-              valueCodeableConcept:
-                type: object
-                properties:
-                  coding:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        system:
-                          type: string
-                        code:
-                          type: string
+            allOf:
+              - $ref: '#/components/schemas/ExtensionCodable'
+              - $ref: '#/components/schemas/ExtensionDate'
         link:
           $ref: '#/components/schemas/Link'
     AirImmunizationBundle:
@@ -695,6 +682,25 @@ components:
           type: array
           items:            
             $ref: '#/components/schemas/ViolationExtension'
+    ExtensionCodable:
+      type: array
+      items:
+        type: object
+        properties:
+          url:
+            type: string
+          valueCodeableConcept:
+            type: object
+            properties:
+              coding:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    system:
+                      type: string
+                    code:
+                      type: string
   responses:
     "200":
       description: Ok
@@ -1918,6 +1924,8 @@ components:
               coding:
                 - system: 'https://standards.digital.health.nz/ns/air-consumer-state-code'
                   code: ACTIVE
+          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
+            valueDate: '2012-04-23'
         link:
           - other:
               reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'

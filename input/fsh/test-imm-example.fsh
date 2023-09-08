@@ -35,6 +35,7 @@ Description: "An example immunization resource containing the complete set of fi
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
 
 * status = #completed
+* statusReason = $SCT#127785005
 
 * vaccineCode = $CVX#03 "MMR"
 * lotNumber = "1234567890"
@@ -83,8 +84,7 @@ Description: "An example immunization resource containing the complete set of fi
 
 * protocolApplied.doseNumberPositiveInt = 1
 
-* extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension"
-* extension[=].valueReference = Reference(imm-related-person-1)
+* contained[0] = imm-related-person-1
 
 
 Instance: imm-related-person-1

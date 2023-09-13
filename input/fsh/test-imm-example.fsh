@@ -47,6 +47,11 @@ Description: "An example immunization resource containing the complete set of fi
 * extension[=].extension[+].url = "diluentExpiryDate"
 * extension[=].extension[=].valueDate = "2026-01-01"
 
+// mobile site extension
+* extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
+* extension[=].url = "mobileSiteId"
+* extension[=].valueString = "FZZ958-K_MOB0001"
+
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZAA0792"
 

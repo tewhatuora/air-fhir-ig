@@ -31,6 +31,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // add a diluent extension
 * extension contains air-diluent named Diluent 0..1
 
+// add a mobile site extension
+* extension contains air-mobile-site named MobileSiteId 0..1
+
 // make patient point to AIR Patient profile
 // * patient only Reference(air-patient)
 * patient ^definition = "The patient should be sent using the logical reference format, specifically an identifier with a system and a value. The identifier must be the NZ NHI number."

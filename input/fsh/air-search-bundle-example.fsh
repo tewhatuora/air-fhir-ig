@@ -40,7 +40,6 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueDate = "2026-01-01"
 // mobile site extension
 * entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
-* entry[=].resource[=].extension[=].url = "mobileSiteId"
 * entry[=].resource[=].extension[=].valueString = "FZZ958-K_MOB0001"
 
 * entry[=].resource[=].status = #completed
@@ -118,7 +117,6 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueDate = "2026-01-01"
 // mobile site extension
 * entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
-* entry[=].resource[=].extension[=].url = "mobileSiteId"
 * entry[=].resource[=].extension[=].valueString = "FZZ958-K_MOB0001"
 
 * entry[=].resource[=].status = #completed

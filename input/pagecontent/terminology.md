@@ -23,6 +23,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-related-person-terms">https://standards.digital.health.nz/ns/air-related-person-terms</a></td>
 </tr>
 <tr>
+<td><a href="CodeSystem-air-serology-protection-terms.html">AIR Serology Protection Terms Code System-undefined</a> </td>
+<td> <p>This local code system includes the terms used in legacy HL7 messages and FHIR requests related to serology reports for protection status for diseases such as Hepatitis B.</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-serology-protection-terms">https://standards.digital.health.nz/ns/air-serology-protection-terms</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-terms-code.html">AIR Terms-undefined</a> </td>
 <td> <p>This is a code system for all the terms needed in AIR ImmSoT that don&#39;t come from an external standard</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-terms-code">https://standards.digital.health.nz/ns/air-terms-code</a></td>
@@ -84,6 +89,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ValueSet-air-related-person-relationship.html">AIR Related Person Relationship Codes-undefined</a> </td>
 <td> <p>This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship">https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-serology-protection-code.html">AIR Serology Protection Code Value Set-undefined</a> </td>
+<td> <p>This value set includes all codes from the AIR Serology Protection code system.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-serology-protection-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-serology-protection-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-vaccine-product-code.html">AIR Vaccine Product Value Set-undefined</a> </td>

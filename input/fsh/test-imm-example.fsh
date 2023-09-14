@@ -49,7 +49,6 @@ Description: "An example immunization resource containing the complete set of fi
 
 // mobile site extension
 * extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
-* extension[=].url = "mobileSiteId"
 * extension[=].valueString = "FZZ958-K_MOB0001"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"

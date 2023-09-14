@@ -38,6 +38,10 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueString = "33332222"
 * entry[=].resource[=].extension[=].extension[+].url = "diluentExpiryDate"
 * entry[=].resource[=].extension[=].extension[=].valueDate = "2026-01-01"
+// mobile site extension
+* entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
+* entry[=].resource[=].extension[=].url = "mobileSiteId"
+* entry[=].resource[=].extension[=].valueString = "FZZ958-K_MOB0001"
 
 * entry[=].resource[=].status = #completed
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"
@@ -92,6 +96,9 @@ Usage: #example
 // relatedPerson extension
 * entry[=].resource[=].contained[0] = imm-related-person-1
 
+// serology report extension
+* entry[=].resource[=].contained[+] = imm-serology-report-1
+
 //----------------------------------------------------
 // Immunisation record #2
 
@@ -112,6 +119,10 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[=].valueString = "33332222"
 * entry[=].resource[=].extension[=].extension[+].url = "diluentExpiryDate"
 * entry[=].resource[=].extension[=].extension[=].valueDate = "2026-01-01"
+// mobile site extension
+* entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
+* entry[=].resource[=].extension[=].url = "mobileSiteId"
+* entry[=].resource[=].extension[=].valueString = "FZZ958-K_MOB0001"
 
 * entry[=].resource[=].status = #completed
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"

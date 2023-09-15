@@ -821,6 +821,8 @@ components:
               valueInteger: 8790
             - url: precision
               valueString: DAY
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -967,6 +969,8 @@ components:
               valueInteger: 8790
             - url: precision
               valueString: DAY
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1099,6 +1103,8 @@ components:
               valueInteger: 8790
             - url: precision
               valueString: DAY
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1245,6 +1251,8 @@ components:
               valueInteger: 8790
             - url: precision
               valueString: DAY
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1387,6 +1395,8 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         route:
           coding:
           - system: http://snomed.info/sct
@@ -1487,6 +1497,8 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1602,6 +1614,8 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1724,6 +1738,8 @@ components:
               valueInteger: 8790
             - url: precision
               valueString: DAY
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+          valueString: FZZ835-E_MOB0001
         status: completed
         statusReason:
           coding:
@@ -1859,6 +1875,8 @@ components:
                   valueInteger: 8790
                 - url: precision
                   valueString: DAY
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+              valueString: FZZ835-E_MOB0001
             status: completed
             statusReason:
               coding:
@@ -1941,6 +1959,8 @@ components:
                   valueInteger: 8790
                 - url: precision
                   valueString: DAY
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+              valueString: FZZ835-E_MOB0001
             status: completed
             statusReason:
               coding:
@@ -2087,6 +2107,8 @@ components:
                   valueInteger: 8790
                 - url: precision
                   valueString: DAY
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+              valueString: FZZ835-E_MOB0001
             status: completed
             statusReason:
               coding:
@@ -2197,6 +2219,8 @@ components:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
               valueReference:
                 reference: "#1"
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
+              valueString: FZZ835-E_MOB0001
             status: completed
             statusReason:
               coding:

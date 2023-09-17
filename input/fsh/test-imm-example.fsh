@@ -49,6 +49,7 @@ Description: "An example immunization resource containing the complete set of fi
 
 // mobile site extension
 * extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
+* extension[=].url = "mobileSiteId"
 * extension[=].valueString = "FZZ958-K_MOB0001"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -90,6 +91,7 @@ Description: "An example immunization resource containing the complete set of fi
 * protocolApplied.targetDisease = $SCT#14189004
 
 * contained[0] = imm-related-person-1
+* contained[+] = imm-serology-report-1
 
 
 Instance: imm-related-person-1
@@ -121,3 +123,13 @@ Description: "An example related person for insertion into an immunization resou
 * address.line[+] = "nzland"
 * address.city = "ddd"
 * address.postalCode = "1111"
+
+Instance: imm-serology-report-1
+InstanceOf: Observation
+Usage: #inline
+Title: "Serology Report Example 1"
+Description: "An example serology report for insertion into an immunization resource."
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report"
+* code = $SCT#278969009
+* interpretation = $serProt#IND
+* status = #final

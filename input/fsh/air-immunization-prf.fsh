@@ -139,6 +139,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // relatedPerson extension to account for Next of Kin aka Caregiver info
 * extension contains air-related-person-extension named relatedPersonExtension 0..*
 
+// serologyReport extension for transmitting Hep B serology results
+* extension contains air-serology-report-extension named serologyReportExtension 0..1
+
 Invariant: nz-route-1
 Description: "If the route of admin has a system, then it must have a code."
 Expression: "route.coding.system.exists() implies route.coding.code.exists()"

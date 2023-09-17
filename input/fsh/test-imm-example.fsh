@@ -88,6 +88,7 @@ Description: "An example immunization resource containing the complete set of fi
 * reasonCode.coding = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
 
 * protocolApplied.doseNumberPositiveInt = 1
+* protocolApplied.targetDisease = $SCT#14189004
 
 * contained[0] = imm-related-person-1
 * contained[+] = imm-serology-report-1

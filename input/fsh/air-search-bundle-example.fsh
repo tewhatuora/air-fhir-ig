@@ -164,6 +164,7 @@ Usage: #example
 
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
+* entry[=].resource[=].protocolApplied.targetDisease = $SCT#14189004
 
 //----------------------------------------------------
 // Patient NHI Patient Example

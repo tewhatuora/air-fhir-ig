@@ -66,10 +66,9 @@ Usage: #example
 * entry[=].resource[=].extension[=].extension[+].url = "precision"
 * entry[=].resource[=].extension[=].extension[=].valueString = "Day"
 
-// this is an ESAM location type
-* entry[=].resource[=].location = Reference(http://esam.co.nz/eSAMMoHAddress_v01/1112139)
-* entry[=].resource[=].location.identifier.system = "http://esam.co.nz/eSAMMoHAddress_v01/"
-* entry[=].resource[=].location.identifier.value = "1112139"
+* entry[=].resource[=].location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K)
+* entry[=].resource[=].location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
+* entry[=].resource[=].location.identifier.value = "FZZ958-K"
 
 * entry[=].resource[=].lotNumber = "1234567"
 * entry[=].resource[=].expirationDate = "2025-07-21"
@@ -77,17 +76,10 @@ Usage: #example
 * entry[=].resource[=].site = $SCT#16217701000119102 "Structure of left deltoid muscle"
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
-* entry[=].resource[=].performer[0].function = $AIRTerms#VC "Vaccinator"
-* entry[=].resource[=].performer[0].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
-* entry[=].resource[=].performer[0].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
-* entry[=].resource[=].performer[0].actor.identifier.value = "90ZZLP"
-
-
-// Because this record has an ESAM location, we need a performer organisation as well
-* entry[=].resource[=].performer[+].function = $AIRTerms#MO "Managing Organisation"
-* entry[=].resource[=].performer[=].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B)
-* entry[=].resource[=].performer[=].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"
-* entry[=].resource[=].performer[=].actor.identifier.value = "GZZ956-B"
+* entry[=].resource[=].performer.function = $AIRTerms#VC "Vaccinator"
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* entry[=].resource[=].performer.actor.identifier.value = "90ZZLP"
 
 * entry[=].resource[=].reasonCode = $AIRTerms#15M "15 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 2
@@ -158,9 +150,9 @@ Usage: #example
 * entry[=].resource[=].route = $SCT#78421000 "Intramuscular route"
 
 * entry[=].resource[=].performer.function = $AIRTerms#VC
-* entry[=].resource[=].performer[0].actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
-* entry[=].resource[=].performer[0].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
-* entry[=].resource[=].performer[0].actor.identifier.value = "90ZZLP"
+* entry[=].resource[=].performer.actor = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
+* entry[=].resource[=].performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* entry[=].resource[=].performer.actor.identifier.value = "90ZZLP"
 
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
 * entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
@@ -245,7 +237,7 @@ Usage: #example
 * entry[=].resource[=].address[=].country = "NZ"
 
 //----------------------------------------------------
-// Location ESAM Location
+/* // Location ESAM Location
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
@@ -258,7 +250,7 @@ Usage: #example
 * entry[=].resource[=].meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-location"
 * entry[=].resource[=].identifier[0].use = #official
 * entry[=].resource[=].identifier[=].system = "http://esam.co.nz/eSAMMoHAddress_v01"
-* entry[=].resource[=].identifier[=].value = "1112139"
+* entry[=].resource[=].identifier[=].value = "1112139" */
 
 //----------------------------------------------------
 // Practitioner HPI Practitioner
@@ -334,7 +326,7 @@ Usage: #example
 * entry[=].resource[=].managingOrganization = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Organization/GZZ956-B) "Flat-Unit Address Org"
 
 //----------------------------------------------------
-// Organization HPI Organization
+/* // Organization HPI Organization
 
 // data about the bundle entry here
 * entry[+].search.mode = #include
@@ -371,7 +363,7 @@ Usage: #example
 * entry[=].resource[=].telecom.use = #work
 * entry[=].resource[=].telecom.rank = 1
 * entry[=].resource[=].telecom.period.start = "1970-01-01"
-
+ */
 /*
 // The following section is two resources that are Referenced in #included resources. Phillip at HealthLink thinks these must be expanded in the bundle; Swithin at Te Whatu Ora does not think so.
 

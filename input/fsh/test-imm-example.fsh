@@ -9,9 +9,9 @@ Description: "A simple example of the immunization resource, to be used as a sta
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZAA0792"
 * occurrenceDateTime = "2023-03-01T16:45:46+13:00"
-* performer[practitioner].function = $AIRTerms#VC "Vaccinator"
-* performer[practitioner].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
-* performer[practitioner].actor.identifier.value = "90ZZLP"
+* performer.function = $AIRTerms#VC "Vaccinator"
+* performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* performer.actor.identifier.value = "90ZZLP"
 
 
 Instance: imm-example-2
@@ -70,9 +70,9 @@ Description: "An example immunization resource containing the complete set of fi
 * extension[=].extension[+].url = "precision"
 * extension[=].extension[=].valueString = "Day"
 
-* performer[practitioner].function = $AIRTerms#VC "Vaccinator"
-* performer[practitioner].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
-* performer[practitioner].actor.identifier.value = "90ZZLP"
+* performer.function = $AIRTerms#VC "Vaccinator"
+* performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* performer.actor.identifier.value = "90ZZLP"
 
 * location = Reference(https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E)
 * location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"

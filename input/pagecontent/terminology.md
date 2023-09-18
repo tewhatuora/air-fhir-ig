@@ -81,11 +81,6 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code</a></td>
 </tr>
 <tr>
-<td><a href="ValueSet-air-performer-organization-function-code.html">AIR Performer Organisation Function-undefined</a> </td>
-<td> <p>A value set of codes for the functions performed by the organisations involved  in sponsoring and administering immunisations in Aotearoa.</p></td>
-<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-organization-function-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-organization-function-code</a></td>
-</tr>
-<tr>
 <td><a href="ValueSet-air-related-person-relationship.html">AIR Related Person Relationship Codes-undefined</a> </td>
 <td> <p>This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship">https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship</a></td>

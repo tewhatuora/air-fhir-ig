@@ -35,6 +35,7 @@ Description: "An example immunization resource containing the complete set of fi
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
 
 * status = #completed
+* statusReason = $SCT#127785005
 
 * vaccineCode = $CVX#03 "MMR"
 * lotNumber = "1234567890"
@@ -45,6 +46,11 @@ Description: "An example immunization resource containing the complete set of fi
 * extension[=].extension[=].valueString = "33332222"
 * extension[=].extension[+].url = "diluentExpiryDate"
 * extension[=].extension[=].valueDate = "2026-01-01"
+
+// mobile site extension
+* extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site"
+* extension[=].url = "mobileSiteId"
+* extension[=].valueString = "FZZ958-K_MOB0001"
 
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZAA0792"
@@ -82,9 +88,10 @@ Description: "An example immunization resource containing the complete set of fi
 * reasonCode.coding = $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
 
 * protocolApplied.doseNumberPositiveInt = 1
+* protocolApplied.targetDisease = $SCT#14189004
 
-* extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension"
-* extension[=].valueReference = Reference(imm-related-person-1)
+* contained[0] = imm-related-person-1
+* contained[+] = imm-serology-report-1
 
 
 Instance: imm-related-person-1
@@ -116,3 +123,13 @@ Description: "An example related person for insertion into an immunization resou
 * address.line[+] = "nzland"
 * address.city = "ddd"
 * address.postalCode = "1111"
+
+Instance: imm-serology-report-1
+InstanceOf: Observation
+Usage: #inline
+Title: "Serology Report Example 1"
+Description: "An example serology report for insertion into an immunization resource."
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report"
+* code = $SCT#278969009
+* interpretation = $serProt#IND
+* status = #final

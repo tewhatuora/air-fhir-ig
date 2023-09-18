@@ -128,4 +128,9 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <p>This map connects vaccine-preventable diseases (identified by SNOMED codes) to the vaccines that target them (identified by CVX codes). This mapping facilitates searching ImmSOT using the targetDisease search parameter.</p> </td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/target-disease-map">https://standards.digital.health.nz/fhir/air/ConceptMap/target-disease-map</a></td>
 </tr>
+<tr>
+<td><a href="ConceptMap-vaccine-product-map.html">Concept Map -- Vaccine Product TPUU (NZMT) < -- > Vaccine (CVX)-undefined</a> </td>
+<td> <p>This map connects vaccine products as identified by the Therapeutic Product Unit of Use (TPUU) code in the New Zealand Medicines Terminology (NZMT) to the vaccines as identified by CVX codes. This mapping facilitates translating TPUU codes stored in ImmSOT to a CVX code that can be received by legacy PMS systems.</p> </td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/vaccine-product-map">https://standards.digital.health.nz/fhir/air/ConceptMap/vaccine-product-map</a></td>
+</tr>
 </table>

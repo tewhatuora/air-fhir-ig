@@ -1,7 +1,7 @@
 Extension: AIRConsumerState
 Id: air-consumer-state
 Title: "AIR Consumer State"
-Description: "This extension is used in AIR to communicate the current state of an Air Patient (AKA Consumer)."
+Description: "This extension is used in AIR to communicate the current state of an AIR Patient (AKA Consumer)."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state"
 

@@ -9,4 +9,4 @@ Context: Immunization
 
 * insert StandardMetadata
 
-* value[x] only Reference(Observation) 
+* value[x] only Reference(AIRSerologyReportProfile)

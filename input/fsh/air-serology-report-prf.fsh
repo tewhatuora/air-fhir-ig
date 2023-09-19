@@ -1,4 +1,4 @@
-Profile: AIRSerologyReport
+Profile: AIRSerologyReportProfile
 Parent: Observation
 Id: air-serology-report-profile
 Title: "AIR Serology Report Profile"

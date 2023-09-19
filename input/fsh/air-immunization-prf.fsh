@@ -82,8 +82,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // remove doseQuantity
 * doseQuantity 0..0
 
-* performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" 
-// or "https://standards.digital.health.nz/ns/air-vhw-id"
+* performer.actor only Reference(air-practitioner)
+
 
 * performer.function from air-performer-health-worker-function-code
 

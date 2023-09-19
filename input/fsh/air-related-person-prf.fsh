@@ -6,6 +6,8 @@ Description: "This profile of the FHIR R4 RelatedPerson resource includes only t
 
 * insert StandardMetadata
 
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-profile"
+
 * identifier 0..0
 
 * relationship from air-related-person-relationship

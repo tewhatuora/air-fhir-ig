@@ -46,9 +46,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * occurrence[x] only dateTime
 
 // point to AIR-location profile
-// * location only Reference(air-location)
+* location only Reference(air-location)
 * location ^short = "The location where the immunisation was administered."
-* location ^definition = "The location should be sent using the logical reference format, specifically an identifier with a system and a value. The preferred identification system is the HPI-F. See the HPI Implementation Guide at https://hpi-ig.hip.digital.health.nz/index.html. If the HPI-F is not available, an ESAM identifier may be sent."
+* location ^definition = "The location should be sent using the logical reference format, specifically an identifier with a system and a value. The required identification system is the HPI-F. See the HPI Implementation Guide at https://hpi-ig.hip.digital.health.nz/index.html. "
 
 // add AgeGiven extension
 * extension contains air-age-given named AgeGiven 0..1
@@ -82,25 +82,12 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // remove doseQuantity
 * doseQuantity 0..0
 
-// slice performer on practitioner vs org
+* performer.actor only Reference(air-practitioner)
 
-* performer ^slicing.discriminator.type = #value
-* performer ^slicing.discriminator.path = "actor.identifier.system"
-* performer ^slicing.rules = #open
-* performer ^slicing.description = "Slice based on identifier system: organisation vs practitioner."
 
-* performer contains organization 0..* and practitioner 0..*
+* performer.function from air-performer-health-worker-function-code
 
-* performer[organization].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id" 
-// or "https://standards.digital.health.nz/ns/hpi-nzbn"
-* performer[practitioner].actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id" 
-// or "https://standards.digital.health.nz/ns/air-vhw-id"
-
-* performer[organization].function from air-performer-organization-function-code
-* performer[practitioner].function from air-performer-health-worker-function-code
-
-* performer[organization].function.coding 1..1
-* performer[practitioner].function.coding 1..1
+* performer.function.coding 1..1
 
 // performer function coding rules
 // if the function has a code, it must have a system and vice versa

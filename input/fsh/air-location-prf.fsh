@@ -9,16 +9,7 @@ Description: "Ths profile constrains the NZ Location Profile to meet the require
 * obeys nz-loc1
 * obeys nz-loc2
 
-* identifier ^slicing.discriminator.type = #value
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #open
-
-* identifier contains 
-    ESAM 0..1 and
-    HPI-F 0..1
-
-* identifier[ESAM].system = "http://esam.co.nz/eSAMMoHAddress_v01" (exactly)
-* identifier[HPI-F].system = "https://standards.digital.health.nz/ns/hpi-facility-id" (exactly)
+* identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id" (exactly)
 
 Invariant: nz-loc1
 Description: "if the location identifier has a system, then it must have a value."

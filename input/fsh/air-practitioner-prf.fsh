@@ -6,12 +6,10 @@ Description: "This profile derived from NZPractitioner implements the requiremen
 
 * insert StandardMetadata
 
-// declare rule to say can't have more than one CPN
-
 * obeys nz-prac-1
 
-// This rule says you must have 1 official HPI CPN
+// Provides a warning if the identifier comes from a system we don't prefer
 Invariant: nz-prac-1
-Expression: "Practitioner.identifier.where(system='https://standards.digital.health.nz/ns/hpi-person-id' or system='https://standards.digital.health.nz/ns/air-vhw-id') and Practitioner.identifier.count() = 1"
-Severity: #error
-Description: "Practitioner identifier is limited to a single identifier which must be the CPN from the HPI (identifier system is https://standards.digital.health.nz/ns/hpi-person-id) or, for Vaccinating Health Workers only, have been assigned by the vaccinator platform (identifier system is https://standards.digital.health.nz/ns/air-vhw-id)."
+Expression: "Practitioner.identifier.where(system='https://standards.digital.health.nz/ns/hpi-person-id' or system='https://standards.digital.health.nz/ns/air-vhw-id' or system='https://standards.digital.health.nz/ns/medical-council-id' or system='https://standards.digital.health.nz/ns/nursing-council-id')"
+Severity: #warning
+Description: "The practitioner identifier SHOULD be either the HPI CPN (https://standards.digital.health.nz/ns/hpi-person-id), the Salesforce Vaccinating Health Worker ID (https://standards.digital.health.nz/ns/air-vhw-id), the NZ Medical Council ID (https://standards.digital.health.nz/ns/medical-council-id) or the NZ Nursing Council ID (https://standards.digital.health.nz/ns/nursing-council-id). If another identifier sent to ImmSOT, it will result in a data quality issue and be flagged for follow-up."

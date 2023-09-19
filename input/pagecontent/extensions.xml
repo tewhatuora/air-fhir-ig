@@ -13,6 +13,25 @@
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-consumer-nir-opt-off.html'>air-consumer-nir-opt-off</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off</td>
+<td>
+<div>Immunization</div>
+</td>
+<td><p>This extension is used in AIR to indicate the Air Patient (AKA Consumer) as having opted off NIR before they were migrated into AIR. 
+Presence of this extension on the AIR Patient indicates that the consumer <em>has</em> opted off NIR and the extension includes the date that the consumer requested this to occur.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-consumer-state.html'>air-consumer-state</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state</td>
+<td>
+<div>Immunization</div>
+</td>
+<td><p>This extension is used in AIR to communicate the current state of an AIR Patient (AKA Consumer).</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-created-by.html'>air-created-by</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by</td>
 <td>

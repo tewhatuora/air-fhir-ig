@@ -1,7 +1,7 @@
 CodeSystem: AirConsumerState
 Id: air-consumer-state
 Title: "AIR Consumer State"
-Description: "This is a code system for represdenting the current state of an AIR Patient (AKA Consumer)."
+Description: "This is a code system for representing the current state of an AIR Patient (AKA Consumer)."
 
 * insert StandardMetadata
 

@@ -6,6 +6,8 @@ Description: "This profile on the FHIR r4 Observation resource serves to exchang
 
 * insert StandardMetadata
 
+* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile"
+
 // remove fields that aren't used
 * identifier 0..0
 * basedOn 0..0

@@ -272,6 +272,47 @@ paths:
         - client_credentials:
             - system/Patient.r
             - air-test/Patient.r
+  /v2/fhir/Patient/{NHI}/$update-state:
+    post:
+      operationId: updatePatientState
+      parameters:
+        - $ref: '#/components/parameters/NHI'
+        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/PatientState'
+            examples:
+              updateStateExample:
+                $ref: '#/components/examples/UpdatePatientStateParams'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirPatient'
+              examples:
+                Patient:
+                  $ref: '#/components/examples/PatientReadResponse'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "404":
+          $ref: '#/components/responses/404'
+        "412":
+          $ref: '#/components/responses/412'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - apikey_header: [ ]
+        - client_credentials:
+            - system/Patient.u
+            - air-test/Patient.u
 components:
   schemas:
     Address:
@@ -429,6 +470,22 @@ components:
               type: boolean
         link:
           $ref: '#/components/schemas/Link'
+    PatientState:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        parameter:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              valueInteger:
+                type: integer
+              valueString:
+                type: string
     AirImmunizationBundle:
       type: object
       properties:
@@ -768,6 +825,15 @@ components:
           examples:
             NotFoundEg:
               $ref: '#/components/examples/NotFound'
+    "412":
+      description: Precondition Failed
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            PreConditionFailedEg:
+              $ref: '#/components/examples/PreconditionFailed'
     "422":
       description: Failed Data Validation
       content:
@@ -1433,6 +1499,14 @@ components:
         - severity: error
           code: invariant
           diagnostics: Immunisation event date cannot be in the future
+    PreconditionFailed:
+      summary: A 412 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+          - severity: error
+            code: exception
+            diagnostics: Preconditioned Failed
     InternalError:
       summary: A 500 response example
       value:
@@ -1931,6 +2005,11 @@ components:
               coding:
                 - system: 'https://standards.digital.health.nz/ns/air-consumer-state-code'
                   code: ACTIVE
+          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-sub-status
+            valueCodeableConcept:
+              coding:
+                - system: 'https://standards.digital.health.nz/ns/air-consumer-sub-status-code'
+                  code: WITH_OUTREACH
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
             valueDate: '2012-04-23'
         active: true
@@ -1939,6 +2018,16 @@ components:
           - other:
               reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'
             type: refer
+    UpdatePatientStateParams:
+      value:
+        resourceType: Parameters
+        parameter:
+          - name: version
+            valueInteger: 1
+          - name: state
+            valueString: OVERSEAS
+          - name: subStatus
+            valueString: WITH_OUTREACH
     SearchResult:
       summary: Search returns multiple records
       value:

@@ -417,6 +417,7 @@ components:
       items:
         anyOf:
           - $ref: "#/components/schemas/RelatedPerson"
+          - $ref: "#/components/schemas/Observation"
 
     AirExtension:
       type: array
@@ -573,6 +574,32 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Address"
+    Observation:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - "Observation"
+        id:
+          type: string
+        meta:
+          type: object
+          properties:
+            profile:
+              type: array
+              items:
+                type: string
+        status:
+          type: string
+        code:
+          $ref: "#/components/schemas/CodeableConcept"
+        interpretation:
+          type: array
+          items:
+            $ref: "#/components/schemas/CodeableConcept"
+        effectiveDateTime:
+          type: string
 
     ViolationExtension:
       type: object
@@ -799,6 +826,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -809,6 +851,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -947,6 +992,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -957,6 +1017,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -1081,6 +1144,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1091,6 +1169,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -1229,6 +1310,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1239,6 +1335,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -1385,6 +1484,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1395,6 +1509,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
           valueString: FZZ835-E_MOB0001
         route:
@@ -1487,6 +1604,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1497,6 +1629,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
           valueString: FZZ835-E_MOB0001
         status: completed
@@ -1604,6 +1739,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1614,6 +1764,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
           valueString: FZZ835-E_MOB0001
         status: completed
@@ -1716,6 +1869,21 @@ components:
                   - Neverland
                 city: Wellington
                 postalCode: '6001'
+          - resourceType: Observation
+            id: '2'
+            meta:
+              profile:
+                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+            status: preliminary
+            code:
+              coding:
+                - system: http://snomed.info/sct
+                  code: '278969009'
+            interpretation:
+              - coding:
+                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                    code: IND
+            effectiveDateTime: '2023-01-01T13:12:34+12:00'
         extension:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
           extension:
@@ -1726,6 +1894,9 @@ components:
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
           valueReference:
             reference: "#1"
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+          valueReference:
+            reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
           extension:
             - url: years
@@ -1853,6 +2024,21 @@ components:
                     - Neverland
                   city: Wellington
                   postalCode: '6001'
+            - resourceType: Observation
+              id: '2'
+              meta:
+                profile:
+                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+              status: preliminary
+              code:
+                coding:
+                  - system: http://snomed.info/sct
+                    code: '278969009'
+              interpretation:
+                - coding:
+                    - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                      code: IND
+              effectiveDateTime: '2023-01-01T13:12:34+12:00'
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -1863,6 +2049,9 @@ components:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
               valueReference:
                 reference: "#1"
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+              valueReference:
+                reference: "#2"
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
               extension:
                 - url: years
@@ -2085,6 +2274,21 @@ components:
                     - Neverland
                   city: Wellington
                   postalCode: '6001'
+            - resourceType: Observation
+              id: '2'
+              meta:
+                profile:
+                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+              status: preliminary
+              code:
+                coding:
+                  - system: http://snomed.info/sct
+                    code: '278969009'
+              interpretation:
+                - coding:
+                    - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                      code: IND
+              effectiveDateTime: '2023-01-01T13:12:34+12:00'
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -2095,6 +2299,9 @@ components:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
               valueReference:
                 reference: "#1"
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+              valueReference:
+                reference: "#2"
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
               extension:
                 - url: years
@@ -2209,6 +2416,21 @@ components:
                     - Neverland
                   city: Wellington
                   postalCode: '6001'
+            - resourceType: Observation
+              id: '2'
+              meta:
+                profile:
+                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
+              status: preliminary
+              code:
+                coding:
+                  - system: http://snomed.info/sct
+                    code: '278969009'
+              interpretation:
+                - coding:
+                    - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
+                      code: IND
+              effectiveDateTime: '2023-01-01T13:12:34+12:00'
             extension:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
               extension:
@@ -2219,6 +2441,9 @@ components:
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
               valueReference:
                 reference: "#1"
+            - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
+              valueReference:
+                reference: "#2"
             - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
               valueString: FZZ835-E_MOB0001
             status: completed

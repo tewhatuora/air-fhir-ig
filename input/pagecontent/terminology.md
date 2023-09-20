@@ -3,6 +3,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <table class='table table-bordered table-condensed'>
 <tr><th>Title</th><th>Description</th><th>Canonical url</th></tr>
 <tr>
+<td><a href="CodeSystem-air-consumer-state.html">AIR Consumer State-undefined</a> </td>
+<td> <p>This is a code system for represdenting the current state of an AIR Patient (AKA Consumer).</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-consumer-state">https://standards.digital.health.nz/ns/air-consumer-state</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-event-type-1.0.html">AIR Event Type-1.0</a> </td>
 <td> <p>Identifies AIR events.</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-event-type">https://standards.digital.health.nz/ns/air-event-type</a></td>
@@ -64,6 +69,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ValueSet-hl7v2-result-1.0-code.html">Hl7v2_resultResult Code-1.0</a> </td>
 <td> <p>Hl7v2_result Result Code.</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result">https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-consumer-state-code.html">AIR Consumer State Code-undefined</a> </td>
+<td> <p>Represents the current state of an AIR Consumer.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-disease-covered-code.html">AIR Diseases Covered-undefined</a> </td>

@@ -129,7 +129,7 @@ InstanceOf: Observation
 Usage: #inline
 Title: "Serology Report Example 1"
 Description: "An example serology report for insertion into an immunization resource."
-* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile"
 * code = $SCT#278969009
 * interpretation = $serProt#IND
 * status = #final

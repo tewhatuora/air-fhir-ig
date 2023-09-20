@@ -57,28 +57,6 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #96 "HepB high risk - booster or extra dose"
 * #TPW "Tetanus-prone wound"
 
-// NIR Status Reason Codes
-
-* #AEFIOT "Other AFEI or concern"
-* #AEFISA "Serious and/or Severe AEFI - other - indicating contraindication"
-* #AEFISO "Serious and/or Severe AEFI - indicating caution"
-* #AEFISX "Serious and/or Severe AEFI anaphylax is indication contradiction"
-* #ALTGIVN "Alternate given"
-* #CIS "Change in Schedule"
-* #CPI "Provider Instruction"
-* #DMC "Permanent contraindication"
-* #DPC "Choice - parental/guardian"
-* #DIC "Choice by Individual"
-* #DNI "Natural immunity confirmed by documented serology"
-* #GIVNOS "Given Overseas"
-* #IND "Indeterminable"
-* #NTP "Unprotected"
-* #P "Protection"
-* #PDS "Parent Declined"
-* #RESCHO "Parental/individual choice to reschedule"
-* #RESREF "Referred elsewhere for immunisation eg specialist"
-* #RESTC "Temporary contraindication"
-
 // legacy HL7v2 Route codes from the Message Spec v4.5 2020
 // These are in HL7v2 table 0162
 
@@ -106,6 +84,3 @@ Description: "This is a code system for all the terms needed in AIR ImmSoT that 
 * #LVG "Left Ventragluteal"
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 
-
-// Terms for the function played by an organization in vaccine administration
-* #MO "Managing Organisation"

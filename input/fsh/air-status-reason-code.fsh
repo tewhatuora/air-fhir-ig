@@ -28,23 +28,39 @@ Description: "Values to use in the status reason field of an immunisation event.
 // For ticket IMM-1283
 * $SCT#445672005 "Duplicate report"
 
-* $AIRTerms#AEFIOT "Other AFEI or concern"
-* $AIRTerms#AEFISA "Serious and/or Severe AEFI - other - indicating contraindication"
-* $AIRTerms#AEFISO "Serious and/or Severe AEFI - indicating caution"
-* $AIRTerms#AEFISX "Serious and/or Severe AEFI anaphylaxis indication contradiction"
-* $AIRTerms#ALTGIVN "Alternate given"
-* $AIRTerms#CIS "Change in Schedule"
-* $AIRTerms#CPI "Provider Instruction"
-* $AIRTerms#DMC "Permanent contraindication"
-* $AIRTerms#DPC "Choice - parental/guardian"
-* $AIRTerms#DIC "Choice by Individual"
-* $AIRTerms#DNI "Natural immunity confirmed by documented serology"
-* $AIRTerms#GIVNOS "Given Overseas"
-* $AIRTerms#IND "Indeterminable"
-* $AIRTerms#NTP "Unprotected"
-* $AIRTerms#P "Protection"
-* $AIRTerms#PDS "Parent Declined"
-* $AIRTerms#RESCHO "Parental/individual choice to reschedule"
-* $AIRTerms#RESREF "Referred elsewhere for immunisation eg specialist"
-* $AIRTerms#RESTC "Temporary contraindication"
 
+// AEFI codes removed per IMM-2617
+/* 
+* $AIRSR#AEFIOT "Other AFEI or concern"
+* $AIRSR#AEFISA "Serious and/or Severe AEFI - other - indicating contraindication"
+* $AIRSR#AEFISO "Serious and/or Severe AEFI - indicating caution"
+* $AIRSR#AEFISX "Serious and/or Severe AEFI anaphylaxis indication contradiction" 
+*/
+
+// All these serology related codes moved out of AIR-Terms and into their own codeSystem 
+// as part of IMM-2617
+/*
+* $AIRSR#IND "Indeterminable"
+* $AIRSR#NTP "Unprotected"
+* $AIRSR#P "Protection"
+* $AIRSR#PDS "Parent Declined"
+*/
+
+
+* $AIRSR#ALTGIVN "Alternative vaccination"
+* $AIRSR#CIS "Change in Schedule"
+* $AIRSR#CPI "Provider Instruction"
+* $AIRSR#DMC "Permanent contraindication"
+* $AIRSR#DPC "Declined by parent/guardian"
+* $AIRSR#DIC "Declined by individual"
+* $AIRSR#DNI "Immune"
+* $AIRSR#GIVNOS "Overseas vaccination"
+
+* $AIRSR#RESCHO "Parental/individual choice to reschedule"
+* $AIRSR#RESREF "Referred elsewhere for immunisation eg specialist"
+* $AIRSR#RESTC "Temporary contraindication"
+
+// GIVEN and HISTGVN added per IMM-2617
+
+* $AIRSR#GIVEN "Vaccination given"
+* $AIRSR#HISTGVN "Historic vaccination"

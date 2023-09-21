@@ -4,8 +4,13 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <tr><th>Title</th><th>Description</th><th>Canonical url</th></tr>
 <tr>
 <td><a href="CodeSystem-air-consumer-state.html">AIR Consumer State-undefined</a> </td>
-<td> <p>This is a code system for represdenting the current state of an AIR Patient (AKA Consumer).</p> </td>
+<td> <p>This is a code system for representing the current state of an AIR Patient (AKA Consumer).</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-consumer-state">https://standards.digital.health.nz/ns/air-consumer-state</a></td>
+</tr>
+<tr>
+<td><a href="CodeSystem-air-consumer-sub-status.html">AIR Consumer Sub Status-undefined</a> </td>
+<td> <p>This is a code system for representing the current sub status of an AIR Patient (AKA Consumer).</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-consumer-sub-status">https://standards.digital.health.nz/ns/air-consumer-sub-status</a></td>
 </tr>
 <tr>
 <td><a href="CodeSystem-air-event-type-1.0.html">AIR Event Type-1.0</a> </td>
@@ -31,6 +36,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="CodeSystem-air-serology-protection-terms.html">AIR Serology Protection Terms Code System-undefined</a> </td>
 <td> <p>This local code system includes the terms used in legacy HL7 messages and FHIR requests related to serology reports for protection status for diseases such as Hepatitis B.</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-serology-protection-terms">https://standards.digital.health.nz/ns/air-serology-protection-terms</a></td>
+</tr>
+<tr>
+<td><a href="CodeSystem-air-status-reason-terms.html">AIR Status Reason Terms Code System-undefined</a> </td>
+<td> <p>This AIR code system includes the terms used in NIR HL7v2 messages to populate the RXA-18 field and and in FHIR payloads to populate immunization.statusReason.</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-status-reason-terms">https://standards.digital.health.nz/ns/air-status-reason-terms</a></td>
 </tr>
 <tr>
 <td><a href="CodeSystem-air-terms-code.html">AIR Terms-undefined</a> </td>
@@ -74,6 +84,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ValueSet-air-consumer-state-code.html">AIR Consumer State Code-undefined</a> </td>
 <td> <p>Represents the current state of an AIR Consumer.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-consumer-sub-status-code.html">AIR Consumer State Code-undefined</a> </td>
+<td> <p>Represents the current sub status of an AIR Consumer.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-sub-status-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-sub-status-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-disease-covered-code.html">AIR Diseases Covered-undefined</a> </td>

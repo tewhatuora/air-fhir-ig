@@ -23,7 +23,5 @@ Description: "This profile on the FHIR r4 Observation resource serves to exchang
 
 * interpretation from air-serology-protection-code (required)
 
-
-
-
-
+* code.coding.system = $SCT (exactly)
+* code.coding.code = #278969009 (exactly)

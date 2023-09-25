@@ -33,10 +33,10 @@ Description: "This AIR code system includes the terms used in NIR HL7v2 messages
 * #RESREF "Referred elsewhere for immunisation eg specialist"
 * #RESTC "Temporary contraindication"
 
-// GIVEN and HISTGVN added per IMM-2617
+// GIVEN and HSTGIVN added per IMM-2617
 
 * #GIVEN "Vaccination given"
-* #HISTGVN "Historic vaccination"
+* #HSTGIVN "Historic vaccination"
 
 // Serology related codes removed per IMM-2617
 // see air-serology-protection-terms 

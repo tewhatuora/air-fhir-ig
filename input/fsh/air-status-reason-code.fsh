@@ -60,7 +60,7 @@ Description: "Values to use in the status reason field of an immunisation event.
 * $AIRSR#RESREF "Referred elsewhere for immunisation eg specialist"
 * $AIRSR#RESTC "Temporary contraindication"
 
-// GIVEN and HISTGVN added per IMM-2617
+// GIVEN and HSTGIVN added per IMM-2617
 
 * $AIRSR#GIVEN "Vaccination given"
-* $AIRSR#HISTGVN "Historic vaccination"
+* $AIRSR#HSTGIVN "Historic vaccination"

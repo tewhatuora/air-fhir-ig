@@ -85,7 +85,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * performer.actor only Reference(air-practitioner)
 
 
-* performer.function from air-performer-health-worker-function-code
+* performer.function from air-performer-health-worker-function-code (extensible)
 
 * performer.function.coding 1..1
 

@@ -109,12 +109,14 @@ Description: "Allowable values for vaccine products in AIR."
 
 // * $CVX#206 "Vaccinia (smallpox)"
 
-* $CVX#207 "COVID-19"
+// * $CVX#207 "COVID-19"
+
 * $CVX#208 "COVID-19"
 * $CVX#21 "VV"
 * $CVX#210 "COVID-19"
 * $CVX#211 "COVID-19"
-* $CVX#212 "COVID-19"
+
+// * $CVX#212 "COVID-19"
 
 * $CVX#217 "COVID-19"
 
@@ -124,7 +126,9 @@ Description: "Allowable values for vaccine products in AIR."
 
 * $CVX#222 "TBE"
 * $CVX#22 "DTP-Hib"
-* $CVX#229 "COVID-19"
+
+// * $CVX#229 "COVID-19"
+
 * $CVX#26 "Cholera"
 * $CVX#28 "DT"
 * $CVX#30 "HBIG"
@@ -138,16 +142,20 @@ Description: "Allowable values for vaccine products in AIR."
 * $CVX#48 "Hib-PRP-T"
 * $CVX#50 "DTaP-Hib"
 * $CVX#500 "COVID-19"
-* $CVX#501 "COVID-19"
+
+/* * $CVX#501 "COVID-19"
 * $CVX#502 "COVID-19"
 * $CVX#504 "COVID-19"
 * $CVX#505 "COVID-19"
 * $CVX#506 "COVID-19"
 * $CVX#507 "COVID-19"
-* $CVX#509 "COVID-19"
+* $CVX#509 "COVID-19" */
+
 * $CVX#51 "Hib-HepB"
-* $CVX#510 "COVID-19"
-* $CVX#511 "COVID-19"
+
+/* * $CVX#510 "COVID-19"
+* $CVX#511 "COVID-19" */
+
 * $CVX#52 "HepA"
 * $CVX#62 "HPV4"
 * $CVX#75 "MPX"

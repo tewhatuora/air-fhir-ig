@@ -159,7 +159,7 @@ Description: "Allowable values for vaccine products in AIR."
 * $CVX#52 "HepA"
 * $CVX#62 "HPV4"
 * $CVX#75 "MPX"
-* $CVX#83 "Hep A, paed./adol., 2 dose"
+* $CVX#83 "HepA"
 * $CVX#25 "Typhoid"
 
 // note that NIR spec doc has this as 90306, but there are 800,000+ records with 090306 and only 32 with 90306

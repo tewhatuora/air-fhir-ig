@@ -18,6 +18,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-event-type">https://standards.digital.health.nz/ns/air-event-type</a></td>
 </tr>
 <tr>
+<td><a href="CodeSystem-air-forecast-status.html">AIR Forecast Status Code System-undefined</a> </td>
+<td> <p>This code system includes the codes used in AIR to communicate a planned event status that are not already included in http://terminology.hl7.org/CodeSystem/immunization-recommendation-status.</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-forecast-status">https://standards.digital.health.nz/ns/air-forecast-status</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-immunisation-notification-action-code-1.0.html">AIR Immunisation Notification Action Code-1.0</a> </td>
 <td> <p>Describes the action taken by Orchestration server in response to an Immunisation Notification request message</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-immunisation-notification-action-code">https://standards.digital.health.nz/ns/air-immunisation-notification-action-code</a></td>
@@ -26,6 +31,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="CodeSystem-air-operationoutcome-code-1.0.html">AIR Operationoutcome Codes-1.0</a> </td>
 <td> <p>Describes the AIR-specific errors</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-operationoutcome-code">https://standards.digital.health.nz/ns/air-operationoutcome-code</a></td>
+</tr>
+<tr>
+<td><a href="CodeSystem-air-planned-event-type-cs.html">AIR Planned Event Type-undefined</a> </td>
+<td> <p>This code system includes values for the types of Planned Events used in AIR.</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-planned-event-type-cs">https://standards.digital.health.nz/ns/air-planned-event-type-cs</a></td>
 </tr>
 <tr>
 <td><a href="CodeSystem-air-related-person-terms.html">AIR Related Person Relationship Terms-undefined</a> </td>
@@ -66,6 +76,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-serology-protection-code.html">AIR Serology Protection Code Value Set-undefined</a> </td>
+<td> <p>This value set includes all codes from the AIR Serology Protection code system.</p></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-serology-protection-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-serology-protection-code</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-site-code.html">AIR Body Site Value Set-undefined</a> </td>
 <td> <p>Body sites value set for AIR immunisations</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-site-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-site-code</a></td>
@@ -96,6 +111,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-disease-covered-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-disease-covered-code</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-forecast-status-code.html">AIR Forecast Status-undefined</a> </td>
+<td> <p>This value set includes the codes used in AIR to communicate the status of a planned event. </p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-forecast-status-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-forecast-status-code</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-indication-code.html">AIR Indication Codes-undefined</a> </td>
 <td> <p>Coded values to describe the reason an immunisation was given. Initially drawn from legacy NIR codes and CIR SNOMED codes.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-indication-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-indication-code</a></td>
@@ -106,14 +126,14 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-planned-event-type-code.html">AIR Planned Event Type Value Set-undefined</a> </td>
+<td> <p>This value set lists the codes to be used to describe planned event type in AIR.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-type-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-type-code</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-related-person-relationship.html">AIR Related Person Relationship Codes-undefined</a> </td>
 <td> <p>This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship">https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship</a></td>
-</tr>
-<tr>
-<td><a href="ValueSet-air-serology-protection-code.html">AIR Serology Protection Code Value Set-undefined</a> </td>
-<td> <p>This value set includes all codes from the AIR Serology Protection code system.</p></td>
-<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-serology-protection-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-serology-protection-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-vaccine-product-code.html">AIR Vaccine Product Value Set-undefined</a> </td>
@@ -142,6 +162,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ConceptMap-route-map.html">Concept Map -- Route of Administration HL7v2 < -- > SNOMED-undefined</a> </td>
 <td> <p>This maps the Route codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ.</p> </td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/route-map">https://standards.digital.health.nz/fhir/air/ConceptMap/route-map</a></td>
+</tr>
+<tr>
+<td><a href="ConceptMap-serology-protection-code-map.html">Concept Map --  HL7v2 Serology Obs Value < -- > AIR Serology Protection Codes-undefined</a> </td>
+<td> <p>This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards.</p> </td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/serology-protection-code-map">https://standards.digital.health.nz/fhir/air/ConceptMap/serology-protection-code-map</a></td>
 </tr>
 <tr>
 <td><a href="ConceptMap-target-disease-map.html">Concept Map -- Target Disease (SNOMED) < -- > Vaccine (CVX)-undefined</a> </td>

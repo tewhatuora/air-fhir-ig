@@ -11,6 +11,9 @@ Alias: $v3RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $relationCode = https://standards.digital.health.nz/ns/air-related-person-terms
 Alias: $serProt = https://standards.digital.health.nz/ns/air-serology-protection-terms
 Alias: $AIRSR = https://standards.digital.health.nz/ns/air-status-reason-terms
+Alias: $imm-rec-status = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status
+Alias: $air-imm-rec-status = https://standards.digital.health.nz/ns/air-forecast-status
+Alias: $AIRPEType = https://standards.digital.health.nz/ns/air-planned-event-type
 
 // Variables
 Alias: $forecastStatus = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status

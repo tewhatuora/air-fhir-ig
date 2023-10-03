@@ -13,6 +13,15 @@
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-antigen-group.html'>air-antigen-group</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-antigen-group</td>
+<td>
+<div>ImmunizationRecommendation</div>
+</td>
+<td><p>This extension holds the name of an Antigen Group, which in AIR is the set of diseases that are targeted by a vaccine.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-consumer-nir-opt-off.html'>air-consumer-nir-opt-off</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off</td>
 <td>
@@ -120,6 +129,24 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <div>Immunization.meta</div>
 </td>
 <td><p>This extension is used in AIR to record the system or software used to update the immunisation event record. Example values are ISM, PMS, and so on.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-planned-event-identifier.html'>air-planned-event-identifier</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-identifier</td>
+<td>
+<div>ImmunizationRecommendation.recommendation</div>
+</td>
+<td><p>This identifier is attached to the individual recommendations that are part of an AIR Immunisation Recommendation.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-planned-event-type-ext.html'>air-planned-event-type-ext</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state</td>
+<td>
+<div>ImmunizationRecommendation.recommendation</div>
+</td>
+<td><p>This extension to the FHIR ImmunizationRecommendation.recommendation field holds a value that describes the type of planned event used in AIR.</p></td>
 <td></td>
 </tr>
 <tr>

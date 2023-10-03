@@ -12,7 +12,6 @@ Usage: #example
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
 * recommendation[0].doseNumberPositiveInt = 1
-* recommendation[0].dateCriterion.code = http://loinc.org#30980-7   "Date vaccine due"
 * recommendation[0].dateCriterion.value = "2021-01-14"      //age 6 weeks
 
 //the 'disease covered' extensions for the Infanrix vaccine
@@ -23,13 +22,30 @@ Usage: #example
 * recommendation[0].extension[air-disease-covered][4].valueCodeableConcept = $SCT#66071002 "Viral Hepatitis type B"
 * recommendation[0].extension[air-disease-covered][5].valueCodeableConcept = $SCT#91428005 "Haemophilus influenzae infection"
 
+// the event identifier extension for the Infanrix vaccine
+* recommendation[0].extension[event-identifier][0].valueString = "1234-1234-1234"
+
+// the antigen group for the Infanrix vaccine
+* recommendation[0].extension[antigen-group][0].valueString = "DTaP-IPV-HepB-Hib"
+
+// the planned event type for the Infanrix vaccine
+* recommendation[0].extension[planned-event-type][0].valueCodeableConcept = $AIRPEType#CPE
+
 //the recommendation for the 6 week PVC10
 * recommendation[1].forecastStatus = $forecastStatus#due
 * recommendation[1].vaccineCode =  $NZMT#31116301000116107 "PCV10" // MPUU (generic) for Synflorix
 * recommendation[1].series = "pcv10"
 * recommendation[1].doseNumberPositiveInt = 1
-* recommendation[1].dateCriterion.code = http://loinc.org#30980-7   "Date vaccine due"
 * recommendation[1].dateCriterion.value = "2021-01-14"      //age 6 weeks
 
 //the 'disease covered' extensions for the Synflorix vaccine
 * recommendation[1].extension[air-disease-covered][0].valueCodeableConcept = $SCT#16814004 "Pneumococcal disease"
+
+// the event identifier extension for the Synflorix vaccine
+* recommendation[1].extension[event-identifier][0].valueString = "2345-2345-2345"
+
+// the antigen group for the Synflorix vaccine
+* recommendation[1].extension[antigen-group][0].valueString = "PCV"
+
+// the planned event type for the Synflorix vaccine
+* recommendation[1].extension[planned-event-type][0].valueCodeableConcept = $AIRPEType#CPE

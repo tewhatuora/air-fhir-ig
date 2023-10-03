@@ -6,6 +6,8 @@ Description: "A value set of codes for the functions performed by the people who
 * ^experimental = false
 * insert StandardMetadata
 
+* $v2ImmFunc#AP "Administering Provider"
+
 * $AIRTerms#VC "Vaccinator"
 * $AIRTerms#VHW "Vaccinating health worker"
 * $AIRTerms#GP "General practitioner"

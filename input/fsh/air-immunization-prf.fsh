@@ -28,6 +28,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * vaccineCode.coding.code 1..1
 * vaccineCode.coding.system 1..1
 
+// add the administeredProduct extension
+* extension contains air-administered-product named administeredProduct 0..1
+
 // add a diluent extension
 * extension contains air-diluent named Diluent 0..1
 

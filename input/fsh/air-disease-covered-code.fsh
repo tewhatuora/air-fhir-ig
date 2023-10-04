@@ -33,5 +33,5 @@ Description: "Diseases that are covered by the immunization programmes and sched
 * $SCT#52947006	"Japanese encephalitis virus disease"
 * $SCT#23502006	"Lyme disease"
 * $SCT#14168008 "Rabies"
-
-
+* $SCT#4834000 "Typhoid fever"
+* $SCT#63650001 "Cholera"

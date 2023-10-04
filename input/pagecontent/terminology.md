@@ -96,6 +96,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result">https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-administered-product-code.html">AIR Administered Product Code Value Set-undefined</a> </td>
+<td> <p>NZMT TPUU codes for use in populating the administeredProduct element in an AIR Immunization resource.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-consumer-state-code.html">AIR Consumer State Code-undefined</a> </td>
 <td> <p>Represents the current state of an AIR Consumer.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code</a></td>
@@ -137,7 +142,7 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 </tr>
 <tr>
 <td><a href="ValueSet-air-vaccine-product-code.html">AIR Vaccine Product Value Set-undefined</a> </td>
-<td> <p>Allowable values for vaccine products in AIR.</p></td>
+<td> <p>Allowable values for CVX and NZVX codes used to populate the vaccineCode element in an AIR Immunization resource.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code</a></td>
 </tr>
 </table>

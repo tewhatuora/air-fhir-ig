@@ -28,6 +28,6 @@ RuleSet: SupportSearchParam (name, canonical, type, expectation)
 * rest.resource[=].searchParam[=].extension[0].valueCode = {expectation}
 
 RuleSet: ConceptMapEntry (sourceCode, targetCode, equivalence) 
-* group.element[+].code = #{sourceCode}
-* group.element[=].target.code = #{targetCode}
-* group.element[=].target.equivalence = #{equivalence}
+* group[=].element[+].code = #{sourceCode}
+* group[=].element[=].target.code = #{targetCode}
+* group[=].element[=].target.equivalence = #{equivalence}

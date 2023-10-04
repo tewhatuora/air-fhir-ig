@@ -7,6 +7,7 @@ Description: "Body sites value set for AIR immunisations"
 
 * ^experimental = false
 
+
 // from http://terminology.hl7.org/CodeSystem/v2-0163
 // the below list taken from NIR File Specification version 4.5 24 Sept 2020
 
@@ -28,7 +29,6 @@ Description: "Body sites value set for AIR immunisations"
 * $AIRTerms#BU "Buttock" 
 
 // The below list taken from ISD and ISM Codesets on https://mohits.atlassian.net/wiki/spaces/NIS/pages/3365175358/ISD+and+ISM+Codesets
-// Note that this FHIR artifact requires the use of a correct SNOMED name although in some cases that's not what's displayed in the app.
 
 * $SCT#16217701000119102 "Structure of left deltoid muscle"
 * $SCT#1217007000 "Structure of left vastus lateralis muscle"
@@ -44,3 +44,14 @@ Description: "Body sites value set for AIR immunisations"
 
 // Added for NAT-3746
 * $SCT#74262004 "Oral cavity structure"
+
+// Added for IMM-2922
+* $SCT#299121000210105 "Left upper outer buttock"
+* $SCT#299141000210104 "Right upper outer buttock"
+* $SCT#61396006 "Left thigh"
+* $SCT#11207009 "Right thigh"
+* $SCT#299151000210101 "Left ventrogluteal"
+* $SCT#299161000210103 "Right ventrogluteal"
+* $SCT#206007 "Gluteus maximus muscle"
+* $SCT#1403006 "Vastus lateralis muscle"
+* $SCT#78333006 "Gluteus medius muscle"

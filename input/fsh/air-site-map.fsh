@@ -15,38 +15,26 @@ Description: "This maps the vaccination site codes listed in the NIR Message Spe
 * group.source = $AIRTerms
 * group.target = $SCT
 
-* group.element[0].code = #LD
-* group.element[=].target.code = #16217701000119102
-* group.element[=].target.equivalence = #equivalent
+// map updated per IMM-2922
 
-* group.element[+].code = #RD
-* group.element[=].target.code = #16217661000119109
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #LVL
-* group.element[=].target.code = #1217007000
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #RVL
-* group.element[=].target.code = #1217006009
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #LT
-* group.element[=].target.code = #1217007000
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #RT
-* group.element[=].target.code = #1217006009
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #LUA
-* group.element[=].target.code = #368208006
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #RUA
-* group.element[=].target.code = #368209003
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #OTH
-* group.element[=].target.code = #74964007
-* group.element[=].target.equivalence = #equivalent
+* insert ConceptMapEntry(LD, 16217701000119102, relatedto)
+* insert ConceptMapEntry(LVL, 1217007000, relatedto)
+* insert ConceptMapEntry(RD, 16217661000119109, relatedto)
+* insert ConceptMapEntry(RVL, 1217006009, relatedto)
+* insert ConceptMapEntry(OTH, 74964007, relatedto)
+* insert ConceptMapEntry(LA, 66480008, relatedto)
+* insert ConceptMapEntry(RA, 64262003, relatedto)
+* insert ConceptMapEntry(LUA, 368208006, relatedto)
+* insert ConceptMapEntry(RUA, 368209003, relatedto)
+* insert ConceptMapEntry(LG, 299121000210105, relatedto)
+* insert ConceptMapEntry(RG, 299141000210104, relatedto)
+* insert ConceptMapEntry(LT, 61396006, relatedto)
+* insert ConceptMapEntry(RT, 11207009, relatedto)
+* insert ConceptMapEntry(LVG, 299151000210101, relatedto)
+* insert ConceptMapEntry(RVG, 299161000210103, relatedto)
+* insert ConceptMapEntry(BU, 206007, relatedto)
+* insert ConceptMapEntry(OTH, 719631004, relatedto)
+* insert ConceptMapEntry(OTH, 719632006, relatedto)
+* insert ConceptMapEntry(OTH, 1403006, relatedto)
+* insert ConceptMapEntry(OTH, 78333006, relatedto)
+* insert ConceptMapEntry(OTH, 74262004, relatedto)

@@ -12,23 +12,16 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * sourceCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code"
 * targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code"
 
-* group.source = $NZMT
-* group.target = $CVX
+* group[0].source = $NZMT
+* group[0].target = $CVX
 
 * insert ConceptMapEntry(10443641000116108, 03, relatedto)
-* insert ConceptMapEntry(29455501000116107, 210307, relatedto)
-
-
 * insert ConceptMapEntry(44016911000116108, 03, relatedto)
 * insert ConceptMapEntry(10319251000116109, 48, relatedto)
 * insert ConceptMapEntry(10695781000116100, 21, relatedto)
-* insert ConceptMapEntry(10347971000116105, 99001, relatedto)
-* insert ConceptMapEntry(10101121000116104, 99012, relatedto)
+
 * insert ConceptMapEntry(46101011000116102, 165, relatedto)
-* insert ConceptMapEntry(47648581000116104, 99006, relatedto)
-* insert ConceptMapEntry(47649511000116103, 99006, relatedto)
-* insert ConceptMapEntry(47648881000116102, 99006, relatedto)
-* insert ConceptMapEntry(47664751000116102, 99006, relatedto)
+
 * insert ConceptMapEntry(29448821000116105, 121, relatedto)
 * insert ConceptMapEntry(46770131000116100, 187, relatedto)
 * insert ConceptMapEntry(47407751000116105, 208, relatedto)
@@ -38,11 +31,6 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 
 
 * insert ConceptMapEntry(47768031000116109, 75, relatedto)
-* insert ConceptMapEntry(47972211000116109, 99006, relatedto)
-* insert ConceptMapEntry(47972411000116108, 99006, relatedto)
-* insert ConceptMapEntry(47972611000116106, 99006, relatedto)
-* insert ConceptMapEntry(47988151000116108, 99006, relatedto)
-
 * insert ConceptMapEntry(46044951000116103, 33, relatedto)
 * insert ConceptMapEntry(20077561000116105, 133, relatedto)
 * insert ConceptMapEntry(10380351000116108, 10, relatedto)
@@ -51,7 +39,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(31171221000116106, 52, relatedto)
 * insert ConceptMapEntry(47562481000116104, 114, relatedto)
 * insert ConceptMapEntry(46083691000116109, 08, relatedto)
-* insert ConceptMapEntry(31128931000116109, 99013, relatedto)
+
 * insert ConceptMapEntry(43964841000116102, 83, relatedto)
 * insert ConceptMapEntry(10695851000116103, 21, relatedto)
 * insert ConceptMapEntry(44630041000116108, 114, relatedto)
@@ -62,8 +50,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(29557441000116106, 25, relatedto)
 * insert ConceptMapEntry(10645561000116106, 37, relatedto)
 * insert ConceptMapEntry(29430601000116101, 39, relatedto)
-* insert ConceptMapEntry(44305771000116109, 99009, relatedto)
-* insert ConceptMapEntry(10417931000116105, 99009, relatedto)
+
 * insert ConceptMapEntry(10215541000116100, 26, relatedto)
 * insert ConceptMapEntry(44741471000116105, 222, relatedto)
 * insert ConceptMapEntry(44881101000116100, 30, relatedto)
@@ -72,6 +59,26 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(47812711000116103, 300, relatedto)
 * insert ConceptMapEntry(47411141000116100, 211, relatedto)
 * insert ConceptMapEntry(47362071000116105, 210, relatedto)
+
+
+* group[+].source = $NZMT
+* group[=].target = $NZVX
+
+* insert ConceptMapEntry(44305771000116109, 99009, relatedto)
+* insert ConceptMapEntry(10417931000116105, 99009, relatedto)
+* insert ConceptMapEntry(31128931000116109, 99013, relatedto)
+* insert ConceptMapEntry(47972211000116109, 99006, relatedto)
+* insert ConceptMapEntry(47972411000116108, 99006, relatedto)
+* insert ConceptMapEntry(47972611000116106, 99006, relatedto)
+* insert ConceptMapEntry(47988151000116108, 99006, relatedto)
+* insert ConceptMapEntry(47648581000116104, 99006, relatedto)
+* insert ConceptMapEntry(47649511000116103, 99006, relatedto)
+* insert ConceptMapEntry(47648881000116102, 99006, relatedto)
+* insert ConceptMapEntry(47664751000116102, 99006, relatedto)
+* insert ConceptMapEntry(10347971000116105, 99001, relatedto)
+* insert ConceptMapEntry(10101121000116104, 99012, relatedto)
+* insert ConceptMapEntry(29455501000116107, 210307, relatedto)
+
 
 
 // the following five maps were removed per IMM-2881

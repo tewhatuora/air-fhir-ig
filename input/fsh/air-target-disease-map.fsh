@@ -12,8 +12,8 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * sourceCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-disease-covered-code"
 * targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code"
 
-* group.source = $SCT
-* group.target = $CVX
+* group[0].source = $SCT
+* group[=].target = $CVX
 
 * insert ConceptMapEntry(14189004, 03, relatedto)
 * insert ConceptMapEntry(36989005, 03, relatedto)
@@ -24,7 +24,6 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(397428000, 09, relatedto)
 * insert ConceptMapEntry(398102009, 10, relatedto)
 * insert ConceptMapEntry(16814004, 100, relatedto)
-* insert ConceptMapEntry(4834000, 101, relatedto)
 * insert ConceptMapEntry(23511006, 103, relatedto)
 * insert ConceptMapEntry(66071002, 104, relatedto)
 * insert ConceptMapEntry(40468003, 104, relatedto)
@@ -37,7 +36,6 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(397428000, 115, relatedto)
 * insert ConceptMapEntry(76902006, 115, relatedto)
 * insert ConceptMapEntry(27836007, 115, relatedto)
-* insert ConceptMapEntry(18624000, 116, relatedto)
 * insert ConceptMapEntry(240532009, 118, relatedto)
 * insert ConceptMapEntry(18624000, 119, relatedto)
 * insert ConceptMapEntry(397428000, 120, relatedto)
@@ -53,7 +51,7 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(16814004, 133, relatedto)
 * insert ConceptMapEntry(6142004, 150, relatedto)
 * insert ConceptMapEntry(6142004, 161, relatedto)
-* insert ConceptMapEntry(easemap, 163, relatedto)
+* insert ConceptMapEntry(23511006, 163, relatedto)
 * insert ConceptMapEntry(240532009, 165, relatedto)
 * insert ConceptMapEntry(4740000, 187, relatedto)
 * insert ConceptMapEntry(56717001, 19, relatedto)
@@ -62,20 +60,14 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(27836007, 20, relatedto)
 * insert ConceptMapEntry(6142004, 202, relatedto)
 * insert ConceptMapEntry(6142004, 205, relatedto)
-* insert ConceptMapEntry(67924001, 206, relatedto)
-* insert ConceptMapEntry(840539006, 207, relatedto)
 * insert ConceptMapEntry(840539006, 208, relatedto)
 * insert ConceptMapEntry(38907003, 21, relatedto)
 * insert ConceptMapEntry(840539006, 210, relatedto)
 * insert ConceptMapEntry(840539006, 211, relatedto)
-* insert ConceptMapEntry(840539006, 212, relatedto)
-* insert ConceptMapEntry(840539006, 218, relatedto)
-* insert ConceptMapEntry(712986001, 222, relatedto)
 * insert ConceptMapEntry(397428000, 22, relatedto)
 * insert ConceptMapEntry(76902006, 22, relatedto)
 * insert ConceptMapEntry(27836007, 22, relatedto)
 * insert ConceptMapEntry(91428005, 22, relatedto)
-* insert ConceptMapEntry(840539006, 229, relatedto)
 * insert ConceptMapEntry(63650001, 26, relatedto)
 * insert ConceptMapEntry(397428000, 28, relatedto)
 * insert ConceptMapEntry(76902006, 28, relatedto)
@@ -91,24 +83,17 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(76902006, 50, relatedto)
 * insert ConceptMapEntry(27836007, 50, relatedto)
 * insert ConceptMapEntry(91428005, 50, relatedto)
-* insert ConceptMapEntry(840539006, 500, relatedto)
-* insert ConceptMapEntry(840539006, 501, relatedto)
-* insert ConceptMapEntry(840539006, 502, relatedto)
-* insert ConceptMapEntry(840539006, 504, relatedto)
-* insert ConceptMapEntry(840539006, 505, relatedto)
-* insert ConceptMapEntry(840539006, 506, relatedto)
-* insert ConceptMapEntry(840539006, 507, relatedto)
-* insert ConceptMapEntry(840539006, 509, relatedto)
 * insert ConceptMapEntry(91428005, 51, relatedto)
 * insert ConceptMapEntry(66071002, 51, relatedto)
-* insert ConceptMapEntry(840539006, 510, relatedto)
-* insert ConceptMapEntry(840539006, 511, relatedto)
 * insert ConceptMapEntry(40468003, 52, relatedto)
 * insert ConceptMapEntry(240532009, 62, relatedto)
-* insert ConceptMapEntry(23502006, 66, relatedto)
 * insert ConceptMapEntry(67924001, 75, relatedto)
 * insert ConceptMapEntry(40468003, 83, relatedto)
 * insert ConceptMapEntry(4834000, 25, relatedto)
+
+
+// The TPUU mappings have been commented out because they might not be needed any longer. If they are needed, they'll need to move to a different conceptMap since they now live in a different valueSet...
+/*
 * insert ConceptMapEntry(14189004, 10443641000116108, relatedto)
 * insert ConceptMapEntry(36989005, 10443641000116108, relatedto)
 * insert ConceptMapEntry(36653000, 10443641000116108, relatedto)
@@ -183,6 +168,12 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(63650001, 10215541000116100, relatedto)
 * insert ConceptMapEntry(712986001, 44741471000116105, relatedto)
 * insert ConceptMapEntry(66071002, 44881101000116100, relatedto)
+*/
+
+
+* group[+].source = $SCT
+* group[=].target = $NZVX
+
 * insert ConceptMapEntry(16814004, 090306, relatedto)
 * insert ConceptMapEntry(397428000, 210307, relatedto)
 * insert ConceptMapEntry(76902006, 210307, relatedto)

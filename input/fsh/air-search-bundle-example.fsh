@@ -47,6 +47,10 @@ Usage: #example
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
 
+// administeredProduct extension
+* entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product"
+* entry[=].resource[=].extension[=].valueCodeableConcept = $NZMT#44016911000116108 "M-M-R-II"
+
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * entry[=].resource[=].patient.identifier.value = "ZAA0792"
@@ -119,6 +123,10 @@ Usage: #example
 * entry[=].resource[=].status = #completed
 * entry[=].resource[=].statusReason = $SCT#127785005 "Active or passive immunisation"
 * entry[=].resource[=].vaccineCode = $CVX#03 "MMR"
+
+// administeredProduct extension
+* entry[=].resource[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product"
+* entry[=].resource[=].extension[=].valueCodeableConcept = $NZMT#44016911000116108 "M-M-R-II"
 
 * entry[=].resource[=].patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZAA0792)
 * entry[=].resource[=].patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"

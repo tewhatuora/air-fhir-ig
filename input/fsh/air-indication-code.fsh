@@ -7,6 +7,8 @@ Description: "Coded values to describe the reason an immunisation was given. Ini
 
 * insert StandardMetadata
 
+// SNOMED codes removed per IMM-2832
+/* 
 * $SCT#161651000210107 "Publicly funded vaccination given for 65 years of age or older"
 * $SCT#161641000210109 "Publicly funded vaccination given due to medical condition included in criteria list"
 * $SCT#161631000210101 "Publicly funded vaccination given due to pregnancy"
@@ -18,27 +20,28 @@ Description: "Coded values to describe the reason an immunisation was given. Ini
 * $SCT#101631000210102 "COVID-19 vaccine given"
 * $SCT#231731000210103 "Publicly funded vaccination given for child three to twelve years of age"
 * $SCT#231741000210106 "Publicly funded vaccination given for serious mental health and addiction"
-* $SCT#263781000210105 "Publicly funded vaccination given for child six months to twelve years of age"
+* $SCT#263781000210105 "Publicly funded vaccination given for child six months to twelve years of age" 
+*/
 
-* $AIRTerms#1 "Over 65 years (Influenza)"
-* $AIRTerms#2 "Under 18 years, eligible condition (Influenza)"
-* $AIRTerms#3 "Eligible condition (Influenza)"
+* $AIRTerms#1 "Influenza, eligible over 65 years"
+* $AIRTerms#2 "Influenza, eligible under 18 years"
+* $AIRTerms#3 "Influenza, eligible criteria"
 * $AIRTerms#4 "Sexual or household contact"
 * $AIRTerms#5 "Primary course"
-* $AIRTerms#6 "Booster or extra dose"
-* $AIRTerms#7 "Postpartum"
+* $AIRTerms#6 "Booster course"
+* $AIRTerms#7 "Post partum"
 * $AIRTerms#8 "Low birth weight"
 * $AIRTerms#9 "HepB carrier mother"
 * $AIRTerms#10 "At risk for TB"
-* $AIRTerms#11 "Pre- or post-splenectomy"
-* $AIRTerms#12 "At risk for pneumococcal, no previous history"
-* $AIRTerms#13 "At risk for pneumococcal, previous conjugate/PCV7 history"
-* $AIRTerms#14 "At risk for pneumococcal, previous polysaccharide/23PPV history"
+* $AIRTerms#11 "Pre-post splenectomy schedule"
+* $AIRTerms#12 "At risk, no previous history"
+* $AIRTerms#13 "At risk, previous PCV history"
+* $AIRTerms#14 "At risk, previous 23PPV"
 * $AIRTerms#15 "Pre-emergency"
-* $AIRTerms#16 "Pregnant woman"
-* $AIRTerms#21 "Pneumococcal vaccine given on catch-up schedule"
-* $AIRTerms#Pre "Pre-primary course (vaccines required before any primary course)"
-* $AIRTerms#Stn "Standard"
+* $AIRTerms#16 "Pregnant"
+* $AIRTerms#21 "PCV catch up"
+* $AIRTerms#Pre "Pre-primary course"
+* $AIRTerms#Stn "Funded, if not otherwise specified"
 * $AIRTerms#6W "6 weeks"
 * $AIRTerms#3M "3 months"
 * $AIRTerms#5M "5 months"
@@ -49,7 +52,7 @@ Description: "Coded values to describe the reason an immunisation was given. Ini
 * $AIRTerms#14Y "14 years"
 * $AIRTerms#45Y "45 years"
 * $AIRTerms#65Y "65 years"
-* $AIRTerms#96 "HepB high risk - booster or extra dose"
+* $AIRTerms#96 "HepB high risk, booster or extra dose"
 * $AIRTerms#TPW "Tetanus-prone wound"
-
-
+* $AIRTerms#5P "Privately funded, primary course"
+* $AIRTerms#6P "Privately funded, booster course"

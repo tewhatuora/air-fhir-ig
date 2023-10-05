@@ -8,7 +8,7 @@ Description: "Values to use in the status reason field of an immunisation event.
 
 * insert StandardMetadata
 
-//CIR calls this "Vaccine Administered"
+/* //CIR calls this "Vaccine Administered"
 * $SCT#127785005 "Administration of substance to produce immunity, either active or passive"
 // CIR calls this "Administered Overseas", maps to GIVNOS
 * $SCT#201571000210103 "History of vaccination given in another country"
@@ -26,7 +26,7 @@ Description: "Values to use in the status reason field of an immunisation event.
 // CIR calls this "Others"
 * $SCT#74964007 "Other"
 // For ticket IMM-1283
-* $SCT#445672005 "Duplicate report"
+* $SCT#445672005 "Duplicate report" */
 
 
 // AEFI codes removed per IMM-2617
@@ -48,8 +48,6 @@ Description: "Values to use in the status reason field of an immunisation event.
 
 
 * $AIRSR#ALTGIVN "Alternative vaccination"
-* $AIRSR#CIS "Change in Schedule"
-* $AIRSR#CPI "Provider Instruction"
 * $AIRSR#DMC "Permanent contraindication"
 * $AIRSR#DPC "Declined by parent/guardian"
 * $AIRSR#DIC "Declined by individual"
@@ -57,7 +55,7 @@ Description: "Values to use in the status reason field of an immunisation event.
 * $AIRSR#GIVNOS "Overseas vaccination"
 
 * $AIRSR#RESCHO "Parental/individual choice to reschedule"
-* $AIRSR#RESREF "Referred elsewhere for immunisation eg specialist"
+* $AIRSR#RESREF "Referred elsewhere for immunisation"
 * $AIRSR#RESTC "Temporary contraindication"
 
 // GIVEN and HSTGIVN added per IMM-2617

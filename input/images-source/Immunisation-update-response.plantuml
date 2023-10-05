@@ -17,8 +17,8 @@ activate C
 C -> C: Transform HL7 v2 to FHIR
 activate B
 C -> B: POST [base]/$process-message
-B -[dashed]-> C: 200 Response
 B -> A: POST [base]/$process-message
 A -[dashed]-> B: 200 Response
+B -[dashed]-> C: 200 Response
 deactivate B
 @enduml

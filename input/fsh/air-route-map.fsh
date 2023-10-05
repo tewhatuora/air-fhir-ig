@@ -2,7 +2,7 @@ Instance: route-map
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "Concept Map -- Route of Administration HL7v2 < -- > SNOMED"
-Description: "This maps the Route codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ."
+Description: "This maps the AIR Route of Administration from HL7v2 messaging to SNOMED CT NZ."
 
 * status = #draft
 
@@ -15,18 +15,7 @@ Description: "This maps the Route codes listed in the NIR Message Spec v4.5, Sep
 * group.source = $AIRTerms
 * group.target = $SCT
 
-* group.element[0].code = #PO
-* group.element[=].target.code = #26643006
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #IM
-* group.element[=].target.code = #78421000
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #SC
-* group.element[=].target.code = #34206005
-* group.element[=].target.equivalence = #equivalent
-
-* group.element[+].code = #ID
-* group.element[=].target.code = #372464004
-* group.element[=].target.equivalence = #equivalent
+* insert ConceptMapEntry(PO, 26643006, equivalent)
+* insert ConceptMapEntry(IM, 78421000, equivalent)
+* insert ConceptMapEntry(SC, 34206005, equivalent)
+* insert ConceptMapEntry(ID, 372464004, equivalent)

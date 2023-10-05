@@ -21,8 +21,6 @@ Description: "This AIR code system includes the terms used in NIR HL7v2 messages
 */
 
 * #ALTGIVN "Alternative vaccination"
-* #CIS "Change in Schedule"
-* #CPI "Provider Instruction"
 * #DMC "Permanent contraindication"
 * #DPC "Declined by parent/guardian"
 * #DIC "Declined by individual"
@@ -30,7 +28,7 @@ Description: "This AIR code system includes the terms used in NIR HL7v2 messages
 * #GIVNOS "Overseas vaccination"
 
 * #RESCHO "Parental/individual choice to reschedule"
-* #RESREF "Referred elsewhere for immunisation eg specialist"
+* #RESREF "Referred elsewhere for immunisation"
 * #RESTC "Temporary contraindication"
 
 // GIVEN and HSTGIVN added per IMM-2617

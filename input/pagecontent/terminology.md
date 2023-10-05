@@ -54,7 +54,7 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 </tr>
 <tr>
 <td><a href="CodeSystem-air-terms-code.html">AIR Terms-undefined</a> </td>
-<td> <p>This is a code system for all the terms needed in AIR ImmSoT that don&#39;t come from an external standard</p> </td>
+<td> <p>This is a code system for terms needed in AIR ImmSoT that don&#39;t come from an external standard</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-terms-code">https://standards.digital.health.nz/ns/air-terms-code</a></td>
 </tr>
 <tr>
@@ -154,18 +154,13 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/air-site-map">https://standards.digital.health.nz/fhir/air/ConceptMap/air-site-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-status-reason-map.html">Concept Map --Immunisation Status Reason Codes-undefined</a> </td>
-<td> <p>This maps the immunisation status reason codes across various code systems. The AIR target is to record these using SNOMED CT NZ Edition.</p> </td>
-<td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/air-status-reason-map">https://standards.digital.health.nz/fhir/air/ConceptMap/air-status-reason-map</a></td>
-</tr>
-<tr>
 <td><a href="ConceptMap-gender-code-map.html">Concept Map -- Gender Code HL7v2 PID < -- > Administrative Gender used in FHIR R4-undefined</a> </td>
 <td> <p>This maps the gender codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0001) to the codes returned by the NHI Service.</p> </td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/gender-code-map">https://standards.digital.health.nz/fhir/air/ConceptMap/gender-code-map</a></td>
 </tr>
 <tr>
 <td><a href="ConceptMap-route-map.html">Concept Map -- Route of Administration HL7v2 < -- > SNOMED-undefined</a> </td>
-<td> <p>This maps the Route codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ.</p> </td>
+<td> <p>This maps the AIR Route of Administration from HL7v2 messaging to SNOMED CT NZ.</p> </td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ConceptMap/route-map">https://standards.digital.health.nz/fhir/air/ConceptMap/route-map</a></td>
 </tr>
 <tr>

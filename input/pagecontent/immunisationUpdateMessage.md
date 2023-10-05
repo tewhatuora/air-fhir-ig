@@ -107,11 +107,17 @@ This is an example of a case where Orchestration server sends two immunisation u
 </div>
 
 ####  Immunisation Update Message Response processing steps:
-1. The PMS sends an HL7v2.0 VXU^V04 ACK message to the  Healthlink Air Broker indicating if the immunisation update  request has been accepted or not
+1. The PMS sends an HL7v2.0 VXU^V04 ACK message to the Healthlink Air Broker indicating if the immunisation update  request has been accepted or not
 2. The Healthlink Air Broker creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the Orchestration server's *$process-message* endpoint (eventType=IMMUNISATION_UPDATE_ACK)
-3. The Orchestration server returns a synchronous 200 response to the  Healthlink Air Broker.
-4. The Orchestration server forwards the response message to the ImmSOT server's *$process-message* endpoint.
+3. The Orchestration server forwards the response message to the ImmSOT server's *$process-message* endpoint.
+4. ImmSOT returns a synchronous 200 response to the Orchestration server.
+5. The Orchestration server returns a synchronous 200 response to the Healthlink Air Broker.
 
+#### Response Codes
+The response codes which may be sent in response to an Immunisation Update Message Response message are the same as those described for Immunisation Update Message Request
+[Responses Codes](immunisationUpdateMessage.html#responses-codes) 
+
+The Orchestration Server should simply forward whatever it receives from  ImmSOT
 
 ####  Immunisation Update Message Response Example
 [update-immunisation-response-message-1](Bundle-update-immunisation-response-message-1.json.html)

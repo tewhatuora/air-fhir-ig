@@ -66,6 +66,11 @@ Where a PMS communicates with NIR via Healthlink and is still in the process of 
    1. The broker sends the negative acknowledgement message to the Consumer.
    1. Flow ends.
 
+   ### Notes
+
+   1. AIR does not maintain a complete record of Practitioner details, but instead uses the HPI service (see the HPI Implementation Guide at https://hpi-ig.hip.digital.health.nz/index.html) to ensure a joined-up, consistent source of practitioner information. In a few cases, health providers have opted for their details not to be shared via the HPI service. When AIR retrieves one of these practitioner records in response to an _include parameter in a search request, it will appear in the AIR payload as is shown here: https://hpi-ig.hip-uat.digital.health.nz/StructureDefinition-HPIPractitioner.html#redacted-practitioner-details. The search result bundle will also contain an OperationOutcome resource including the explanatory text "No Practitioner name".
+
+
 
 ### Dependencies
 

@@ -91,6 +91,9 @@ menu:
     Update Immunisation Response: MessageDefinition-UpdateImmunisationResponseMessageDefinition.html
   Extensions: extensions.html
   Terminology: terminology.html
+  AIR Overview:
+    Immunisation Events: immunisations.html
+    Scheduled Events: scheduled-events.html
   Support:
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG: full-ig.zip

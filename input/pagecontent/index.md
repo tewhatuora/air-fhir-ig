@@ -1,6 +1,6 @@
 ### Introduction
 
-This is the FHIR(r) Implementation Guide (IG) for the Aotearoa Immunisation Register(AIR) Immunisation Source of Truth (ImmSoT) service. ImmSoT stores information about vaccinations delivered as part of publicly funded programmes in New Zealand and provides immunisation information to authorised users via a FHIR API (application programming interface). ImmSoT is one component of AIR, which also includes an application known as ISD which can be used to record vaccination information when another system such as a General Practice Practice Management System (GP PMS) is not available.
+This is the FHIR(r) Implementation Guide (IG) for the Aotearoa Immunisation Register(AIR) Immunisation Source of Truth (ImmSoT) service. ImmSoT stores information about vaccinations delivered or planned for future delivery in New Zealand. AIR ImmSoT uses the FHIR API (application programming interface) and artifacts specified in this IG to transmit information about immunisation(to authorised users). ImmSoT is one component of AIR, which also includes an application known as ISD which can be used to record vaccination information when another system such as a General Practice Practice Management System (GP PMS) is not available.
 
 ### Dependencies
 

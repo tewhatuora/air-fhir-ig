@@ -561,6 +561,8 @@ components:
             properties:
               reference:
                 type: string
+          valueCodeableConcept:
+            $ref: "#/components/schemas/CodeableConcept"
           extension:
             type: array            
             items:
@@ -1708,6 +1710,12 @@ components:
             reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
           valueString: FZZ835-E_MOB0001
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
+          valueCodeableConcept:
+            coding:
+            - system: http://nzmt.org.nz
+              code: '10443641000116108'
+            text: M-M-R-II
         route:
           coding:
           - system: http://snomed.info/sct
@@ -1828,6 +1836,12 @@ components:
             reference: "#2"
         - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
           valueString: FZZ835-E_MOB0001
+        - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
+          valueCodeableConcept:
+            coding:
+            - system: http://nzmt.org.nz
+              code: '10443641000116108'
+            text: M-M-R-II
         status: completed
         statusReason:
           coding:

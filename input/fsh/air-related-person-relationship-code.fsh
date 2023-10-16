@@ -20,8 +20,8 @@ Description: "This value set is used to encode the relationship of a related per
 * $v3RoleCode#COUSN
 * $v3RoleCode#GRFTH
 * $v3RoleCode#GRMTH
-* $v3RoleCode#E
-* $v3RoleCode#O
+* $v2ContactRole#E
+* $v2ContactRole#O
 * $v3RoleCode#SPS
 * $v3RoleCode#FTHFOST
 * $v3RoleCode#MTHFOST

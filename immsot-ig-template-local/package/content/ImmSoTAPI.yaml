@@ -313,8 +313,67 @@ paths:
         - client_credentials:
             - system/Patient.u
             - air-test/Patient.u
+  /v2/fhir/Immunization/$process-message:
+    post:
+      operationId: acknowledge
+      description: Updates and existing acknowledgement from SENT to RECEIVED status.
+      parameters:
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/AcknowledgementBundle'
+            examples:
+              createExample:
+                $ref: '#/components/examples/AcknowledgementRequest'
+      responses:
+        "200":
+          description: Acknowledgement Received
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+        "422":
+          $ref: '#/components/responses/422'
+        "401":
+          $ref: '#/components/responses/401'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/MessageHeader.u
+        - air-test/MessageHeader.u
 components:
   schemas:
+    AcknowledgementBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        meta:
+          type: object
+          properties:
+            lastUpdated:
+              type: string
+        type:
+          type: string
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/MessageHeader'
+              - $ref: '#/components/schemas/OperationOutcome'
     Address:
       type: object
       properties:
@@ -678,6 +737,19 @@ components:
       properties:
         resourceType:
           type: string
+        id:
+          type: string
+        text:
+            type: object
+            properties:
+              status: 
+                type: string
+                enum: 
+                  - generated
+                  - empty
+              div:
+                type: string
+              
         issue:
           type: array
           items:
@@ -689,6 +761,25 @@ components:
                 type: string
               diagnostics:
                 type: string
+              details:
+                type: object
+                properties:
+                  coding:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        system:
+                          type: string
+                        code:
+                          type: string
+                          enum:
+                            - AA
+                            - AE
+              expression:
+                type: array
+                items:
+                  type: string
 
     RelatedPerson:
       type: object
@@ -793,6 +884,62 @@ components:
                     system:
                       type: string
                     code:
+                      type: string
+    MessageHeader:
+      type: object
+      properties:
+        fullUrl:
+          type: string
+        resource:
+          type: object
+          properties:
+            resourceType:
+              type: string
+            text:
+              type: object
+              properties:
+                status:
+                  type: string
+                div:
+                  type: string
+            eventCoding:
+              type: object
+              properties:
+                system:
+                  type: string
+                code:
+                  type: string
+            destination:
+              type: array
+              items:
+                type: object
+                properties:
+                    name:
+                      type: string
+                    endpoint:
+                      type: string
+            source:
+              type: object
+              properties:
+                name:
+                  type: string
+                software:
+                  type: string
+                endpoint:
+                  type: string
+            response:
+              type: object
+              properties:
+                identifier:
+                  type: string
+                code:
+                  type: string
+            focus:
+              type: array
+              items:
+                type: object
+                properties:
+                    reference:
                       type: string
   responses:
     "200":
@@ -938,6 +1085,55 @@ components:
         type: string
       example: "1"
   examples:
+    AcknowledgementRequest:
+      summary: Succesfull request to Acknowledgement
+      value:
+        resourceType: Bundle
+        id: '1'
+        type: message
+        entry:
+          - fullUrl: https://air.api-dev.digital.health.nz/fhir/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
+            resource:
+              resourceType: MessageHeader
+              text:
+                status: generated
+                div: div-data
+              eventCoding:
+                system: https://standards.digital.health.nz/ns/air-event-type
+                code: IMMUNISATION_UPDATE_ACK
+              destination:
+                - name: Mohfacid
+                  endpoint: Mohedi
+              source:
+                name: FZZ021-F
+                software: HSAPP0246
+                endpoint: https://air.api-dev.digital.health.nz/fhir/R4/Immunization/$process-message
+              response:
+                identifier: '9876543'
+                code: ok
+              focus:
+                - reference: https://air.api-dev.digital.health.nz/fhir/R4/Immunization/ZKC4633
+          - fullUrl: https://air.api-test.digital.health.nz/fhir/R4/OperationOutcome/3092
+            resource:
+              resourceType: OperationOutcome
+              id: '2477'
+              text:
+                status: generated
+                div: div-data
+              issue:
+                - severity: information
+                  code: informational
+                  details:
+                    coding:
+                      - system: http://terminology.hl7.org/CodeSystem/v2-0008
+                        code: AA
+                  expression:
+                    - FZZ021-F
+                  diagnostics: accepted
+    OperationOutcomeAck:
+      summary: Succesfull response from Acknowledgement
+      value:
+        resourceType: OperationOutcome
     UpdateSuccessDQIdentified:
       summary: Updated with data quality issues
       value:

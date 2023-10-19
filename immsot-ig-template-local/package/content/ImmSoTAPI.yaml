@@ -316,7 +316,7 @@ paths:
   /v2/fhir/Immunization/$process-message:
     post:
       operationId: acknowledge
-      description: Updates and existing acknowledgement from SENT to RECEIVED status.
+      description: Updates an existing acknowledgement from SENT to RECEIVED status.
       parameters:
       - $ref: '#/components/parameters/UserID'
       - $ref: '#/components/parameters/X-Correlation-ID'

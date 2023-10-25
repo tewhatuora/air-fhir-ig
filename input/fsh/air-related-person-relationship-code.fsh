@@ -5,6 +5,8 @@ Description: "This value set is used to encode the relationship of a related per
 
 * ^experimental = false
 
+* ^url = "https://standards.digital.health.nz/ns/air-related-person-terms"
+
 * insert StandardMetadata
 
 * $v3RoleCode#MTH

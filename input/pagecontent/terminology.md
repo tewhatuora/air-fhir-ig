@@ -28,6 +28,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-immunisation-notification-action-code">https://standards.digital.health.nz/ns/air-immunisation-notification-action-code</a></td>
 </tr>
 <tr>
+<td><a href="CodeSystem-air-related-person-terms.html">AIR Related Person Relationship Terms-undefined</a> </td>
+<td> <p>This code system includes the relationship type codes used in the NIR HL7v2 messasing NK1 segment Relationship field.</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-legacy-related-person-terms">https://standards.digital.health.nz/ns/air-legacy-related-person-terms</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-operationoutcome-code-1.0.html">AIR Operationoutcome Codes-1.0</a> </td>
 <td> <p>Describes the AIR-specific errors</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-operationoutcome-code">https://standards.digital.health.nz/ns/air-operationoutcome-code</a></td>
@@ -36,11 +41,6 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="CodeSystem-air-planned-event-type-cs.html">AIR Planned Event Type-undefined</a> </td>
 <td> <p>This code system includes values for the types of Planned Events used in AIR.</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-planned-event-type-cs">https://standards.digital.health.nz/ns/air-planned-event-type-cs</a></td>
-</tr>
-<tr>
-<td><a href="CodeSystem-air-related-person-terms.html">AIR Related Person Relationship Terms-undefined</a> </td>
-<td> <p>This code system includes the relationship type codes used in the NIR HL7v2 messasing NK1 segment Relationship field.</p> </td>
-<td> <a href="https://standards.digital.health.nz/ns/air-related-person-terms">https://standards.digital.health.nz/ns/air-related-person-terms</a></td>
 </tr>
 <tr>
 <td><a href="CodeSystem-air-serology-protection-terms.html">AIR Serology Protection Terms Code System-undefined</a> </td>
@@ -136,14 +136,14 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-type-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-type-code</a></td>
 </tr>
 <tr>
-<td><a href="ValueSet-air-related-person-relationship.html">AIR Related Person Relationship Codes-undefined</a> </td>
-<td> <p>This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set.</p></td>
-<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship">https://standards.digital.health.nz/fhir/air/ValueSet/air-related-person-relationship</a></td>
-</tr>
-<tr>
 <td><a href="ValueSet-air-vaccine-product-code.html">AIR Vaccine Product Value Set-undefined</a> </td>
 <td> <p>Allowable values for CVX and NZVX codes used to populate the vaccineCode element in an AIR Immunization resource.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-related-person-relationship.html">AIR Related Person Relationship Codes-undefined</a> </td>
+<td> <p>This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set.</p></td>
+<td> <a href="https://standards.digital.health.nz/ns/air-related-person-terms">https://standards.digital.health.nz/ns/air-related-person-terms</a></td>
 </tr>
 </table>
 <h3>Concept Maps</h3>

@@ -107,7 +107,7 @@ Description: "An example related person for insertion into an immunization resou
 * patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9994)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZZZ9994"
-* relationship = $relationCode#MTH
+* relationship = $v3RoleCode#MTH
 * name.family = "Test-Dill"
 * name.given = "Jane Jess"
 * telecom[0].system = #phone

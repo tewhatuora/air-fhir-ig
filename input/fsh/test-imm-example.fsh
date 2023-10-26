@@ -103,12 +103,12 @@ InstanceOf: RelatedPerson
 Usage: #inline
 Title: "Related Person Example 1"
 Description: "An example related person for insertion into an immunization resource."
-* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-prf"
 * patient = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9994)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZZZ9994"
-* relationship = $relationCode#01
-* name.family = "Dill"
+* relationship = $v3RoleCode#MTH
+* name.family = "Test-Dill"
 * name.given = "Jane Jess"
 * telecom[0].system = #phone
 * telecom[=].value = "041111111"
@@ -117,15 +117,15 @@ Description: "An example related person for insertion into an immunization resou
 * telecom[=].value = "091111111"
 * telecom[=].use = #work
 * telecom[+].system = #email
-* telecom[=].value = "jadill@moh.govt.nz"
+* telecom[=].value = "jadill@test.mail"
 * telecom[=].use = #home
 * address.extension.url = "http://hl7.org.nz/fhir/StructureDefinition/suburb"
 * address.extension.valueString = "ccc"
 * address.use = #home
 * address.type = #physical
 * address.line[0] = "456 Main St"
-* address.line[+] = "nzland"
-* address.city = "ddd"
+* address.line[+] = "Suite 256"
+* address.city = "Hamilton"
 * address.postalCode = "1111"
 
 Instance: imm-serology-report-1

@@ -4,11 +4,6 @@
 <table class='table table-bordered table-hover table-sm'>
 <tr><th>Id</th><th>Url</th><th>Description</th></tr>
 <tr>
-<td><a href='StructureDefinition-air-immunization-action.html'>air-immunization-action</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-action</td>
-<td><p>The ActivityDefinition used by the New Zealand NZ Base immunization plan to describe a vaccine administration.</p></td>
-</tr>
-<tr>
 <td><a href='StructureDefinition-air-immunization-recommendation.html'>air-immunization-recommendation</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation</td>
 <td><p>AIR uses this immunizationRecommendation profile to communicate the details of planned events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT.</p></td>
@@ -37,6 +32,11 @@
 <td><a href='StructureDefinition-air-practitioner.html'>air-practitioner</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-practitioner</td>
 <td><p>This profile derived from NZPractitioner implements the requirements of the Aotearoa Immunisation Register (AIR) Immunisation Source of Truth (ImmSoT).</p></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-related-person-prf.html'>air-related-person-prf</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-prf</td>
+<td><p>This profile of the FHIR R4 RelatedPerson resource includes only the fields used in AIR. The AIR use of this profile specifically includes the use cases covered by the NK1 segment in NIR HL7v2 messaging.</p></td>
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-serology-report-profile.html'>air-serology-report-profile</a></td>

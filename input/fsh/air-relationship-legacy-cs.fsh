@@ -5,7 +5,7 @@ Description: "This code system includes the relationship type codes used in the 
 
 * insert StandardMetadata
 
-* ^url = "https://standards.digital.health.nz/ns/air-related-person-terms"
+* ^url = "https://standards.digital.health.nz/ns/air-legacy-related-person-terms"
 
 * ^experimental = false
 * ^caseSensitive = false

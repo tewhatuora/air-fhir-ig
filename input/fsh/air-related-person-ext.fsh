@@ -1,4 +1,4 @@
-Extension: AIRRelatedPerson
+Extension: AIRRelatedPersonExt
 Id: air-related-person-extension
 Title: "AIR Related Person"
 Description: "This extension is to be used for communicating related person info in an AIR Immunisation Event. It holds the information transmitted in the HL7v2 NK1 segment."
@@ -10,5 +10,5 @@ Description: "This extension is to be used for communicating related person info
 
 * insert StandardMetadata 
 
-* value[x] only Reference(RelatedPerson)
+* value[x] only Reference(air-related-person-prf)
 

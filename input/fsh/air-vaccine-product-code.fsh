@@ -11,6 +11,27 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#08 "HepB"
 * $CVX#09 "Td"
 * $CVX#10 "IPV"
+* $CVX#19 "BCG"
+* $CVX#20 "DTaP"
+* $CVX#21 "VV"
+* $CVX#22 "DTP-Hib"
+* $CVX#25 "Typhoid"
+* $CVX#26 "Cholera"
+* $CVX#28 "DT"
+* $CVX#30 "HBIG"
+* $CVX#33 "23PPV"
+* $CVX#35 "Tetanus"
+* $CVX#37 "YFV"
+* $CVX#39 "JEV"
+* $CVX#43 "HepB"
+* $CVX#44 "HepB"
+* $CVX#48 "Hib-PRP-T"
+* $CVX#50 "DTaP-Hib"
+* $CVX#51 "Hib-HepB"
+* $CVX#52 "HepA"
+* $CVX#62 "HPV4"
+* $CVX#75 "MPX"
+* $CVX#83 "HepA"
 * $CVX#100 "PCV7"
 * $CVX#101 "Typhoid"
 * $CVX#103 "MenC"
@@ -19,7 +40,8 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#114 "MenACWY"
 * $CVX#115 "Tdap"
 
-// * $CVX#116 "Rotavirus, pentavalent"
+//Re-enabled this code for IMM-3282
+* $CVX#116 "Rotavirus, pentavalent"
 
 * $CVX#118 "HPV2"
 * $CVX#119 "RV1"
@@ -32,45 +54,26 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#163 "MenB"
 * $CVX#165 "HPV9"
 * $CVX#187 "rZV"
-* $CVX#19 "BCG"
-* $CVX#20 "DTaP"
 * $CVX#202 "Influenza"
 * $CVX#205 "Influenza"
 
 // * $CVX#206 "Vaccinia (smallpox)"
-
 // * $CVX#207 "COVID-19"
 
 * $CVX#208 "COVID-19"
-* $CVX#21 "VV"
 * $CVX#210 "COVID-19"
 * $CVX#211 "COVID-19"
 
 // * $CVX#212 "COVID-19"
 
 * $CVX#217 "COVID-19"
-
 * $CVX#218 "COVID-19"
-
 * $CVX#219 "COVID-19"
-
 * $CVX#222 "TBE"
-* $CVX#22 "DTP-Hib"
 
 // * $CVX#229 "COVID-19"
 
-* $CVX#26 "Cholera"
-* $CVX#28 "DT"
-* $CVX#30 "HBIG"
-* $CVX#33 "23PPV"
-* $CVX#35 "Tetanus"
-* $CVX#37 "YFV"
-* $CVX#39 "JEV"
 * $CVX#300 "COVID-19"
-* $CVX#43 "HepB"
-* $CVX#44 "HepB"
-* $CVX#48 "Hib-PRP-T"
-* $CVX#50 "DTaP-Hib"
 * $CVX#500 "COVID-19"
 
 /* * $CVX#501 "COVID-19"
@@ -81,16 +84,9 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#507 "COVID-19"
 * $CVX#509 "COVID-19" */
 
-* $CVX#51 "Hib-HepB"
 
 /* * $CVX#510 "COVID-19"
 * $CVX#511 "COVID-19" */
-
-* $CVX#52 "HepA"
-* $CVX#62 "HPV4"
-* $CVX#75 "MPX"
-* $CVX#83 "HepA"
-* $CVX#25 "Typhoid"
 
 // note that NIR spec doc has this as 90306, but there are 800,000+ records with 090306 and only 32 with 90306
 // so I've changed the code to 090306

@@ -41,7 +41,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#115 "Tdap"
 
 //Re-enabled this code for IMM-3282
-* $CVX#116 "Rotavirus, pentavalent"
+* $CVX#116 "RV5"
 
 * $CVX#118 "HPV2"
 * $CVX#119 "RV1"

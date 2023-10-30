@@ -3,7 +3,6 @@ Parent:         ImmunizationRecommendation
 Id:             air-immunization-recommendation
 Title:          "AIR Immunization Recommendation"
 Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT."
-Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata

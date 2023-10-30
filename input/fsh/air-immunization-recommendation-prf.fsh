@@ -21,7 +21,6 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 
 * recommendation.extension contains
     air-recommendation-id named id 1..1 and
-    air-recommendation-id named id 1..1 and
     air-disease-covered named disease-covered 1..* and
     air-agvs named antigen-group 1..1 and
     air-scheduled-event named air-scheduled-event 1..1

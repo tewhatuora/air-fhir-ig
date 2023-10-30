@@ -9,7 +9,10 @@ Usage: #example
 
 
 
+
 //the recommendation for the 6 week DTaP-IPV-HepB/Hib vaccine
+* recommendation[0].id = "12345-asdf"
+* recommendation[0].extension[air-recommendation-id].valueString = "12345"
 * recommendation[0].id = "12345-asdf"
 * recommendation[0].extension[air-recommendation-id].valueString = "12345"
 * recommendation[0].forecastStatus = $forecastStatus#due

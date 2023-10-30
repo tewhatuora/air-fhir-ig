@@ -19,8 +19,8 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * recommendation.extension contains
     air-recommendation-id named id 1..1 and
     air-disease-covered named disease-covered 1..* and
-    air-antigen-group named antigen-group 1..1 and
-    air-scheduled-event-type named pe-type 1..1
+    air-agvs named antigen-group 1..1 and
+    air-scheduled-event named air-scheduled-event 1..1
 
 * recommendation.id 1..1
 
@@ -39,7 +39,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 
 * recommendation.doseNumber[x] only positiveInt
 
-* recommendation.seriesDoses[x] only positiveInt
+* recommendation.seriesDoses[x] 0..0
 
 // removed for MVP
 * recommendation.supportingImmunization 0..0

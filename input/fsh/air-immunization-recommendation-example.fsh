@@ -1,6 +1,7 @@
 Instance: ir1
 InstanceOf: AIRImmunizationRecommendation
-Description: "Based on the David Hay approach. An IR generated for a new born. Birth date 2021-01-01."
+Title: "Planned Event Example"
+Description: "An AIR ImmunizationRecommendation showing scheduled events for a patient."
 Usage: #example
 
 * patient = Reference(pat)
@@ -25,11 +26,15 @@ Usage: #example
 * recommendation[0].extension[air-disease-covered][4].valueCodeableConcept = $SCT#66071002 "Viral Hepatitis type B"
 * recommendation[0].extension[air-disease-covered][5].valueCodeableConcept = $SCT#91428005 "Haemophilus influenzae infection"
 
-// the antigen group for the Infanrix vaccine
-* recommendation[0].extension[antigen-group][0].valueString = "DTaP-IPV-HepB-Hib"
-
 // the planned event type for the Infanrix vaccine
-* recommendation[0].extension[pe-type][0].valueCodeableConcept = $AIRPEType#CPE
+* recommendation[0].extension[air-scheduled-event].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event"
+* recommendation[0].extension[air-scheduled-event].extension[type].valueCoding = $AIRPEType#CPE
+
+* recommendation[0].extension[air-agvs].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-agvs"
+* recommendation[0].extension[air-agvs].extension[schedule-type].valueCoding = $AIRAGVSType#NIS
+* recommendation[0].extension[air-agvs].extension[series-type].valueCoding = $AIRSeriesType#PRIMARY
+* recommendation[0].extension[air-agvs].extension[antigen-group].valueCoding = $SCT#871761004 "RV1"
+* recommendation[0].extension[air-agvs].extension[version].valueString = "1.0"
 
 
 /*

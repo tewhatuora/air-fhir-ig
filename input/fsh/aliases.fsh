@@ -14,6 +14,8 @@ Alias: $AIRSR = https://standards.digital.health.nz/ns/air-status-reason-terms
 Alias: $imm-rec-status = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status
 Alias: $air-imm-rec-status = https://standards.digital.health.nz/ns/air-forecast-status
 Alias: $AIRPEType = https://standards.digital.health.nz/ns/air-scheduled-event-type-terms
+Alias: $AIRAGVSType = https://standards.digital.health.nz/ns/air-agvs-type
+Alias: $AIRSeriesType = https://standards.digital.health.nz/ns/air-agvs-series-type
 
 // Variables
 Alias: $forecastStatus = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status

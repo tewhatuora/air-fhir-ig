@@ -1,13 +1,20 @@
 Instance: ir1
 InstanceOf: AIRImmunizationRecommendation
-Description: "Based on the David Hay approach. An IR generated for a new born. Birth date 2021-01-01."
+Title: "Planned Event Example"
+Description: "An AIR ImmunizationRecommendation showing scheduled events for a patient."
 Usage: #example
 
 * patient = Reference(pat)
 * date = "2021-01-20"
 
 
+
+
 //the recommendation for the 6 week DTaP-IPV-HepB/Hib vaccine
+* recommendation[0].id = "12345-asdf"
+* recommendation[0].extension[air-recommendation-id].valueString = "12345"
+* recommendation[0].id = "12345-asdf"
+* recommendation[0].extension[air-recommendation-id].valueString = "12345"
 * recommendation[0].forecastStatus = $forecastStatus#due
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
@@ -22,16 +29,22 @@ Usage: #example
 * recommendation[0].extension[air-disease-covered][4].valueCodeableConcept = $SCT#66071002 "Viral Hepatitis type B"
 * recommendation[0].extension[air-disease-covered][5].valueCodeableConcept = $SCT#91428005 "Haemophilus influenzae infection"
 
-// the event identifier extension for the Infanrix vaccine
-* recommendation[0].extension[event-identifier][0].valueString = "1234-1234-1234"
-
-// the antigen group for the Infanrix vaccine
-* recommendation[0].extension[antigen-group][0].valueString = "DTaP-IPV-HepB-Hib"
-
 // the planned event type for the Infanrix vaccine
-* recommendation[0].extension[planned-event-type][0].valueCodeableConcept = $AIRPEType#CPE
+* recommendation[0].extension[air-scheduled-event].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event"
+* recommendation[0].extension[air-scheduled-event].extension[type].valueCoding = $AIRPEType#CPE
+
+* recommendation[0].extension[air-agvs].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-agvs"
+* recommendation[0].extension[air-agvs].extension[schedule-type].valueCoding = $AIRAGVSType#NIS
+* recommendation[0].extension[air-agvs].extension[series-type].valueCoding = $AIRSeriesType#PRIMARY
+* recommendation[0].extension[air-agvs].extension[antigen-group].valueCoding = $SCT#871761004 "RV1"
+* recommendation[0].extension[air-agvs].extension[version].valueString = "1.0"
+
+
+/*
+
 
 //the recommendation for the 6 week PVC10
+* recommendation[1].extension[id].valueString = "67890"
 * recommendation[1].forecastStatus = $forecastStatus#due
 * recommendation[1].vaccineCode =  $NZMT#31116301000116107 "PCV10" // MPUU (generic) for Synflorix
 * recommendation[1].series = "pcv10"
@@ -41,11 +54,11 @@ Usage: #example
 //the 'disease covered' extensions for the Synflorix vaccine
 * recommendation[1].extension[air-disease-covered][0].valueCodeableConcept = $SCT#16814004 "Pneumococcal disease"
 
-// the event identifier extension for the Synflorix vaccine
-* recommendation[1].extension[event-identifier][0].valueString = "2345-2345-2345"
-
 // the antigen group for the Synflorix vaccine
 * recommendation[1].extension[antigen-group][0].valueString = "PCV"
 
 // the planned event type for the Synflorix vaccine
 * recommendation[1].extension[planned-event-type][0].valueCodeableConcept = $AIRPEType#CPE
+
+
+*/

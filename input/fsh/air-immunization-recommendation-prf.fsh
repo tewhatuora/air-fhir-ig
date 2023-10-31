@@ -2,7 +2,7 @@ Profile:        AIRImmunizationRecommendation
 Parent:         ImmunizationRecommendation
 Id:             air-immunization-recommendation
 Title:          "AIR Immunization Recommendation"
-Description:    "AIR uses this immunizationRecommendation profile to communicate the details of planned events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT."
+Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
@@ -11,18 +11,22 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * ^text.status = #additional
 * ^text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Individual Immunisation Plan</div>"
 
-* identifier.system = "https://standards.digital.health.nz/ns/air-planned-immunisation-event-id" (exactly)
-
 * patient only Reference(air-patient)
 
-* recommendation.extension contains
-    air-planned-event-identifier named event-identifier 1..1 and
-    air-disease-covered named disease-covered 1..* and
-    air-antigen-group named antigen-group 1..1 and
-    air-planned-event-type-ext named planned-event-type 1..1 and
-    air-planned-event-identifier named related-planned-event-identifier 0..1 and
-    air-planned-event-identifier named provider-planned-event-identifier 0..1
+// removed authority per spec
+* authority 0..0
 
+// removed authority per spec
+* authority 0..0
+
+* recommendation.extension contains
+    air-recommendation-id named id 1..1 and
+    air-disease-covered named disease-covered 1..* and
+    air-agvs named antigen-group 1..1 and
+    air-scheduled-event named air-scheduled-event 1..1
+
+* recommendation.id 1..1
+* recommendation.id 1..1
 
 * recommendation.vaccineCode from air-vaccine-product-code (preferred)
 
@@ -39,7 +43,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 
 * recommendation.doseNumber[x] only positiveInt
 
-* recommendation.seriesDoses[x] only positiveInt
+* recommendation.seriesDoses[x] 0..0
 
 // removed for MVP
 * recommendation.supportingImmunization 0..0

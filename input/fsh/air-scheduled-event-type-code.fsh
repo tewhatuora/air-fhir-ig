@@ -9,4 +9,4 @@ Description: "This value set lists the codes to be used to describe scheduled ev
 
 * insert StandardMetadata
 
-* $AIRPEType#CPE
+* include codes from system https://standards.digital.health.nz/ns/air-scheduled-event-type-terms

@@ -10,6 +10,8 @@ Description: "This code system includes the codes used in AIR to communicate a p
 * ^experimental = false
 * ^caseSensitive = false
 
-* #Planned "Planned"
-* #Pending "Pending"
-* #Late "Late"
+* #PLANNED "Planned"
+* #PRIOR "Pending"
+* #DUE "Due"
+* #LATE "Late"
+* #OVERDUE "Overdue"

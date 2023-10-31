@@ -22,12 +22,12 @@
 <td></td>
 </tr>
 <tr>
-<td><a href='StructureDefinition-air-antigen-group.html'>air-antigen-group</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-antigen-group</td>
+<td><a href='StructureDefinition-air-agvs.html'>air-agvs</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-agvs</td>
 <td>
-<div>ImmunizationRecommendation</div>
+<div>ImmunizationRecommendation.recommendation</div>
 </td>
-<td><p>This extension holds the name of an Antigen Group, which in AIR is the set of diseases that are targeted by a vaccine.</p></td>
+<td><p>This extension to the AIR ImmunizationRecommendation profile is used to convey information about the antigen group vaccination schedule associated with a Scheduled Event, including the schedule type, the series type, the antigen group, and the version.</p></td>
 <td></td>
 </tr>
 <tr>
@@ -98,10 +98,9 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td><a href='StructureDefinition-air-disease-covered.html'>air-disease-covered</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-disease-covered</td>
 <td>
-<div>ActivityDefinition</div>
 <div>ImmunizationRecommendation.recommendation</div>
 </td>
-<td><p>The disease which a vaccine coveres. Needed in ActivityDefinition and ImmunizationRecommendation as the cardinality there is only single.</p></td>
+<td><p>The disease which a vaccine covers. Needed in ImmunizationRecommendation as the cardinality there is only single.</p></td>
 <td></td>
 </tr>
 <tr>
@@ -141,21 +140,12 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
-<td><a href='StructureDefinition-air-planned-event-identifier.html'>air-planned-event-identifier</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-identifier</td>
-<td>
-<div>ImmunizationRecommendation.recommendation</div>
-</td>
-<td><p>This identifier is attached to the individual recommendations that are part of an AIR Immunisation Recommendation.</p></td>
-<td></td>
-</tr>
-<tr>
-<td><a href='StructureDefinition-air-planned-event-type-ext.html'>air-planned-event-type-ext</a></td>
+<td><a href='StructureDefinition-air-recommendation-id.html'>air-recommendation-id</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state</td>
 <td>
 <div>ImmunizationRecommendation.recommendation</div>
 </td>
-<td><p>This extension to the FHIR ImmunizationRecommendation.recommendation field holds a value that describes the type of planned event used in AIR.</p></td>
+<td><p>This extension is to hold the id of an individual Scheduled Event that is surfaced by AIR as part of an ImmunizationRecommendation resource.</p></td>
 <td></td>
 </tr>
 <tr>
@@ -165,6 +155,15 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <div>Immunization</div>
 </td>
 <td><p>This extension is to be used for communicating related person info in an AIR Immunisation Event. It holds the information transmitted in the HL7v2 NK1 segment.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-scheduled-event.html'>air-scheduled-event</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event</td>
+<td>
+<div>ImmunizationRecommendation.recommendation</div>
+</td>
+<td><p>The extension to the AIR ImmunizationRecommendation profile is used to convey information about scheduled events, including the event type, the schedule type, the series type, and the antigen group.</p></td>
 <td></td>
 </tr>
 <tr>

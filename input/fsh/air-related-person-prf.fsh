@@ -21,3 +21,5 @@ Description: "This profile of the FHIR R4 RelatedPerson resource includes only t
 * period 0..0
 
 * communication 0..0
+
+* address only http://hl7.org.nz/fhir/StructureDefinition/NzAddress

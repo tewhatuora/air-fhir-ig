@@ -377,6 +377,7 @@ components:
             type: object
             properties:
               doseNumberPositiveInt:
+                description: 'Dose Number. If provided in the request, it will be retained in the response. If not provided(null), it defaults to 98'
                 type: integer
         lotNumber:
           type: string

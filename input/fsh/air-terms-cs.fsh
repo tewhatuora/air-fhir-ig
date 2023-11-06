@@ -30,7 +30,7 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * #3 "Influenza, eligible criteria"
 * #4 "Sexual or household contact"
 * #5 "Primary course"
-* #6 "Booster course"
+* #6 "Booster"
 * #7 "Post partum"
 * #8 "Low birth weight"
 * #9 "HepB carrier mother"
@@ -57,7 +57,7 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * #96 "HepB high risk, booster or extra dose"
 * #TPW "Tetanus-prone wound"
 * #5P "Privately funded, primary course"
-* #6P "Privately funded, booster course"
+* #6P "Privately funded, booster"
 
 // legacy HL7v2 Route codes from the Message Spec v4.5 2020
 // These are in HL7v2 table 0162

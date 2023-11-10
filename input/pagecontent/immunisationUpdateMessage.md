@@ -67,7 +67,7 @@ One of the following a synchronous error response may be returned by the server
 | Success                 | 202                  | OperationOutcome | The message has been accepted for processing |
 | Server Error            | 50x                  | empty            | An unexpected error occurred on the part of the server. The client may resend the message at a later time once the server is issue is resolved |
 | Data  Error             | 400                  | OperationOutcome | If the server cannot process the message due to a data error, it should return a 400 error with an OperationOutcome in the body describing the error |
-| Data  Error             | 429                  | OperationOutcome | If the server cannot process the message because it under toomcuh load it should return a 429 error with an OperationOutcome with OperationOutcome.issue[].code= "throttle" |
+| Data  Error             | 429                  | OperationOutcome | If the server cannot process the message because it under too much load it should return a 429 error with an OperationOutcome with OperationOutcome.issue[].code= "throttled" |
 | Other processing errors | 40x                  | empty            | Other 40x errors may be returned by intermediary gateways (e.g. 401 Unauthorized). These may not provide an OperationOutcome |
 
 #### Response Body
@@ -97,7 +97,7 @@ If an error comes from the HealthLink Broker, the issue.details will element  be
 
 #### Example Response from Orchestration to ImmSOT
 
-This is an example of a case where Orchestration server sends two immunisation update messages to two PMS systems in response to a single request from ImmSOT. One of the messages is successfully sent to health link and one fails
+This is an example of a case where Orchestration server sends two immunisation update messages to two PMS systems in response to a single request from ImmSOT. One of the messages is successfully sent to Healthlink and one fails
 
 [update-immunisation-request-response1](OperationOutcome-update-immunisation-request-response-message-1.json.html)
 

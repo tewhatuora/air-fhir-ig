@@ -38,3 +38,8 @@ Description: "This AIR code system includes the terms used in NIR HL7v2 messages
 
 // Serology related codes removed per IMM-2617
 // see air-serology-protection-terms 
+
+// Closed case codes added per IMM-3607
+
+* #CIS "Closed - change in schedule"
+* #CPI "Closed - provider instruction"

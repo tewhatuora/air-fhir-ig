@@ -1,7 +1,7 @@
 
 ## Immunisation Update Message Overview
 
-An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existingg immunisation is updated.
+An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existing immunisation is updated.
 The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself, the pracitioner who administered the immunisation  and the PMS systems to which the message should be sent.
 At a later time, after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
@@ -79,20 +79,22 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | Field                                    | Description                              | Cardinality |
 | ---------------------------------------- | ---------------------------------------- | ----------- |
 | OperationOutcome.issue                   |                                          | 0..n        |
-| OperationOutcome.issue[].severity        | error                                    | 0..1        |
-| OperationOutcome.issue[].code            | processing (or throttle for 429)                             | 0..1        |
+| OperationOutcome.issue[].severity        | error                                    | 1        |
+| OperationOutcome.issue[].code            | processing (or throttled for 429)                             | 1        |
 | OperationOutcome.issue[].diagnostics     | Details of the error                     | 0..1        |
 | OperationOutcome.issue[].expression      | FacilityId of the PMS to which the message was sent | 0..1        |
-| OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
-| OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
 
-If an error comes from the HealthLink Broker, the issue.details will element  be populated as follows:
+
+If an error comes from HIP , the issue.details will element be populated as follows:
 
 | Field                                    | Description                              | Cardinality |
 | ---------------------------------------- | ---------------------------------------- | ----------- |
-| OperationOutcome.issue[].details.coding.code | AA or AE                                 | 0..1        |
-| OperationOutcome.issue[n]details.coding.system | http://terminology.hl7.org/CodeSystem/v2-0008 | 0..1        |
+| OperationOutcome.issue[].details.coding.code | HIP error code                                 | 1        |
+| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/hip-error-code  | 1        |
 
+If an error comes from the HealthLink Broker, the issue.details will element be populated as follows:
+| OperationOutcome.issue[].details.coding.code | AA or AE                                | 1        |
+| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/hip-error-code OR  http://terminology.hl7.org/CodeSystem/v2-0008| 1        |
 
 
 #### Example Response from Orchestration to ImmSOT

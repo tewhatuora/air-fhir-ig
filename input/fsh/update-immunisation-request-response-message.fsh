@@ -16,7 +16,6 @@ Usage: #example
 
 * issue[1].severity = #error
 * issue[1].code = #processing
-* issue[1].code = #informational
 * issue[1].expression = "FZZ065-D"
 * issue[1].details.coding.code = #UNKNOWN
 * issue[1].details.coding.system = "https://standards.digital.health.nz/ns/air-operationoutcome-code"

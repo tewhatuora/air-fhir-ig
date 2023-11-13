@@ -19,6 +19,7 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // bind status reason to local value set
 * statusReason from air-status-reason-code (preferred)
 * statusReason.coding 1..1
+* statusReason ^definition = "The status reason codes CIS and CPI are included in the Status Reason Code System for backward compatibility, but use of these codes for new events is deprecated."
 * obeys nz-status-reason-1
 * obeys nz-status-reason-2
 

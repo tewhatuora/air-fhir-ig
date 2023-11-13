@@ -85,16 +85,14 @@ Since the Orchestration server may have sent two separate messages to HealthLink
 | OperationOutcome.issue[].expression      | FacilityId of the PMS to which the message was sent | 0..1        |
 
 
-If an error comes from HIP , the issue.details will element be populated as follows:
+Population of he issue.details will element be depend on the source of the error:
 
-| Field                                    | Description                              | Cardinality |
-| ---------------------------------------- | ---------------------------------------- | ----------- |
-| OperationOutcome.issue[].details.coding.code | HIP error code                                 | 1        |
-| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/hip-error-code  | 1        |
-
-If an error comes from the HealthLink Broker, the issue.details will element be populated as follows:
-| OperationOutcome.issue[].details.coding.code | AA or AE                                | 1        |
-| OperationOutcome.issue[n]details.coding.system | https://standards.digital.health.nz/ns/hip-error-code OR  http://terminology.hl7.org/CodeSystem/v2-0008| 1        |
+| Field                                    | Source | Description                              | Cardinality | 
+| ---------------------------------------- | -------|----------------------------------------- | ----------- |
+| OperationOutcome.issue[].details.coding.code | HIP | HIP error code                                 | 1        |
+| OperationOutcome.issue[n]details.coding.system | HIP |  https://standards.digital.health.nz/ns/hip-error-code  | 1        |
+| OperationOutcome.issue[].details.coding.code | HealthLink | AA or AE                                | 1        |
+| OperationOutcome.issue[n]details.coding.system | HealthLink | http://terminology.hl7.org/CodeSystem/v2-0008| 1        |
 
 
 #### Example Response from Orchestration to ImmSOT

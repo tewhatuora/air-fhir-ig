@@ -41,5 +41,5 @@ Description: "This AIR code system includes the terms used in NIR HL7v2 messages
 
 // Closed case codes added per IMM-3607
 
-* #CIS "Closed due to change in schedule"
-* #CPI "Closed under provider instruction"
+* #CIS "Closed - change in schedule"
+* #CPI "Closed - provider instruction"

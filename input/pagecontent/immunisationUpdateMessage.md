@@ -113,7 +113,7 @@ Here is a second example, similar to the first except one of the messages fails 
 
 ####  Immunisation Update Message Response processing steps:
 1. The PMS sends an HL7v2.0 VXU^V04 ACK message to the Healthlink Air Broker indicating if the immunisation update  request has been accepted or not
-2. The Healthlink Air Broker creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the Orchestration server's *$process-message* endpoint (eventType=IMMUNISATION_UPDATE_ACK)
+2. The Healthlink Air Broker creates a bundle containing an OperationOutcome with an appropriate Result Code and sends it to the Orchestration server's *$process-message* endpoint (eventType=IMMUNISATION_UPDATE_ACK).The *MessageHeader.response.identifier* should hold the value of the *Messageheader.id* of the message being acknowledged.
 3. The Orchestration server forwards the response message to the ImmSOT server's *$process-message* endpoint.
 4. ImmSOT returns a synchronous 200 response to the Orchestration server.
 5. The Orchestration server returns a synchronous 200 response to the Healthlink Air Broker.

@@ -58,7 +58,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 * extension contains air-age-given named AgeGiven 0..1
 
 // remove recorded date
-* recorded 0..0
+// recorded is put back in per IMM-3645
+// * recorded 0..0
 
 // remove primarySource
 * primarySource 0..0

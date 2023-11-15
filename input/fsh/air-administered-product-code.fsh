@@ -71,6 +71,18 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#47411141000116100 "Nuvaxovid rCV"
 * $NZMT#47362071000116105 "AstraZeneca ChAd-CV"
 
+// Added 15 Nov 2023 per IMM-3229
+* $NZMT#10017131000116103 "Adacel"
+* $NZMT#10017251000116104 "Adacel Polio"
+* $NZMT#10744051000116109 "Vivaxim"
+* $NZMT#10085391000116108 "Avaxim"
+* $NZMT#44318211000116104 "Hexaxim"
+* $NZMT#44269461000116103 "Panvax H1N1"
+* $NZMT#44967911000116100 "Panvax"
+* $NZMT#20069331000116107 "Verorab"
+* $NZMT#47796751000116103 "Berirab P"
+
+
 // the following five codes were removed per IMM-2881
 /* 
 * $NZMT#46580601000116106 "Bexsero without needle"

@@ -116,7 +116,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $NZVX#090306 "PCV unspecified"
 
 * $NZVX#90906 "Td"
-* $NZVX#99001 "Tdap-IPV"
+* $NZVX#99001 "DTaP-IPV"
 * $NZVX#99002 "MeNZB"
 * $NZVX#99003 "Diphtheria, paed"
 * $NZVX#99004 "aP"
@@ -126,7 +126,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $NZVX#99008 "MenACWY"
 * $NZVX#99009 "Rabies"
 * $NZVX#99010 "RIG"
-* $NZVX#99011 "DTaP-IPV"
+* $NZVX#99011 "Tdap-IPV"
 * $NZVX#99012 "Tdap"
 * $NZVX#99013 "MenC"
 * $NZVX#210307 "DTaP-IPV-HepB/Hib"

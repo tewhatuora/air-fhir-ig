@@ -70,7 +70,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#165 "HPV9"
 
 // Added for IMM-3229
-* $CVX#182 "Polio, oral"
+* $CVX#182 "OPV"
 
 * $CVX#187 "rZV"
 * $CVX#202 "Influenza"

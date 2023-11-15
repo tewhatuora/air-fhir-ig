@@ -23,7 +23,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(46101011000116102, 165, relatedto)
 
 * insert ConceptMapEntry(29448821000116105, 121, relatedto)
-* insert ConceptMapEntry(46770131000116100, 187, relatedto)
+* insert ConceptMapEntry(46770131000116100, 121, relatedto)
 * insert ConceptMapEntry(47407751000116105, 208, relatedto)
 * insert ConceptMapEntry(47547081000116102, 218, relatedto)
 * insert ConceptMapEntry(47572291000116106, 217, relatedto)
@@ -49,7 +49,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10693001000116105, 101, relatedto)
 * insert ConceptMapEntry(29557441000116106, 25, relatedto)
 * insert ConceptMapEntry(10645561000116106, 37, relatedto)
-* insert ConceptMapEntry(29430601000116101, 39, relatedto)
+* insert ConceptMapEntry(29430601000116101, 134, relatedto)
 
 * insert ConceptMapEntry(10215541000116100, 26, relatedto)
 * insert ConceptMapEntry(44741471000116105, 222, relatedto)
@@ -59,6 +59,11 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(47812711000116103, 300, relatedto)
 * insert ConceptMapEntry(47411141000116100, 211, relatedto)
 * insert ConceptMapEntry(47362071000116105, 210, relatedto)
+
+// Added 15 Nov 23 per IMM-3229 or IMM-3654
+* insert ConceptMapEntry(10085391000116108, 52, relatedto)
+* insert ConceptMapEntry(44269461000116103, 127, relatedto)
+* insert ConceptMapEntry(44967911000116100, 160, relatedto)
 
 
 * group[+].source = $NZMT
@@ -79,6 +84,13 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10101121000116104, 99012, relatedto)
 * insert ConceptMapEntry(29455501000116107, 210307, relatedto)
 
+// Added 15 Nov 23 per IMM-3229 or IMM-3654
+* insert ConceptMapEntry(10017131000116103, 99012, relatedto)
+* insert ConceptMapEntry(10017251000116104, 99011, relatedto)
+* insert ConceptMapEntry(10744051000116109, 52101, relatedto)
+* insert ConceptMapEntry(44318211000116104, 210307, relatedto)
+* insert ConceptMapEntry(20069331000116107, 99009, relatedto)
+* insert ConceptMapEntry(47796751000116103, 99010, relatedto)
 
 
 // the following five maps were removed per IMM-2881

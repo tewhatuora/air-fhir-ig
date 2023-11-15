@@ -29,6 +29,9 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#50 "DTaP-Hib"
 * $CVX#51 "Hib-HepB"
 * $CVX#52 "HepA"
+// Added for IMM-3229
+* $CVX#56 "Dengue"
+
 * $CVX#62 "HPV4"
 * $CVX#75 "MPX"
 * $CVX#83 "HepA"
@@ -46,13 +49,29 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#118 "HPV2"
 * $CVX#119 "RV1"
 * $CVX#120 "DTaP-IPV-Hib"
-* $CVX#121 "ZV"
+* $CVX#121 "rZV"
+
+// Added for IMM-3229
+* $CVX#127 "Influenza A (H1N1)"
+
 * $CVX#130 "DTaP-IPV"
 * $CVX#133 "PCV13"
+
+// Added for IMM-3229
+* $CVX#134 "JEV"
+
 * $CVX#150 "Influenza"
+
+// Added for IMM-3229
+* $CVX#160 "Influenza A (H5N1)"
+
 * $CVX#161 "Influenza"
 * $CVX#163 "MenB"
 * $CVX#165 "HPV9"
+
+// Added for IMM-3229
+* $CVX#182 "Polio, oral"
+
 * $CVX#187 "rZV"
 * $CVX#202 "Influenza"
 * $CVX#205 "Influenza"
@@ -88,13 +107,16 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 /* * $CVX#510 "COVID-19"
 * $CVX#511 "COVID-19" */
 
+
+// Added for IMM-3229
+* $NZVX#52101 "HepA-Typhoid"
+
 // note that NIR spec doc has this as 90306, but there are 800,000+ records with 090306 and only 32 with 90306
 // so I've changed the code to 090306
 * $NZVX#090306 "PCV unspecified"
-* $NZVX#210307 "DTaP-IPV-HepB/Hib"
-* $NZVX#260209 "PCV10"
+
 * $NZVX#90906 "Td"
-* $NZVX#99001 "DTaP-IPV"
+* $NZVX#99001 "Tdap-IPV"
 * $NZVX#99002 "MeNZB"
 * $NZVX#99003 "Diphtheria, paed"
 * $NZVX#99004 "aP"
@@ -107,6 +129,8 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $NZVX#99011 "DTaP-IPV"
 * $NZVX#99012 "Tdap"
 * $NZVX#99013 "MenC"
+* $NZVX#210307 "DTaP-IPV-HepB/Hib"
+* $NZVX#260209 "PCV10"
 
 // * $NZVX#EVP "EVP"
 

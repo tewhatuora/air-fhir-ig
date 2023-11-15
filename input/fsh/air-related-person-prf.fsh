@@ -8,7 +8,8 @@ Description: "This profile of the FHIR R4 RelatedPerson resource includes only t
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-prf"
 
-* identifier 0..0
+// identifier put back in per IMM-3674
+// * identifier 0..0
 
 * relationship from air-related-person-relationship
 

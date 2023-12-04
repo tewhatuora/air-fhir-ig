@@ -11,7 +11,7 @@ Description: "This profile of the FHIR R4 RelatedPerson resource includes only t
 // identifier put back in per IMM-3674
 // * identifier 0..0
 
-* relationship from air-related-person-relationship
+* relationship from air-related-person-relationship (preferred)
 
 * gender 0..0
 

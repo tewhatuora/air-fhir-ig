@@ -79,21 +79,21 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 // * $CVX#206 "Vaccinia (smallpox)"
 // * $CVX#207 "COVID-19"
 
-* $CVX#208 "COVID-19"
-* $CVX#210 "COVID-19"
-* $CVX#211 "COVID-19"
+* $CVX#208 "COVID-19 mRNA-CV (30mcg)"
+* $CVX#210 "COVID-19 ChAd-CV"
+* $CVX#211 "COVID-19 rCV"
 
 // * $CVX#212 "COVID-19"
 
-* $CVX#217 "COVID-19"
-* $CVX#218 "COVID-19"
-* $CVX#219 "COVID-19"
+* $CVX#217 "COVID-19 mRNA-CV (30mcg)"
+* $CVX#218 "COVID-19 mRNA-CV (10mcg)"
+* $CVX#219 "COVID-19 mRNA-CV (3mcg)"
 * $CVX#222 "TBE"
 
 // * $CVX#229 "COVID-19"
 
-* $CVX#300 "COVID-19"
-* $CVX#500 "COVID-19"
+* $CVX#300 "COVID-19 mRNA-CV (15mcg/15mcg)"
+* $CVX#500 "COVID-19 Product Unspecified"
 
 /* * $CVX#501 "COVID-19"
 * $CVX#502 "COVID-19"

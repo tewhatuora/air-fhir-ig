@@ -74,7 +74,7 @@ Usage: #definition
 
 * rest.operation[+].name = "process-message"
 * rest.operation[=].definition = "http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message"
-* rest.operation[=].documentation = "POST, [base]/$process-message, http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message, system/Immunization.cu"
+* rest.operation[=].documentation = "POST, [base]/$process-message, http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message, system/MessageHeader.u"
 
 * rest.resource.operation[+].name = "upsert"
 * rest.resource.operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert"

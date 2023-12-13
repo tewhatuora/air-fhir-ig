@@ -178,6 +178,12 @@ paths:
           minimum: 1
           maximum: 100
           default: 100
+      - name: _includeMigratedData
+        in: query
+        description: To include migration data in the response. Default to 'false' if not provided
+        schema:
+          type: string
+        example: "true"
       requestBody:
         description: Use the request body to enter parameters which contain private or identifying patient data
         content:

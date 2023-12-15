@@ -46,6 +46,8 @@ Usage: #definition
 * rest.resource[=].conditionalUpdate = false
 * rest.resource[=].conditionalDelete = #not-supported
 
+// Search
+
 * rest.resource[=].searchInclude[0] = "*"
 * rest.resource[=].searchInclude[+] = "Immunization.patient"
 * rest.resource[=].searchInclude[+] = "Immunization.performer.actor"
@@ -61,20 +63,6 @@ Usage: #definition
 * rest.resource[=].searchParam[=].type = #token
 * rest.resource[=].searchParam[=].documentation = "Vaccine-preventable disease being targeted by an immunisation."
 
-// * rest.resource[=].searchParam[+].name = "status"
-// * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/CarePlan-status"
-// * rest.resource[=].searchParam[=].type = #token
-// * rest.resource[=].searchParam[=].documentation = "draft | active | on-hold | revoked | completed | entered-in-error | unknown"
-// * rest.resource[=].searchParam[+].name = "subject"
-// * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/CarePlan-subject"
-// * rest.resource[=].searchParam[=].type = #reference
-// * rest.resource[=].searchParam[=].documentation = "Who the care plan is for"
-// * rest.resource[=].searchParam[+].name = "_id"
-// * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
-// * rest.resource[=].searchParam[=].type = #token
-// * rest.resource[=].searchParam[=].documentation = "Logical id of this artifact"
-// * rest.resource[=].searchInclude[0] = "*"
-// * rest.resource[=].searchRevInclude[0] = "*"
 * rest.interaction.code = #transaction
 * rest.interaction.code = #search-system
 * messaging.supportedMessage[0].mode = $EventCapabilityMode#sender
@@ -82,6 +70,12 @@ Usage: #definition
 * messaging.supportedMessage[1].mode = $EventCapabilityMode#sender
 * messaging.supportedMessage[1].definition = "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationResponsetMessageDefinition"
 
-* rest.operation[0].name = "process-message"
-* rest.operation[0].definition = "http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message"
-* rest.operation[0].documentation = "POST, [base]/$process-message, http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message, system/Immunization.c"
+// Operations
+
+* rest.operation[+].name = "process-message"
+* rest.operation[=].definition = "http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message"
+* rest.operation[=].documentation = "POST, [base]/$process-message, http://hl7.org/fhir/OperationDefinition/MessageHeader-process-message, system/MessageHeader.u"
+
+* rest.resource.operation[+].name = "upsert"
+* rest.resource.operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert"
+* rest.resource.operation[=].documentation = "POST, [base]/Immunization/$upsert, Update or add an immunisation event, system/Immunization.cu"

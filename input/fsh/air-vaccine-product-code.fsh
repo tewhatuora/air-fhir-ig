@@ -25,7 +25,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#39 "JEV"
 * $CVX#43 "HepB"
 * $CVX#44 "HepB"
-* $CVX#48 "Hib-PRP-T"
+* $CVX#48 "Hib"
 * $CVX#50 "DTaP-Hib"
 * $CVX#51 "Hib-HepB"
 * $CVX#52 "HepA"

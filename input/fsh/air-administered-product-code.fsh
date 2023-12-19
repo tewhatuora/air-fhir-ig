@@ -26,7 +26,13 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#47407751000116105 "Comirnaty mRNA-CV (30mcg) Diluted"
 * $NZMT#47547081000116102 "Comirnaty mRNA-CV (10mcg)"
 * $NZMT#47572291000116106 "Comirnaty mRNA-CV (30mcg)"
+
+// This code updated as per IMM-4122
 * $NZMT#46580461000116107 "Bexsero"
+
+//This code re-added (see below) with an updated display per IMM-4122
+* $NZMT#46580601000116106 "Bexsero"
+
 * $NZMT#29458231000116105 "Menactra"
 * $NZMT#47768031000116109 "JYNNEOS"
 * $NZMT#47972211000116109 "Afluria Quad"

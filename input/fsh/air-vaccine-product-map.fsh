@@ -27,6 +27,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(47407751000116105, 208, relatedto)
 * insert ConceptMapEntry(47547081000116102, 218, relatedto)
 * insert ConceptMapEntry(47572291000116106, 217, relatedto)
+* insert ConceptMapEntry(46580601000116106, 163, relatedto)
 * insert ConceptMapEntry(46580461000116107, 163, relatedto)
 
 

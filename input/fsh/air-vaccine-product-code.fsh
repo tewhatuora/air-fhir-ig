@@ -7,6 +7,8 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * insert StandardMetadata
 
 * $CVX#03 "MMR"
+// Added 05 for IMM-4165
+* $CVX#05 "Measles"
 * $CVX#06 "Rubella"
 * $CVX#08 "HepB"
 * $CVX#09 "Td"

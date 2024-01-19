@@ -18,6 +18,8 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(14189004, 03, relatedto)
 * insert ConceptMapEntry(36989005, 03, relatedto)
 * insert ConceptMapEntry(36653000, 03, relatedto)
+// Added map to CVX#05 for IMM-4165
+* insert ConceptMapEntry(14189004, 05, relatedto)
 * insert ConceptMapEntry(36653000, 06, relatedto)
 * insert ConceptMapEntry(66071002, 08, relatedto)
 * insert ConceptMapEntry(76902006, 09, relatedto)

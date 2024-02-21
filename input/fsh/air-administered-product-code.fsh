@@ -89,10 +89,10 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#47796751000116103 "Berirab P"
 
 // Added 21 Feb 2024 per IMM-4289
-* $NZMT#148175861000116107 "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
-* $NZMT#148175171000116106 "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
-* $NZMT#148262211000116108 "Influvac Tetra 2024"
-* $NZMT#148285331000116103 "Afluria Quad 2024"
+* $NZMT#48175861000116107 "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+* $NZMT#48175171000116106 "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+* $NZMT#48262211000116108 "Influvac Tetra 2024"
+* $NZMT#48285331000116103 "Afluria Quad 2024"
 
 
 // the following five codes were removed per IMM-2881

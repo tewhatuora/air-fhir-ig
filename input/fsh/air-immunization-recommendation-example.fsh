@@ -19,6 +19,7 @@ Usage: #example
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
 * recommendation[0].doseNumberPositiveInt = 1
+* recommendation[0].dateCriterion.code = #DUE
 * recommendation[0].dateCriterion.value = "2021-01-14"      //age 6 weeks
 
 //the 'disease covered' extensions for the Infanrix vaccine

@@ -7,9 +7,3 @@ Description: "Represents the current state of an AIR Consumer."
 * insert StandardMetadata
 
 * include codes from system air-consumer-state
-
-
-
-
-
-

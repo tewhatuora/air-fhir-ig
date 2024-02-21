@@ -11,6 +11,8 @@ Description: "This code system includes values for the types of Planned Events u
 * ^caseSensitive = false
 
 * #CPE "Consumer Planned Event"
-* #PPE "Provider Planned Event"
 * #EE "Expected Event"
-* #TE "Test Event"
+* #PPE "Provider Planned Event"
+
+// The following code removed as part of IMM-3123
+// * #TE "Test Event"

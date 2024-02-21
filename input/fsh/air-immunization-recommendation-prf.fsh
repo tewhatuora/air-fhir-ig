@@ -11,10 +11,10 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * ^text.status = #additional
 * ^text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Individual Immunisation Plan</div>"
 
-* patient only Reference(air-patient)
+// removed identifier per IMM-3123
+* identifier 0..0
 
-// removed authority per spec
-* authority 0..0
+* patient only Reference(air-patient)
 
 // removed authority per spec
 * authority 0..0
@@ -25,7 +25,6 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
     air-agvs named antigen-group 1..1 and
     air-scheduled-event named air-scheduled-event 1..1
 
-* recommendation.id 1..1
 * recommendation.id 1..1
 
 * recommendation.vaccineCode from air-vaccine-product-code (preferred)
@@ -39,7 +38,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * recommendation.forecastStatus from air-forecast-status-code (preferred)
 
 // additional values will be needed here post-MVP
-* recommendation.dateCriterion.code = $SCT#789539003
+* recommendation.dateCriterion.code from air-planned-event-date-type-code (preferred)
 
 * recommendation.doseNumber[x] only positiveInt
 

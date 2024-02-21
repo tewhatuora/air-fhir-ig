@@ -10,8 +10,21 @@ Description: "This code system includes the codes used in AIR to communicate a p
 * ^experimental = false
 * ^caseSensitive = false
 
-* #PLANNED "Planned"
-* #PRIOR "Pending"
+* #ACTIVE "Active"
+* #CANCELLED "Cancelled"
+* #CLOSED "Closed"
+* #CONTRAINDICATED "Contraindicated"
+* #DECLINED "Declined"
 * #DUE "Due"
+* #ERROR "Error"
+* #EXPIRED "Expired"
+* #GIVEN "Given"
 * #LATE "Late"
+* #MISSED "Missed"
+* #NON-SCHEDULE "Non Scheduled"
+* #NOT_REQUIRED "Not Required"
 * #OVERDUE "Overdue"
+* #PENDING "Pending"
+* #PLANNED "Planned"
+* #REPLACED "Replaced"
+* #SUPERSEDED "Superseded"

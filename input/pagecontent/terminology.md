@@ -3,6 +3,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <table class='table table-bordered table-condensed'>
 <tr><th>Title</th><th>Description</th><th>Canonical url</th></tr>
 <tr>
+<td><a href="CodeSystem-air-agvs-schedule-type.html">AIR AGVS Schedule Type-undefined</a> </td>
+<td> <p>This is a code system for representing the type of AGVS schedule attached to a Scheduled Event</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-agvs-schedule-type">https://standards.digital.health.nz/ns/air-agvs-schedule-type</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-agvs-series-type.html">AIR AGVS Series Type-undefined</a> </td>
 <td> <p>This is a code system for representing the type of AGVS series attached to a Scheduled Event</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-agvs-series-type">https://standards.digital.health.nz/ns/air-agvs-series-type</a></td>
@@ -28,8 +33,8 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-event-type">https://standards.digital.health.nz/ns/air-event-type</a></td>
 </tr>
 <tr>
-<td><a href="CodeSystem-air-forecast-status.html">AIR Forecast Status Code System-undefined</a> </td>
-<td> <p>This code system includes the codes used in AIR to communicate a planned event status that are not already included in http://terminology.hl7.org/CodeSystem/immunization-recommendation-status.</p> </td>
+<td><a href="CodeSystem-air-planned-event-date-type.html">AIR Planned Event Date Type Code System-undefined</a> </td>
+<td> <p>This code system includes the codes used in AIR to communicate a date associated with a planned event, such as the due date or the earliest date to give. </p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-forecast-status">https://standards.digital.health.nz/ns/air-forecast-status</a></td>
 </tr>
 <tr>
@@ -116,6 +121,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-antigen-group-code.html">AIR Antigen Group Code Value Set-undefined</a> </td>
+<td> <p>SNOMED CT Codes used in AIR to identify an Antigen Group. These codes are drawn from the SNOMED medicinal product hierarchy. The AIR Antigen Group is used in the ImmunizationRecommendation resource that is produced when a user requests a patient&#39;s list of Planned Events.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-antigen-group-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-antigen-group-code</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-consumer-state-code.html">AIR Consumer State Code-undefined</a> </td>
 <td> <p>Represents the current state of an AIR Consumer.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code</a></td>
@@ -144,6 +154,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ValueSet-air-performer-health-worker-function-code.html">AIR Performer Health Worker Function-undefined</a> </td>
 <td> <p>A value set of codes for the functions performed by the people who are involved in administering immunisations in Aotearoa. Note that the preferred terms are VC, VHW and IP. The other terms in this value set will be deprecated in the future.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-planned-event-date-type-code.html">AIR PLanned Event Date Type Codes-undefined</a> </td>
+<td> <p>Coded values to describe the dates associated with a Planned Event, such as the Due Date, the Earliest Date to Give, and so on. Also codes pretaining to the Planned Event record in AIR, such as the date it was created and the date the Planned Event moved in Final status.</p></td>
+<td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-date-type-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-date-type-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-vaccine-product-code.html">AIR Vaccine Product Value Set-undefined</a> </td>

@@ -79,3 +79,7 @@ Usage: #definition
 * rest.resource.operation[+].name = "upsert"
 * rest.resource.operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert"
 * rest.resource.operation[=].documentation = "POST, [base]/Immunization/$upsert, Update or add an immunisation event, system/Immunization.cu"
+
+* rest.resource.operation[+].name = "bulk-update"
+* rest.resource.operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-bulk-update"
+* rest.resource.operation[=].documentation = "POST, [base]/Immunization/$bulk-update, Update or add immunisation events in bulk, system/Patient.cu"

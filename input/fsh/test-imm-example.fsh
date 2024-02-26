@@ -74,6 +74,13 @@ Description: "An example immunization resource containing the complete set of fi
 * extension[=].extension[+].url = "precision"
 * extension[=].extension[=].valueString = "Day"
 
+// rescheduleDate extension
+// note this extension really shouldn't be used in this instance
+
+* extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-reschedule-date"
+* extension[=].valueDate = "2024-05-05"
+
+
 * performer.function = $AIRTerms#VC "Vaccinator"
 * performer.actor.identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
 * performer.actor.identifier.value = "90ZZLP"

@@ -158,6 +158,15 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-reschedule-date.html'>air-reschedule-date</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-reschedule-date</td>
+<td>
+<div>Immunization</div>
+</td>
+<td><p>This extension is used on an AIR Immunization resource that is sent to AIR as part of a $bulk-update operation. It holds the date to which the Immunisation Event has been rescheduled.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-scheduled-event.html'>air-scheduled-event</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event</td>
 <td>

@@ -94,6 +94,9 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#48262211000116108 "Influvac Tetra 2024"
 * $NZMT#48285331000116103 "Afluria Quad 2024"
 
+// Added 7 March 24 per IMM-4385
+* $NZMT#48231281000116101 "Flucelvax Quad 2024"
+
 
 // the following five codes were removed per IMM-2881
 /* 

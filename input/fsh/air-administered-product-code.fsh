@@ -8,6 +8,8 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 
 // NZMT TPUU codes
 
+// !!! each code in this file should be mapped to a CVX code in air-vaccine-product-map !!!
+
 // * $NZMT# template line for reuse
 * $NZMT#10443641000116108 "M-M-R-II"
 * $NZMT#29455501000116107 "Infanrix-hexa"
@@ -97,6 +99,9 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 // Added 7-8 March 24 per IMM-4385
 * $NZMT#48231281000116101 "Flucelvax Quad 2024"
 * $NZMT#48294771000116100 "Fluad Quad 2024"
+
+// Added 15 March per IMM-4502
+* $NZMT#48322461000116106 "FluQuadri 2024"
 
 
 // the following five codes were removed per IMM-2881

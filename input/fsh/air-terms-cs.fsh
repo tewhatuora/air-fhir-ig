@@ -11,18 +11,19 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * ^caseSensitive = false
 
 // Health Worker functions
+// updated 29 Feb 24 per IMM-4218
 * #VC "Vaccinator" 
     "A person who administers vaccinations and has an additional practicing credential, such as a nurse or doctor."
 * #VHW "Vaccinating health worker"
     "A person who administers vaccinations but does not have a higher credential such as a nurse or doctor."
-* #GP "General practitioner"
-    "A General Practitioner"
 * #IP "Immunisation Provider"
 * #LMC "Lead Maternity Caregiver"
 * #OIS "Outreach Immunisation Services"
 * #PV "Pharmacist Vaccinator"
 * #V "Vaccinator (NIR)"
 * #WCP "Well Child Provider"
+* #GP "General practitioner"
+    "A General Practitioner"
 
 // NIR Indications
 * #1 "Influenza, eligible over 65 years"
@@ -86,3 +87,4 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * #LVG "Left Ventragluteal"
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 
+

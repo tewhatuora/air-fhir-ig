@@ -12,17 +12,20 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 
 // Health Worker functions
 // updated 29 Feb 24 per IMM-4218
-* #VC "Vaccinator" 
+// updated 25 Mar per updated IMM-4218
+* #AP "Administering Provider"
+* #AP #VC "Vaccinator" 
     "A person who administers vaccinations and has an additional practicing credential, such as a nurse or doctor."
-* #VHW "Vaccinating health worker"
+* #AP #VHW "Vaccinating health worker"
     "A person who administers vaccinations but does not have a higher credential such as a nurse or doctor."
-* #IP "Immunisation Provider"
-* #LMC "Lead Maternity Caregiver"
-* #OIS "Outreach Immunisation Services"
-* #PV "Pharmacist Vaccinator"
-* #V "Vaccinator (NIR)"
-* #WCP "Well Child Provider"
-* #GP "General practitioner"
+* #AP #IP "Immunisation Provider"
+* #AP #LMC "Lead Maternity Caregiver"
+* #AP #OIS "Outreach Immunisation Services"
+* #AP #PV "Pharmacist Vaccinator"
+* #AP #V "Vaccinator (NIR)"
+* #AP #WCP "Well Child Provider"
+* #OP "Ordering Provider"
+* #OP #GP "General practitioner"
     "A General Practitioner"
 
 // NIR Indications

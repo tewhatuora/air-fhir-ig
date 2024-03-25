@@ -8,7 +8,7 @@ Description: "This maps the codes used to report serology protection status in N
 
 // the source and target value sets
 * sourceCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-hl7v2-imm-func"
-* targetCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-performer-health-worker-function-code"
+* targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code"
 
 * group.source = "http://terminology.hl7.org/CodeSystem/v2-0443"
 * group.target = "https://standards.digital.health.nz/ns/air-terms-code"

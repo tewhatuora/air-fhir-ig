@@ -1,7 +1,7 @@
 ValueSet: AIRRelatedPersonRelationship
 Id: air-related-person-relationship
 Title: "AIR Related Person Relationship Codes"
-Description: "This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set."
+Description: "This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set and includes some customised codes and displays for NZ usage."
 
 * ^experimental = false
 
@@ -13,8 +13,8 @@ Description: "This value set is used to encode the relationship of a related per
 * $v3RoleCode#FTH
 * $v3RoleCode#SIS
 * $v3RoleCode#BRO
-* $v3RoleCode#SON
-* $v3RoleCode#DAU
+* $v3RoleCode#SON "son"
+* $v3RoleCode#DAU "daughter"
 * $v3RoleCode#UNCLE
 * $v3RoleCode#AUNT
 * $v3RoleCode#NEPHEW
@@ -29,3 +29,9 @@ Description: "This value set is used to encode the relationship of a related per
 * $v3RoleCode#MTHFOST
 * $v3RoleCode#STPFTH
 * $v3RoleCode#STPMTH
+
+// added 29 feb 2023 for IMM-4211
+* $v3RoleCode#GUARD "guardian"
+* $v3RoleCode#PRN "parent"
+
+* $AIRTerms#WHANGAI "whāngai"

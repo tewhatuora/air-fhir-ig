@@ -91,3 +91,5 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * #RVG "Right Ventragluteal"
 * #BU "Buttock" 
 
+// Added 26 March 2024 for IMM-4211
+* #WHANGAI "whāngai"

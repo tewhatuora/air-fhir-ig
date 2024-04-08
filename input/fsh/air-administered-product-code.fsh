@@ -103,6 +103,7 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 // Added 15 March per IMM-4502
 * $NZMT#48322461000116106 "FluQuadri 2024"
 
+* $NZMT#48111641000116101 "Arexvy"
 
 // the following five codes were removed per IMM-2881
 /* 

@@ -95,6 +95,7 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 // * $CVX#229 "COVID-19"
 
 * $CVX#300 "COVID-19 mRNA-CV (15mcg/15mcg)"
+* $CVX#303 "RSV"
 * $CVX#500 "COVID-19 Product Unspecified"
 
 /* * $CVX#501 "COVID-19"

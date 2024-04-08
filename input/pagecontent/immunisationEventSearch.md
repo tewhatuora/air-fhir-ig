@@ -8,6 +8,8 @@ The "search" operation is used to search patient immunisation events. This metho
 
 Validation checks verify whether the request is valid and identifies any existing records. Failure conditions documented in this IG only include those that affect AIR or its responses.
 
+If the patient has opted to suppress access to their immunisation records, the search request will return an empty bundle having the meta.security element set to "REDACTED" (redacted).
+
 The __[FHIR API Flow](#fhir-search-immunisation-event-flow)__ occurs when the request is submitted from a system compliant with the version of FHIR currently in use, e.g. when an AIR Administrator submits event data via ISM. This uses the AIR FHIR endpoint.
 
 The __[HL7v2 Flow](#hl7-v20-search-immunisation-event-flow-v01-v03)__ occurs when the request is received from a system that requires transformation from another standard, such as a PMS using legacy HL7v2 messaging. A broker transforms requests into FHIR before invoking the main flow and messages the response to the calling system. This uses the Healthlink Air Broker public API.

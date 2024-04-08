@@ -5,6 +5,8 @@ An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it
 The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself, the pracitioner who administered the immunisation  and the PMS systems to which the message should be sent.
 At a later time, after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
+If the patient has opted to suppress access to their immunisation records, an 'Immunisation Update Message' notification **will not be sent** to either the Enrolled facility or the Immunization event facility.
+
 ### Immunisation Update Message Request
 
 

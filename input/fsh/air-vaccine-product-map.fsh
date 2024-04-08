@@ -66,6 +66,7 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(44269461000116103, 127, relatedto)
 * insert ConceptMapEntry(44967911000116100, 160, relatedto)
 
+* insert ConceptMapEntry(48111641000116101, 303, relatedto)
 
 * group[+].source = $NZMT
 * group[=].target = $NZVX

@@ -35,3 +35,4 @@ Description: "Diseases that are covered by the immunization programmes and sched
 * $SCT#14168008 "Rabies"
 * $SCT#4834000 "Typhoid fever"
 * $SCT#63650001 "Cholera"
+* $SCT#55735004 "Respiratory syncytial virus"

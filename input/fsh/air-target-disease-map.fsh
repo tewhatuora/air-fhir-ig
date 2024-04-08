@@ -92,6 +92,7 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(67924001, 75, relatedto)
 * insert ConceptMapEntry(40468003, 83, relatedto)
 * insert ConceptMapEntry(4834000, 25, relatedto)
+* insert ConceptMapEntry(55735004, 303, relatedto)
 
 
 // The TPUU mappings have been commented out because they might not be needed any longer. If they are needed, they'll need to move to a different conceptMap since they now live in a different valueSet...

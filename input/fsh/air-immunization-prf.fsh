@@ -134,6 +134,20 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // serologyReport extension for transmitting Hep B serology results
 * extension contains air-serology-report-extension named serologyReportExtension 0..1
 
+// reschedule date extension for use in reschedule messages (incoming O15)
+* extension contains air-reschedule-date named rescheduleDateExtension 0..*
+* obeys air-resched-1
+
+// add a rule to make sure reschedule date is only present when the status is NOT DONE and the StatusReason relates to rescheduling
+// 'RESCHO' | 'RESREF' | 'RESTC'"
+Invariant: air-resched-1
+Description: "Only allow a reschedule date if status NOT DONE and statusReason related to rescheduling."
+Expression: "extension.where(url = 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-reschedule-date').exists() implies status.value = 'not-done' and statusReason.coding.where(code = 'RESCHO' | 'RESREF' | 'RESTC').allTrue()"
+Severity: #error
+XPath: ""
+
+
+
 Invariant: nz-route-1
 Description: "If the route of admin has a system, then it must have a code."
 Expression: "route.coding.system.exists() implies route.coding.code.exists()"

@@ -3596,8 +3596,8 @@ components:
           scopes:
             system/Immunization.c: create scope
             system/Immunization.r: read scope
-            system/Immunization.s: search scope
             system/Immunization.u: update scope
+            system/Immunization.s: search scope
             air-test/Immunization.c: create scope for test only(NHI should start with
               Z)
             air-test/Immunization.r: read scope for test only(NHI should start with
@@ -3606,5 +3606,13 @@ components:
               Z)
             air-test/Immunization.s: search scope for test only(NHI should start with
               Z)
-            air-admin/Immunization.s: search scope for admins only
+            air-admin/Immunization.c: create scope for admins only
+            air-admin/Immunization.r: read scope for admins only
             air-admin/Immunization.u: update scope for admins only
+            air-admin/Immunization.s: search scope for admins only
+            system/Patient.r: read scope for consumer interface          
+            system/Patient.u: update scope for consumer interface
+            air-test/Patient.r: read scope for test only
+            air-test/Patient.u: update scope for test only
+            system/MessageHeader.u: update scope for notification interface
+            air-test/MessageHeader.u: update scope for test only

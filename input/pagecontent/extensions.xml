@@ -149,6 +149,15 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-planned-event-match.html'>air-planned-event-match</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>The match of a planned event to an immunisation event as calculated by AIR rules.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-recommendation-id.html'>air-recommendation-id</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state</td>
 <td>

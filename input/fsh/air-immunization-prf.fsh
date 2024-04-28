@@ -9,6 +9,9 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 // insert metadata extension for data quality
 * meta.extension contains air-data-quality-assessment named DataQualityAssessment 0..1
 
+// insert metadata extension for planned event match results
+* meta.extension contains air-planned-event-match named PlannedEventMatch 0..*
+
 // insert metadata extension for planned event match quality
 * meta.extension contains air-planned-event-match-quality named PlannedEventMatchQuality 0..*
 

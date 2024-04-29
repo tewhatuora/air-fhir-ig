@@ -17,6 +17,10 @@ paths:
   /v2/fhir/Immunization:
     post:
       operationId: create
+      description:  |
+        The "create" operation is used to create a new immunisation event. This method performs  validation checks to ensure that the event is valid before it is created.
+
+        Returns either the created Immunization record or if there were any issues with the create, the  response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
       - $ref: '#/components/parameters/UserID'
       - $ref: '#/components/parameters/X-Correlation-ID'
@@ -51,6 +55,8 @@ paths:
   /v2/fhir/Immunization/{ID}:
     get:
       operationId: read
+      description:  |
+        The "read" operation is used to read an immunisation event. This method takes an immunisation event id and returns back the FHIR resource for the immunization event.
       parameters:
       - $ref: '#/components/parameters/ID'
       - $ref: '#/components/parameters/UserID'
@@ -82,6 +88,14 @@ paths:
         - air-test/Immunization.r
     put:
       operationId: update
+      description:  |
+        The "update" operation is used to update an existing immunisation event. This method checks if the immunisation event with the given ID exists, and if it does, it updates the event with the new details provided. The method also performs validation checks to ensure that the updated event is valid before it is saved.
+
+        Returns either the the updated immunisation record or an OperationOutcome if there were any issues with the update.
+
+        On success - returns the updated immunisation record. data quality issues will be identified and sent as part of the response in the meta section of the resource.
+
+        On Fail - if there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
       - $ref: '#/components/parameters/ID'
       - $ref: '#/components/parameters/UserID'
@@ -219,7 +233,8 @@ paths:
   /v2/fhir/Immunization/{ID}/_history:
     get:
       operationId: history
-      description: Returns the history of a single immunisation event
+      description:  |
+        The "history" operation is used to return all the versions of an immunization event including the data quality. This method takes an immsot_id and returns back the FHIR bundle, which is a collection of immunization event resources where each resource in the bundle represents a version.
       parameters:
       - $ref: '#/components/parameters/ID'
       - $ref: '#/components/parameters/UserID'
@@ -250,6 +265,16 @@ paths:
   /v2/fhir/Immunization/$bulk-update:
     post:
       operationId: $bulk-update
+      description:  |
+        Create new Immunisation Events and/or Upsert Immunisation Events based on a matching algorithm. Operation is atomic.
+
+        For each parameter the request body:
+        1. If the parameter name is “create”, then the contained Immunization will be created.
+        2. If the parameter name is “upsert”, then attempt to find an matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
+          * If no match found, create a new event
+          * If single match found, update event
+          * If multiple events found, create a new event (duplicate will be raised).
+          * Failure to process any event, reject entire request
       requestBody:
           description: Perform several updates at once
           content:
@@ -283,6 +308,13 @@ paths:
   /v2/fhir/Patient/{NHI}:
     get:
       operationId: readPatient
+      description:  |
+        Read the current state of an ImmSOT Consumer
+
+        * Consumer state held in ImmSOT is returned as a FHIR Patient
+        * When an optional header origin-nhi-version is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer.
+          * If it is the same, we return the current data we have in ImmSoT database.
+          * If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.
       parameters:
         - $ref: '#/components/parameters/NHI'
         - $ref: '#/components/parameters/UserID'
@@ -314,6 +346,14 @@ paths:
   /v2/fhir/Patient/{NHI}/$update-state:
     post:
       operationId: updatePatientState
+      description:  |
+        Update the current state of an ImmSOT Consumer
+
+        Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state.
+
+        At least one of **state** and **subStatus** must be specified. If **state** or **subStatus** is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status.
+
+        A **412 Preconditioned Failed** will be returned if the version received in the payload does not match the server version.      
       parameters:
         - $ref: '#/components/parameters/NHI'
         - $ref: '#/components/parameters/UserID'

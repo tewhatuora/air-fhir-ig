@@ -15,3 +15,4 @@ _genonce.sh
 !/immsot-ig-template-local/package/content/ImmSoTAPI.yaml
 /validation.html
 input/fsh/test-profile.fsh
+/.vscode/

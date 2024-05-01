@@ -42,6 +42,7 @@ build-ig:
   script:
     - ./_updatePublisher.sh -y
     - ./build-ig.sh
+    - ./transform_to_marketplace_spec.sh
   artifacts:
     paths:
       - output

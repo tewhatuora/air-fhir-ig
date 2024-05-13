@@ -113,3 +113,7 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#31116511000116103 "Synflorix"
 * $NZMT#10598271000116109 "Rotarix"
 */
+
+// Added 13 May per IMM-4462
+* $NZMT#48176671000116109 "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+* $NZMT#48179211000116107 "Comirnaty Omicron XBB.1.5 (3mcg) MDV"

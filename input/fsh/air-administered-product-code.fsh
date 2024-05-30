@@ -117,3 +117,6 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 // Added 13 May per IMM-4462
 * $NZMT#48176671000116109 "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
 * $NZMT#48179211000116107 "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+
+// Added 30 May per IMM-4767
+* $NZMT#31115901000116100 "Act-HIB"

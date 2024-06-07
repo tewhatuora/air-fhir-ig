@@ -230,6 +230,90 @@ paths:
       - client_credentials:
         - system/Immunization.s
         - air-admin/Immunization.s
+  /v2/fhir/Immunization/{ID}/$match:
+    post:
+      operationId: match
+      description: |
+        Manual match used to manually match Immunisation event to a planned Event that exists within a Consumers vaccinations schedule. 
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/ManualMatching'
+            examples:
+              updateStateExample:
+                $ref: '#/components/examples/ManualMatchingParams'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirImmunizationBundle'
+              examples:
+                Multiple records returned:
+                  $ref: '#/components/examples/SearchResult'
+                No records found for NHI:
+                  $ref: '#/components/examples/SearchNoMatch'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.c
+        - system/Immunization.u
+  /v2/fhir/Immunization/{ID}/$unmatch:
+    post:
+      operationId: unmatch
+      description: |
+        Manually Unmatch a Planned Event
+      parameters:
+      - $ref: '#/components/parameters/ID'
+      - $ref: '#/components/parameters/UserID'
+      - $ref: '#/components/parameters/X-Correlation-ID'
+      - $ref: '#/components/parameters/FacilityID'
+      - $ref: '#/components/parameters/SourceSystemID'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/ManualMatching'
+            examples:
+              updateStateExample:
+                $ref: '#/components/examples/ManualUnmatchingParams'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirImmunizationBundle'
+              examples:
+                Multiple records returned:
+                  $ref: '#/components/examples/SearchResult'
+                No records found for NHI:
+                  $ref: '#/components/examples/SearchNoMatch'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+      - apikey_header: []
+      - client_credentials:
+        - system/Immunization.c
+        - system/Immunization.u
   /v2/fhir/Immunization/{ID}/_history:
     get:
       operationId: history
@@ -812,6 +896,18 @@ components:
             value:
               type: string
               example: ZZZ7541
+    ManualMatching:
+      type: object
+      properties:
+        versionId: 
+          type: string
+        plannedEventId:
+          type: string
+        reason:
+          type: object
+          properties:
+            code:
+              type: string
     OperationOutcome:
       type: object
       properties:
@@ -2514,6 +2610,28 @@ components:
           - other:
               reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'
             type: refer
+    ManualMatchingParams:
+      value:
+        resourceType: Parameters
+        parameter:
+          - name: version
+            valueString: "1"
+          - name: plannedEventId
+            valueString: uuid
+          - name: reason
+            valueCoding:
+              code: "322"
+    ManualUnmatchingParams:
+      value:
+        resourceType: Parameters
+        parameter:
+          - name: version
+            valueString: "1"
+          - name: plannedEventId
+            valueString: uuid
+          - name: reason
+            valueCoding:
+              code: "421"
     UpdatePatientStateParams:
       value:
         resourceType: Parameters

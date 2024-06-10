@@ -75,7 +75,7 @@ if (fs.existsSync(rootPath)) {
                             ar.push("<tr>")
                             ar.push(`<td>${int.code}</td>`)
                             //let documentation = cleanText(int.documentation) || hashInteraction[int.code]
-                            let documentation = int.documentation.split(',')
+                            let documentation = int.documentation.split('|')
                             let verb  = documentation[0] ?? " "
                             let url = documentation[1] ?? " "
                             let doc = documentation[2] ?? " "

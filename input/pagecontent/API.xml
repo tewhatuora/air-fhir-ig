@@ -13,25 +13,33 @@
 <td>create</td>
 <td>POST</td>
 <td>[base]/Immunization/</td>
-<td> create a new Immunisation record </td>
+<td>The "create" operation is used to create a new immunisation event. This method performs  validation checks to ensure that the event is valid before it is created.  
+
+        Returns either the created Immunization record or if there were any issues with the create, the  response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.</td>
 </tr>
 <tr>
 <td>read</td>
 <td>GET</td>
 <td>[base]/Immunization/[id]</td>
-<td> get an Immunisation record by id </td>
+<td>The "read" operation is used to read an immunisation event. This method takes an immunisation event id and returns back the FHIR resource for the immunization event.</td>
 </tr>
 <tr>
 <td>update</td>
-<td>POST</td>
+<td>PUT</td>
 <td>[base]/Immunization/[id]</td>
-<td> update an Immunisation record </td>
+<td> The "update" operation is used to update an existing immunisation event. This method checks if the immunisation event with the given ID exists, and if it does, it updates the event with the new details provided. The method also performs validation checks to ensure that the updated event is valid before it is saved.
+
+        Returns either the the updated immunisation record or an OperationOutcome if there were any issues with the update.
+
+        On success - returns the updated immunisation record. data quality issues will be identified and sent as part of the response in the meta section of the resource.
+
+        On Fail - if there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.</td>
 </tr>
 <tr>
-<td>search-type</td>
-<td>GET</td>
-<td>[base]/Immunization/[id]</td>
-<td> search for  an Immunisation record </td>
+<td>history-instance</td>
+<td>The _history interaction is used to return all the versions of an immunization event including the data quality. This method takes an immsot_id and returns back the FHIR bundle, which is a collection of immunization event resources where each resource in the bundle represents a version.</td>
+<td> </td>
+<td> </td>
 </tr>
 </table>
 <table class='table table-bordered table-condensed'>
@@ -40,13 +48,13 @@
 <tr>
 <td>upsert</td>
 <td><a href ="upsert.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert </a></td>
-<td><p>POST, [base]/Immunization/$upsert, Update or add an immunisation event, system/Immunization.cu</p>
+<td><p>POST| [base]/Immunization/$upsert, Update or add an immunisation event| system/Immunization.cu</p>
 </td>
 </tr>
 <tr>
 <td>bulk-update</td>
 <td><a href ="bulk-update.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-bulk-update </a></td>
-<td><p>POST, [base]/Immunization/$bulk-update, Update or add immunisation events in bulk, system/Patient.cu</p>
+<td><p>POST| [base]/Immunization/$bulk-update| Update or add immunisation events in bulk| system/Patient.cu</p>
 </td>
 </tr>
 </table>
@@ -54,9 +62,21 @@
 <table class='table table-bordered table-condensed'>
 <tr><th width='30%'>Name</th><th>Type</th><th width='70%'>Documentation</th></tr>
 <tr>
+<td>patient</td>
+<td><a target='_blank' href="http://hl7.org/fhir/search.html#reference">reference</a></td>
+<td><div>Definition: http://hl7.org/fhir/SearchParameter/patient</div><p>NHI number of the patient</p>
+</td>
+</tr>
+<tr>
 <td>protocolApplied.targetDisease</td>
 <td><a target='_blank' href="http://hl7.org/fhir/search.html#token">token</a></td>
 <td><div>Definition: http://hl7.org/fhir/SearchParameter/target-disease</div><p>Vaccine-preventable disease being targeted by an immunisation.</p>
+</td>
+</tr>
+<tr>
+<td>data-quality</td>
+<td><a target='_blank' href="http://hl7.org/fhir/search.html#special">special</a></td>
+<td><div>Definition: https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-data-quality</div><p>Query search for immunisation events with data quality issues. Restricted to admin users.</p>
 </td>
 </tr>
 </table>
@@ -78,6 +98,31 @@
 </table>
 <em>These are the _include parameters that are supported on searches</em>
 <br/><br/>
+<a name="Patient"> </a>
+<h5>Patient</h5>
+<strong>Interactions</strong>
+<table class='table table-bordered table-condensed'>
+<tr><th width='20%'>Code</th><th width='10%'>Verb</th><th width='20%'>URL</th><th width='50%'>Documentation</th></tr>
+<tr>
+<td>read</td>
+<td>Read the current state of an ImmSOT Consumer. Consumer state held in ImmSOT is returned as a FHIR AIR Patient. When an optional header "origin-nhi-version" is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer. If it is the same, we return the current data we have in ImmSoT database. If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.</td>
+<td> </td>
+<td> </td>
+</tr>
+</table>
+<table class='table table-bordered table-condensed'>
+<strong>Operations</strong>
+<tr><th width='30%'>Name</th><th width='30%'>Definition</th><th width='40%'>Documentation</th></tr>
+<tr>
+<td>update-state</td>
+<td><a href ="update-state.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/update-patient-state </a></td>
+<td><p>POST| [base]/Immunization/$update-state| Update the current state of an ImmSOT Consumer
+Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state.</p>
+<p>At least one of state and subStatus must be specified. If state or subStatus is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status.</p>
+<p>A 412 Preconditioned Failed will be returned if the version received in the payload does not match the server version.</p>
+</td>
+</tr>
+</table>
 <br/><h4>Server Level Interactions</h4>
 <strong>Operations</strong>
 <table class='table table-bordered table-condensed'>

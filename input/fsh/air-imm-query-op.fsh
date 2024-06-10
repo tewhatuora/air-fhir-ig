@@ -45,3 +45,10 @@ Description: "An operation to search for Immunisation events that have data qual
 * parameter[=].max = "1"
 * parameter[=].documentation = "To include migration data in the response. Default to 'false' if not provided."
 * parameter[=].type = #Immunization
+
+* parameter[+].name = #"_status"
+* parameter[=].use = #in
+* parameter[=].min = 0
+* parameter[=].max = "1"
+* parameter[=].documentation = "Which immunisation statuses to include in the results of a DQ search. Possible values are C (completed), E (entered-in-error) and N (not-done).  Default to including all three statuses (C, E, N) if blank or omitted."
+* parameter[=].type = #Immunization

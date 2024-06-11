@@ -12,6 +12,8 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * sourceCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code"
 * targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code"
 
+// note CVX codes at the top and then NZVX codes at the bottom
+
 * group[0].source = $NZMT
 * group[0].target = $CVX
 
@@ -68,6 +70,17 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 
 * insert ConceptMapEntry(48111641000116101, 303, relatedto)
 
+// Added 21 Feb 2024 per IMM-4289
+* insert ConceptMapEntry(48175861000116107, 217, relatedto)
+* insert ConceptMapEntry(48175171000116106, 217, relatedto)
+
+// Added 13 May per IMM-4462
+* insert ConceptMapEntry(48176671000116109, 218, relatedto)
+* insert ConceptMapEntry(48179211000116107, 219, relatedto)
+
+// Added 30 May per IMM-4767
+* insert ConceptMapEntry(31115901000116100, 48, relatedto)
+
 * group[+].source = $NZMT
 * group[=].target = $NZVX
 
@@ -95,8 +108,6 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(47796751000116103, 99010, relatedto)
 
 // Added 21 Feb 2024 per IMM-4289
-* insert ConceptMapEntry(48175861000116107, 217, relatedto)
-* insert ConceptMapEntry(48175171000116106, 217, relatedto)
 * insert ConceptMapEntry(48262211000116108, 99006, relatedto)
 * insert ConceptMapEntry(48285331000116103, 99006, relatedto)
 
@@ -117,9 +128,4 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10598271000116109, 119, relatedto)
 */
 
-// Added 13 May per IMM-4462
-* insert ConceptMapEntry(48176671000116109, 218, relatedto)
-* insert ConceptMapEntry(48179211000116107, 219, relatedto)
 
-// Added 30 May per IMM-4767
-* insert ConceptMapEntry(31115901000116100, 48, relatedto)

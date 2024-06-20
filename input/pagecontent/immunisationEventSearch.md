@@ -1,84 +1,950 @@
-## Search Immunisation Event Overview
+### Overview
 
-*Status: rough draft*
+The "search" operation is used to search patient immunisation events. This method takes a patient NHI and optional target disease and returns back the FHIR bundle which is a collection of immunisation event resources.
 
-When a health worker wishes to view a consumers vaccination history they will bring up the consumer’s record and then a search of their immunisations will be initiated.  The NHI number will be used to do a call to the immunisation data store, and an array of immunisation events will be returned.
+The search API performs the following steps:
 
-The "search" operation is used to search patient immunisation events. This method takes NHI, date range, facility-Id and dq_status and returns the FHIR bundle, which is a collection of immunisation event resources. Data outgoing from the immunisation data store is enriched with data from NHI, NES and other data providers.
+1. Checks that the authorization token contains the required permissions
+   * Returns an error message indicating that the user does not have the required scope to search immunisation events if the authorization token does not contain the required permissions.
 
-Validation checks verify whether the request is valid and identifies any existing records. Failure conditions documented in this IG only include those that affect AIR or its responses.
+1. Search in the NHI table for the NHI provided in the search request and returns all the NHIs (live and dormant) that have the same consumer id matching the consumer id assigned to the NHI submitted in the request.
+   * If the provided NHI is not found, the service returns an error message
 
-If the patient has opted to suppress access to their immunisation records, the search request will return an empty bundle having the meta.security element set to "REDACTED" (redacted).
+1. Searches in the Immunisation table for the latest version of the immunisation events for all the NHIs obtained in step #2 above.
 
-The __[FHIR API Flow](#fhir-search-immunisation-event-flow)__ occurs when the request is submitted from a system compliant with the version of FHIR currently in use, e.g. when an AIR Administrator submits event data via ISM. This uses the AIR FHIR endpoint.
+1. If a target disease is provided, only immunisations for that disease will be returned.
 
-The __[HL7v2 Flow](#hl7-v20-search-immunisation-event-flow-v01-v03)__ occurs when the request is received from a system that requires transformation from another standard, such as a PMS using legacy HL7v2 messaging. A broker transforms requests into FHIR before invoking the main flow and messages the response to the calling system. This uses the Healthlink Air Broker public API.
+1. Returns the latest version of the immunisation events as a FHIR bundle.
 
-### FHIR API Search Immunisation Event Flow
+### Operation
 
-#### FHIR API Sequence Diagram
+POST https://api_endpoint/v2/fhir/Immunization/_search
 
-<div>
+### Request Headers
 
-</div>
+See LINK for request headers
 
-#### FHIR Search Immunisation Event Processing Steps
+### Request Body
 
-##### FHIR Search Immunisation Event Flow
+POST a payload with the following parameters
+* Patient Identifier (NHI Number) (Mandatory)
+* Target disease (SNOMED code from LINK TO VALUE SET) (Optional)
+~~~
+patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%3A%2F%2Fsnomed.info%2Fsct%7C66071002
+~~~
 
-   1. ...
-   1. AIR returns the bundle of Immunisation Events to the Consumer.
-   1. Flow ends.
+### Behaviour
 
-##### E1 Search Immunisation Event Authorisation Denial
+* Patient record/NHI is validated
+* Immunisation records that belong to all the NHIs (live and dormant) that have the same consumer id matching the consumer id assigned to the NHI submitted in the request will be returned.
+* If a target disease is provided, only immunisations for that disease are returned.
+* If ImmSOT is unable to map a vaccine to the target disease provided (e.g. invalid vaccine code), no immunisations will be returned.
+* If admin scope is also present, then include the full data quality result with the response.
+* If the NHI in the Search request or any linked NHIs (live or dormant) is suppressed return an empty result, with redacted metadata.
 
-   1. AIR returns a relevant error message and response to the Consumer (4xx), such as indicating that the user does not have the required scope to view an immunisation record.
-   1. Flow ends.
+### Responses
+HTTP/1.1 200 OK
+Content-Type: application/fhir+json
 
-##### E2 Search Immunisation Event Exception
+#### Search returns results
 
-   1. AIR returns a relevant error message to Consumer, such as an internal server error (5xx).
-   1. Flow ends.
+~~~
+{
+    "resourceType": "Bundle",
+    "id": "f05dedabdc684b0fbae2",
+    "meta": {
+        "lastUpdated": "2023-09-14T01:59:12.375+00:00"
+    },
+    "type": "searchset",
+    "total": 2,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://localhost:8443/v2/fhir/Immunization/_search"
+        }
+    ],
+    "entry": [
+        {
+            "fullUrl": "https://localhost:8443/v2/fhir/Immunization/bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
+                "meta": {
+                    "extension": [
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                            "valueString": "Postman"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                            "valueString": "PostmanUser"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                            "valueInstant": "2023-09-14T01:32:28.986+00:00"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                            "valueString": "PostmanUser"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                            "valueString": "Postman"
+                        }
+                    ],
+                    "versionId": "3",
+                    "lastUpdated": "2023-09-14T01:54:39.727+00:00",
+                    "profile": [
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+                    ]
+                },
+                "contained": [
+                    {
+                        "resourceType": "RelatedPerson",
+                        "id": "1",
+                        "patient": {
+                            "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
+                            "identifier": {
+                                "system": "https://standards.digital.health.nz/ns/nhi-id",
+                                "value": "ZZZ7541"
+                            }
+                        },
+                        "relationship": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                        "code": "MTH"
+                                    }
+                                ]
+                            }
+                        ],
+                        "name": [
+                            {
+                                "family": "Doe2",
+                                "given": [
+                                    "John2 Jon2"
+                                ]
+                            }
+                        ],
+                        "telecom": [
+                            {
+                                "system": "phone",
+                                "value": "041111111",
+                                "use": "home"
+                            },
+                            {
+                                "system": "phone",
+                                "value": "092222222",
+                                "use": "work"
+                            },
+                            {
+                                "system": "email",
+                                "value": "jo2doe2@moh.govt.nz",
+                                "use": "home"
+                            }
+                        ],
+                        "address": [
+                            {
+                                "extension": [
+                                    {
+                                        "url": "http://hl7.org.nz/fhir/StructureDefinition/suburb",
+                                        "valueString": "Ngaio"
+                                    }
+                                ],
+                                "use": "home",
+                                "type": "physical",
+                                "line": [
+                                    "789 Update St",
+                                    "Nah"
+                                ],
+                                "city": "Auckland",
+                                "postalCode": "5001"
+                            }
+                        ]
+                    },
+                    {
+                        "resourceType": "Observation",
+                        "id": "2",
+                        "status": "preliminary",
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "278969009",
+                                    "display": "Hepatitis B status"
+                                }
+                            ]
+                        },
+                        "effectiveDateTime": "2023-01-01T01:12:34.000+00:00",
+                        "interpretation": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "https://standards.digital.health.nz/ns/air-serology-protection-terms",
+                                        "code": "IND",
+                                        "display": "Indeterminate"
+                                    }
+                                ]
+                            }
+                        ]
+                    }                    
+                            ],
+                "extension": [
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent",
+                        "extension": [
+                            {
+                                "url": "diluentLotNumber",
+                                "valueString": "33332222"
+                            },
+                            {
+                                "url": "diluentExpiryDate",
+                                "valueDate": "2026-01-01"
+                            }
+                        ]
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension",
+                        "valueReference": {
+                            "reference": "#1"
+                        }
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given",
+                        "extension": [
+                            {
+                                "url": "years",
+                                "valueInteger": 24
+                            },
+                            {
+                                "url": "months",
+                                "valueInteger": 6
+                            },
+                            {
+                                "url": "days",
+                                "valueInteger": 27
+                            },
+                            {
+                                "url": "daysSinceBirth",
+                                "valueInteger": 8974
+                            },
+                            {
+                                "url": "precision",
+                                "valueString": "DAY"
+                            }
+                        ]
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site",
+                        "valueString": "FZZ835-E_MOB0003"
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension",
+                        "valueReference": {
+                            "reference": "#2"
+                        }
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://nzmt.org.nz",
+                                    "code": "10443641000116108",
+                                    "display": "M-M-R-II"
+                                }
+                            ],
+                            "text": "M-M-R-II"
+                        }
+                    }
+                ],
+                "status": "completed",
+                "statusReason": {
+                    "coding": [
+                        {
+                            "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+                            "code": "GIVEN",
+                            "display": "Vaccination given"
+                        }
+                    ]
+                },
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/cvx",
+                            "version": "1.0.0",
+                            "code": "03",
+                            "display": "MMR"
+                        }
+                    ],
+                    "text": "Priorix"
+                },
+                "patient": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/nhi-id",
+                        "value": "ZZZ7541"
+                    }
+                },
+                "occurrenceDateTime": "2023-08-29T00:00:00.000+00:00",
+                "location": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+                        "value": "FZZ835-E"
+                    }
+                },
+                "lotNumber": "555123",
+                "expirationDate": "2024-01-31",
+                "site": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "version": "1.1",
+                            "code": "16217701000119102",
+                            "display": "Structure of left deltoid muscle"
+                        }
+                    ]
+                },
+                "route": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "version": "1.2",
+                            "code": "78421000",
+                            "display": "Intramuscular route"
+                        }
+                    ]
+                },
+                "performer": [
+                    {
+                        "function": {
+                            "coding": [
+                                {
+                                    "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                    "version": "1.0.0",
+                                    "code": "VC",
+                                    "display": "Vaccinator"
+                                }
+                            ]
+                        },
+                        "actor": {
+                            "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616",
+                            "identifier": {
+                                "system": "https://standards.digital.health.nz/ns/nursing-council-id",
+                                "value": "477616"
+                            }
+                        }
+                    }
+                ],
+                "reasonCode": [
+                    {
+                        "coding": [
+                            {
+                                "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                "code": "5",
+                                "display": "Primary course"
+                            }
+                        ]
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                "code": "5P",
+                                "display": "Privately funded, primary course"
+                            }
+                        ]
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "targetDisease": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "14189004",
+                                        "display": "Measles"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36989005",
+                                        "display": "Mumps"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36653000",
+                                        "display": "Rubella"
+                                    }
+                                ]
+                            }
+                        ],
+                        "doseNumberPositiveInt": 1
+                    }
+                ]
+            }
+        },
+        {
+            "fullUrl": "https://localhost:8443/v2/fhir/Immunization/e5aba937-14a9-40fa-80cd-7e6c4d1305e1",
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "e5aba937-14a9-40fa-80cd-7e6c4d1305e1",
+                "meta": {
+                    "extension": [
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                            "valueString": "Postman"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                            "valueString": "PostmanUser"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                            "valueInstant": "2023-09-14T01:26:46.626+00:00"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                            "valueString": "PostmanUser"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                            "valueString": "Postman"
+                        }
+                    ],
+                    "versionId": "1",
+                    "lastUpdated": "2023-09-14T01:26:46.626+00:00",
+                    "profile": [
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+                    ]
+                },
+                "contained": [
+                    {
+                        "resourceType": "RelatedPerson",
+                        "id": "1",
+                        "patient": {
+                            "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
+                            "identifier": {
+                                "system": "https://standards.digital.health.nz/ns/nhi-id",
+                                "value": "ZZZ7541"
+                            }
+                        },
+                        "relationship": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                        "code": "FTH"
+                                    }
+                                ]
+                            }
+                        ],
+                        "name": [
+                            {
+                                "family": "Doe",
+                                "given": [
+                                    "John Jon"
+                                ]
+                            }
+                        ],
+                        "telecom": [
+                            {
+                                "system": "phone",
+                                "value": "041234567",
+                                "use": "home"
+                            },
+                            {
+                                "system": "phone",
+                                "value": "091234567",
+                                "use": "work"
+                            },
+                            {
+                                "system": "email",
+                                "value": "jodoe@moh.govt.nz",
+                                "use": "home"
+                            }
+                        ],
+                        "address": [
+                            {
+                                "extension": [
+                                    {
+                                        "url": "http://hl7.org.nz/fhir/StructureDefinition/suburb",
+                                        "valueString": "Johnsonville"
+                                    }
+                                ],
+                                "use": "home",
+                                "type": "physical",
+                                "line": [
+                                    "123 Main St",
+                                    "Neverland"
+                                ],
+                                "city": "Wellington",
+                                "postalCode": "6001"
+                            }
+                        ]
+                    },
+                    {
+                        "resourceType": "Observation",
+                        "id": "2",
+                        "status": "preliminary",
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "278969009",
+                                    "display": "Hepatitis B status"
+                                }
+                            ]
+                        },
+                        "effectiveDateTime": "2023-01-01T01:12:34.000+00:00",
+                        "interpretation": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "https://standards.digital.health.nz/ns/air-serology-protection-terms",
+                                        "code": "IND",
+                                        "display": "Indeterminate"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "extension": [
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent",
+                        "extension": [
+                            {
+                                "url": "diluentLotNumber",
+                                "valueString": "33332222"
+                            },
+                            {
+                                "url": "diluentExpiryDate",
+                                "valueDate": "2026-01-01"
+                            }
+                        ]
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension",
+                        "valueReference": {
+                            "reference": "#1"
+                        }
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given",
+                        "extension": [
+                            {
+                                "url": "years",
+                                "valueInteger": 24
+                            },
+                            {
+                                "url": "months",
+                                "valueInteger": 0
+                            },
+                            {
+                                "url": "days",
+                                "valueInteger": 7
+                            },
+                            {
+                                "url": "daysSinceBirth",
+                                "valueInteger": 8773
+                            },
+                            {
+                                "url": "precision",
+                                "valueString": "DAY"
+                            }
+                        ]
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension",
+                        "valueReference": {
+                            "reference": "#2"
+                        }
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site",
+                        "valueString": "FZZ835-E_MOB0001"
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product",
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://nzmt.org.nz",
+                                    "code": "10443641000116108",
+                                    "display": "M-M-R-II"
+                                }
+                            ],
+                            "text": "M-M-R-II"
+                        }
+                    }                               
+                ],
+                "status": "completed",
+                "statusReason": {
+                    "coding": [
+                        {
+                            "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+                            "code": "GIVEN",
+                            "display": "Vaccination given"
+                        }
+                    ]
+                },
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/cvx",
+                            "version": "1.0.0",
+                            "code": "03",
+                            "display": "MMR"
+                        }
+                    ],
+                    "text": "Priorix"
+                },
+                "patient": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/nhi-id",
+                        "value": "ZZZ7541"
+                    }
+                },
+                "occurrenceDateTime": "2023-02-09T00:00:00.000+00:00",
+                "location": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+                        "value": "FZZ835-E"
+                    }
+                },
+                "lotNumber": "555123",
+                "expirationDate": "2024-01-31",
+                "site": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "version": "1.1",
+                            "code": "16217701000119102",
+                            "display": "Structure of left deltoid muscle"
+                        }
+                    ]
+                },
+                "route": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "version": "1.2",
+                            "code": "78421000",
+                            "display": "Intramuscular route"
+                        }
+                    ]
+                },
+                "performer": [
+                    {
+                        "function": {
+                            "coding": [
+                                {
+                                    "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                    "version": "1.0.0",
+                                    "code": "VC",
+                                    "display": "Vaccinator"
+                                }
+                            ]
+                        },
+                        "actor": {
+                            "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616",
+                            "identifier": {
+                                "system": "https://standards.digital.health.nz/ns/nursing-council-id",
+                                "value": "477616"
+                            }
+                        }
+                    }
+                ],
+                "reasonCode": [
+                    {
+                        "coding": [
+                            {
+                                "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                "code": "5",
+                                "display": "Primary course"
+                            }
+                        ]
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                                "code": "5P",
+                                "display": "Privately funded, primary course"
+                            }
+                        ]
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "targetDisease": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "14189004",
+                                        "display": "Measles"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36989005",
+                                        "display": "Mumps"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36653000",
+                                        "display": "Rubella"
+                                    }
+                                ]
+                            }
+                        ],
+                        "doseNumberPositiveInt": 1
+                    }
+                ]
+            }
+        }
+    ]
+}
+~~~
 
+#### Search returns results, including data quality information
 
-### HL7 v2.0 Search Immunisation Event Flow (V01/V03)
+~~~
+{
+    "resourceType": "Bundle",
+    "id": "cf863f82029f4576a51b",
+    "meta": {
+        "lastUpdated": "2024-03-13T20:20:03.064+00:00"
+    },
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://localhost:42553/fhir/R4/Immunization/_search"
+        }
+    ],
+    "entry": [
+        {
+            "fullUrl": "https://localhost:42553/fhir/R4/Immunization/71320f5f-b9b4-41cb-bb73-bf3a2fe4298e",
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "71320f5f-b9b4-41cb-bb73-bf3a2fe4298e",
+                "meta": {
+                    "extension": [
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                            "valueString": "SS123"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                            "valueString": "111"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                            "valueInstant": "2024-03-13T20:20:00.345+00:00"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                            "valueString": "111"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                            "valueString": "SS123"
+                        },
+                        {
+                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",
+                            "extension": [
+                                {
+                                    "url": "dqScore",
+                                    "valueInteger": 100
+                                },
+                                {
+                                    "url": "dqLastUpdated",
+                                    "valueDateTime": "2024-03-13T20:20:00.739+00:00"
+                                },
+                                {
+                                    "url": "dqStatus",
+                                    "valueString": "P"
+                                }
+                            ]
+                        }
+                    ],
+                    "versionId": "1",
+                    "lastUpdated": "2024-03-13T20:20:00.345+00:00",
+                    "profile": [
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+                    ]
+                },
+                "extension": [
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent",
+                        "extension": [
+                            {
+                                "url": "diluentLotNumber",
+                                "valueString": "123456"
+                            },
+                            {
+                                "url": "diluentExpiryDate",
+                                "valueDate": "2024-04-13"
+                            }
+                        ]
+                    },
+                    {
+                        "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given",
+                        "extension": [
+                            {
+                                "url": "years",
+                                "valueInteger": 38
+                            },
+                            {
+                                "url": "months",
+                                "valueInteger": 10
+                            },
+                            {
+                                "url": "days",
+                                "valueInteger": 7
+                            },
+                            {
+                                "url": "daysSinceBirth",
+                                "valueInteger": 14191
+                            },
+                            {
+                                "url": "precision",
+                                "valueString": "DAY"
+                            }
+                        ]
+                    }
+                ],
+                "status": "completed",
+                "statusReason": {
+                    "coding": [
+                        {
+                            "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+                            "code": "GIVEN",
+                            "display": "Vaccination given"
+                        }
+                    ]
+                },
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/cvx",
+                            "code": "03",
+                            "display": "MMR"
+                        }
+                    ],
+                    "text": "ngā mihi Nui"
+                },
+                "patient": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/CGC2720",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/nhi-id",
+                        "value": "CGC2720"
+                    }
+                },
+                "occurrenceDateTime": "2024-03-13T20:19:58.423+00:00",
+                "location": {
+                    "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+                    "identifier": {
+                        "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+                        "value": "FZZ835-E"
+                    }
+                },
+                "lotNumber": "ThatsALot",
+                "protocolApplied": [
+                    {
+                        "targetDisease": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "14189004",
+                                        "display": "Measles"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36989005",
+                                        "display": "Mumps"
+                                    }
+                                ]
+                            },
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://snomed.info/sct",
+                                        "code": "36653000",
+                                        "display": "Rubella"
+                                    }
+                                ]
+                            }
+                        ],
+                        "doseNumberPositiveInt": 98
+                    }
+                ]
+            }
+        }
+    ]
+}
 
-#### HL7v2 Sequence Diagram
+~~~
 
-Where a PMS communicates with NIR via Healthlink and is still in the process of implementing the FHIR API, event data is delivered legacy HL7v2 messaging. The Healthlink AIR Broker transforms requests into FHIR before invoking the FHIR API, and provides ACK (or NACK) responses to the calling system. This API will be sunsetted in the future.
+#### Response for suppressed consumer
+~~~
+{
+    "resourceType": "Bundle",
+    "id": "e50e23a268644c39a54d",
+    "meta": {
+        "security": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationValue",
+                "code": "REDACTED",
+                "display": "redacted"
+            }
+        ]
+    },
+    "type": "searchset",
+    "total": 0,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://localhost:8443/v2/fhir/Immunization/_search"
+        }
+    ]
+}
+~~~
 
-<div>
+### Scope/s required
+Any FHIR scope that includes system/immunization.s , for example  
+system/immunization.cruds and/or system/immunization.s  
 
-</div>
+To Include data quality results  
 
-#### HL7v2 Search Immunisation Event Processing Steps
+Also have  
 
-*This flow describes temporary support provided for legacy systems, by wrapping around the FHIR API Flow.*
-
-##### HL7v2 Search Immunisation Event Flow
-
-   1. ...
-   1. The broker sends the message to the Consumer.
-   1. Flow ends.
-
-
-##### E3 HL7v2 Search Immunisation Event Exception
-
-   1. The broker prepares a negative ACK^V04 acknowledgement message (NACK).
-   1. The broker sends the negative acknowledgement message to the Consumer.
-   1. Flow ends.
-
-   ### Notes
-
-   1. AIR does not maintain a complete record of Practitioner details, but instead uses the HPI service (see the HPI Implementation Guide at https://hpi-ig.hip.digital.health.nz/index.html) to ensure a joined-up, consistent source of practitioner information. In a few cases, health providers have opted for their details not to be shared via the HPI service. When AIR retrieves one of these practitioner records in response to an _include parameter in a search request, it will appear in the AIR payload as is shown here: https://hpi-ig.hip-uat.digital.health.nz/StructureDefinition-HPIPractitioner.html#redacted-practitioner-details. The search result bundle will also contain an OperationOutcome resource including the explanatory text "No Practitioner name".
-
-
-
-### Dependencies
-
-[Create Immunisation Event](immunisationEventCreate.html) creates an event that can be searchd using this operation.
-
-[Read Immunisation Event](immunisationEventRead.html) retrieves an event searchd using this operation.
-
-[Search Immunisations](immunisationEventSearch.html) identifies events searchd using this operation.
-
+air-admin/Immunization.cruds and/or air-admin/Immunization.s

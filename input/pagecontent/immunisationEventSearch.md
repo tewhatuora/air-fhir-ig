@@ -22,13 +22,13 @@ POST https://api_endpoint/v2/fhir/Immunization/_search
 
 ### Request Headers
 
-See LINK for request headers
+See [request headers](requestHeaders.html).
 
 ### Request Body
 
 POST a payload with the following parameters
 * Patient Identifier (NHI Number) (Mandatory)
-* Target disease (SNOMED code from LINK TO VALUE SET) (Optional)
+* Target disease (SNOMED code from [AIR Disease Covered Value Set](ValueSet-air-disease-covered-code.html) (Optional)
 ~~~
 patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%3A%2F%2Fsnomed.info%2Fsct%7C66071002
 ~~~
@@ -38,7 +38,7 @@ patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%
 * Patient record/NHI is validated
 * Immunisation records that belong to all the NHIs (live and dormant) that have the same consumer id matching the consumer id assigned to the NHI submitted in the request will be returned.
 * If a target disease is provided, only immunisations for that disease are returned.
-* If ImmSOT is unable to map a vaccine to the target disease provided (e.g. invalid vaccine code), no immunisations will be returned.
+* If ImmSOT is unable to map a vaccine to the target disease provided (e.g. invalid disease code), no immunisations will be returned.
 * If admin scope is also present, then include the full data quality result with the response.
 * If the NHI in the Search request or any linked NHIs (live or dormant) is suppressed return an empty result, with redacted metadata.
 

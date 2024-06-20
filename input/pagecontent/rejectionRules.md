@@ -2,7 +2,7 @@
 
 The following rejection rules must be passed before an immunisation event can be created or updated within ImmSOT.
 
-<table><thead>
+<table border=2><thead>
   <tr>
     <th>Rule&nbsp;&nbsp;&nbsp;Name</th>
     <th>Rejection&nbsp;&nbsp;&nbsp;Rule</th>

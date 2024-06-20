@@ -694,6 +694,6 @@ A full example for a location payload is below
   }     
 },
 ~~~
-* The operation may return data quality violations based on the data quality rules and validation 
+* The operation may return data quality violations based on the [data quality rules](dataQualityRules.html) 
 
-* The record can also be identified by ImmSOT as duplicate, see the details of this here 
+* The record can also be identified by ImmSOT as duplicate, see the details of this [here](duplicateRecordHandling.html)

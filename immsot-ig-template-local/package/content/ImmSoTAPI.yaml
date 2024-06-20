@@ -179,14 +179,16 @@ paths:
             summary: A specific date
       - name: _offset
         in: query
-        description: The number of records to skip before starting to collect the result set
+        description: Used in data-quality search only.  
+          The number of records to skip before starting to collect the result set
         schema:
           type: integer
           minimum: 0
           default: 0
       - name: _count
         in: query
-        description: The number of records to return in the result set
+        description: Used in data-quality search only.  
+          The number of records to return in the result set
         schema:
           type: integer
           minimum: 1
@@ -194,10 +196,74 @@ paths:
           default: 100
       - name: _includeMigratedData
         in: query
-        description: To include migration data in the response. Default to 'false' if not provided
+        description: Used in data-quality search only.  
+          To include migration data in the response. Default to 'false' if not provided
         schema:
           type: string
         example: "true"
+      - name: _status
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum: [C, E, N]
+        description: Used in data-quality search only.  
+          Restrict by status(es) [C,E,N] Completed, Entered in error, Not done, default = [C,E,N]
+        example: E,N 
+      - name: _dqStatus
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum: [I, A, P]
+        description: Used in data-quality search only.  
+          Restrict by data quality status(es) [I,A,P] Identified, Accepted, Passed
+        example: I,A
+      - name: target-disease
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Used in standard search only.  
+          Restrict to specific target disease(s) by system|code 
+        example: http://snomed.info/sct|123456,http://loinc.org|7890.
+      - name: status-reason:not-in
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Used in standard search only.  
+          Exclude given status_reason(s) by system|code
+        example: |
+          https://standards.digital.health.nz/ns/air-status-reason-terms|CPI,https://standards.digital.health.nz/ns/air-status-reason-terms|RESCHO
+
+          CPI,RESCHO
+
+          |CPI,|RESCHO
+      - name: status:not-in
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum: [entered-in-error, completed, not-done]
+        description: Used in standard search only.  
+          Exclude given status(s) [entered-in-error, completed, not-done]
+        example: entered-in-error,completed
       requestBody:
         description: Use the request body to enter parameters which contain private or identifying patient data
         content:

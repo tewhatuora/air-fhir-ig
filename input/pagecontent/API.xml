@@ -37,9 +37,9 @@
 </tr>
 <tr>
 <td>history-instance</td>
+<td>GET</td>
+<td>[base]/Immunization/[id]_history</td>
 <td>The _history interaction is used to return all the versions of an immunization event including the data quality. This method takes an immsot_id and returns back the FHIR bundle, which is a collection of immunization event resources where each resource in the bundle represents a version.</td>
-<td> </td>
-<td> </td>
 </tr>
 </table>
 <table class='table table-bordered table-condensed'>
@@ -48,13 +48,13 @@
 <tr>
 <td>upsert</td>
 <td><a href ="upsert.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert </a></td>
-<td><p>POST| [base]/Immunization/$upsert, Update or add an immunisation event| system/Immunization.cu</p>
+<td><p>Update or add an immunisation event</p>
 </td>
 </tr>
 <tr>
 <td>bulk-update</td>
 <td><a href ="bulk-update.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-bulk-update </a></td>
-<td><p>POST| [base]/Immunization/$bulk-update| Update or add immunisation events in bulk| system/Patient.cu</p>
+<td><p>Update or add immunisation events in bulk.</p>
 </td>
 </tr>
 </table>
@@ -105,9 +105,9 @@
 <tr><th width='20%'>Code</th><th width='10%'>Verb</th><th width='20%'>URL</th><th width='50%'>Documentation</th></tr>
 <tr>
 <td>read</td>
+<td>GET</td>
+<td>[base]/Patient/]id]</td>
 <td>Read the current state of an ImmSOT Consumer. Consumer state held in ImmSOT is returned as a FHIR AIR Patient. When an optional header "origin-nhi-version" is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer. If it is the same, we return the current data we have in ImmSoT database. If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.</td>
-<td> </td>
-<td> </td>
 </tr>
 </table>
 <table class='table table-bordered table-condensed'>
@@ -116,10 +116,7 @@
 <tr>
 <td>update-state</td>
 <td><a href ="update-state.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/update-patient-state </a></td>
-<td><p>POST| [base]/Immunization/$update-state| Update the current state of an ImmSOT Consumer
-Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state.</p>
-<p>At least one of state and subStatus must be specified. If state or subStatus is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status.</p>
-<p>A 412 Preconditioned Failed will be returned if the version received in the payload does not match the server version.</p>
+<td><p>Update the current state of an ImmSOT Consumer. Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state. At least one of state and subStatus must be specified. If state or subStatus is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status. A 412 Preconditioned Failed will be returned if the version received in the payload does not match the server version.</p>
 </td>
 </tr>
 </table>

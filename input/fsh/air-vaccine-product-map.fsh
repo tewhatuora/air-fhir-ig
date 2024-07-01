@@ -38,8 +38,11 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(20077561000116105, 133, relatedto)
 * insert ConceptMapEntry(10380351000116108, 10, relatedto)
 * insert ConceptMapEntry(47666491000116106, 19, relatedto)
-* insert ConceptMapEntry(10336221000116104, 43, relatedto)
-* insert ConceptMapEntry(31171221000116106, 52, relatedto)
+
+//IMM-4919 fixed tpuu mapping
+* insert ConceptMapEntry(10336221000116104, 52, relatedto)
+* insert ConceptMapEntry(31171221000116106, 43, relatedto)
+
 * insert ConceptMapEntry(47562481000116104, 114, relatedto)
 * insert ConceptMapEntry(46083691000116109, 08, relatedto)
 

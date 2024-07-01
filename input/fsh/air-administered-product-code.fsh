@@ -45,9 +45,11 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#20077561000116105 "Prevenar 13"
 * $NZMT#10380351000116108 "IPOL"
 * $NZMT#47666491000116106 "BCG Vaccine AJV"
-* $NZMT#10336221000116104 "Engerix B (20 mcg)"
-* $NZMT#31171221000116106 "Havrix"
 * $NZMT#47562481000116104 "MenQuadfi"
+
+// IMM-4919 swap tpuu and correct displays
+* $NZMT#10336221000116104 "Havrix 1440"
+* $NZMT#31171221000116106 "Engerix B (20 mcg)"
 
 // added 4 aug 23 for ticket IMM-2103
 * $NZMT#46083691000116109 "Engerix B (10 mcg)"

@@ -6,15 +6,15 @@ yq '
 .info.description |= "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database."
 |
 .paths |= pick([
-  "/v2/fhir/Immunization",
-  "/v2/fhir/Immunization/{ID}",
-  "/v2/fhir/Immunization/_search"])
+  "/fhir/R4/Immunization",
+  "/fhir/R4/Immunization/{ID}",
+  "/fhir/R4/Immunization/_search"])
 | 
 .components.schemas |= pick([
+  "AcknowledgementBundle",
   "Address",
   "AirImmunization",
   "AirImmunizationBundle",
-  "CodeableConcept",
   "ContactPoint",
   "Contained",
   "AirExtension",
@@ -31,7 +31,34 @@ yq '
   "RelatedPerson",
   "Observation",
   "ViolationExtension",
-  "ViolationsExtension"])
+  "ViolationsExtension",
+  "AirPatient",
+  "PatientState",
+  "OrchestrationPatient",
+  "OrchesExtensionCable",
+  "BirthDateExtension",
+  "OrchesPatientAddress",
+  "OrchestrationLocation",
+  "OrchesLocationAlias",
+  "OrchesLocationType",
+  "OrchesTelecom",
+  "OrchestrationPractitioner",
+  "OrchesPracQualifications",
+  "OrchesPracExtension",
+  "OrchesPreacIdentifier",
+  "OrchesPracName",
+  "OrchesPracCommunication",
+  "OrchestrationOrganization",
+  "OrchesOrgTelecom",
+  "OrchesOrgAlias",
+  "OrchesOrgType",
+  "OrchestrationImmunizationBundle",
+  "CodeableConceptArray",
+  "CodeableConcept",
+  "ExtensionCodable",
+  "MessageHeader",
+  "BulkUpdateInputParameter",
+  "BulkUpdateOutputParameter"])
 |
 .components.responses |= pick([
   "200",
@@ -40,10 +67,13 @@ yq '
   "401",
   "403",
   "404",
+  "412",
   "422",
   "500"])
 |
 .components.examples |= pick([
+  "AcknowledgementRequest",
+  "OperationOutcomeAck",
   "UpdateSuccessDQIdentified",
   "UpdateSuccessDuplicateDQIdentified",
   "CreateSuccessDQPass",
@@ -56,11 +86,18 @@ yq '
   "UpdatePayload",
   "UpdateDQIgnore",
   "ReadResult",
+  "PatientReadResponse",
+  "UpdatePatientStateParams",
   "SearchResult",
+  "OrchestrationResult",
   "SearchNoMatch",
-  "SearchNhi"])
+  "SearchNhi",
+  "HistoryResult",
+  "BulkUpdateRequest",
+  "BulkUpdateResponse"])
 |
 .components.securitySchemes.client_credentials.flows.clientCredentials.scopes |= pick([
+  "system/Immunization.crus",
   "system/Immunization.c",
   "system/Immunization.r",
   "system/Immunization.u",

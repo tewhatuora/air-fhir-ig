@@ -44,16 +44,6 @@
 <td><p>This profile on the FHIR r4 Observation resource serves to exchange serology report information in support of the legacy NIR data flow that attaches serology info to an existing immunization record and re-sends it. It is cut down substantially from the base Observation resource.</p></td>
 </tr>
 <tr>
-<td><a href='StructureDefinition-my-imm-profile.html'>my-imm-profile</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/my-imm-profile</td>
-<td><p>Testing contained resource example</p></td>
-</tr>
-<tr>
-<td><a href='StructureDefinition-my-rp-profile.html'>my-rp-profile</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/my-rp-profile</td>
-<td><p>Related Person profile</p></td>
-</tr>
-<tr>
 <td><a href='StructureDefinition-test-air-immunization-recommendation.html'>test-air-immunization-recommendation</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/test-air-immunization-recommendation</td>
 <td><p>This profile is for testing the design of the ImmunizationRecommendation profile that will be used to convey information about planned events.</p></td>

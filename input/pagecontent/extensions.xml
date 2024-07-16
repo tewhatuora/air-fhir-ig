@@ -220,23 +220,5 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td><p>This describes an instance of an immunisation record violating one or more AIR data quality rules. Each such violation is described by a codes, a type, a message, a pointer to the targeted element, and a weight.</p></td>
 <td></td>
 </tr>
-<tr>
-<td><a href='StructureDefinition-my-string-ext.html'>my-string-ext</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/my-string-ext</td>
-<td>
-<div>RelatedPerson</div>
-</td>
-<td><p>A string extension to be used in a relatedPerson.</p></td>
-<td></td>
-</tr>
-<tr>
-<td><a href='StructureDefinition-rp-ext-for-imm.html'>rp-ext-for-imm</a></td>
-<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/rp-ext-for-imm</td>
-<td>
-<div>Immunization</div>
-</td>
-<td><p>An extension to put a relatedPerson in an Immunization</p></td>
-<td></td>
-</tr>
 </table>
 </div>

@@ -74,6 +74,18 @@
 </td>
 </tr>
 <tr>
+<td>status-reason:not-in</td>
+<td><a target='_blank' href="http://hl7.org/fhir/search.html#token">token</a></td>
+<td><div>Definition: http://hl7.org/fhir/SearchParameter/Immunization-StatusReason</div><p>Exclude immunisation events with specified status reason codes</p>
+</td>
+</tr>
+<tr>
+<td>status:not-in</td>
+<td><a target='_blank' href="http://hl7.org/fhir/search.html#token">token</a></td>
+<td><div>Definition: http://hl7.org/fhir/SearchParameter/Immunization-Status</div><p>Exclude immunisation events with specified statuses</p>
+</td>
+</tr>
+<tr>
 <td>data-quality</td>
 <td><a target='_blank' href="http://hl7.org/fhir/search.html#special">special</a></td>
 <td><div>Definition: https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-data-quality</div><p>Query search for immunisation events with data quality issues. Restricted to admin users.</p>

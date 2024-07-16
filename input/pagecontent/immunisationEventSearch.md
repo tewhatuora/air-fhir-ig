@@ -1,6 +1,6 @@
 ### Overview
 
-The "search" operation is used to search patient immunisation events. This method takes a patient NHI and optional target disease and returns back the FHIR bundle which is a collection of immunisation event resources.
+The "search" operation is used to search patient immunisation events. This method takes a patient NHI and optional parameters of target disease, exclude specified status reason, or exclude specified immunisation status, and returns back the FHIR bundle which is a collection of immunisation event resources.
 
 The search API performs the following steps:
 
@@ -13,6 +13,10 @@ The search API performs the following steps:
 1. Searches in the Immunisation table for the latest version of the immunisation events for all the NHIs obtained in step #2 above.
 
 1. If a target disease is provided, only immunisations for that disease will be returned.
+
+1. If one or more immuisation status reason codes is provided, only immunisations which do not contain those codes will be returned.
+
+1. If one or more immunisation status codes is provided, only immunisations which do not contain those codes will be returned.
 
 1. Returns the latest version of the immunisation events as a FHIR bundle.
 
@@ -29,8 +33,10 @@ See [request headers](requestHeaders.html).
 POST a payload with the following parameters
 * Patient Identifier (NHI Number) (Mandatory)
 * Target disease (SNOMED code from [AIR Disease Covered Value Set](ValueSet-air-disease-covered-code.html) (Optional)
+* Exclude status reason (one or more system|code (or just code) from  [AIR Status Reason Code Value Set](ValueSet-air-status-reason-code.html) (Optional)
+* Exclude immunisation status (one or more of: entered-in-error, completed, not-done) (Optional)
 ~~~
-patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%3A%2F%2Fsnomed.info%2Fsct%7C66071002
+patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%3A%2F%2Fsnomed.info%2Fsct%7C66071002&status-reason:not-in=GIVNOS&status:not-in=entered-in-error
 ~~~
 
 ### Behaviour
@@ -38,6 +44,8 @@ patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%
 * Patient record/NHI is validated
 * Immunisation records that belong to all the NHIs (live and dormant) that have the same consumer id matching the consumer id assigned to the NHI submitted in the request will be returned.
 * If a target disease is provided, only immunisations for that disease are returned.
+* If one or more status reasons are provided, only immunisations which do NOT contain any of those status reasons are returned.
+* If one or more statuses are provided, only immunisations which do NOT contain any of those statuses are returned.
 * If ImmSOT is unable to map a vaccine to the target disease provided (e.g. invalid disease code), no immunisations will be returned.
 * If admin scope is also present, then include the full data quality result with the response.
 * If the NHI in the Search request or any linked NHIs (live or dormant) is suppressed return an empty result, with redacted metadata.

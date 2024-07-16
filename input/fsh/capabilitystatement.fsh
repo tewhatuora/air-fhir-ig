@@ -82,6 +82,16 @@ Usage: #definition
 * rest.resource[=].searchParam[=].type = #token
 * rest.resource[=].searchParam[=].documentation = "Vaccine-preventable disease being targeted by an immunisation."
 
+* rest.resource[=].searchParam[+].name = "status-reason:not-in"
+* rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Immunization-StatusReason"
+* rest.resource[=].searchParam[=].type = #token
+* rest.resource[=].searchParam[=].documentation = "Exclude immunisation events with specified status reason codes"
+
+* rest.resource[=].searchParam[+].name = "status:not-in"
+* rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Immunization-Status"
+* rest.resource[=].searchParam[=].type = #token
+* rest.resource[=].searchParam[=].documentation = "Exclude immunisation events with specified statuses"
+
 * rest.resource[=].searchParam[+].name = "data-quality"
 * rest.resource[=].searchParam[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-data-quality"
 * rest.resource[=].searchParam[=].type = #special
@@ -97,8 +107,10 @@ Usage: #definition
 * rest.resource[=].extension[=].extension[=].valueString = "patient"
 * rest.resource[=].extension[=].extension[+].url = "optional"
 * rest.resource[=].extension[=].extension[=].valueString = "protocolApplied.targetDisease"
-
-
+* rest.resource[=].extension[=].extension[+].url = "optional"
+* rest.resource[=].extension[=].extension[=].valueString = "status-reason:not-in"
+* rest.resource[=].extension[=].extension[+].url = "optional"
+* rest.resource[=].extension[=].extension[=].valueString = "status:not-in"
 
 // Immunization Operations
 

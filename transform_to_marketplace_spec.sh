@@ -101,10 +101,10 @@ yq '
   "system/Immunization.c",
   "system/Immunization.r",
   "system/Immunization.u",
-  "system/Immunization.s",
-  "air-admin/Immunization.u",
-  "air-admin/Immunization.s"
+  "system/Immunization.s"
 ])
 |
 del(.. | select(. == "air-test*"))
+|
+del(.. | select(. == "air-admin*"))
 ' immsot-ig-template-local/package/content/ImmSoTAPI.yaml > immsot-ig-template-local/package/content/ImmSoTAPI_marketplace.yaml

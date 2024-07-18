@@ -127,7 +127,6 @@ paths:
       security:
         - client_credentials:
             - system/Immunization.u
-            - air-admin/Immunization.u
   /fhir/R4/Immunization/_search:
     post:
       operationId: search
@@ -278,7 +277,6 @@ paths:
       security:
         - client_credentials:
             - system/Immunization.s
-            - air-admin/Immunization.s
 components:
   schemas:
     AcknowledgementBundle:
@@ -4537,5 +4535,3 @@ components:
             system/Immunization.r: read scope
             system/Immunization.u: update scope
             system/Immunization.s: search scope
-            air-admin/Immunization.u: update scope for admins only
-            air-admin/Immunization.s: search scope for admins only

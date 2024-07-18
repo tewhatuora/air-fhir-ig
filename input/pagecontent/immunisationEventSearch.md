@@ -36,7 +36,10 @@ POST a payload with the following parameters
 * Exclude status reason (one or more system|code (or just code) from  [AIR Status Reason Code Value Set](ValueSet-air-status-reason-code.html) (Optional)
 * Exclude immunisation status (one or more of: entered-in-error, completed, not-done) (Optional)
 ~~~
-patient=ZZZ7541&target-disease=http%3A%2F%2Fsnomed.info%2Fsct%7C14189004%2Chttp%3A%2F%2Fsnomed.info%2Fsct%7C66071002&status-reason:not-in=GIVNOS&status:not-in=entered-in-error
+patient: "ZZZ7541"
+target-disease: "http://snomed.info/sct|14189004,http://snomed.info/sct|66071002"
+status-reason:not-in: "https://standards.digital.health.nz/ns/air-status-reason-terms|GIVNOS,RESCHO,|HSTGIVN"
+status:not-in: "entered-in-error"
 ~~~
 
 ### Behaviour

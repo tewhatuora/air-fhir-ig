@@ -184,6 +184,7 @@ paths:
           explode: false
           schema:
             type: array
+            maxItems: 1000
             items:
               type: string
               enum: [I, A, P]
@@ -195,6 +196,7 @@ paths:
           explode: false
           schema:
             type: array
+            maxItems: 1000
             items:
               type: string
           description: Used in standard search only. Restrict to specific target disease(s) by system|code
@@ -205,6 +207,7 @@ paths:
           explode: false
           schema:
             type: array
+            maxItems: 1000
             items:
               type: string
           description: Used in standard search only. Exclude given status_reason(s) by system|code
@@ -220,6 +223,7 @@ paths:
           explode: false
           schema:
             type: array
+            maxItems: 1000
             items:
               type: string
               enum: [entered-in-error, completed, not-done]
@@ -231,6 +235,7 @@ paths:
           explode: false
           schema:
             type: array
+            maxItems: 1000
             items:
               type: string
               enum: [entered-in-error, completed, not-done]
@@ -289,6 +294,7 @@ components:
           type: integer
         entry:
           type: array
+          maxItems: 1000
           items:
             anyOf:
               - $ref: '#/components/schemas/MessageHeader'
@@ -298,6 +304,7 @@ components:
       properties:
         extension:
           type: array
+          maxItems: 1000
           items:
             $ref: "#/components/schemas/ExtensionString"
         use:
@@ -312,6 +319,7 @@ components:
             - physical
         line:
           type: array
+          maxItems: 1000
           items:
             type: string
         city:
@@ -339,6 +347,7 @@ components:
             profile:
               description: 'The AIR FHIR profile against which the Immunisation Service is validated'
               type: array
+              maxItems: 1000
               items:
                 type: string
         patient:
@@ -349,6 +358,7 @@ components:
           type: string
         protocolApplied:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -387,6 +397,7 @@ components:
           $ref: '#/components/schemas/CodeableConceptArray'
         performer:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -425,6 +436,7 @@ components:
           type: integer
         entry:
           type: array
+          maxItems: 1000
           items:
             $ref: '#/components/schemas/AirImmunization'
     ContactPoint:
@@ -444,12 +456,14 @@ components:
           type: string
     Contained:
       type: array
+      maxItems: 1000
       items:
         anyOf:
           - $ref: "#/components/schemas/RelatedPerson"
           - $ref: "#/components/schemas/Observation"
     AirExtension:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -465,6 +479,7 @@ components:
             $ref: "#/components/schemas/CodeableConcept"
           extension:
             type: array
+            maxItems: 1000
             items:
               anyOf:
                 - $ref: '#/components/schemas/ExtensionString'
@@ -472,6 +487,7 @@ components:
                 - $ref: '#/components/schemas/ExtensionInteger'
     Identifier:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -483,6 +499,7 @@ components:
             type: string
     Link:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -495,6 +512,7 @@ components:
             type: string
     DQExtension:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -505,6 +523,7 @@ components:
             type: string
           extension:
             type: array
+            maxItems: 1000
             items:
               anyOf:
                 - $ref: '#/components/schemas/ExtensionString'
@@ -514,6 +533,7 @@ components:
                 - $ref: '#/components/schemas/ViolationsExtension'
     ExtensionBoolean:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -523,6 +543,7 @@ components:
             type: boolean
     ExtensionDate:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -533,6 +554,7 @@ components:
             format: date
     ExtensionDateTime:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -588,6 +610,7 @@ components:
               type: string
         issue:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -602,6 +625,7 @@ components:
                 properties:
                   coding:
                     type: array
+                    maxItems: 1000
                     items:
                       type: object
                       properties:
@@ -614,6 +638,7 @@ components:
                             - AE
               expression:
                 type: array
+                maxItems: 1000
                 items:
                   type: string
     RelatedPerson:
@@ -627,10 +652,12 @@ components:
           $ref: "#/components/schemas/LogicalReference"
         relationship:
           type: array
+          maxItems: 1000
           items:
             $ref: "#/components/schemas/CodeableConcept"
         name:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -638,14 +665,17 @@ components:
                 type: string
               given:
                 type: array
+                maxItems: 1000
                 items:
                   type: string
         telecom:
           type: array
+          maxItems: 1000
           items:
             $ref: "#/components/schemas/ContactPoint"
         address:
           type: array
+          maxItems: 1000
           items:
             $ref: "#/components/schemas/Address"
     Observation:
@@ -660,6 +690,7 @@ components:
           properties:
             profile:
               type: array
+              maxItems: 1000
               items:
                 type: string
         status:
@@ -668,6 +699,7 @@ components:
           $ref: "#/components/schemas/CodeableConcept"
         interpretation:
           type: array
+          maxItems: 1000
           items:
             $ref: "#/components/schemas/CodeableConcept"
         effectiveDateTime:
@@ -680,6 +712,7 @@ components:
           example: DQViolation
         extension:
           type: array
+          maxItems: 1000
           items:
             allOf:
               - $ref: '#/components/schemas/ExtensionString'
@@ -692,6 +725,7 @@ components:
           example: DQViolations
         extension:
           type: array
+          maxItems: 1000
           items:
             $ref: '#/components/schemas/ViolationExtension'
     AirPatient:
@@ -713,12 +747,14 @@ components:
             profile:
               description: 'The AIR FHIR profile used to validate patient/consumer service'
               type: array
+              maxItems: 1000
               items:
                 type: string
         identifier:
           $ref: '#/components/schemas/Identifier'
         extension:
           type: array
+          maxItems: 1000
           items:
             allOf:
               - $ref: '#/components/schemas/ExtensionCodable'
@@ -739,6 +775,7 @@ components:
           type: string
         parameter:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -762,6 +799,7 @@ components:
               type: string
             profile:
               type: array
+              maxItems: 1000
               items:
                 type: string
         extension:
@@ -779,6 +817,7 @@ components:
           $ref: '#/components/schemas/OrchesPatientAddress'
     OrchesExtensionCable:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -789,6 +828,7 @@ components:
             properties:
               coding:
                 type: array
+                maxItems: 1000
                 items:
                   type: object
                   properties:
@@ -802,6 +842,7 @@ components:
                       type: string
     BirthDateExtension:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -812,6 +853,7 @@ components:
             properties:
               coding:
                 type: array
+                maxItems: 1000
                 items:
                   type: object
                   properties:
@@ -825,6 +867,7 @@ components:
                       type: string
     OrchesPatientAddress:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -832,6 +875,7 @@ components:
             type: string
           extension:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -842,6 +886,7 @@ components:
                   properties:
                     coding:
                       type: array
+                      maxItems: 1000
                       items:
                         type: object
                         properties:
@@ -859,6 +904,7 @@ components:
             type: string
           line:
             type: array
+            maxItems: 1000
             items:
               type: string
           city:
@@ -881,10 +927,12 @@ components:
               type: string
             profile:
               type: array
+              maxItems: 1000
               items:
                 type: string
         extension:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -897,6 +945,7 @@ components:
                     type: string
         identifier:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -917,6 +966,7 @@ components:
           type: string
         alias:
           type: array
+          maxItems: 1000
           items:
             type: string
         _alias:
@@ -930,6 +980,7 @@ components:
           properties:
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -945,6 +996,7 @@ components:
               type: string
             line:
               type: array
+              maxItems: 1000
               items:
                 type: string
         managingOrganization:
@@ -956,11 +1008,13 @@ components:
               type: string
     OrchesLocationAlias:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           extension:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -971,6 +1025,7 @@ components:
                   properties:
                     coding:
                       type: array
+                      maxItems: 1000
                       items:
                         type: object
                         properties:
@@ -984,11 +1039,13 @@ components:
                             type: string
     OrchesLocationType:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           coding:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1002,6 +1059,7 @@ components:
                   type: string
     OrchesTelecom:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1034,10 +1092,12 @@ components:
               type: string
             profile:
               type: array
+              maxItems: 1000
               items:
                 type: string
             security:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -1057,11 +1117,13 @@ components:
           $ref: '#/components/schemas/OrchesPracCommunication'
     OrchesPracQualifications:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           extension:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1069,6 +1131,7 @@ components:
                   type: string
                 extension:
                   type: array
+                  maxItems: 1000
                   items:
                     type: object
                     properties:
@@ -1079,6 +1142,7 @@ components:
                         properties:
                           coding:
                             type: array
+                            maxItems: 1000
                             items:
                               type: object
                               properties:
@@ -1092,6 +1156,7 @@ components:
                                   type: string
           identifier:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1111,6 +1176,7 @@ components:
             properties:
               coding:
                 type: array
+                maxItems: 1000
                 items:
                   type: object
                   properties:
@@ -1138,6 +1204,7 @@ components:
                 type: string
     OrchesPracExtension:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1145,6 +1212,7 @@ components:
             type: string
           extension:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1154,6 +1222,7 @@ components:
                   type: string
     OrchesPreacIdentifier:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1170,6 +1239,7 @@ components:
                 type: string
     OrchesPracName:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1179,19 +1249,23 @@ components:
             type: string
           given:
             type: array
+            maxItems: 1000
             items:
               type: string
           prefix:
             type: array
+            maxItems: 1000
             items:
               type: string
     OrchesPracCommunication:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           coding:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1219,10 +1293,12 @@ components:
               type: string
             profile:
               type: array
+              maxItems: 1000
               items:
                 type: string
         extension:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -1235,6 +1311,7 @@ components:
                     type: string
         identifier:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -1257,6 +1334,7 @@ components:
           type: string
         alias:
           type: array
+          maxItems: 1000
           items:
             type: string
         _alias:
@@ -1265,6 +1343,7 @@ components:
           $ref: '#/components/schemas/OrchesOrgTelecom'
     OrchesOrgTelecom:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1283,11 +1362,13 @@ components:
                 type: string
     OrchesOrgAlias:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           extension:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1298,6 +1379,7 @@ components:
                   properties:
                     coding:
                       type: array
+                      maxItems: 1000
                       items:
                         type: object
                         properties:
@@ -1313,11 +1395,13 @@ components:
                       type: string
     OrchesOrgType:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
           coding:
             type: array
+            maxItems: 1000
             items:
               type: object
               properties:
@@ -1347,6 +1431,7 @@ components:
           type: integer
         entry:
           type: array
+          maxItems: 1000
           items:
             allOf:
               - $ref: '#/components/schemas/AirImmunization'
@@ -1356,6 +1441,7 @@ components:
               - $ref: '#/components/schemas/OrchestrationOrganization'
     CodeableConceptArray:
       type: array
+      maxItems: 1000
       items:
         $ref: '#/components/schemas/CodeableConcept'
     CodeableConcept:
@@ -1363,6 +1449,7 @@ components:
       properties:
         coding:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -1376,6 +1463,7 @@ components:
           type: string
     ExtensionCodable:
       type: array
+      maxItems: 1000
       items:
         type: object
         properties:
@@ -1386,6 +1474,7 @@ components:
             properties:
               coding:
                 type: array
+                maxItems: 1000
                 items:
                   type: object
                   properties:
@@ -1419,6 +1508,7 @@ components:
                   type: string
             destination:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -1444,6 +1534,7 @@ components:
                   type: string
             focus:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -1457,6 +1548,7 @@ components:
             - Parameters
         parameter:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -1475,6 +1567,7 @@ components:
             - Parameters
         parameter:
           type: array
+          maxItems: 1000
           items:
             type: object
             properties:
@@ -1775,6 +1868,7 @@ components:
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -1945,6 +2039,7 @@ components:
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -2101,6 +2196,7 @@ components:
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -2271,6 +2367,7 @@ components:
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -2854,6 +2951,7 @@ components:
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
             extension:
               type: array
+              maxItems: 1000
               items:
                 type: object
                 properties:
@@ -3058,6 +3156,7 @@ components:
                 - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
                   extension:
                     type: array
+                    maxItems: 1000
                     items:
                       type: object
                       properties:
@@ -3146,6 +3245,7 @@ components:
                 - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
                   extension:
                     type: array
+                    maxItems: 1000
                     items:
                       type: object
                       properties:
@@ -3559,6 +3659,7 @@ components:
                 - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
                   extension:
                     type: array
+                    maxItems: 1000
                     items:
                       type: object
                       properties:
@@ -3749,6 +3850,7 @@ components:
                 - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
                   extension:
                     type: array
+                    maxItems: 1000
                     items:
                       type: object
                       properties:

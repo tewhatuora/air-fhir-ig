@@ -96,7 +96,12 @@ yq '
   "BulkUpdateRequest",
   "BulkUpdateResponse"])
 |
-.components.securitySchemes.client_credentials.flows.clientCredentials.scopes |= pick([
+.components.securitySchemes |= pick([
+  "apikey_header",
+  "OAuth2Implicit"
+])
+|
+.components.securitySchemes.OAuth2Implicit.flows.implicit.scopes |= pick([
   "system/Immunization.crus",
   "system/Immunization.c",
   "system/Immunization.r",
@@ -104,7 +109,16 @@ yq '
   "system/Immunization.s"
 ])
 |
+.components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl |= "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+|
 del(.. | select(. == "air-test*"))
 |
 del(.. | select(. == "air-admin*"))
+|
+.components.parameters |= pick(["ID", "NHI", "X-Correlation-ID", "If-Match", "X-Api-Key", "request-context"])
+|
+del(.. | select(.[] == "#/components/parameters/UserID" or .[] == "#/components/parameters/FacilityID" or .[] == "#/components/parameters/SourceSystemID"))
+|
+.paths[].*.parameters += ({"$ref": "#/components/parameters/request-context"})
 ' immsot-ig-template-local/package/content/ImmSoTAPI.yaml > immsot-ig-template-local/package/content/ImmSoTAPI_marketplace.yaml
+

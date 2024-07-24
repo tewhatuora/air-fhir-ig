@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database."
-  version: "0.4.0"
+  version: "1.7.0"
 servers:
   - url: https://air.api.digital.health.nz
     description: PROD - ImmSoT Service endpoint
@@ -21,11 +21,9 @@ paths:
 
         Returns either the created Immunization record or if there were any issues with the create, the  response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
-        - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/FacilityID'
-        - $ref: '#/components/parameters/SourceSystemID'
-        - $ref: '#/components/parameters/x-api-key'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
           application/fhir+json:
@@ -48,7 +46,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - client_credentials:
+        - OAuth2Implicit:
             - system/Immunization.c
   /fhir/R4/Immunization/{ID}:
     get:
@@ -57,11 +55,9 @@ paths:
         The "read" operation is used to read an immunisation event. This method takes an immunisation event id and returns back the FHIR resource for the immunization event.
       parameters:
         - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/FacilityID'
-        - $ref: '#/components/parameters/SourceSystemID'
-        - $ref: '#/components/parameters/x-api-key'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/request-context'
       responses:
         "200":
           description: Ok
@@ -81,7 +77,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - client_credentials:
+        - OAuth2Implicit:
             - system/Immunization.r
     put:
       operationId: update
@@ -95,12 +91,10 @@ paths:
         On Fail - if there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/ID'
-        - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/FacilityID'
-        - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/If-Match'
-        - $ref: '#/components/parameters/x-api-key'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
           application/fhir+json:
@@ -125,18 +119,15 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - client_credentials:
+        - OAuth2Implicit:
             - system/Immunization.u
   /fhir/R4/Immunization/_search:
     post:
       operationId: search
       description: "There are 2 search options available\n\n### 1. NHI search ###\n \n   **patient** in request body (required)\n\n   **target-disease** (optional)\n \n   **status-reason** (optional)\n \n   **status:not-in** (optional)\n \n   **_include** (optional)\n   \n### 2. Data Quality Search (admins only) ###\n\n   **_query** (required)\n \n   **_lastUpdated** (required)\n \n   **_offset** (required)\n \n   **_count** (required)    \n \n   **_includeMigratedData** (optional)\n \n   **_dqStatus** (optional)        \n \n   **status** (optional)\n   \n*see parameter examples for details*\n"
       parameters:
-        - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/FacilityID'
-        - $ref: '#/components/parameters/SourceSystemID'
-        - $ref: '#/components/parameters/x-api-key'
+        - $ref: '#/components/parameters/X-Api-Key'
         - name: _query
           in: query
           schema:
@@ -245,6 +236,7 @@ paths:
               enum: [entered-in-error, completed, not-done]
           description: Used in data-quality search only. Include only given status(s) [entered-in-error, completed, not-done], default entered-in-error,completed,not-done
           example: entered-in-error,completed
+        - $ref: '#/components/parameters/request-context'
       requestBody:
         description: Use the request body to enter parameters which contain private or identifying patient data
         content:
@@ -275,7 +267,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - client_credentials:
+        - OAuth2Implicit:
             - system/Immunization.s
 components:
   schemas:
@@ -1604,27 +1596,6 @@ components:
       schema:
         type: string
       example: a-unique-id-of-some-sort
-    UserID:
-      name: UserID
-      in: header
-      description: An identifier of the end user who submitted this event
-      schema:
-        type: string
-      example: Lionel.Messi
-    FacilityID:
-      name: FacilityID
-      in: header
-      description: An identifier of the facility where the vaccination took place
-      schema:
-        type: string
-      example: HSAPP0232
-    SourceSystemID:
-      name: SourceSystemID
-      in: header
-      description: An identifier for the system that modified the event (ApplicationID as per  the HIP Integration Application list)
-      schema:
-        type: string
-      example: ISM
     If-Match:
       name: If-Match
       in: header
@@ -1640,15 +1611,23 @@ components:
       required: true
       schema:
         type: string
+    request-context:
+      name: ContextHeader
+      in: header
+      description: Base64 encoded context information
+      required: true
+      schema:
+        type: string
+      example: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
   examples:
     AcknowledgementRequest:
-      summary: Succesfull request to Acknowledgement
+      summary: Successful request to Acknowledgement
       value:
         resourceType: Bundle
         id: '1'
         type: message
         entry:
-          - fullUrl: https://air.api-dev.digital.health.nz/fhir/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
             resource:
               resourceType: MessageHeader
               text:
@@ -1663,13 +1642,13 @@ components:
               source:
                 name: FZZ021-F
                 software: HSAPP0246
-                endpoint: https://air.api-dev.digital.health.nz/fhir/R4/Immunization/$process-message
+                endpoint: https://air.api.digital.health.nz/fhir/R4/Immunization/$process-message
               response:
                 identifier: '9876543'
                 code: ok
               focus:
-                - reference: https://air.api-dev.digital.health.nz/fhir/R4/Immunization/ZKC4633
-          - fullUrl: https://air.api-test.digital.health.nz/fhir/R4/OperationOutcome/3092
+                - reference: https://air.api.digital.health.nz/fhir/R4/Immunization/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/OperationOutcome/3092
             resource:
               resourceType: OperationOutcome
               id: '2477'
@@ -1687,7 +1666,7 @@ components:
                     - FZZ021-F
                   diagnostics: accepted
     OperationOutcomeAck:
-      summary: Succesfull response from Acknowledgement
+      summary: Successful response from Acknowledgement
       value:
         resourceType: OperationOutcome
     UpdateSuccessDQIdentified:
@@ -2995,9 +2974,9 @@ components:
         total: 2
         link:
           - relation: self
-            url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/_search
+            url: https://air.api.digital.health.nz/fhir/R4/Immunization/_search
         entry:
-          - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
             resource:
               resourceType: Immunization
               id: db298d16-1519-4c9f-8424-124090c15784
@@ -3143,7 +3122,7 @@ components:
                       code: '359953009'
               protocolApplied:
                 - doseNumberPositiveInt: 1
-          - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
             resource:
               resourceType: Immunization
               id: e062d627-b565-48ae-9d7a-417db33ca64f
@@ -3241,9 +3220,9 @@ components:
         total: 1
         link:
           - relation: self
-            url: https://air.api-dev.digital.health.nz/fhir/R4/Immunization/_search
+            url: https://air.api.digital.health.nz/fhir/R4/Immunization/_search
         entry:
-          - fullUrl: https://air.api-dev.digital.health.nz/fhir/nhi/Patient/ZAG9054
+          - fullUrl: https://air.api.digital.health.nz/fhir/nhi/Patient/ZAG9054
             resource:
               resourceType: Patient
               id: ZAG9054
@@ -3358,7 +3337,7 @@ components:
                 - reference: "#20015438"
             search:
               mode: include
-          - fullUrl: https://api.hip-uat.aws-syd.moh.govt.nz:8443/fhir/Location/FZZ991-H
+          - fullUrl: https://api.hip.digital.health.nz/fhir/Location/FZZ991-H
             resource:
               resourceType: Location
               id: FZZ991-H
@@ -3452,7 +3431,7 @@ components:
                 display: Ex-Name
             search:
               mode: include
-          - fullUrl: https://air.api-dev.digital.health.nz/fhir/Organization/GZZ989-F
+          - fullUrl: https://air.api.digital.health.nz/fhir/Organization/GZZ989-F
             resource:
               resourceType: Organization
               id: GZZ239-F
@@ -3526,7 +3505,7 @@ components:
                     start: '2018-08-08'
             search:
               mode: include
-          - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/_search2288a363-6269-46c2-babd-27a9e479a21e
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/2288a363-6269-46c2-babd-27a9e479a21e
             resource:
               resourceType: Immunization
               id: 2288a363-6269-46c2-babd-27a9e479a21e
@@ -3671,7 +3650,7 @@ components:
         total: "0"
         link:
           - relation: self
-            url: https://localhost:8443/fhir/R4/Immunization/_search
+            url: https://air.api.digital.health.nz/fhir/R4/Immunization/_search
     SearchNhi:
       summary: Search by NHI
       value: patient=ZZZ9999
@@ -3686,9 +3665,9 @@ components:
         total: 2
         link:
           - relation: self
-            url: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784/_history
+            url: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784/_history
         entry:
-          - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
             resource:
               resourceType: Immunization
               id: db298d16-1519-4c9f-8424-124090c15784
@@ -3834,7 +3813,7 @@ components:
                       code: '359953009'
               protocolApplied:
                 - doseNumberPositiveInt: 1
-          - fullUrl: https://api-dev.nonprod.air-api.aws-syd.moh.govt.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
             resource:
               resourceType: Immunization
               id: db298d16-1519-4c9f-8424-124090c15784
@@ -4523,12 +4502,11 @@ components:
       description: API key for the Gateway
       name: x-api-key
       in: header
-    client_credentials:
+    OAuth2Implicit:
       type: oauth2
-      description: "Intended for the server-to-server authentication, this flow describes an approach when the client application acts on its own behalf rather than on behalf of any individual user. In most scenarios, this flow provides the means to allow users to specify their credentials in the client application, so it can access the resources under the client’s control"
       flows:
-        clientCredentials:
-          tokenUrl: https://auth.test.hub/oauth2/token/
+        implicit:
+          authorizationUrl: https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token
           scopes:
             system/Immunization.crus: full create, read, update and search scopes
             system/Immunization.c: create scope

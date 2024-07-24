@@ -55,3 +55,8 @@ if [[ "$sushi_only" != "true" ]]; then
     echo running ig publisher
     java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi
 fi
+
+echo versioning ImmSotAPI.yaml
+
+VERSION=$(yq '.version' sushi-config.yaml)
+yq -i ".info.version |= \"${VERSION}\"" immsot-ig-template-local/package/content/ImmSoTAPI.yaml

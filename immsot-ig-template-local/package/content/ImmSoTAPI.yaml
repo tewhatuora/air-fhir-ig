@@ -2113,7 +2113,7 @@ components:
       schema:
         type: string
     request-context:
-      name: ContextHeader
+      name: request-context
       in: header
       description: Base64 encoded context information
       required: true

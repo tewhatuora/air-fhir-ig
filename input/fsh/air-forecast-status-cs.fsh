@@ -11,6 +11,7 @@ Description: "This code system includes the codes used in AIR to communicate a p
 * ^caseSensitive = false
 
 * #ACTIVE "Active"
+* #AGED_OUT "Aged Out"
 * #CANCELLED "Cancelled"
 * #CLOSED "Closed"
 * #CONTRAINDICATED "Contraindicated"

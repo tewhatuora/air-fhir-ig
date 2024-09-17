@@ -5,7 +5,7 @@ Description: "This code system includes the codes used in AIR to communicate a d
 
 * insert StandardMetadata
 
-* ^url = "https://standards.digital.health.nz/ns/air-forecast-status"
+* ^url = "https://standards.digital.health.nz/ns/air-planned-event-date-type"
 
 * ^experimental = false
 * ^caseSensitive = false
@@ -17,3 +17,4 @@ Description: "This code system includes the codes used in AIR to communicate a d
 * #PRIOR "Date PE becomes pending"
 * #LATE "Date PE becomes late"
 * #FINALIZED "Date PE updated to a final state"
+* #AGEDOUT "Date PE is no longer relevant due to the consumers age"

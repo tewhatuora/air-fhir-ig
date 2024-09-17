@@ -33,8 +33,8 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-event-type">https://standards.digital.health.nz/ns/air-event-type</a></td>
 </tr>
 <tr>
-<td><a href="CodeSystem-air-planned-event-date-type.html">AIR Planned Event Date Type Code System-undefined</a> </td>
-<td> <p>This code system includes the codes used in AIR to communicate a date associated with a planned event, such as the due date or the earliest date to give. </p> </td>
+<td><a href="CodeSystem-air-forecast-status.html">AIR Forecast Status Code System-undefined</a> </td>
+<td> <p>This code system includes the codes used in AIR to communicate a planned event status that are not already included in http://terminology.hl7.org/CodeSystem/immunization-recommendation-status.</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-forecast-status">https://standards.digital.health.nz/ns/air-forecast-status</a></td>
 </tr>
 <tr>
@@ -51,6 +51,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="CodeSystem-air-operationoutcome-code-1.0.html">AIR Operationoutcome Codes-1.0</a> </td>
 <td> <p>Describes the AIR-specific errors</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-operationoutcome-code">https://standards.digital.health.nz/ns/air-operationoutcome-code</a></td>
+</tr>
+<tr>
+<td><a href="CodeSystem-air-planned-event-date-type.html">AIR Planned Event Date Type Code System-undefined</a> </td>
+<td> <p>This code system includes the codes used in AIR to communicate a date associated with a planned event, such as the due date or the earliest date to give. </p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-planned-event-date-type">https://standards.digital.health.nz/ns/air-planned-event-date-type</a></td>
 </tr>
 <tr>
 <td><a href="CodeSystem-air-planned-event-type-terms.html">AIR Planned Event Type-undefined</a> </td>
@@ -161,7 +166,7 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-performer-health-worker-function-code</a></td>
 </tr>
 <tr>
-<td><a href="ValueSet-air-planned-event-date-type-code.html">AIR PLanned Event Date Type Codes-undefined</a> </td>
+<td><a href="ValueSet-air-planned-event-date-type-code.html">AIR Planned Event Date Type Codes-undefined</a> </td>
 <td> <p>Coded values to describe the dates associated with a Planned Event, such as the Due Date, the Earliest Date to Give, and so on. Also codes pretaining to the Planned Event record in AIR, such as the date it was created and the date the Planned Event moved in Final status.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-date-type-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-planned-event-date-type-code</a></td>
 </tr>

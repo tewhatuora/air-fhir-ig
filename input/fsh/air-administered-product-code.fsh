@@ -122,3 +122,8 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 
 // Added 30 May per IMM-4767
 * $NZMT#31115901000116100 "Act-HIB"
+
+// Added 19 Nov 2024 per IMM-5353
+* $NZMT#48407111000116100 "Comirnaty JN.1 (30mcg) SDV"
+* $NZMT#48407721000116108 "Comirnaty JN.1 (10mcg) SDV"
+* $NZMT#48408951000116102 "Comirnaty JN.1 (3mcg) MDV"

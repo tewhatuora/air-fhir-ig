@@ -1683,7 +1683,7 @@ components:
         type: string
       example: a-unique-id-of-some-sort
     X-Correlation-ID:
-      name: X-Correlation_ID
+      name: X-Correlation-ID
       in: header
       description: "A Correlation-ID to be used for logging and request tracing.  A UUID  is suggested, but not required.  Note that this header name is a FHIR  standard, but deprecated by Health NZ; it might change in the future"
       schema:

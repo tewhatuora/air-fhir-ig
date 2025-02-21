@@ -127,3 +127,10 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#48407111000116100 "Comirnaty JN.1 (30mcg) SDV"
 * $NZMT#48407721000116108 "Comirnaty JN.1 (10mcg) SDV"
 * $NZMT#48408951000116102 "Comirnaty JN.1 (3mcg) MDV"
+
+// Added 21 Feb 2025 per IMM-5538
+* $NZMT#48606481000116100 "Flucelvax Quad 2025"
+* $NZMT#48583461000116109 "Influvac Tetra 2025"
+* $NZMT#48606291000116104 "Fluad Quad 2025"
+* $NZMT#48611851000116100 "FluQuadri 2025"
+* $NZMT#48606101000116102 "Afluria Quad 2025"

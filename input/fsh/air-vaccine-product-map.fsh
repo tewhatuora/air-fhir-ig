@@ -136,3 +136,10 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(48407721000116108, 218, relatedto)
 * insert ConceptMapEntry(48408951000116102, 219, relatedto)
 
+// Added 21 Feb 2025 per IMM-5538
+* insert ConceptMapEntry(48606481000116100, 99006, relatedto)
+* insert ConceptMapEntry(48583461000116109, 99006, relatedto)
+* insert ConceptMapEntry(48606291000116104, 99006, relatedto)
+* insert ConceptMapEntry(48611851000116100, 99006, relatedto)
+* insert ConceptMapEntry(48606101000116102, 99006, relatedto)
+

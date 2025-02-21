@@ -15,6 +15,11 @@ copyrightYear: 2022+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # https://www.hl7.org/fhir/valueset-jurisdiction.html
+jurisdiction:
+  - coding:
+      - system: "urn:iso:std:iso:3166"
+        code: "US"
+        display: "New Zealand"
 publisher:
   name: Te Whatu Ora
   url: https://tewhatuora.govt.nz

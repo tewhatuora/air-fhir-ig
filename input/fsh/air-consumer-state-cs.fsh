@@ -12,5 +12,7 @@ Description: "This is a code system for representing the current state of an AIR
 
 * #ACTIVE "Active" "Consumer is active."
 * #DECEASED "Deceased" "Consumer is deceased and a deceased date has been confirmed with NHI."
-* #OVERSEAS "Overseas" "Consumer has been flagged as being overseas"
+* #OVERSEAS "Overseas" "Consumer has been flagged as being overseas."
 * #UNCONFIRMED_DECEASED "Unconfirmed deceased" "Consumer has been flagged as deceased but this has not yet been confirmed with NHI."
+* #DEACTIVATED "Deactivated" "Consumer has been deactivated."
+* #UNCONFIRMED_OVERSEAS "Unconfirmed overseas" "Consumer has been flagged as being possibly overseas but this has not yet been confirmed with NHI."

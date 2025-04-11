@@ -141,7 +141,7 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-state-code</a></td>
 </tr>
 <tr>
-<td><a href="ValueSet-air-consumer-sub-status-code.html">AIR Consumer State Code-undefined</a> </td>
+<td><a href="ValueSet-air-consumer-sub-status-code.html">AIR Consumer Sub Status Code-undefined</a> </td>
 <td> <p>Represents the current sub status of an AIR Consumer.</p></td>
 <td> <a href="https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-sub-status-code">https://standards.digital.health.nz/fhir/air/ValueSet/air-consumer-sub-status-code</a></td>
 </tr>

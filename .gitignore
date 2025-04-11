@@ -4,11 +4,13 @@ input-cache
 temp
 template
 _updatePublisher.bat
-_updatePublisher.sh
+!_updatePublisher.sh
 _gencontinuous.bat
 _gencontinuous.sh
 _genonce.bat
 _genonce.sh
+_build.bat
+_build.sh
 /.idea/
 /.project
 /immsot-ig-template-local/

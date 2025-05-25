@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records"
-  version: "1.12.0"
+  version: "1.13.0"
 servers:
   - url: https://air.api.digital.health.nz
     description: PROD - ImmSoT Service endpoint
@@ -142,7 +142,7 @@ paths:
           in: query
           schema:
             type: string
-            enum: [ data-quality ]
+            enum: [data-quality]
           description: Query type for the search.  Currently restricted to admin search for immunisation events with identified data quality issues
         - name: _lastUpdated
           in: query
@@ -197,7 +197,7 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum: [ I, A, P ]
+              enum: [I, A, P]
           description: Used in data-quality search only. Restrict by data quality status(es) [I,A,P] Identified, Accepted, Passed
           example: I,A
         - name: target-disease
@@ -236,7 +236,7 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum: [ entered-in-error, completed, not-done ]
+              enum: [entered-in-error, completed, not-done]
           description: Used in standard search only. Exclude given status(s) [entered-in-error, completed, not-done]
           example: entered-in-error,completed
         - name: status
@@ -248,7 +248,7 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum: [ entered-in-error, completed, not-done ]
+              enum: [entered-in-error, completed, not-done]
           description: Used in data-quality search only. Include only given status(s) [entered-in-error, completed, not-done], default entered-in-error,completed,not-done
           example: entered-in-error,completed
       requestBody:
@@ -565,6 +565,50 @@ paths:
       security:
         - OAuth2Implicit:
             - system/MessageHeader.u
+  /fhir/R4/Patient/{NHI}/$reassign-schedules:
+    post:
+      description: |
+        Update the immunisation plan of an ImmSOT Consumer by reassessing and reassigning their schedules.
+
+        Updates a Consumer by reassigning their schedule based on the onboarding date provided in the request to create a new Immunisation plan.
+
+        Any existing schedules will be cancelled, along with match or MQ records, and a set of new schedules will be assigned according to the onboarding date provided.
+
+        The schedule repair service will be run to regenerate the Consumers matches of Immunisation events to the new Immunisation plan.
+      parameters:
+        - $ref: '#/components/parameters/NHI'
+        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/SourceSystemID'
+        - $ref: '#/components/parameters/X-Api-Key'
+      requestBody:
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/PatientReassign'
+            examples:
+              reassignPatientExample:
+                $ref: '#/components/examples/ReassignPatientParams'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirPatient'
+              examples:
+                Patient:
+                  $ref: '#/components/examples/PatientReadResponse'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - OAuth2Implicit:
+            - air-admin/Patient.u
+            - system/Patient.u
 components:
   schemas:
     AcknowledgementBundle:
@@ -766,6 +810,22 @@ components:
                 type: integer
               valueString:
                 type: string
+    PatientReassign:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        parameter:
+          type: array
+          maxItems: 1
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              valueDate:
+                type: string
+                format: date
     OrchestrationPatient:
       type: object
       properties:
@@ -3407,6 +3467,12 @@ components:
             valueString: OVERSEAS
           - name: subStatus
             valueString: WITH_OUTREACH
+    ReassignPatientParams:
+      value:
+        resourceType: Parameters
+        parameter:
+          - name: reassignDate
+            valueDate: "2024-04-01"
     SearchResult:
       summary: Search returns multiple records
       value:
@@ -4968,3 +5034,4 @@ components:
             system/Patient.r: read scope for consumer interface
             system/Patient.u: update scope for consumer interface
             system/MessageHeader.u: update scope for notification interface
+            air-admin/Patient.u: update scope for consumer (admins only)

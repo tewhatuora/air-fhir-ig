@@ -115,11 +115,11 @@ Usage: #definition
 // Immunization Operations
 
 * rest.resource[=].operation[+].name = "upsert"
-* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert"
+* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/immunization-upsert"
 * rest.resource[=].operation[=].documentation = "Update or add an immunisation event"
 
 * rest.resource[=].operation[+].name = "bulk-update"
-* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-bulk-update"
+* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/immunization-bulk-update"
 * rest.resource[=].operation[=].documentation = "Update or add immunisation events in bulk."
 
 // Patient resource
@@ -127,13 +127,17 @@ Usage: #definition
 * rest.resource[+].type = #Patient
 * rest.resource[=].profile = Canonical(AIRPatient)
 * rest.resource[=].interaction[+].code = #read
-* rest.resource[=].interaction[=].documentation = "GET|[base]/Patient/]id]|Read the current state of an ImmSOT Consumer. Consumer state held in ImmSOT is returned as a FHIR AIR Patient. When an optional header \"origin-nhi-version\" is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer. If it is the same, we return the current data we have in ImmSoT database. If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.|system/Patient.r, air-test/Patient.r"
+* rest.resource[=].interaction[=].documentation = "GET|[base]/Patient/[id]|Read the current state of an ImmSOT Consumer. Consumer state held in ImmSOT is returned as a FHIR AIR Patient. When an optional header \"origin-nhi-version\" is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer. If it is the same, we return the current data we have in ImmSoT database. If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.|system/Patient.r, air-test/Patient.r"
 
 // Patient Operations
 
 * rest.resource[=].operation[+].name = "update-state"
-* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/StructureDefinition/update-patient-state"
+* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/update-patient-state"
 * rest.resource[=].operation[=].documentation = "Update the current state of an ImmSOT Consumer. Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state. At least one of state and subStatus must be specified. If state or subStatus is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status. A 412 Preconditioned Failed will be returned if the version received in the payload does not match the server version."
+
+* rest.resource[=].operation[+].name = "reassign-schedules"
+* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/reassign-patient-schedules"
+* rest.resource[=].operation[=].documentation = "Reassign immunisation schedules for a patient. Cancels the existing schedules and then creates a new set of schedules based on the new onboarding date. Input is the new onboarding date."
 
 // system interactions
 

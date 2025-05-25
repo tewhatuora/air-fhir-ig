@@ -11,7 +11,7 @@ Description: "Update the current state of an ImmSOT Consumer.
 * version = "1.0.0"
 * name = "update-patient-state"
 * status = #active
-* kind = #query
+* kind = #operation
 * experimental = false
 * affectsState = false
 * code = #"update-state"
@@ -20,7 +20,7 @@ Description: "Update the current state of an ImmSOT Consumer.
 * type = false
 * instance = true
 
-* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/update-patient-state"
+* url = "https://standards.digital.health.nz/fhir/air/OperationDefinition/update-patient-state"
 
 * parameter[+].name = #"NHI"
 * parameter[=].use = #in

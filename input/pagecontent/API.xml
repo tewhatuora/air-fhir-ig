@@ -47,13 +47,13 @@
 <tr><th width='30%'>Name</th><th width='30%'>Definition</th><th width='40%'>Documentation</th></tr>
 <tr>
 <td>upsert</td>
-<td><a href ="upsert.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert </a></td>
+<td><a href ="upsert.xml"> https://standards.digital.health.nz/fhir/air/OperationDefinition/immunization-upsert </a></td>
 <td><p>Update or add an immunisation event</p>
 </td>
 </tr>
 <tr>
 <td>bulk-update</td>
-<td><a href ="bulk-update.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-bulk-update </a></td>
+<td><a href ="bulk-update.xml"> https://standards.digital.health.nz/fhir/air/OperationDefinition/immunization-bulk-update </a></td>
 <td><p>Update or add immunisation events in bulk.</p>
 </td>
 </tr>
@@ -118,7 +118,7 @@
 <tr>
 <td>read</td>
 <td>GET</td>
-<td>[base]/Patient/]id]</td>
+<td>[base]/Patient/[id]</td>
 <td>Read the current state of an ImmSOT Consumer. Consumer state held in ImmSOT is returned as a FHIR AIR Patient. When an optional header "origin-nhi-version" is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer. If it is the same, we return the current data we have in ImmSoT database. If it is not the same, we do a Consumer sync with NHI and update the data we have in ImmSoT database and then return this updated data in the response.</td>
 </tr>
 </table>
@@ -127,8 +127,14 @@
 <tr><th width='30%'>Name</th><th width='30%'>Definition</th><th width='40%'>Documentation</th></tr>
 <tr>
 <td>update-state</td>
-<td><a href ="update-state.xml"> https://standards.digital.health.nz/fhir/air/StructureDefinition/update-patient-state </a></td>
+<td><a href ="update-state.xml"> https://standards.digital.health.nz/fhir/air/OperationDefinition/update-patient-state </a></td>
 <td><p>Update the current state of an ImmSOT Consumer. Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state. At least one of state and subStatus must be specified. If state or subStatus is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status. A 412 Preconditioned Failed will be returned if the version received in the payload does not match the server version.</p>
+</td>
+</tr>
+<tr>
+<td>reassign-schedules</td>
+<td><a href ="reassign-schedules.xml"> https://standards.digital.health.nz/fhir/air/OperationDefinition/reassign-patient-schedules </a></td>
+<td><p>Reassign immunisation schedules for a patient. Cancels the existing schedules and then creates a new set of schedules based on the new onboarding date. Input is the new onboarding date.</p>
 </td>
 </tr>
 </table>

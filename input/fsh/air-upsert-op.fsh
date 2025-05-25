@@ -3,7 +3,7 @@ InstanceOf: OperationDefinition
 Description: "An operation to update or insert Immunization resources."
 Usage: #definition
 
-* url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/immunization-upsert"
+* url = "https://standards.digital.health.nz/fhir/air/OperationDefinition/immunization-upsert"
 
 * version = "1.0.0"
 * name = "UpsertImmunisationEvent"

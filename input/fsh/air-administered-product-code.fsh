@@ -134,3 +134,6 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#48606291000116104 "Fluad Quad 2025"
 * $NZMT#48611851000116100 "FluQuadri 2025"
 * $NZMT#48606101000116102 "Afluria Quad 2025"
+
+// Added 21 May 2025 per IMM-5782
+* $NZMT#45442391000116106 "Synagis (Palivizumab)"

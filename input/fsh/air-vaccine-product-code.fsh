@@ -110,6 +110,22 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 /* * $CVX#510 "COVID-19"
 * $CVX#511 "COVID-19" */
 
+// Added for IMM-5781
+* $CVX#316 "MenABCWY"
+* $CVX#01 "DTP"
+* $CVX#17 "Hib"
+* $CVX#89 "Polio"
+* $CVX#198 "DTP-HepB-Hib"
+* $CVX#122 "RV"
+* $CVX#148 "MenC/Y-Hib PRP"
+* $CVX#167 "Meningococcal"
+* $CVX#191 "MenA"
+* $CVX#192 "MenAC"
+* $CVX#215 "PCV15"
+* $CVX#216 "PCV20"
+* $CVX#327 "PCV21"
+* $CVX#04 "M/R"
+* $CVX#94 "MMRV"
 
 // Added for IMM-3229
 * $NZVX#52101 "HepA-Typhoid"

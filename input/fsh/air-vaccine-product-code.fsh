@@ -153,5 +153,3 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $NZVX#260209 "PCV10"
 
 // * $NZVX#EVP "EVP"
-
-* $NZVX#EVPMnC "MenC"

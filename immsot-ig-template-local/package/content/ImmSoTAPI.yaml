@@ -609,6 +609,33 @@ paths:
         - OAuth2Implicit:
             - air-admin/Patient.u
             - system/Patient.u
+  /fhir/R4/Patient/{NHI}/_history:
+    get:
+      description: |
+        The "history" operation is used to return all the versions of an ImmSOT Consumer including the modification information. This method takes a valid NHI and returns back the FHIR bundle, which is a collection of Patient resources where each resource in the bundle represents a version.
+      parameters:
+        - $ref: '#/components/parameters/NHI'
+        - $ref: '#/components/parameters/X-Api-Key'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/AirPatientBundle'
+              examples:
+                Multiple records returned:
+                  $ref: '#/components/examples/PatientHistoryResult'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - OAuth2Implicit:
+            - air-admin/Patient.r
+            - system/Patient.r
 components:
   schemas:
     AcknowledgementBundle:
@@ -775,6 +802,13 @@ components:
               maxItems: 1000
               items:
                 type: string
+            extension:
+              type: array
+              maxItems: 1000
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/ExtensionModifiedby'
+                  - $ref: '#/components/schemas/ExtensionModifiedSourceSystem'
         identifier:
           $ref: '#/components/schemas/Identifier'
         extension:
@@ -1501,6 +1535,27 @@ components:
               - $ref: '#/components/schemas/OrchestrationLocation'
               - $ref: '#/components/schemas/OrchestrationPractitioner'
               - $ref: '#/components/schemas/OrchestrationOrganization'
+    AirPatientBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        meta:
+          type: object
+          properties:
+            lastUpdated:
+              type: string
+        type:
+          type: string
+        total:
+          type: integer
+        entry:
+          type: array
+          maxItems: 1000
+          items:
+            $ref: '#/components/schemas/AirPatient'
     CodeableConceptArray:
       type: array
       maxItems: 1000
@@ -1654,6 +1709,20 @@ components:
         valueInteger:
           type: integer
     ExtensionString:
+      type: object
+      properties:
+        url:
+          type: string
+        valueString:
+          type: string
+    ExtensionModifiedby:
+      type: object
+      properties:
+        url:
+          type: string
+        valueString:
+          type: string
+    ExtensionModifiedSourceSystem:
       type: object
       properties:
         url:
@@ -4453,6 +4522,59 @@ components:
                       code: '359953009'
               protocolApplied:
                 - doseNumberPositiveInt: 1
+    PatientHistoryResult:
+      summary: History returns multiple records
+      value:
+        resourceType: Bundle
+        id: 6ff4f3f3-8209-417c-8d08-f25bb23e9b64
+        meta:
+          lastUpdated: '2023-05-09T00:51:25.866+00:00'
+        type: history
+        total: 1
+        link:
+          - relation: self
+            url: https://air.api.digital.health.nz/fhir/R4/Patient/ZZZ8541/_history
+        entry:
+          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Patient/ZZZ8541
+            resource:
+              resourceType: Patient
+              id: ZZZ8541
+              meta:
+                versionId: '1'
+                lastUpdated: '2023-08-23T12:34:54'
+                profile:
+                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient
+                extension:
+                  - url: 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by'
+                    valueString: '111'
+                  - url: 'https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system'
+                    valueString: 'HSAPP9999'
+              identifier:
+                - use: official
+                  system: 'https://standards.digital.health.nz/ns/nhi-id'
+                  value: ZZZ8541
+                - use: old
+                  system: 'https://standards.digital.health.nz/ns/nhi-id'
+                  value: ZZZ8545
+              extension:
+                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state
+                  valueCodeableConcept:
+                    coding:
+                      - system: 'https://standards.digital.health.nz/ns/air-consumer-state-code'
+                        code: ACTIVE
+                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-sub-status
+                  valueCodeableConcept:
+                    coding:
+                      - system: 'https://standards.digital.health.nz/ns/air-consumer-sub-status-code'
+                        code: WITH_OUTREACH
+                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
+                  valueDate: '2012-04-23'
+              active: true
+              deceasedBoolean: false
+              link:
+                - other:
+                    reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'
+                  type: refer
     SearchNhi:
       summary: Search by NHI
       value: patient=ZZZ9999

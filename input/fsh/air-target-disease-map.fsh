@@ -208,4 +208,3 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(397428000, 99012, relatedto)
 * insert ConceptMapEntry(27836007, 99012, relatedto)
 * insert ConceptMapEntry(23511006, 99013, relatedto)
-* insert ConceptMapEntry(23511006, EVPMnC, relatedto)

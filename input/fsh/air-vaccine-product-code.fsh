@@ -114,10 +114,10 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 // Added for IMM-5781
 * $CVX#316 "MenABCWY"
 * $CVX#01 "DTP"
-* $CVX#17 "Hib"
-* $CVX#89 "Polio"
+* $CVX#17 "Hib, unspecified"
+* $CVX#89 "Polio, unspecified"
 * $CVX#198 "DTP-HepB-Hib"
-* $CVX#122 "RV"
+* $CVX#122 "RV, unspecified"
 * $CVX#148 "MenC/Y-Hib PRP"
 * $CVX#167 "Meningococcal"
 * $CVX#191 "MenA"

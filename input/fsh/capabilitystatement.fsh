@@ -139,6 +139,10 @@ Usage: #definition
 * rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/reassign-patient-schedules"
 * rest.resource[=].operation[=].documentation = "Reassign immunisation schedules for a patient. Cancels the existing schedules and then creates a new set of schedules based on the new onboarding date. Input is the new onboarding date."
 
+* rest.resource[=].operation[+].name = "patient-history"
+* rest.resource[=].operation[=].definition = "https://standards.digital.health.nz/fhir/air/OperationDefinition/patient-history"
+* rest.resource[=].operation[=].documentation = "Fetch all the versions of an ImmSOT Patient/Consumer."
+
 // system interactions
 
 * rest.interaction.code = #transaction

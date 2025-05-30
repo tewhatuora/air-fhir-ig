@@ -137,6 +137,12 @@
 <td><p>Reassign immunisation schedules for a patient. Cancels the existing schedules and then creates a new set of schedules based on the new onboarding date. Input is the new onboarding date.</p>
 </td>
 </tr>
+<tr>
+<td>patient-history</td>
+<td><a href ="patient-history.xml"> https://standards.digital.health.nz/fhir/air/OperationDefinition/patient-history </a></td>
+<td><p>Fetch all the versions of an ImmSOT Patient/Consumer.</p>
+</td>
+</tr>
 </table>
 <br/><h4>Server Level Interactions</h4>
 <strong>Operations</strong>

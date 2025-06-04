@@ -574,6 +574,8 @@ paths:
 
         Any existing schedules will be cancelled, along with match or MQ records, and a set of new schedules will be assigned according to the onboarding date provided.
 
+        NOTE: Any manual match record will also be cancelled (ie unmatched) when the planned event to which it is linked is cancelled.
+
         The schedule repair service will be run to regenerate the Consumers matches of Immunisation events to the new Immunisation plan.
       parameters:
         - $ref: '#/components/parameters/NHI'

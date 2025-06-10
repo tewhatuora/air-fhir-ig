@@ -1,0 +1,70 @@
+  @startuml
+    '=============================
+' Diagram Styling
+    '=============================
+skinparam dpi 250
+skinparam classAttributeIconSize 0
+skinparam defaultTextAlignment center
+skinparam BoxPadding 10
+skinparam sequenceStyle uml2
+skinparam maxMessageSize 200
+skinparam ParticipantPadding 5
+skinparam roundcorner 20
+skinparam sequenceArrowThickness 2
+skinparam wrapWidth 200
+scale max 512*600
+autonumber "[00]"
+
+'=============================
+    ' Color Definitions
+'=============================
+    !define GATEWAY_COLOR #F39C12
+    !define IMMSOT_COLOR #7FB3D5
+    !define DATABASE_COLOR #F5B7B1
+    !define CLIENT_COLOR #15E0AA
+    !define ISM_COLOR #8FE0AA
+    
+    '=============================
+' Participants
+    '=============================
+actor User
+entity "Client" as Client <<Application>> CLIENT_COLOR
+entity "API-Gateway" as Orchestration <<Gateway>> GATEWAY_COLOR
+entity "ImmSOT Service" as ImmSOTService <<FHIR Service>> IMMSOT_COLOR
+database "ImmSOT DB" as ImmSOT_DB DATABASE_COLOR
+
+
+'=============================
+    ' Sequence Flow
+'=============================
+  
+  User -> Client : Request to view consumer's planned vaccination events
+
+  Client -> Orchestration : Client request a token
+  Orchestration --> Client : Return OAuth token (JWT)
+
+  Client -> Orchestration : Initiate /CarePlan/$view request with NHI with the OAuth token (JWT)
+
+  Orchestration -> Orchestration : validate token and permissions
+
+
+  Orchestration -> ImmSOTService : Forward /CarePlan/$view request
+
+  ImmSOTService -> ImmSOTService : Validate token and permissions
+
+  ImmSOTService -> ImmSOT_DB : Check NHI whther Consumer exists?
+  ImmSOT_DB --> ImmSOTService : Consumer does not exist in ImmOST (and in NHI)
+
+  ImmSOTService -> ImmSOTService : Generate error response
+  ImmSOTService --> Orchestration : Return an Operations Outcome, consuemer not found
+
+  Orchestration --> Client : Transform response for UI consumption
+
+  Client --> User : Display user-friendly error (e.g., "The NHI you provided does not exist in ImmSOT")
+    
+    '=============================
+' Footer
+    '=============================
+    footer CarePlan/$view when NHI does not exist in ImmSOT
+    
+    @enduml

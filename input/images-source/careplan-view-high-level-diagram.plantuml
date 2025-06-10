@@ -1,0 +1,77 @@
+@startuml
+'=============================
+' Diagram Styling
+'=============================
+skinparam classAttributeIconSize 0
+skinparam defaultTextAlignment center
+skinparam wrapWidth 200
+skinparam dpi 250
+scale max 1024*1800
+
+'=============================
+' Color Definitions
+'=============================
+!define LAYER_COLOR #82E0AA
+!define GATEWAY_COLOR #F39C12
+!define SERVICE_COLOR #7FB3D5
+!define CONTROLLER_COLOR #AFB9D5
+!define DATABASE_COLOR #F5B7B1
+!define CLIENT_COLOR #1F9C12
+!define MULE_COLOR #9F9C12
+!define DSH_COLOR #A9B7B1
+
+'=============================
+' Packages and Components
+'=============================
+package "ISM and ISD" {
+  component "ISM MuleSoft" as MuleSoft MULE_COLOR
+}
+
+package "External Client" {
+  component "External Client" as External_Client CLIENT_COLOR
+}
+
+package "DSH Layer" {
+  component "DSH Gateway" as DSHGateway DSH_COLOR
+}
+
+package "Orchestration Layer" {
+  component "API Gateway" as APIGateway GATEWAY_COLOR
+}
+
+package "ImmSOT" {
+  package "RestController Layer" {
+    component "CarePlan Provider" as CarePlanProvider CONTROLLER_COLOR
+  }
+
+  package "Service Layer" {
+    component "Consumer Service" as ConsumerService SERVICE_COLOR
+  }
+
+  package "Database Layer" {
+    package "CarePlan Data" as CarePlan_Data {
+      component "Consumers" as Consumers DATABASE_COLOR
+      component "Vaccination Schedule" as Vaccination_Schedule DATABASE_COLOR
+      component "Immunisation Events" as Immunisation_Events DATABASE_COLOR
+      component "Planned Events" as Planned_Events DATABASE_COLOR
+      component "Event Definition" as Event_Definition DATABASE_COLOR
+      component "Consumer Schedule" as Consumer_Schedule DATABASE_COLOR
+    }
+  }
+}
+
+'=============================
+' Sequence Flow
+'=============================
+External_Client --> DSHGateway : "Makes a Request"
+MuleSoft --> APIGateway : "Makes a Request"
+APIGateway --> MuleSoft : "Forward the Response"
+DSHGateway --> APIGateway : "Forward the Request"
+APIGateway --> DSHGateway : "Forward the Response"
+APIGateway --> CarePlanProvider : "Forward the Request"
+CarePlanProvider --> ConsumerService : "Request CarePlan Data"
+ConsumerService --> CarePlan_Data : "Read Consumer's Schedule\nand Planned Events"
+ConsumerService --> CarePlanProvider : "Return a FHIR CarePlan Bundle"
+CarePlanProvider --> APIGateway : "Return the API Response"
+
+@enduml

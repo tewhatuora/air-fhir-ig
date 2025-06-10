@@ -31,6 +31,15 @@
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-antigen-group-extension.html'>air-antigen-group-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-antigen-group-extension</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Describes the antigen group used in AGVS.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-consumer-nir-opt-off.html'>air-consumer-nir-opt-off</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off</td>
 <td>
@@ -140,6 +149,24 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-performed-activity-extension.html'>air-performed-activity-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity</td>
+<td>
+<div>CarePlan.activity.extension</div>
+</td>
+<td><p>This Performed Activity adds an R5 field to the R4 CarePlan so that we can refer to an Immunization.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-planned-activity-reference-extension.html'>air-planned-activity-reference-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference</td>
+<td>
+<div>CarePlan.activity.extension</div>
+</td>
+<td><p>This Planned Activity Reference adds an R5 field to the R4 CarePlan so that we can refer to an ImmunizationRecommendation.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-planned-event-match-quality.html'>air-planned-event-match-quality</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match-quality</td>
 <td>
@@ -185,6 +212,15 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-schedule-type-extension.html'>air-schedule-type-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-schedule-type-extension</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Describes the schedule type used in AGVS.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-scheduled-event.html'>air-scheduled-event</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event</td>
 <td>
@@ -194,12 +230,39 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td></td>
 </tr>
 <tr>
+<td><a href='StructureDefinition-air-series-type-extension.html'>air-series-type-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-series-type-extension</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Describes the series type used in AGVS.</p></td>
+<td></td>
+</tr>
+<tr>
 <td><a href='StructureDefinition-air-serology-report-extension.html'>air-serology-report-extension</a></td>
 <td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension</td>
 <td>
 <div>Immunization</div>
 </td>
 <td><p>This extension allows an AIR Immunization instance to contain information from a serology report that describes a patient&#39;s expected level of immune protection from Hepatitis B infection. Note that this extension could be updated to cover additional diseases in the future.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-timingAge-ISO8601-extension.html'>air-timingAge-ISO8601-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-timingAge-ISO8601-extension</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Describes the series type used in AGVS.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><a href='StructureDefinition-air-trigger-extension.html'>air-trigger-extension</a></td>
+<td>https://standards.digital.health.nz/fhir/air/StructureDefinition/air-trigger-extension</td>
+<td>
+<div>Element</div>
+</td>
+<td><p>Describes the trigger type used in AGVS.</p></td>
 <td></td>
 </tr>
 <tr>

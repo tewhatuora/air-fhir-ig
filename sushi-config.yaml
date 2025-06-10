@@ -83,6 +83,7 @@ menu:
   Artifacts: artifacts.html
   Business Context: business-context.html
   Use Cases:
+    View Consumer Planned Events: careplanView.html
     Immunisation Update Message: immunisationUpdateMessage.html
     Create Immunisation Event: immunisationEventCreate.html
     Read Immunisation Event: immunisationEventRead.html
@@ -94,9 +95,11 @@ menu:
   Message Definitions:
     Update Immunisation Request: MessageDefinition-UpdateImmunisationRequestMessageDefinition.html
     Update Immunisation Response: MessageDefinition-UpdateImmunisationResponseMessageDefinition.html
+    View Consumer Planned Events: careplanView.html
   Extensions: extensions.html
   Terminology: terminology.html
   AIR Overview:
+    View Consumer Planned Events: careplanView.html
     Immunisation Events: immunisations.html
     Scheduled Events: scheduled-events.html
   Support:

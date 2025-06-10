@@ -56,6 +56,9 @@ if [[ "$sushi_only" != "true" ]]; then
     java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi
 fi
 
+echo running PlantUML ...
+ ./_genPlantumlImages.sh
+
 echo versioning ImmSotAPI.yaml
 
 VERSION=$(yq '.version' sushi-config.yaml)

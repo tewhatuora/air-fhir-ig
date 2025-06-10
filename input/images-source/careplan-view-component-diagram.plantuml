@@ -1,0 +1,88 @@
+@startuml
+'==============================
+' Styling
+'==============================
+skinparam dpi 250
+skinparam classAttributeIconSize 0
+skinparam defaultTextAlignment center
+skinparam BoxPadding 10
+skinparam sequenceStyle uml2
+skinparam maxMessageSize 200
+skinparam ParticipantPadding 5
+skinparam roundcorner 20
+skinparam sequenceArrowThickness 2
+skinparam wrapWidth 200
+scale max 512*600
+skinparam componentStyle rectangle
+
+'==============================
+' Component Groups
+'==============================
+package "AIR Immunization Components" {
+
+' Core CarePlan components
+component [AIRCarePlan] #LightBlue
+component [AIRR5CarePlanActivity] #LightBlue
+
+' Immunization data
+component [AIRImmunization] #LightGreen
+component [AIRImmunizationRecommendation] #LightGreen
+component [Recommendation] #LightGreen
+component [AIRPatient] #LightGreen
+
+' Supporting structures
+component [AIRId] #LightGray
+component [DiseaseCovered] #LightGray
+component [AIRAGVS] #LightGray
+component [AIRScheduledEvent] #LightGray
+component [ValueSet] #LightGray
+component [DateCriterion] #LightGray
+
+' Definitions and Plan
+component [AIRAGVSPlanDefinition] #LightYellow
+component [AIRDoseDefinition] #Pink
+
+' Extensions
+component [AirScheduleTypeExtension] #Pink
+component [AirSeriesTypeExtension] #Pink
+component [AirTriggerExtension] #Pink
+component [AirAntigenGroupExtension] #Pink
+component [AirTimingAgeISO8601Extension] #Pink
+
+}
+
+'==============================
+' Relationships
+'==============================
+
+' CarePlan structure
+[AIRCarePlan] --> [AIRR5CarePlanActivity] : activity 1..1
+[AIRCarePlan] --> [AIRAGVSPlanDefinition] : instantiatesCanonical 1..1
+
+' Activities and records
+[AIRR5CarePlanActivity] --> [AIRImmunization] : performedActivity 1..*
+[AIRR5CarePlanActivity] --> [AIRImmunizationRecommendation] : plannedActivityReference 1..*
+
+' Immunization recommendation details
+[AIRImmunizationRecommendation] --> [Recommendation] : 1..*
+[AIRImmunizationRecommendation] --> [AIRPatient] : 1..1
+
+' Recommendation structure
+[Recommendation] --> [AIRId] : 1..1
+[Recommendation] --> [DiseaseCovered] : 1..1
+[Recommendation] --> [AIRAGVS] : 1..1
+[Recommendation] --> [AIRScheduledEvent] : 1..1
+[Recommendation] --> [ValueSet] : vaccineCode 1..1
+[Recommendation] --> [ValueSet] : forecastStatus 1..1
+[Recommendation] --> [DateCriterion] : 1..1
+
+' Plan Definition structure
+[AIRAGVSPlanDefinition] --> [AIRDoseDefinition] : contains 1..*
+[AIRAGVSPlanDefinition] --> [AirScheduleTypeExtension] : has 1..1
+[AIRAGVSPlanDefinition] --> [AirSeriesTypeExtension] : has 1..1
+[AIRAGVSPlanDefinition] --> [AirTriggerExtension] : has 1..1
+[AIRAGVSPlanDefinition] --> [AirAntigenGroupExtension] : has 1..1
+
+[AIRDoseDefinition] --> [AirTimingAgeISO8601Extension] : _timingAge 1..1
+
+@enduml

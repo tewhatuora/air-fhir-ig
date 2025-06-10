@@ -1,0 +1,201 @@
+@startuml
+skinparam dpi 250
+skinparam classAttributeIconSize 0
+skinparam wrapWidth 200
+skinparam defaultTextAlignment center
+scale max 1024*1800
+
+'==============================
+' Core CarePlan Structure
+'==============================
+
+class AIRCarePlan #LightBlue {
+    id : string
+    meta: Meta
+    status: string
+    intent : string
+    title : string
+    description: string
+    created : dateTime
+    period: Period
+    subject : Reference(AIRPatient)
+    instantiatesCanonical : canonical[AIRAGVSPlanDefinition]
+    activity : AIRR5CarePlanActivity[]
+}
+
+class Meta  #LightBlue {
+    security: CodeableConcept
+    versionId: string
+}
+
+class Period  #LightBlue {
+    start: dateTime
+    end: dateTime
+}
+
+class AIRR5CarePlanActivity #LightBlue {
+    performedActivity : Reference[AIRImmunization]
+    plannedActivityReference : Reference[AIRImmunizationRecommendation]
+}
+
+'==============================
+' Immunization and Recommendations
+'==============================
+
+class AIRImmunization #LightGreen {
+    id : string
+    status : code
+    vaccineCode : CodeableConcept
+    occurrenceDateTime : dateTime
+    lotNumber : string
+    expirationDate : date
+    site : CodeableConcept
+    route : CodeableConcept
+    location : Reference(Location)
+    performer : Performer[]
+    protocolApplied : ProtocolApplied[]
+    other_fields : Rest of AIRImmunization resource elements
+}
+
+class AIRImmunizationRecommendation #LightGreen {
+    id : string
+    status : code
+    patient : Reference(AIRPatient)
+    recommendation : List<Recommendation>
+    other_fields : Rest of AIRImmunizationRecommendation resource elements
+}
+
+class Recommendation #LightGreen {
+    id : string
+    vaccineCode : CodeableConcept
+    forecastStatus : CodeableConcept
+    doseNumber : positiveInt
+    extension : List<Extension>
+    other_fields : Rest of Recommendation resource elements
+}
+
+class DateCriterion #LightGray {
+    code : CodeableConcept
+    value : date
+}
+
+'==============================
+' Patient & Support Structures
+'==============================
+
+class AIRPatient #LightGreen {
+    extension : List<Extension>
+    other_fields : Rest of AIRPatient resource elements
+}
+
+class AIRId #LightGray {
+    value : string
+}
+
+class DiseaseCovered #LightGray {
+    value : CodeableConcept
+}
+
+class AIRAGVS #LightGray {
+    scheduleType : Coding
+    seriesType : Coding
+    antigenGroup : Coding
+    version : string
+}
+
+class AIRScheduledEvent #LightGray {
+    type : Coding
+}
+
+class ValueSet #LightGray {
+    codes : List<Coding>
+}
+
+'==============================
+' Plan & Dose Definitions
+'==============================
+
+class AIRAGVSPlanDefinition #LightYellow {
+    +id : string
+    +name : string
+    +version : string
+    +status : string
+    +effectivePeriod : Period
+    +action : [AIRDoseDefinition]
+}
+
+class AIRDoseDefinition #Pink {
+    +id : string
+    +status : string
+    +kind : string
+    +code : Coding
+    +timingAge: Coding
+    +_timingAge: AirTimingAgeISO8601Extension
+}
+
+'==============================
+' Extensions
+'==============================
+
+class AirScheduleTypeExtension #Pink {
+    +url : 1..1
+    +valueCoding.system : 1..1
+    +valueCoding.code : 1..1
+}
+
+class AirSeriesTypeExtension #Pink {
+    +url : 1..1
+    +valueCoding.system : 1..1
+    +valueCoding.code : 1..1
+}
+
+class AirTriggerExtension #Pink {
+    +url : 1..1
+    +valueCoding.system : 1..1
+    +valueCoding.code : 1..1
+}
+
+class AirAntigenGroupExtension #Pink {
+    +url : 1..1
+    +valueCoding.system : 1..1
+    +valueCoding.code : 1..1
+    +valueCoding.display : 1..1
+}
+
+class AirTimingAgeISO8601Extension #Pink {
+    +url : 1..1
+    +valueString : 1..1
+}
+
+'==============================
+' Relationships
+'==============================
+
+AIRCarePlan --> "0..1" Meta
+AIRCarePlan --> "0..1" Period
+AIRCarePlan --> "1..*" AIRR5CarePlanActivity : activity
+AIRCarePlan --> AIRAGVSPlanDefinition : instantiatesCanonical
+
+AIRR5CarePlanActivity --> "0..1" AIRImmunization : performedActivityReference
+AIRR5CarePlanActivity --> "0..1" AIRImmunizationRecommendation : plannedActivityReference
+
+AIRImmunizationRecommendation --> "0..*" Recommendation : recommendation
+AIRImmunizationRecommendation --> AIRPatient : patient
+
+Recommendation --> AIRId
+Recommendation --> DiseaseCovered
+Recommendation --> AIRAGVS
+Recommendation --> AIRScheduledEvent
+Recommendation --> ValueSet : vaccineCode
+Recommendation --> ValueSet : forecastStatus
+Recommendation --> ValueSet : dateCriterion
+Recommendation --> "0..*" DateCriterion : dateCriterion
+
+AIRAGVSPlanDefinition --> AIRDoseDefinition : action
+AIRAGVSPlanDefinition --> AirScheduleTypeExtension
+AIRAGVSPlanDefinition --> AirSeriesTypeExtension
+AIRAGVSPlanDefinition --> AirTriggerExtension
+AIRAGVSPlanDefinition --> AirAntigenGroupExtension
+AIRDoseDefinition --> AirTimingAgeISO8601Extension : _timingAge
+
+@enduml

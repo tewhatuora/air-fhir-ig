@@ -45,7 +45,7 @@ In order to install Ruby, I would suggest that you use the Ruby Version Manager(
     ```shell
     npm install -g sushi
     ```
-### Running the publisher
+### Running the publisher and generate the IG
 1. run `_updatePublisher.sh` to get the latest publisher jar 
 2. run `build-ig.sh` to generate the IG(artifacts should appear under `output` folder)
 

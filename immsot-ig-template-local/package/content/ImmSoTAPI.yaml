@@ -45,6 +45,8 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -78,6 +80,8 @@ paths:
           $ref: '#/components/responses/403'
         "404":
           $ref: '#/components/responses/404'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -278,6 +282,8 @@ paths:
           $ref: '#/components/responses/403'
         "401":
           $ref: '#/components/responses/401'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -320,6 +326,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -362,6 +370,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -394,6 +404,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -438,6 +450,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -476,6 +490,8 @@ paths:
           $ref: '#/components/responses/403'
         "404":
           $ref: '#/components/responses/404'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -524,6 +540,8 @@ paths:
           $ref: '#/components/responses/404'
         "412":
           $ref: '#/components/responses/412'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -560,6 +578,8 @@ paths:
           $ref: '#/components/responses/401'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -605,6 +625,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -632,12 +654,48 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
             - air-admin/Patient.r
             - system/Patient.r
+  /fhir/R4/CarePlan/$view:
+    get:
+      operationId: viewCarePlans
+      description: |
+        Read a consumer's immunisation plan / schedule
+      parameters:
+        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - name: nhi
+          in: query
+          description: The NHI identifier of the patient/consumer
+          required: true
+          schema:
+            type: string
+          example: ZCZ1947
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/CarePlanBundle'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - OAuth2Implicit:
+            - system/CarePlan.s
 components:
   schemas:
     AcknowledgementBundle:
@@ -690,6 +748,53 @@ components:
           type: string
         postalCode:
           type: string
+    AirCarePlan:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        instantiatesCanonical:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        intent:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        subject:
+          type: object
+          properties:
+            reference:
+              type: string
+            identifier:
+              $ref: '#/components/schemas/Identifier'
+        period:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        created:
+          type: string
+          format: date-time
+        activity:
+          type: array
+          items:
+            type: object
+            properties:
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
     AirImmunization:
       type: object
       properties:
@@ -782,6 +887,59 @@ components:
                             type: string
               function:
                 $ref: '#/components/schemas/CodeableConcept'
+    AirImmunizationRecommendation:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum: [ImmunizationRecommendation]
+        meta:
+          type: object
+          properties:
+            profile:
+              type: array
+              items:
+                type: string
+        patient:
+          $ref: '#/components/schemas/LogicalReference'
+        date:
+          type: string
+          format: date-time
+        recommendation:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
+              vaccineCode:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              forecastStatus:
+                $ref: '#/components/schemas/CodeableConcept'
+              forecastReason:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              dateCriterion:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      $ref: '#/components/schemas/CodeableConcept'
+                    value:
+                      type: string
+                      format: date
+              series:
+                type: string
+              doseNumberPositiveInt:
+                type: integer
     AirPatient:
       type: object
       properties:
@@ -2012,6 +2170,28 @@ components:
                   - update
               resource:
                 $ref: '#/components/schemas/AirImmunization'
+    CarePlanBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        type:
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                oneOf:
+                  - $ref: "#/components/schemas/AirCarePlan"
+                  - $ref: "#/components/schemas/AirImmunization"
+                  - $ref: "#/components/schemas/AirImmunizationRecommendation"
+
   responses:
     "200":
       description: Ok
@@ -2090,6 +2270,15 @@ components:
           examples:
             InvalidDataEg:
               $ref: '#/components/examples/InvalidData'
+    "429":
+      description: Too Many Requests
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            TooManyReuqestEg:
+              $ref: '#/components/examples/TooManyReuqest'
     "500":
       description: Internal Server Error
       content:
@@ -2906,6 +3095,14 @@ components:
           - severity: error
             code: exception
             diagnostics: Preconditioned Failed
+    TooManyReuqest:
+      summary: A 429 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+          - severity: error
+            code: exception
+            diagnostics: Too many requests
     InternalError:
       summary: A 500 response example
       value:
@@ -5159,3 +5356,5 @@ components:
             system/Patient.u: update scope for consumer interface
             system/MessageHeader.u: update scope for notification interface
             air-admin/Patient.u: update scope for consumer (admins only)
+            air-admin/Patient.r: read scope for consumer (admins only)
+            system/CarePlan.s: search scope for careplan

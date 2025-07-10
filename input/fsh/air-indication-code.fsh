@@ -23,7 +23,7 @@ Description: "Coded values to describe the reason an immunisation was given. Ini
 * $SCT#263781000210105 "Publicly funded vaccination given for child six months to twelve years of age" 
 */
 
-* $AIRTerms#1 "Influenza, eligible over 65 years"
+* $AIRTerms#1 "Influenza, eligible 65 years and over"
 * $AIRTerms#2 "Influenza, eligible under 18 years"
 * $AIRTerms#3 "Influenza, eligible criteria"
 * $AIRTerms#4 "Sexual or household contact"

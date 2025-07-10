@@ -29,7 +29,7 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
     "A General Practitioner"
 
 // NIR Indications
-* #1 "Influenza, eligible over 65 years"
+* #1 "Influenza, eligible 65 years and over"
 * #2 "Influenza, eligible under 18 years"
 * #3 "Influenza, eligible criteria"
 * #4 "Sexual or household contact"

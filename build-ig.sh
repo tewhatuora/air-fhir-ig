@@ -59,6 +59,9 @@ fi
 echo running PlantUML ...
  ./_genPlantumlImages.sh
 
+echo running raw image geenration ...
+./_genRawImages.sh
+
 echo versioning ImmSotAPI.yaml
 
 VERSION=$(yq '.version' sushi-config.yaml)

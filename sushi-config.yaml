@@ -89,7 +89,10 @@ menu:
     Read Immunisation Event: immunisationEventRead.html
     Update Immunisation Event: immunisationEventUpdate.html
     Search Immunisation Events: immunisationEventSearch.html
-  Onboarding: onboarding.html
+  Important Information:
+    Onboarding: onboarding.html
+  Compliance Testing:
+    Base API Tests (Access, Search and Read): complianceTestingBaseAPITests.html
   Profiles: profiles.html
   API: API.html
   Message Definitions:

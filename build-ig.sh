@@ -53,7 +53,7 @@ if [[ "$sushi_only" != "true" ]]; then
     fi
 
     echo running ig publisher
-    java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi -authorise-non-conformant-tx-servers
+    java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi -authorise-non-conformant-tx-servers -validation-off
 fi
 
 echo running PlantUML ...

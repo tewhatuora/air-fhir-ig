@@ -91,6 +91,7 @@ menu:
     Search Immunisation Events: immunisationEventSearch.html
   Important Information:
     Onboarding: onboarding.html
+    General Notes: generalNotes.html
   Compliance Testing:
     Base API Tests (Access, Search and Read): complianceTestingBaseAPITests.html
   Profiles: profiles.html

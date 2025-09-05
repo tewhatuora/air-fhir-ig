@@ -33,7 +33,7 @@ Health providers without an agreement wanting access to **Get, Search, Update** 
 3. Review which APIs and operations your application requires to integrate with. For example, AIR Search requires a valid NHI number - better user experience may be provided by accessing the NHI prior to requesting a consumer’s immunisation history. If your application requires enrichment of Immunisation data with Patient or Location resources, then NHI and/or HPI compliance is required.
     - [Explore APIs and digital services](https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services)
     - Review the \[API\]\(API.html\)  page in this Implementation Guide to determine which API operations your application requires.
-4. <mark><u>Request access to digital assets, providing application and use case details using the [Digital Services Hub Support form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/122).</u></mark>
+4. <mark><u>Request access to digital assets, providing application and use case details using the</u></mark> [Digital Services Hub Support form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/122).
 5. Ensure that your own firewall changes have been requested for Test and Production environments.
 
 ### Integration and Testing

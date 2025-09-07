@@ -61,7 +61,9 @@ Health providers without an agreement wanting access to **Get, Search, Update** 
 - AIR product team will advise production go-live (availability) date.
 - Before launch, conduct validation tests. Verify API URL and credentials are working.
 - Launch your application.
-**Notes**
+
+Notes
+
 - Please allow at least 5 working days for compliance environment applications to be processed.
 - Please allow at least 2 weeks for compliance testing to be signed off and returned.
 - If Production credentials are required by a large number of organisations accessing your product, please get in touch to discuss options around bulk credential requests and how we can streamline this process.

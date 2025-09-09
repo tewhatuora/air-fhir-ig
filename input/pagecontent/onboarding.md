@@ -32,20 +32,20 @@ Health providers without an agreement wanting access to **Get, Search, Update** 
     - Product Risk Assessment Form
 3. Review which APIs and operations your application requires to integrate with. For example, AIR Search requires a valid NHI number - better user experience may be provided by accessing the NHI prior to requesting a consumer’s immunisation history. If your application requires enrichment of Immunisation data with Patient or Location resources, then NHI and/or HPI compliance is required.
     - [Explore APIs and digital services](https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services)
-    - Review the \[API\]\(API.html\)  page in this Implementation Guide to determine which API operations your application requires.
-4. <mark><u>Request access to digital assets, providing application and use case details using the</u></mark> [Digital Services Hub Support form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/122).
+    - Review the [API](./API.html)  page in this Implementation Guide to determine which API operations your application requires.
+4. Request access to digital assets, providing application and use case details using the [Digital Services Hub Support form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/122). Once this has been approved you will receive credentials to the Mock+ environment, which hosts stubs that API consumers can use for early testing.
 5. Ensure that your own firewall changes have been requested for Test and Production environments.
 
 ### Integration and Testing
 1. Complete your development and testing using the Mock+ environment.
 2. When you are ready for compliance testing, log a ticket using the [Digital Services Hub Support & Feedback form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/112).
     - Compliance Test environment access will be provided in coordination with AIR product team support.
-    - Preview the AIR compliance tests in this Implementation Guide under the Compliance Testing menu item.
+    - Preview the [AIR compliance tests](./complianceTestingBaseAPITests.html) in this Implementation Guide under the Compliance Testing menu item.
     - Test evidence to be provided includes screen shots and API responses. A demo of your application to an AIR test analyst may be requested.
-    - <mark><u>Estimates of expected loads and volumes will be required for HNZ capacity planning and rate limiting. Load and volume testing could be required depending on use case.</u></mark>
+    - Estimates of expected loads and volumes will be required for HNZ capacity planning and rate limiting. Load and volume testing could be required depending on use case.
     - Coordination will be required if HPI and NHI compliance is required.
     - Regular catch-ups and escalation pathways will be available.
-3. Submit the results of the compliance tests using this form [HIP Compliance Submission](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/11/create/129). You will be required to submit the following Documents:
+3. Submit the results of the compliance tests to the AIR product team. You will be required to submit the following Documents:
     - Production Assessment Questionnaire
     - API Access and Use Agreement
     - Information Access and Use Agreement
@@ -53,7 +53,7 @@ Health providers without an agreement wanting access to **Get, Search, Update** 
     - Signed Privacy Agreement, Terms of Use, Access, and Use Agreements.
 4. Subject to approval, the integration team will issue a test compliance report. Your application will receive certification to be used in production or additional requirements will need to be met.
     - This can be an iterative process, so please get in touch as needed to discuss the compliance testing process.
-5. *Each organisation* using your application with integrated services must apply individually for access to the production environment (and receive their own set of credentials) by completing the production form, please email [NHI Access](mailto:NHI_Access@tewhatuora.govt.nz).
+5. *Each organisation* using your application with integrated services must apply individually for access to the production environment (and receive their own set of credentials).
 
 ## Production Preparation and Go-live
 - Sign off receipt of credentials.
@@ -64,9 +64,9 @@ Health providers without an agreement wanting access to **Get, Search, Update** 
 
 Notes
 
-- Please allow at least 5 working days for compliance environment applications to be processed.
-- Please allow at least 2 weeks for compliance testing to be signed off and returned.
-- If Production credentials are required by a large number of organisations accessing your product, please get in touch to discuss options around bulk credential requests and how we can streamline this process.
+- Please allow at least 5 working days for *compliance environment applications* to be processed.
+- Please allow at least 2 weeks for *compliance testing* to be signed off and returned.
+- If *Production credentials* are required by a large number of organisations accessing your product, please get in touch to discuss options around bulk credential requests and how we can streamline this process.
 
 ## Assistance
 For help during the registration and on-boarding process, please fill in the [Digital Services Hub Support and Feedback form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/112).

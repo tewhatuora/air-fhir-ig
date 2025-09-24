@@ -1,5 +1,5 @@
 #!/bin/bash
-pubsource=https://github.com/HL7/fhir-ig-publisher/releases/latest/download/
+pubsource=https://github.com/HL7/fhir-ig-publisher/releases/download/2.0.13/
 publisher_jar=publisher.jar
 dlurl=$pubsource$publisher_jar
 
@@ -137,8 +137,8 @@ if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
   chmod +x _genonce.sh
   rm  /tmp/_genonce.new
 
-  curl -L $update_sh_url -o /tmp/_updatePublisher.new
-  cp /tmp/_updatePublisher.new _updatePublisher.sh
-  chmod +x _updatePublisher.sh
-  rm /tmp/_updatePublisher.new
+  #curl -L $update_sh_url -o /tmp/_updatePublisher.new
+  #cp /tmp/_updatePublisher.new _updatePublisher.sh
+  #chmod +x _updatePublisher.sh
+  #rm /tmp/_updatePublisher.new
 fi

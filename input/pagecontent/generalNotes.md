@@ -62,6 +62,109 @@ To support null and ‘Dose 0’ use cases, values 98 and 99 are substituted res
 
 A future release will implement [doseNumberString](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.protocolApplied.doseNumber_x_), anticipating [doseNumber](https://hl7.org/fhir/immunization-definitions.html#Immunization.protocolApplied.doseNumber) in later versions of FHIR.
 
+### Health Worker Identifiers
+The AIR requires health workers administering immunisations to be authorised. Records must be kept for traceability and legal reasons. Therefore, function (role) and identifier are important.
+
+The HPI number (HPI Common Person Number CPN) is the preferred identifier. If a registration number is used, it should relate to administering immunisations.
+
+The vaccinating workforce is diverse and many health workers do not have a CPN or relevant registration. Often this applies to health care assistants, kaiāwhina hauora and Vaccinating Health Workers.
+
+AIR accepts a broad range of Practitioner identifiers, including some specific to AIR. AIR also provides for the use case where the only available identifier is local to the site or organisation:
+
+* If a Vaccinating Health Worker (VHW) administers an immunisation, the function SHOULD be VHW. Vaccinating Health Worker (VHW) identifiers are assigned in the AIR Portal.
+* If a registered nurse or doctor administers an immunisation, the function SHOULD be VC.
+* For each immunisation event, at least one health worker SHOULD have function AP or a child thereof.
+* If a health worker authorised to administer immunisations has no registration or CPN, their identifier MUST be unique within the source system and SHOULD have system 'https://HCA'. The identifier must be traceable to an individual health worker.
+* Request-Context header and CreatedBy and ModifiedBy meta fields capture usernames of those who interact with the record.
+* Request-Context header field secondaryIdentifier MUST be the end user’s CPN where available. Otherwise, any secondary identifier that is held for the user. This value is mandatory and must be correct and accurate, due to legal requirements. If the person triggering the request is not registered with any New Zealand health body on the list provided at [standards.digital.health.nz](https://standards.digital.health.nz ), the value must remain empty (empty string).
+
+### Immunization status and statusReason
+Immunisation status and statusReason SHOULD correspond, according to the table below. Events not complying with this rule are not able to be categorised, reported or matched to a planned event.
+
+<table class="table table-bordered table-hover table-sm">
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Immunization.status</th>
+      <th>Immunization.statusReason</th>
+      <th>Business Rules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Immunisation given in NZ</td>
+      <td>completed</td>
+      <td><em>null</em> or GIVEN</td>
+      <td>Body Site, Route, Vaccine lot number and Vaccine Expiration Date SHOULD have a value when status='completed'</td>
+    </tr>
+    <tr>
+      <td>Declined (permanent contraindication)</td>
+      <td>not-done</td>
+      <td>DMC</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Declined by parent/guardian</td>
+      <td>not-done</td>
+      <td>DPC</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Declined by individual</td>
+      <td>not-done</td>
+      <td>DIC</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Immune</td>
+      <td>not-done</td>
+      <td>DNI</td>
+      <td>Marks the matching planned event as not required. Serology report SHOULD be contained.</td>
+    </tr>
+    <tr>
+      <td>Closed not required</td>
+      <td>not-done</td>
+      <td>CPI</td>
+      <td>For HNZ internal use only. Marks the matching planned event as not required. No notification is sent to providers.</td>
+    </tr>
+    <tr>
+      <td>Alternative vaccination given</td>
+      <td>completed</td>
+      <td>ALTGIVN</td>
+      <td>This record identifies the vaccine replaced by an alternative, relevant only to NIS events</td>
+    </tr>
+    <tr>
+      <td>Given overseas</td>
+      <td>completed</td>
+      <td>GIVNOS</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Historic vaccination</td>
+      <td>completed</td>
+      <td>HSTGIVN</td>
+      <td>A vaccination given in NZ prior to 2005 or was not recorded in NIR prior to December 2023 for which complete details are not available SHOULD have statusReason='HSTGIVN'</td>
+    </tr>
+    <tr>
+      <td>Deleted, invalidated, duplicate of a good record</td>
+      <td>entered-in-error</td>
+      <td><em>any</em></td>
+      <td>Does not match any planned event.</td>
+    </tr>
+  </tbody>
+</table>
+
+Rescheduling of events is not supported (status reason codes RESCHO, RESREF, RESTC).
+
+Typical PMS status query (_search request) parameters are `status-reason:not-in=CPI,RESCHO,RESREF,RESTC&status:not-in=entered-in-error`
+
+### Planned and Expected Events
+Planned events based on a consumer’s schedule are represented in ImmunizationRecommendation resources. These contain a recommendation node for each Consumer Planned Event (type CPE), with a related recommendation of type Expected Event (EE) when the date is moved due to dose gap or other scheduling rules. Past recommendations can be due or overdue. Events marked as not required do not appear in the consumer’s schedule.
+
+Appointments and rescheduled events are not recorded in the AIR.
+
+In future, a consumer’s CarePlan resources will present Immunization and ImmunizationRecommendation together for each antigen group, where matching.
+
 ### Errors
 #### System failures and rejection responses
 Errors fall into several categories that depend on the issue and request type.

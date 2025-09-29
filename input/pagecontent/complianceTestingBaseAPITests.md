@@ -204,7 +204,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
         When an API call is made<br>
         Then the Request-Context header properties are populated as specified in the schema and base-64 encoded. The schema is defined in:<br>
-        https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json<br><br>
+        <a href="https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json">https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json</a><br><br>
         Te whatu ora will validate your request and verify it includes the request context information.
       </td>
       <td>
@@ -213,7 +213,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         <b>facilityIdentifier:</b> the HPI-F code assigned to the Facility<br>
         <b>secondaryIdentifier:</b> If the person triggering the request is not registered with any New Zealand health body on the list provided, values must remain empty (empty string).<br>
         <b>userRole</b> and <b>purposeOfUse</b> are also required.<br><br>
-        For detail on each attribute see https://github.com/tewhatuora/schemas/blob/main/README.md
+        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">https://github.com/tewhatuora/schemas/blob/main/README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf</a>
       </td>
       <td>
         Send a screenshot showing the logged in user<br>
@@ -311,6 +311,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         The application reaches its usage plan limit and it receives HTTP 429 response code then it handles this gracefully, for example informing the user to wait few seconds, or displaying an hourglass icon as a way of backing off before sending another request.
       </td>
       <td>
+        Please provide estimates and evidence where available of peak API request rates and volumes, to ensure your application is assigned the correct rate-limiting tier by HNZ - by default rate limiting will be set at Bronze level (1 request per second, 10,000 requests per day). Also,<br>
         Either <br>
         Send a Subscriber's Application screenshot showing the message displayed to the end user with the Application window displayed when the error occurred.<br>
         OR<br>
@@ -375,7 +376,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/{ID}
         </td>
         <td>
             The application demonstrates the ability to display clinically important elements and data is displayed in the expected format as specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide<br>
-            https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html
+            <a href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a>
         </td>
         <td>
             Given my application has the appropriate permission<br>
@@ -420,7 +421,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/{ID}
         </td>
         <td>
             The application demonstrates the ability to display the maximum allowable sizes for all immunisation data fields as specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide<br>
-            https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html
+            <a href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a>
         </td>
         <td>
             Given my application has the appropriate permission<br>

@@ -213,7 +213,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         <b>facilityIdentifier:</b> the HPI-F code assigned to the Facility<br>
         <b>secondaryIdentifier:</b> If the person triggering the request is not registered with any New Zealand health body on the list provided, values must remain empty (empty string).<br>
         <b>userRole</b> and <b>purposeOfUse</b> are also required.<br><br>
-        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">applications.pdf</a>
+        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">Developer Guide</a>
       </td>
       <td>
         Send a screenshot showing the logged in user<br>
@@ -390,7 +390,7 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/{ID}
             &nbsp;&nbsp;- status<br>
             &nbsp;&nbsp;- statusReason<br>
             &nbsp;&nbsp;- vaccine Display Name<br>
-            &nbsp;&nbsp;- vaccine (product name), if it is provided in the response<br>
+            &nbsp;&nbsp;- vaccine (product display name), if it is provided in the response<br>
             &nbsp;&nbsp;- dose number<br>
             &nbsp;&nbsp;- reasonCode (Indication)<br>
             &nbsp;&nbsp;- occurrence - date/time<br>

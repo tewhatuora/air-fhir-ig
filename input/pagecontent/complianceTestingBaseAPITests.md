@@ -213,22 +213,25 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         <b>facilityIdentifier:</b> the HPI-F code assigned to the Facility<br>
         <b>secondaryIdentifier:</b> If the person triggering the request is not registered with any New Zealand health body on the list provided, values must remain empty (empty string).<br>
         <b>userRole</b> and <b>purposeOfUse</b> are also required.<br><br>
-        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">https://github.com/tewhatuora/schemas/blob/main/README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf</a>
+        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">applications.pdf</a>
       </td>
       <td>
         Send a screenshot showing the logged in user<br>
         Send the context-header in plain text including userIdentifier, facilityIdentifier and secondaryIdentifier, for example:<br>
-        <pre>{
-            "userIdentifier": "pms-user-id-123",
-            "userRole": "PROV",
-            "secondaryIdentifier": {
-                "use": "official",
-                "system": "https://standards.digital.health.nz/ns/medical-council-id",
-                "value": "RA99Z"
-            },
-            "purposeOfUse": ["POPHLTH"],
-            "userFullName": "Beverly Crusher"
-            }
+        <pre>
+        {
+          "userIdentifier":"pms-user-id-123",
+          "userRole":"PROV",
+          "secondaryIdentifier":{
+              "use":"official",
+              "system":"https://standards.digital.health.nz/ns/medical-council-id",
+              "value":"RA99Z"
+          },
+          "purposeOfUse":[
+              "POPHLTH"
+          ],
+          "userFullName":"Beverly Crusher"
+        }
         </pre>
       </td>
       <td>Mandatory</td>
@@ -394,8 +397,10 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/{ID}
             And the data is displayed to the user in the format specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
         </td>
         <td>
-            The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for the following NHI<br>
-            NHI = ZDH3769
+            <p>The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for the following NHI numbers<br>
+            <strong>ZDH3769</strong> - typical immunisation details, including Product Name<br>
+            <strong>ZJM9567</strong> - has dose 98 representing null dose number<br>
+            <strong>ZDH3513</strong> - has dose 99 representing early-life Dose 0</p>
         </td>
         <td>
             The subscriber's Application sends a screenshot showing the values for the key elements stated in the test for the specific NHI and specific ImmSOT identified in the test Data input<br><br>

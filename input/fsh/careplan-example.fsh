@@ -58,7 +58,7 @@ Usage: #inline
 * recommendation.dateCriterion.code = $SCT#789539003 "Date immunization due"
 * recommendation.dateCriterion.value = "2024-01-27"
 * recommendation.series = "Delay 3-6M_P_PCV13_1.0"
-* recommendation.doseNumberPositiveInt = 1
+* recommendation.doseNumberString = "1"
 
 Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose2
 InstanceOf: ImmunizationRecommendation
@@ -87,7 +87,7 @@ Usage: #inline
 * recommendation[=].dateCriterion.code = $SCT#789539003 "Date immunization due"
 * recommendation[=].dateCriterion.value = "2024-03-23"
 * recommendation[=].series = "Delay 3-6M_P_PCV13_1.0"
-* recommendation[=].doseNumberPositiveInt = 2
+* recommendation[=].doseNumberString = "2"
 * recommendation[+].id = "bf16e22b-a03a-4b3f-8d29-7d0c9b747f9f"
 * recommendation[=].extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event"
 * recommendation[=].extension[=].extension.url = "type"
@@ -107,7 +107,7 @@ Usage: #inline
 * recommendation[=].dateCriterion.code = $SCT#789539003 "Date immunization due"
 * recommendation[=].dateCriterion.value = "2024-03-25"
 * recommendation[=].series = "Delay 3-6M_P_PCV13_1.0"
-* recommendation[=].doseNumberPositiveInt = 2
+* recommendation[=].doseNumberString = "2"
 
 Instance: 63e060f0-a878-4a8c-a432-6712d15b1266
 InstanceOf: Immunization
@@ -223,4 +223,4 @@ Usage: #inline
 * performer.actor.identifier.value = "477616"
 * reasonCode = $AIRTerms#5 "Primary course"
 * protocolApplied.targetDisease = $SCT#16814004 "Pneumococcal"
-* protocolApplied.doseNumberPositiveInt = 1
+* protocolApplied.doseNumberString = "1"

@@ -69,7 +69,7 @@ class Recommendation #LightGreen {
     id : string
     vaccineCode : CodeableConcept
     forecastStatus : CodeableConcept
-    doseNumber : positiveInt
+    doseNumber : string
     extension : List<Extension>
     other_fields : Rest of Recommendation resource elements
 }

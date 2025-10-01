@@ -105,7 +105,7 @@ Usage: #example
 * entry[=].resource[=].performer.function = $AIRTerms#VC
 * entry[=].resource[=].performer.actor = Reference(https://api.hip-uat.digital.health.nz/fhir/hpi/v1/Practitioner/90ZZLP)
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
-* entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
+* entry[=].resource[=].protocolApplied.doseNumberString = "1"
 
 
 * entry[+].resource.resourceType = "Practitioner" 

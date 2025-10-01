@@ -18,7 +18,7 @@ Usage: #example
 * recommendation[0].forecastStatus = $forecastStatus#due
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
-* recommendation[0].doseNumberPositiveInt = 1
+* recommendation[0].doseNumberString = "1"
 * recommendation[0].dateCriterion.code = #DUE
 * recommendation[0].dateCriterion.value = "2021-01-14"      //age 6 weeks
 
@@ -49,7 +49,7 @@ Usage: #example
 * recommendation[1].forecastStatus = $forecastStatus#due
 * recommendation[1].vaccineCode =  $NZMT#31116301000116107 "PCV10" // MPUU (generic) for Synflorix
 * recommendation[1].series = "pcv10"
-* recommendation[1].doseNumberPositiveInt = 1
+* recommendation[1].doseNumberString = "1"
 * recommendation[1].dateCriterion.value = "2021-01-14"      //age 6 weeks
 
 //the 'disease covered' extensions for the Synflorix vaccine

@@ -46,7 +46,7 @@ Post a full set of immunisation record details. See below. The FHIR specificatio
     },
     "protocolApplied": [
         {
-            "doseNumberPositiveInt": 1
+            "doseNumberString": "1"
         }
     ],
     "lotNumber": "555123",
@@ -630,7 +630,7 @@ Returns the created Immunization record. If there were any issues with the creat
     ],
     "protocolApplied": [
         {
-            "doseNumberPositiveInt": 1,
+            "doseNumberString": "1",
             "targetDisease": [
                 {
                     "coding": [

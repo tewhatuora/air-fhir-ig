@@ -400,7 +400,7 @@ Content-Type: application/fhir+json
                                 ]
                             }
                         ],
-                        "doseNumberPositiveInt": 1
+                        "doseNumberString": "1"
                     }
                 ]
             }
@@ -730,7 +730,7 @@ Content-Type: application/fhir+json
                                 ]
                             }
                         ],
-                        "doseNumberPositiveInt": 1
+                        "doseNumberString": "1"
                     }
                 ]
             }
@@ -915,7 +915,7 @@ Content-Type: application/fhir+json
                                 ]
                             }
                         ],
-                        "doseNumberPositiveInt": 98
+                        "doseNumberString": null
                     }
                 ]
             }

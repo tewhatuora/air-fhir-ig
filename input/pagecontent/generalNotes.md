@@ -54,13 +54,11 @@ If hours and minutes are provided in datetime values, the FHIR dateTime type req
 **dateTime values with a time component are output in UTC with +00:00 offset.** Applications are responsible for localising dateTime values when displaying dates and times to users or grouping at Day level.
 
 ### Dose 0 and null dose number
-In this implementation `doseNumberPostitiveInt` is used in `protocolApplied` and `recommendation` elements.
+In this implementation `doseNumberString` is used in `protocolApplied` and `recommendation` elements.
 
 External applications commonly record zero (0) to represent an ‘early’ dose where clinically recommended. Nulls appear in data migrated to AIR from systems that did not record dose number.
 
 To support null and ‘Dose 0’ use cases, values 98 and 99 are substituted respectively. Applications must interpret these values accordingly.
-
-A future release will implement [doseNumberString](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.protocolApplied.doseNumber_x_), anticipating [doseNumber](https://hl7.org/fhir/immunization-definitions.html#Immunization.protocolApplied.doseNumber) in later versions of FHIR.
 
 ### Health Worker Identifiers
 The AIR requires health workers administering immunisations to be authorised. Records must be kept for traceability and legal reasons. Therefore, function (role) and identifier are important.

@@ -258,7 +258,7 @@ Post a full set of immunisation record details. See Below for a sample. The AIR 
     ],
     "protocolApplied": [
         {
-            "doseNumberPositiveInt": 1
+            "doseNumberString": "1"
         }
     ]
 }

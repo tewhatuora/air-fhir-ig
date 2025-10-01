@@ -131,8 +131,8 @@ Description: "This is the AIR Immunization Profile, to be used for immunisation 
 
 // only one protocolApplied per immunisation
 * protocolApplied 0..1
-// dose number can only be represented by a number
-* protocolApplied.doseNumber[x] only positiveInt
+// dose number can only be represented by a string
+* protocolApplied.doseNumber[x] only string
 
 // relatedPerson extension to account for Next of Kin aka Caregiver info
 * extension contains air-related-person-extension named relatedPersonExtension 0..*

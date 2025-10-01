@@ -86,7 +86,7 @@ Usage: #example
 * entry[=].resource[=].performer.actor.identifier.value = "90ZZLP"
 
 * entry[=].resource[=].reasonCode = $AIRTerms#15M "15 months"
-* entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 2
+* entry[=].resource[=].protocolApplied.doseNumberString = "2"
 * entry[=].resource[=].protocolApplied.targetDisease = $SCT#14189004
 
 // relatedPerson extension
@@ -163,7 +163,7 @@ Usage: #example
 * entry[=].resource[=].performer.actor.identifier.value = "90ZZLP"
 
 * entry[=].resource[=].reasonCode = $AIRTerms#12M "12 months"
-* entry[=].resource[=].protocolApplied.doseNumberPositiveInt = 1
+* entry[=].resource[=].protocolApplied.doseNumberString = "1"
 * entry[=].resource[=].protocolApplied.targetDisease = $SCT#14189004
 
 //----------------------------------------------------

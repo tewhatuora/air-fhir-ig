@@ -358,7 +358,7 @@ N/A
                     ]
                 }
             ],
-            "doseNumberPositiveInt": 1
+            "doseNumberString": "1"
         }
     ]
 }

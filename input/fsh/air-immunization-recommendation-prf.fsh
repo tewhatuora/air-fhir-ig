@@ -40,7 +40,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 // additional values will be needed here post-MVP
 * recommendation.dateCriterion.code from air-planned-event-date-type-code (preferred)
 
-* recommendation.doseNumber[x] only positiveInt
+* recommendation.doseNumber[x] only string
 
 * recommendation.seriesDoses[x] 0..0
 

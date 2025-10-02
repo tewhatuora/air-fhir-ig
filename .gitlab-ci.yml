@@ -22,7 +22,7 @@ variables:
 ig-build-prepare:
   stage: build-prepare
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   script:
     - ./ci-scripts/pre-build.sh
   artifacts:
@@ -60,7 +60,7 @@ mvn-deploy-package:
   image: maven:3-amazoncorretto-17
   stage: deploy
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   cache:
     paths:
       - .m2/repository
@@ -71,7 +71,7 @@ mvn-deploy-package:
 pages:
   stage: deploy
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
   script:
     - mv output public
   artifacts:

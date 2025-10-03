@@ -71,11 +71,13 @@ The vaccinating workforce is diverse and many health workers do not have a CPN o
 
 AIR accepts a broad range of Practitioner identifiers, including some specific to AIR. AIR also provides for the use case where the only available identifier is local to the site or organisation:
 
-* If a Vaccinating Health Worker (VHW) administers an immunisation, the function SHOULD be VHW. Vaccinating Health Worker (VHW) identifiers are assigned in the AIR Portal.
-* If a registered nurse or doctor administers an immunisation, the function SHOULD be VC.
-* For each immunisation event, at least one health worker SHOULD have function AP or a child thereof.
+* The [AIR Performer Health Worker Function](ValueSet-air-performer-health-worker-function-code.html) value set includes a hierarchy of [air-terms-codes](CodeSystem-air-terms-code.html), with AP and OP equivalent to base [ImmunizationFunctionCodes](https://hl7.org/fhir/R4/valueset-immunization-function.html).
+* Each immunisation event SHOULD have at least one health worker with function AP or a child thereof.
+  * If a Vaccinating Health Worker (VHW registration type) administers an immunisation, the function SHOULD be VHW. Vaccinating Health Worker identifiers are assigned in the AIR Portal.
+  * If a registered nurse or doctor administers an immunisation, the function SHOULD be VC.
+* An Ordering Provider (function OP) is optional.
 * If a health worker authorised to administer immunisations has no registration or CPN, their identifier MUST be unique within the source system and SHOULD have system 'https://HCA'. The identifier must be traceable to an individual health worker.
-* Request-Context header and CreatedBy and ModifiedBy meta fields capture usernames of those who interact with the record.
+* Request-Context header and CreatedBy and ModifiedBy meta fields capture usernames of those who interact with the record, such as someone recording on behalf of the responsible provider.
 * Request-Context header field secondaryIdentifier MUST be the end user’s CPN where available. Otherwise, any secondary identifier that is held for the user. This value is mandatory and must be correct and accurate, due to legal requirements. If the person triggering the request is not registered with any New Zealand health body on the list provided at [standards.digital.health.nz](https://standards.digital.health.nz ), the value must remain empty (empty string).
 
 ### Immunization status and statusReason
@@ -183,7 +185,7 @@ Immunisation events containing issues cause DQ cases to be raised for follow-up 
 Each deviation is ranked and a score is calculated. Authorised applications receive DQ details in the [air-data-quality-assessment](StructureDefinition-air-data-quality-assessment.html) extension in responses to Create & Update interactions and the Immunization/_search operation.
 
 #### Exact Duplicates: status "entered-in-error" in response
-The status of the Immunization resource returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
+The status of the Immunization resource is returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
 
 ### HTTP Header Details
 #### Request Headers

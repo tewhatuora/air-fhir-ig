@@ -20,10 +20,10 @@ for key in $(yq eval '.. | select(tag != "!!map" and tag != "!!seq") | path | jo
     echo "-${aFileName}-"
 
     if [ ! -f "zipfiles/$aFileName.zip" ]; then
-        echo "Downloading artifact '${API_BASE_URL}${artifact_name}/docs.zip' to zipfiles/${aFileName}.zip"
+        echo "Downloading artifact '${API_BASE_URL}${artifact_name}/web-pages.zip' to zipfiles/${aFileName}.zip"
 
         curl --header "JOB-TOKEN: $CI_JOB_TOKEN" \
-                "${API_BASE_URL}${artifact_name}/docs.zip" \
+                "${API_BASE_URL}${artifact_name}/web-pages.zip" \
                 -o "zipfiles/$aFileName.zip"
 
     else

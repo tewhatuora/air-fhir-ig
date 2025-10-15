@@ -3,7 +3,7 @@ API_BASE_URL="$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/"
 TOC_FILE="public/index.html"
 MANIFEST=ci-scripts/website-manifest.yaml
 
-# download the wesite-doc files from the gitlab repo, based on the layout in $MANIFEST
+# download the website-doc files from the gitlab repo, based on the layout in $MANIFEST
 # also generate a very basic index.html file
 # unzip into public
 # in gitlab CI the public folder becomes the website

@@ -60,7 +60,9 @@ ig-release:
 
 build-web-pages-archive:
   image: alpine:latest
-  stage: build-pages 
+  stage: build-pages
+  rules:
+  - if: $RELEASE == "true"
   before_script:
     - apk add zip curl yq
   script:

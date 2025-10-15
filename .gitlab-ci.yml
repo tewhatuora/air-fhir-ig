@@ -19,7 +19,7 @@ variables:
   RELEASE_MAJOR:
     value: "false"
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
-  PACKAGE: "v2"
+  API_VERSION: "v1"
 
 ig-build-prepare:
   stage: build-prepare
@@ -67,7 +67,7 @@ build-web-pages-archive:
     - apk add zip curl yq
   script:
     - (cd output; zip -r "../web-pages.zip" .)
-    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${PACKAGE}/${MVN_IG_VERSION}/web-pages.zip"
+    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
     - echo "Uploading ${PUBLISH_URL}"
     - >
       curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"

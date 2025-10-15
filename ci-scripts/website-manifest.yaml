@@ -1,0 +1,6 @@
+public:
+  api_v1: v1/1.21.0
+  api_v2: v2/2.0.0
+  test:
+    api_v1: v1/1.21.0
+    api_v2: v2/2.0.0

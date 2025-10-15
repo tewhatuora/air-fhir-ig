@@ -20,6 +20,7 @@ variables:
     value: "false"
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
   API_VERSION: "v2"
+  PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig"
 
 ig-build-prepare:
   stage: build-prepare
@@ -89,16 +90,21 @@ mvn-deploy-package:
     # Very annoying but maven complains there is a missing pom if we turn this into a multi line command...
     - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
 
-# commenting out this section due to limitation of current infra to host multiple version of the docuemntation
-# pages:
-#   stage: deploy
-#   rules:
-#     - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
-#   script:
-#     - mv output public
-#   artifacts:
-#     paths:
-#       - public
+deploy-web-pages:
+  image: alpine:latest
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+  before_script:
+    - apk add curl unzip yq git
+  script:
+# Always use the scripts from main
+    - rm -rf publish_scripts_tmp
+    - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
+    - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
+  artifacts:
+    paths:
+      - public
 
 ig-post-release:
   stage: post-release

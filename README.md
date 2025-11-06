@@ -49,3 +49,9 @@ In order to install Ruby, I would suggest that you use the Ruby Version Manager(
 1. run `_updatePublisher.sh` to get the latest publisher jar 
 2. run `build-ig.sh` to generate the IG(artifacts should appear under `output` folder)
 
+### Docker Visual Studio Code
+A Visual studio code you can use the DockerFile and .devcontainer are setup to 'Reopen in container'
+
+You will need the 'Dev Containers' extension install in VSC
+
+

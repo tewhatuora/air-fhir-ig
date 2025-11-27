@@ -137,3 +137,9 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 
 // Added 21 May 2025 per IMM-5782
 * $NZMT#45442391000116106 "Palivizumab"
+
+// Added 27 Nov 2025 per IMM-6433
+* $NZMT#48709091000116105 "Comirnaty LP.8.1 (3mcg) MDV"
+* $NZMT#48709061000116101 "Comirnaty LP.8.1 (10mcg) SDV"
+* $NZMT#48709151000116103 "Comirnaty LP.8.1 (30mcg) PFS"
+

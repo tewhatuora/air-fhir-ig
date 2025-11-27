@@ -1,0 +1,21 @@
+{
+  "name": "air-api-fhir-ig-dev",
+  "initializeCommand": "docker build --network host --tag air-api-fhir-ig-dev .",
+  "image": "air-api-fhir-ig-dev",
+  "build": {
+    "dockerfile": "../Dockerfile",   // path to your Dockerfile
+    "context": "..",                  // build context (usually project root)
+    "args": {
+      "network": "host"
+    }
+
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "remoteUser": "vscode",              // or whatever user you define in Dockerfile
+  "runArgs": [
+    "--network=host"
+  ]
+}
+ 

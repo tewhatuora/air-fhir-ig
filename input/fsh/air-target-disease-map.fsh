@@ -1,16 +1,20 @@
-Instance: target-disease-map
+Instance: air-target-disease-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map -- Target Disease (SNOMED) < -- > Vaccine (CVX)"
+Title: "Concept Map -- AIR Target Disease (SNOMED) < -- > Vaccine (CVX)"
 Description: "This map connects vaccine-preventable diseases (identified by SNOMED codes) to the vaccines that target them (identified by CVX codes). This mapping facilitates searching ImmSOT using the targetDisease search parameter."
+
+* name = "AIRTargetDisease-Vaccine-Map"
+
+* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-target-disease-map"
 
 * status = #draft
 
 * experimental = false
 
 // the source and target value sets
-* sourceCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-disease-covered-code"
-* targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code"
+* sourceCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-disease-covered-code"
+* targetCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-code"
 
 * group[0].source = $SCT
 * group[=].target = $CVX
@@ -206,7 +210,7 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(16814004, 090306, relatedto)
 * insert ConceptMapEntry(397428000, 210307, relatedto)
 * insert ConceptMapEntry(76902006, 210307, relatedto)
-* insert ConceptMapEntry(27836007, 210307, relatedto)
+* insert ConceptMapEntry(278air-gender-code-map36007, 210307, relatedto)
 * insert ConceptMapEntry(91428005, 210307, relatedto)
 * insert ConceptMapEntry(398102009, 210307, relatedto)
 * insert ConceptMapEntry(66071002, 210307, relatedto)
@@ -216,7 +220,7 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(397428000, 99001, relatedto)
 * insert ConceptMapEntry(76902006, 99001, relatedto)
 * insert ConceptMapEntry(27836007, 99001, relatedto)
-* insert ConceptMapEntry(398102009, 99001, relatedto)
+* insert ConceptMapEntry(398air-gender-code-map102009, 99001, relatedto)
 * insert ConceptMapEntry(23511006, 99002, relatedto)
 * insert ConceptMapEntry(397428000, 99003, relatedto)
 * insert ConceptMapEntry(27836007, 99004, relatedto)

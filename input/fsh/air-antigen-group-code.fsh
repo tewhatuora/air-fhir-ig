@@ -1,9 +1,12 @@
 ValueSet: AIRAntigenGroupCode
 Id: air-antigen-group-code
-Title: "AIR Antigen Group Code Value Set"
+Title: "AIR Antigen Group Code"
 Description: "SNOMED CT Codes used in AIR to identify an Antigen Group. These codes are drawn from the SNOMED medicinal product hierarchy. The AIR Antigen Group is used in the ImmunizationRecommendation resource that is produced when a user requests a patient's list of Planned Events."
 
 * ^experimental = false
+
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-antigen-group-code"
+
 * insert StandardMetadata
 
 * $SCT#871831003 "MMR"

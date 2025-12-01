@@ -1,6 +1,6 @@
 ValueSet: AIRSiteCode
 Id: air-site-code
-Title: "AIR Body Site Value Set"
+Title: "AIR Body Site"
 Description: "Body sites value set for AIR immunisations"
 
 * ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-site-code"

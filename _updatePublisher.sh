@@ -137,8 +137,8 @@ if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
   chmod +x _genonce.sh
   rm  /tmp/_genonce.new
 
-  #curl -L $update_sh_url -o /tmp/_updatePublisher.new
-  #cp /tmp/_updatePublisher.new _updatePublisher.sh
-  #chmod +x _updatePublisher.sh
-  #rm /tmp/_updatePublisher.new
+  # curl -L $update_sh_url -o /tmp/_updatePublisher.new
+  # cp /tmp/_updatePublisher.new _updatePublisher.sh
+  # chmod +x _updatePublisher.sh
+  # rm /tmp/_updatePublisher.new
 fi

@@ -4,6 +4,8 @@ Title: "AIR Diseases Covered"
 Description: "Diseases that are covered by the immunization programmes and schedules that are managed or referred to in the AIR system."
 * ^experimental = false
 
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-disease-covered-code"
+
 * insert StandardMetadata
 
 // Consumer-facing, short, friendly, display names have not been approved

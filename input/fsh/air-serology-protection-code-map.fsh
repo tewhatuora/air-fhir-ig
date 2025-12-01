@@ -1,8 +1,12 @@
-Instance: serology-protection-code-map
+Instance: air-serology-protection-code-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map --  HL7v2 Serology Obs Value < -- > AIR Serology Protection Codes"
+Title: "Concept Map --  HL7v2 Serology Obs Value < -- > AIR Serology Protection Code"
 Description: "This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards."
+
+* name = "HL7SerologyObsValue-AIRSerologyProtectionCode-Map"
+
+* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-serology-protection-code-map"
 
 * status = #draft
 

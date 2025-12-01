@@ -1,9 +1,12 @@
 ValueSet: AIRVaccineProductCode
 Id: air-vaccine-product-code
-Title: "AIR Vaccine Product Value Set"
+Title: "AIR Vaccine Product"
 Description: "Allowable values for CVX and NZVX codes used to populate the vaccineCode element in an AIR Immunization resource."
 
 * ^experimental = false
+
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-code"
+
 * insert StandardMetadata
 
 * $CVX#03 "MMR"

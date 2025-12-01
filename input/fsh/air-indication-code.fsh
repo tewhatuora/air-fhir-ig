@@ -1,9 +1,11 @@
 ValueSet: AIRIndicationCode
 Id: air-indication-code
-Title: "AIR Indication Codes"
+Title: "AIR Indication Code"
 Description: "Coded values to describe the reason an immunisation was given. Initially drawn from legacy NIR codes and CIR SNOMED codes."
 
 * ^experimental = false
+
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-indication-code"
 
 * insert StandardMetadata
 

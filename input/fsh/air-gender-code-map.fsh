@@ -1,8 +1,12 @@
-Instance: gender-code-map
+Instance: air-gender-code-map
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "Concept Map -- Gender Code HL7v2 PID < -- > Administrative Gender used in FHIR R4"
 Description: "This maps the gender codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0001) to the codes returned by the NHI Service."
+
+* name = "HL7PID-AIRAdministrativeGenderCode-Map"
+
+* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map"
 
 * status = #draft
 

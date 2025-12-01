@@ -1,6 +1,6 @@
 CodeSystem: AIRForecastStatus
 Id: air-forecast-status
-Title: "AIR Forecast Status Code System"
+Title: "AIR Forecast Status"
 Description: "This code system includes the codes used in AIR to communicate a planned event status that are not already included in http://terminology.hl7.org/CodeSystem/immunization-recommendation-status."
 
 * insert StandardMetadata

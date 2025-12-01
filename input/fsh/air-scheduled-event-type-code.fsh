@@ -1,6 +1,6 @@
 ValueSet: AIRScheduledEventTypeCode
 Id: air-scheduled-event-type-code
-Title: "AIR Scheduled Event Type Value Set"
+Title: "AIR Scheduled Event Type Code"
 Description: "This value set lists the codes to be used to describe scheduled event type in AIR."
 
 * ^experimental = false

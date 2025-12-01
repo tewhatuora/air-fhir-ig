@@ -4,6 +4,10 @@ Usage: #definition
 Title: "Concept Map -- Vaccination Site HL7v2 < -- > SNOMED"
 Description: "This maps the vaccination site codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ."
 
+* name = "HL7VaccinationSite-AIRSiteCode-Map"
+
+* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-site-map"
+
 * status = #draft
 
 * experimental = false

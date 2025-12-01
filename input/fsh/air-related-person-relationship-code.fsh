@@ -1,11 +1,11 @@
-ValueSet: AIRRelatedPersonRelationship
-Id: air-related-person-relationship
-Title: "AIR Related Person Relationship Codes"
+ValueSet: AIRRelatedPersonRelationshipCode
+Id: air-related-person-relationship-code
+Title: "AIR Related Person Relationship Code"
 Description: "This value set is used to encode the relationship of a related person to the vaccine consumer. It is a subset of the FHIR Patient Relationship Type value set and includes some customised codes and displays for NZ usage."
 
 * ^experimental = false
 
-* ^url = "https://standards.digital.health.nz/ns/air-related-person-terms"
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-related-person-relationship-code"
 
 * insert StandardMetadata
 

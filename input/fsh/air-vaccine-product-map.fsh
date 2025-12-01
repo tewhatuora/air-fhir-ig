@@ -1,16 +1,20 @@
-Instance: vaccine-product-map
+Instance: air-vaccine-product-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map -- Vaccine Product TPUU (NZMT) < -- > Vaccine (CVX)"
+Title: "Concept Map -- AIR Vaccine Product TPUU (NZMT) < -- > Vaccine (CVX)"
 Description: "This map connects vaccine products as identified by the Therapeutic Product Unit of Use (TPUU) code in the New Zealand Medicines Terminology (NZMT) to the vaccines as identified by CVX codes. This mapping facilitates translating TPUU codes stored in ImmSOT to a CVX code that can be received by legacy PMS systems."
+
+* name = "AIRAdministeredProduct-Vaccine-Map"
+
+* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-map"
 
 * status = #draft
 
 * experimental = false
 
 // the source and target value sets
-* sourceCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code"
-* targetCanonical = "https://standards.digital.health.nz/fhir/air/ValueSet/air-vaccine-product-code"
+* sourceCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code"
+* targetCanonical = "https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-code"
 
 // note CVX codes at the top and then NZVX codes at the bottom
 

@@ -1,9 +1,11 @@
 ValueSet: AIRPlannedEventDateTypeCode
 Id: air-planned-event-date-type-code
-Title: "AIR Planned Event Date Type Codes"
+Title: "AIR Planned Event Date Type Code"
 Description: "Coded values to describe the dates associated with a Planned Event, such as the Due Date, the Earliest Date to Give, and so on. Also codes pretaining to the Planned Event record in AIR, such as the date it was created and the date the Planned Event moved in Final status."
 
 * ^experimental = false
+
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-planned-event-date-type-code"
 
 * insert StandardMetadata
 

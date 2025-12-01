@@ -1,9 +1,12 @@
 ValueSet: AIRAdministeredProductCode
 Id: air-administered-product-code
-Title: "AIR Administered Product Code Value Set"
+Title: "AIR Administered Product Code"
 Description: "NZMT TPUU codes for use in populating the administeredProduct element in an AIR Immunization resource."
 
 * ^experimental = false
+
+* ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code"
+
 * insert StandardMetadata
 
 // NZMT TPUU codes

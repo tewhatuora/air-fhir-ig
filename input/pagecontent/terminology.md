@@ -82,6 +82,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <p>Hl7v2 Result Code</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/hl7v2-result">https://standards.digital.health.nz/ns/hl7v2-result</a></td>
 </tr>
+<tr>
+<td><a href="CodeSystem-immunisation-code.html">NZVX Immunisation Code-undefined</a> </td>
+<td> <p>Antigen code set for vaccines administered in New Zealand (NZVX).</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/immunisation-code">https://standards.digital.health.nz/ns/immunisation-code</a></td>
+</tr>
 </table>
 <h3>ValueSets</h3>
 <table class='table table-bordered table-condensed'>
@@ -141,7 +146,7 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code-legacy">https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code-legacy</a></td>
 </tr>
 <tr>
-<td><a href="ValueSet-air-route-code.html">AIR Route of Administration Value Set-undefined</a> </td>
+<td><a href="ValueSet-air-route-code.html">AIR Route of Administration-undefined</a> </td>
 <td> <p>Route of administration value set for AIR immunisations</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code</a></td>
 </tr>

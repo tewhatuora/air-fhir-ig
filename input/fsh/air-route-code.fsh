@@ -1,6 +1,6 @@
 ValueSet: AIRRouteCode
 Id: air-route-code
-Title: "AIR Route of Administration Value Set"
+Title: "AIR Route of Administration"
 Description: "Route of administration value set for AIR immunisations"
 
 * ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-route-code"

@@ -131,30 +131,5 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 * $CVX#04 "M/R"
 * $CVX#94 "MMRV"
 
-// Added for IMM-3229
-* $NZVX#52101 "HepA-Typhoid"
-
-// note that NIR spec doc has this as 90306, but there are 800,000+ records with 090306 and only 32 with 90306
-// so I've changed the code to 090306
-* $NZVX#090306 "PCV unspecified"
-
-* $NZVX#90906 "Td"
-* $NZVX#99001 "DTaP-IPV"
-* $NZVX#99002 "MeNZB"
-* $NZVX#99003 "Diphtheria, paed"
-* $NZVX#99004 "aP"
-* $NZVX#99005 "Diphtheria, adult"
-* $NZVX#99006 "Influenza"
-* $NZVX#99007 "HepA"
-* $NZVX#99008 "MenACWY"
-* $NZVX#99009 "Rabies"
-* $NZVX#99010 "RIG"
-* $NZVX#99011 "Tdap-IPV"
-* $NZVX#99012 "Tdap"
-* $NZVX#99013 "MenC"
-* $NZVX#210307 "DTaP-IPV-HepB/Hib"
-* $NZVX#260209 "PCV10"
-
-// * $NZVX#EVP "EVP"
-
-* $NZVX#EVPMnC "MenC"
+// IMM-6378 NZXV codes moved to their own CodeSystem
+* include codes from system immunisation-code

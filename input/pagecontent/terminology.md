@@ -189,38 +189,38 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <h3>Concept Maps</h3>
 <table class='table table-bordered table-condensed'>
 <tr>
-<td><a href="ConceptMap-air-gender-code-map.html">Concept Map -- Gender Code HL7v2 PID < -- > Administrative Gender used in FHIR R4-undefined</a> </td>
+<td><a href="ConceptMap-air-gender-code-map.html">Gender Code HL7v2 PID < -- > Administrative Gender used in FHIR R4-undefined</a> </td>
 <td> <p>This maps the gender codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0001) to the codes returned by the NHI Service.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-gender-code-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-gender-code-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-health-worker-function-code-map.html">Concept Map -- HL7v2 Immunization Function Codes < -- > AIR Health Worker Function Codes-undefined</a> </td>
+<td><a href="ConceptMap-air-health-worker-function-code-map.html">HL7v2 Immunization Function Codes < -- > AIR Health Worker Function Codes-undefined</a> </td>
 <td> <p>This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-code-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-code-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-code-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-route-map.html">Concept Map -- Route of Administration HL7v2 < -- >AIR SNOMED-undefined</a> </td>
+<td><a href="ConceptMap-air-route-map.html">AIR Route of Administration HL7v2 < -- > SNOMED-undefined</a> </td>
 <td> <p>This maps the AIR Route of Administration from HL7v2 messaging to SNOMED CT NZ.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-route-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-route-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-route-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-route-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-serology-protection-code-map.html">Concept Map --  HL7v2 Serology Obs Value < -- > AIR Serology Protection Code-undefined</a> </td>
+<td><a href="ConceptMap-air-serology-protection-code-map.html">HL7v2 Serology Obs Value < -- > AIR Serology Protection Code-undefined</a> </td>
 <td> <p>This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-serology-protection-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-serology-protection-code-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-serology-protection-code-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-serology-protection-code-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-site-map.html">Concept Map -- Vaccination Site HL7v2 < -- > SNOMED-undefined</a> </td>
+<td><a href="ConceptMap-air-site-map.html">AIR Vaccination Site HL7v2 < -- > SNOMED-undefined</a> </td>
 <td> <p>This maps the vaccination site codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0162) to SNOMED CT NZ.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-site-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-site-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-site-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-site-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-target-disease-map.html">Concept Map -- AIR Target Disease (SNOMED) < -- > Vaccine (CVX)-undefined</a> </td>
+<td><a href="ConceptMap-air-target-disease-map.html">AIR Target Disease (SNOMED) < -- > AIR Vaccine (CVX)-undefined</a> </td>
 <td> <p>This map connects vaccine-preventable diseases (identified by SNOMED codes) to the vaccines that target them (identified by CVX codes). This mapping facilitates searching ImmSOT using the targetDisease search parameter.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-target-disease-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-target-disease-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-target-disease-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-target-disease-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-vaccine-product-map.html">Concept Map -- AIR Vaccine Product TPUU (NZMT) < -- > Vaccine (CVX)-undefined</a> </td>
+<td><a href="ConceptMap-air-vaccine-product-map.html">AIR Vaccine Product TPUU (NZMT) < -- > AIR Vaccine (CVX)-undefined</a> </td>
 <td> <p>This map connects vaccine products as identified by the Therapeutic Product Unit of Use (TPUU) code in the New Zealand Medicines Terminology (NZMT) to the vaccines as identified by CVX codes. This mapping facilitates translating TPUU codes stored in ImmSOT to a CVX code that can be received by legacy PMS systems.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-map</a></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-vaccine-product-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-vaccine-product-map</a></td>
 </tr>
 </table>

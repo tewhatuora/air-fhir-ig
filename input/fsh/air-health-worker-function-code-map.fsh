@@ -1,12 +1,12 @@
 Instance: air-health-worker-function-code-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map -- HL7v2 Immunization Function Codes < -- > AIR Health Worker Function Codes"
+Title: "HL7v2 Immunization Function Codes < -- > AIR Health Worker Function Codes"
 Description: "This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards."
 
 * name = "HL7ImmFuncCode-AIRPerformerHealthWorkerFunctionCode-Map"
 
-* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-code-map"
+* url = "https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-code-map"
 
 * status = #draft
 

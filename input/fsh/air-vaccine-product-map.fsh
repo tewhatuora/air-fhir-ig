@@ -1,12 +1,12 @@
 Instance: air-vaccine-product-map
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "Concept Map -- AIR Vaccine Product TPUU (NZMT) < -- > Vaccine (CVX)"
+Title: "AIR Vaccine Product TPUU (NZMT) < -- > AIR Vaccine (CVX)"
 Description: "This map connects vaccine products as identified by the Therapeutic Product Unit of Use (TPUU) code in the New Zealand Medicines Terminology (NZMT) to the vaccines as identified by CVX codes. This mapping facilitates translating TPUU codes stored in ImmSOT to a CVX code that can be received by legacy PMS systems."
 
-* name = "AIRAdministeredProduct-Vaccine-Map"
+* name = "AIRAdministeredProduct-AIRVaccine-Map"
 
-* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-vaccine-product-map"
+* url = "https://nzhts.digital.health.nz/fhir/ConceptMap/air-vaccine-product-map"
 
 * status = #draft
 
@@ -88,6 +88,19 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 // Added 30 May per IMM-4767
 * insert ConceptMapEntry(31115901000116100, 48, relatedto)
 
+// Added 21 May 2025 per IMM-5782
+* insert ConceptMapEntry(45442391000116106, 93, relatedto)
+
+// Added 27 Nov 2025 per IMM-6433
+* insert ConceptMapEntry(48709091000116105, 219, relatedto)
+* insert ConceptMapEntry(48709061000116101, 218, relatedto)
+* insert ConceptMapEntry(48709151000116103, 217, relatedto)
+
+// Added 19 Nov 2024 per IMM-5353
+* insert ConceptMapEntry(48407111000116100, 217, relatedto)
+* insert ConceptMapEntry(48407721000116108, 218, relatedto)
+* insert ConceptMapEntry(48408951000116102, 219, relatedto)
+
 * group[+].source = $NZMT
 * group[=].target = $NZVX
 
@@ -125,6 +138,12 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 // Added 15 March 24 per IMM-4502
 * insert ConceptMapEntry(48322461000116106, 99006, relatedto)
 
+// Added 21 Feb 2025 per IMM-5538
+* insert ConceptMapEntry(48606481000116100, 99006, relatedto)
+* insert ConceptMapEntry(48583461000116109, 99006, relatedto)
+* insert ConceptMapEntry(48606291000116104, 99006, relatedto)
+* insert ConceptMapEntry(48611851000116100, 99006, relatedto)
+* insert ConceptMapEntry(48606101000116102, 99006, relatedto)
 
 // the following five maps were removed per IMM-2881
 /*
@@ -135,22 +154,4 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10598271000116109, 119, relatedto)
 */
 
-// Added 19 Nov 2024 per IMM-5353
-* insert ConceptMapEntry(48407111000116100, 217, relatedto)
-* insert ConceptMapEntry(48407721000116108, 218, relatedto)
-* insert ConceptMapEntry(48408951000116102, 219, relatedto)
 
-// Added 21 Feb 2025 per IMM-5538
-* insert ConceptMapEntry(48606481000116100, 99006, relatedto)
-* insert ConceptMapEntry(48583461000116109, 99006, relatedto)
-* insert ConceptMapEntry(48606291000116104, 99006, relatedto)
-* insert ConceptMapEntry(48611851000116100, 99006, relatedto)
-* insert ConceptMapEntry(48606101000116102, 99006, relatedto)
-
-// Added 21 May 2025 per IMM-5782
-* insert ConceptMapEntry(45442391000116106, 93, relatedto)
-
-// Added 27 Nov 2025 per IMM-6433
-* insert ConceptMapEntry(48709091000116105, 219, relatedto)
-* insert ConceptMapEntry(48709061000116101, 218, relatedto)
-* insert ConceptMapEntry(48709151000116103, 217, relatedto)

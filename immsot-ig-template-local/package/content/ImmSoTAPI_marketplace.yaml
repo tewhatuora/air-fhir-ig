@@ -274,6 +274,49 @@ paths:
       security:
         - OAuth2Implicit:
             - system/Immunization.s
+  /fhir/R4/Immunization/$upsert:
+    post:
+      operationId: $upsert
+      description: |
+        Perform an upsert using a deterministic matching algorithm.
+        The algorithm attempts to resolve exactly one existing Immunisation Event.
+        If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
+
+        Immunisation Event in the request attempt to find a matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
+        1. If no match found, create a new event
+        2. If single match found, update the matched event
+        3. If multiple events found, create a new event (duplicate Data Quality violation will be raised).
+        4. Failure to process the event, reject the request
+      parameters:
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/request-context'
+      requestBody:
+        description: |
+          Perform an upsert using a deterministic matching algorithm.
+          The algorithm attempts to resolve exactly one existing Immunisation Event.
+          If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/AirImmunization'
+            examples:
+              upsertExample:
+                $ref: '#/components/examples/CreatePayload'
+      responses:
+        "200":
+          description: Ok
+          $ref: '#/components/responses/200'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - OAuth2Implicit:
+            - system/Immunization.c
+            - system/Immunization.u
 components:
   schemas:
     AcknowledgementBundle:

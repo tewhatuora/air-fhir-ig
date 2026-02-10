@@ -133,3 +133,6 @@ Description: "Allowable values for CVX and NZVX codes used to populate the vacci
 
 // IMM-6378 NZXV codes moved to their own CodeSystem
 * include codes from system immunisation-code
+
+// Added for IMM-6589
+* $CVX#324 "fIPV"

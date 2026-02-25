@@ -146,3 +146,8 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#48709061000116101 "Comirnaty LP.8.1 (10mcg) SDV"
 * $NZMT#48709151000116103 "Comirnaty LP.8.1 (30mcg) PFS"
 
+// Added 23 Feb 2026 per IMM-6615
+* $NZMT#48833691000116109 "Flucelvax 2026"
+* $NZMT#48843351000116107 "Influvac Tetra 2026"
+* $NZMT#48838141000116100 "Fluad 2026"
+* $NZMT#48864131000116105 "Fluzone 2026"

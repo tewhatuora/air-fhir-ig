@@ -89,6 +89,7 @@ menu:
     Read Immunisation Event: immunisationEventRead.html
     Update Immunisation Event: immunisationEventUpdate.html
     Search Immunisation Events: immunisationEventSearch.html
+    Upsert Immunisation Events: immunisationEventUpsert.html
   Important Information:
     Onboarding: onboarding.html
     General Notes: generalNotes.html

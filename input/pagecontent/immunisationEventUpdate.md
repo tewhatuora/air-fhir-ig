@@ -6,7 +6,7 @@ The update operation performs the following:
 1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 1. Check if the version of the existing event in the request header If-Match matches the version of the event being updated. If the versions do not match, it returns an error with a message indicating that the received version in the request payload does not match the existing version.
 1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, it returns an error message indicating that the user does not have the required scope to update the NHI. Note: in the event that an Immunisation Event is uploaded to ImmSOT with an incorrect NHI, it must have its Status changed to "Entered in Error", and then the correct Event should be uploaded.
-1. Check the event data with the common validation rules which are listed [here](rejectionRules.html) and [here](dataQualityRules.html)
+1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
 1. Create a new version of the event with the updated details and a new version number.
 1. Save the new version of the event to the database.
 1. Return the updated event and any validation issues identified in the meta sections.

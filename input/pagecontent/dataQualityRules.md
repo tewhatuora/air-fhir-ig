@@ -39,7 +39,7 @@ This page describes all of the validation rules, and quality indications, that w
     <th>Field (Database Field name)</th>
     <th>FHIR API Name</th>
     <th>Run Criteria</th>
-    <th>Error Code</th>
+    <th>Violation Code</th>
     <th>Weighting</th>
     <th>Quality Matrix Rule</th>
     <th>Validation Message</th>

@@ -3,8 +3,8 @@
 The "create" operation is used to create a new immunisation event. This method performs validation checks to ensure that the event is valid before it is created.  
 
 The create operation performs the following:
-1. Checks that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record
-1. Checks the event data with the common validation rules which are listed [here](rejectionRules.html) and [here](dataQualityRules.html)
+1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record
+1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
 1. Create the first version of the event with the details provided
 1. Saves the new version of the event to the database.
 1. Returns the event and any validation errors in an operationOutcome.

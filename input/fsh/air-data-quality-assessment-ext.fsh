@@ -37,7 +37,7 @@ Description: "This describes an instance of an immunisation record violating one
 Extension: DQViolation
 Id: dq-violation
 Title: "AIR Data Quality Violation Detail"
-Description: "This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule. Refer to [Data Quality Rules](dataQualityRules.html) and [AIR Data Quality Violation Code](https://standards.digital.health.nz/ns/air-data-quality-violation-code) value set for codes and messages that could be returned."
+Description: "This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule. Refer to [Data Quality Rules](dataQualityRules.html) and [AIR Data Quality Violation Code](https://nzhts.digital.health.nz/fhir/ValueSet/air-data-quality-violation-code) value set for codes and messages that could be returned."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-dq-violation"
 

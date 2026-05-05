@@ -111,8 +111,8 @@ menu:
     Artifacts (Xml): definitions.xml.zip
     OpenAPI Specification: ImmSoTAPI.yaml
   API Versions:
-    API Version 1: https://healthnz-prm.gitlab.io/air-api-fhirig/v1/index.html
-    API Version 2: https://healthnz-prm.gitlab.io/air-api-fhirig/v2/index.html
+    API Version 1: https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/v1/index.html
+    API Version 2: https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/v2/index.html
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │

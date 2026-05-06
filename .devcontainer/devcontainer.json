@@ -8,10 +8,15 @@
     "args": {
       "network": "host"
     }
-
   },
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash"
+      }
+    }
   },
   "remoteUser": "vscode",              // or whatever user you define in Dockerfile
   "runArgs": [

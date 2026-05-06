@@ -1,11 +1,32 @@
 ### Overview
 
-The "upsert" operation enables a PMS (Practice Management System) to either create or update an immunisation event in the AIR system when a patient’s immunisation record is updated locally.  
+The "upsert" operation is a conditional-create operation, which checks whether a single immunisation event with the same primary attributes exists, and if it does, it updates the event with the new details provided. If no corresponding event is found, or multiple are found, then a create operation is performed.
 
-The upsert operation performs the following:
+It is used by a PMS (Practice Management System) where the AIR Identifier (Immunization.id) for the record is not yet known to the PMS and it is updated locally.
+
+The method also performs validation checks to ensure that the event is valid before it is saved. Validation includes [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
+
+Upon a successful response, AIR will return the AIR Identifier and current version number. The PMS system shall persist these values in its data store.
+
+The upsert operation achieves the following:
+
 1. Deduplication where possible
-1. Deterministic update behaviour
+1. Deterministic update behaviour, and
 1. Atomic processing (all-or-nothing)
+
+It performs the following:
+
+1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
+2. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
+3. Check if an immunisation event with the same primary attributes exists. These include: Patient Identifier, Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number.
+    * If a single existing immunisation event record is found, then it performs an Update of that record.
+    * If no existing immunisation event record is found, then it performs a Create.
+    * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
+4. Return the created or updated event and any validation issues identified in the meta sections.
+
+<div>
+<img src="assets/images/upsert-flow-digram.png" alt="Upsert Flow" style="max-width:100%; height:auto;"/>
+</div>
 
 ### Operation 
 
@@ -81,8 +102,7 @@ Returns the created or updated Immunization record. If there were any issues wit
 #### Sample Response Payload,
 
 ~~~json
-{
-   
+{   
                 "resourceType": "Immunization",
                 "id": "c3640160-ad52-4aff-9bf3-fcf454c3962d",
                 "meta": {

@@ -97,10 +97,6 @@ menu:
     Base API Tests (Access, Search and Read): complianceTestingBaseAPITests.html
   Profiles: profiles.html
   API: API.html
-  Message Definitions:
-    Update Immunisation Request: MessageDefinition-UpdateImmunisationRequestMessageDefinition.html
-    Update Immunisation Response: MessageDefinition-UpdateImmunisationResponseMessageDefinition.html
-    View Consumer Planned Events: careplanView.html
   Extensions: extensions.html
   Terminology: terminology.html
   AIR Overview:

@@ -1,7 +1,11 @@
 
+Also known as GP notifications.
+
 ## Immunisation Update Message Overview
 
-An ‘Immunisation Update Message’ interaction is initiated by ImmSOT  when it wishes  to notify interested parties that a new immunisation has been recorded or an existing immunisation is updated.
+An ‘Immunisation Update Message’ interaction is initiated by ImmSOT when it wishes to notify interested parties that a new immunisation has been recorded or an existing immunisation is updated.
+The notification can be either an 'HL7' message or via the NEMS messaging service.
+
 The request includes details of the patient who received the immunisation, the next of kin who attended the immunisation encounter, the immunisation itself, the pracitioner who administered the immunisation  and the PMS systems to which the message should be sent.
 At a later time, after the health provider has processed the request, they send a response back to the nominated endpoint indicating if the immunisation request has been accepted or declined.
 
@@ -12,28 +16,43 @@ If the patient has opted to suppress access to their immunisation records, an 'I
 
 
 <div>
-{% include Immunisation-update-request.svg %}
+<img src="assets/images/send-new-immunization-notifications.png" alt="send new immunization notifications" style="max-width:100%; height:auto;"/>
 </div>
 
 
 
 ####  Immunisation Update Message Request processing steps:
 
-1. ISM sends a REST create request to the ImmSOT Immunization endpoint, passing in the details of the immunisation
-2. ImmSOT creates the immunisation record
-3. ImmSOT  creates a message bundle containing an Immunisation resource, and sends it it to the AIR Orchestration server's *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
-4. The Orchestration server enriches the Patient reference with additional patient details
-5. The Orchestration server enriches the Pracitioner reference with additional pracitioner details
-6. The Orchestration server determines which PMS systems should be notified of the new Immunisation, based on the value of the *air-immunisation-notification-action-code*. 
-7. The Orchestration server gets the facility id and edi of the nominated target PMS systems 
+1. ImmSOT creates the immunisation record
+1. Notification record is created in ImmSOT
+1. Notification batch process runs 
+1. lookup up all pending notification records
+   1. Lookup enrolled facility from NHI service
+   1. Populate Immunisation event details from DB
+   1. Publish event to NEMS
+   1. If the Recording facility uses HL7
+      1. Publish HL7 RESEND request to the AIR Orchestration server *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
+      1. Update ACK record status
+   1. If the Enrolled facility uses HL7
+      1. Publish HL7 RESEND request to the AIR Orchestration server *$process-message* endpoint. (EventType=IMMUNISATION_UPDATE)
+      1. Update ACK record status
+1. lookup up all unacknowledged notification records
+   1. Populate Immunisation event details from DB
+   1. Publish HL7 RESEND request to the AIR Orchestration server *$process-message* endpoint. 
+   1. Update ACK record status
+
+
+
+1. The Orchestration server enriches the Patient reference with additional patient details
+1. The Orchestration server enriches the Pracitioner reference with additional pracitioner details
+1. The Orchestration server determines which PMS systems should be notified of the new Immunisation, based on the value of the *air-immunisation-notification-action-code*. 
+1. The Orchestration server gets the facility id and edi of the nominated target PMS systems 
 8. The Orchestration server creates a message for  each target PMS  and sends it to the Healthlink Air Broker
-9. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS
-10. The Healthlink Air Broker returns a synchronous 202 response to the Orchestration server
-11. Once it has recieved responses form each request sent to the HealthLink AIR broker, the Orchestration  server sendsa  synchronous 202 response to  ImmSOT, containing information about each message which was sent.
+1. The Healthlink Air Broker transforms the message to an HL7 v2.0  VXU^V04 request and sends it to the PMS
+1. The Healthlink Air Broker returns a synchronous 202 response to the Orchestration server
+1. Once it has recieved responses form each request sent to the HealthLink AIR broker, the Orchestration  server sendsa  synchronous 202 response to  ImmSOT, containing information about each message which was sent.
 
 ####  Immunisation Update Message Request Example - ImmSOT To Orchestration
-[update-immunisation-request2](Bundle-82020189.json.html) - SENDTOALL
-
 [update-immunisation-request3](Bundle-82020190.json.html) - RESEND
 
 ####  Immunisation Update Message Request Example - Orchestration To HealthLink
@@ -49,8 +68,6 @@ If the patient has opted to suppress access to their immunisation records, an 'I
 
    | Value            |                                          |
    | ---------------- | ---------------------------------------- |
-   | *SENDTOALL*      | send immunisation notification  messages both to the enrolled facility and to the facility which administered the immunisation. |
-   | *SENDTOENROLLED* | send an immunisation notification  messages only to the enrolled facility |
    | *RESEND*         | send an immunisation notification  message to the facilityId in *MessageHeader.destination.name* |
 
    ​
@@ -128,3 +145,9 @@ The Orchestration Server should simply forward whatever it receives from  ImmSOT
 
 ####  Immunisation Update Message Response Example
 [update-immunisation-response-message-1](Bundle-update-immunisation-response-message-1.json.html)
+
+
+### HL7 Message Definitions 
+[Update Immunisation Request](MessageDefinition-UpdateImmunisationRequestMessageDefinition.html)
+
+[Update Immunisation Response](MessageDefinition-UpdateImmunisationResponseMessageDefinition.html)

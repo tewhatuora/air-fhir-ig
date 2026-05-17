@@ -20,13 +20,15 @@ PUT https://api_endpoint/v2/fhir/Immunization/:id
 
 All the headers listed [here](requestHeaders.html) in addition to “If-Match” header with the value of the version of the immunisation record being updated.
 
+The client is expected to read the current version before update to avoid dirty read scenario. The “If-Match” header would be set to the latest version.
+
 ### Requests
 
 #### Update Immunisation- Excludes updating NHI
 ##### Request Body
 Post a full set of immunisation record details. See Below for a sample. The AIR Immunization FHIR Profile is [here](StructureDefinition-air-immunization.html).
 
-~~~
+```json
 {
     "resourceType": "Immunization",
     "id": "bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
@@ -262,7 +264,7 @@ Post a full set of immunisation record details. See Below for a sample. The AIR 
         }
     ]
 }
-~~~
+```
 ##### Behaviour
 * immunisation record is validated
 * If all the attributes / items in the immunisation record are valid, a new immunisation record with an updated version is added with the details populated in the request.
@@ -272,6 +274,422 @@ Post a full set of immunisation record details. See Below for a sample. The AIR 
 Returns the updated immunisation record. Data quality issues will be identified and sent as part of the response in the meta section of the resource, see the response sample payload below.
 
 If there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values. See [here](rejectionRules.html) for a list of the rules that must be adhered to for an Immunisation Event to be uploaded to ImmSOT.
+
+```json
+{
+    "resourceType": "Immunization",
+    "id": "dfc05e81-991c-4f0f-a4ae-0d718b83c936",
+    "meta": {
+        "extension": [
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                "valueString": "SS123"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                "valueString": "111"
+            },
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                "valueInstant": "2026-03-30T02:14:27.076+00:00"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                "valueString": "111"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                "valueString": "HSAPP9999"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",
+                "extension": [
+                    {
+                        "url": "dqScore",
+                        "valueInteger": 100
+                    },
+                    {
+                        "url": "dqLastUpdated",
+                        "valueDateTime": "2026-03-30T02:14:29.053+00:00"
+                    },
+                    {
+                        "url": "dqStatus",
+                        "valueString": "P"
+                    }
+                ]
+            }
+        ],
+        "versionId": "2",
+        "lastUpdated": "2026-03-30T02:14:28.886+00:00",
+        "profile": [
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+        ]
+    },
+    "extension": [
+        {
+            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent",
+            "extension": [
+                {
+                    "url": "diluentLotNumber",
+                    "valueString": "123456"
+                },
+                {
+                    "url": "diluentExpiryDate",
+                    "valueDate": "2026-04-30"
+                }
+            ]
+        },
+        {
+            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given",
+            "extension": [
+                {
+                    "url": "years",
+                    "valueInteger": 56
+                },
+                {
+                    "url": "months",
+                    "valueInteger": 2
+                },
+                {
+                    "url": "days",
+                    "valueInteger": 29
+                },
+                {
+                    "url": "daysSinceBirth",
+                    "valueInteger": 20542
+                },
+                {
+                    "url": "precision",
+                    "valueString": "DAY"
+                }
+            ]
+        }
+    ],
+    "status": "completed",
+    "statusReason": {
+        "coding": [
+            {
+                "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+                "code": "GIVEN",
+                "display": "Vaccination given"
+            }
+        ]
+    },
+    "vaccineCode": {
+        "coding": [
+            {
+                "system": "http://hl7.org/fhir/sid/cvx",
+                "version": "1.0.0",
+                "code": "03"
+            }
+        ],
+        "text": "Priorix"
+    },
+    "patient": {
+        "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ1233",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "ZZZ1233"
+        }
+    },
+    "occurrenceDateTime": "2026-03-30T02:14:19.927+00:00",
+    "location": {
+        "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+            "value": "FZZ835-E"
+        }
+    },
+    "lotNumber": "555123",
+    "protocolApplied": [
+        {
+            "doseNumberPositiveInt": 1
+        }
+    ]
+}
+```
+
+##### Match Quality in response
+
+Response including Match quality
+```json
+{
+    "resourceType": "Immunization",
+    "id": "8dd74894-07be-4cf2-842f-33dbc95c46b1",
+    "meta": {
+        "extension": [
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                "valueString": "HSAPP0010"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                "valueString": "user"
+            },
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                "valueInstant": "2026-03-31T01:29:49.597+00:00"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                "valueString": "user"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                "valueString": "HSAPP0010"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",
+                "extension": [
+                    {
+                        "url": "dqScore",
+                        "valueInteger": 100
+                    },
+                    {
+                        "url": "dqLastUpdated",
+                        "valueDateTime": "2026-03-31T01:32:08.270+00:00"
+                    },
+                    {
+                        "url": "dqStatus",
+                        "valueString": "P"
+                    }
+                ]
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match",
+                "extension": [
+                    {
+                        "url": "match",
+                        "extension": [
+                            {
+                                "url": "plannedEventId",
+                                "valueString": "00513eb7-7d2a-495a-b3aa-c361b3f923a2"
+                            },
+                            {
+                                "url": "matchedDate",
+                                "valueDateTime": "2026-03-31T01:32:08.369+00:00"
+                            },
+                            {
+                                "url": "matchedBy",
+                                "valueString": "user"
+                            },
+                            {
+                                "url": "matchedReason",
+                                "valueCoding": {
+                                    "code": "302",
+                                    "display": "Automatically matched by dose and indication"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "versionId": "2",
+        "lastUpdated": "2026-03-31T01:32:08.126+00:00",
+        "profile": [
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+        ]
+    },
+    "contained": [
+        {
+            "resourceType": "RelatedPerson",
+            "id": "45c49168-bef8-4c22-8f37-fc13ec494594",
+            "meta": {
+                "profile": [
+                    "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-prf"
+                ]
+            },
+            "patient": {
+                "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZGY9681",
+                "identifier": {
+                    "system": "https://standards.digital.health.nz/ns/nhi-id",
+                    "value": "ZGY9681"
+                }
+            },
+            "relationship": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                            "code": "MTH"
+                        }
+                    ]
+                }
+            ],
+            "name": [
+                {
+                    "family": "Compliance",
+                    "given": [
+                        "Air Test"
+                    ]
+                }
+            ],
+            "telecom": [
+                {
+                    "system": "phone",
+                    "value": "047771234",
+                    "use": "home"
+                },
+                {
+                    "system": "phone",
+                    "value": "0217771234",
+                    "use": "work"
+                },
+                {
+                    "system": "email",
+                    "value": "air@compliance.govt.nz",
+                    "use": "home"
+                }
+            ],
+            "address": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org.nz/fhir/StructureDefinition/suburb",
+                            "valueString": "Thorndon"
+                        }
+                    ],
+                    "use": "home",
+                    "type": "physical",
+                    "line": [
+                        "3E 163 Thorndon Quay",
+                        "Thorndon"
+                    ],
+                    "city": "Wellington",
+                    "postalCode": "6011"
+                }
+            ]
+        }
+    ],
+    "extension": [
+        {
+            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension",
+            "valueReference": {
+                "reference": "#45c49168-bef8-4c22-8f37-fc13ec494594"
+            }
+        },
+        {
+            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given",
+            "extension": [
+                {
+                    "url": "years",
+                    "valueInteger": 0
+                },
+                {
+                    "url": "months",
+                    "valueInteger": 1
+                },
+                {
+                    "url": "days",
+                    "valueInteger": 14
+                },
+                {
+                    "url": "daysSinceBirth",
+                    "valueInteger": 45
+                },
+                {
+                    "url": "precision",
+                    "valueString": "DAY"
+                }
+            ]
+        }
+    ],
+    "status": "completed",
+    "statusReason": {
+        "coding": [
+            {
+                "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+                "code": "GIVEN",
+                "display": "Vaccination given"
+            }
+        ]
+    },
+    "vaccineCode": {
+        "coding": [
+            {
+                "system": "http://hl7.org/fhir/sid/cvx",
+                "code": "119",
+                "display": "RV1"
+            }
+        ],
+        "text": "RV1"
+    },
+    "patient": {
+        "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZGY9681",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "ZGY9681"
+        }
+    },
+    "occurrenceDateTime": "2024-03-02T00:00:00+00:00",
+    "location": {
+        "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+            "value": "FZZ835-E"
+        }
+    },
+    "lotNumber": "RV1-001",
+    "expirationDate": "2026-01-31",
+    "route": {
+        "coding": [
+            {
+                "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                "code": "PO",
+                "display": "Oral"
+            }
+        ]
+    },
+    "performer": [
+        {
+            "function": {
+                "coding": [
+                    {
+                        "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                        "code": "VC",
+                        "display": "Vaccinator"
+                    }
+                ]
+            },
+            "actor": {
+                "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/92ZZRR",
+                "identifier": {
+                    "system": "https://standards.digital.health.nz/ns/hpi-person-id",
+                    "value": "92ZZRR"
+                }
+            }
+        }
+    ],
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "https://standards.digital.health.nz/ns/air-terms-code",
+                    "code": "6W",
+                    "display": "6 weeks"
+                }
+            ]
+        }
+    ],
+    "protocolApplied": [
+        {
+            "targetDisease": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "18624000",
+                            "display": "Rotavirus"
+                        }
+                    ]
+                }
+            ],
+            "doseNumberPositiveInt": 1
+        }
+    ]
+}
+```
 
 ##### Scope/s Required
 

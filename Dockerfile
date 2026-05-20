@@ -12,11 +12,12 @@ ENV no_proxy=localhost,127.0.0.1,.local,.internal
 ENV https_proxy=http://10.120.112.54:3128/
 ENV http_proxy=http://10.120.112.54:3128/
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 # Install deps
 RUN apt-get install -y \
-    graphviz neovim exa bat \
+    graphviz neovim exa bat bash sudo ripgrep \
     && rm -rf /var/lib/apt/lists/*
+    
 
 WORKDIR /workspaces
 
@@ -27,8 +28,6 @@ ARG USER_GID=$USER_UID
 
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && apt-get update \
-    && apt-get install -y sudo \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME
 
 USER $USERNAME
@@ -36,4 +35,4 @@ USER $USERNAME
 
 RUN echo 'alias ls=exa; alias cat=batcat; alias more=batcat' >> /home/vscode/.bashrc
 
-CMD ["/bin/bash"]
+CMD ["/bin/bash", "-i"]

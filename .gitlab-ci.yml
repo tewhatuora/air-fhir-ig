@@ -20,7 +20,7 @@ variables:
     value: "false"
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
   API_VERSION: "v1"
-  PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig"
+  PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig-v2"
 
 ig-build-prepare:
   stage: build-prepare

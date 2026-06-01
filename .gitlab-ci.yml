@@ -103,7 +103,8 @@ deploy-web-pages:
 # Always use the scripts from main
     - rm -rf publish_scripts_tmp
     - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
-    - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
+    - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)    
+    - ls -T
   artifacts:
     paths:
       - public

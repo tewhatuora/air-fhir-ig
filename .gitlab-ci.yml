@@ -20,6 +20,7 @@ variables:
     value: "false"
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
   API_VERSION: "v1"
+  PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig-v2"
 
 ig-build-prepare:
   stage: build-prepare
@@ -98,6 +99,23 @@ pages:
   artifacts:
     paths:
       - public
+
+deploy-web-pages:
+  image: alpine:latest
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+  before_script:
+    - apk add curl unzip yq git
+  script:
+# Always use the scripts from main
+    - rm -rf publish_scripts_tmp
+    - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
+    - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
+  artifacts:
+    paths:
+      - public
+
 
 ig-post-release:
   stage: post-release

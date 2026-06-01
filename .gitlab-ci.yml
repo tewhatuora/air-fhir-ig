@@ -21,6 +21,7 @@ variables:
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
   API_VERSION: "v2"
   PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig-v2"
+  CI_DEBUG_TRACE: "true"
 
 ig-build-prepare:
   stage: build-prepare
@@ -57,6 +58,7 @@ ig-release:
   rules:
     - if: $RELEASE == "true"
   script:
+    - set -euxo pipefail
     - ./ci-scripts/create-release.sh
 
 build-web-pages-archive:

@@ -43,4 +43,8 @@ done
 
 echo "</ul>" >> $TOC_FILE
 
+ls public
+
 mv public ..
+
+ls ..

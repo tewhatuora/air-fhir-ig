@@ -91,16 +91,6 @@ mvn-deploy-package:
     - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
 
 pages:
-  stage: deploy
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
-  script:
-    - mv output public
-  artifacts:
-    paths:
-      - public
-
-deploy-web-pages:
   image: alpine:latest
   stage: deploy
   rules:
@@ -109,13 +99,12 @@ deploy-web-pages:
     - apk add curl unzip yq git
   script:
 # Always use the scripts from main
-    - rm -rf publish_scripts_tmp
+    - rm -rf publish_scripts_tmp public
     - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
     - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
   artifacts:
     paths:
       - public
-
 
 ig-post-release:
   stage: post-release

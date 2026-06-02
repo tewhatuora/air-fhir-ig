@@ -27,16 +27,12 @@ yq '
 |
 .servers = [
   {
-    "url": "https://api.air.digital.health.nz/s2s/",
-    "description": "PROD - ImmSoT Service endpoint"
+    "url": "https://api.air.digital.health.nz/s2s/fhir/R4",
+    "description": "PROD - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.uat.air.digital.health.nz/s2s/",
-    "description": "UAT - ImmSoT Service endpoint"
-  },
-  {
-    "url": "https://api.test.air.digital.health.nz/s2s/",
-    "description": "TEST - ImmSoT Service endpoint"
+    "url": "https://api.air.digital.health.nz/s2s/fhir/R4/v2",
+    "description": "PROD - External system-to-system endpoint for version 2"
   }
 ]
 |
@@ -129,44 +125,41 @@ yq '
 }
 |
 .components.securitySchemes |= pick([
-  "client_credentials"
+  "apikey_header",
+  "OAuth2Implicit"
 ])
 |
-.components.securitySchemes.client_credentials = {
-  "type": "oauth2",
-  "description": "Intended for the server-to-server authentication, this flow describes an approach when the client application acts on its own behalf rather than on behalf of any individual user. In most scenarios, this flow provides the means to allow users to specify their credentials in the client application, so it can access the resources under the client'\''s control",
-  "flows": {
-    "clientCredentials": {
-      "tokenUrl": "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token",
-      "scopes": {
-        "system/Immunization.crus": "full create, read, update and search scopes",
-        "system/Immunization.c": "create scope",
-        "system/Immunization.r": "read scope",
-        "system/Immunization.s": "search scope",
-        "system/Immunization.u": "update scope"
-      }
-    }
-  }
-}
+.components.securitySchemes.OAuth2Implicit.flows.implicit.scopes |= pick([
+  "system/Immunization.crus",
+  "system/Immunization.c",
+  "system/Immunization.r",
+  "system/Immunization.u",
+  "system/Immunization.s"
+])
+|
+.components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl = "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
 |
 .components.parameters |= pick([
   "ID",
   "X-Correlation-ID",
   "If-Match",
+  "X-Api-Key",
   "request-context"
 ])
 ' "$INPUT" > "$TMP_FILE"
 
-# Step 2: explicitly set operation parameters (no x-api-key).
+# Step 2: explicitly set operation parameters. This avoids brittle recursive deletes while preserving the external search contract.
 yq '
 .paths."/fhir/R4/Immunization".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/fhir/R4/Immunization/{ID}".get.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
@@ -174,66 +167,118 @@ yq '
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/If-Match"},
+  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/fhir/R4/Immunization/$upsert".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/fhir/R4/Immunization/_search".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"},
   {
     "name": "patient",
     "in": "query",
     "required": false,
     "description": "Patient identifier or full Patient reference. Supported values include ZKN2155 and https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. A full Patient reference is processed as a FHIR reference search against Immunization.patient.reference.",
-    "schema": {
-      "type": "string"
-    },
+    "schema": {"type": "string"},
     "examples": {
-      "nhi": {
-        "value": "ZKN2155",
-        "summary": "NHI identifier"
-      },
-      "fullReference": {
-        "value": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155",
-        "summary": "Full Patient reference"
-      }
+      "nhi": {"value": "ZKN2155", "summary": "NHI identifier"},
+      "fullReference": {"value": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155", "summary": "Full Patient reference"}
     }
+  },
+  {
+    "name": "target-disease",
+    "in": "query",
+    "required": false,
+    "explode": false,
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string"}},
+    "description": "Used in standard search only. Restrict to specific target disease(s) by system|code",
+    "example": "http://snomed.info/sct|123456,http://loinc.org|7890."
+  },
+  {
+    "name": "status-reason:not-in",
+    "in": "query",
+    "required": false,
+    "explode": false,
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string"}},
+    "description": "Used in standard search only. Exclude given status_reason(s) by system|code",
+    "example": "https://standards.digital.health.nz/ns/air-status-reason-terms|CPI,https://standards.digital.health.nz/ns/air-status-reason-terms|RESCHO"
+  },
+  {
+    "name": "status:not-in",
+    "in": "query",
+    "required": false,
+    "explode": false,
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string", "enum": ["entered-in-error", "completed", "not-done"]}},
+    "description": "Used in standard search only. Exclude given status(s) [entered-in-error, completed, not-done]",
+    "example": "entered-in-error,completed"
+  },
+  {
+    "name": "status",
+    "in": "query",
+    "required": false,
+    "explode": false,
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string", "enum": ["entered-in-error", "completed", "not-done"]}},
+    "description": "Used in standard search only. Include only given status(s) [entered-in-error, completed, not-done]",
+    "example": "entered-in-error,completed"
+  },
+  {
+    "name": "_include",
+    "in": "query",
+    "explode": true,
+    "description": "To include the enrichment of the resources namely Patient, Organization, Practitioner & Location",
+    "schema": {"type": "string"},
+    "example": "Patient"
+  },
+  {
+    "name": "organisation",
+    "in": "query",
+    "required": false,
+    "description": "Restrict results to immunisation events associated with the given organisation identifier or reference.",
+    "schema": {"type": "string"}
+  },
+  {
+    "name": "location",
+    "in": "query",
+    "required": false,
+    "description": "Restrict results to immunisation events associated with the given location or facility identifier/reference.",
+    "schema": {"type": "string"}
   }
 ]
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 3: restrict external _search to patient-only form/query search.
+# Step 3: keep external standard _search behaviour and remove only JSON body/admin data-quality search.
 yq '
-.paths."/fhir/R4/Immunization/_search".post.description = "Search Immunisation records by patient only. External clients may search using an NHI value or a full Patient reference. Supported scenarios are: POST _search with patient as a query parameter and no body; POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155; POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies are not supported for external _search."
+.paths."/fhir/R4/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
 |
 .paths."/fhir/R4/Immunization/_search".post.requestBody = {
   "required": false,
-  "description": "Optional form body for patient search. Do not send JSON for _search.",
+  "description": "Optional form body for standard search parameters. Do not send JSON for _search.",
   "content": {
     "application/x-www-form-urlencoded": {
       "schema": {
         "type": "object",
         "properties": {
-          "patient": {
-            "type": "string",
-            "description": "NHI value or full Patient reference."
-          }
-        },
-        "required": ["patient"]
+          "patient": {"type": "string", "description": "NHI value or full Patient reference."},
+          "target-disease": {"type": "string", "description": "Target disease in system|code format."},
+          "status-reason:not-in": {"type": "string", "description": "Comma-separated status reason exclusions."},
+          "status:not-in": {"type": "string", "description": "Comma-separated status exclusions."},
+          "status": {"type": "string", "description": "Comma-separated statuses to include."},
+          "_include": {"type": "string", "description": "Included resource enrichment."},
+          "organisation": {"type": "string", "description": "Organisation identifier or reference."},
+          "location": {"type": "string", "description": "Location/facility identifier or reference."}
+        }
       },
       "examples": {
-        "Search by NHI number": {
-          "$ref": "#/components/examples/SearchNhi"
-        },
-        "Search by full Patient reference": {
-          "$ref": "#/components/examples/SearchNhiFullReference"
-        }
+        "Search by NHI number": {"$ref": "#/components/examples/SearchNhi"},
+        "Search by full Patient reference": {"$ref": "#/components/examples/SearchNhiFullReference"}
       }
     }
   }
@@ -241,7 +286,7 @@ yq '
 |
 .paths."/fhir/R4/Immunization/_search".post.security = [
   {
-    "client_credentials": [
+    "OAuth2Implicit": [
       "system/Immunization.s"
     ]
   }
@@ -249,27 +294,11 @@ yq '
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 4: set security schemes on all operations to use client_credentials.
+# Step 4: remove admin scopes from retained operation security blocks explicitly.
 yq '
-.paths."/fhir/R4/Immunization".post.security = [
-  {
-    "client_credentials": [
-      "system/Immunization.c"
-    ]
-  }
-]
-|
-.paths."/fhir/R4/Immunization/{ID}".get.security = [
-  {
-    "client_credentials": [
-      "system/Immunization.r"
-    ]
-  }
-]
-|
 .paths."/fhir/R4/Immunization/{ID}".put.security = [
   {
-    "client_credentials": [
+    "OAuth2Implicit": [
       "system/Immunization.u"
     ]
   }
@@ -277,7 +306,7 @@ yq '
 |
 .paths."/fhir/R4/Immunization/$upsert".post.security = [
   {
-    "client_credentials": [
+    "OAuth2Implicit": [
       "system/Immunization.c",
       "system/Immunization.u"
     ]

@@ -41,36 +41,68 @@
 
   build-ig:
     stage: build
+    rules:
+      - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
     variables:
       KUBERNETES_CPU_REQUEST: "2"
       KUBERNETES_CPU_LIMIT: "4"
       KUBERNETES_MEMORY_REQUEST: "4G"
       KUBERNETES_MEMORY_LIMIT: "4G"
+    needs:
+      - job: ig-build-prepare
+        artifacts: true
     script:
+      - set -euxo pipefail
+
+      # Install local script dependencies
       - npm install --prefix localscripts
+
+      # Generate API.xml for IG Publisher/Jekyll
       - node localscripts/makeCapabilityStatement.js
-      - ls -la input/pagecontent/API.xml
+
+      # Verify generated source file exists
+      - test -f input/pagecontent/API.xml
+
+      # Jekyll include fix:
+      # The publisher later looks for {% include API.xml %} inside temp/pages/_includes.
+      # Files under input/includes are copied into that Jekyll _includes folder.
+      - mkdir -p input/includes
+      - cp input/pagecontent/API.xml input/includes/API.xml
+
+      # Fail early if the include file is still missing
+      - test -f input/includes/API.xml
+      - ls -la input/pagecontent/API.xml input/includes/API.xml
+
+      # Build IG
       - ./_updatePublisher.sh -y
       - ./build-ig.sh
+
+      # Generate marketplace cutdown spec after successful IG build
       - ./transform_to_marketplace_spec.sh
+
     artifacts:
       paths:
         - output
         - sushi-config.yaml
         - input/fsh/capabilitystatement.fsh
         - input/pagecontent/API.xml
+        - input/includes/API.xml
       expire_in: 1 week
 
   generate-openapi-spec:
     stage: generate-openapi
     image: node:20-alpine
+    rules:
+      - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
     needs:
       - job: build-ig
         artifacts: true
     before_script:
+      - set -euxo pipefail
       - cd localscripts
       - npm ci --silent
       - cd ..
+      - mkdir -p "$OPENAPI_OUTPUT_DIR"
     script:
       - |
         node localscripts/generate-openapi.js \
@@ -109,6 +141,7 @@
         fi
         
         echo "OK: versions match ($FSH_VER)"
+
     artifacts:
       paths:
         - openapi/air-immsot-api.yaml
@@ -139,16 +172,18 @@
       - job: build-ig
         artifacts: true
     before_script:
-      - apk add zip curl yq
+      - apk add --no-cache zip curl yq
     script:
+      - set -euxo pipefail
       - mkdir -p output/openapi
       - cp openapi/air-immsot-api.yaml output/openapi/
       - cp openapi/air-immsot-api.json output/openapi/
-      - (cd output; zip -r "../web-pages.zip" .)
+      - cd output
+      - zip -r "../web-pages.zip" .
+      - cd ..
       - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
       - echo "Uploading ${PUBLISH_URL}"
-      - >
-        curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"
+      - curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"
     artifacts:
       name: "${CI_COMMIT_REF_NAME}-web-pages"
       paths:
@@ -169,6 +204,7 @@
       paths:
         - .m2/repository
     script:
+      - set -euxo pipefail
       - mvn deploy:deploy-file -s ci_settings.xml -Dfile=output/package.tgz -DrepositoryId=gitlab-maven -Durl=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/maven -DgroupId=nz.health.air.immsot -DartifactId=air-api-fhir-ig -Dversion=$MVN_IG_VERSION -Dpackaging=tgz
 
   pages:
@@ -182,13 +218,16 @@
       - job: build-ig
         artifacts: true
     before_script:
-      - apk add curl unzip yq git
+      - apk add --no-cache curl unzip yq git
     script:
+      - set -euxo pipefail
       - rm -rf publish_scripts_tmp public
       - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
-      - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
-      - ls publish_scripts_tmp
-      - ls
+      - cd publish_scripts_tmp
+      - sh ./ci-scripts/publish-website.sh
+      - cd ..
+      - ls -la publish_scripts_tmp
+      - ls -la
     artifacts:
       paths:
         - public
@@ -198,4 +237,5 @@
     rules:
       - if: $RELEASE == "true"
     script:
+      - set -euxo pipefail
       - ./ci-scripts/post-release.sh

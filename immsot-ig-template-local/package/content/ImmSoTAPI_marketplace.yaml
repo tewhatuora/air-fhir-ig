@@ -8,8 +8,16 @@ servers:
     description: PROD - External system-to-system endpoint for version 1
   - url: https://api.air.digital.health.nz/s2s/fhir/R4/v2
     description: PROD - External system-to-system endpoint for version 2
+  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4
+    description: TEST - External system-to-system endpoint for version 1
+  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4/v2
+    description: TEST - External system-to-system endpoint for version 2
+  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4
+    description: UAT - External system-to-system endpoint for version 1
+  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2
+    description: UAT - External system-to-system endpoint for version 2
 paths:
-  /fhir/R4/Immunization:
+  /Immunization:
     post:
       operationId: create
       description: |
@@ -45,7 +53,7 @@ paths:
       security:
         - OAuth2Implicit:
             - system/Immunization.c
-  /fhir/R4/Immunization/{ID}:
+  /Immunization/{ID}:
     get:
       operationId: read
       description: |
@@ -117,7 +125,7 @@ paths:
       security:
         - OAuth2Implicit:
             - system/Immunization.u
-  /fhir/R4/Immunization/_search:
+  /Immunization/_search:
     post:
       operationId: search
       description: "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
@@ -277,9 +285,9 @@ paths:
                   type: string
                   description: Location/facility identifier or reference.
             examples:
-              Search by NHI number:
+              searchByNhi:
                 $ref: '#/components/examples/SearchNhi'
-              Search by full Patient reference:
+              searchByFullPatientReference:
                 $ref: '#/components/examples/SearchNhiFullReference'
       responses:
         "200":
@@ -306,7 +314,7 @@ paths:
       security:
         - OAuth2Implicit:
             - system/Immunization.s
-  /fhir/R4/Immunization/$upsert:
+  /Immunization/$upsert:
     post:
       operationId: $upsert
       description: |

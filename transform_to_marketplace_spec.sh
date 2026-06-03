@@ -19,9 +19,9 @@ if [ ! -f "$INPUT" ]; then
 fi
 
 TMP_FILE="$(mktemp)"
-trap 'rm -f "$TMP_FILE"' EXIT
+trap 'rm -f "$TMP_FILE" "${TMP_FILE}.2"' EXIT
 
-# Step 1: keep only external paths and global components that can be referenced.
+# Step 1: keep only external paths and components that can be referenced.
 yq '
 .info.description = "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
 |
@@ -33,17 +33,33 @@ yq '
   {
     "url": "https://api.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "PROD - External system-to-system endpoint for version 2"
+  },
+  {
+    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4",
+    "description": "TEST - External system-to-system endpoint for version 1"
+  },
+  {
+    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4/v2",
+    "description": "TEST - External system-to-system endpoint for version 2"
+  },
+  {
+    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4",
+    "description": "UAT - External system-to-system endpoint for version 1"
+  },
+  {
+    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2",
+    "description": "UAT - External system-to-system endpoint for version 2"
   }
 ]
 |
-.paths |= pick([
-  "/fhir/R4/Immunization",
-  "/fhir/R4/Immunization/{ID}",
-  "/fhir/R4/Immunization/_search",
-  "/fhir/R4/Immunization/$upsert"
-])
+.paths = {
+  "/Immunization": .paths."/fhir/R4/Immunization",
+  "/Immunization/{ID}": .paths."/fhir/R4/Immunization/{ID}",
+  "/Immunization/_search": .paths."/fhir/R4/Immunization/_search",
+  "/Immunization/$upsert": .paths."/fhir/R4/Immunization/$upsert"
+}
 |
-.paths."/fhir/R4/Immunization/{ID}" |= pick(["get", "put"])
+.paths."/Immunization/{ID}" |= pick(["get", "put"])
 |
 .components.schemas |= pick([
   "Address",
@@ -148,22 +164,22 @@ yq '
 ])
 ' "$INPUT" > "$TMP_FILE"
 
-# Step 2: explicitly set operation parameters. This avoids brittle recursive deletes while preserving the external search contract.
+# Step 2: explicitly set operation parameters. This avoids brittle recursive deletes.
 yq '
-.paths."/fhir/R4/Immunization".post.parameters = [
+.paths."/Immunization".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
-.paths."/fhir/R4/Immunization/{ID}".get.parameters = [
+.paths."/Immunization/{ID}".get.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
-.paths."/fhir/R4/Immunization/{ID}".put.parameters = [
+.paths."/Immunization/{ID}".put.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/If-Match"},
@@ -171,13 +187,13 @@ yq '
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
-.paths."/fhir/R4/Immunization/$upsert".post.parameters = [
+.paths."/Immunization/$upsert".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
-.paths."/fhir/R4/Immunization/_search".post.parameters = [
+.paths."/Immunization/_search".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"},
@@ -282,11 +298,12 @@ yq '
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 3: keep external standard _search behaviour and remove only JSON body/admin data-quality search.
+# Step 3: keep external standard _search behaviour and remove JSON/admin data-quality search.
+# Do not use example keys with spaces here; Mike Farah yq can lexer-fail on those in object literals.
 yq '
-.paths."/fhir/R4/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
+.paths."/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
 |
-.paths."/fhir/R4/Immunization/_search".post.requestBody = {
+.paths."/Immunization/_search".post.requestBody = {
   "required": false,
   "description": "Optional form body for standard search parameters. Do not send JSON for _search.",
   "content": {
@@ -306,14 +323,14 @@ yq '
         }
       },
       "examples": {
-        "Search by NHI number": {"$ref": "#/components/examples/SearchNhi"},
-        "Search by full Patient reference": {"$ref": "#/components/examples/SearchNhiFullReference"}
+        "searchByNhi": {"$ref": "#/components/examples/SearchNhi"},
+        "searchByFullPatientReference": {"$ref": "#/components/examples/SearchNhiFullReference"}
       }
     }
   }
 }
 |
-.paths."/fhir/R4/Immunization/_search".post.security = [
+.paths."/Immunization/_search".post.security = [
   {
     "OAuth2Implicit": [
       "system/Immunization.s"
@@ -325,7 +342,7 @@ mv "${TMP_FILE}.2" "$TMP_FILE"
 
 # Step 4: remove admin scopes from retained operation security blocks explicitly.
 yq '
-.paths."/fhir/R4/Immunization/{ID}".put.security = [
+.paths."/Immunization/{ID}".put.security = [
   {
     "OAuth2Implicit": [
       "system/Immunization.u"
@@ -333,7 +350,7 @@ yq '
   }
 ]
 |
-.paths."/fhir/R4/Immunization/$upsert".post.security = [
+.paths."/Immunization/$upsert".post.security = [
   {
     "OAuth2Implicit": [
       "system/Immunization.c",

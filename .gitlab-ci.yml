@@ -178,12 +178,14 @@
       - mkdir -p output/openapi
       - cp openapi/air-immsot-api.yaml output/openapi/
       - cp openapi/air-immsot-api.json output/openapi/
-      - cd output
-      - zip -r "../web-pages.zip" .
-      - cd ..
-      - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
-      - echo "Uploading ${PUBLISH_URL}"
-      - curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"
+      - |
+        cd output
+        zip -r "../web-pages.zip" .
+        cd ..
+      - |
+        PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
+        echo "Uploading ${PUBLISH_URL}"
+        curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file web-pages.zip "${PUBLISH_URL}"
     artifacts:
       name: "${CI_COMMIT_REF_NAME}-web-pages"
       paths:

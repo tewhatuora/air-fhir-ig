@@ -1,0 +1,14 @@
+{
+  "name": "air-immsot-openapi-generator",
+  "version": "2.1.0",
+  "description": "Generates OpenAPI 3.0 spec from AIR ImmSoT capabilitystatement.fsh",
+  "main": "generate-openapi.js",
+  "scripts": {
+    "generate": "node generate-openapi.js --input ../fsh/capabilitystatement.fsh --output ../openapi/air-immsot-api.yaml --format yaml",
+    "generate:json": "node generate-openapi.js --input ../fsh/capabilitystatement.fsh --output ../openapi/air-immsot-api.json --format json",
+    "generate:both": "npm run generate && npm run generate:json"
+  },
+  "dependencies": {
+    "js-yaml": "^4.2.0"
+  }
+}

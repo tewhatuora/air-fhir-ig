@@ -16,6 +16,7 @@ batik-all.jar
 batik-all.jar
 /batik-1.6.1/
 batik-1.6.1/
+localscripts/node_modules/
 fhir-openapi-converter.js
 _genopenapi.sh
 plantuml.jar

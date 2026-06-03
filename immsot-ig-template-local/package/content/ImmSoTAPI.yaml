@@ -1,11 +1,13 @@
 openapi: 3.0.4
 info:
   title: AIR ImmSoT API
-  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records"
+  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records. API versioning: Internal Health NZ consumers call https://air.api.digital.health.nz/fhir/R4. If APIVersion is omitted, version 1 behaviour applies. APIVersion=1 selects version 1 behaviour. APIVersion=2 selects version 2 behaviour. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4 for version 1. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4/v2 for version 2. Both external paths are gateway routes that forward to the internal /fhir/R4 backend with the appropriate APIVersion header."
   version: "2.1.0"
 servers:
   - url: https://air.api.digital.health.nz
-    description: PROD - ImmSoT Service endpoint
+    description: PROD - Internal Health NZ endpoint. /fhir/R4 with APIVersion omitted or APIVersion=1 uses version 1. /fhir/R4 with APIVersion=2 uses version 2.
+  - url: https://api.air.digital.health.nz/s2s
+    description: PROD - External endpoint. /fhir/R4 routes to internal /fhir/R4 with APIVersion=1. /fhir/R4/v2 routes to internal /fhir/R4 with APIVersion=2.
   - url: https://air.api-sit.digital.health.nz
     description: SIT - ImmSoT Service endpoint
   - url: https://air.api-uat.digital.health.nz
@@ -17,15 +19,15 @@ paths:
     post:
       operationId: create
       description: |
-        The "create" operation is used to create a new immunisation event. This method performs  validation checks to ensure that the event is valid before it is created.
-
-        Returns either the created Immunization record or if there were any issues with the create, the  response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
+        The "create" operation is used to create a new immunisation event. This method performs validation checks to ensure that the event is valid before it is created.
+        Returns either the created Immunization record or if there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -64,6 +66,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       responses:
         "200":
           description: Ok
@@ -91,11 +94,8 @@ paths:
       operationId: update
       description: |
         The "update" operation is used to update an existing immunisation event. This method checks if the immunisation event with the given ID exists, and if it does, it updates the event with the new details provided. The method also performs validation checks to ensure that the updated event is valid before it is saved.
-
         Returns either the the updated immunisation record or an OperationOutcome if there were any issues with the update.
-
         On success - returns the updated immunisation record. data quality issues will be identified and sent as part of the response in the meta section of the resource.
-
         On Fail - if there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/ID'
@@ -105,6 +105,7 @@ paths:
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/If-Match'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -135,13 +136,27 @@ paths:
   /fhir/R4/Immunization/_search:
     post:
       operationId: search
-      description: "There are 2 search options available\n\n### 1. NHI search ###\n \n   **patient** in request body (required)\n\n   **target-disease** (optional)\n \n   **status-reason** (optional)\n \n   **status:not-in** (optional)\n \n   **_include** (optional)\n   \n### 2. Data Quality Search (admins only) ###\n\n   **_query** (required)\n \n   **_lastUpdated** (required)\n \n   **_offset** (required)\n \n   **_count** (required)    \n \n   **_includeMigratedData** (optional)\n \n   **_dqStatus** (optional)        \n \n   **status** (optional)\n   \n*see parameter examples for details*\n"
+      description: "There are 2 search options available. 1. NHI search supports POST _search with query parameters and no request body. The server must not parse an absent body and must continue normal FHIR search handling. This scenario must not return a 500 error. 2. NHI search supports POST _search with an application/x-www-form-urlencoded body. Example: patient=ZKN2155. The body must not be parsed as JSON and normal FHIR search handling must process the form parameters. 3. NHI search supports POST _search with a full Patient reference in the application/x-www-form-urlencoded body. Example: patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. The value is treated as a FHIR reference search and matched against Immunization.patient.reference. Standard search parameters: patient (required), target-disease (optional), status-reason:not-in (optional), status:not-in (optional), _include (optional). Data Quality Search parameters (admins only): _query=data-quality (required), _lastUpdated (required), _offset (required), _count (required), _includeMigratedData (optional), _dqStatus (optional), status (optional). See parameter examples for details."
       parameters:
         - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
+        - name: patient
+          in: query
+          required: false
+          description: Patient identifier or full Patient reference. Supported values include ZKN2155 and https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. A full Patient reference is processed as a FHIR reference search against Immunization.patient.reference.
+          schema:
+            type: string
+          examples:
+            nhi:
+              value: ZKN2155
+              summary: NHI identifier
+            fullReference:
+              value: https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155
+              summary: Full Patient reference
         - name: _query
           in: query
           schema:
@@ -256,7 +271,8 @@ paths:
           description: Used in data-quality search only. Include only given status(s) [entered-in-error, completed, not-done], default entered-in-error,completed,not-done
           example: entered-in-error,completed
       requestBody:
-        description: Use the request body to enter parameters which contain private or identifying patient data
+        required: false
+        description: Optional form body for private or identifying patient search parameters. Do not send JSON for _search.
         content:
           application/x-www-form-urlencoded:
             schema:
@@ -264,12 +280,6 @@ paths:
             examples:
               Search by NHI number:
                 $ref: '#/components/examples/SearchNhi'
-          application/fhir+json:
-            schema:
-              type: object
-            examples:
-              Search by NHI number:
-                $ref: '#/components/examples/SearchNhiFhirJson'
       responses:
         "200":
           description: Ok
@@ -308,6 +318,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -352,6 +363,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -396,6 +408,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       responses:
         "200":
           description: Ok
@@ -423,7 +436,6 @@ paths:
       operationId: $bulk-update
       description: |
         Create new Immunisation Events and/or Upsert Immunisation Events based on a matching algorithm. Operation is atomic.
-
         For each parameter the request body:
         1. If the parameter name is “create”, then the contained Immunization will be created.
         2. If the parameter name is “upsert”, then attempt to find an matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
@@ -433,6 +445,7 @@ paths:
           * Failure to process any event, reject entire request
       parameters:
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         description: Perform several updates at once
         content:
@@ -471,7 +484,6 @@ paths:
         Perform an upsert using a deterministic matching algorithm.
         The algorithm attempts to resolve exactly one existing Immunisation Event.
         If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-
         Immunisation Event in the request attempt to find a matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
         1. If no match found, create a new event
         2. If single match found, update the matched event
@@ -483,6 +495,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         description: |
           Perform an upsert using a deterministic matching algorithm.
@@ -516,7 +529,6 @@ paths:
       operationId: readPatient
       description: |
         Read the current state of an ImmSOT Consumer
-
         * Consumer state held in ImmSOT is returned as a FHIR Patient
         * When an optional header origin-nhi-version is included which contains the NHI version, the API will check if it is the same NHI version we have stored in ImmSoT database for the Consumer.
           * If it is the same, we return the current data we have in ImmSoT database.
@@ -527,6 +539,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       responses:
         "200":
           description: Ok
@@ -555,11 +568,8 @@ paths:
       operationId: updatePatientState
       description: |
         Update the current state of an ImmSOT Consumer
-
         Updates the Consumer state and/or sub status only. Input is the Consumer version previously read (used for operation optimistic locking) and the desired Consumer state.
-
         At least one of **state** and **subStatus** must be specified. If **state** or **subStatus** is not specified, then these attributes will not be updated. Setting subStatus to null will clear the current sub status.
-
         A **412 Preconditioned Failed** will be returned if the version received in the payload does not match the server version.
       parameters:
         - $ref: '#/components/parameters/NHI'
@@ -567,6 +577,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -610,6 +621,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -642,13 +654,9 @@ paths:
     post:
       description: |
         Update the immunisation plan of an ImmSOT Consumer by reassessing and reassigning their schedules.
-
         Updates a Consumer by reassigning their schedule based on the onboarding date provided in the request to create a new Immunisation plan.
-
         Any existing schedules will be cancelled, along with match or MQ records, and a set of new schedules will be assigned according to the onboarding date provided.
-
         NOTE: Any manual match record will also be cancelled (ie unmatched) when the planned event to which it is linked is cancelled.
-
         The schedule repair service will be run to regenerate the Consumers matches of Immunisation events to the new Immunisation plan.
       parameters:
         - $ref: '#/components/parameters/NHI'
@@ -656,6 +664,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       requestBody:
         content:
           application/fhir+json:
@@ -693,6 +702,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NHI'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
       responses:
         "200":
           description: Ok
@@ -724,6 +734,7 @@ paths:
         - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/APIVersion'
         - name: nhi
           in: query
           description: The NHI identifier of the patient/consumer
@@ -2400,6 +2411,16 @@ components:
       required: true
       schema:
         type: string
+    APIVersion:
+      name: APIVersion
+      in: header
+      description: API version selector. If omitted, version 1 behaviour applies. Supported values are 1 and 2.
+      required: false
+      schema:
+        type: integer
+        enum: [1, 2]
+        default: 1
+      example: 2
     request-context:
       name: request-context
       in: header

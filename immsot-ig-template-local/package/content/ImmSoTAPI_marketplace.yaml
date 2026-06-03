@@ -1,25 +1,28 @@
 openapi: 3.0.4
 info:
   title: AIR ImmSoT API
-  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database."
-  version: "1.7.0"
+  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
+  version: "2.1.0"
 servers:
-  - url: https://air.api.digital.health.nz
-    description: PROD - ImmSoT Service endpoint
-  - url: https://air.api-sit.digital.health.nz
-    description: SIT - ImmSoT Service endpoint
-  - url: https://air.api-uat.digital.health.nz
-    description: UAT - ImmSoT Service endpoint
-  - url: https://air.api-dev.digital.health.nz
-    description: DEV - ImmSoT Service endpoint
+  - url: https://api.air.digital.health.nz/s2s/fhir/R4
+    description: PROD - External system-to-system endpoint for version 1
+  - url: https://api.air.digital.health.nz/s2s/fhir/R4/v2
+    description: PROD - External system-to-system endpoint for version 2
+  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4
+    description: TEST - External system-to-system endpoint for version 1
+  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4/v2
+    description: TEST - External system-to-system endpoint for version 2
+  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4
+    description: UAT - External system-to-system endpoint for version 1
+  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2
+    description: UAT - External system-to-system endpoint for version 2
 paths:
-  /fhir/R4/Immunization:
+  /Immunization:
     post:
       operationId: create
       description: |
-        The "create" operation is used to create a new immunisation event. This method performs  validation checks to ensure that the event is valid before it is created.
-
-        Returns either the created Immunization record or if there were any issues with the create, the  response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
+        The "create" operation is used to create a new immunisation event. This method performs validation checks to ensure that the event is valid before it is created.
+        Returns either the created Immunization record or if there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/X-Api-Key'
@@ -43,12 +46,14 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
             - system/Immunization.c
-  /fhir/R4/Immunization/{ID}:
+  /Immunization/{ID}:
     get:
       operationId: read
       description: |
@@ -74,6 +79,8 @@ paths:
           $ref: '#/components/responses/403'
         "404":
           $ref: '#/components/responses/404'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -83,11 +90,8 @@ paths:
       operationId: update
       description: |
         The "update" operation is used to update an existing immunisation event. This method checks if the immunisation event with the given ID exists, and if it does, it updates the event with the new details provided. The method also performs validation checks to ensure that the updated event is valid before it is saved.
-
         Returns either the the updated immunisation record or an OperationOutcome if there were any issues with the update.
-
         On success - returns the updated immunisation record. data quality issues will be identified and sent as part of the response in the meta section of the resource.
-
         On Fail - if there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/ID'
@@ -121,75 +125,27 @@ paths:
       security:
         - OAuth2Implicit:
             - system/Immunization.u
-  /fhir/R4/Immunization/_search:
+  /Immunization/_search:
     post:
       operationId: search
-      description: "There are 2 search options available\n\n### 1. NHI search ###\n \n   **patient** in request body (required)\n\n   **target-disease** (optional)\n \n   **status-reason** (optional)\n \n   **status:not-in** (optional)\n \n   **_include** (optional)\n   \n### 2. Data Quality Search (admins only) ###\n\n   **_query** (required)\n \n   **_lastUpdated** (required)\n \n   **_offset** (required)\n \n   **_count** (required)    \n \n   **_includeMigratedData** (optional)\n \n   **_dqStatus** (optional)        \n \n   **status** (optional)\n   \n*see parameter examples for details*\n"
+      description: "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - name: _query
+        - $ref: '#/components/parameters/request-context'
+        - name: patient
           in: query
-          schema:
-            type: string
-            enum: [data-quality]
-          description: Query type for the search.  Currently restricted to admin search for immunisation events with identified data quality issues
-        - name: _lastUpdated
-          in: query
-          description: Used in data-quality search only. Use eq prefix to search for a specific date, or combination of ge prefix and le prefix to search for records within a specified date range.
-          explode: true
+          required: false
+          description: Patient identifier or full Patient reference. Supported values include ZKN2155 and https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. A full Patient reference is processed as a FHIR reference search against Immunization.patient.reference.
           schema:
             type: string
           examples:
-            le:
-              value: 'le2023-06-01'
-              summary: An upper date range
-            ge:
-              value: 'ge2023-05-11T00:25:20.641Z'
-              summary: A lower date range
-            eq:
-              value: 'eq2023-05-09'
-              summary: A specific date
-        - name: _offset
-          in: query
-          description: Used in data-quality search only. The number of records to skip before starting to collect the result set
-          schema:
-            type: integer
-            minimum: 0
-            default: 0
-        - name: _count
-          in: query
-          description: Used in data-quality search only. The number of records to return in the result set
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-            default: 100
-        - name: _includeMigratedData
-          in: query
-          description: Used in data-quality search only. To include migration data in the response. Default to 'false' if not provided
-          schema:
-            type: string
-          example: "true"
-        - name: _include
-          in: query
-          explode: true
-          description: To include the enrichment of the resources namely Patient, Organization, Practitioner & Location
-          schema:
-            type: string
-          example: "Patient"
-        - name: _dqStatus
-          in: query
-          required: false
-          explode: false
-          schema:
-            type: array
-            maxItems: 1000
-            items:
-              type: string
-              enum: [I, A, P]
-          description: Used in data-quality search only. Restrict by data quality status(es) [I,A,P] Identified, Accepted, Passed
-          example: I,A
+            nhi:
+              value: ZKN2155
+              summary: NHI identifier
+            fullReference:
+              value: https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155
+              summary: Full Patient reference
         - name: target-disease
           in: query
           required: false
@@ -211,12 +167,7 @@ paths:
             items:
               type: string
           description: Used in standard search only. Exclude given status_reason(s) by system|code
-          example: |
-            https://standards.digital.health.nz/ns/air-status-reason-terms|CPI,https://standards.digital.health.nz/ns/air-status-reason-terms|RESCHO
-
-            CPI,RESCHO
-
-            |CPI,|RESCHO
+          example: https://standards.digital.health.nz/ns/air-status-reason-terms|CPI,https://standards.digital.health.nz/ns/air-status-reason-terms|RESCHO
         - name: status:not-in
           in: query
           required: false
@@ -226,7 +177,10 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum: [entered-in-error, completed, not-done]
+              enum:
+                - entered-in-error
+                - completed
+                - not-done
           description: Used in standard search only. Exclude given status(s) [entered-in-error, completed, not-done]
           example: entered-in-error,completed
         - name: status
@@ -238,19 +192,103 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum: [entered-in-error, completed, not-done]
-          description: Used in data-quality search only. Include only given status(s) [entered-in-error, completed, not-done], default entered-in-error,completed,not-done
+              enum:
+                - entered-in-error
+                - completed
+                - not-done
+          description: Used in standard search only. Include only given status(s) [entered-in-error, completed, not-done]
           example: entered-in-error,completed
-        - $ref: '#/components/parameters/request-context'
+        - name: _include
+          in: query
+          explode: true
+          description: To include enrichment resources. Multiple _include values are supported.
+          schema:
+            type: array
+            maxItems: 10
+            items:
+              type: string
+              enum:
+                - '*'
+                - Patient
+                - Practitioner
+                - Location
+                - Organization
+                - Immunization:patient
+                - Immunization:performer
+                - Immunization:location
+          example: Patient
+        - name: _include:iterate
+          in: query
+          explode: true
+          description: To include enrichment resources of secondary included resources. Multiple _include:iterate values are supported.
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Location:organization
+            minItems: 0
+            maxItems: 1
+          examples:
+            managingOrganization:
+              value: Location:organization
+              summary: managingOrganization (HPI-O) of the location
+        - name: organisation
+          in: query
+          required: false
+          description: Restrict results to immunisation events associated with the given organisation identifier or reference.
+          schema:
+            type: string
+        - name: location
+          in: query
+          required: false
+          description: Restrict results to immunisation events associated with the given location or facility identifier/reference.
+          schema:
+            type: string
       requestBody:
-        description: Use the request body to enter parameters which contain private or identifying patient data
+        required: false
+        description: Optional form body for standard search parameters. Do not send JSON for _search.
         content:
           application/x-www-form-urlencoded:
             schema:
               type: object
+              properties:
+                patient:
+                  type: string
+                  description: NHI value or full Patient reference.
+                target-disease:
+                  type: string
+                  description: Target disease in system|code format.
+                status-reason:not-in:
+                  type: string
+                  description: Comma-separated status reason exclusions.
+                status:not-in:
+                  type: string
+                  description: Comma-separated status exclusions.
+                status:
+                  type: string
+                  description: Comma-separated statuses to include.
+                _include:
+                  type: array
+                  items:
+                    type: string
+                  description: One or more included resource enrichments.
+                _include:iterate:
+                  type: array
+                  items:
+                    type: string
+                  description: One or more iterative included resource enrichments.
+                organisation:
+                  type: string
+                  description: Organisation identifier or reference.
+                location:
+                  type: string
+                  description: Location/facility identifier or reference.
             examples:
-              Search by NHI number:
+              searchByNhi:
                 $ref: '#/components/examples/SearchNhi'
+              searchByFullPatientReference:
+                $ref: '#/components/examples/SearchNhiFullReference'
       responses:
         "200":
           description: Ok
@@ -269,19 +307,20 @@ paths:
           $ref: '#/components/responses/403'
         "401":
           $ref: '#/components/responses/401'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
             - system/Immunization.s
-  /fhir/R4/Immunization/$upsert:
+  /Immunization/$upsert:
     post:
       operationId: $upsert
       description: |
         Perform an upsert using a deterministic matching algorithm.
         The algorithm attempts to resolve exactly one existing Immunisation Event.
         If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-
         Immunisation Event in the request attempt to find a matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
         1. If no match found, create a new event
         2. If single match found, update the matched event
@@ -311,6 +350,8 @@ paths:
           $ref: '#/components/responses/400'
         "403":
           $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -319,29 +360,6 @@ paths:
             - system/Immunization.u
 components:
   schemas:
-    AcknowledgementBundle:
-      type: object
-      properties:
-        resourceType:
-          type: string
-        id:
-          type: string
-        meta:
-          type: object
-          properties:
-            lastUpdated:
-              type: string
-        type:
-          type: string
-        total:
-          type: integer
-        entry:
-          type: array
-          maxItems: 1000
-          items:
-            anyOf:
-              - $ref: '#/components/schemas/MessageHeader'
-              - $ref: '#/components/schemas/OperationOutcome'
     Address:
       type: object
       properties:
@@ -381,12 +399,7 @@ components:
           type: object
           properties:
             extension:
-              type: array
-              items:
-                anyOf:
-                  - $ref: '#/components/schemas/DQExtension'
-                  - $ref: '#/components/schemas/PlannedEventMatchExtension'
-                  - $ref: '#/components/schemas/PlannedEventMQExtension'
+              $ref: '#/components/schemas/DQExtension'
             versionId:
               description: 'The version number of the Immunisation Event in Immsot'
               type: string
@@ -579,70 +592,6 @@ components:
                 - $ref: '#/components/schemas/ExtensionDateTime'
                 - $ref: '#/components/schemas/ExtensionBoolean'
                 - $ref: '#/components/schemas/ViolationsExtension'
-    PlannedEventMatchExtension:
-      type: array
-      maxItems: 1000
-      items:
-        type: object
-        properties:
-          url:
-            type: string
-            example: "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match"
-          extension:
-            type: array
-            items:
-              $ref: '#/components/schemas/MatchExtension'
-    PlannedEventMQExtension:
-      type: array
-      maxItems: 1000
-      items:
-        type: object
-        properties:
-          url:
-            type: string
-            example: "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match-quality"
-          extension:
-            type: array
-            items:
-              $ref: '#/components/schemas/MatchQualityExtension'
-    MatchExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        extension:
-          type: array
-          items:
-            anyOf:
-              - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDateTime'
-              - $ref: '#/components/schemas/MatchedReasonExtension'
-    MatchQualityExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        extension:
-          type: array
-          items:
-            anyOf:
-              - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDateTime'
-              - $ref: '#/components/schemas/MatchedReasonExtension'
-    MatchedReasonExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        valueCoding:
-          $ref: '#/components/schemas/MatchedReasonCoding'
-    MatchedReasonCoding:
-      type: object
-      properties:
-        code:
-          type: string
-        display:
-          type: string
     ExtensionBoolean:
       type: array
       maxItems: 1000
@@ -840,63 +789,6 @@ components:
           maxItems: 1000
           items:
             $ref: '#/components/schemas/ViolationExtension'
-    AirPatient:
-      type: object
-      properties:
-        resourceType:
-          type: string
-        id:
-          description: 'Patient/consumer NHI'
-          type: string
-        meta:
-          type: object
-          properties:
-            versionId:
-              description: 'The version number of the patient/consumer in Immsot'
-              type: string
-            lastUpdated:
-              type: string
-            profile:
-              description: 'The AIR FHIR profile used to validate patient/consumer service'
-              type: array
-              maxItems: 1000
-              items:
-                type: string
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        extension:
-          type: array
-          maxItems: 1000
-          items:
-            allOf:
-              - $ref: '#/components/schemas/ExtensionCodable'
-              - $ref: '#/components/schemas/ExtensionDate'
-        active:
-          type: boolean
-        deceasedBoolean:
-          type: object
-          properties:
-            value:
-              type: boolean
-        link:
-          $ref: '#/components/schemas/Link'
-    PatientState:
-      type: object
-      properties:
-        resourceType:
-          type: string
-        parameter:
-          type: array
-          maxItems: 1000
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              valueInteger:
-                type: integer
-              valueString:
-                type: string
     OrchestrationPatient:
       type: object
       properties:
@@ -1594,102 +1486,6 @@ components:
                       type: string
                     code:
                       type: string
-    MessageHeader:
-      type: object
-      properties:
-        fullUrl:
-          type: string
-        resource:
-          type: object
-          properties:
-            resourceType:
-              type: string
-            text:
-              type: object
-              properties:
-                status:
-                  type: string
-                div:
-                  type: string
-            eventCoding:
-              type: object
-              properties:
-                system:
-                  type: string
-                code:
-                  type: string
-            destination:
-              type: array
-              maxItems: 1000
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  endpoint:
-                    type: string
-            source:
-              type: object
-              properties:
-                name:
-                  type: string
-                software:
-                  type: string
-                endpoint:
-                  type: string
-            response:
-              type: object
-              properties:
-                identifier:
-                  type: string
-                code:
-                  type: string
-            focus:
-              type: array
-              maxItems: 1000
-              items:
-                type: object
-                properties:
-                  reference:
-                    type: string
-    BulkUpdateInputParameter:
-      properties:
-        resourceType:
-          type: string
-          enum:
-            - Parameters
-        parameter:
-          type: array
-          maxItems: 1000
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                enum:
-                  - create
-                  - upsert
-              resource:
-                $ref: '#/components/schemas/AirImmunization'
-    BulkUpdateOutputParameter:
-      properties:
-        resourceType:
-          type: string
-          enum:
-            - Parameters
-        parameter:
-          type: array
-          maxItems: 1000
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                enum:
-                  - created
-                  - update
-              resource:
-                $ref: '#/components/schemas/AirImmunization'
   responses:
     "200":
       description: Ok
@@ -1750,15 +1546,6 @@ components:
           examples:
             NotFoundEg:
               $ref: '#/components/examples/NotFound'
-    "412":
-      description: Precondition Failed
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-          examples:
-            PreConditionFailedEg:
-              $ref: '#/components/examples/PreconditionFailed'
     "422":
       description: Failed Data Validation
       content:
@@ -1768,6 +1555,15 @@ components:
           examples:
             InvalidDataEg:
               $ref: '#/components/examples/InvalidData'
+    "429":
+      description: Too Many Requests
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+          examples:
+            TooManyReuqestEg:
+              $ref: '#/components/examples/TooManyReuqest'
     "500":
       description: Internal Server Error
       content:
@@ -1782,14 +1578,6 @@ components:
       name: ID
       in: path
       description: The logical id of the immunization event
-      required: true
-      schema:
-        type: string
-      example: a-unique-id-of-some-sort
-    NHI:
-      name: NHI
-      in: path
-      description: The logical id to identify patient/consumer
       required: true
       schema:
         type: string
@@ -1825,109 +1613,6 @@ components:
         type: string
       example: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
   examples:
-    AcknowledgementRequest:
-      summary: Successful request to Acknowledgement
-      value:
-        resourceType: Bundle
-        id: '1'
-        type: message
-        entry:
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
-            resource:
-              resourceType: MessageHeader
-              text:
-                status: generated
-                div: div-data
-              eventCoding:
-                system: https://standards.digital.health.nz/ns/air-event-type
-                code: IMMUNISATION_UPDATE_ACK
-              destination:
-                - name: Mohfacid
-                  endpoint: Mohedi
-              source:
-                name: FZZ021-F
-                software: HSAPP0246
-                endpoint: https://air.api.digital.health.nz/fhir/R4/Immunization/$process-message
-              response:
-                identifier: '9876543'
-                code: ok
-              focus:
-                - reference: https://air.api.digital.health.nz/fhir/R4/Immunization/R3e12fe12-15fb-4d97-8fa7-5487f4374e8f
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/OperationOutcome/3092
-            resource:
-              resourceType: OperationOutcome
-              id: '2477'
-              text:
-                status: generated
-                div: div-data
-              issue:
-                - severity: information
-                  code: informational
-                  details:
-                    coding:
-                      - system: http://terminology.hl7.org/CodeSystem/v2-0008
-                        code: AA
-                  expression:
-                    - FZZ021-F
-                  diagnostics: accepted
-    OperationOutcomeAck:
-      summary: Successful response from Acknowledgement
-      value:
-        resourceType: OperationOutcome
-    DQExtension: &DQExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment
-        extension:
-          - url: dqScore
-            valueInteger: 66
-          - url: dqLastUpdated
-            valueDateTime: '2023-05-08T02:38:34+00:00'
-          - url: dqStatus
-            valueString: I
-          - url: DQViolations
-            extension:
-              - url: DQViolation
-                extension:
-                  - url: violationCode
-                    valueString: '500'
-                  - url: violationType
-                    valueString: DataQuality
-                  - url: violationMessage
-                    valueString: An immunisation event should have a diluent expiry date, and the diluent expiry date should not be before the immunisation event date.
-                  - url: violationElement
-                    valueString: Immunization.extension.where(url='https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent').extension.where(url='diluentExpiryDate').valueDate
-                  - url: violationWeighting
-                    valueInteger: 3
-    PlannedEventMatchExtension: &PlannedEventMatchExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match
-        extension:
-          - url: match
-            extension:
-              - url: plannedEventId
-                valueString: f82f452e-4cec-4607-89b5-d8179c6d957c
-              - url: matchedDate
-                valueDateTime: "2026-03-16T19:26:36.698+00:00"
-              - url: matchedBy
-                valueString: test
-              - url: matchedReason
-                valueCoding:
-                  code: "301"
-                  display: Automatically matched by indication
-    PlannedEventMQExtension: &PlannedEventMQExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match-quality
-        extension:
-          - url: matchQuality
-            extension:
-              - url: plannedEventId
-                valueString: f82f452e-4cec-4607-89b5-d8179c6d957c
-              - url: createdDate
-                valueDateTime: "2026-03-16T19:26:36.628+00:00"
-              - url: createdReason
-                valueCoding:
-                  code: "8204"
-                  display: Migrated Immunisation Event has been created
     UpdateSuccessDQIdentified:
       summary: Updated with data quality issues
       value:
@@ -2285,8 +1970,6 @@ components:
                   valueDateTime: '2023-05-08T02:25:00+00:00'
                 - url: dqStatus
                   valueString: P
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
           versionId: '1'
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
@@ -2458,8 +2141,6 @@ components:
                           valueString: "Immunization.where(id in 'c00f2a11-7db5-4f4e-9d5e-1d9645a72a5c')"
                         - url: violationWeighting
                           valueInteger: 0
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
           versionId: '1'
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
@@ -2613,14 +2294,14 @@ components:
           - severity: error
             code: invariant
             diagnostics: Immunisation event date cannot be in the future
-    PreconditionFailed:
-      summary: A 412 response example
+    TooManyReuqest:
+      summary: A 429 response example
       value:
         resourceType: OperationOutcome
         issue:
           - severity: error
             code: exception
-            diagnostics: Preconditioned Failed
+            diagnostics: Too many requests
     InternalError:
       summary: A 500 response example
       value:
@@ -3038,459 +2719,6 @@ components:
                 code: '161641000210109'
         protocolApplied:
           - doseNumberPositiveInt: 1
-    ReadResult:
-      summary: Immunisation Event record response
-      value:
-        resourceType: Immunization
-        id: e062d627-b565-48ae-9d7a-417db33ca64f
-        meta:
-          versionId: '4'
-          lastUpdated: '2023-05-08T02:49:52.172+00:00'
-          profile:
-            - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-          extension:
-            - *DQExtension
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
-        location:
-          reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-          identifier:
-            system: https://standards.digital.health.nz/ns/hpi-facility-id
-            value: FZZ835-E
-        contained:
-          - resourceType: RelatedPerson
-            id: '1'
-            patient:
-              identifier:
-                system: https://standards.digital.health.nz/ns/nhi-id
-                value: ZZZ7541
-            relationship:
-              - coding:
-                  - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                    code: FTH
-            name:
-              - family: Doe
-                given:
-                  - John
-                  - Jon
-            telecom:
-              - system: phone
-                value: '041234567'
-                use: home
-              - system: phone
-                value: '091234567'
-                use: work
-              - system: email
-                value: jodoe@moh.govt.nz
-                use: home
-            address:
-              - extension:
-                  - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                    valueString: Johnsonville
-                use: home
-                type: physical
-                line:
-                  - 123 Main St
-                  - Neverland
-                city: Wellington
-                postalCode: '6001'
-          - resourceType: Observation
-            id: '2'
-            meta:
-              profile:
-                - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-            status: preliminary
-            code:
-              coding:
-                - system: http://snomed.info/sct
-                  code: '278969009'
-            interpretation:
-              - coding:
-                  - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                    code: IND
-            effectiveDateTime: '2023-01-01T13:12:34+12:00'
-        extension:
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-            extension:
-              - url: diluentLotNumber
-                valueString: '33332222'
-              - url: diluentExpiryDate
-                valueDate: '2026-01-01'
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-            valueReference:
-              reference: "#1"
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-            valueReference:
-              reference: "#2"
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
-            extension:
-              type: array
-              maxItems: 1000
-              items:
-                type: object
-                properties:
-                  - url: years
-                    valueInteger: 24
-                  - url: months
-                    valueInteger: 1
-                  - url: days
-                    valueInteger: 12
-                  - url: daysSinceBirth
-                    valueInteger: 8790
-                  - url: precision
-                    valueString: DAY
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-            valueString: FZZ835-E_MOB0001
-        status: completed
-        statusReason:
-          coding:
-            - system: http://snomed.info/sct
-              code: '127785005'
-        vaccineCode:
-          coding:
-            - system: http://hl7.org/fhir/sid/cvx
-              version: 1.0.0
-              code: '03'
-          text: Priorix
-        patient:
-          identifier:
-            system: https://standards.digital.health.nz/ns/nhi-id
-            value: ZZZ7541
-        occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-        lotNumber: '555123'
-        expirationDate: '2024-01-31'
-        site:
-          coding:
-            - system: http://snomed.info/sct
-              version: '1.1'
-              code: '16217701000119102'
-        route:
-          coding:
-            - system: http://snomed.info/sct
-              version: '1.2'
-              code: '78421000'
-        performer:
-          - function:
-              coding:
-                - system: https://standards.digital.health.nz/ns/air-terms-code
-                  version: 1.0.0
-                  code: VC
-            actor:
-              reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
-              identifier:
-                system: https://standards.digital.health.nz/ns/hpi-person-id
-                value: '477616'
-        reasonCode:
-          - coding:
-              - system: http://snomed.info
-                code: '359953009'
-          - coding:
-              - system: http://snomed.info
-                version: '1'
-                code: '359953009'
-        protocolApplied:
-          - doseNumberPositiveInt: 1
-    PatientReadResponse:
-      summary: Consumer record response
-      value:
-        resourceType: Patient
-        id: ZZZ8541
-        meta:
-          lastUpdated: '2023-08-23T12:34:54'
-          profile:
-            - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient
-        identifier:
-          - use: official
-            system: 'https://standards.digital.health.nz/ns/nhi-id'
-            value: ZZZ8541
-          - use: old
-            system: 'https://standards.digital.health.nz/ns/nhi-id'
-            value: ZZZ8545
-        extension:
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-state
-            valueCodeableConcept:
-              coding:
-                - system: 'https://standards.digital.health.nz/ns/air-consumer-state-code'
-                  code: ACTIVE
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-sub-status
-            valueCodeableConcept:
-              coding:
-                - system: 'https://standards.digital.health.nz/ns/air-consumer-sub-status-code'
-                  code: WITH_OUTREACH
-          - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
-            valueDate: '2012-04-23'
-        active: true
-        deceasedBoolean: false
-        link:
-          - other:
-              reference: 'https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ8541'
-            type: refer
-    UpdatePatientStateParams:
-      value:
-        resourceType: Parameters
-        parameter:
-          - name: version
-            valueInteger: 1
-          - name: state
-            valueString: OVERSEAS
-          - name: subStatus
-            valueString: WITH_OUTREACH
-    SearchResult:
-      summary: Search returns multiple records
-      value:
-        resourceType: Bundle
-        id: 6ff4f3f3-8209-417c-8d08-f25bb23e9b64
-        meta:
-          lastUpdated: '2023-05-09T00:51:25.866+00:00'
-        type: searchset
-        total: 2
-        link:
-          - relation: self
-            url: https://air.api.digital.health.nz/fhir/R4/Immunization/_search
-        entry:
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
-            resource:
-              resourceType: Immunization
-              id: db298d16-1519-4c9f-8424-124090c15784
-              meta:
-                versionId: '1'
-                lastUpdated: '2023-05-09T00:50:08.177+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
-                  extension:
-                    type: array
-                    maxItems: 1000
-                    items:
-                      type: object
-                      properties:
-                        - url: years
-                          valueInteger: 24
-                        - url: months
-                          valueInteger: 1
-                        - url: days
-                          valueInteger: 12
-                        - url: daysSinceBirth
-                          valueInteger: 8790
-                        - url: precision
-                          valueString: DAY
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        version: 1.0.0
-                        code: VC
-                  actor:
-                    reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '477616'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info
-                      code: '359953009'
-                - coding:
-                    - system: http://snomed.info
-                      version: '1'
-                      code: '359953009'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
-            resource:
-              resourceType: Immunization
-              id: e062d627-b565-48ae-9d7a-417db33ca64f
-              meta:
-                versionId: '4'
-                lastUpdated: '2023-05-08T02:49:52.172+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
-              location:
-                reference: http://esam.co.nz/eSAMMoHAddress_v01/123456
-                identifier:
-                  system: https://hl7.org.nz/fhir/StructureDefinition/esam-id
-                  value: '123456'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
-                  extension:
-                    type: array
-                    maxItems: 1000
-                    items:
-                      type: object
-                      properties:
-                        - url: years
-                          valueInteger: 24
-                        - url: months
-                          valueInteger: 1
-                        - url: days
-                          valueInteger: 12
-                        - url: daysSinceBirth
-                          valueInteger: 8790
-                        - url: precision
-                          valueString: DAY
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        version: 1.0.0
-                        code: VC
-                  actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '477616'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info
-                      code: '359953009'
-                - coding:
-                    - system: http://snomed.info
-                      version: '1'
-                      code: '359953009'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
     OrchestrationResult:
       summary: Search returns multiple records with enrichment
       value:
@@ -3937,841 +3165,9 @@ components:
     SearchNhi:
       summary: Search by NHI
       value: patient=ZZZ9999
-    HistoryResult:
-      summary: History returns multiple records
-      value:
-        resourceType: Bundle
-        id: 6ff4f3f3-8209-417c-8d08-f25bb23e9b64
-        meta:
-          lastUpdated: '2023-05-09T00:51:25.866+00:00'
-        type: history
-        total: 2
-        link:
-          - relation: self
-            url: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784/_history
-        entry:
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
-            resource:
-              resourceType: Immunization
-              id: db298d16-1519-4c9f-8424-124090c15784
-              meta:
-                versionId: '2'
-                lastUpdated: '2023-05-10T00:50:08.177+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given
-                  extension:
-                    type: array
-                    maxItems: 1000
-                    items:
-                      type: object
-                      properties:
-                        - url: years
-                          valueInteger: 24
-                        - url: months
-                          valueInteger: 1
-                        - url: days
-                          valueInteger: 12
-                        - url: daysSinceBirth
-                          valueInteger: 8790
-                        - url: precision
-                          valueString: DAY
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        version: 1.0.0
-                        code: VC
-                  actor:
-                    reference: https://api.hip.digital.health.nz/fhir/hpi/v1/Practitioner/477616
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '477616'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info
-                      code: '359953009'
-                - coding:
-                    - system: http://snomed.info
-                      version: '1'
-                      code: '359953009'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-          - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
-            resource:
-              resourceType: Immunization
-              id: db298d16-1519-4c9f-8424-124090c15784
-              meta:
-                versionId: '1'
-                lastUpdated: '2023-05-09T00:50:08.177+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: http://terminology.hl7.org/CodeSystem/v2-0443
-                        version: 1.0.0
-                        code: P
-                  actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '477616'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info
-                      code: '359953009'
-                - coding:
-                    - system: http://snomed.info
-                      version: '1'
-                      code: '359953009'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-    BulkUpdateRequest:
-      summary: bulk update request
-      value:
-        resourceType: Parameters
-        parameter:
-          - name: create
-            resource:
-              resourceType: Immunization
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00Z'
-              vaccineCode:
-                text: Priorix
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    code: '03'
-                    version: 1.0.0
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
-                  valueCodeableConcept:
-                    coding:
-                      - system: http://nzmt.org.nz
-                        code: '10443641000116108'
-                    text: M-M-R-II
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '78421000'
-                    version: '1.2'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '16217701000119102'
-                    version: '1.1'
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161651000210107'
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161641000210109'
-                      version: '1'
-              performer:
-                - actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '18ABCD'
-                  function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        code: VC
-                        version: 1.0.0
-          - name: update
-            resource:
-              resourceType: Immunization
-              id: "e062d627-b565-48ae-9d7a-417db33ca64f"
-              meta:
-                versionId: '1'
-                lastUpdated: '2023-03-08T03:26:00.970+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2022-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
-                  valueCodeableConcept:
-                    coding:
-                      - system: http://nzmt.org.nz
-                        code: '10443641000116108'
-                    text: M-M-R-II
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        version: 1.0.0
-                        code: VC
-                  actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '18ABCD'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161651000210107'
-                - coding:
-                    - system: http://snomed.info/sct
-                      version: '1'
-                      code: '161641000210109'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-    BulkUpdateResponse:
-      summary: bulk update response
-      value:
-        resourceType: Parameters
-        parameter:
-          - name: created
-            resource:
-              resourceType: Immunization
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00Z'
-              vaccineCode:
-                text: Priorix
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    code: '03'
-                    version: 1.0.0
-              protocolApplied:
-                - doseNumberPositiveInt: 1
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2026-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
-                  valueCodeableConcept:
-                    coding:
-                      - system: http://nzmt.org.nz
-                        code: '10443641000116108'
-                    text: M-M-R-II
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '78421000'
-                    version: '1.2'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '16217701000119102'
-                    version: '1.1'
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161651000210107'
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161641000210109'
-                      version: '1'
-              performer:
-                - actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '18ABCD'
-                  function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        code: VC
-                        version: 1.0.0
-          - name: updated
-            resource:
-              resourceType: Immunization
-              id: "e062d627-b565-48ae-9d7a-417db33ca64f"
-              meta:
-                versionId: '1'
-                lastUpdated: '2023-03-08T03:26:00.970+00:00'
-                profile:
-                  - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-              location:
-                reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
-                identifier:
-                  system: https://standards.digital.health.nz/ns/hpi-facility-id
-                  value: FZZ835-E
-              contained:
-                - resourceType: RelatedPerson
-                  id: '1'
-                  patient:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/nhi-id
-                      value: ZZZ7541
-                  relationship:
-                    - coding:
-                        - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
-                          code: FTH
-                  name:
-                    - family: Doe
-                      given:
-                        - John
-                        - Jon
-                  telecom:
-                    - system: phone
-                      value: '041234567'
-                      use: home
-                    - system: phone
-                      value: '091234567'
-                      use: work
-                    - system: email
-                      value: jodoe@moh.govt.nz
-                      use: home
-                  address:
-                    - extension:
-                        - url: http://hl7.org.nz/fhir/StructureDefinition/suburb
-                          valueString: Johnsonville
-                      use: home
-                      type: physical
-                      line:
-                        - 123 Main St
-                        - Neverland
-                      city: Wellington
-                      postalCode: '6001'
-                - resourceType: Observation
-                  id: '2'
-                  meta:
-                    profile:
-                      - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-profile
-                  status: preliminary
-                  code:
-                    coding:
-                      - system: http://snomed.info/sct
-                        code: '278969009'
-                  interpretation:
-                    - coding:
-                        - system: https://standards.digital.health.nz/ns/air-serology-protection-terms
-                          code: IND
-                  effectiveDateTime: '2023-01-01T13:12:34+12:00'
-              extension:
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent
-                  extension:
-                    - url: diluentLotNumber
-                      valueString: '33332222'
-                    - url: diluentExpiryDate
-                      valueDate: '2022-01-01'
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-extension
-                  valueReference:
-                    reference: "#1"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-serology-report-extension
-                  valueReference:
-                    reference: "#2"
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-mobile-site
-                  valueString: FZZ835-E_MOB0001
-                - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-administered-product
-                  valueCodeableConcept:
-                    coding:
-                      - system: http://nzmt.org.nz
-                        code: '10443641000116108'
-                    text: M-M-R-II
-              status: completed
-              statusReason:
-                coding:
-                  - system: http://snomed.info/sct
-                    code: '127785005'
-              vaccineCode:
-                coding:
-                  - system: http://hl7.org/fhir/sid/cvx
-                    version: 1.0.0
-                    code: '03'
-                text: Priorix
-              patient:
-                identifier:
-                  system: https://standards.digital.health.nz/ns/nhi-id
-                  value: ZZZ7541
-              occurrenceDateTime: '2023-01-26T00:00:00+00:00'
-              lotNumber: '555123'
-              expirationDate: '2024-01-31'
-              site:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.1'
-                    code: '16217701000119102'
-              route:
-                coding:
-                  - system: http://snomed.info/sct
-                    version: '1.2'
-                    code: '78421000'
-              performer:
-                - function:
-                    coding:
-                      - system: https://standards.digital.health.nz/ns/air-terms-code
-                        version: 1.0.0
-                        code: VC
-                  actor:
-                    identifier:
-                      system: https://standards.digital.health.nz/ns/hpi-person-id
-                      value: '18ABCD'
-              reasonCode:
-                - coding:
-                    - system: http://snomed.info/sct
-                      code: '161651000210107'
-                - coding:
-                    - system: http://snomed.info/sct
-                      version: '1'
-                      code: '161641000210109'
-              protocolApplied:
-                - doseNumberPositiveInt: 1
+    SearchNhiFullReference:
+      summary: Search by full Patient reference
+      value: patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155
   headers:
     X-Correlation-ID:
       description: "A Correlation-ID to be used for logging and request tracing.  A UUID  is suggested, but not required.  Note that this header name is a FHIR  standard, but deprecated by Health NZ; it might change in the future"

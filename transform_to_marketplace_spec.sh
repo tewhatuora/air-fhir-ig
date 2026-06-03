@@ -232,9 +232,37 @@ yq '
     "name": "_include",
     "in": "query",
     "explode": true,
-    "description": "To include the enrichment of the resources namely Patient, Organization, Practitioner & Location",
-    "schema": {"type": "string"},
+    "description": "To include enrichment resources. Multiple _include values are supported.",
+    "schema": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "enum": ["*", "Patient", "Practitioner", "Location", "Organization", "Immunization:patient", "Immunization:performer", "Immunization:location"]
+      }
+    },
     "example": "Patient"
+  },
+  {
+    "name": "_include:iterate",
+    "in": "query",
+    "explode": true,
+    "description": "To include enrichment resources of secondary included resources. Multiple _include:iterate values are supported.",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Location:organization"]
+      },
+      "minItems": 0,
+      "maxItems": 1
+    },
+    "examples": {
+      "managingOrganization": {
+        "value": "Location:organization",
+        "summary": "managingOrganization (HPI-O) of the location"
+      }
+    }
   },
   {
     "name": "organisation",
@@ -256,7 +284,7 @@ mv "${TMP_FILE}.2" "$TMP_FILE"
 
 # Step 3: keep external standard _search behaviour and remove only JSON body/admin data-quality search.
 yq '
-.paths."/fhir/R4/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
+.paths."/fhir/R4/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
 |
 .paths."/fhir/R4/Immunization/_search".post.requestBody = {
   "required": false,
@@ -271,7 +299,8 @@ yq '
           "status-reason:not-in": {"type": "string", "description": "Comma-separated status reason exclusions."},
           "status:not-in": {"type": "string", "description": "Comma-separated status exclusions."},
           "status": {"type": "string", "description": "Comma-separated statuses to include."},
-          "_include": {"type": "string", "description": "Included resource enrichment."},
+          "_include": {"type": "array", "items": {"type": "string"}, "description": "One or more included resource enrichments."},
+          "_include:iterate": {"type": "array", "items": {"type": "string"}, "description": "One or more iterative included resource enrichments."},
           "organisation": {"type": "string", "description": "Organisation identifier or reference."},
           "location": {"type": "string", "description": "Location/facility identifier or reference."}
         }

@@ -868,6 +868,17 @@ components:
               maxItems: 1000
               items:
                 type: string
+            tag:
+              type: array
+              items:
+                type: object
+                properties:
+                  system:
+                    type: string
+                  code:
+                    type: string
+                  display:
+                    type: string
         patient:
           $ref: '#/components/schemas/LogicalReference'
         vaccineCode:
@@ -4827,7 +4838,7 @@ components:
       value: patient=ZZZ9999
     SearchNhiFullPatientRef:
       summary: Search by NHI with Patient URL ref
-      value: patient=https://api.hip.digital.health.nz/fhir/nhi/v2/Patient/ZZZ9999
+      value: patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9999
     BulkUpdateRequest:
       summary: bulk update request
       value:

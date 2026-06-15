@@ -4836,6 +4836,10 @@ components:
     SearchNhi:
       summary: Search by NHI
       value: patient=ZZZ9999
+    SearchNhiFhirJson:
+      summary: Search by NHI
+      value:
+        patient: "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9999"
     SearchNhiFullPatientRef:
       summary: Search by NHI with Patient URL ref
       value: patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9999

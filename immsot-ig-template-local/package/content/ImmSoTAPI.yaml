@@ -266,6 +266,12 @@ paths:
                 $ref: '#/components/examples/SearchNhi'
               Search by NHI number with Patient Reference:
                 $ref: '#/components/examples/SearchNhiFullPatientRef'
+          application/fhir+json:
+            schema:
+              type: object
+            examples:
+              Search by NHI number:
+                $ref: '#/components/examples/SearchNhiFhirJson'
       responses:
         "200":
           description: Ok

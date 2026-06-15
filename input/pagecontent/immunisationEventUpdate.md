@@ -5,7 +5,7 @@ The "update" operation is used to update an existing immunisation event. This me
 The update operation performs the following:
 1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 1. Check if the version of the existing event in the request header If-Match matches the version of the event being updated. If the versions do not match, it returns an error with a message indicating that the received version in the request payload does not match the existing version.
-1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, it returns an error message indicating that the user does not have the required scope to update the NHI. Note: in the event that an Immunisation Event is uploaded to ImmSOT with an incorrect NHI, it must have its Status changed to "Entered in Error", and then the correct Event should be uploaded.
+1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "identifier-not-updated" is returned in the response.
 1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
 1. Create a new version of the event with the updated details and a new version number.
 1. Save the new version of the event to the database.
@@ -404,6 +404,23 @@ If there were any issues with the update, the response will contain an Operation
     "protocolApplied": [
         {
             "doseNumberPositiveInt": 1
+        }
+    ]
+}
+```
+
+##### identifier-not-updated in the response
+
+The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted in the response when the NHI number in the request does not match the NHI of the stored record. The updated record is stored with the existing NHI number not the one provided.
+
+```json
+"meta" : {
+    ...
+    "tag" : [
+        {
+            "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
+            "code" : "identifier-not-updated",
+            "display" : "Patient identifier not updated - identifier is immutable for this operation"
         }
     ]
 }

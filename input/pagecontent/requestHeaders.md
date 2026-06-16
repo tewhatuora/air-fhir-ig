@@ -59,5 +59,12 @@ The following headers may be presented in the request.
     <td>HSAPP0232</td>
     <td>Source System ID</td>
   </tr>
+  <tr>
+    <td>Api-Version</td>
+    <td>String</td>
+    <td>no</td>
+    <td>1</td>
+    <td>Api Version for request and response</td>
+  </tr>
 </tbody></table>
 

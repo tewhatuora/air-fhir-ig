@@ -10,7 +10,7 @@ This IG depends on the [HL7(r) FHIR(r) New Zealand Base IG](http://build.fhir.or
 
 ### API IG versions
 
-Currently two major versions of the IG are supported, with corrosponding API implementations [API Version 1](https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api-v1/index.html) and [API Version 2](https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api-v2/index.html). 
+Currently two major versions of the IG are supported, with corrosponding API implementations [API Version 1](https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api_v1/index.html) and [API Version 2](https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api_v2/index.html). 
 
 #### Default version
 

@@ -58,6 +58,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://standards.digital.health.nz/ns/air-planned-event-date-type">https://standards.digital.health.nz/ns/air-planned-event-date-type</a></td>
 </tr>
 <tr>
+<td><a href="CodeSystem-air-processing-terms.html">AIR Processing Terms-undefined</a> </td>
+<td> <p>This Code System contains meta tags that AIR uses to signal processing outcomes</p> </td>
+<td> <a href="https://standards.digital.health.nz/ns/air-processing-terms">https://standards.digital.health.nz/ns/air-processing-terms</a></td>
+</tr>
+<tr>
 <td><a href="CodeSystem-air-planned-event-type-terms.html">AIR Planned Event Type-undefined</a> </td>
 <td> <p>This code system includes values for the types of Planned Events used in AIR.</p> </td>
 <td> <a href="https://standards.digital.health.nz/ns/air-scheduled-event-type-terms">https://standards.digital.health.nz/ns/air-scheduled-event-type-terms</a></td>
@@ -134,6 +139,11 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td><a href="ValueSet-air-planned-event-date-type-code.html">AIR Planned Event Date Type Code-undefined</a> </td>
 <td> <p>Coded values to describe the dates associated with a Planned Event, such as the Due Date, the Earliest Date to Give, and so on. Also codes pretaining to the Planned Event record in AIR, such as the date it was created and the date the Planned Event moved in Final status.</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-planned-event-date-type-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-planned-event-date-type-code</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-processing-terms-code.html">AIR Processing Terms Code-undefined</a> </td>
+<td> <p>This Value Set contains meta tags that AIR uses to signal processing outcomes.</p></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-terms-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-terms-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-related-person-relationship-code.html">AIR Related Person Relationship Code-undefined</a> </td>

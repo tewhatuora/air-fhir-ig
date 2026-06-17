@@ -23,6 +23,7 @@ It performs the following:
     * If no existing immunisation event record is found, then it performs a Create.
     * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
 4. Return the created or updated event and any validation issues identified in the meta sections.
+5. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "identifier-not-updated" is returned in the response.
 
 <div>
 <img src="assets/images/upsert-flow-digram.png" alt="Upsert Flow" style="max-width:100%; height:auto;"/>
@@ -175,6 +176,22 @@ Returns the created or updated Immunization record. If there were any issues wit
 }
 ~~~
 
+##### identifier-not-updated in the response
+
+The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted in the response when the NHI number in the request does not match the NHI of the stored record. The updated record is stored with the existing NHI number not the one provided.
+
+```json
+"meta" : {
+    ...
+    "tag" : [
+        {
+            "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
+            "code" : "identifier-not-updated",
+            "display" : "Patient identifier not updated - identifier is immutable for this operation"
+        }
+    ]
+}
+```
 
 ### Scope/s required
 

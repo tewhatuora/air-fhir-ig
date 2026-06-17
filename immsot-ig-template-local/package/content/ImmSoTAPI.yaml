@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records"
-  version: "1.22.0"
+  version: "1.26.0"
 servers:
   - url: https://air.api.digital.health.nz
     description: PROD - ImmSoT Service endpoint
@@ -872,6 +872,17 @@ components:
               maxItems: 1000
               items:
                 type: string
+            tag:
+              type: array
+              items:
+                type: object
+                properties:
+                  system:
+                    type: string
+                  code:
+                    type: string
+                  display:
+                    type: string
         patient:
           $ref: '#/components/schemas/LogicalReference'
         vaccineCode:

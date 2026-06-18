@@ -5,6 +5,7 @@ The "create" operation is used to create a new immunisation event. This method p
 The create operation performs the following:
 1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record
 1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
+1. With the Patient Identifer for the incoming event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, including the `meta.tag` `exact-duplicate-not-created` [Exact duplicate short circuit](#exact-duplicate-short-circuit).
 1. Create the first version of the event with the details provided
 1. Saves the new version of the event to the database.
 1. Returns the event and any validation errors in an operationOutcome.
@@ -22,7 +23,7 @@ All the headers listed in the request headers [here](requestHeaders.html)
 Post a full set of immunisation record details. See below. The FHIR specification for an AIR Immunization resource is at [AIR Immunization Profile](StructureDefinition-air-immunization.html)
 
 #### Sample Request Payload
-~~~
+~~~json
 {
     "resourceType": "Immunization",
     "patient": {
@@ -256,6 +257,31 @@ Post a full set of immunisation record details. See below. The FHIR specificatio
 
 ### Behaviour
 
+#### Exact duplicate short circuit
+
+With the Patient Identifer for the incomeing event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, and mark with the meta.tag `exact-duplicate-not-created`.
+* http resonse code 200
+* metag.tag `exact-duplicate-not-created`
+* immunization resource of the original duplicate event includeing resource.id
+
+##### exact-duplicate-not-created meta.tag example
+```json
+...
+"meta" : {
+    ...
+    "tag" : [
+        {
+            "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
+            "code" : "exact-duplicate-not-created",
+            "display" : "Exact duplicate not created"
+        }
+    ]
+}
+...
+```
+
+#### Create new event
+
 * immunisation record is validated (validation rules that can lead to rejection of the submitted Immunisation Event are listed [here](rejectionRules.html), and rules that result in data quality warnings are listed [here](dataQualityRules.html))
 * If all the attributes / items in the immunisation record are valid, a new immunisation record is added to the repository, attached to the provided NHI, with the details populated from the request.
 
@@ -265,7 +291,7 @@ Returns the created Immunization record. If there were any issues with the creat
 
 #### Sample Response Payload, Immunisation Event created successfully
 
-~~~
+~~~json
 {
     "resourceType": "Immunization",
     "id": "bb14c00e-83b7-494b-98aa-6b9295d2ea3a",

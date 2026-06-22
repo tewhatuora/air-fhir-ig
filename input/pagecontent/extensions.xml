@@ -271,7 +271,7 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 <td>
 <div>Element</div>
 </td>
-<td><p>This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule. Refer to <a href="dataQualityRules.html">Data Quality Rules</a> and <a href="https://standards.digital.health.nz/ns/air-data-quality-violation-code">AIR Data Quality Violation Code</a> value set for codes and messages that could be returned.</p></td>
+<td><p>This describes one particular AIR data quality rule violation for an Immunization. Each rule violation includes a code, a type, a message, the FHIRPath expression to the element where the error occurred, and the weighting associated with the rule. Refer to <a href="dataQualityRules.html">Data Quality Rules</a> and <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-data-quality-violation-code">AIR Data Quality Violation Code</a> value set for codes and messages that could be returned.</p></td>
 <td></td>
 </tr>
 <tr>

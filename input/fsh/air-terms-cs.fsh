@@ -13,6 +13,7 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 // Health Worker functions
 // updated 29 Feb 24 per IMM-4218
 // updated 25 Mar per updated IMM-4218
+// Updated 2026-Jun-22 IMM-6930
 * #AP "Administering Provider"
 * #AP #VC "Vaccinator" 
     "A person who administers vaccinations and has an additional practicing credential, such as a nurse or doctor."
@@ -27,6 +28,9 @@ Description: "This is a code system for terms needed in AIR ImmSoT that don't co
 * #OP "Ordering Provider"
 * #OP #GP "General practitioner"
     "A General Practitioner"
+* #AP #ATND "attender" "The practitioner that has responsibility for overseeing a patient's care during a patient encounter. This function applies to a person who supervises the administration of vaccinations by someone else."
+* #AP #PPRF "primary performer" "The principal or primary performer of the act. This function applies to a person who administered a vaccine under supervision, such as a student doctor or vaccinating health worker undergoing training."
+* #ENT "data entry person" "A person entering the data into the originating system. The data entry person is collected optionally for internal quality control purposes."
 
 // NIR Indications
 * #1 "Influenza, eligible 65 years and over"

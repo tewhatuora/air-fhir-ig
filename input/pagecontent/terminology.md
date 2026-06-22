@@ -131,9 +131,19 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-hl7v2-imm-func-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-hl7v2-imm-func-code</a></td>
 </tr>
 <tr>
+<td><a href="ValueSet-air-imm-func-code-code-legacy.html">AIR Immunization Function Code (legacy)-undefined</a> </td>
+<td> <p>This value set holds legacy health worker function codes. Its purpose in AIR is to enable a mapping to semantically equivalent AIR Terms codes. These codes should NOT be used in FHIR payloads.</p></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-imm-func-code-legacy">https://nzhts.digital.health.nz/fhir/ValueSet/air-imm-func-code-legacy</a></td>
+</tr>
+<tr>
 <td><a href="ValueSet-air-indication-code.html">AIR Indication Code-undefined</a> </td>
 <td> <p>Coded values to describe the reason an immunisation was given. Initially drawn from legacy NIR codes and CIR SNOMED codes.</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-indication-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-indication-code</a></td>
+</tr>
+<tr>
+<td><a href="ValueSet-air-performer-health-worker-function-code.html">AIR Performer Health Worker Function-undefined</a> </td>
+<td> <p>A value set of codes for the functions performed by the people who are involved in administering immunisations in Aotearoa. Note that the preferred terms are AP, OP, VC, VHW and IP. The other terms in this value set will be deprecated in the future. Note that the following codes are considered as Administering Providers: AP, IP, LMC, OIS, PV, VC, VHW, WCP. The following code is considered an Ordering Provider: GP.</p></td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-performer-health-worker-function-code">https://nzhts.digital.health.nz/fhir/ValueSet/air-performer-health-worker-function-code</a></td>
 </tr>
 <tr>
 <td><a href="ValueSet-air-planned-event-date-type-code.html">AIR Planned Event Date Type Code-undefined</a> </td>
@@ -190,11 +200,6 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <p>Hl7v2_result Result Code</p></td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result">https://nzhts.digital.health.nz/fhir/ValueSet/hl7v2-result</a></td>
 </tr>
-<tr>
-<td><a href="ValueSet-air-performer-health-worker-function-code.html">AIR Performer Health Worker Function-undefined</a> </td>
-<td> <p>A value set of codes for the functions performed by the people who are involved in administering immunisations in Aotearoa. Note that the preferred terms are AP, OP, VC, VHW and IP. The other terms in this value set will be deprecated in the future. Note that the following codes are considered as Administering Providers: AP, IP, LMC, OIS, PV, VC, VHW, WCP. The following code is considered an Ordering Provider: GP.</p></td>
-<td> <a href="https://standards.digital.health.nz/ns/air-performer-health-worker-function-code">https://standards.digital.health.nz/ns/air-performer-health-worker-function-code</a></td>
-</tr>
 </table>
 <h3>Concept Maps</h3>
 <table class='table table-bordered table-condensed'>
@@ -204,9 +209,9 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map</a></td>
 </tr>
 <tr>
-<td><a href="ConceptMap-air-health-worker-function-code-map.html">Concept Map -- HL7v2 Immunization Function Codes < -- > AIR Health Worker Function Codes-undefined</a> </td>
-<td> <p>This maps the codes used to report serology protection status in NIR HL7v2 messaging (OBX-5) to the counterpart codes used in the FHIR observation.interpretation field. Note that this map only includes those codes where the code is different between HL7v2 and FHIR standards.</p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-code-map</a></td>
+<td><a href="ConceptMap-air-health-worker-function-map.html">Concept Map -- HL7v2 Immunization Function ↔️< -- > AIR Health Worker Function-undefined</a> </td>
+<td> <p>This maps HL7 Immunization Function Codes and Provider Roles to AIR Health Worker Function Codes. HL7v2 codes are from V2 table 0443 (Provider Role) and map to message segments as defined in <a href="https://terminology.hl7.org/4.0.0/CodeSystem-v2-0443.html">CodeSystem: providerRole</a>. HL7v3 codes are from <a href="http://terminology.hl7.org/CodeSystem/v3-ParticipationType">CodeSystem: ParticipationType</a></p> </td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-map</a></td>
 </tr>
 <tr>
 <td><a href="ConceptMap-air-route-map.html">Concept Map -- Route of Administration HL7v2 < -- >AIR SNOMED-undefined</a> </td>

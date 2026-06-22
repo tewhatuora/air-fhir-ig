@@ -14,7 +14,6 @@ If there is a change which should be present in other versions then it can be ch
 Each version branch can be maintained independently on its own publishing lifecycle.
 
 main branch will always be the latest
-
  
 
 ## Git version model
@@ -57,3 +56,7 @@ The transition to support multi versions is 2 stage:
   - pull the scripts from main,
   - pull all the website packages from gitlab package repository
   - publish the combined website 
+
+## IG version
+ IG version `sushi-config.yaml version:`   
+ Publish version `[main] ci-scripts\website-manifest.yaml` 

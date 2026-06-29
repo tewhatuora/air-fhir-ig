@@ -1,0 +1,48 @@
+name: Publish Implementation Guide
+
+on:
+  push:
+    branches:
+      - main
+      - main-V1
+      - uat
+      - uat-V1
+
+jobs:
+  publish-ig:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set branch name
+        id: set_branch
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Print branch
+        run: echo "Running on branch ${{ env.BRANCH_NAME }}"
+
+      - name: Send POST request
+        run: |
+          if [[ "${{ env.BRANCH_NAME }}" == "main" ]]; then
+            curl -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY }}" \
+              -d '{"gitBranch": "main", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          elif [[ "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
+            curl -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY_V1 }}" \
+              -d '{"gitBranch": "main-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          elif [[ "${{ env.BRANCH_NAME }}" == "uat" ]]; then
+            curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
+              -d '{"gitBranch": "uat", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          elif [[ "${{ env.BRANCH_NAME }}" == "uat-V1" ]]; then
+            curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY_UAT_V1 }}" \
+              -d '{"gitBranch": "uat-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          fi

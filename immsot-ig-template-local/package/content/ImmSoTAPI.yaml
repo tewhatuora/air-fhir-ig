@@ -264,12 +264,8 @@ paths:
             examples:
               Search by NHI number:
                 $ref: '#/components/examples/SearchNhi'
-          application/fhir+json:
-            schema:
-              type: object
-            examples:
-              Search by NHI number:
-                $ref: '#/components/examples/SearchNhiFhirJson'
+              Search by NHI number with Patient Reference:
+                $ref: '#/components/examples/SearchNhiFullPatientRef'
       responses:
         "200":
           description: Ok
@@ -4840,10 +4836,9 @@ components:
     SearchNhi:
       summary: Search by NHI
       value: patient=ZZZ9999
-    SearchNhiFhirJson:
-      summary: Search by NHI
-      value:
-        patient: "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9999"
+    SearchNhiFullPatientRef:
+      summary: Search by NHI with Patient URL ref
+      value: patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ9999
     BulkUpdateRequest:
       summary: bulk update request
       value:

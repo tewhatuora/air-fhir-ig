@@ -79,3 +79,4 @@ Description: "SNOMED CT Codes used in AIR to identify an Antigen Group. These co
 * $SCT#1360050007 "PCV21"
 * $SCT#871817003 "M/R"
 * $SCT#871908002 "MMRV"
+* $SCT#1397266006 "MenABCWY"

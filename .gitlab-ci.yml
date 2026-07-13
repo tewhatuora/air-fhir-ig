@@ -21,7 +21,6 @@ variables:
     description: "If true then a major release will be built. Only applies if RELEASE=true and the release is made from the main branch."
   API_VERSION: "v2"
   PUBLISH_SCRIPTS_GIT_REPO: "air-api-fhir-ig-v2"
-  CI_DEBUG_TRACE: "true"
 
 ig-build-prepare:
   stage: build-prepare
@@ -104,8 +103,6 @@ pages:
     - rm -rf publish_scripts_tmp public
     - git clone --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/healthnz-prm/air/${PUBLISH_SCRIPTS_GIT_REPO}.git publish_scripts_tmp
     - (cd publish_scripts_tmp; sh ./ci-scripts/publish-website.sh)
-    - ls publish_scripts_tmp
-    - ls
   artifacts:
     paths:
       - public

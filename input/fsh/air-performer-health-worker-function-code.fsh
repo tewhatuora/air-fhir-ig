@@ -19,3 +19,7 @@ Description: "A value set of codes for the functions performed by the people who
 * $AIRTerms#OIS "Outreach Immunisation Services"
 * $AIRTerms#PV "Pharmacist Vaccinator"
 * $AIRTerms#WCP "Well Child Provider"
+// Updated 2026-Jun-22 IMM-6930
+* $AIRTerms#ATND "Supervisor / Attender"
+* $AIRTerms#PPRF "Trainee / Performer"
+* $AIRTerms#ENT "data entry person"

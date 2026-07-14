@@ -204,14 +204,14 @@ This page provides a list of the FHIR terminology artifacts defined as part of t
 <h3>Concept Maps</h3>
 <table class='table table-bordered table-condensed'>
 <tr>
+<td><a href="ConceptMap-air-health-worker-function-map.html">Concept Map -- HL7v2 Immunization Function < -- > AIR Health Worker Function-undefined</a> </td>
+<td> <p>This maps HL7 Immunization Function Codes and Provider Roles to AIR Health Worker Function Codes. HL7v2 codes are from V2 table 0443 (Provider Role) and map to message segments as defined in <a href="https://terminology.hl7.org/4.0.0/CodeSystem-v2-0443.html">CodeSystem: providerRole</a>. HL7v3 codes are from <a href="http://terminology.hl7.org/CodeSystem/v3-ParticipationType">CodeSystem: ParticipationType</a></p> </td>
+<td> <a href="https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-map">https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-map</a></td>
+</tr>
+<tr>
 <td><a href="ConceptMap-air-gender-code-map.html">Concept Map -- Gender Code HL7v2 PID < -- > Administrative Gender used in FHIR R4-undefined</a> </td>
 <td> <p>This maps the gender codes listed in the NIR Message Spec v4.5, Sep 2020 (HL7 Table 0001) to the codes returned by the NHI Service.</p> </td>
 <td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-gender-code-map</a></td>
-</tr>
-<tr>
-<td><a href="ConceptMap-air-health-worker-function-map.html">Concept Map -- HL7v2 Immunization Function ↔️< -- > AIR Health Worker Function-undefined</a> </td>
-<td> <p>This maps HL7 Immunization Function Codes and Provider Roles to AIR Health Worker Function Codes. HL7v2 codes are from V2 table 0443 (Provider Role) and map to message segments as defined in <a href="https://terminology.hl7.org/4.0.0/CodeSystem-v2-0443.html">CodeSystem: providerRole</a>. HL7v3 codes are from <a href="http://terminology.hl7.org/CodeSystem/v3-ParticipationType">CodeSystem: ParticipationType</a></p> </td>
-<td> <a href="https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-map">https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-map</a></td>
 </tr>
 <tr>
 <td><a href="ConceptMap-air-route-map.html">Concept Map -- Route of Administration HL7v2 < -- >AIR SNOMED-undefined</a> </td>

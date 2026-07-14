@@ -13,6 +13,9 @@ stages:
   - post-release
 
 variables:
+  FORCE_PUBLISH_WEB:
+    value: "false"
+    description: "Publish the webpages without a release."
   RELEASE:
     value: "false"
     description: "Set to true in order to build a new release."
@@ -64,7 +67,7 @@ build-web-pages-archive:
   image: alpine:latest
   stage: build-pages
   rules:
-  - if: $RELEASE == "true"
+  - if: $RELEASE == "true" || $FORCE_PUBLISH_WEB == "true"
   before_script:
     - apk add zip curl yq
   script:
@@ -95,7 +98,7 @@ pages:
   image: alpine:latest
   stage: deploy
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+    - if: $CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME =~ /^release\/.+/  || $FORCE_PUBLISH_WEB == "true"
   before_script:
     - apk add curl unzip yq git
   script:

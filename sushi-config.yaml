@@ -37,6 +37,9 @@ dependencies:
   hl7.fhir.uv.extensions:
     uri: http://hl7.org/fhir/extensions
     version: 1.0.0
+  hl7.fhir.uv.tools:
+    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
+    version: 0.7.1
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in

@@ -1,0 +1,20 @@
+{
+  "https://standards.digital.health.nz/ns/air-immunisation-notification-action-code" : null,
+  "http://nzmt.org.nz|null" : null,
+  "https://standards.digital.health.nz/ns/immunisation-code|null" : null,
+  "http://hl7.org/fhir/SearchParameter/target-disease" : null,
+  "http://hl7.org.nz/fhir/MessageDefinition/UpdateImmunisationResponseMessageDefinition" : null,
+  "https://localhost:8443/fhir/R4/AIRAGVSPlanDefinition/Delay-3-6M-P-PCV13-1.0" : null,
+  "https://standards.digital.health.nz/fhir/air/StructureDefinition/orch-immunization" : null,
+  "http://hl7.org/fhir/SearchParameter/patient" : null,
+  "https://nzhts.digital.health.nz/fhir/ValueSet/air-imm-func-code-legacy" : null,
+  "http://standards.digital.health.nz/fhir/air/StructureDefinition/orch-immunization" : null,
+  "http://nzmt.org.nz" : null,
+  "http://nzhts.digital.health.nz/fhir/ValueSet/air-hl7v2-imm-func" : null,
+  "http://hl7.org.nz/fhir/StructureDefinition/HPILocation" : null,
+  "http://hl7.org.nz/fhir/StructureDefinition/EnrolmentNominationResponse" : null,
+  "http://localhost:8443/fhir/R4/AIRAGVSPlanDefinition/Delay-3-6M-P-PCV13-1.0" : null,
+  "http://hl7.org.nz/fhir/StructureDefinition/HPIPractitioner" : null,
+  "http://hl7.org.nz/fhir/StructureDefinition/NhiPatient" : null,
+  "https://nzhts.digital.health.nz/fhir/ValueSet/air-hl7v2-imm-func" : null
+}

@@ -1,0 +1,152 @@
+{
+  "systems" : [
+    {
+      "system" : "http://hl7.org/fhir/sid/cvx",
+      "authoritative" : ["http://tx.fhir.org/r4"],
+      "candidates" : [
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4"
+      ]
+    },
+    {
+      "system" : "http://hl7.org/fhir/sid/cvx|3.0.0",
+      "authoritative" : ["http://tx.fhir.org/r4"],
+      "candidates" : [
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4"
+      ]
+    },
+    {
+      "system" : "http://hl7.org/fhir/sid/cvx|3.0.1",
+      "authoritative" : ["http://tx.fhir.org/r4"],
+      "candidates" : [
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4"
+      ]
+    },
+    {
+      "system" : "http://loinc.org",
+      "authoritative" : [],
+      "candidates" : [
+        "http://tx.fhir.org/r4",
+        "https://tx.hl7.org.au/fhir",
+        "https://tx.ontoserver.csiro.au/fhir",
+        "https://terminologystandardsservice.ca/tx/fhir",
+        "https://tx.fhir.ch/r4",
+        "https://tx.hl7chile.cl/r4",
+        "https://tx.fhir.de/fhir"
+      ]
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "authoritative" : [],
+      "candidates" : [
+        "http://tx.fhir.org/r4",
+        "https://tx.hl7.org.au/fhir",
+        "https://tx.ontoserver.csiro.au/fhir",
+        "https://terminologystandardsservice.ca/tx/fhir",
+        "https://smt.esante.gouv.fr/fhir",
+        "https://tx.fhir.ch/r4",
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4",
+        "https://tx.fhir.de/fhir"
+      ]
+    },
+    {
+      "system" : "http://snomed.info/sct|1.0.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "http://snomed.info/sct|1.1",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "http://snomed.info/sct|1.2",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "authoritative" : [],
+      "candidates" : ["http://tx.fhir.org/r4"]
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/address-not-validated-reason-code|1.1",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/air-planned-event-date-type",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/air-status-reason-terms",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/air-terms-code",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/air-terms-code|1.0.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/ethnic-group-level-4-code|2.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/immunisation-code",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/location-type-code|1.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/nz-citizenship-status-code|1.0.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "https://standards.digital.health.nz/ns/nz-residency-code|1.0.0",
+      "authoritative" : [],
+      "candidates" : []
+    },
+    {
+      "system" : "urn:iso:std:iso:3166",
+      "authoritative" : [],
+      "candidates" : [
+        "http://tx.fhir.org/r4",
+        "https://tx.hl7.org.au/fhir",
+        "https://tx.fhir.ch/r4",
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4"
+      ]
+    },
+    {
+      "system" : "urn:iso:std:iso:3166:-2",
+      "authoritative" : [],
+      "candidates" : [
+        "http://tx.fhir.org/r4",
+        "https://tx.hl7.org.au/fhir",
+        "https://tx.hl7chile.cl/r4",
+        "https://tx-nordics.fhir.org/fhir/r4"
+      ]
+    }
+  ]
+}

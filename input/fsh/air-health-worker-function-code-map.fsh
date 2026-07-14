@@ -6,7 +6,7 @@ Description: "This maps HL7 Immunization Function Codes and Provider Roles to AI
 
 * name = "HL7ImmFuncCode-AIRPerformerHealthWorkerFunction_Map"
 
-* url = "https://nzhts.digital.health.nz/fhir/ValueSet/air-health-worker-function-map"
+* url = "https://nzhts.digital.health.nz/fhir/ConceptMap/air-health-worker-function-map"
 
 * status = #active
 

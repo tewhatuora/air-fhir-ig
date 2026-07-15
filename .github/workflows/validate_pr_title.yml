@@ -1,0 +1,25 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR title
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          echo "Title: $TITLE"
+
+          if [[ ! "$TITLE" =~ ^(feature|bugfix|release|cherry-pick|revert)/.* ]]; then
+            echo "Invalid PR title. expected format [feature|bugfix|release|cherry-pick|revert]/<title_name>"
+            echo "e.g. feature/IMM-3345/include-new-values"
+            exit 1
+          fi

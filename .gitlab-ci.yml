@@ -71,7 +71,7 @@ build-web-pages-archive:
     - apk add zip curl yq
   script:
     - (cd output; zip -r "../web-pages.zip" .)
-    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
+    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION/-*/}/web-pages.zip"
     - echo "Uploading ${PUBLISH_URL}"
     - >
       curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"

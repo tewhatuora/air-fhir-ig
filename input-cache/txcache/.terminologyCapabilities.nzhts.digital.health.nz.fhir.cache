@@ -1,0 +1,2039 @@
+{
+  "resourceType" : "TerminologyCapabilities",
+  "meta" : {
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/TerminologyCapabilities"]
+  },
+  "text" : {
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>CSIRO Terminology Server (Ontoserver ®)</h1><table><tr><td>Publisher</td><td>Te Whatu Ora - Health New Zealand</td></tr><tr><td>Version</td><td>6.24.2.1783982513529</td></tr><tr><td>Date</td><td>2026-07-14</td></tr></table><p>Ontoserver supports a large portion of the FHIR Terminology Services specification. In particular, it has native support for SNOMED CT, LOINC, and code systems defined via the FHIR CodeSystem resource. This extends to supporting use of all defined and default filters in a FHIR ValueSet, as well as the implicitly defined ValueSets for SNOMED CT and LOINC.</p><p>More details are available in the <a href=\"https://ontoserver.csiro.au/docs/6.24.2/api-fhir.html\">Ontoserver documentation</a></p></div>"
+  },
+  "url" : "https://nzhts.digital.health.nz/fhir/metadata?mode=terminology",
+  "version" : "6.24.2.1783982513529",
+  "name" : "FHIR_Conformance_statement_for_Ontoserver",
+  "title" : "FHIR Conformance statement for OntoserverÂ®",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-07-14T10:41:53+12:00",
+  "publisher" : "Te Whatu Ora - Health New Zealand",
+  "contact" : [{
+    "name" : "NZHTS Support Desk",
+    "telecom" : [{
+      "system" : "email",
+      "value" : "standards@health.govt.nz"
+    }]
+  }],
+  "kind" : "capability",
+  "software" : {
+    "name" : "Ontoserver®",
+    "version" : "6.24.2"
+  },
+  "lockedDate" : false,
+  "codeSystem" : [{
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/name-use",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nc-agency-type-code",
+    "version" : [{
+      "code" : "20241113",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-consumer-state",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/acc-rehabilitation-code",
+    "version" : [{
+      "code" : "20260201",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/practitioner-registration-status-code",
+    "version" : [{
+      "code" : "2.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/practitioner-additional-authorisation-code",
+    "version" : [{
+      "code" : "1.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/maori-descent-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-hl7-fhir-request-status",
+    "version" : [{
+      "code" : "20241022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/NZVX-immunisation-code",
+    "version" : [{
+      "code" : "20230524",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/gender-classification",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-status-reason-terms",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-ro-fsa-priority",
+    "version" : [{
+      "code" : "20240930",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-scheduled-event-type-terms",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/anzsic",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-map-sact-regimen",
+    "version" : [{
+      "code" : "20250522",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/anzsco",
+    "version" : [{
+      "code" : "2022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/national-occupation-list",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nes-event-type",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/mdr",
+    "version" : [{
+      "code" : "29.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/administrative-gender",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/location-type-code",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-ro-treatment-priority",
+    "version" : [{
+      "code" : "20250416",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/coverage-category-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/acc-document-type-code",
+    "version" : [{
+      "code" : "20260201",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSysrtem/loinc_nz_local_order_code",
+    "version" : [{
+      "code" : "20241014",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-ro-fsa-waitlist-threshold",
+    "version" : [{
+      "code" : "20250130",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/clinical-code-type-code",
+    "version" : [{
+      "code" : "20221115",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0200",
+    "version" : [{
+      "code" : "2.9",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/country-code",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/uterotonic-drugs-administered-status-code",
+    "version" : [{
+      "code" : "20230401",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/snomed-202604-draft",
+    "version" : [{
+      "code" : "20260201",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-nzmt-tpuu",
+    "version" : [{
+      "code" : "2.0.5",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/alias-type-code",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/health-district-region-code",
+    "version" : [{
+      "code" : "20260601",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/pharmacode-with-atc",
+    "version" : [{
+      "code" : "20251007",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/dwelling-type",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-moh-refcrit-colonoscopy-2w",
+    "version" : [{
+      "code" : "20240920",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/loinc-nz-local-code",
+    "version" : [{
+      "code" : "20260601",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-dq-weighting",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-hl7-fhir-condition-verification-status",
+    "version" : [{
+      "code" : "20241022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "supplement"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/air-nzmt-tpuu-nzhts-supplement",
+    "version" : [{
+      "code" : "2.0.5",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/immunisation-code",
+    "version" : [{
+      "code" : "2.0.8",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/central-product-code",
+    "version" : [{
+      "code" : "2.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://unitsofmeasure.org",
+    "version" : [{
+      "code" : "2.2",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/practitioner-scope-of-practice-code",
+    "version" : [{
+      "code" : "2.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-processing-terms",
+    "version" : [{
+      "code" : "2.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nz-ethnic-group-codes",
+    "version" : [{
+      "code" : "2.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-serology-protection-terms",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-type",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/temporary-rheumatic-fever-codes",
+    "version" : [{
+      "code" : "20231009",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/domicile-code",
+    "version" : [{
+      "code" : "3.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/country-code-4-numeric",
+    "version" : [{
+      "code" : "15.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nz-residency-code",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-risk-score-number",
+    "version" : [{
+      "code" : "20250611",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nzmt-type-code",
+    "version" : [{
+      "code" : "0.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/99NZREL-Relationship",
+    "version" : [{
+      "code" : "20240904",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+    "version" : [{
+      "code" : "1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/sid/cvx",
+    "version" : [{
+      "code" : "20260529",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-hl7-fhir-care-plan-status",
+    "version" : [{
+      "code" : "20241022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/iwi",
+    "version" : [{
+      "code" : "2.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-event-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nz-datum-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/nc-health-specialty-codes",
+    "version" : [{
+      "code" : "20241112",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/CodeSystem/medication-statement-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/name-suffix-code",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nz-purpose-of-use",
+    "version" : [{
+      "code" : "20240725",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/rheumatic-fever-diagnostic-certainty",
+    "version" : [{
+      "code" : "20231009",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-registration-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/reaction-event-severity",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/my-new-cs",
+    "version" : [{
+      "code" : "20230701",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "not-present"
+    }],
+    "uri" : "http://nzmt.org.nz",
+    "version" : [{
+      "code" : "20260615",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-hl7-fhir-diagnostic-report-status",
+    "version" : [{
+      "code" : "20241022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/number-of-cord-vessels-code",
+    "version" : [{
+      "code" : "20230401",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/oral-enrolment-termination-reason-code",
+    "version" : [{
+      "code" : "20230901",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSysrtem/referral-prioritisation-outcome-code",
+    "version" : [{
+      "code" : "20250813",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-operationoutcome-code",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/contact-point-use",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/country-code-2-alpha",
+    "version" : [{
+      "code" : "16.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-test-nonsnomed",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-ra-identifier",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-category",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+    "version" : [{
+      "code" : "2018-08-12",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSystem/health-nz-address-type",
+    "version" : [{
+      "code" : "20250130",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/dsm-iv",
+    "version" : [{
+      "code" : "4.6.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/issue-type",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/ethnic-group-level-4-code",
+    "version" : [{
+      "code" : "2.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/contactentity-type",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/antiviraleligibilitycriteriacodes",
+    "version" : [{
+      "code" : "20230811",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/antiviral-eligibility-when-symptoms-started-codes",
+    "version" : [{
+      "code" : "20230811",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/information-source-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/v2-0131",
+    "version" : [{
+      "code" : "2.9",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSysrtem/referral-priority-code",
+    "version" : [{
+      "code" : "20250813",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/iwi-code",
+    "version" : [{
+      "code" : "2.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/coverage-type-code",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+    "version" : [{
+      "code" : "2018-08-12",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://www.whocc.no/atc",
+    "version" : [{
+      "code" : "20250201",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-data-quality-violation",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/territorial-authority",
+    "version" : [{
+      "code" : "20260101",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/iso639-3",
+    "version" : [{
+      "code" : "20230123",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/iso639-2",
+    "version" : [{
+      "code" : "20240712",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nc-admission-source-code",
+    "version" : [{
+      "code" : "20241113",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/hpi-practitioner-role-status-reason-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-test-ns1",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-ro-treatment-waitlist-threshold",
+    "version" : [{
+      "code" : "20250130",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/pho-code",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-ro-healthcare-provider",
+    "version" : [{
+      "code" : "20250603",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/uv/ips/CodeSystem/absent-unknown-uv-ips",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-consumer-sub-status",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSysrtem/referred-from-professional-code",
+    "version" : [{
+      "code" : "20250813",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/Infant-feeding-method-code",
+    "version" : [{
+      "code" : "20230401",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "version" : [{
+      "code" : "2018-08-12",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-forecast-status",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-terms-code",
+    "version" : [{
+      "code" : "2.0.2",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/building-type-code",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/document-mode",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/acc-patient-occupation-code",
+    "version" : [{
+      "code" : "1.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/skin-to-skin-contact-end-reason-code",
+    "version" : [{
+      "code" : "20230401",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/allergy-intolerance-criticality",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/adverse-event-severity",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org/fhir/contact-point-system",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-hl7v2-message-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+    "version" : [{
+      "code" : "4.0.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/acc-employment-status-code",
+    "version" : [{
+      "code" : "20260201",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/funded-programme-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-hl7-fhir-service-request-status",
+    "version" : [{
+      "code" : "20241022",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-agvs-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nz-citizenship-status-code",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+    "version" : [{
+      "code" : "3.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-planned-event-date-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-immunisation-notification-action-code",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://hl7.org.nz/fhir/CodeSystem/nz-relationship-codes",
+    "version" : [{
+      "code" : "1.1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/air-agvs-series-type",
+    "version" : [{
+      "code" : "2.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/dhb-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/contact-point-purpose-code",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://nzhts.digital.health.nz/fhir/CodeSysrtem/nc-birth-death-location-code",
+    "version" : [{
+      "code" : "20241112",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/territorial-authority-local-board",
+    "version" : [{
+      "code" : "20260101",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/currency",
+    "version" : [{
+      "code" : "4.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "urn:iso:std:iso:3166",
+    "version" : [{
+      "code" : "1.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/diagnostic-service-section-id",
+    "version" : [{
+      "code" : "20260407",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/language-classification-code",
+    "version" : [{
+      "code" : "3.0.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/organisation-type-code",
+    "version" : [{
+      "code" : "1.1",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/name-prefix-code",
+    "version" : [{
+      "code" : "20230401",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/nc-admission-type-code",
+    "version" : [{
+      "code" : "20241113",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/clinical-coding-system-code",
+    "version" : [{
+      "code" : "20221115",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "http://canshare.co.nz/fhir/CodeSystem/canshare-moh-refcrit-colonoscopy-6w",
+    "version" : [{
+      "code" : "20240920",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  },
+  {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-TerminologyCapabilities.codeSystem.content",
+      "valueCode" : "complete"
+    }],
+    "uri" : "https://standards.digital.health.nz/ns/omaha-system",
+    "version" : [{
+      "code" : "1.0",
+      "isDefault" : true,
+      "compositional" : false
+    }],
+    "subsumption" : true
+  }],
+  "expansion" : {
+    "hierarchical" : false,
+    "paging" : true,
+    "parameter" : [{
+      "name" : "url"
+    },
+    {
+      "name" : "valueSet"
+    },
+    {
+      "name" : "valueSetVersion"
+    },
+    {
+      "name" : "filter",
+      "documentation" : "Matching is word-prefix, any-order across all designations and the code itself."
+    },
+    {
+      "name" : "profile"
+    },
+    {
+      "name" : "date"
+    },
+    {
+      "name" : "context"
+    },
+    {
+      "name" : "offset"
+    },
+    {
+      "name" : "count"
+    },
+    {
+      "name" : "activeOnly"
+    },
+    {
+      "name" : "includeDesignations"
+    },
+    {
+      "name" : "includeDefinition"
+    },
+    {
+      "name" : "system-version"
+    },
+    {
+      "name" : "force-system-version"
+    },
+    {
+      "name" : "property",
+      "documentation" : "Pre-adopted from R5."
+    },
+    {
+      "name" : "useSupplement",
+      "documentation" : "Pre-adopted from R5."
+    },
+    {
+      "name" : "displayLanguage"
+    },
+    {
+      "name" : "excludeNested",
+      "documentation" : "Soft-defaults to true. Only returns nested results when a stored expansion is being use and there is no `filter` parameter."
+    },
+    {
+      "name" : "tx-resource"
+    }],
+    "textFilter" : "Matching is word-prefix, any-order across all designations and the code itself.\nCodes are returned in best-match-first order."
+  },
+  "translation" : {
+    "needsMap" : false
+  },
+  "closure" : {
+    "translation" : false
+  }
+}

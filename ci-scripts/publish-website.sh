@@ -51,16 +51,28 @@ for key in $(yq eval '.. | select(tag != "!!map" and tag != "!!seq") | path | jo
     aFileName=${artifact_name/\//_}
     echo "-${aFileName}-"
 
+
     if [ ! -f "zipfiles/$aFileName.zip" ]; then
-        echo "Downloading artifact '${API_BASE_URL}${artifact_name}/web-pages.zip' to zipfiles/${aFileName}.zip"
+        echo "zipfiles/$aFileName.zip already exists, removing."
+        rm -f "zipfiles/$aFileName.zip"
+    fi    
 
-        curl --header "JOB-TOKEN: $CI_JOB_TOKEN" \
-                "${API_BASE_URL}${artifact_name}/web-pages.zip" \
-                -o "zipfiles/$aFileName.zip"
+    echo "Downloading artifact '${API_BASE_URL}${artifact_name}/web-pages.zip' to zipfiles/${aFileName}.zip"
 
-    else
-        echo "zipfiles/$aFileName.zip already exists, skipping download."
-    fi
+    curl --header "JOB-TOKEN: $CI_JOB_TOKEN" \
+            "${API_BASE_URL}${artifact_name}/web-pages.zip" \
+            -o "zipfiles/$aFileName.zip"
+
+    # if [ ! -f "zipfiles/$aFileName.zip" ]; then
+    #     echo "Downloading artifact '${API_BASE_URL}${artifact_name}/web-pages.zip' to zipfiles/${aFileName}.zip"
+
+    #     curl --header "JOB-TOKEN: $CI_JOB_TOKEN" \
+    #             "${API_BASE_URL}${artifact_name}/web-pages.zip" \
+    #             -o "zipfiles/$aFileName.zip"
+
+    # else
+    #     echo "zipfiles/$aFileName.zip already exists, skipping download."
+    # fi
 
     KEY_FNAME=${key//./\/}
 

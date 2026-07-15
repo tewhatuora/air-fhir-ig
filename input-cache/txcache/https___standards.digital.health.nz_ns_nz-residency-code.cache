@@ -1,0 +1,104 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "version" : "1.0.0",
+  "code" : "yes",
+  "display" : "Permanent Resident"
+}, "valueSet" :null, "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "Error from https://nzhts.digital.health.nz/fhir: Error: [ab053862-8a88-4c33-b0f9-fea0d1866870]: A usable code system with URL https://standards.digital.health.nz/ns/nz-residency-code|1.0.0 could not be resolved.",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "code" : "yes"
+}, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/nz-residency-code--0", "version": "1.1.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Permanent Resident",
+  "code" : "yes",
+  "system" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "version" : "1.1.0",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "version" : "1.0.0",
+  "code" : "yes",
+  "display" : "Permanent Resident"
+}, "valueSet" :null, "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "code" : "yes",
+  "system" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "version" : "1.0.0",
+  "severity" : "error",
+  "error" : "A definition for CodeSystem 'https://standards.digital.health.nz/ns/nz-residency-code' version '1.0.0' could not be found, so the code cannot be validated. No versions of this code system are known",
+  "class" : "CODESYSTEM_UNSUPPORTED",
+  "server" : "https://tx.fhir.org/r4",
+  "unknown-systems" : "https://standards.digital.health.nz/ns/nz-residency-code",
+  "issues" : {
+  "resourceType" : "OperationOutcome",
+  "issue" : [{
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+      "valueString" : "UNKNOWN_CODESYSTEM_VERSION_NONE"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-server",
+      "valueUrl" : "https://tx.fhir.org/r4"
+    }],
+    "severity" : "error",
+    "code" : "not-found",
+    "details" : {
+      "coding" : [{
+        "system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type",
+        "code" : "not-found"
+      }],
+      "text" : "A definition for CodeSystem 'https://standards.digital.health.nz/ns/nz-residency-code' version '1.0.0' could not be found, so the code cannot be validated. No versions of this code system are known"
+    },
+    "expression" : ["Coding.system"]
+  }]
+}
+
+}
+-------------------------------------------------------------------------------------

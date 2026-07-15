@@ -1,0 +1,6093 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "MMR II (measles virus (Edmonston) live attenuated vaccine 1000 TCID50 units + mumps virus (Jeryl Lynn (B Level)) live attenuated vaccine 12500 TCID50 units + rubella virus (Wistar RA27/3) live attenuated vaccine 1000 TCID50 units) injection: powder for, vial",
+  "code" : "10443641000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Priorix (measles virus (Schwarz) live attenuated vaccine 1000 CCID50 units + mumps virus (Jeryl Lynn, strain RIT 4385) live attenuated vaccine 5000 CCID50 units + rubella virus (Wistar RA 27/3) live attenuated vaccine 1000 CCID50 units) injection: powder for, vial",
+  "code" : "44016911000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10319251000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Hiberix (Haemophilus influenzae type b polysaccharide conjugate 10 microgram) vaccine injection: powder for, vial",
+  "code" : "10319251000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10695781000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Varilrix (Varicella zoster virus (Oka strain) live attenuated vaccine 2000 PFU) injection: powder for, vial",
+  "code" : "10695781000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46101011000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Gardasil 9 (human papillomavirus type 6 L1 protein 30 microgram/0.5 mL + human papillomavirus type 11 L1 protein 40 microgram/0.5 mL + human papillomavirus type 16 L1 protein 60 microgram/0.5 mL + human papillomavirus type 18 L1 protein 40 microgram/0.5 mL + human papillomavirus type 31 L1 protein 20 microgram/0.5 mL + human papillomavirus type 33 L1 protein 20 microgram/0.5 mL + human papillomavirus type 45 L1 protein 20 microgram/0.5 mL + human papillomavirus type 52 L1 protein 20 microgram/0.5 mL + human papillomavirus type 58 L1 protein 20 microgram/0.5 mL) vaccine injection: solution, syringe",
+  "code" : "46101011000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29448821000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Zostavax (Varicella zoster virus (Oka strain) live attenuated vaccine 19 400 PFU) injection: powder for, vial",
+  "code" : "29448821000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46770131000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Shingrix (Varicella zoster virus recombinant glycoprotein E antigen vaccine 50 microgram) injection: powder for, vial",
+  "code" : "46770131000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47407751000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty (Pfizer-BioNTech) (tozinameran (BNT162b2) (mRNA) 225 microgram/0.45 mL (30 microgram/0.3 mL administered dose)) (purple) COVID-19 mRNA vaccine injection: concentrated, vial [obsolete]",
+  "code" : "47407751000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47547081000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty (Pfizer-BioNTech) (tozinameran (BNT162b2) (mRNA) 130 microgram/1.3 mL (10 microgram/0.2 mL administered dose)) (orange) COVID-19 mRNA vaccine injection: concentrated, vial",
+  "code" : "47547081000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47572291000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty (Pfizer-BioNTech) (tozinameran (BNT162b2) (mRNA) 225 microgram/2.25 mL (30 microgram/0.3 mL administered dose)) (grey) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "47572291000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46580601000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Bexsero (syringe without needle) (Neisseria meningitidis group B NHBA fusion protein 50 microgram/0.5 mL + Neisseria meningitidis group B NadA protein 50 microgram/0.5 mL + Neisseria meningitidis group B fHbp fusion protein 50 microgram/0.5 mL + Neisseria meningitidis serogroup B outer membrane vesicles 25 microgram/0.5 mL) injection: suspension, syringe",
+  "code" : "46580601000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46580461000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Bexsero (syringe with needle) (Neisseria meningitidis group B NHBA fusion protein 50 microgram/0.5 mL + Neisseria meningitidis group B NadA protein 50 microgram/0.5 mL + Neisseria meningitidis group B fHbp fusion protein 50 microgram/0.5 mL + Neisseria meningitidis serogroup B outer membrane vesicles 25 microgram/0.5 mL) injection: suspension, syringe",
+  "code" : "46580461000116107",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47768031000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Jynneos (vaccinia virus (modified strain Ankara-Bavarian Nordic (non replicating)) vaccine 50 million infectious units/0.5 mL) injection: suspension, vial",
+  "code" : "47768031000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46044951000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Pneumovax 23 Vaccine (pneumococcal (Streptococcus pneumoniae) polysaccharide (serotype 1, 2, 3, 4, 5, 6B, 7F, 8, 9N, 9V, 10A, 11A, 12F, 14, 15B, 17F, 18C, 19A, 19F, 20, 22F, 23F, 33F) vaccine 575 microgram/0.5 mL) injection: solution, syringe",
+  "code" : "46044951000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "20077561000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Prevenar 13 Vaccine (pneumococcal (Streptococcus pneumoniae) polysaccharide conjugate (serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 23F) vaccine 30.8 microgram/0.5 mL) injection: suspension, syringe",
+  "code" : "20077561000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10380351000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Ipol (poliovirus inactivated antigens (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL + type 3 (Saukett) 32 D antigen units) vaccine) injection: suspension, syringe [Obsolete]",
+  "code" : "10380351000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47666491000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "BCG Vaccine AJV (Bacillus Calmette-Guerin Danish 1331 strain live attenuated vaccine 750 microgram) injection: powder for, vial",
+  "code" : "47666491000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10336221000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Havrix (hepatitis A virus inactivated 1440 ELISA units/mL) vaccine injection: suspension, syringe",
+  "code" : "10336221000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "31171221000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Engerix-B Adult (hepatitis B virus surface antigen vaccine 20 microgram/mL) injection: suspension, syringe",
+  "code" : "31171221000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47562481000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "MenQuadfi (meningococcal group A (Neisseria meningitidis) polysaccharide 10 microgram/0.5 mL + meningococcal group C (Neisseria meningitidis) polysaccharide 10 microgram/0.5 mL + meningococcal group W (Neisseria meningitidis) polysaccharide 10 microgram/0.5 mL + meningococcal group Y (Neisseria meningitidis) polysaccharide 10 microgram/0.5 mL) conjugate vaccine injection: solution, vial",
+  "code" : "47562481000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46083691000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Engerix-B Paediatric (hepatitis B virus surface antigen vaccine 10 microgram/0.5 mL) injection: suspension, vial",
+  "code" : "46083691000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "43964841000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Havrix Junior (hepatitis A virus inactivated 720 ELISA units/0.5 mL) vaccine injection: suspension, vial",
+  "code" : "43964841000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10695851000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Varivax (Varicella zoster virus (Oka strain) live attenuated vaccine 1350 PFU) injection: powder for, vial",
+  "code" : "10695851000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44630041000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Nimenrix (meningococcal group A (Neisseria meningitidis) polysaccharide 5 microgram + meningococcal group C (Neisseria meningitidis) polysaccharide 5 microgram + meningococcal group W135 (Neisseria meningitidis) polysaccharide 5 microgram + meningococcal group Y (Neisseria meningitidis) polysaccharide 5 microgram) conjugate vaccine injection: powder for, vial",
+  "code" : "44630041000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47959701000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Rotarix (rotavirus G1P(8) RIX4414 strain live attenuated oral vaccine 1 million CCID50 units/1.5 mL) oral liquid: suspension, tube",
+  "code" : "47959701000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44006761000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Twinrix (hepatitis A virus inactivated 720 ELISA units/mL + hepatitis B virus surface antigen recombinant 20 microgram/mL) vaccine injection: suspension, 1 mL vial",
+  "code" : "44006761000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44007131000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Twinrix Junior (hepatitis A virus inactivated 360 ELISA units/0.5 mL + hepatitis B virus surface antigen recombinant 10 microgram/0.5 mL) vaccine injection: suspension, 0.5 mL vial",
+  "code" : "44007131000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10693001000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Typhim Vi (typhoid Vi polysaccharide 25 microgram/0.5 mL) vaccine injection: solution, syringe",
+  "code" : "10693001000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29557441000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Vivotif Oral (typhoid Ty21a live attenuated 2000 million organisms) vaccine capsule: modified release, 1 capsule",
+  "code" : "29557441000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10645561000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Stamaril (Yellow fever (17D) live attenuated vaccine 1000 international units) injection: powder for, vial",
+  "code" : "10645561000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29430601000116101"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Jespect (Japanese encephalitis virus inactivated vaccine 6 microgram/0.5 mL) injection: suspension, syringe",
+  "code" : "29430601000116101",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10215541000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Dukoral Oral Suspension (cholera (toxin B subunit recombinant) 1 mg + cholera (Vibrio cholerae) inactivated strains (O1 Inaba classic 25 billion vibrios + O1 Inaba El Tor 25 billion vibrios + O1 Ogawa classic 50 billion vibrios)) vaccine oral liquid: suspension, 3 mL vial [Obsolete]",
+  "code" : "10215541000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44741471000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "TicoVac (tick-borne encephalitis virus inactivated vaccine 2.4 microgram) injection, 0.5 mL syringe",
+  "code" : "44741471000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44881101000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Hyperhep B (hepatitis B virus immunoglobulin, human 110 international units/0.5 mL) injection: solution, syringe",
+  "code" : "44881101000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29458231000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Menactra (meningococcal group A (Neisseria meningitidis) polysaccharide 4 microgram + meningococcal group C (Neisseria meningitidis) polysaccharide 4 microgram + meningococcal group W135 (Neisseria meningitidis) polysaccharide 4 microgram + meningococcal group Y (Neisseria meningitidis) polysaccharide 4 microgram) conjugate vaccine injection: solution, 0.5 mL vial",
+  "code" : "29458231000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47757241000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty (Pfizer-BioNTech) (tozinameran (BNT162b2) (mRNA) 40 microgram/0.4 mL (3 microgram/0.2 mL administered dose)) (maroon) COVID-19 mRNA vaccine injection: concentrated, vial",
+  "code" : "47757241000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47812711000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty Original/Omicron BA.4-5 (tozinameran (BNT162b2) 112.5 microgram/2.25 mL + famtozinameran 112.5 microgram/2.25 mL) (30 microgram/0.3 mL administered dose) (grey) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "47812711000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47411141000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Nuvaxovid with Matrix-M Adjuvant (NVX-CoV2373) (Novavax) (SARS-CoV-2 rS (recombinant spike protein) (NVX-CoV2373) nanoparticle 5 microgram/0.5 mL) COVID-19 adjuvanted nanoparticle vaccine injection: suspension, vial",
+  "code" : "47411141000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47362071000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Vaxzevria (COVID-19 Vaccine AstraZeneca) (ChAdOx1-S virus 50 billion viral particles/0.5 mL) COVID-19 vaccine, injection: solution, vial",
+  "code" : "47362071000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10085391000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Avaxim (hepatitis A virus inactivated vaccine 160 antigen units/0.5 mL) injection: suspension, syringe",
+  "code" : "10085391000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44269461000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Panvax H1N1 Vaccine 2009 (A/California/7/2009 (H1N1) (NYMC X-179A) (A/California/7/2009 (H1N1)v-like) inactivated vaccine 15 microgram/0.5 mL) injection: suspension, syringe",
+  "code" : "44269461000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44967911000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Panvax Vaccine (influenza virus type A pandemic haemagglutinin vaccine 30 microgram/0.5 mL) injection: suspension, vial",
+  "code" : "44967911000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48111641000116101"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Arexvy Respiratory Syncytial Virus Vaccine (respiratory syncytial virus pre-fusion F protein recombinant vaccine 120 microgram/0.5 mL) injection: powder for, vial",
+  "code" : "48111641000116101",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48175861000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty Omicron XBB.1.5 (raxtozinameran 48 microgram/0.48 mL) (30 microgram/0.3 mL administered dose) (light grey SDV) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "48175861000116107",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48175171000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty Omicron XBB.1.5 (raxtozinameran 225 microgram/2.25 mL) (30 microgram/0.3 mL administered dose) (dark grey MDV) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "48175171000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48176671000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty Omicron XBB.1.5 (raxtozinameran 16 microgram/0.48 mL) (10 microgram/0.3 mL administered dose) (light blue SDV) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "48176671000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48179211000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty Omicron XBB.1.5 (raxtozinameran 15.8 microgram/0.48 mL) (3 microgram/0.3 mL administered dose) (yellow MDV) COVID-19 mRNA vaccine injection: concentrated, vial",
+  "code" : "48179211000116107",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "31115901000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Act-HIB (Haemophilus influenzae type b polysaccharide conjugate 10 microgram) vaccine injection: powder for, vial",
+  "code" : "31115901000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44305771000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Rabipur (rabies virus inactivated vaccine 2.5 international units) injection: powder for, vial",
+  "code" : "44305771000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10417931000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Merieux Inactivated Rabies Vaccine (rabies virus inactivated vaccine 2.5 international units) injection: suspension, vial",
+  "code" : "10417931000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "31128931000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "NeisVac-C (meningococcal group C (strain C11) (Neisseria meningitidis) polysaccharide 10 microgram/0.5 mL) conjugate vaccine injection: suspension, syringe",
+  "code" : "31128931000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47972211000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad 2023 (A/Sydney/5/2021 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47972211000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47972411000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad Junior 2023 (A/Sydney/5/2021 (H1N1) pdm09 - like virus 7.5 microgram/0.25 mL + A/Darwin/9/2021 (H3N2) - like virus 7.5 microgram/0.25 mL + B/Austria/1359417/2021 - like virus 7.5 microgram/0.25 mL + B/Phuket/3073/2013 - like virus 7.5 microgram/0.25 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47972411000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47972611000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Fluad Quad 2023 (A/Sydney/5/2021 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [obsolete]",
+  "code" : "47972611000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47988151000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "FluQuadri 2023 (A/Sydney/5/2021 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47988151000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47648581000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad 2022 (A/Victoria/2570/2019 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47648581000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47649511000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad Junior 2022 (A/Victoria/2570/2019 (H1N1) pdm09 - like virus 7.5 microgram/0.25 mL + A/Darwin/9/2021 (H3N2) - like virus 7.5 microgram/0.25 mL + B/Austria/1359417/2021 - like virus 7.5 microgram/0.25 mL + B/Phuket/3073/2013 - like virus 7.5 microgram/0.25 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47649511000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47648881000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Fluad Quad 2022 (A/Victoria/2570/2019 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47648881000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47664751000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "FluQuadri 2022 (A/Victoria/2570/2019 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Darwin/9/2021 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "47664751000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10347971000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Infanrix-IPV (diphtheria toxoid not less than 30 international units/0.5 mL + Bordetella pertussis acellular antigens (pertactin 8 microgram/0.5 mL + pertussis toxoid 25 microgram/0.5 mL + filamentous haemagglutinin 25 microgram/0.5 mL) + poliovirus inactivated antigen (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL+ type 3 (Saukett) 32 D antigen units/0.5 mL) + tetanus toxoid not less than 40 international units/0.5 mL vaccine) injection: suspension, syringe",
+  "code" : "10347971000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10101121000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Boostrix (diphtheria toxoid 2 international units + tetanus toxoid 20 international units + Bordetella pertussis acellular antigens (pertactin 2.5 microgram + pertussis toxoid 8 microgram + filamentous haemagglutinin 8 microgram) vaccine) injection: suspension, 0.5 mL syringe",
+  "code" : "10101121000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29455501000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Infanrix-hexa (diphtheria toxoid not less than 30 international units/0.5 mL + hepatitis B virus surface antigen recombinant 10 microgram/0.5 mL + Bordetella pertussis acellular antigens (pertactin 8 microgram/0.5 mL + pertussis toxoid 25 microgram/0.5 mL + filamentous haemagglutinin 25 microgram/0.5 mL) + poliovirus inactivated antigen (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL + type 3 (Saukett) 32 D antigen units) + tetanus toxoid not less than 40 international units/0.5 mL vaccine) injection: suspension, syringe",
+  "code" : "29455501000116107",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10017131000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Adacel (diphtheria toxoid 2 international units/ 0.5 mL + tetanus toxoid 20 international units/0.5 mL + Bordetella pertussis acellular antigens (pertactin 3 microgram/0.5 mL + pertussis toxoid 2.5 microgram/0.5 mL + filamentous haemagglutinin 5 microgram/0.5 mL + fimbriae (types 2 and 3) 5 microgram/0.5 mL)) vaccine injection: suspension, vial",
+  "code" : "10017131000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10017251000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Adacel Polio (diphtheria toxoid 2 international units/0.5 mL + Bordetella pertussis acellular antigens (pertactin 3 microgram/0.5 mL + pertussis toxoid 2.5 microgram/0.5 mL + filamentous haemagglutinin 5 microgram/0.5 mL + fimbriae types 2 and 3 5 microgram/0.5 mL) + poliovirus inactivated antigen (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL + type 3 (Saukett) 32 D antigen units/0.5 mL) + tetanus toxoid 20 international units/0.5 mL vaccine) injection: suspension, 0.5 mL syringe [Obsolete]",
+  "code" : "10017251000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10744051000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Vivaxim (hepatitis A virus inactivated 160 ELISA units/mL + typhoid Vi polysaccharide 25 microgram/mL) vaccine injection: suspension, 1 mL syringe [Obsolete]",
+  "code" : "10744051000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44318211000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Hexaxim (diphtheria toxoid not less than 20 international units/0.5 mL + hepatitis B surface antigen recombinant 10 microgram/0.5 mL + Bordetella pertussis acellular antigens (pertussis toxoid 25 microgram/0.5 mL + filamentous haemagglutinin 25 microgram/0.5 mL) + poliovirus inactivated antigen (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL + type 3 (Saukett) 32 D antigen units/0.5 mL) + tetanus toxoid not less than 40 international units/0.5 mL + Haemophilus influenzae type b polysaccharide conjugate 12 microgram/0.5 mL) vaccine injection: suspension, syringe",
+  "code" : "44318211000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "20069331000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Verorab Inactivated Rabies Vaccine 2.5 international units (rabies virus (Wistar PM/WI 38-1503-3M) inactivated vaccine 2.5 international units) injection: powder for, vial",
+  "code" : "20069331000116107",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "47796751000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Berirab P (rabies virus immunoglobulin, human 300 international units/2 mL) injection: solution, syringe",
+  "code" : "47796751000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48262211000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Influvac Tetra 2024 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Thailand/8/2022 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "48262211000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48285331000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad 2024 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Thailand/8/2022 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "48285331000116103",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48231281000116101"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Flucelvax Quad 2024 (A/Wisconsin/67/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Massachusetts/18/2022 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "48231281000116101",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48294771000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Fluad Quad 2024 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Thailand/8/2022 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "48294771000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48322461000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "FluQuadri 2024 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Thailand/8/2022 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe [Obsolete]",
+  "code" : "48322461000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48407111000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty JN.1 (bretovameran 48 microgram/0.48 mL) (30 microgram/0.3 mL administered dose) (light grey SDV) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "48407111000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48407721000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty JN.1 (bretovameran 16 microgram/0.48 mL) (10 microgram/0.3 mL administered dose) (light blue SDV) COVID-19 mRNA vaccine injection: suspension, vial",
+  "code" : "48407721000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48408951000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Comirnaty JN.1 (bretovameran 15.8 microgram/0.48 mL) (3 microgram/0.3 mL administered dose) (yellow MDV) COVID-19 mRNA vaccine injection: concentrated, vial",
+  "code" : "48408951000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48606481000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Flucelvax Quad 2025 (A/Wisconsin/67/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/District of Columbia/27/2023 (H3N2) - like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe",
+  "code" : "48606481000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48583461000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Influvac Tetra 2025 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Croatia/10136RV/2023 (H3N2)-like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe",
+  "code" : "48583461000116109",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48606291000116104"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Fluad Quad 2025 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Croatia/10136RV/2023 (H3N2)-like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe",
+  "code" : "48606291000116104",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48611851000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "FluQuadri 2025 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Croatia/10136RV/2023 (H3N2)-like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe",
+  "code" : "48611851000116100",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48606101000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Afluria Quad 2025 (A/Victoria/4897/2022 (H1N1) pdm09 - like virus 15 microgram/0.5 mL + A/Croatia/10136RV/2023 (H3N2)-like virus 15 microgram/0.5 mL + B/Austria/1359417/2021 - like virus 15 microgram/0.5 mL + B/Phuket/3073/2013 - like virus 15 microgram/0.5 mL) influenza vaccine injection: suspension, syringe",
+  "code" : "48606101000116102",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "45442391000116106"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Synagis (palivizumab 100 mg/mL) injection: solution, vial",
+  "code" : "45442391000116106",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      }]
+    }]
+  }
+}}####
+e: {
+  "source" : nzhts.digital.health.nz,
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "3099282c-a18b-41b2-adb3-ef9171876655",
+    "timestamp" : "2025-09-26T09:49:32+12:00",
+    "total" : 82,
+    "offset" : 0,
+    "parameter" : [{
+      "name" : "version",
+      "valueUri" : "http://nzmt.org.nz|20250813"
+    },
+    {
+      "name" : "count",
+      "valueInteger" : 1000
+    },
+    {
+      "name" : "offset",
+      "valueInteger" : 0
+    }],
+    "contains" : [{
+      "system" : "http://nzmt.org.nz",
+      "code" : "10443641000116108",
+      "display" : "M-M-R-II"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29455501000116107",
+      "display" : "Infanrix-hexa"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44016911000116108",
+      "display" : "Priorix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10319251000116109",
+      "display" : "Hiberix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10695781000116100",
+      "display" : "Varilrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10347971000116105",
+      "display" : "Infanrix IPV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10101121000116104",
+      "display" : "Boostrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46101011000116102",
+      "display" : "Gardasil 9"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47648581000116104",
+      "display" : "Afluria Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47649511000116103",
+      "display" : "Afluria Quad Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47648881000116102",
+      "display" : "Fluad Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47664751000116102",
+      "display" : "FluQuadri"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29448821000116105",
+      "display" : "Zostavax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46770131000116100",
+      "display" : "Shingrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47407751000116105",
+      "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47547081000116102",
+      "display" : "Comirnaty mRNA-CV (10mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47572291000116106",
+      "display" : "Comirnaty mRNA-CV (30mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46580461000116107",
+      "display" : "Bexsero"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46580601000116106",
+      "display" : "Bexsero"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29458231000116105",
+      "display" : "Menactra"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47768031000116109",
+      "display" : "JYNNEOS"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972211000116109",
+      "display" : "Afluria Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972411000116108",
+      "display" : "Afluria Quad Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972611000116106",
+      "display" : "Fluad Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47988151000116108",
+      "display" : "FluQuadri"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46044951000116103",
+      "display" : "Pneumovax 23"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "20077561000116105",
+      "display" : "Prevenar 13"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10380351000116108",
+      "display" : "IPOL"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47666491000116106",
+      "display" : "BCG Vaccine AJV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47562481000116104",
+      "display" : "MenQuadfi"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10336221000116104",
+      "display" : "Havrix 1440"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31171221000116106",
+      "display" : "Engerix B (20 mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46083691000116109",
+      "display" : "Engerix B (10 mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31128931000116109",
+      "display" : "NeisVac-C"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "43964841000116102",
+      "display" : "Havrix Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10695851000116103",
+      "display" : "Varivax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44630041000116108",
+      "display" : "Nimenrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47959701000116108",
+      "display" : "Rotarix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44006761000116105",
+      "display" : "Twinrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44007131000116104",
+      "display" : "Twinrix Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10693001000116105",
+      "display" : "Typhim Vi"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29557441000116106",
+      "display" : "Vivotif"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10645561000116106",
+      "display" : "Stamaril"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29430601000116101",
+      "display" : "JEspect"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44305771000116109",
+      "display" : "Rabipur"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10417931000116105",
+      "display" : "Merieux"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10215541000116100",
+      "display" : "Dukoral"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44741471000116105",
+      "display" : "TicoVac"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44881101000116100",
+      "display" : "HyperHEP B 110 IU/0.5mL"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47757241000116104",
+      "display" : "Comirnaty mRNA-CV (3mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47812711000116103",
+      "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47411141000116100",
+      "display" : "Nuvaxovid rCV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47362071000116105",
+      "display" : "AstraZeneca ChAd-CV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10017131000116103",
+      "display" : "Adacel"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10017251000116104",
+      "display" : "Adacel Polio"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10744051000116109",
+      "display" : "Vivaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10085391000116108",
+      "display" : "Avaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44318211000116104",
+      "display" : "Hexaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44269461000116103",
+      "display" : "Panvax H1N1"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44967911000116100",
+      "display" : "Panvax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "20069331000116107",
+      "display" : "Verorab"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47796751000116103",
+      "display" : "Berirab P"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48175861000116107",
+      "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48175171000116106",
+      "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48262211000116108",
+      "display" : "Influvac Tetra 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48285331000116103",
+      "display" : "Afluria Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48231281000116101",
+      "display" : "Flucelvax Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48294771000116100",
+      "display" : "Fluad Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48322461000116106",
+      "display" : "FluQuadri 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48111641000116101",
+      "display" : "Arexvy"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48176671000116109",
+      "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48179211000116107",
+      "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31115901000116100",
+      "display" : "Act-HIB"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48407111000116100",
+      "display" : "Comirnaty JN.1 (30mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48407721000116108",
+      "display" : "Comirnaty JN.1 (10mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48408951000116102",
+      "display" : "Comirnaty JN.1 (3mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606481000116100",
+      "display" : "Flucelvax Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48583461000116109",
+      "display" : "Influvac Tetra 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606291000116104",
+      "display" : "Fluad Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48611851000116100",
+      "display" : "FluQuadri 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606101000116102",
+      "display" : "Afluria Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "45442391000116106",
+      "display" : "Palivizumab"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "exampleOK":"true", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "MMR II (measles virus (Edmonston) live attenuated vaccine 1000 TCID50 units + mumps virus (Jeryl Lynn (B Level)) live attenuated vaccine 12500 TCID50 units + rubella virus (Wistar RA27/3) live attenuated vaccine 1000 TCID50 units) injection: powder for, vial",
+  "code" : "10443641000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108",
+  "display" : "M-M-R-II"
+}, "valueSet" :null, "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "MMR II (measles virus (Edmonston) live attenuated vaccine 1000 TCID50 units + mumps virus (Jeryl Lynn (B Level)) live attenuated vaccine 12500 TCID50 units + rubella virus (Wistar RA27/3) live attenuated vaccine 1000 TCID50 units) injection: powder for, vial",
+  "code" : "10443641000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "severity" : "error",
+  "error" : "The code 10443641000116108 exists in the CodeSystem, but the display \"M-M-R-II\" is incorrect",
+  "class" : "UNKNOWN",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "url": "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code--0", "version": "2.0.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "MMR II (measles virus (Edmonston) live attenuated vaccine 1000 TCID50 units + mumps virus (Jeryl Lynn (B Level)) live attenuated vaccine 12500 TCID50 units + rubella virus (Wistar RA27/3) live attenuated vaccine 1000 TCID50 units) injection: powder for, vial",
+  "code" : "10443641000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108",
+  "display" : "M-M-R-II"
+}, "valueSet" :null, "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Priorix (measles virus (Schwarz) live attenuated vaccine 1000 CCID50 units + mumps virus (Jeryl Lynn, strain RIT 4385) live attenuated vaccine 5000 CCID50 units + rubella virus (Wistar RA 27/3) live attenuated vaccine 1000 CCID50 units) injection: powder for, vial",
+  "code" : "44016911000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "severity" : "error",
+  "error" : "The code 44016911000116108 exists in the CodeSystem, but the display \"M-M-R-II\" is incorrect",
+  "class" : "UNKNOWN",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108"
+}, "url": "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code--0", "version": "2.0.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "Priorix (measles virus (Schwarz) live attenuated vaccine 1000 CCID50 units + mumps virus (Jeryl Lynn, strain RIT 4385) live attenuated vaccine 5000 CCID50 units + rubella virus (Wistar RA 27/3) live attenuated vaccine 1000 CCID50 units) injection: powder for, vial",
+  "code" : "44016911000116108",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "29455411000116105",
+  "display" : "DTaP-IPV-HepB/Hib"
+}, "valueSet" :null, "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "display" : "diphtheria toxoid not less than 30 international units/0.5 mL + hepatitis B virus surface antigen recombinant 10 microgram/0.5 mL + Bordetella pertussis acellular antigens (pertactin 8 microgram/0.5 mL + pertussis toxoid 25 microgram/0.5 mL + filamentous haemagglutinin 25 microgram/0.5 mL) + poliovirus inactivated antigen (type 1 (Mahoney) 40 D antigen units/0.5 mL + type 2 (MEF-1) 8 D antigen units/0.5 mL + type 3 (Saukett) 32 D antigen units) + tetanus toxoid not less than 40 international units/0.5 mL vaccine injection, syringe",
+  "code" : "29455411000116105",
+  "system" : "http://nzmt.org.nz",
+  "version" : "20250813",
+  "severity" : "error",
+  "error" : "The code 29455411000116105 exists in the CodeSystem, but the display \"DTaP-IPV-HepB/Hib\" is incorrect",
+  "class" : "UNKNOWN",
+  "server" : "https://nzhts.digital.health.nz/fhir",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      }]
+    }]
+  }
+}}####
+e: {
+  "source" : nzhts.digital.health.nz,
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "status" : "active",
+  "expansion" : {
+    "identifier" : "b78ad2b6-ab53-4a28-bc59-6242c019f9dd",
+    "timestamp" : "2025-09-26T09:54:10+12:00",
+    "total" : 82,
+    "offset" : 0,
+    "parameter" : [{
+      "name" : "version",
+      "valueUri" : "http://nzmt.org.nz|20250813"
+    },
+    {
+      "name" : "count",
+      "valueInteger" : 1000
+    },
+    {
+      "name" : "offset",
+      "valueInteger" : 0
+    }],
+    "contains" : [{
+      "system" : "http://nzmt.org.nz",
+      "code" : "10443641000116108",
+      "display" : "M-M-R-II"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29455501000116107",
+      "display" : "Infanrix-hexa"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44016911000116108",
+      "display" : "Priorix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10319251000116109",
+      "display" : "Hiberix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10695781000116100",
+      "display" : "Varilrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10347971000116105",
+      "display" : "Infanrix IPV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10101121000116104",
+      "display" : "Boostrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46101011000116102",
+      "display" : "Gardasil 9"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47648581000116104",
+      "display" : "Afluria Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47649511000116103",
+      "display" : "Afluria Quad Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47648881000116102",
+      "display" : "Fluad Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47664751000116102",
+      "display" : "FluQuadri"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29448821000116105",
+      "display" : "Zostavax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46770131000116100",
+      "display" : "Shingrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47407751000116105",
+      "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47547081000116102",
+      "display" : "Comirnaty mRNA-CV (10mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47572291000116106",
+      "display" : "Comirnaty mRNA-CV (30mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46580461000116107",
+      "display" : "Bexsero"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46580601000116106",
+      "display" : "Bexsero"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29458231000116105",
+      "display" : "Menactra"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47768031000116109",
+      "display" : "JYNNEOS"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972211000116109",
+      "display" : "Afluria Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972411000116108",
+      "display" : "Afluria Quad Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47972611000116106",
+      "display" : "Fluad Quad"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47988151000116108",
+      "display" : "FluQuadri"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46044951000116103",
+      "display" : "Pneumovax 23"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "20077561000116105",
+      "display" : "Prevenar 13"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10380351000116108",
+      "display" : "IPOL"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47666491000116106",
+      "display" : "BCG Vaccine AJV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47562481000116104",
+      "display" : "MenQuadfi"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10336221000116104",
+      "display" : "Havrix 1440"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31171221000116106",
+      "display" : "Engerix B (20 mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "46083691000116109",
+      "display" : "Engerix B (10 mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31128931000116109",
+      "display" : "NeisVac-C"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "43964841000116102",
+      "display" : "Havrix Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10695851000116103",
+      "display" : "Varivax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44630041000116108",
+      "display" : "Nimenrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47959701000116108",
+      "display" : "Rotarix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44006761000116105",
+      "display" : "Twinrix"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44007131000116104",
+      "display" : "Twinrix Junior"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10693001000116105",
+      "display" : "Typhim Vi"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29557441000116106",
+      "display" : "Vivotif"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10645561000116106",
+      "display" : "Stamaril"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "29430601000116101",
+      "display" : "JEspect"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44305771000116109",
+      "display" : "Rabipur"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10417931000116105",
+      "display" : "Merieux"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10215541000116100",
+      "display" : "Dukoral"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44741471000116105",
+      "display" : "TicoVac"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44881101000116100",
+      "display" : "HyperHEP B 110 IU/0.5mL"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47757241000116104",
+      "display" : "Comirnaty mRNA-CV (3mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47812711000116103",
+      "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47411141000116100",
+      "display" : "Nuvaxovid rCV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47362071000116105",
+      "display" : "AstraZeneca ChAd-CV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10017131000116103",
+      "display" : "Adacel"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10017251000116104",
+      "display" : "Adacel Polio"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10744051000116109",
+      "display" : "Vivaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "10085391000116108",
+      "display" : "Avaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44318211000116104",
+      "display" : "Hexaxim"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44269461000116103",
+      "display" : "Panvax H1N1"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "44967911000116100",
+      "display" : "Panvax"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "20069331000116107",
+      "display" : "Verorab"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "47796751000116103",
+      "display" : "Berirab P"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48175861000116107",
+      "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48175171000116106",
+      "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48262211000116108",
+      "display" : "Influvac Tetra 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48285331000116103",
+      "display" : "Afluria Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48231281000116101",
+      "display" : "Flucelvax Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48294771000116100",
+      "display" : "Fluad Quad 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48322461000116106",
+      "display" : "FluQuadri 2024"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48111641000116101",
+      "display" : "Arexvy"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48176671000116109",
+      "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48179211000116107",
+      "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "31115901000116100",
+      "display" : "Act-HIB"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48407111000116100",
+      "display" : "Comirnaty JN.1 (30mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48407721000116108",
+      "display" : "Comirnaty JN.1 (10mcg) SDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48408951000116102",
+      "display" : "Comirnaty JN.1 (3mcg) MDV"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606481000116100",
+      "display" : "Flucelvax Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48583461000116109",
+      "display" : "Influvac Tetra 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606291000116104",
+      "display" : "Fluad Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48611851000116100",
+      "display" : "FluQuadri 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "48606101000116102",
+      "display" : "Afluria Quad 2025"
+    },
+    {
+      "system" : "http://nzmt.org.nz",
+      "code" : "45442391000116106",
+      "display" : "Palivizumab"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      },
+      {
+        "code" : "48709091000116105",
+        "display" : "Comirnaty LP.8.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48709061000116101",
+        "display" : "Comirnaty LP.8.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48709151000116103",
+        "display" : "Comirnaty LP.8.1 (30mcg) PFS"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      },
+      {
+        "code" : "48709091000116105",
+        "display" : "Comirnaty LP.8.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48709061000116101",
+        "display" : "Comirnaty LP.8.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48709151000116103",
+        "display" : "Comirnaty LP.8.1 (30mcg) PFS"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://standards.digital.health.nz/fhir/air/ValueSet/air-administered-product-code", "version": "2.1.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "2.1.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      },
+      {
+        "code" : "48709091000116105",
+        "display" : "Comirnaty LP.8.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48709061000116101",
+        "display" : "Comirnaty LP.8.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48709151000116103",
+        "display" : "Comirnaty LP.8.1 (30mcg) PFS"
+      },
+      {
+        "code" : "48833691000116109",
+        "display" : "Flucelvax 2026"
+      },
+      {
+        "code" : "48843351000116107",
+        "display" : "Influvac Tetra 2026"
+      },
+      {
+        "code" : "48838141000116100",
+        "display" : "Fluad 2026"
+      },
+      {
+        "code" : "48864131000116105",
+        "display" : "Fluzone 2026"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      },
+      {
+        "code" : "48709091000116105",
+        "display" : "Comirnaty LP.8.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48709061000116101",
+        "display" : "Comirnaty LP.8.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48709151000116103",
+        "display" : "Comirnaty LP.8.1 (30mcg) PFS"
+      },
+      {
+        "code" : "48833691000116109",
+        "display" : "Flucelvax 2026"
+      },
+      {
+        "code" : "48843351000116107",
+        "display" : "Influvac Tetra 2026"
+      },
+      {
+        "code" : "48838141000116100",
+        "display" : "Fluad 2026"
+      },
+      {
+        "code" : "48864131000116105",
+        "display" : "Fluzone 2026"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "1.25.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "2.2.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "1.26.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "1.27.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48709091000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48709061000116101"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48709151000116103"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48833691000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48843351000116107"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48838141000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "http://nzmt.org.nz",
+      "concept" : [{
+        "code" : "10443641000116108",
+        "display" : "M-M-R-II"
+      },
+      {
+        "code" : "29455501000116107",
+        "display" : "Infanrix-hexa"
+      },
+      {
+        "code" : "44016911000116108",
+        "display" : "Priorix"
+      },
+      {
+        "code" : "10319251000116109",
+        "display" : "Hiberix"
+      },
+      {
+        "code" : "10695781000116100",
+        "display" : "Varilrix"
+      },
+      {
+        "code" : "10347971000116105",
+        "display" : "Infanrix IPV"
+      },
+      {
+        "code" : "10101121000116104",
+        "display" : "Boostrix"
+      },
+      {
+        "code" : "46101011000116102",
+        "display" : "Gardasil 9"
+      },
+      {
+        "code" : "47648581000116104",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47649511000116103",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47648881000116102",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47664751000116102",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "29448821000116105",
+        "display" : "Zostavax"
+      },
+      {
+        "code" : "46770131000116100",
+        "display" : "Shingrix"
+      },
+      {
+        "code" : "47407751000116105",
+        "display" : "Comirnaty mRNA-CV (30mcg) Diluted"
+      },
+      {
+        "code" : "47547081000116102",
+        "display" : "Comirnaty mRNA-CV (10mcg)"
+      },
+      {
+        "code" : "47572291000116106",
+        "display" : "Comirnaty mRNA-CV (30mcg)"
+      },
+      {
+        "code" : "46580461000116107",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "46580601000116106",
+        "display" : "Bexsero"
+      },
+      {
+        "code" : "29458231000116105",
+        "display" : "Menactra"
+      },
+      {
+        "code" : "47768031000116109",
+        "display" : "JYNNEOS"
+      },
+      {
+        "code" : "47972211000116109",
+        "display" : "Afluria Quad"
+      },
+      {
+        "code" : "47972411000116108",
+        "display" : "Afluria Quad Junior"
+      },
+      {
+        "code" : "47972611000116106",
+        "display" : "Fluad Quad"
+      },
+      {
+        "code" : "47988151000116108",
+        "display" : "FluQuadri"
+      },
+      {
+        "code" : "46044951000116103",
+        "display" : "Pneumovax 23"
+      },
+      {
+        "code" : "20077561000116105",
+        "display" : "Prevenar 13"
+      },
+      {
+        "code" : "10380351000116108",
+        "display" : "IPOL"
+      },
+      {
+        "code" : "47666491000116106",
+        "display" : "BCG Vaccine AJV"
+      },
+      {
+        "code" : "47562481000116104",
+        "display" : "MenQuadfi"
+      },
+      {
+        "code" : "10336221000116104",
+        "display" : "Havrix 1440"
+      },
+      {
+        "code" : "31171221000116106",
+        "display" : "Engerix B (20 mcg)"
+      },
+      {
+        "code" : "46083691000116109",
+        "display" : "Engerix B (10 mcg)"
+      },
+      {
+        "code" : "31128931000116109",
+        "display" : "NeisVac-C"
+      },
+      {
+        "code" : "43964841000116102",
+        "display" : "Havrix Junior"
+      },
+      {
+        "code" : "10695851000116103",
+        "display" : "Varivax"
+      },
+      {
+        "code" : "44630041000116108",
+        "display" : "Nimenrix"
+      },
+      {
+        "code" : "47959701000116108",
+        "display" : "Rotarix"
+      },
+      {
+        "code" : "44006761000116105",
+        "display" : "Twinrix"
+      },
+      {
+        "code" : "44007131000116104",
+        "display" : "Twinrix Junior"
+      },
+      {
+        "code" : "10693001000116105",
+        "display" : "Typhim Vi"
+      },
+      {
+        "code" : "29557441000116106",
+        "display" : "Vivotif"
+      },
+      {
+        "code" : "10645561000116106",
+        "display" : "Stamaril"
+      },
+      {
+        "code" : "29430601000116101",
+        "display" : "JEspect"
+      },
+      {
+        "code" : "44305771000116109",
+        "display" : "Rabipur"
+      },
+      {
+        "code" : "10417931000116105",
+        "display" : "Merieux"
+      },
+      {
+        "code" : "10215541000116100",
+        "display" : "Dukoral"
+      },
+      {
+        "code" : "44741471000116105",
+        "display" : "TicoVac"
+      },
+      {
+        "code" : "44881101000116100",
+        "display" : "HyperHEP B 110 IU/0.5mL"
+      },
+      {
+        "code" : "47757241000116104",
+        "display" : "Comirnaty mRNA-CV (3mcg)"
+      },
+      {
+        "code" : "47812711000116103",
+        "display" : "Comirnaty mRNA-CV Bivalent (15mcg/15mcg)"
+      },
+      {
+        "code" : "47411141000116100",
+        "display" : "Nuvaxovid rCV"
+      },
+      {
+        "code" : "47362071000116105",
+        "display" : "AstraZeneca ChAd-CV"
+      },
+      {
+        "code" : "10017131000116103",
+        "display" : "Adacel"
+      },
+      {
+        "code" : "10017251000116104",
+        "display" : "Adacel Polio"
+      },
+      {
+        "code" : "10744051000116109",
+        "display" : "Vivaxim"
+      },
+      {
+        "code" : "10085391000116108",
+        "display" : "Avaxim"
+      },
+      {
+        "code" : "44318211000116104",
+        "display" : "Hexaxim"
+      },
+      {
+        "code" : "44269461000116103",
+        "display" : "Panvax H1N1"
+      },
+      {
+        "code" : "44967911000116100",
+        "display" : "Panvax"
+      },
+      {
+        "code" : "20069331000116107",
+        "display" : "Verorab"
+      },
+      {
+        "code" : "47796751000116103",
+        "display" : "Berirab P"
+      },
+      {
+        "code" : "48175861000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) SDV"
+      },
+      {
+        "code" : "48175171000116106",
+        "display" : "Comirnaty Omicron XBB.1.5 (30mcg) MDV"
+      },
+      {
+        "code" : "48262211000116108",
+        "display" : "Influvac Tetra 2024"
+      },
+      {
+        "code" : "48285331000116103",
+        "display" : "Afluria Quad 2024"
+      },
+      {
+        "code" : "48231281000116101",
+        "display" : "Flucelvax Quad 2024"
+      },
+      {
+        "code" : "48294771000116100",
+        "display" : "Fluad Quad 2024"
+      },
+      {
+        "code" : "48322461000116106",
+        "display" : "FluQuadri 2024"
+      },
+      {
+        "code" : "48111641000116101",
+        "display" : "Arexvy"
+      },
+      {
+        "code" : "48176671000116109",
+        "display" : "Comirnaty Omicron XBB.1.5 (10mcg) SDV"
+      },
+      {
+        "code" : "48179211000116107",
+        "display" : "Comirnaty Omicron XBB.1.5 (3mcg) MDV"
+      },
+      {
+        "code" : "31115901000116100",
+        "display" : "Act-HIB"
+      },
+      {
+        "code" : "48407111000116100",
+        "display" : "Comirnaty JN.1 (30mcg) SDV"
+      },
+      {
+        "code" : "48407721000116108",
+        "display" : "Comirnaty JN.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48408951000116102",
+        "display" : "Comirnaty JN.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48606481000116100",
+        "display" : "Flucelvax Quad 2025"
+      },
+      {
+        "code" : "48583461000116109",
+        "display" : "Influvac Tetra 2025"
+      },
+      {
+        "code" : "48606291000116104",
+        "display" : "Fluad Quad 2025"
+      },
+      {
+        "code" : "48611851000116100",
+        "display" : "FluQuadri 2025"
+      },
+      {
+        "code" : "48606101000116102",
+        "display" : "Afluria Quad 2025"
+      },
+      {
+        "code" : "45442391000116106",
+        "display" : "Palivizumab"
+      },
+      {
+        "code" : "48709091000116105",
+        "display" : "Comirnaty LP.8.1 (3mcg) MDV"
+      },
+      {
+        "code" : "48709061000116101",
+        "display" : "Comirnaty LP.8.1 (10mcg) SDV"
+      },
+      {
+        "code" : "48709151000116103",
+        "display" : "Comirnaty LP.8.1 (30mcg) PFS"
+      },
+      {
+        "code" : "48833691000116109",
+        "display" : "Flucelvax 2026"
+      },
+      {
+        "code" : "48843351000116107",
+        "display" : "Influvac Tetra 2026"
+      },
+      {
+        "code" : "48838141000116100",
+        "display" : "Fluad 2026"
+      },
+      {
+        "code" : "48864131000116105",
+        "display" : "Fluzone 2026"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'http://nzmt.org.nz' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10319251000116109"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10695781000116100"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "46101011000116102"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "noAbstract":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "48864131000116105"
+}, "valueSet" :null, "langs":"en, en-US", "useServer":"true", "useClient":"true", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "java.net.SocketTimeoutException: timeout",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code--0", "version": "1.32.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "Error from https://tx.fhir.org/r4: Error: The cache 'fb014dd7-9f5a-4f99-ba20-1d00d59012d5' is not known to this server. Caches are created with $cache-control?mode=start; this one was never created, or has expired or been released",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108"
+}, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code--0", "version": "1.32.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "Error from https://tx.fhir.org/r4: Error: The cache 'a1f61f56-9621-418d-891e-914d61205ba9' is not known to this server. Caches are created with $cache-control?mode=start; this one was never created, or has expired or been released",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code", "version": "1.32.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: The cache 'a1f61f56-9621-418d-891e-914d61205ba9' is not known to this server. Caches are created with $cache-control?mode=start; this one was never created, or has expired or been released"
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "10443641000116108"
+}, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code--0", "version": "1.27.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "Error from https://tx.fhir.org/r4: Error: The cache 'd43c975d-4021-4f34-a667-b684f6d64e43' is not known to this server. Caches are created with $cache-control?mode=start; this one was never created, or has expired or been released",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "http://nzmt.org.nz",
+  "code" : "44016911000116108"
+}, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-administered-product-code--0", "version": "1.27.0", "langs":"en-US", "useServer":"true", "useClient":"false", "guessSystem":"false", "activeOnly":"false", "membershipOnly":"false", "displayWarningMode":"false", "versionFlexible":"true", "profile": {
+  "resourceType" : "Parameters",
+  "parameter" : [{
+    "name" : "x-system-cache-id",
+    "valueString" : "dc8fd4bc-091a-424a-8a3b-6198ef146891"
+  },
+  {
+    "name" : "defaultDisplayLanguage",
+    "valueCode" : "en-US"
+  }]
+}}####
+v: {
+  "severity" : "error",
+  "error" : "Error from https://tx.fhir.org/r4: Error: The cache 'd43c975d-4021-4f34-a667-b684f6d64e43' is not known to this server. Caches are created with $cache-control?mode=start; this one was never created, or has expired or been released",
+  "class" : "SERVER_ERROR",
+  "issues" : {
+  "resourceType" : "OperationOutcome"
+}
+
+}
+-------------------------------------------------------------------------------------

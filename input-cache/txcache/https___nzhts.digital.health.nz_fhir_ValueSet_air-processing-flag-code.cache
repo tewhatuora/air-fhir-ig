@@ -1,0 +1,43 @@
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code",
+      "concept" : [{
+        "code" : "patient-identifier-immutable",
+        "display" : "Patient identifier not updated - identifier is immutable after record creation"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code",
+      "concept" : [{
+        "code" : "patient-identifier-immutable",
+        "display" : "Patient identifier not updated - identifier is immutable after record creation"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "url": "https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code", "version": "1.26.0"}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Error: A definition for CodeSystem 'https://nzhts.digital.health.nz/fhir/ValueSet/air-processing-flag-code' could not be found, so the value set cannot be expanded"
+}
+-------------------------------------------------------------------------------------

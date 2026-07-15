@@ -13,6 +13,9 @@ stages:
   - post-release
 
 variables:
+  FORCE_PUBLISH_WEB:
+    value: "false"
+    description: "Publish the webpages without a release."
   RELEASE:
     value: "false"
     description: "Set to true in order to build a new release."
@@ -63,12 +66,12 @@ build-web-pages-archive:
   image: alpine:latest
   stage: build-pages
   rules:
-  - if: $RELEASE == "true"
+  - if: $RELEASE == "true" || $FORCE_PUBLISH_WEB == "true"
   before_script:
     - apk add zip curl yq
   script:
     - (cd output; zip -r "../web-pages.zip" .)
-    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION}/web-pages.zip"
+    - PUBLISH_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${API_VERSION}/${MVN_IG_VERSION/-*/}/web-pages.zip"
     - echo "Uploading ${PUBLISH_URL}"
     - >
       curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file web-pages.zip "${PUBLISH_URL}"
@@ -94,7 +97,7 @@ pages:
   image: alpine:latest
   stage: deploy
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/
+    - if: $CI_COMMIT_REF_NAME == "main-V1" || $CI_COMMIT_REF_NAME =~ /^release\/.+/  || $FORCE_PUBLISH_WEB == "true"
   before_script:
     - apk add curl unzip yq git
   script:

@@ -1,0 +1,181 @@
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : false,
+    "include" : [{
+      "system" : "https://standards.digital.health.nz/ns/immunisation-code",
+      "concept" : [{
+        "code" : "52101",
+        "display" : "HepA-Typhoid"
+      },
+      {
+        "code" : "090306",
+        "display" : "PCV unspecified"
+      },
+      {
+        "code" : "90906",
+        "display" : "Td"
+      },
+      {
+        "code" : "99001",
+        "display" : "DTaP-IPV"
+      },
+      {
+        "code" : "99002",
+        "display" : "MeNZB"
+      },
+      {
+        "code" : "99003",
+        "display" : "Diphtheria, paed"
+      },
+      {
+        "code" : "99004",
+        "display" : "aP"
+      },
+      {
+        "code" : "99005",
+        "display" : "Diphtheria, adult"
+      },
+      {
+        "code" : "99006",
+        "display" : "Influenza"
+      },
+      {
+        "code" : "99007",
+        "display" : "HepA"
+      },
+      {
+        "code" : "99008",
+        "display" : "MenACWY"
+      },
+      {
+        "code" : "99009",
+        "display" : "Rabies"
+      },
+      {
+        "code" : "99010",
+        "display" : "RIG"
+      },
+      {
+        "code" : "99011",
+        "display" : "Tdap-IPV"
+      },
+      {
+        "code" : "99012",
+        "display" : "Tdap"
+      },
+      {
+        "code" : "99013",
+        "display" : "MenC"
+      },
+      {
+        "code" : "210307",
+        "display" : "DTaP-IPV-HepB/Hib"
+      },
+      {
+        "code" : "260209",
+        "display" : "PCV10"
+      },
+      {
+        "code" : "EVPMnC",
+        "display" : "MenC"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Unable to provide support for code system https://standards.digital.health.nz/ns/immunisation-code"
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "inactive" : true,
+    "include" : [{
+      "system" : "https://standards.digital.health.nz/ns/immunisation-code",
+      "concept" : [{
+        "code" : "52101",
+        "display" : "HepA-Typhoid"
+      },
+      {
+        "code" : "090306",
+        "display" : "PCV unspecified"
+      },
+      {
+        "code" : "90906",
+        "display" : "Td"
+      },
+      {
+        "code" : "99001",
+        "display" : "DTaP-IPV"
+      },
+      {
+        "code" : "99002",
+        "display" : "MeNZB"
+      },
+      {
+        "code" : "99003",
+        "display" : "Diphtheria, paed"
+      },
+      {
+        "code" : "99004",
+        "display" : "aP"
+      },
+      {
+        "code" : "99005",
+        "display" : "Diphtheria, adult"
+      },
+      {
+        "code" : "99006",
+        "display" : "Influenza"
+      },
+      {
+        "code" : "99007",
+        "display" : "HepA"
+      },
+      {
+        "code" : "99008",
+        "display" : "MenACWY"
+      },
+      {
+        "code" : "99009",
+        "display" : "Rabies"
+      },
+      {
+        "code" : "99010",
+        "display" : "RIG"
+      },
+      {
+        "code" : "99011",
+        "display" : "Tdap-IPV"
+      },
+      {
+        "code" : "99012",
+        "display" : "Tdap"
+      },
+      {
+        "code" : "99013",
+        "display" : "MenC"
+      },
+      {
+        "code" : "210307",
+        "display" : "DTaP-IPV-HepB/Hib"
+      },
+      {
+        "code" : "260209",
+        "display" : "PCV10"
+      },
+      {
+        "code" : "EVPMnC",
+        "display" : "MenC"
+      }]
+    }]
+  }
+}}####
+e: {
+  "from-server" : true,
+  "error" : "Error from https://tx.fhir.org/r4: Unable to provide support for code system https://standards.digital.health.nz/ns/immunisation-code"
+}
+-------------------------------------------------------------------------------------

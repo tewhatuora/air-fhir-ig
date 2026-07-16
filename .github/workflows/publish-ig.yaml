@@ -33,7 +33,7 @@ jobs:
           elif [[ "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
             curl -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
               -H "Content-Type: application/json" \
-              -H "x-api-key: ${{ secrets.API_KEY_V1 }}" \
+              -H "x-api-key: ${{ secrets.API_KEY }}" \
               -d '{"gitBranch": "main-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
           elif [[ "${{ env.BRANCH_NAME }}" == "uat" ]]; then
             curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
@@ -43,6 +43,6 @@ jobs:
           elif [[ "${{ env.BRANCH_NAME }}" == "uat-V1" ]]; then
             curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
               -H "Content-Type: application/json" \
-              -H "x-api-key: ${{ secrets.API_KEY_UAT_V1 }}" \
+              -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
               -d '{"gitBranch": "uat-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
           fi

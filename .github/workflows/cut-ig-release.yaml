@@ -1,0 +1,71 @@
+name: Cut IG Release
+
+#    uat   2.5.0-SNAPSHOT
+#
+#    Release workflow
+#      + remove "-SNAPSHOT"
+#      + commit
+#      + create tag
+#      + open rollup release PR
+#      + bump uat to 2.6.0-SNAPSHOT
+#
+#    Merge release PR to main
+#          |
+#          v
+#    main   2.5.0export YQ=/usr/bin/yq
+#      on merge the publish runs
+
+on:
+  workflow_dispatch:
+    inputs:
+      major_version:
+        description: 'Major version release'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  cut_ig_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: function defs
+        run: |
+          echo "BASH_ENV=ci-scripts/function-defs.sh" >> "$GITHUB_ENV"
+
+      - name: validate branch is uat/uat-V1
+        run: | 
+          echo "branch name ${{ github.ref_name }}"
+          git remote -v
+          if [[ ${{ github.ref_name }} != "uat" && ${{ github.ref_name }} != "uat-V1" ]]; then
+            echo "release branch must be [uat|uat-V1]"
+            exit 5
+          fi  
+
+      - name: install yq yaml parser
+        run: |
+          sudo wget --quiet https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+
+      - name: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.RELEASE_KEY }}
+
+      - name: snapshot to release version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # use ssh so the dedloy key can be used
+          git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
+
+          export CI_COMMIT_BRANCH=${{ github.ref_name }}
+          export RELEASE_MAJOR=${{ inputs.major_version }}
+          ci-scripts/release.sh

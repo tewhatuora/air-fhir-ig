@@ -2,5 +2,5 @@
 See publish_version.sh -->
 
 **Implementation Guide version history**
+- [2.0.0-SNAPSHOT](./branches/200-SNAPSHOT)
 
-This page is built by the HNZ IG Publisher.

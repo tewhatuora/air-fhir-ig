@@ -32,4 +32,4 @@ git config user.name "${GITLAB_USER_NAME}"
 git remote add gitlab-ci https://oauth2:$RELEASE_ACCESS_TOKEN@gitlab.com/${CI_PROJECT_PATH}.git
 git add $file
 git commit -m "[ig-release]: Update version to ${version} [skip ci]" || echo "No changes to commit"
-git push gitlab-ci HEAD:${CI_COMMIT_BRANCH} -o ci.skip
+git push gitlab-ci HEAD:${CI_COMMIT_BRANCH}

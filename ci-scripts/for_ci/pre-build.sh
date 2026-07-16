@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## ci-scripts/pre-build.sh
+## @TODO check
+
 file="sushi-config.yaml"
 releaseLabel=$(yq .releaseLabel $file)
 
@@ -17,3 +20,8 @@ else
 fi
 
 echo "Maven artefact version: ${MVN_IG_VERSION}"
+
+# @TODO if release?
+VERSION=$(yq '.version' sushi-config.yaml)
+yq -i ".info.version |= \"${VERSION}\"" immsot-ig-template-local/package/content/ImmSoTAPI.yaml
+

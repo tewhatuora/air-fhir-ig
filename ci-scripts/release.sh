@@ -14,6 +14,11 @@
 #  |
 #  +--> increment version on UAT to 1.2.4-SNAPSHOT
 
+if [[ "${CI_COMMIT_BRANCH}" != "uat" && "${CI_COMMIT_BRANCH}" != "uat-V1" ]]; then
+  echo "Expecting the branch to be either [uat/uat-V1] found ${CI_COMMIT_BRANCH}"
+  exit 5
+fi
+
 git fetch origin
 
 SUSHI_CONFIG_FILE="sushi-config.yaml"
@@ -46,17 +51,17 @@ echo "MERGE_TARGET=${MERGE_TARGET}"
 echo "MERGE_PR_BRANCH=${MERGE_PR_BRANCH}"
 echo "SUSHI_CONFIG_FILE=${SUSHI_CONFIG_FILE}"
 
-#### ************************
+#####################
 # snapshot -> release
-#### ************************
+#####################
 
 echo "updating ${SUSHI_CONFIG_FILE} for release"
 yq -i '(.status = "active" | .releaseLabel = "release" | .version = '"\"${RELEASE_VERSION}\""' )' ${SUSHI_CONFIG_FILE}
 git add ${SUSHI_CONFIG_FILE}
 
-#### ************************
+#####################
 # history.md
-#### ************************
+#####################
 
 # if this version does not yet exist in the history.md file, add it
 if [ $(grep -c "${CURRENT_VERSION}" input/pagecontent/history.md) -eq 0 ]
@@ -69,9 +74,9 @@ then
   git add input/pagecontent/history.md
 fi
 
-#### ************************
+#####################
 # push changes for release
-#### ************************
+#####################
 
 git commit -m "[ig-release]: Update for release ${RELEASE_VERSION} [skip ci]"
 echo "creating release tag ${RELEASE_VERSION} ${CI_COMMIT_BRANCH}"
@@ -82,9 +87,9 @@ git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
 git push origin ${RELEASE_VERSION}
 git pull --rebase
 
-#### ************************
+#####################
 # create PR for main branch
-#### ************************
+#####################
 
 git switch ${MERGE_TARGET}
 git switch -c ${MERGE_PR_BRANCH}
@@ -98,10 +103,9 @@ git push origin ${MERGE_PR_BRANCH}
 #   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
 #   --body "release workflow from ${CI_COMMIT_BRANCH}"
 
-
-#### ************************
+#####################
 # increment version 
-#### ************************
+#####################
 
 git switch ${CI_COMMIT_BRANCH}
 git pull --rebase

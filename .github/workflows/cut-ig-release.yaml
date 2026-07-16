@@ -60,10 +60,8 @@ jobs:
           ssh-private-key: ${{ secrets.RELEASE_KEY }}
 
       - name: snapshot to release version
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          # use ssh so the dedloy key can be used
+          # use ssh so the deploy key can be used
           git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
 
           export CI_COMMIT_BRANCH=${{ github.ref_name }}

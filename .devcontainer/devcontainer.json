@@ -8,8 +8,7 @@
     "args": {
       "network": "host"
     }
-  },
-  "settings": {
+    "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.profiles.linux": {

@@ -2,4 +2,5 @@
 See publish_version.sh -->
 
 **Implementation Guide version history**
+- [2.7.0](./branches/270)
 

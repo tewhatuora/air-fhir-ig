@@ -73,7 +73,8 @@ jobs:
           # https://github.com/OWNER/REPO.git
           # then the deploy key will never be used.
           # Fix:
-          git remote set-url origin git@github.com:OWNER/REPO.git
+          # https://github.com/ 
+          git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
 
           export CI_COMMIT_BRANCH=${{ github.ref_name }}
           export RELEASE_MAJOR=${{ inputs.major_version }}

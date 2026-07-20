@@ -1,6 +1,5 @@
 # IG Versioning
 
-
 ## Overview
 Support multiple published versions of the IG
 

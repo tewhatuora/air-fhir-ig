@@ -57,7 +57,7 @@ jobs:
           Host github.com
             IdentityFile ~/.ssh/id_rsa
             IdentitiesOnly yes
-          EOF          
+          EOF
 
       - name: install yq yaml parser
         run: |

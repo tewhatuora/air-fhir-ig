@@ -65,6 +65,16 @@ jobs:
 
       - name: snapshot to release version
         run: |
+          git remote -v
+          # It should look like:
+          # origin  git@github.com:OWNER/REPO.git (fetch)
+          # origin  git@github.com:OWNER/REPO.git (push)
+          # If it says:
+          # https://github.com/OWNER/REPO.git
+          # then the deploy key will never be used.
+          # Fix:
+          git remote set-url origin git@github.com:OWNER/REPO.git
+
           export CI_COMMIT_BRANCH=${{ github.ref_name }}
           export RELEASE_MAJOR=${{ inputs.major_version }}
           ci-scripts/release.sh

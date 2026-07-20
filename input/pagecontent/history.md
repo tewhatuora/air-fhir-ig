@@ -3,4 +3,3 @@ See publish_version.sh -->
 
 **Implementation Guide version history**
 
-This page is built by the HNZ IG Publisher.

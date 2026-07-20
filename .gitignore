@@ -26,3 +26,4 @@ plantuml.jar
 /validation.html
 input/fsh/test-profile.fsh
 /.vscode/
+version.env

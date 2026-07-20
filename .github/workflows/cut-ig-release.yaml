@@ -51,10 +51,13 @@ jobs:
         run: |
           sudo wget --quiet https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
 
+      - name: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.RELEASE_KEY }}
+
+
       - name: snapshot to release version
-      - uses: webfactory/ssh-agent@v0.9.0
-          with:
-            ssh-private-key: ${{ secrets.RELEASE_KEY }}
         run: |
           git remote -v
           # It should look like:

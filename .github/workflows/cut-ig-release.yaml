@@ -58,6 +58,8 @@ jobs:
 
 
       - name: snapshot to release version
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git remote -v
           # It should look like:

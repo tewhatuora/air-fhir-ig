@@ -73,9 +73,13 @@ fi
 
 git commit -m "[ig-release]: Update for release ${RELEASE_VERSION} [skip ci]"
 echo "creating release tag ${RELEASE_VERSION} ${CI_COMMIT_BRANCH}"
-git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
+
+git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
+git push origin ${RELEASE_VERSION}
+git pull --rebase
+
 
 #### ************************
 # increment version 

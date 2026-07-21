@@ -1,0 +1,33 @@
+name: Publish Implementation Guide version history
+on:
+  push:
+    branches:
+      - main
+      - main-V1
+
+permissions:
+  contents: write
+
+jobs:
+  update_ig_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: install yq yaml parser
+      run: |
+        sudo wget --quiet https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+
+    - name: webfactory/ssh-agent@v0.9.0
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.RELEASE_KEY }}
+
+    - name: snapshot to release version
+      run: |
+        export CI_COMMIT_BRANCH=${{ github.ref_name }}
+        # use ssh so the deploy key can be used
+        git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
+
+        ci-scripts/publish_version_history.sh

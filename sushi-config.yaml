@@ -8,13 +8,8 @@ canonical: https://standards.digital.health.nz/fhir/air
 name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.
-<<<<<<< Updated upstream
-status: active # draft | active | retired | unknown
-version: 2.0.0
-=======
 status: draft # draft | active | retired | unknown
 version: 2.0.0-SNAPSHOT
->>>>>>> Stashed changes
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2022+
 releaseLabel: release # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use

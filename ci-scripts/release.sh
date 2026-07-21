@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #  UAT
 #  |
@@ -20,6 +20,8 @@ if [[ "${CI_COMMIT_BRANCH}" != "uat" && "${CI_COMMIT_BRANCH}" != "uat-V1" ]]; th
 fi
 
 git fetch origin
+git switch ${CI_COMMIT_BRANCH}
+git pull --rebase
 
 SUSHI_CONFIG_FILE="sushi-config.yaml"
 RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
@@ -92,6 +94,7 @@ git pull --rebase
 #####################
 
 git switch ${MERGE_TARGET}
+git pull --rebase
 git switch -c ${MERGE_PR_BRANCH}
 git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}

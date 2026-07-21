@@ -103,6 +103,9 @@ git push origin ${MERGE_PR_BRANCH}
 # increment version 
 #### ************************
 
+git switch ${CI_COMMIT_BRANCH}
+git pull --rebase
+
 counter=".[-2]"
 
 if [[ ${RELEASE_MAJOR} = "true" ]]

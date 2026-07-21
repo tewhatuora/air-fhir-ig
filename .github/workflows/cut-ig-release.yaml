@@ -57,22 +57,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.RELEASE_KEY }}
 
-
       - name: snapshot to release version
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git remote -v
-          # It should look like:
-          # origin  git@github.com:OWNER/REPO.git (fetch)
-          # origin  git@github.com:OWNER/REPO.git (push)
-          # If it says:
-          # https://github.com/OWNER/REPO.git
-          # then the deploy key will never be used.
-          # Fix:
-          # https://github.com/ 
+          # use ssh so the dedloy key can be used
           git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
-          git remote -v
 
           export CI_COMMIT_BRANCH=${{ github.ref_name }}
           export RELEASE_MAJOR=${{ inputs.major_version }}

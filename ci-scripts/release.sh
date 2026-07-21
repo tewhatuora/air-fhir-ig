@@ -80,6 +80,22 @@ git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
 git push origin ${RELEASE_VERSION}
 git pull --rebase
 
+#### ************************
+# create PR for main branch
+#### ************************
+
+git switch ${MERGE_TARGET}
+git switch -c ${MERGE_PR_BRANCH}
+git merge ${CI_COMMIT_BRANCH}
+git push origin ${MERGE_PR_BRANCH}
+
+# create PR not allowed in workflow
+# gh pr create \
+#   --base ${MERGE_TARGET} \
+#   --head ${MERGE_PR_BRANCH} \
+#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
+#   --body "release workflow from ${CI_COMMIT_BRANCH}"
+
 
 #### ************************
 # increment version 
@@ -106,20 +122,5 @@ git commit -m "[ig-release]: Update version to ${NEW_VERSION} [skip ci]" || echo
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
 
-#### ************************
-# create PR for main branch
-#### ************************
-
-git switch ${MERGE_TARGET}
-git switch -c ${MERGE_PR_BRANCH}
-git merge ${CI_COMMIT_BRANCH}
-git push origin ${MERGE_PR_BRANCH}
-
-# create PR not allowed in workflow
-# gh pr create \
-#   --base ${MERGE_TARGET} \
-#   --head ${MERGE_PR_BRANCH} \
-#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
-#   --body "release workflow from ${CI_COMMIT_BRANCH}"
 
 git switch ${CI_COMMIT_BRANCH}

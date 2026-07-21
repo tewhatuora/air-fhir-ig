@@ -14,6 +14,8 @@
 #  |
 #  +--> increment version on UAT to 1.2.4-SNAPSHOT
 
+git fetch origin
+
 SUSHI_CONFIG_FILE="sushi-config.yaml"
 RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})

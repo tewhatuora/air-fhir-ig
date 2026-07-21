@@ -26,6 +26,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   cut_ig_release:
@@ -47,24 +48,22 @@ jobs:
             exit 5
           fi  
 
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.RELEASE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          cat > ~/.ssh/config <<EOF
-          Host github.com
-            IdentityFile ~/.ssh/id_rsa
-            IdentitiesOnly yes
-          EOF          
-
       - name: install yq yaml parser
         run: |
           sudo wget --quiet https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
 
+      - name: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.RELEASE_KEY }}
+
       - name: snapshot to release version
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # use ssh so the dedloy key can be used
+          git remote set-url origin git@github.com:tewhatuora/air-fhir-ig.git
+
           export CI_COMMIT_BRANCH=${{ github.ref_name }}
           export RELEASE_MAJOR=${{ inputs.major_version }}
           ci-scripts/release.sh

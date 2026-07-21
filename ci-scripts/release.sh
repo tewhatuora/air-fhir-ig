@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #  UAT
 #  |
@@ -17,9 +17,9 @@
 SUSHI_CONFIG_FILE="sushi-config.yaml"
 RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
-RELEASE_VERSION="${CURRENT_VERSION%-snapshot}"
+RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
-MERGE_PR_BRANCH="merge-release-${RELEASE_VERSION}"
+MERGE_PR_BRANCH="release/merge-${RELEASE_VERSION}"
 
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git config user.name "github-actions[bot]"
@@ -73,9 +73,13 @@ fi
 
 git commit -m "[ig-release]: Update for release ${RELEASE_VERSION} [skip ci]"
 echo "creating release tag ${RELEASE_VERSION} ${CI_COMMIT_BRANCH}"
-git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
+
+git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
+git push origin ${RELEASE_VERSION}
+git pull --rebase
+
 
 #### ************************
 # increment version 
@@ -108,7 +112,14 @@ git pull --rebase
 
 git switch ${MERGE_TARGET}
 git switch -c ${MERGE_PR_BRANCH}
-git merge ${RELEASE_VERSION}
+git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}
+
+# create PR not allowed in workflow
+# gh pr create \
+#   --base ${MERGE_TARGET} \
+#   --head ${MERGE_PR_BRANCH} \
+#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
+#   --body "release workflow from ${CI_COMMIT_BRANCH}"
 
 git switch ${CI_COMMIT_BRANCH}

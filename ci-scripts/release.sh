@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #  UAT
 #  |
@@ -17,7 +17,7 @@
 SUSHI_CONFIG_FILE="sushi-config.yaml"
 RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
-RELEASE_VERSION="${CURRENT_VERSION%-snapshot}"
+RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
 MERGE_PR_BRANCH="release/merge-${RELEASE_VERSION}"
 
@@ -111,10 +111,11 @@ git switch -c ${MERGE_PR_BRANCH}
 git merge ${RELEASE_VERSION}
 git push origin ${MERGE_PR_BRANCH}
 
-gh pr create \
-  --base ${MERGE_TARGET} \
-  --head ${MERGE_PR_BRANCH} \
-  --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
-  --body "release workflow from ${CI_COMMIT_BRANCH}"
+# create PR not allowed in workflow
+# gh pr create \
+#   --base ${MERGE_TARGET} \
+#   --head ${MERGE_PR_BRANCH} \
+#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
+#   --body "release workflow from ${CI_COMMIT_BRANCH}"
 
 git switch ${CI_COMMIT_BRANCH}

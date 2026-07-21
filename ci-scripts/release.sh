@@ -112,7 +112,7 @@ git pull --rebase
 
 git switch ${MERGE_TARGET}
 git switch -c ${MERGE_PR_BRANCH}
-git merge ${RELEASE_VERSION}
+git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}
 
 # create PR not allowed in workflow

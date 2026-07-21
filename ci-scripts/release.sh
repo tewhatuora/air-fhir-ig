@@ -14,6 +14,8 @@
 #  |
 #  +--> increment version on UAT to 1.2.4-SNAPSHOT
 
+git fetch origin
+
 SUSHI_CONFIG_FILE="sushi-config.yaml"
 RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
@@ -80,10 +82,29 @@ git tag -a "${RELEASE_VERSION}" -m "${CI_COMMIT_BRANCH}"
 git push origin ${RELEASE_VERSION}
 git pull --rebase
 
+#### ************************
+# create PR for main branch
+#### ************************
+
+git switch ${MERGE_TARGET}
+git switch -c ${MERGE_PR_BRANCH}
+git merge ${CI_COMMIT_BRANCH}
+git push origin ${MERGE_PR_BRANCH}
+
+# create PR not allowed in workflow
+# gh pr create \
+#   --base ${MERGE_TARGET} \
+#   --head ${MERGE_PR_BRANCH} \
+#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
+#   --body "release workflow from ${CI_COMMIT_BRANCH}"
+
 
 #### ************************
 # increment version 
 #### ************************
+
+git switch ${CI_COMMIT_BRANCH}
+git pull --rebase
 
 counter=".[-2]"
 
@@ -106,20 +127,5 @@ git commit -m "[ig-release]: Update version to ${NEW_VERSION} [skip ci]" || echo
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
 
-#### ************************
-# create PR for main branch
-#### ************************
-
-git switch ${MERGE_TARGET}
-git switch -c ${MERGE_PR_BRANCH}
-git merge ${CI_COMMIT_BRANCH}
-git push origin ${MERGE_PR_BRANCH}
-
-# create PR not allowed in workflow
-# gh pr create \
-#   --base ${MERGE_TARGET} \
-#   --head ${MERGE_PR_BRANCH} \
-#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
-#   --body "release workflow from ${CI_COMMIT_BRANCH}"
 
 git switch ${CI_COMMIT_BRANCH}

@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database."
-  version: "1.7.0"
+  version: "2.1.0-SNAPSHOT"
 servers:
   - url: https://air.api.digital.health.nz
     description: PROD - ImmSoT Service endpoint
@@ -43,6 +43,8 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -74,6 +76,8 @@ paths:
           $ref: '#/components/responses/403'
         "404":
           $ref: '#/components/responses/404'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -251,6 +255,8 @@ paths:
             examples:
               Search by NHI number:
                 $ref: '#/components/examples/SearchNhi'
+              Search by NHI number with Patient Reference:
+                $ref: '#/components/examples/SearchNhiFullPatientRef'
       responses:
         "200":
           description: Ok
@@ -269,54 +275,13 @@ paths:
           $ref: '#/components/responses/403'
         "401":
           $ref: '#/components/responses/401'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
             - system/Immunization.s
-  /fhir/R4/Immunization/$upsert:
-    post:
-      operationId: $upsert
-      description: |
-        Perform an upsert using a deterministic matching algorithm.
-        The algorithm attempts to resolve exactly one existing Immunisation Event.
-        If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-
-        Immunisation Event in the request attempt to find a matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
-        1. If no match found, create a new event
-        2. If single match found, update the matched event
-        3. If multiple events found, create a new event (duplicate Data Quality violation will be raised).
-        4. Failure to process the event, reject the request
-      parameters:
-        - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/request-context'
-      requestBody:
-        description: |
-          Perform an upsert using a deterministic matching algorithm.
-          The algorithm attempts to resolve exactly one existing Immunisation Event.
-          If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-        content:
-          application/fhir+json:
-            schema:
-              $ref: '#/components/schemas/AirImmunization'
-            examples:
-              upsertExample:
-                $ref: '#/components/examples/CreatePayload'
-      responses:
-        "200":
-          description: Ok
-          $ref: '#/components/responses/200'
-        "400":
-          $ref: '#/components/responses/400'
-        "403":
-          $ref: '#/components/responses/403'
-        "500":
-          $ref: '#/components/responses/500'
-      security:
-        - OAuth2Implicit:
-            - system/Immunization.c
-            - system/Immunization.u
 components:
   schemas:
     AcknowledgementBundle:
@@ -381,12 +346,7 @@ components:
           type: object
           properties:
             extension:
-              type: array
-              items:
-                anyOf:
-                  - $ref: '#/components/schemas/DQExtension'
-                  - $ref: '#/components/schemas/PlannedEventMatchExtension'
-                  - $ref: '#/components/schemas/PlannedEventMQExtension'
+              $ref: '#/components/schemas/DQExtension'
             versionId:
               description: 'The version number of the Immunisation Event in Immsot'
               type: string
@@ -398,6 +358,17 @@ components:
               maxItems: 1000
               items:
                 type: string
+            tag:
+              type: array
+              items:
+                type: object
+                properties:
+                  system:
+                    type: string
+                  code:
+                    type: string
+                  display:
+                    type: string
         patient:
           $ref: '#/components/schemas/LogicalReference'
         vaccineCode:
@@ -579,70 +550,6 @@ components:
                 - $ref: '#/components/schemas/ExtensionDateTime'
                 - $ref: '#/components/schemas/ExtensionBoolean'
                 - $ref: '#/components/schemas/ViolationsExtension'
-    PlannedEventMatchExtension:
-      type: array
-      maxItems: 1000
-      items:
-        type: object
-        properties:
-          url:
-            type: string
-            example: "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match"
-          extension:
-            type: array
-            items:
-              $ref: '#/components/schemas/MatchExtension'
-    PlannedEventMQExtension:
-      type: array
-      maxItems: 1000
-      items:
-        type: object
-        properties:
-          url:
-            type: string
-            example: "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match-quality"
-          extension:
-            type: array
-            items:
-              $ref: '#/components/schemas/MatchQualityExtension'
-    MatchExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        extension:
-          type: array
-          items:
-            anyOf:
-              - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDateTime'
-              - $ref: '#/components/schemas/MatchedReasonExtension'
-    MatchQualityExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        extension:
-          type: array
-          items:
-            anyOf:
-              - $ref: '#/components/schemas/ExtensionString'
-              - $ref: '#/components/schemas/ExtensionDateTime'
-              - $ref: '#/components/schemas/MatchedReasonExtension'
-    MatchedReasonExtension:
-      type: object
-      properties:
-        url:
-          type: string
-        valueCoding:
-          $ref: '#/components/schemas/MatchedReasonCoding'
-    MatchedReasonCoding:
-      type: object
-      properties:
-        code:
-          type: string
-        display:
-          type: string
     ExtensionBoolean:
       type: array
       maxItems: 1000
@@ -862,6 +769,13 @@ components:
               maxItems: 1000
               items:
                 type: string
+            extension:
+              type: array
+              maxItems: 1000
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/ExtensionModifiedby'
+                  - $ref: '#/components/schemas/ExtensionModifiedSourceSystem'
         identifier:
           $ref: '#/components/schemas/Identifier'
         extension:
@@ -1874,60 +1788,6 @@ components:
       summary: Successful response from Acknowledgement
       value:
         resourceType: OperationOutcome
-    DQExtension: &DQExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment
-        extension:
-          - url: dqScore
-            valueInteger: 66
-          - url: dqLastUpdated
-            valueDateTime: '2023-05-08T02:38:34+00:00'
-          - url: dqStatus
-            valueString: I
-          - url: DQViolations
-            extension:
-              - url: DQViolation
-                extension:
-                  - url: violationCode
-                    valueString: '500'
-                  - url: violationType
-                    valueString: DataQuality
-                  - url: violationMessage
-                    valueString: An immunisation event should have a diluent expiry date, and the diluent expiry date should not be before the immunisation event date.
-                  - url: violationElement
-                    valueString: Immunization.extension.where(url='https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent').extension.where(url='diluentExpiryDate').valueDate
-                  - url: violationWeighting
-                    valueInteger: 3
-    PlannedEventMatchExtension: &PlannedEventMatchExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match
-        extension:
-          - url: match
-            extension:
-              - url: plannedEventId
-                valueString: f82f452e-4cec-4607-89b5-d8179c6d957c
-              - url: matchedDate
-                valueDateTime: "2026-03-16T19:26:36.698+00:00"
-              - url: matchedBy
-                valueString: test
-              - url: matchedReason
-                valueCoding:
-                  code: "301"
-                  display: Automatically matched by indication
-    PlannedEventMQExtension: &PlannedEventMQExtension
-      value:
-        url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-event-match-quality
-        extension:
-          - url: matchQuality
-            extension:
-              - url: plannedEventId
-                valueString: f82f452e-4cec-4607-89b5-d8179c6d957c
-              - url: createdDate
-                valueDateTime: "2026-03-16T19:26:36.628+00:00"
-              - url: createdReason
-                valueCoding:
-                  code: "8204"
-                  display: Migrated Immunisation Event has been created
     UpdateSuccessDQIdentified:
       summary: Updated with data quality issues
       value:
@@ -2285,8 +2145,6 @@ components:
                   valueDateTime: '2023-05-08T02:25:00+00:00'
                 - url: dqStatus
                   valueString: P
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
           versionId: '1'
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
@@ -2458,8 +2316,6 @@ components:
                           valueString: "Immunization.where(id in 'c00f2a11-7db5-4f4e-9d5e-1d9645a72a5c')"
                         - url: violationWeighting
                           valueInteger: 0
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
           versionId: '1'
           lastUpdated: '2023-05-08T02:25:00.383+00:00'
           profile:
@@ -3048,10 +2904,6 @@ components:
           lastUpdated: '2023-05-08T02:49:52.172+00:00'
           profile:
             - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-          extension:
-            - *DQExtension
-            - *PlannedEventMatchExtension
-            - *PlannedEventMQExtension
         location:
           reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
           identifier:
@@ -3216,7 +3068,7 @@ components:
             valueCodeableConcept:
               coding:
                 - system: 'https://standards.digital.health.nz/ns/air-consumer-sub-status-code'
-                  code: WITH_OUTREACH
+                  code: UNDER_REVIEW
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
             valueDate: '2012-04-23'
         active: true
@@ -3234,7 +3086,7 @@ components:
           - name: state
             valueString: OVERSEAS
           - name: subStatus
-            valueString: WITH_OUTREACH
+            valueString: UNDER_REVIEW
     SearchResult:
       summary: Search returns multiple records
       value:
@@ -3257,10 +3109,6 @@ components:
                 lastUpdated: '2023-05-09T00:50:08.177+00:00'
                 profile:
                   - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
               location:
                 reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
                 identifier:
@@ -3408,10 +3256,6 @@ components:
                 lastUpdated: '2023-05-08T02:49:52.172+00:00'
                 profile:
                   - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
               location:
                 reference: http://esam.co.nz/eSAMMoHAddress_v01/123456
                 identifier:
@@ -3959,10 +3803,6 @@ components:
                 lastUpdated: '2023-05-10T00:50:08.177+00:00'
                 profile:
                   - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
               location:
                 reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
                 identifier:
@@ -4110,10 +3950,6 @@ components:
                 lastUpdated: '2023-05-09T00:50:08.177+00:00'
                 profile:
                   - https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization
-                extension:
-                  - *DQExtension
-                  - *PlannedEventMatchExtension
-                  - *PlannedEventMQExtension
               location:
                 reference: https://standards.digital.health.nz/ns/hpi-facility-id/FZZ835-E
                 identifier:

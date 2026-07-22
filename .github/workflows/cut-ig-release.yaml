@@ -39,7 +39,7 @@ jobs:
 
       - name: function defs
         run: |
-          echo "BASH_ENV=ci-scripts/function-defs.sh" >> "$GITHUB_ENV"
+          echo "BASH_ENV=.github/scripts/function-defs.sh" >> "$GITHUB_ENV"
 
       - name: validate branch is uat/uat-V1
         run: | 
@@ -66,4 +66,4 @@ jobs:
 
           export CI_COMMIT_BRANCH=${{ github.ref_name }}
           export RELEASE_MAJOR=${{ inputs.major_version }}
-          ci-scripts/release.sh
+          .github/scripts/release.sh

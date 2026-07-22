@@ -1,14 +1,15 @@
 {
   "name": "air-api-fhir-ig-dev",
-  "initializeCommand": "docker build --network host --tag air-api-fhir-ig-dev .",
+  "initializeCommand": "docker build --network host --tag air-api-fhir-ig-dev .devcontainer",
   "image": "air-api-fhir-ig-dev",
   "build": {
-    "dockerfile": "../Dockerfile",   // path to your Dockerfile
+    "dockerfile": "Dockerfile",   // path to your Dockerfile
     "context": "..",                  // build context (usually project root)
     "args": {
       "network": "host"
     }
-    "settings": {
+  },
+  "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.profiles.linux": {

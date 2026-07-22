@@ -21,7 +21,7 @@ let markdown = require( "markdown" ).markdown;
 
 //open the file 'allExt.json' containing all extensions defined by all known IGs
 //todo - need to figure out a way to make this file updateable...
-let data = fs.readFileSync("localscripts/allExt.json").toString();
+let data = fs.readFileSync("./.builder/scripts/allExt.json").toString();
 
 let hashAllKnownExtensions = JSON.parse(data)
 

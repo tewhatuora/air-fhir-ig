@@ -1,4 +1,5 @@
 #!/bin/bash
+./_updatePublisher.sh
 set -e
 
 ARGS=$(getopt -o nh --long no-proxy,sushi-only,help -- "$@")
@@ -37,32 +38,20 @@ while [ : ]; do
     esac
 done
 
-echo running sushi ...
- ./runSushi.sh
+echo running pre-build ...
+ ./.builder/pre-build.sh
  
-echo running local scripts....
- node ./localscripts/makeProfilesAndExtensions.js
- node ./localscripts/makeTerminologySummary.js
- node ./localscripts/makeCapabilityStatement.js
-
 if [[ "$sushi_only" != "true" ]]; then
-    JAVA_OPTS="-Xms2g -Xmx2g -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8"
+    # JAVA_OPTS="-Xms2g -Xmx2g -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8"
 
-    if [[ -v HTTP_PROXY && "$no_proxy" != "true" ]]; then
-      IG_OPTS="-proxy ${HTTP_PROXY//http:\/\/}"
-    fi
+    # if [[ -v HTTP_PROXY && "$no_proxy" != "true" ]]; then
+    #   IG_OPTS="-proxy ${HTTP_PROXY//http:\/\/}"
+    # fi
 
-    echo running ig publisher
-    java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi 
+    # echo running ig publisher
+    # java $JAVA_OPTS -jar input-cache/publisher.jar -ig . $IG_OPTS -no-sushi 
+    ./_genonce.sh
 fi
 
-echo running PlantUML ...
- ./_genPlantumlImages.sh
-
-echo running raw image geenration ...
-./_genRawImages.sh
-
-echo versioning ImmSotAPI.yaml
-
-VERSION=$(yq '.version' sushi-config.yaml)
-yq -i ".info.version |= \"${VERSION}\"" immsot-ig-template-local/package/content/ImmSoTAPI.yaml
+echo running post-build
+./.builder/post-build.sh

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo running PlantUML ...
+ ./_genPlantumlImages.sh
+
+echo running raw image geenration ...
+./_genRawImages.sh
+
+echo versioning ImmSotAPI.yaml
+
+VERSION=$(yq '.version' sushi-config.yaml)
+yq -i ".info.version |= \"${VERSION}\"" immsot-ig-template-local/package/content/ImmSoTAPI.yaml
+
+./.builder/scripts/transform_to_marketplace_spec.sh

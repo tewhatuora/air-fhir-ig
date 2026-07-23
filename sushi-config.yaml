@@ -9,7 +9,7 @@ name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.
 status: draft # draft | active | retired | unknown
-version: 2.1.0-SNAPSHOT
+version: 2.0.0-SNAPSHOT
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2022+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -70,8 +70,6 @@ dependencies:
 # https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
 #
 # parameters:
-#   apply-version: false
-#   default-version: false
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
@@ -94,6 +92,7 @@ menu:
     Read Immunisation Event: immunisationEventRead.html
     Update Immunisation Event: immunisationEventUpdate.html
     Search Immunisation Events: immunisationEventSearch.html
+    Upsert Immunisation Events: immunisationEventUpsert.html
   Important Information:
     Onboarding: onboarding.html
     General Notes: generalNotes.html

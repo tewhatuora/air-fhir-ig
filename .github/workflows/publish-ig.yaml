@@ -25,24 +25,24 @@ jobs:
 
       - name: Send POST request
         run: |
-          if [[ "${{ env.BRANCH_NAME }}" == "main" ]]; then
-            curl -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
+          if [[ "${{ env.BRANCH_NAME }}" == "main" || "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
+            curl \
+              --fail-with-body \
+              --show-error \
+              --silent \
+              --location \
+              -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
               -H "Content-Type: application/json" \
               -H "x-api-key: ${{ secrets.API_KEY }}" \
-              -d '{"gitBranch": "main", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
-          elif [[ "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
-            curl -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
-              -H "Content-Type: application/json" \
-              -H "x-api-key: ${{ secrets.API_KEY }}" \
-              -d '{"gitBranch": "main-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
-          elif [[ "${{ env.BRANCH_NAME }}" == "uat" ]]; then
-            curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
-              -H "Content-Type: application/json" \
-              -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
-              -d '{"gitBranch": "uat", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
-          elif [[ "${{ env.BRANCH_NAME }}" == "uat-V1" ]]; then
-            curl -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
+              -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          else 
+            curl \
+              --fail-with-body \
+              --show-error \
+              --silent \
+              --location \
+              -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
               -H "Content-Type: application/json" \
               -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
-              -d '{"gitBranch": "uat-V1", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+              -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
           fi

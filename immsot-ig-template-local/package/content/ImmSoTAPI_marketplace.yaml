@@ -43,6 +43,8 @@ paths:
             application/fhir+json:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -74,6 +76,8 @@ paths:
           $ref: '#/components/responses/403'
         "404":
           $ref: '#/components/responses/404'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
@@ -251,6 +255,8 @@ paths:
             examples:
               Search by NHI number:
                 $ref: '#/components/examples/SearchNhi'
+              Search by NHI number with Patient Reference:
+                $ref: '#/components/examples/SearchNhiFullPatientRef'
       responses:
         "200":
           description: Ok
@@ -269,54 +275,13 @@ paths:
           $ref: '#/components/responses/403'
         "401":
           $ref: '#/components/responses/401'
+        "429":
+          $ref: '#/components/responses/429'
         "500":
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
             - system/Immunization.s
-  /fhir/R4/Immunization/$upsert:
-    post:
-      operationId: $upsert
-      description: |
-        Perform an upsert using a deterministic matching algorithm.
-        The algorithm attempts to resolve exactly one existing Immunisation Event.
-        If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-
-        Immunisation Event in the request attempt to find a matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
-        1. If no match found, create a new event
-        2. If single match found, update the matched event
-        3. If multiple events found, create a new event (duplicate Data Quality violation will be raised).
-        4. Failure to process the event, reject the request
-      parameters:
-        - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/request-context'
-      requestBody:
-        description: |
-          Perform an upsert using a deterministic matching algorithm.
-          The algorithm attempts to resolve exactly one existing Immunisation Event.
-          If a single match is found, the event is updated. If no match is found, or if multiple candidate matches are detected, a new Immunisation Event is inserted.
-        content:
-          application/fhir+json:
-            schema:
-              $ref: '#/components/schemas/AirImmunization'
-            examples:
-              upsertExample:
-                $ref: '#/components/examples/CreatePayload'
-      responses:
-        "200":
-          description: Ok
-          $ref: '#/components/responses/200'
-        "400":
-          $ref: '#/components/responses/400'
-        "403":
-          $ref: '#/components/responses/403'
-        "500":
-          $ref: '#/components/responses/500'
-      security:
-        - OAuth2Implicit:
-            - system/Immunization.c
-            - system/Immunization.u
 components:
   schemas:
     AcknowledgementBundle:
@@ -393,6 +358,17 @@ components:
               maxItems: 1000
               items:
                 type: string
+            tag:
+              type: array
+              items:
+                type: object
+                properties:
+                  system:
+                    type: string
+                  code:
+                    type: string
+                  display:
+                    type: string
         patient:
           $ref: '#/components/schemas/LogicalReference'
         vaccineCode:
@@ -793,6 +769,13 @@ components:
               maxItems: 1000
               items:
                 type: string
+            extension:
+              type: array
+              maxItems: 1000
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/ExtensionModifiedby'
+                  - $ref: '#/components/schemas/ExtensionModifiedSourceSystem'
         identifier:
           $ref: '#/components/schemas/Identifier'
         extension:
@@ -3085,7 +3068,7 @@ components:
             valueCodeableConcept:
               coding:
                 - system: 'https://standards.digital.health.nz/ns/air-consumer-sub-status-code'
-                  code: WITH_OUTREACH
+                  code: UNDER_REVIEW
           - url: https://standards.digital.health.nz/fhir/air/StructureDefinition/air-consumer-nir-opt-off
             valueDate: '2012-04-23'
         active: true
@@ -3103,7 +3086,7 @@ components:
           - name: state
             valueString: OVERSEAS
           - name: subStatus
-            valueString: WITH_OUTREACH
+            valueString: UNDER_REVIEW
     SearchResult:
       summary: Search returns multiple records
       value:

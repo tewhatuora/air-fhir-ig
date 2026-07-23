@@ -1,9 +1,9 @@
 {
   "name": "air-api-fhir-ig-dev",
-  "initializeCommand": "docker build --network host --tag air-api-fhir-ig-dev .",
+  "initializeCommand": "docker build --network host --tag air-api-fhir-ig-dev .devcontainer",
   "image": "air-api-fhir-ig-dev",
   "build": {
-    "dockerfile": "../Dockerfile",   // path to your Dockerfile
+    "dockerfile": "Dockerfile",   // path to your Dockerfile
     "context": "..",                  // build context (usually project root)
     "args": {
       "network": "host"

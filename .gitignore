@@ -11,12 +11,6 @@ _genonce.bat
 _genonce.sh
 _build.bat
 _build.sh
-batik-1.6.1.tar.gz
-batik-all.jar
-batik-all.jar
-/batik-1.6.1/
-batik-1.6.1/
-fhir-openapi-converter.js
 _genopenapi.sh
 plantuml.jar
 /.idea/
@@ -26,3 +20,7 @@ plantuml.jar
 /validation.html
 input/fsh/test-profile.fsh
 /.vscode/
+version.env
+node_modules
+package.json
+package-lock.json

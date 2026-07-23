@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install markdown remarkable
+
 echo running sushi ...
  ./.builder/scripts/runSushi.sh
  

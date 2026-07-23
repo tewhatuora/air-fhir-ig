@@ -26,9 +26,6 @@ jobs:
       - name: Send POST request
         run: |
           if [[ "${{ env.BRANCH_NAME }}" == "main" || "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
-            ## @TODO pre-release
-            # local-scripts/pre-build.sh
-
             curl \
               --fail-with-body \
               --show-error \
@@ -38,11 +35,6 @@ jobs:
               -H "Content-Type: application/json" \
               -H "x-api-key: ${{ secrets.API_KEY }}" \
               -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
-
-              ## @TODO sample tgz - in builder
-              ## @TODO publish tgz to repo - in builder
-              ## @TODO post-release - in builder
-              # local-scripts/post-build.sh
           else 
             curl \
               --fail-with-body \

@@ -70,8 +70,6 @@ dependencies:
 # https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
 #
 # parameters:
-#   apply-version: false
-#   default-version: false
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
@@ -94,6 +92,7 @@ menu:
     Read Immunisation Event: immunisationEventRead.html
     Update Immunisation Event: immunisationEventUpdate.html
     Search Immunisation Events: immunisationEventSearch.html
+    Upsert Immunisation Events: immunisationEventUpsert.html
   Important Information:
     Onboarding: onboarding.html
     General Notes: generalNotes.html

@@ -18,10 +18,6 @@ RUN apt-get install -y \
     graphviz neovim exa bat bash sudo ripgrep \
     && rm -rf /var/lib/apt/lists/* 
     
-    # && curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash \
-    # && mv act /usr/local/bin/act 
-    
-
 WORKDIR /workspaces
 
 # Set non-root user

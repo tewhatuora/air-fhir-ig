@@ -2,4 +2,5 @@
 See publish_version.sh -->
 
 **Implementation Guide version history**
+- [1.27.0-SNAPSHOT](./branches/1270-SNAPSHOT)
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 npm install markdown remarkable
 

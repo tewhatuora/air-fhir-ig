@@ -46,6 +46,9 @@ FROM base AS localdev
 RUN apt update --fix-missing \
     && apt install -y \
     graphviz neovim eza bat bash sudo ripgrep
+
+# test github workflows locally
+RUN curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
     
 WORKDIR /workspaces
 

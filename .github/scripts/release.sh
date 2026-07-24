@@ -1,4 +1,5 @@
 #!/bin/bash -x
+set -eo pipefail
 
 #  UAT
 #  |

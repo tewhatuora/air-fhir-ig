@@ -1,6 +1,5 @@
 #!/bin/bash
-./_updatePublisher.sh
-set -e
+set -eo pipefail
 
 ARGS=$(getopt -o nh --long no-proxy,sushi-only,help -- "$@")
 
@@ -38,10 +37,13 @@ while [ : ]; do
     esac
 done
 
+./_updatePublisher.sh -f -y
+
+
 echo running pre-build ...
  ./.builder/pre-build.sh
  
-if [[ "$sushi_only" != "true" ]]; then
+if [[ "${sushi_only}" != "true" ]]; then
     # JAVA_OPTS="-Xms2g -Xmx2g -XX:ActiveProcessorCount=2 -Dfile.encoding=UTF-8"
 
     # if [[ -v HTTP_PROXY && "$no_proxy" != "true" ]]; then

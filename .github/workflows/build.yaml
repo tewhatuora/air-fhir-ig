@@ -1,0 +1,26 @@
+name: build IG (Auto)
+
+on:
+  push:
+    branches:
+      - ^(feature|bugfix|release|cherry-pick|revert)/.*
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build --target BASE -t air-api-fhir-ig-dev .devcontainer
+
+      - name: Run build inside container
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/workspace" -w /workspace air-api-fhir-ig-dev:latest ./build-ig.sh

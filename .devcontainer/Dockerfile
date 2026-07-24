@@ -1,28 +1,51 @@
-FROM registry.gitlab.com/healthnz-prm/air/air-api-orca/orca:0.6
-
-# -- you need to "docker" log into the registry.gitlab.com first
-# export TOKEN=<your token>
-# echo "$TOKEN" | docker login registry.gitlab.com -u <user> --password-stdin
-#
-# just from the command prompt - Dock then stores it in its config
+FROM ubuntu:24.04 AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV no_proxy=localhost,127.0.0.1,.local,.internal
-# for what ever reason DNS is not resolving inside the container, but providing the address from `nslookup WebProxy-80fef376c00ea74f.elb.ap-southeast-2.amazonaws.com` works
-ENV https_proxy=http://10.120.112.54:3128/
-ENV http_proxy=http://10.120.112.54:3128/
 
-RUN apt-get update --fix-missing
-# Install deps
-RUN apt-get install -y \
-    graphviz neovim exa bat bash sudo ripgrep \
-    && rm -rf /var/lib/apt/lists/* 
-    
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+ARG NO_PROXY
+
+ENV no_proxy=$NO_PROXY
+ENV https_proxy=$HTTPS_PROXY
+ENV http_proxy=$HTTP_PROXY
+
+RUN apt update --fix-missing \
+    && apt install -y \
+    build-essential \
+    curl \
+    openjdk-17-jdk \
+    ruby-full \
+    zlib1g-dev \
+    wget \
+    git \
+    nodejs \
+    npm \
+    graphviz
+
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
+RUN npm install -g fsh-sushi
+
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-1.2025.2.jar -O /usr/lib/plantuml.jar
+
+RUN gem install \
+    bundler \
+    jekyll
+
+# extend the base build image for localdev    
+FROM base AS localdev
+
+RUN apt update --fix-missing \
+    && apt install -y \
+    neovim eza bat bash sudo ripgrep
+   
 WORKDIR /workspaces
 
 # Set non-root user
 ARG USERNAME=vscode
-ARG USER_UID=1000
+ARG USER_UID=1001
 ARG USER_GID=$USER_UID
 
 RUN groupadd --gid $USER_GID $USERNAME \
@@ -31,7 +54,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER $USERNAME
 
-
-RUN echo 'alias ls=exa; alias cat=batcat; alias more=batcat' >> /home/vscode/.bashrc
+RUN echo 'alias ls=eza; alias cat=batcat; alias more=batcat' >> /home/$USERNAME/.bashrc
+RUN echo "export PS1='[\[\e[32m\]air-api-fhir-ig-dev\[\e[0m\]]:\[\033[01;34m\]\w\[\033[00m\]\$ '"  >> /home/vscode/.bashrc
 
 CMD ["/bin/bash", "-i"]

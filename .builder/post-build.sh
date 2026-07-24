@@ -2,10 +2,10 @@
 set -eo pipefail
 
 echo running PlantUML ...
- ./_genPlantumlImages.sh
+ ./.builder/scripts/genPlantumlImages.sh
 
 echo running raw image geenration ...
-./_genRawImages.sh
+./.builder/scripts/genRawImages.sh
 
 echo versioning ImmSotAPI.yaml
 

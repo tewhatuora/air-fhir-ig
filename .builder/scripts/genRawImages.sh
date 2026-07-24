@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 INPUT_DIR="input/raw-images"
 OUTPUT_DIR="output"

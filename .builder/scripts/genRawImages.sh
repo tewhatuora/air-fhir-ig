@@ -10,6 +10,7 @@ mkdir -p "$DEST_DIR"
 
 # Copy all image files from INPUT_DIR to DEST_DIR
 # This includes common image formats
-cp "$INPUT_DIR"/*.{jpg,jpeg,png,gif,bmp,webp,tiff} "$DEST_DIR" 2>/dev/null
+shopt -s nullglob
+cp "$INPUT_DIR"/*.{jpg,jpeg,png,gif,bmp,webp,tiff} "$DEST_DIR"
 
 echo "✅ Images copied from '$INPUT_DIR' to '$DEST_DIR'."

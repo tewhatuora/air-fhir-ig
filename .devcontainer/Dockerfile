@@ -61,5 +61,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 RUN echo 'alias ls=eza; alias cat=batcat; alias more=batcat' >> /home/$USERNAME/.bashrc
+RUN echo "export PS1='[\[\e[32m\]air-api-fhir-ig-dev\[\e[0m\]]:\[\033[01;34m\]\w\[\033[00m\]\$ '"  >> /home/vscode/.bashrc
 
 CMD ["/bin/bash", "-i"]

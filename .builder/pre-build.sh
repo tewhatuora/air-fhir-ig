@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 npm install markdown remarkable
 
@@ -10,3 +11,4 @@ echo running local scripts....
  node ./.builder/scripts/makeTerminologySummary.js
  node ./.builder/scripts/makeCapabilityStatement.js
 
+echo "✅ pre-build.sh complete"

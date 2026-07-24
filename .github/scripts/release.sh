@@ -1,4 +1,5 @@
 #!/bin/bash -x
+set -eo pipefail
 
 #  UAT
 #  |
@@ -28,7 +29,7 @@ RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
 RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
-MERGE_PR_BRANCH="release/merge-${RELEASE_VERSION}"
+
 
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git config user.name "github-actions[bot]"
@@ -45,6 +46,8 @@ case "${CI_COMMIT_BRANCH}" in
         ;;
 esac
 
+MERGE_PR_BRANCH="release/${MERGE_TARGET}/merge-${RELEASE_VERSION}"
+
 echo "RELEASE_LABEL=${RELEASE_LABEL}"
 echo "RELEASE_VERSION=${RELEASE_VERSION}" 
 echo "CURRENT_VERSION=${CURRENT_VERSION}" 
@@ -60,21 +63,6 @@ echo "SUSHI_CONFIG_FILE=${SUSHI_CONFIG_FILE}"
 echo "updating ${SUSHI_CONFIG_FILE} for release"
 yq -i '(.status = "active" | .releaseLabel = "release" | .version = '"\"${RELEASE_VERSION}\""' )' ${SUSHI_CONFIG_FILE}
 git add ${SUSHI_CONFIG_FILE}
-
-#####################
-# history.md
-#####################
-
-# if this version does not yet exist in the history.md file, add it
-if [ $(grep -c "${CURRENT_VERSION}" input/pagecontent/history.md) -eq 0 ]
-then
-  # add an entry to the history.md log file with the new version
-  echo Adding ${CURRENT_VERSION} to history.md 
-  sed -i "5i - [${CURRENT_VERSION}](./branches/${CURRENT_VERSION_URL_FRIENDLY})" input/pagecontent/history.md
-
-  # add the history.md update to git master branch, so the entry is stored
-  git add input/pagecontent/history.md
-fi
 
 #####################
 # push changes for release
@@ -99,12 +87,7 @@ git switch -c ${MERGE_PR_BRANCH}
 git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}
 
-# create PR not allowed in workflow
-# gh pr create \
-#   --base ${MERGE_TARGET} \
-#   --head ${MERGE_PR_BRANCH} \
-#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
-#   --body "release workflow from ${CI_COMMIT_BRANCH}"
+echo "::notice::Create PR to merge to ${MERGE_TARGET} [ https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH}](https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH})"
 
 #####################
 # increment version 
@@ -130,7 +113,6 @@ echo "NEW_VERSION=${NEW_VERSION}"
 
 git add ${SUSHI_CONFIG_FILE}
 git commit -m "[ig-release]: Update version to ${NEW_VERSION} [skip ci]" || echo "No changes to commit"
-# git push gitlab-ci HEAD:${CI_COMMIT_BRANCH}
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
 

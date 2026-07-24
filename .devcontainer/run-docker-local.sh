@@ -1,0 +1,1 @@
+docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:devlocal bash

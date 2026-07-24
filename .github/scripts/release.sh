@@ -28,7 +28,7 @@ RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
 RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
-MERGE_PR_BRANCH="release/merge-${RELEASE_VERSION}"
+
 
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git config user.name "github-actions[bot]"
@@ -44,6 +44,8 @@ case "${CI_COMMIT_BRANCH}" in
         MERGE_TARGET="${CI_COMMIT_BRANCH}"
         ;;
 esac
+
+MERGE_PR_BRANCH="release/${MERGE_TARGET}/merge-${RELEASE_VERSION}"
 
 echo "RELEASE_LABEL=${RELEASE_LABEL}"
 echo "RELEASE_VERSION=${RELEASE_VERSION}" 
@@ -65,16 +67,18 @@ git add ${SUSHI_CONFIG_FILE}
 # history.md
 #####################
 
-# if this version does not yet exist in the history.md file, add it
-if [ $(grep -c "${CURRENT_VERSION}" input/pagecontent/history.md) -eq 0 ]
-then
-  # add an entry to the history.md log file with the new version
-  echo Adding ${CURRENT_VERSION} to history.md 
-  sed -i "5i - [${CURRENT_VERSION}](./branches/${CURRENT_VERSION_URL_FRIENDLY})" input/pagecontent/history.md
+# - removed as the builder manages the published history
 
-  # add the history.md update to git master branch, so the entry is stored
-  git add input/pagecontent/history.md
-fi
+# if this version does not yet exist in the history.md file, add it
+# if [ $(grep -c "${CURRENT_VERSION}" input/pagecontent/history.md) -eq 0 ]
+# then
+#   # add an entry to the history.md log file with the new version
+#   echo Adding ${CURRENT_VERSION} to history.md 
+#   sed -i "5i - [${CURRENT_VERSION}](./branches/${CURRENT_VERSION_URL_FRIENDLY})" input/pagecontent/history.md
+
+#   # add the history.md update to git master branch, so the entry is stored
+#   git add input/pagecontent/history.md
+# fi
 
 #####################
 # push changes for release
@@ -130,7 +134,6 @@ echo "NEW_VERSION=${NEW_VERSION}"
 
 git add ${SUSHI_CONFIG_FILE}
 git commit -m "[ig-release]: Update version to ${NEW_VERSION} [skip ci]" || echo "No changes to commit"
-# git push gitlab-ci HEAD:${CI_COMMIT_BRANCH}
 git push origin ${CI_COMMIT_BRANCH}
 git pull --rebase
 

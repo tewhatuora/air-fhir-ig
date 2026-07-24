@@ -37,8 +37,7 @@ while [ : ]; do
     esac
 done
 
-./_updatePublisher.sh -f -y
-
+./.builder/scripts/_updatePublisher.sh -f -y
 
 echo running pre-build ...
  ./.builder/pre-build.sh

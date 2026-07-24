@@ -1,9 +1,6 @@
 #!/bin/bash
 set -eo pipefail
 
-# Ensure script runs from its own directory (IG root)
-cd "$(dirname "$0")" || { echo "Failed to cd to script directory"; exit 1; }
-
 # Make sure output directory exists
 mkdir -p "$OUTPUT_DIR"
 

@@ -65,23 +65,6 @@ yq -i '(.status = "active" | .releaseLabel = "release" | .version = '"\"${RELEAS
 git add ${SUSHI_CONFIG_FILE}
 
 #####################
-# history.md
-#####################
-
-# - removed as the builder manages the published history
-
-# if this version does not yet exist in the history.md file, add it
-# if [ $(grep -c "${CURRENT_VERSION}" input/pagecontent/history.md) -eq 0 ]
-# then
-#   # add an entry to the history.md log file with the new version
-#   echo Adding ${CURRENT_VERSION} to history.md 
-#   sed -i "5i - [${CURRENT_VERSION}](./branches/${CURRENT_VERSION_URL_FRIENDLY})" input/pagecontent/history.md
-
-#   # add the history.md update to git master branch, so the entry is stored
-#   git add input/pagecontent/history.md
-# fi
-
-#####################
 # push changes for release
 #####################
 
@@ -104,12 +87,7 @@ git switch -c ${MERGE_PR_BRANCH}
 git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}
 
-# create PR not allowed in workflow
-# gh pr create \
-#   --base ${MERGE_TARGET} \
-#   --head ${MERGE_PR_BRANCH} \
-#   --title "release ${CI_COMMIT_BRANCH} to ${MERGE_TARGET}" \
-#   --body "release workflow from ${CI_COMMIT_BRANCH}"
+echo "::notice::Create PR to merge to ${MERGE_TARGET} [ https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH}](https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH})"
 
 #####################
 # increment version 

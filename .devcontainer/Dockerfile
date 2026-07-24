@@ -6,12 +6,6 @@ ARG HTTP_PROXY
 ARG HTTPS_PROXY
 ARG NO_PROXY
 
-RUN echo "=== Build proxy settings ===" && \
-    echo "HTTP_PROXY=$HTTP_PROXY" && \
-    echo "HTTPS_PROXY=$HTTPS_PROXY" && \
-    echo "NO_PROXY=$NO_PROXY" && \
-    echo "==========================="
-
 ENV no_proxy=$NO_PROXY
 ENV https_proxy=$HTTPS_PROXY
 ENV http_proxy=$HTTP_PROXY
@@ -29,8 +23,6 @@ RUN apt update --fix-missing \
     npm
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-
-# RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs
 
 RUN npm install -g fsh-sushi
 

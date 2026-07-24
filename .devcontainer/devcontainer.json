@@ -6,9 +6,6 @@
     "dockerfile": "Dockerfile",   // path to your Dockerfile
     "target": "localdev",
     "args": {
-            // "HTTP_PROXY": "http://10.120.112.54:3128/", // "${localEnv:HTTP_PROXY}|${localEnv:http_proxy}"
-            // "HTTPS_PROXY": "http://10.120.112.54:3128/",
-            // "NO_PROXY": "localhost,127.0.0.1,.local,.internal"
             "HTTP_PROXY": "${localEnv:http_proxy}", // "${localEnv:HTTP_PROXY}|"
             "HTTPS_PROXY": "${localEnv:http_proxy}",
             "NO_PROXY": "localhost,127.0.0.1,.local,.internal",

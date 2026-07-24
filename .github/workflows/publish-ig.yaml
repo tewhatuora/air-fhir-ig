@@ -1,4 +1,4 @@
-name: Publish Implementation Guide
+name: Publish Implementation Guide (Auto)
 
 on:
   push:
@@ -25,7 +25,8 @@ jobs:
 
       - name: Send POST request
         run: |
-          if [[ "${{ env.BRANCH_NAME }}" == "main" || "${{ env.BRANCH_NAME }}" == "main-V1" ]]; then
+          # main and main-V1 are subtly different https (main), http (main-V1) - to make the url unique
+          if [[ "${{ env.BRANCH_NAME }}" == "main" ]]; then
             curl \
               --fail-with-body \
               --show-error \
@@ -35,7 +36,17 @@ jobs:
               -H "Content-Type: application/json" \
               -H "x-api-key: ${{ secrets.API_KEY }}" \
               -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
-          else 
+          elif [[ "${{ env.BRANCH_NAME }}" == "main-V1"  ]]; then 
+            curl \
+              --fail-with-body \
+              --show-error \
+              --silent \
+              --location \
+              -X POST "https://fhir-ig-builder.api.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY }}" \
+              -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "http://github.com/tewhatuora/air-fhir-ig.git"}'
+          elif  [[ "${{ env.BRANCH_NAME }}" == "uat"  ]]; then  
             curl \
               --fail-with-body \
               --show-error \
@@ -45,4 +56,17 @@ jobs:
               -H "Content-Type: application/json" \
               -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
               -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "https://github.com/tewhatuora/air-fhir-ig.git"}'
+          elif  [[ "${{ env.BRANCH_NAME }}" == "uat-V1"  ]]; then  
+            curl \
+              --fail-with-body \
+              --show-error \
+              --silent \
+              --location \
+              -X POST "https://fhir-ig-builder.api-uat.digital.health.nz/v1/build" \
+              -H "Content-Type: application/json" \
+              -H "x-api-key: ${{ secrets.API_KEY_UAT }}" \
+              -d '{"gitBranch": "${{ env.BRANCH_NAME }}", "igSourceGitUrl": "http://github.com/tewhatuora/air-fhir-ig.git"}'
+          else 
+            echo "Logic error ${{ env.BRANCH_NAME }} execution path not found?"
+            exit 5
           fi

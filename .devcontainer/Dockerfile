@@ -28,7 +28,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 RUN npm install -g fsh-sushi
 
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-1.2025.2.jar -O plantuml.jar
+RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-1.2025.2.jar -O /usr/lib/plantuml.jar
 
 RUN gem install \
     bundler \

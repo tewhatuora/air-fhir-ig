@@ -1,5 +1,9 @@
-#!/bin/bash
+#!/bin/bash +x
 set -eo pipefail
+
+PLANTUML_JAR="/usr/lib/plantuml.jar"
+INPUT_DIR="input/images-source"
+OUTPUT_DIR="output"
 
 # Make sure output directory exists
 mkdir -p "$OUTPUT_DIR"

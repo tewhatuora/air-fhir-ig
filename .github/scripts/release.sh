@@ -87,7 +87,7 @@ git switch -c ${MERGE_PR_BRANCH}
 git merge ${CI_COMMIT_BRANCH}
 git push origin ${MERGE_PR_BRANCH}
 
-echo "::notice::Create PR to merge to ${MERGE_TARGET} [ https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH}](https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH})"
+echo "::notice::Create PR to merge to ${MERGE_TARGET} https://github.com/tewhatuora/air-fhir-ig/pull/new/${MERGE_PR_BRANCH} "
 
 #####################
 # increment version 

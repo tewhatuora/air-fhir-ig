@@ -9,13 +9,11 @@
 
 let fs = require('fs');
 
-//let igRoot = "/Users/wendy/IG/";
-
-//const { Remarkable } = require('../globalScripts/node_modules/remarkable');
-//const { Remarkable } = require('../common/node_modules/remarkable');
 const { Remarkable } = require('remarkable');
 
-var md = new Remarkable();
+const md = new Remarkable({
+    xhtmlOut: true
+});
 
 let rootPath = "./fsh-generated/resources/";
 
@@ -178,7 +176,7 @@ if (fs.existsSync(rootPath)) {
                         //ar.push("<br></br>")
                         let def = cleanText(ser.definition) || ""                        
                         ar.push(`<td>${def}</td>`)
-                        /ar.push("<br></br>")
+                        //ar.push("<br></br>")
                         ar.push("</tr>")
                     
 				})

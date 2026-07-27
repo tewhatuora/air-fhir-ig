@@ -103,7 +103,7 @@ const COMMON_HEADERS = {
   FacilityID: { $ref: '#/components/parameters/FacilityID' },
   SourceSystemID: { $ref: '#/components/parameters/SourceSystemID' },
   'X-Api-Key': { $ref: '#/components/parameters/X-Api-Key' },
-  Api-Version: { $ref: '#/components/parameters/Api-Version' },
+  'Api-Version': { $ref: '#/components/parameters/Api-Version' },
 };
 
 function commonParams(includeUser = true, includeFacility = true) {
@@ -840,7 +840,7 @@ const openapi = {
         required: true,
         schema: { type: 'string' },
       },
-      Api-Version: {
+      'Api-Version': {
         name: 'Api-Version',
         in: 'header',
         description: 'API version selector. Omit or set to 1 for v1 behaviour; set to 2 for v2 behaviour.',

@@ -30,7 +30,7 @@ Usage: #definition
 
 API versioning:
 - Internal Health NZ consumers call https://air.api.digital.health.nz/fhir/R4.  
-  Omit APIVersion header (or set APIVersion=1) for v1 behaviour; set APIVersion=2 for v2.
+  Omit Api-Version header (or set Api-Version=1) for v1 behaviour; set Api-Version=2 for v2.
 - External consumers call https://api.air.digital.health.nz/s2s/fhir/R4 (v1)  
   or https://api.air.digital.health.nz/s2s/fhir/R4/v2 (v2).  
   Both external paths are gateway routes that forward to the internal /fhir/R4 backend."""
@@ -55,7 +55,7 @@ All requests require:
 - OAuth2 bearer token with the appropriate scope (see security schemes)
 - Optional: UserID, FacilityID, SourceSystemID, X-Correlation-ID headers for audit
 
-API version selection is controlled by the APIVersion header (values: 1 or 2, default: 1)."""
+API version selection is controlled by the Api-Version header (values: 1 or 2, default: 1)."""
 
 * rest.security.cors = true
 * rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
@@ -88,7 +88,7 @@ Creates a new immunisation event. Performs validation checks before persisting.
 - `SourceSystemID` (optional) – source system identifier (HIP Integration Application list)
 - `X-Correlation-ID` (optional) – correlation UUID for tracing
 - `x-api-key` (required) – API Gateway key
-- `APIVersion` (optional, default=1) – API version selector (1 or 2)
+- `Api-Version` (optional, default=1) – API version selector (1 or 2)
 
 **Responses:**
 - `201 Created` – immunisation record created; Location and ETag headers returned

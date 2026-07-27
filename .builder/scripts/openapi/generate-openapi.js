@@ -103,7 +103,7 @@ const COMMON_HEADERS = {
   FacilityID: { $ref: '#/components/parameters/FacilityID' },
   SourceSystemID: { $ref: '#/components/parameters/SourceSystemID' },
   'X-Api-Key': { $ref: '#/components/parameters/X-Api-Key' },
-  APIVersion: { $ref: '#/components/parameters/APIVersion' },
+  Api-Version: { $ref: '#/components/parameters/Api-Version' },
 };
 
 function commonParams(includeUser = true, includeFacility = true) {
@@ -113,7 +113,7 @@ function commonParams(includeUser = true, includeFacility = true) {
   if (includeFacility) p.push({ $ref: '#/components/parameters/FacilityID' });
   p.push({ $ref: '#/components/parameters/SourceSystemID' });
   p.push({ $ref: '#/components/parameters/X-Api-Key' });
-  p.push({ $ref: '#/components/parameters/APIVersion' });
+  p.push({ $ref: '#/components/parameters/Api-Version' });
   return p;
 }
 
@@ -134,7 +134,7 @@ const openapi = {
       '',
       '**API Versioning:**',
       '- Internal Health NZ consumers call `https://air.api.digital.health.nz/fhir/R4`.',
-      '  Omit `APIVersion` header (or set `APIVersion=1`) for v1; set `APIVersion=2` for v2.',
+      '  Omit `Api-Version` header (or set `Api-Version=1`) for v1; set `Api-Version=2` for v2.',
       '- External consumers call `https://api.air.digital.health.nz/s2s/fhir/R4` (v1)',
       '  or `https://api.air.digital.health.nz/s2s/fhir/R4/v2` (v2).',
       '  Both external paths are gateway routes that forward to the internal `/fhir/R4` backend.',
@@ -155,7 +155,7 @@ const openapi = {
   servers: [
     {
       url: 'https://air.api.digital.health.nz',
-      description: 'PROD – Internal Health NZ endpoint. /fhir/R4 with APIVersion omitted or =1 uses v1; APIVersion=2 uses v2.',
+      description: 'PROD – Internal Health NZ endpoint. /fhir/R4 with Api-Version omitted or =1 uses v1; Api-Version=2 uses v2.',
     },
     {
       url: 'https://api.air.digital.health.nz/s2s',
@@ -506,7 +506,7 @@ const openapi = {
         description: operationDocs['bulk-update'] || 'Atomic bulk create/upsert of immunisation events.',
         parameters: [
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
         ],
         requestBody: {
           description: 'FHIR Parameters resource containing `create` and/or `upsert` entries.',
@@ -608,7 +608,7 @@ const openapi = {
           { $ref: '#/components/parameters/X-Correlation-ID' },
           { $ref: '#/components/parameters/SourceSystemID' },
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
           {
             name: 'origin-nhi-version',
             in: 'header',
@@ -647,7 +647,7 @@ const openapi = {
           { $ref: '#/components/parameters/X-Correlation-ID' },
           { $ref: '#/components/parameters/SourceSystemID' },
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
         ],
         requestBody: {
           content: {
@@ -685,7 +685,7 @@ const openapi = {
           { $ref: '#/components/parameters/X-Correlation-ID' },
           { $ref: '#/components/parameters/SourceSystemID' },
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
         ],
         requestBody: {
           content: {
@@ -721,7 +721,7 @@ const openapi = {
         parameters: [
           { $ref: '#/components/parameters/NHI' },
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
         ],
         responses: {
           200: {
@@ -753,7 +753,7 @@ const openapi = {
           { $ref: '#/components/parameters/UserID' },
           { $ref: '#/components/parameters/X-Correlation-ID' },
           { $ref: '#/components/parameters/X-Api-Key' },
-          { $ref: '#/components/parameters/APIVersion' },
+          { $ref: '#/components/parameters/Api-Version' },
           {
             name: 'nhi',
             in: 'query',
@@ -840,8 +840,8 @@ const openapi = {
         required: true,
         schema: { type: 'string' },
       },
-      APIVersion: {
-        name: 'APIVersion',
+      Api-Version: {
+        name: 'Api-Version',
         in: 'header',
         description: 'API version selector. Omit or set to 1 for v1 behaviour; set to 2 for v2 behaviour.',
         required: false,

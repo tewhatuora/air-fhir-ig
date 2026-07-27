@@ -1,13 +1,13 @@
 openapi: 3.0.4
 info:
   title: AIR ImmSoT API
-  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records. API versioning: Internal Health NZ consumers call https://air.api.digital.health.nz/fhir/R4. If APIVersion is omitted, version 1 behaviour applies. APIVersion=1 selects version 1 behaviour. APIVersion=2 selects version 2 behaviour. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4 for version 1. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4/v2 for version 2. Both external paths are gateway routes that forward to the internal /fhir/R4 backend with the appropriate APIVersion header."
+  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records. API versioning: Internal Health NZ consumers call https://air.api.digital.health.nz/fhir/R4. If Api-Version is omitted, version 1 behaviour applies. Api-Version=1 selects version 1 behaviour. Api-Version=2 selects version 2 behaviour. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4 for version 1. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4/v2 for version 2. Both external paths are gateway routes that forward to the internal /fhir/R4 backend with the appropriate Api-Version header."
   version: "2.0.0-SNAPSHOT"
 servers:
   - url: https://air.api.digital.health.nz
-    description: PROD - Internal Health NZ endpoint. /fhir/R4 with APIVersion omitted or APIVersion=1 uses version 1. /fhir/R4 with APIVersion=2 uses version 2.
+    description: PROD - Internal Health NZ endpoint. /fhir/R4 with Api-Version omitted or Api-Version=1 uses version 1. /fhir/R4 with Api-Version=2 uses version 2.
   - url: https://api.air.digital.health.nz/s2s
-    description: PROD - External endpoint. /fhir/R4 routes to internal /fhir/R4 with APIVersion=1. /fhir/R4/v2 routes to internal /fhir/R4 with APIVersion=2.
+    description: PROD - External endpoint. /fhir/R4 routes to internal /fhir/R4 with Api-Version=1. /fhir/R4/v2 routes to internal /fhir/R4 with Api-Version=2.
   - url: https://air.api-sit.digital.health.nz
     description: SIT - ImmSoT Service endpoint
   - url: https://air.api-uat.digital.health.nz
@@ -27,7 +27,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -66,7 +66,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       responses:
         "200":
           description: Ok
@@ -105,7 +105,7 @@ paths:
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/If-Match'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -143,7 +143,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
         - name: patient
           in: query
           required: false
@@ -324,7 +324,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -369,7 +369,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -414,7 +414,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       responses:
         "200":
           description: Ok
@@ -451,7 +451,7 @@ paths:
           * Failure to process any event, reject entire request
       parameters:
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         description: Perform several updates at once
         content:
@@ -501,7 +501,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         description: |
           Perform an upsert using a deterministic matching algorithm.
@@ -545,7 +545,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       responses:
         "200":
           description: Ok
@@ -583,7 +583,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -627,7 +627,7 @@ paths:
         - $ref: '#/components/parameters/FacilityID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -670,7 +670,7 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/SourceSystemID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       requestBody:
         content:
           application/fhir+json:
@@ -708,7 +708,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NHI'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
       responses:
         "200":
           description: Ok
@@ -740,7 +740,7 @@ paths:
         - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/X-Api-Key'
-        - $ref: '#/components/parameters/APIVersion'
+        - $ref: '#/components/parameters/Api-Version'
         - name: nhi
           in: query
           description: The NHI identifier of the patient/consumer
@@ -2428,8 +2428,8 @@ components:
       required: true
       schema:
         type: string
-    APIVersion:
-      name: APIVersion
+    Api-Version:
+      name: Api-Version
       in: header
       description: API version selector. If omitted, version 1 behaviour applies. Supported values are 1 and 2.
       required: false

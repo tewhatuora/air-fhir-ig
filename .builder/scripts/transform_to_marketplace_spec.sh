@@ -124,7 +124,7 @@ yq '
   "CreateSuccessDQPass",
   "CreateSuccessPotentialDuplicate",
   "InvalidData",
-  "TooManyReuqest",
+  "TooManyRequest",
   "InternalError",
   "NotFound",
   "CreatePayload",

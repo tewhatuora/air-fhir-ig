@@ -16,5 +16,10 @@ docker build --target localdev --network host \
   --build-arg USER_GID=$(id -g) \
   -t air-api-fhir-ig-dev:devlocal .devcontainer
 
+# Interactive
 # docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:latest bash
 # docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:devlocal bash
+
+# Non interactive build
+# docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:latest ./build-ig.sh
+

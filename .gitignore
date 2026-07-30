@@ -11,6 +11,7 @@ _genonce.bat
 _genonce.sh
 _build.bat
 _build.sh
+*/node_modules/
 _genopenapi.sh
 plantuml.jar
 /.idea/

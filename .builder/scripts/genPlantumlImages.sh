@@ -8,7 +8,7 @@ OUTPUT_DIR="output"
 if [[ ! -e $PLANTUML_JAR ]]; then
   wget https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-1.2025.2.jar -O plantuml.jar
   PLANTUML_JAR=plantuml.jar
-fi  
+fi
 
 # Make sure output directory exists
 mkdir -p "$OUTPUT_DIR"

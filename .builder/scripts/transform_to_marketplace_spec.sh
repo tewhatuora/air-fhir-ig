@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 # Extract from the full open api spec only those interfaces and associated components which will be available in the marketplace
 

@@ -9,7 +9,7 @@ name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.
 status: draft # draft | active | retired | unknown
-version: 2.1.0-SNAPSHOT
+version: 2.0.0-SNAPSHOT
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2022+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -113,8 +113,8 @@ menu:
     Artifacts (Xml): definitions.xml.zip
     OpenAPI Specification: ImmSoTAPI.yaml
   API Versions:
-    API Version 1: https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api_v1/index.html
-    API Version 2: https://healthnz-prm.gitlab.io/air/air-api-fhir-ig-v2/api_v2/index.html
+    API Version 1: /air-v1/index.html
+    API Version 2: /air/index.html
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │

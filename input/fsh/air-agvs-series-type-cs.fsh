@@ -12,4 +12,5 @@ Description: "This is a code system for representing the type of AGVS series att
 
 * #PRIMARY "Primary"
 * #BOOSTER "Booster"
+* #ADULT "Adult"
 * #REGULAR "Regular"

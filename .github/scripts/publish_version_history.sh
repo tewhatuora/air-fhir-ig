@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 if [[ "${CI_COMMIT_BRANCH}" != "main" && "${CI_COMMIT_BRANCH}" != "main-V1"]]; then
   echo "Expecting the branch to be either [main/main-V1] found ${CI_COMMIT_BRANCH}"

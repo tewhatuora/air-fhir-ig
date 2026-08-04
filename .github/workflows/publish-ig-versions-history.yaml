@@ -1,4 +1,4 @@
-name: Publish Implementation Guide version history
+name: Publish Implementation Guide version history (Auto)
 on:
   push:
     branches:

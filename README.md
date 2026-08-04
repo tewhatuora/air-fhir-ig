@@ -3,55 +3,97 @@ This project defines the FHIR Implementation Guide for AIR using FHIR Shorthand(
 
 The output of this project is a FHIR Implementation Guide(IG) that can be used throughout other projects.
 
-# How to publish an IG
+# Branch naming
+The repo contains two main branches main (API-V2), main-V1 (API-V1) and their respective feeder branches uat and uat-V1
 
-## Prerequisite
-You will need to install Ruby and some gems in order to run the publisher to generate an IG.
+feature branches are created against either uat/uat-V1 with the naming 
+`^(feature|bugfix|release|cherry-pick|revert)/(uat|uat-V1)|(main|main-V1)/.*`
+i.e feature/uat/IMM-1122/add-the-feature or feature/uat/IMM-1122-add-the-feature
 
-### Installing Ruby & gems
-In order to install Ruby, I would suggest that you use the Ruby Version Manager(rvm) as this will make maintaining versions and gems easier.
+where uat|uat-V1|main|main-V1 is the destination branch
 
-1. First import a bunch of keys for checksum checking:
-    ```shell
-    curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-    curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
-    ```
-2. Download & install rvm(restart terminal session after install)
-    ```shell
-    curl -sSL https://get.rvm.io | bash -s stable
-    ```
-3. Download required packages via rvm
-    ```shell
-    rvm requirements run
-    ```
-    Note - this may fail due to a yum repo connection timeout error in which case you can find, in the output log file, the yum command that was used and the required packages, and run that command outside of rvm with the appropriate flag to pick up the proxy environment variables, e.g:
-    ```shell
-    sudo -E yum install -y autoconf automake bison libffi-devel libtool readline-devel ruby sqlite-devel zlib-devel libyaml-devel openssl-devel
-    ```
-4. Install Ruby via rvm
-    ```shell
-    rvm install 3.1.3
-    ```
-5. Ensure your terminal profile has `Run command as a login shell` checked
-6. Switch to use installed Ruby(restart terminal if you had to enable step 4)
-    ```shell
-   rvm use 3.1.3
-   ```
-7. Install Jekyll & Bundler
-    ```shell
-    gem install jekyll bundler
-    ```
-8. Install sushi
-    ```shell
-    npm install -g sushi
-    ```
-### Running the publisher and generate the IG
-1. run `_updatePublisher.sh` to get the latest publisher jar 
-2. run `build-ig.sh` to generate the IG(artifacts should appear under `output` folder)
+# Merging to main
+Merges to main are performed through the github workflow [cut-ig-release](https://github.com/tewhatuora/air-fhir-ig/actions/workflows/cut-ig-release.yaml)
 
-### Docker Visual Studio Code
-A Visual studio code you can use the DockerFile and .devcontainer are setup to 'Reopen in container'
+which will maintain the version number in sushi-config.yaml and create a merge branch from uat to main (you need to manually create the PR)
 
-You will need the 'Dev Containers' extension install in VSC
+# Local build
+
+Docker only or integrated Visual Studio Code (Dev Containers)
+
+## Verify outputs
+
+Build output in the output directory
+`firefox output/index.html` (not inside the docker as it won't have firefox installed)
+
+## Visial Studio Code
+
+### Prerequisites
+* Visual Studio Code (VSC)
+* Docker
+* (VSC) extension `Dev Containers : microsoft.com`
+
+### Run build
+* <ctrl><shift>p "Reopen in container"
+* new terminal
+* from the command prompt inside VSC
+`./build-ig.sh`
+
+## Docker only
+
+The Dockerfile contains 2 images 
+* `BASE` is for the pipeline and non interactive and contains the build chain
+* `localdev` extends BASE and includes some useful cli tools, also a non-root user
+
+See `.devcontainer/build-docker-local.sh`
+
+* `docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:devlocal bash` (interactive)
+* `docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:devlocal ./build-ig.sh` (non-interactive)
+
+You can also run the BASE image but the user will be root and it screws with the file permissions for the build artifacts
+ air-api-fhir-ig-dev:devlocal vs air-api-fhir-ig-dev:latest
+
+* `docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:latest bash` (interactive)
+* `docker run -v "$(pwd):/workspace" -w /workspace -it air-api-fhir-ig-dev:latest ./build-ig.sh` (non-interactive)
 
 
+# Project layout
+
+After a build if not local changes have been made you can restore back to clean with
+`docker restore .; docker clean -dfx`
+
+```
+.
+├── .builder                  (build scripts)
+├── .devcontainer             (Docker)
+├── .git
+├── .github                   (github workflows)
+├── .gitignore
+├── build-ig.sh               (local and github project build, not the ig builder) 
+├── ig.ini
+├── immsot-ig-template-local  (to be removed)
+├── input                     (source documents) 
+├── input-cache               (to be removed - builder cache)
+├── README.md
+├── README_api_versions.md
+└── sushi-config.yaml         (IG configuration file)
+```
+## build artifacts
+```
+.
+├── _build.bat                (IG builder script download)
+├── _build.sh                 (IG builder script download)
+├── _gencontinuous.bat        (IG builder script download)
+├── _gencontinuous.sh         (IG builder script download)
+├── _genonce.bat              (IG builder script download)
+├── _genonce.sh               (IG builder script download)
+├── _updatePublisher.bat      (IG builder script download)
+├── fsh-generated             (intermediate build) 
+├── input-cache               (builder cache)
+├── node_modules              (local node modules install)
+├── output                    (build output)
+├── package-lock.json         (local node modules install)
+├── package.json              (local node modules install)
+├── temp                      
+└── template                  (template download)
+```

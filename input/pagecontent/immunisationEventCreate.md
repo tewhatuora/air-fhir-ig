@@ -5,7 +5,7 @@ The "create" operation is used to create a new immunisation event. This method p
 The create operation performs the following:
 1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record
 1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
-1. With the Patient Identifer for the incoming event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, including the `meta.tag` `exact-duplicate-not-created` [Exact duplicate short circuit](#exact-duplicate-short-circuit).
+1. With the Patient Identifer for the incoming event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, including the `meta.tag` `exact-duplicate-not-created` [Handling of Exact Duplicates](#handling-of-exact-duplicates).
 1. Create the first version of the event with the details provided
 1. Saves the new version of the event to the database.
 1. Returns the event and any validation errors in an operationOutcome.
@@ -257,9 +257,9 @@ Post a full set of immunisation record details. See below. The FHIR specificatio
 
 ### Behaviour
 
-#### Exact duplicate short circuit
+#### Handling of Exact Duplicates
 
-With the Patient Identifer for the incomeing event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, and mark with the meta.tag `exact-duplicate-not-created`.
+With the Patient Identifer for the incoming event compare to all existing events for that Patient, if an exact match is found do not create a new event and return the existing, and mark with the meta.tag `exact-duplicate-not-created`.
 * http resonse code 200
 * metag.tag `exact-duplicate-not-created`
 * immunization resource of the original duplicate event includeing resource.id
@@ -273,7 +273,7 @@ With the Patient Identifer for the incomeing event compare to all existing event
         {
             "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
             "code" : "exact-duplicate-not-created",
-            "display" : "Exact duplicate not created"
+            "display" : "Record already exists"
         }
     ]
 }

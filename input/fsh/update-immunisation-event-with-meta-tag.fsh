@@ -71,4 +71,4 @@ Usage: #example
 * performer.actor.identifier.value = "92ZZRR"
 * reasonCode = $air-terms-code#6W "6 weeks"
 * protocolApplied.targetDisease = $sct#18624000 "Rotavirus"
-* protocolApplied.doseNumberPositiveInt = 1
+* protocolApplied.doseNumberString = "1"

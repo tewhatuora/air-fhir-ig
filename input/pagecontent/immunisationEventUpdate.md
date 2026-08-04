@@ -401,7 +401,7 @@ If there were any issues with the update, the response will contain an Operation
     "lotNumber": "555123",
     "protocolApplied": [
         {
-            "doseNumberPositiveInt": 1
+            "doseNumberString": "1"
         }
     ]
 }
@@ -700,7 +700,7 @@ Response including Match quality
                     ]
                 }
             ],
-            "doseNumberPositiveInt": 1
+            "doseNumberString": "1"
         }
     ]
 }

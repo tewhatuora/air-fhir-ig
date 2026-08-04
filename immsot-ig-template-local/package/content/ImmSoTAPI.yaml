@@ -912,9 +912,9 @@ components:
           items:
             type: object
             properties:
-              doseNumberPositiveInt:
-                description: 'Dose Number. If provided in the request, it will be retained in the response. If not provided(null), it defaults to 98'
-                type: integer
+              doseNumberString:
+                description: 'Dose Number. If provided in the request, it will be retained in the response.'
+                type: string
         lotNumber:
           type: string
         expirationDate:
@@ -1019,8 +1019,8 @@ components:
                       format: date
               series:
                 type: string
-              doseNumberPositiveInt:
-                type: integer
+              doseNumberString:
+                type: string
     AirPatient:
       type: object
       properties:
@@ -2666,7 +2666,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     UpdateSuccessDuplicateDQIdentified:
       summary: Updated with duplicate identified data quality issues
       value:
@@ -2837,7 +2837,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     CreateSuccessDQPass:
       summary: Created with no data quality issues
       value:
@@ -2994,7 +2994,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     CreateSuccessPotentialDuplicate:
       summary: Created as a potential duplicate
       value:
@@ -3165,7 +3165,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     InvalidData:
       summary: A 422 response example
       value:
@@ -3225,7 +3225,7 @@ components:
               code: '03'
               version: 1.0.0
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         contained:
@@ -3474,7 +3474,7 @@ components:
                 version: '1'
                 code: '161641000210109'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     UpdateDQIgnore:
       summary: Update request with DQ ignore flag set
       value:
@@ -3609,7 +3609,7 @@ components:
                 version: '1'
                 code: '161641000210109'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     ReadResult:
       summary: Immunisation Event record response
       value:
@@ -3757,7 +3757,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberPositiveInt: 1
+          - doseNumberString: '1'
     PatientReadResponse:
       summary: Consumer record response
       value:
@@ -3990,7 +3990,7 @@ components:
                       version: '1'
                       code: '359953009'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
           - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/e062d627-b565-48ae-9d7a-417db33ca64f
             resource:
               resourceType: Immunization
@@ -4078,7 +4078,7 @@ components:
                       version: '1'
                       code: '359953009'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
     OrchestrationResult:
       summary: Search returns multiple records with enrichment
       value:
@@ -4507,7 +4507,7 @@ components:
                         - system: http://snomed.info/sct
                           code: '66071002'
                           display: Hepatitis B
-                  doseNumberPositiveInt: 4
+                  doseNumberString: '4'
             search:
               mode: match
     SearchNoMatch:
@@ -4681,7 +4681,7 @@ components:
                       version: '1'
                       code: '359953009'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
           - fullUrl: https://air.api.digital.health.nz/fhir/R4/Immunization/db298d16-1519-4c9f-8424-124090c15784
             resource:
               resourceType: Immunization
@@ -4810,7 +4810,7 @@ components:
                       version: '1'
                       code: '359953009'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
     PatientHistoryResult:
       summary: History returns multiple records
       value:
@@ -4890,7 +4890,7 @@ components:
                     code: '03'
                     version: 1.0.0
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
               lotNumber: '555123'
               expirationDate: '2024-01-31'
               contained:
@@ -5138,7 +5138,7 @@ components:
                       version: '1'
                       code: '161641000210109'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
     BulkUpdateResponse:
       summary: bulk update response
       value:
@@ -5159,7 +5159,7 @@ components:
                     code: '03'
                     version: 1.0.0
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
               lotNumber: '555123'
               expirationDate: '2024-01-31'
               contained:
@@ -5407,7 +5407,7 @@ components:
                       version: '1'
                       code: '161641000210109'
               protocolApplied:
-                - doseNumberPositiveInt: 1
+                - doseNumberString: '1'
   headers:
     X-Correlation-ID:
       description: "A Correlation-ID to be used for logging and request tracing.  A UUID  is suggested, but not required.  Note that this header name is a FHIR  standard, but deprecated by Health NZ; it might change in the future"

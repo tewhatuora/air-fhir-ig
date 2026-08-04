@@ -979,7 +979,7 @@ const openapi = {
               type: 'object',
               properties: {
                 targetDisease: { $ref: '#/components/schemas/CodeableConceptArray' },
-                doseNumberPositiveInt: { type: 'integer' },
+                doseNumberString: { type: 'string' },
               },
             },
           },

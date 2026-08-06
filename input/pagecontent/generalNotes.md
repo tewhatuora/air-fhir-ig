@@ -2,25 +2,23 @@
 Only JSON is supported by this implementation.
 
 ### Id and Identifiers
-Immunization resources in this implementation have both an id and an identifier. The id is the ‘physical’ identity of the resource, and the identifier is the business identifier.
-
-This design allows an implementer to retrieve a resource and save it on their own system, but still be able to retrieve the original to check for and apply updates. This can be done in two ways.
+Immunization resources in this implementation are uniquely identified by their id, which is ‘physical’ identity of the resource. Retrieving the Immunization resource can be done in two ways.
 
 #### Read Resource by Id
 ```
-GET https://api_endpoint/fhir/R4/Immunization/{id}
+GET https://api_endpoint/Immunization/{id}
 ```
 For further information see the [Read Immunisation Event](immunisationEventRead.html) item under the Use Cases menu.
 
 #### Search Immunisation Events
 ```
-POST https://api_endpoint/fhir/R4/Immunization/_search with parameters
+POST https://api_endpoint/Immunization/_search with parameters
 ```
 For more information see the [Search Immunisation Events](immunisationEventSearch.html) item under the Use Cases menu.
 
 ### Additional search parameters
 #### target-disease
-Restricts results to specific target disease(s) by system|code, for example: http://snomed.info/sct|123456,http://loinc.org|7890. Exact matching is applied with no mapping of concepts between code systems.
+Restricts results to specific target disease(s) by system|code, for example: "http://snomed.info/sct|123456,http://loinc.org|7890". Exact matching is applied with no mapping of concepts between code systems.
 
 #### status-reason:not-in and status:not-in
 These exclude given status_reason(s) and status(es), enabling consuming applications to present relevant results only. For example, a user might not want to be distracted by closed and deleted records. See the Open API specification for further detail on these parameters.
@@ -29,7 +27,7 @@ These exclude given status_reason(s) and status(es), enabling consuming applicat
 Certain operations allow for enrichment of the response bundle with referenced Patient, Location, Organization and Practitioner resources. If those resources are to be accessed, then onboarding to NHI and HPI is required.
 
 #### Count and Offset in DQ results
-For those with permission to view Data Quality (DQ) results, the AIR APIs default to returning 100 results in the search bundle e.g. GET<Endpoint>/Immunization/_search?_query=data-quality will return the first 100 rows.
+For those with permission to view Data Quality (DQ) results, the AIR APIs default to returning 100 results in the search bundle e.g. `GET https://api_endpoint/Immunization/_search?_query=data-quality` will return the first 100 rows.
 
 To receive more than 100, and for paginated searching, use parameters _count and _offset.
 
@@ -38,9 +36,9 @@ To receive more than 100, and for paginated searching, use parameters _count and
 
 Example usage:
 
-- First request - GET<Endpoint>/Immunization/_search?_query=data-quality&_count=50
-- Second request - GET\/Immunization/_search?_query=data-quality&_count=50&_offset=50
-- Third request - GET\/Immunization/_search?_query=data-quality&_count=50&_offset=100
+- First request - `GET https://api_endpoint/Immunization/_search?_query=data-quality&_count=50`
+- Second request - `GET\/Immunization/_search?_query=data-quality&_count=50&_offset=50`
+- Third request - `GET\/Immunization/_search?_query=data-quality&_count=50&_offset=100`
 
 ### dateTime support and UTC default
 The FHIR [dateTime](https://hl7.org/fhir/R4/datatypes.html#dateTime) data type is defined as: 
@@ -53,12 +51,27 @@ If hours and minutes are provided in datetime values, the FHIR dateTime type req
 
 **dateTime values with a time component are output in UTC with +00:00 offset.** Applications are responsible for localising dateTime values when displaying dates and times to users or grouping at Day level.
 
+### Live and Dormant NHI Numbers
+Sometimes a person may have been added more than once to the NHI and been accidentally assigned more than one NHI number. When this is discovered, the NHI records are linked. One of the NHI numbers becomes the ‘live’ identifier and the other NHI numbers become ‘dormant’ identifiers.
+
+AIR retains the submitted NHI number on immunisation records.
+
+API Subscribers SHALL expect that AIR will include in search API responses and NEMS notifications records for all NHIs currently linked to the consumer, including live and dormant NHIs.
+
+When a NHI is moved to another patient then immunisation records associated with that NHI SHALL become associated with that patient.
+
+Update requests SHALL NOT be used to update the immunisation record NHI number. 
+
+The NHI returned in the response body to an Upsert request SHALL be used as the authoritative value for the record. They shall not assume that the NHI submitted in the request was stored. The meta tag `patient-identifier-immutable` is returned in the scenario where the NHI returned differs from that submitted.
+
+For further information about Live and Dormant identifiers refer to the [New Zealand NHI IG](https://nhi-ig.hip.digital.health.nz/general.html#linking-resources-and-dormant-identifiers).
+
 ### Dose 0 and null dose number
-In this implementation `doseNumberString` is used in `protocolApplied` and `recommendation` elements.
+In this implementation `doseNumberString` is used in `protocolApplied` and `recommendation` elements. This SHALL be an integer between 0 and 97, or empty.
 
 External applications commonly record zero (0) to represent an ‘early’ dose where clinically recommended. Nulls appear in data migrated to AIR from systems that did not record dose number.
 
-To support null and ‘Dose 0’ use cases, values 98 and 99 are substituted respectively. Applications must interpret these values accordingly.
+For historical reasons, values 98 and 99 are reserved.
 
 ### Health Worker Identifiers
 The AIR requires health workers administering immunisations to be authorised. Records must be kept for traceability and legal reasons. Therefore, function (role) and identifier are important.
@@ -69,17 +82,20 @@ The vaccinating workforce is diverse and many health workers do not have a CPN o
 
 AIR accepts a broad range of Practitioner identifiers, including some specific to AIR. AIR also provides for the use case where the only available identifier is local to the site or organisation:
 
-* The [AIR Performer Health Worker Function](ValueSet-air-performer-health-worker-function-code.html) value set includes a hierarchy of [air-terms-codes](CodeSystem-air-terms-code.html), with AP and OP equivalent to base [ImmunizationFunctionCodes](https://hl7.org/fhir/R4/valueset-immunization-function.html).
+* [Immunization performer function](StructureDefinition-air-immunization-definitions.html#Immunization.performer.function) (role in the encounter) SHOULD be consistent with the Registration Authority of the Health Worker. This informs vaccinating workforce reporting. 
+* [AIR Performer Health Worker Function Code](ValueSet-air-performer-health-worker-function-code.html) value set includes a hierarchy of [AIR Terms](CodeSystem-air-terms-code.html), with parent `AP` and `OP` codes equivalent to base [ImmunizationFunctionCodes](https://hl7.org/fhir/R4/valueset-immunization-function.html).
 * Each immunisation event SHOULD have at least one health worker with function AP or a child thereof.
   * If a Vaccinating Health Worker (VHW registration type) administers an immunisation, the function SHOULD be VHW. Vaccinating Health Worker identifiers are assigned in the AIR Portal.
-  * If a registered nurse or doctor administers an immunisation, the function SHOULD be VC.
-* An Ordering Provider (function OP) is optional.
+  * If a registered nurse, doctor, midwife, paramedic or pharmacist administers an immunisation, the function SHOULD be VC.
+  * When a student or trainee administers a dose with a supervisor or instructor present, their roles SHOULD be recorded with function codes PPRF and ATND respectively.
+* An Ordering Provider (function OP) and Data Entry Person (function ENT) MAY be provided.
 * If a health worker authorised to administer immunisations has no registration or CPN, their identifier MUST be unique within the source system and SHOULD have system 'https://HCA'. The identifier must be traceable to an individual health worker.
 * Request-Context header and CreatedBy and ModifiedBy meta fields capture usernames of those who interact with the record, such as someone recording on behalf of the responsible provider.
 * Request-Context header field secondaryIdentifier MUST be the end user’s CPN where available. Otherwise, any secondary identifier that is held for the user. This value is mandatory and must be correct and accurate, due to legal requirements. If the person triggering the request is not registered with any New Zealand health body on the list provided at [standards.digital.health.nz](https://standards.digital.health.nz ), the value must remain empty (empty string).
+* The mapping between AIR Registration Authority URLs and legacy HL7v2 AIR Registration Type codes is available from the HNZ Terminology Service.
 
 ### Immunization status and statusReason
-Immunisation status and statusReason SHOULD correspond, according to the table below. Events not complying with this rule are not able to be categorised, reported or matched to a planned event.
+Immunisation status and statusReason SHOULD correspond, according to the table below. Events not complying with this rule are not able to be categorised, reported or matched to a planned event. This table is available from the NZHTS as a Concept Map: [AIR Immunization Status < -- > AIR Status Reason](https://nzhts.digital.health.nz/fhir/ConceptMap/air-status-status-reason-map).
 
 <table class="table table-bordered table-hover table-sm">
   <thead>
@@ -95,7 +111,7 @@ Immunisation status and statusReason SHOULD correspond, according to the table b
       <td>Immunisation given in NZ</td>
       <td>completed</td>
       <td><em>null</em> or GIVEN</td>
-      <td>Body Site, Route, Vaccine lot number and Vaccine Expiration Date SHOULD have a value when status='completed'</td>
+      <td>Body Site, Route, Vaccine lot number and Vaccine Expiration Date SHOULD have a value when statusReason = "GIVEN" or is null</td>
     </tr>
     <tr>
       <td>Declined (permanent contraindication)</td>
@@ -131,25 +147,25 @@ Immunisation status and statusReason SHOULD correspond, according to the table b
       <td>Alternative vaccination given</td>
       <td>completed</td>
       <td>ALTGIVN</td>
-      <td>This record identifies the vaccine replaced by an alternative, relevant only to NIS events</td>
+      <td>This record identifies the vaccine replaced by an alternative, relevant only to NIS events. Deprecated, retained for backward compatibility.</td>
     </tr>
     <tr>
       <td>Given overseas</td>
       <td>completed</td>
       <td>GIVNOS</td>
-      <td>&nbsp;</td>
+      <td>Immunisation not given in NZ. Lot numbers and expiry dates, route and site are optional.</td>
     </tr>
     <tr>
       <td>Historic vaccination</td>
       <td>completed</td>
       <td>HSTGIVN</td>
-      <td>A vaccination given in NZ prior to 2005 or was not recorded in NIR prior to December 2023 for which complete details are not available SHOULD have statusReason='HSTGIVN'</td>
+      <td>Immunisation given in NZ prior to 2005 or was not recorded in NIR prior to December 2023, for which complete details are not available SHOULD have statusReason="HSTGIVN". Lot numbers and expiry dates, route and body site are optional.</td>
     </tr>
     <tr>
       <td>Deleted, invalidated, duplicate of a good record</td>
       <td>entered-in-error</td>
       <td><em>any</em></td>
-      <td>Does not match any planned event.</td>
+      <td>Does not match any planned event. Most fields are optional but should preserve any previous values.</td>
     </tr>
   </tbody>
 </table>
@@ -169,14 +185,15 @@ In future, a consumer’s CarePlan resources will present Immunization and Immun
 #### System failures and rejection responses
 Errors fall into several categories that depend on the issue and request type.
 
-- HTTP status codes identify common technical faults and conditions. These are documented in the Open API Specification associated with this implementation guide. OperationOutcome diagnostics in the response contain human-readable descriptions depending on context.
-- FHIR profile faults are mostly caught in the HAPI library, with diagnostics like “HAPI-nnnn: …”
-- FHIR constraint violations usually repeat the text of the constraint rule in diagnostics.
-- Well-formed requests can fail due to invalid values or business rule violations. In such cases the diagnostics describe the problem to be resolved.
-- Refer to the Use Cases pages for example responses.
+* Immunisation Event Rejection Rules are found in [Rejection Rules](rejectionRules.html).
+* HTTP status codes identify common technical faults and conditions. These are documented in the Open API Specification associated with this implementation guide. OperationOutcome diagnostics in the response contain human-readable descriptions depending on context.
+* FHIR profile faults are mostly caught in the HAPI library, with diagnostics like “HAPI-nnnn: …”
+* FHIR constraint violations usually repeat the text of the constraint rule in diagnostics.
+* Well-formed requests can fail due to invalid values or business rule violations. In such cases the diagnostics describe the problem to be resolved.
+* Refer to the Use Cases pages for example responses.
 
 #### Data quality issue detection and remediation 
-The AIR applies further checks on data quality (DQ) than specified in this Implementation Guide. These include possible and exact duplicates, deviations from ‘preferred’ value sets, event dates in the future or inconsistent with DoB, DoD or expiry dates, data missing that should be provided under specific conditions, etc.
+The AIR applies further checks on data quality (DQ) as specified in [Data Quality Rules](dataQualityRules.html). These include possible and exact duplicates, deviations from ‘preferred’ value sets, inconsistent dates, data missing that should be provided under specific conditions, etc.
 
 Immunisation events containing issues cause DQ cases to be raised for follow-up by the AIR support team. DQ cases are closed automatically when underlying issues are resolved.
 
@@ -184,6 +201,16 @@ Each deviation is ranked and a score is calculated. Authorised applications rece
 
 #### Exact Duplicates: status "entered-in-error" in response
 The status of the Immunization resource is returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
+
+#### Duplicates
+
+The PMS system shall correctly handle AIR outcomes in the following scenarios:
+
+* If an exact duplicate is detected in AIR during creation or upsert, AIR will return the record that survived duplicate resolution with meta tag "exact-duplicate-not-created". The PMS must handle scenarios where it already has this AIR Identifier on another record held locally.
+* If an exact duplicate is detected in AIR during update, the update will return the status in AIR of the target (updated) record, which will be entered-in-error with Status Reason SNOMED 445672005. This shall be reflected in the local record. In this scenario, AIR will emit a Duplicate Resolution event via NEMS that cites the AIR Identifiers for both events.
+* Another scenario exists, where a potential duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review while the status is kept as submitted. The PMS system is not expected to perform any action on this record during the create or update processes.
+* Administrative review of potential duplicates usually results in one record being kept. When this occurs, AIR will emit a Duplicate Resolution event via NEMS. An Update event (setting status to entered-in-error) is not emitted in this scenario.
+* When administrative review decides to keep both records with no other changes, the change of Data Quality status does not cause an Update event to be emitted via NEMS (other edits would emit an Update event). The potential duplicate will then have `meta.extension:air-data-quality-assessment.extension:dqStatus`="A" (Accepted).
 
 ### HTTP Header Details
 #### Request Headers
@@ -257,7 +284,7 @@ Notes:
         <td>Immunisation</td>
         <td>POST</td>
         <td>/Immunization</td>
-        <td>N</td>
+        <td>Y</td>
         <td>Y</td>
         <td>Records a new immunisation event</td>
       </tr>
@@ -265,9 +292,17 @@ Notes:
         <td>Immunisation</td>
         <td>PUT</td>
         <td>/Immunization/{ID}</td>
-        <td>N</td>
+        <td>Y</td>
         <td>Y</td>
         <td>Edits an existing immunisation event</td>
+      </tr>
+      <tr>
+        <td>Immunisation</td>
+        <td>POST</td>
+        <td>/Immunization/$upsert</td>
+        <td>Y</td>
+        <td>Y</td>
+        <td>Create-or-update - performs a conditional update if the the record provided maps to one and only one existing record in the AIR, otherwise records a new immunisation event</td>
       </tr>
       <tr>
         <td>Immunisation</td>

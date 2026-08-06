@@ -6,7 +6,7 @@ Immunization resources in this implementation have both an id and an identifier.
 
 This design allows an implementer to retrieve a resource and save it on their own system, but still be able to retrieve the original to check for and apply updates. This can be done in two ways.
 
-#### Read Resource by Id
+#### Read Resource by Id 9999
 ```
 GET https://api_endpoint/fhir/R4/Immunization/{id}
 ```

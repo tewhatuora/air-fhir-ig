@@ -27,15 +27,16 @@ Please provide the following details in a test report and email it to [integrati
 
 #### Test Data
 
-AIR uses test identifiers from the NHI UAT environment. To access a list of NHI test identifiers follow [this link](https://www.tewhatuora.govt.nz/our-health-system/digital-health/health-identity/information-for-it-vendors-and-developers/#national-health-index-nhi). For a set of current format identifiers and look for heading **NHI Test identifiers** and for new format NHI test identifiers see **NHI records Mod23**.
+AIR uses test identifiers from the NHI UAT environment. **Do not update/change any of the immunisation data or NHI records in the table below.** These consumers and related data are reserved for these compliance tests.
 
- 
-Please do not update/change any of the immunisation data in the table below. These have been specifically set up for compliance.
+Vendors integrating with Write APIs (Create, Update, Upsert) will be provided NHI numbers for their testing.
+
+To access a list of NHI test identifiers follow [this link](https://www.tewhatuora.govt.nz/our-health-system/digital-health/health-identity/information-for-it-vendors-and-developers/#national-health-index-nhi) and search for text **NHI Test Data**. To specifically test the new NHI number format, go to [Upcoming Changes to the NHI](https://www.healthnz.govt.nz/health-professionals/guidance-standards/topic/health-identity/national-health-index-nhi/upcoming-changes-to-the-nhi) and download the spreadsheet under the heading 'Change to the check digit algorithm'.
 
 <table class="table table-bordered table-hover table-sm">
   <tbody>
     <tr>
-      <th>NHI</th>
+      <th>NHI Number (reserved)</th>
       <th>Description</th>
     </tr>
     <tr>
@@ -59,8 +60,8 @@ Please do not update/change any of the immunisation data in the table below. The
       <td>Vaccinations with data quality issues - 3 events</td>
     </tr>
     <tr>
-      <td>ZDH3530</td>
-      <td>Vaccinations with maximum characters 3 events: vaccine source text field has 255 char, lotNumber is 50 char, body site is 18 char<br>Also has Data Quality issues including; body site code, route code, unrecognised vaccine code, vaccine batch exp date, vaccine diluent exp date</td>
+      <td>ZHZ9215</td>
+      <td>Vaccinations with maximum characters: vaccine source text field has 255 char, lotNumber is 50 char, body site is 18 char.<br>Also has Data Quality issues including: body site code, route code, unrecognised vaccine code, vaccine batch exp date, vaccine diluent exp date.</td>
     </tr>
     <tr>
       <td>ZMM8637</td>
@@ -72,11 +73,11 @@ Please do not update/change any of the immunisation data in the table below. The
     </tr>
     <tr>
       <td>ZFE35PQ</td>
-      <td>Suppressed immunisation history</td>
+      <td>Restricted Access - immunisation history is redacted</td>
     </tr>
     <tr>
       <td>ZXE24NV</td>
-      <td>New format NHI (7 digits)</td>
+      <td>New format NHI (7 digits, Mod23 check sum)</td>
     </tr>
     <tr>
       <td>ZHS7524</td>
@@ -84,11 +85,7 @@ Please do not update/change any of the immunisation data in the table below. The
     </tr>
     <tr>
       <td>ZAA0547</td>
-      <td>DOD 2016-05-12   Has Imms prior to 2016    DOB is 1954-11-01</td>
-    </tr>
-    <tr>
-      <td>ZDH3475</td>
-      <td>Minimum data - mandatory fields only</td>
+      <td>DOD 2016-05-12, has Imms prior to 2016, DOB is 1954-11-01</td>
     </tr>
     <tr>
       <td>ZDH3769</td>
@@ -100,11 +97,19 @@ Please do not update/change any of the immunisation data in the table below. The
     </tr>
     <tr>
       <td>ZKL2308</td>
-      <td>Has selection of non-done and status reasons, incl 1 entered-in-error</td>
+      <td>Has selection of not-done and status reasons, incl 1 entered-in-error</td>
     </tr>
     <tr>
-      <td>ZMN6354</td>
-      <td>Has mix of status and status reasons: not-done (DPC / DMC / RESCHO)  GIVNOS (given overseas), HSTGIVN (Historic)</td>
+      <td>ZDH3572</td>
+      <td>Has mix of status and status reasons: not-done (DPC / DMC / RESCHO), GIVNOS (given overseas), HSTGIVN (Historic)</td>
+    </tr>
+    <tr>
+      <td>ZHZ9398</td>
+      <td>Has dose 98 representing null dose number</td>
+    </tr>
+    <tr>
+      <td>ZDH3513</td>
+      <td>Has dose 99 representing early-life Dose 0</td>
     </tr>
   </tbody>
 </table>
@@ -120,37 +125,58 @@ Please do not update/change any of the immunisation data in the table below. The
     </tr>
     <tr>
       <td>Health NZ Aotearoa Immunisation Register – Immunisation API</td>
-      <td><a href="https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api">https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api</a></td>
+      <td><a target="_blank" href="https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api">https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api</a></td>
     </tr>
     <tr>
       <td>How to access Health NZ Digital Services Hub</td>
-      <td><a href="https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/consumer-onboarding">https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/consumer-onboarding</a></td>
+      <td><a target="_blank" href="https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/consumer-onboarding">https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/consumer-onboarding</a></td>
     </tr>
     <tr>
       <td>AIR FHIR Implementation Guide</td>
-      <td><a href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a></td>
+      <td><a target="_blank" href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a></td>
     </tr>
   </tbody>
 </table>
 
-### Compliance Tests
+### Compliance Test Structure
+
+Test Specifications are grouped as follows.
+
+[Base API Compliance Testing](#base-tests) (below)
+
+- Base tests apply to all types of request to AIR APIs.
+
+[Search and Read Compliance Testing](complianceTestingReadAPITests.html)
+
+- These tests apply to all applications accessing immunisation data.
+
+[Write Compliance Testing](complianceTestingWriteAPITests.html)
+
+- Write API tests apply to all requests that change immunisation data in the AIR.
+
+[Notifications Compliance Testing](complianceTestingNemsTests.html)
+
+- The National Event Management System (NEMS) is used by applications that hold immunisation data locally, namely Practice Management Systems (PMS), to receive update and duplicate resolution event notifications.
+
+[Terminology Service Compliance Testing](complianceTestingNzhtsTests.html)
+
+- The NZHTS provides standard codes, value sets and concept maps used by all applications that present or create immunisation data. Any application sending data to the AIR shall use terms and concept properties specified in the NZHTS to avoid validation failures. Subscriber applications shall synchronise terms with NZHTS on a regular cadence (typically nightly) using the NZHTS APIs.
 
 Not all compliance tests in this implementation guide will be appropriate for every application. If there are tests that do not apply please discuss this with the integration team and where appropriate write a description in the compliance test submission why the particular test does not apply.
 
 **Mandatory vs Optional tests**
 
-* If there are tests below that are labelled mandatory but do fit the application's use case then please let us know why.
+- If there are tests below that are labelled mandatory but do fit the application's use case then please let us know why.
 
-* Some tests are labelled mandatory if. These tests are Mandatory only if you are using this piece of data for your use case.
+- Some tests are labelled (conditional). These tests apply only if you are using this data or functionality for your use case.
 
-To request a template for the compliance tests either add a comment to your onboarding request form or reach out using the [Enquiry form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/112).
+- A template for reporting compliance test results is available here: [AIR_Compliance - Template v1.2.docx](assets/AIR_Compliance%20-%20Template%20v1.2.docx) 
 
-#### Search API Compliance Tests
+- For further information, either add a comment to your onboarding request form or reach out using the [Enquiry form](https://mohapis.atlassian.net/servicedesk/customer/portal/3/group/35/create/112).
 
-Endpoint for AIR Search API 
+### Base Tests
 
-https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
-
+Base API tests apply to all types of request to AIR APIs. For server end points refer to the Open API Specification available under the Support menu in this IG. Use the UAT end points for Compliance Testing.
 
 <table class="table table-bordered table-hover table-sm">
   <tbody>
@@ -321,262 +347,6 @@ https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/_search
         State that you are aware that AIR APIs have rate limiting and that you do not expect the number of requests that your application will make to exceed the AIR plan limit you are requesting.
       </td>
       <td>Mandatory (no test evidence required but it is Mandatory the application handle this)</td>
-    </tr>
-  </tbody>
-</table>
-
-#### Read API Compliance Tests
-
-Endpoint for AIR Read API 
-
-https://api.uat.air.digital.health.nz/s2s/fhir/R4/Immunization/{ID}
-
-
-
-<table class="table table-bordered table-hover table-sm">
-  <tbody>
-    <tr>
-      <th>Reference</th>
-      <th>Requirement</th>
-      <th>Purpose</th>
-      <th>Test</th>
-      <th>Test Data Input</th>
-      <th>Compliance Test Output</th>
-      <th>Mandatory</th>
-    </tr>
-    <tr>
-        <td>AIR-Reader-1</td>
-        <td>
-            The application demonstrates the ability to handle a dormant NHI. AIR could return search results that contain live and dormant NHI numbers and we expect the application to handle this. In other words the AIR response may contain Immunization resources with an NHI number that differs from the one provided in the search. Note that the Patient resource included in the AIR response identifies the live NHI and any dormant NHIs for that patient.
-        </td>
-        <td>
-            The application demonstrates the ability to handle Immunisation search results that contain live and dormant NHIs.
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application uses a dormant NHI number for a search<br>
-            When an API call is made<br>
-            Then the application displays person information for the live NHI<br>
-            And I can see all NHI numbers for the person distinguishing live from dormant<br>
-            And I can see all immunisation history related to the person
-        </td>
-        <td>
-            Subscriber's application sends an Immunisation Search request for a dormant NHI number <b>ZDH3343</b>.<br><br>
-            Notes:<br>
-            • If the application does not support searching using dormant NHI numbers, then search using the live NHI number ZDH3335.<br>
-            • The patient's other dormant NHI number is ZDH3351.
-        </td>
-        <td>
-            Send the subscriber's application screenshots that show immunisation history in full context including the NHI searched for, distinguishing the dormant from live NHIs.<br><br>
-            Ensure at least 1 screenshot is supplied with the full application screen showing how the immunisation history and live and dormant NHIs are displayed on screen.
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-2</td>
-        <td>
-            Data integrity: Minimum data displayed accurately
-        </td>
-        <td>
-            The application demonstrates the ability to display clinically important elements and data is displayed in the expected format as specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide<br>
-            <a href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a>
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And the NHI has multiple immunisation records<br>
-            When an API call is made<br>
-            Then the Application should display the following key elements for each record:<br>
-            &nbsp;&nbsp;- person (NHI)<br>
-            &nbsp;&nbsp;- status<br>
-            &nbsp;&nbsp;- statusReason<br>
-            &nbsp;&nbsp;- vaccine Display Name<br>
-            &nbsp;&nbsp;- vaccine (product display name), if it is provided in the response<br>
-            &nbsp;&nbsp;- dose number<br>
-            &nbsp;&nbsp;- reasonCode (Indication)<br>
-            &nbsp;&nbsp;- occurrence - date/time<br>
-            And the data is displayed to the user in the format specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide
-        </td>
-        <td>
-            <p>The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for the following NHI numbers<br>
-            <strong>ZDH3769</strong> - typical immunisation details, including Product Name<br>
-            <strong>ZJM9567</strong> - has dose 98 representing null dose number<br>
-            <strong>ZDH3513</strong> - has dose 99 representing early-life Dose 0</p>
-        </td>
-        <td>
-            The subscriber's Application sends a screenshot showing the values for the key elements stated in the test for the specific NHI and specific ImmSOT identified in the test Data input<br><br>
-            As a minimum the guidance for fields to display is based on ISD (Te Whatu Ora Immunisation Frontend System), where the vaccination history table displays:<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Date<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Vaccine<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Product Name (if provided)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Dose Number<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Age Given<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Status<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Status reason<br><br>
-  <img src="assets/images/search-api-air-reader2-1.png" alt="search-api-air-reader2-1" style="max-width:100%; height:auto;"/><br><br>
-            Record details - link to full display of each individual immunisation record.<br>
-            Screenshot is from ISD and is result of selecting the link detailed in above screenshot.<br><br>
-  <img src="assets/images/search-api-air-reader2-2.png" alt="search-api-air-reader2-2" style="max-width:100%; height:auto;"/>
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-3</td>
-        <td>
-            Data integrity: No truncation
-        </td>
-        <td>
-            The application demonstrates the ability to display the maximum allowable sizes for all immunisation data fields as specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide<br>
-            <a href="https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html">https://healthnz-prm.gitlab.io/air/air-api-fhir-ig/index.html</a>
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with an immunisation record with maximum allowable size data fields<br>
-            When an API call is made<br>
-            Then the Application displays the maximum allowable size for all immunisation data fields<br>
-            And no data is truncated
-        </td>
-        <td>
-            The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for NHI number <b>ZDH3530</b>
-        </td>
-        <td>
-            Send a screenshot for the Subscriber's Application showing the lotNumber field displayed<br><br>
-            The lotNumber for the rZV immunisation event has the maximum characters:<br><br>
-            BiglotNumberthatisupto50characterslong-ZZ-12345678<br><br>
-            This NHI (ZDH3530) has 7 events in total, and is also used in Air-reader-7 as 5 of the events have data quality issues
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-4</td>
-        <td>
-            Message to end user: Suppressed immunisation history
-        </td>
-        <td>
-            The application demonstrates the ability to indicate that a person has a restricted immunisation history
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with suppressed immunisation history<br>
-            When an API call is made<br>
-            Then the application display makes it clear to me that the immunisation history is suppressed
-        </td>
-        <td>
-            The subscriber's Application sends a search request for Immunisation History (Search Immunisation) using the NHI number <b>ZFE35PQ</b> or sends a read request for Immunization resource ID:<br>
-            30D1312B-6896-465F-93D9-AAE34EAC59F1
-        </td>
-        <td>
-            Send a screenshot for the Subscriber's Application showing a clear message to the end user that the Immunisation History for this Patient is restricted.
-            The following is returned in ISD for NHIs that have restricted data:
-            <i>This consumer has chosen to restrict access to their immunisation records held in the AIR.</i><br><br>
-  <img src="assets/images/search-api-api-air-reader4.png" alt="search-api-api-air-reader4" style="max-width:100%; height:auto;"/>
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-5</td>
-        <td>
-            Message to end user: This consumer has no vaccination records to display
-        </td>
-        <td>
-            The application demonstrates the ability to indicate that a person has no immunisation history despite search being successful
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with no immunisation history<br>
-            When an API call is made<br>
-            Then the application display makes it clear to the end user that the AIR did respond successfully but the NHI does not have any immunisation events/history
-        </td>
-        <td>
-            The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for NHI number <b>ZUA48EH</b>
-        </td>
-        <td>
-            Send a screenshot for the Subscriber's Application showing a clear message to the end user that there are no vaccination records to display for this Patient, in full context of the application showing the NHI being searched for.
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-6</td>
-        <td>
-            Application is able to display all immunisation events
-        </td>
-        <td>
-            The application demonstrates the ability to display all immunisation events for a patient.
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with multiple immunisation events<br>
-            When an API call is made<br>
-            Then the application displays all events returned
-        </td>
-        <td>
-            Input NHI: <b>ZMM8637</b><br>
-            NHI has 32 completed immunisation events
-        </td>
-        <td>
-            Send screen shots that clearly show all immunisation events returned. Note, this can be displayed on separate pages. If the application is limited to a set number of rows e.g. 20, demonstrate how the user is able to view all immunisation event.
-        </td>
-        <td>Mandatory</td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-7</td>
-        <td>
-            Applications displays records with data quality flags appropriately
-        </td>
-        <td>
-            When certain data quality issues are present, the 'display' field is not in the API payload, in which case the Application should use 'code', and if code is not present, then 'unknown' or nothing should be displayed.
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with immunisation events that contain data quality issues<br>
-            When an API call is made<br>
-            Then the application displays all events returned including fields with data quality
-        </td>
-        <td>
-            Input NHI: <b>ZDH3530</b><br>
-            Has 7 events:<br>
-            - 2 with DQ Pass<br>
-            - 2 with minor issues (body site & route)<br>
-            - 2 with major issues (vax code & expiry date)<br>
-            - 1 with 3 DQs (site, route & diluent expiry date)
-        </td>
-        <td>
-            Send screen shots that clearly show all immunisation events returned. If an event has a DQ the response will not return the "display", example below has 'needle' instead of IM or SC. Therefore, a display field is not returned in the Search payload. Guidance is that if the application is taking data from "display" then if this is blank we recommend to take what is in the "code" field. Should the code field be blank, then 'unknown' to be displayed<br><br>
-  <img src="assets/images/search-api-air-reader7-1.png" alt="search-api-air-reader7-1" style="max-width:100%; height:auto;"/><br><br>
-  <img src="assets/images/search-api-air-reader7-2.png" alt="search-api-air-reader7-2" style="max-width:100%; height:auto;"/>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>AIR-Reader-8</td>
-        <td>
-            Applications displays records that have status of not-done with the reason
-        </td>
-        <td>
-            The application demonstrates the ability to display all immunisations events for a patient that have the status of not-done and the reason the event was not completed.<br>
-            Applications can filter events returned to return only completed in the first instance, but users must be able to view all events.
-        </td>
-        <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with multiple immunisation events that include events with a status of 'not-done' and a status reason (e.g. declined by parent)<br>
-            When an API call is made<br>
-            Then the application is able to display all events returned
-        </td>
-        <td>
-            Input NHI: <b>ZKL2308</b><br>
-            Has 9 events -<br>
-            - 2 x RV1 not-done (DPC, RESCHO)<br>
-            - 3 x PCV10 not done (DMC, RESTC, DNI)<br>
-            - 3 x DTaP-IPV-Heb/Hib. 2 completed (GIVEN), 1 not-done (RESREF)<br>
-            - 1 x MMR not-done (DIC)<br>
-            - 1 x MMR entered-in-error<br>
-            <b>ZMN6354</b> has events of not-done and also GIVNOS HSTGIVN<br>
-            or <b>ZMM8521</b> has set of events that have all status and status reasons
-        </td>
-        <td>
-            Screenshots that clearly show immunisation events returned.  If the application is filtering the events by status and initially only displays the 'completed' events, then it must show that the user is able to display all events if needed.  e.g.<br><br>
-  <img src="assets/images/search-api-air-reader8.png" alt="search-api-air-reader8" style="max-width:100%; height:auto;"/>
-        </td>
-        <td></td>
     </tr>
   </tbody>
 </table>

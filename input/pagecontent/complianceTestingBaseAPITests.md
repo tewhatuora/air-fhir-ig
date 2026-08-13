@@ -118,11 +118,13 @@ To access a list of NHI test identifiers follow [this link](https://www.tewhatuo
 #### Links
 
 <table class="table table-bordered table-hover table-sm">
-  <tbody>
+  <thead>
     <tr>
       <th>Description</th>
       <th>Link</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td>Health NZ Aotearoa Immunisation Register – Immunisation API</td>
       <td><a target="_blank" href="https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api">https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis-digital-services/aotearoa-immunisation-register-immunisation-api</a></td>
@@ -179,7 +181,7 @@ Not all compliance tests in this implementation guide will be appropriate for ev
 Base API tests apply to all types of request to AIR APIs. For server end points refer to the Open API Specification available under the Support menu in this IG. Use the UAT end points for Compliance Testing.
 
 <table class="table table-bordered table-hover table-sm">
-  <tbody>
+  <thead>
     <tr>
       <th>Reference</th>
       <th>Requirement</th>
@@ -189,24 +191,26 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <th>Compliance Test Output</th>
       <th>Mandatory</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <td>AIR-Base-1</td>
+      <th>AIR-Base-1</th>
       <td>RBAC: Role-Based Access Control (RBAC)</td>
       <td>
         The application demonstrates the ability to ensure only authorised users are allowed to access clinical immunization information.
       </td>
       <td>
-        1a. Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        1a. <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
         And I am an authorised user with an authenticated application<br>
         And I am classified as registered workforce or working on behalf of a person classified as registered workforce<br>
-        When I navigate to view immunisation history information<br>
-        Then an API call can be made<br>
+        <b>WHEN</b> I navigate to view immunisation history information<br>
+        <b>THEN</b> an API call can be made<br>
         And the Application displays Immunisation history information<br><br>
-        1b. Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        1b. <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
         And I am an authorised user with an authenticated application<br>
         And I am NOT classified as registered workforce or working on behalf of a person classified as registered workforce<br>
-        When I navigate to view immunisation history information<br>
-        Then an API call can NOT be made<br>
+        <b>WHEN</b> I navigate to view immunisation history information<br>
+        <b>THEN</b> an API call can NOT be made<br>
         And the Application does NOT display Immunisation history information<br>
         And the application displays a message stating that authorisation has failed.
       </td>
@@ -221,15 +225,15 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td>AIR-Base-2</td>
+      <th>AIR-Base-2</th>
       <td>Request context header appropriately populated</td>
       <td>
         The Request-Context HTTP header is populated in each request/API call with correct information as specified in the Request-Context.json schema
       </td>
       <td>
-        Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
-        When an API call is made<br>
-        Then the Request-Context header properties are populated as specified in the schema and base-64 encoded. The schema is defined in:<br>
+        <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        <b>WHEN</b> an API call is made<br>
+        <b>THEN</b> the Request-Context header properties are populated as specified in the schema and base-64 encoded. The schema is defined in:<br>
         <a href="https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json">https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json</a><br><br>
         Te whatu ora will validate your request and verify it includes the request context information.
       </td>
@@ -239,7 +243,7 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
         <b>facilityIdentifier:</b> the HPI-F code assigned to the Facility<br>
         <b>secondaryIdentifier:</b> If the person triggering the request is not registered with any New Zealand health body on the list provided, values must remain empty (empty string).<br>
         <b>userRole</b> and <b>purposeOfUse</b> are also required.<br><br>
-        For detail on each attribute see <a href="https://github.com/tewhatuora/schemas/blob/main/README.md">README.md</a> and <a href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">Developer Guide</a>
+        For detail on each attribute see <a target="_blank" href="https://github.com/tewhatuora/schemas/blob/main/README.md">README.md</a> and <a target="_blank" href="https://github.com/tewhatuora/schemas/blob/main/Developer%20Guide%20System-to-System%20authentication%20%20clinical%20applications.pdf">Developer Guide</a>
       </td>
       <td>
         Send a screenshot showing the logged in user<br>
@@ -263,15 +267,15 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td>AIR-Base-3</td>
+      <th>AIR-Base-3</th>
       <td>Credentials: ensure the value assigned to userIdentifier reflects the Application's logged-in user</td>
       <td>
         userIdentifier within the Request-Context changes when different end users are initiating the request
       </td>
       <td>
-        Given my application is subscribed to the Immunisation History (Search Immunisation) API<br>
-        When a new API call is made<br>
-        Then the sending user's userIdentifier must correspond to the currently logged-in user.
+        <b>GIVEN</b> my application is subscribed to the Immunisation History (Search Immunisation) API<br>
+        <b>WHEN</b> a new API call is made<br>
+        <b>THEN</b> the sending user's userIdentifier must correspond to the currently logged-in user.
       </td>
       <td>
         Repeat the above Test AIR-Base-2 with a <b>different</b> user being logged to the subscriber's application.
@@ -283,16 +287,16 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td>AIR-Base-4</td>
+      <th>AIR-Base-4</th>
       <td>Credentials: Universally Unique ID (UUID) in the Correlation ID</td>
       <td>
         Each request has a UUID in the X-Correlation-ID field<br>
         If present this will be returned in the response
       </td>
       <td>
-        Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
-        When an API call is made<br>
-        Then a universally unique ID is present in the X-Correlation-Id HTTP header
+        <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        <b>WHEN</b> an API call is made<br>
+        <b>THEN</b> a universally unique ID is present in the X-Correlation-Id HTTP header
       </td>
       <td>
         Subscriber application sets the x-correlation-id to a unique auto generated value (ideally GUID) in API calls, for example the previous two tests AIR-Base-2 and AIR-Base-3 should set the x-correlation-id to different unique values.
@@ -303,16 +307,16 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td>AIR-Base-5</td>
+      <th>AIR-Base-5</th>
       <td>Error Handling and messages to end users</td>
       <td>
         The application has robust error handling and ensures meaningful, friendly error messages are displayed.
       </td>
       <td>
-        Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
-        When an API call is made<br>
+        <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        <b>WHEN</b> an API call is made<br>
         And an error occurs<br>
-        Then a meaningful, friendly message is displayed<br>
+        <b>THEN</b> a meaningful, friendly message is displayed<br>
         And if possible the message provides instruction on what the user needs to do.<br><br>
         User experience should be tailored according to user needs. The OperationOutcome diagnostics text could be displayed to the end user for generic error-handling.
       </td>
@@ -325,15 +329,15 @@ Base API tests apply to all types of request to AIR APIs. For server end points 
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td>AIR-Base-6</td>
+      <th>AIR-Base-6</th>
       <td>Application can appropriately handle rate limiting (HTTP 429)</td>
       <td>
         The application has robust error handling and ensures meaningful, friendly error messages are displayed.
       </td>
       <td>
-        Given my application is a subscriber to the immunisation history (Search Immunisation) API<br>
-        When an API call is made and the application receives 429 error code having reached its usage plan limit<br>
-        Then the application handles this gracefully by informing the user to wait few seconds or it displays an hourglass icon as a way of backing off before sending another request.<br><br>
+        <b>GIVEN</b> my application is a subscriber to the immunisation history (Search Immunisation) API<br>
+        <b>WHEN</b> an API call is made and the application receives 429 error code having reached its usage plan limit<br>
+        <b>THEN</b> the application handles this gracefully by informing the user to wait few seconds or it displays an hourglass icon as a way of backing off before sending another request.<br><br>
         User experience should be tailored according to user needs. The OperationOutcome diagnostics text could be displayed to the user for generic error-handling.
       </td>
       <td>

@@ -22,10 +22,10 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
   </thead>
   <tbody>
     <tr>
-      <td><b>AIR-Notif-1</b></td>
+      <th>AIR-Notif-1</th>
       <td><b>GIVEN</b> EITHER a new immunisation event created in the AIR portal (entered on behalf of the facility where given) or another PMS ('given elsewhere' for a patient enrolled at the practice)<br>
-          OR an update to an immunisation event in AIR not yet held in the Application<br>
-          AND the immunisation event created or updated has the patient's dormant NHI number<br>
+          OR an <strong>update to an immunisation event in AIR not yet held in the Application</strong><br>
+          AND the immunisation event created or updated has the patient's <b>dormant</b> NHI number<br>
           AND the Application only has the patient's live NHI number recorded<br>
           <b>WHEN</b> NEMS publishes the event to the organisation's queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
@@ -38,8 +38,8 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
       <td>Mandatory (stateful clients)</td>
     </tr>
     <tr>
-      <td><b>AIR-Notif-2</b></td>
-      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that is not linked to AIR<br>
+      <th>AIR-Notif-2</th>
+      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that is <strong>not linked</strong> to AIR<br>
           <b>WHEN</b> the event is emitted via NEMS to my queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
           AND the Application links the local record using the AIR Identifier<br>
@@ -52,8 +52,8 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
       <td>Mandatory (stateful clients)</td>
     </tr>
     <tr>
-      <td><b>AIR-Notif-3</b></td>
-      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that is linked to AIR<br>
+      <th>AIR-Notif-3</th>
+      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that <strong>is linked</strong> to AIR<br>
           <b>WHEN</b> the event is emitted via NEMS to my queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
           AND the Application updates the existing record.</td>
@@ -65,16 +65,16 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
       <td>Mandatory (stateful clients)</td>
     </tr>
     <tr>
-      <td><b>AIR-Notif-4</b></td>
-      <td><b>GIVEN</b> two immunisation records that were submitted using the Create API<br>
-          AND both events are linked to AIR<br>
+      <th>AIR-Notif-4</th>
+      <td><b>GIVEN</b> <strong>two</strong> immunisation records that were submitted using the Create API<br>
+          AND <strong>both</strong> <b>events are linked</b> to AIR<br>
           AND the events have the same patient identifier and vaccine<br>
           AND the events were completed on the same day NZ time<br>
           AND the vaccine is not a double-dose vaccine<br>
           AND the event records differ in other ways (any of route, body site, indication, dose number, health worker(s))<br>
           <b>WHEN</b> the status in AIR of one of the records has been changed to entered-in-error following administrative review<br>
           AND NEMS has published an Immunisation Event Notification for the entered-in-error update<br>
-          AND NEMS has published a Duplicate Resolution event notification citing AIR Identifiers for the two records<br>
+          AND NEMS has published a <b>Duplicate Resolution</b> event notification citing AIR Identifiers for the two records<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the IE notification<br>
           AND the Application updates the corresponding record<br>
           AND the Application closes any tasks created to resolve the Potential Duplicate DQ reported earlier.</td>

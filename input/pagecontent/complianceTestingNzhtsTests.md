@@ -10,19 +10,21 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
 ### NZHTS Compliance Tests
 
 <table class="table table-bordered table-hover table-sm">
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Test</th>
+      <th>Test Data Input</th>
+      <th>Compliance Test Evidence</th>
+      <th>Mandatory / Optional / Recommended</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td><b>Reference</b></td>
-      <td>Test</td>
-      <td>Test Data Input</td>
-      <td>Compliance Test Evidence</td>
-      <td>Mandatory / Optional / Recommended</td>
-    </tr>
-    <tr>
-      <td><b>AIR-Term-1</b></td>
+      <th>AIR-Term-1</th>
       <td><b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> a new Vaccine Product available in NZ is added to the value set<br>
-          <b>And</b> the Vaccine Product is used on a new immunisation record<br>
+          AND a new Vaccine Product available in NZ is added to the value set<br>
+          AND the Vaccine Product is used on a new immunisation record<br>
           <b>WHEN</b> a Create API call is made to create the immunisation event<br>
           <b>THEN</b> the immunisation record specifies the new Vaccine Product.</td>
       <td>Vaccine Product newly available in NZ.</td>
@@ -34,10 +36,10 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-2</b></td>
+      <th>AIR-Term-2</th>
       <td><b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> an approved change to Vaccine Product properties<br>
-          <b>And</b> the Vaccine Product is used on a immunisation record<br>
+          AND an approved change to Vaccine Product properties<br>
+          AND the Vaccine Product is used on a immunisation record<br>
           <b>WHEN</b> the user uses the changed Vaccine Product <br>
           <b>THEN</b> the application displays or makes available the updated properties.</td>
       <td>Vaccine Product with changed Display and Indications.</td>
@@ -49,14 +51,14 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
       <td>Mandatory</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-3</b></td>
+      <th>AIR-Term-3</th>
       <td>This test only applies to applications that support Administered Products (TPUU items in the NZULM).<br>
           <br>
           <b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> an immunisation record with attributes not conforming with an Administered Product's properties<br>
+          AND an immunisation record with attributes not conforming with an Administered Product's properties<br>
           <b>WHEN</b> the user attempts to save the record <br>
           <b>THEN</b> the application requires the user to confirm the non-conformant values<br>
-          <b>And</b> if confirmed then a Create API call is made to create the immunisation event.<br>
+          AND if confirmed then a Create API call is made to create the immunisation event.<br>
           <br>
           Repeat the test performing an Update request.</td>
       <td>Immunisation Event with no diluent batch or expiry date for an Administered Product that requires a diluent.<br>
@@ -67,13 +69,13 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
           Send screen shots demonstrating approval process and UI behaviour change when Vaccine Product properties are updated. Send a screenshot showing that user was required to confirm the anomalous data entry. <br>
           <br>
           Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. </td>
-      <td><em>Mandatory (conditional)</em></td>
+      <td>Mandatory (conditional)</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-4</b></td>
+      <th>AIR-Term-4</th>
       <td><b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> an approved change made to &quot;infrequently changing&quot; value set <br>
-          <b>And</b> a changed value in the value set is used on a immunisation record<br>
+          AND an approved change made to &quot;infrequently changing&quot; value set <br>
+          AND a changed value in the value set is used on a immunisation record<br>
           <b>WHEN</b> a Create API call is made to create the immunisation event<br>
           <b>THEN</b> the immunisation event contains the changed value.</td>
       <td>Changed entry in value set in the &quot;infrequently changing&quot; list.</td>
@@ -85,12 +87,12 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
       <td>Recommended</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-5</b></td>
+      <th>AIR-Term-5</th>
       <td><b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> an immunisation record with event date not conforming with a Vaccine Product's properties<br>
+          AND an immunisation record with event date not conforming with a Vaccine Product's properties<br>
           <b>WHEN</b> the user attempts to save the record <br>
           <b>THEN</b> the application requires the user to confirm the non-conformant date<br>
-          <b>And</b> if confirmed then a Create API call is made to create the immunisation event.<br>
+          AND if confirmed then a Create API call is made to create the immunisation event.<br>
           <br>
           Repeat the test performing an Update request.</td>
       <td>Immunisation event with today's date for a vaccine no longer available in NZ, with batch, body site and route (statusReason GIVEN, not HSTGIVN).<br>
@@ -104,10 +106,10 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
       <td>Recommended</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-6</b></td>
+      <th>AIR-Term-6</th>
       <td><b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> a Vaccine Product is added to the set of Overseas vaccines<br>
-          <b>And</b> the Vaccine Product is used on a new immunisation record with statusReason GIVNOS<br>
+          AND a Vaccine Product is added to the set of Overseas vaccines<br>
+          AND the Vaccine Product is used on a new immunisation record with statusReason GIVNOS<br>
           <b>WHEN</b> a Create API call is made to create the immunisation event<br>
           <b>THEN</b> the immunisation record specifies the changed Vaccine Product.</td>
       <td>Vaccine Product now available Overseas. Body Site, Route, batch details are optional.</td>
@@ -119,12 +121,12 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
       <td>Recommended</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-7</b></td>
+      <th>AIR-Term-7</th>
       <td>This test applies if the Application supports Historical vaccinations.<br>
           <br>
           <b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> a Vaccine Product is added to the set of Historical vaccines<br>
-          <b>And</b> the Vaccine Product is used on a new immunisation record with statusReason HSTGIVN<br>
+          AND a Vaccine Product is added to the set of Historical vaccines<br>
+          AND the Vaccine Product is used on a new immunisation record with statusReason HSTGIVN<br>
           <b>WHEN</b> a Create API call is made to create the immunisation event<br>
           <b>THEN</b> the immunisation record specifies the changed Vaccine Product.</td>
       <td>Vaccine Product now available for Historical events. Body Site, Route, batch details are optional.</td>
@@ -133,19 +135,19 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
           Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
           <br>
           Send a screenshot showing that the Immunisation record was created using the Historic vaccine.</td>
-      <td><em>Recommended (conditional)</em></td>
+      <td>Recommended (conditional)</td>
     </tr>
     <tr>
-      <td><b>AIR-Term-8</b></td>
+      <th>AIR-Term-8</th>
       <td>This test applies if the Application supports Administered Products.<br>
           <br>
           <b>GIVEN</b> my application is a consumer of the immunisation and NZHTS APIs<br>
-          <b>And</b> an Administered Product available in NZ requires diluent<br>
-          <b>And</b> the Administered Product is used on a new immunisation record<br>
-          <b>And</b> the user does not provide diluent batch details<br>
+          AND an Administered Product available in NZ requires diluent<br>
+          AND the Administered Product is used on a new immunisation record<br>
+          AND the user does not provide diluent batch details<br>
           <b>WHEN</b> the user attempts to save the record<br>
           <b>THEN</b> the Application requests confirmation<br>
-          <b>And</b> if confirmed then a Create API call is made to create the immunisation event.<br>
+          AND if confirmed then a Create API call is made to create the immunisation event.<br>
           <br>
           Repeat the test supplying a Body Site not in the set expected for the Administered Product.</td>
       <td>Administered Product that requires diluent.</td>
@@ -154,7 +156,7 @@ As no Terminology Service sandbox is available, compliance may be obtained via d
           Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
           <br>
           Send a screenshot showing that the user was required to confirm the anomalous data entry.</td>
-      <td><em>Recommended (conditional)</em></td>
+      <td>Recommended (conditional)</td>
     </tr>
   </tbody>
 </table>

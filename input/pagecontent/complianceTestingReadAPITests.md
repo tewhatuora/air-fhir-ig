@@ -15,7 +15,7 @@ For server end points and supported FHIR resource interactions refer to the Open
 ### Read API Compliance Tests
 
 <table class="table table-bordered table-hover table-sm">
-  <tbody>
+  <thead>
     <tr>
       <th>Reference</th>
       <th>Requirement</th>
@@ -25,8 +25,10 @@ For server end points and supported FHIR resource interactions refer to the Open
       <th>Compliance Test Output</th>
       <th>Mandatory</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-        <td>AIR-Reader-1</td>
+        <th>AIR-Reader-1</th>
         <td>
             The application demonstrates the ability to handle a dormant NHI. AIR could return search results that contain live and dormant NHI numbers and we expect the application to handle this. In other words the AIR response may contain Immunization resources with an NHI number that differs from the one provided in the search. Note that the Patient resource included in the AIR response identifies the live NHI and any dormant NHIs for that patient.
         </td>
@@ -34,12 +36,12 @@ For server end points and supported FHIR resource interactions refer to the Open
             The application demonstrates the ability to handle Immunisation search results that contain live and dormant NHIs.
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application uses a dormant NHI number for a search<br>
-            When an API call is made<br>
-            Then the application displays person information for the live NHI<br>
-            And I can see all NHI numbers for the person distinguishing live from dormant<br>
-            And I can see all immunisation history related to the person
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application uses a dormant NHI number for a search<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application displays person information for the live NHI<br>
+            AND I can see all NHI numbers for the person distinguishing live from dormant<br>
+            AND I can see all immunisation history related to the person
         </td>
         <td>
             Subscriber's application sends an Immunisation Search request for a dormant NHI number <b>ZDH3343</b>.<br><br>
@@ -56,7 +58,7 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-2</td>
+        <th>AIR-Reader-2</th>
         <td>
             Data integrity: Minimum data displayed accurately
         </td>
@@ -66,10 +68,10 @@ For server end points and supported FHIR resource interactions refer to the Open
             <a target="_blank" href="https://fhir-ig.digital.health.nz/air/index.html">https://fhir-ig.digital.health.nz/air/index.html</a>
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And the NHI has multiple immunisation records<br>
-            When an API call is made<br>
-            Then the Application should display the following key elements for each record:
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND the NHI has multiple immunisation records<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the Application should display the following key elements for each record:
             <ul>
               <li>person (NHI)</li>
               <li>status</li>
@@ -80,7 +82,7 @@ For server end points and supported FHIR resource interactions refer to the Open
               <li>reasonCode (Indication)</li>
               <li>occurrence - date/time</li>
             </ul>
-            And the data is displayed to the user in the format specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide.
+            AND the data is displayed to the user in the format specified in the Aotearoa Immunisation Register (AIR) FHIR Implementation Guide.
         </td>
         <td>
             <p>The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for the following NHI numbers<br>
@@ -106,7 +108,7 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-3</td>
+        <th>AIR-Reader-3</th>
         <td>
             Data integrity: No truncation
         </td>
@@ -115,11 +117,11 @@ For server end points and supported FHIR resource interactions refer to the Open
             <a href="https://fhir-ig.digital.health.nz/air/index.html">https://fhir-ig.digital.health.nz/air/index.html</a>
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with an immunisation record with maximum allowable size data fields<br>
-            When an API call is made<br>
-            Then the Application displays the maximum allowable size for all immunisation data fields<br>
-            And no data is truncated
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application is providing an NHI with an immunisation record with maximum allowable size data fields<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the Application displays the maximum allowable size for all immunisation data fields<br>
+            AND no data is truncated
         </td>
         <td>
             The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for NHI number <b>ZHZ9215</b>
@@ -133,7 +135,7 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-4</td>
+        <th>AIR-Reader-4</th>
         <td>
             Message to end user: Restricted Access immunisation history
         </td>
@@ -141,10 +143,10 @@ For server end points and supported FHIR resource interactions refer to the Open
             The application demonstrates the ability to indicate that a person has a restricted immunisation history
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application provides an NHI with restricted access to immunisation history<br>
-            When an API call is made<br>
-            Then the application display makes it clear to me that the immunisation history is redacted.
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application provides an NHI with restricted access to immunisation history<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application display makes it clear to me that the immunisation history is redacted.
         </td>
         <td>
             The subscriber's Application sends a search request for Immunisation History (Search Immunisation) using the NHI number <b>ZFE35PQ</b> or sends a read request for Immunization resource ID:<br>
@@ -159,7 +161,7 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-5</td>
+        <th>AIR-Reader-5</th>
         <td>
             Message to end user: This consumer has no vaccination records to display
         </td>
@@ -167,10 +169,10 @@ For server end points and supported FHIR resource interactions refer to the Open
             The application demonstrates the ability to indicate that a person has no immunisation history despite search being successful
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with no immunisation history<br>
-            When an API call is made<br>
-            Then the application display makes it clear to the end user that the AIR did respond successfully but the NHI does not have any immunisation events/history
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application is providing an NHI with no immunisation history<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application display makes it clear to the end user that the AIR did respond successfully but the NHI does not have any immunisation events/history
         </td>
         <td>
             The subscriber's Application sends an Immunisation History (Search Immunisation) API Request for NHI number <b>ZUA48EH</b>
@@ -181,7 +183,7 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-6</td>
+        <th>AIR-Reader-6</th>
         <td>
             Application is able to display all immunisation events
         </td>
@@ -189,10 +191,10 @@ For server end points and supported FHIR resource interactions refer to the Open
             The application demonstrates the ability to display all immunisation events for a patient.
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with multiple immunisation events<br>
-            When an API call is made<br>
-            Then the application displays all events returned
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application is providing an NHI with multiple immunisation events<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application displays all events returned
         </td>
         <td>
             Input NHI: <b>ZMM8637</b><br>
@@ -204,18 +206,18 @@ For server end points and supported FHIR resource interactions refer to the Open
         <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-7</td>
+        <th>AIR-Reader-7</th>
         <td>
             Applications displays records with data quality flags appropriately
         </td>
         <td>
-            When certain data quality issues are present, the 'display' field is not in the API payload, in which case the Application should use 'code', and if code is not present, then 'unknown' or nothing should be displayed.
+            <b>WHEN</b> certain data quality issues are present, the 'display' field is not in the API payload, in which case the Application should use 'code', and if code is not present, then 'unknown' or nothing should be displayed.
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with immunisation events that contain data quality issues<br>
-            When an API call is made<br>
-            Then the application displays all events returned including fields with data quality
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application is providing an NHI with immunisation events that contain data quality issues<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application displays all events returned including fields with data quality
         </td>
         <td>
             Input NHI: <b>ZKC4641</b><br>
@@ -231,10 +233,10 @@ For server end points and supported FHIR resource interactions refer to the Open
   <img src="assets/images/search-api-air-reader7-1.png" alt="search-api-air-reader7-1" style="max-width:100%; height:auto;"/><br><br>
   <img src="assets/images/search-api-air-reader7-2.png" alt="search-api-air-reader7-2" style="max-width:100%; height:auto;"/>
         </td>
-        <td></td>
+        <td>Mandatory</td>
     </tr>
     <tr>
-        <td>AIR-Reader-8</td>
+        <th>AIR-Reader-8</th>
         <td>
             Applications displays records that have status of not-done with the reason
         </td>
@@ -243,10 +245,10 @@ For server end points and supported FHIR resource interactions refer to the Open
             Applications can filter events returned to return only completed in the first instance, but users must be able to view all events.
         </td>
         <td>
-            Given my application has the appropriate permission<br>
-            And my application is providing an NHI with multiple immunisation events that include events with a status of 'not-done' and a status reason (e.g. declined by parent)<br>
-            When an API call is made<br>
-            Then the application is able to display all events returned
+            <b>GIVEN</b> my application has the appropriate permission<br>
+            AND my application is providing an NHI with multiple immunisation events that include events with a status of 'not-done' and a status reason (e.g. declined by parent)<br>
+            <b>WHEN</b> an API call is made<br>
+            <b>THEN</b> the application is able to display all events returned
         </td>
         <td>
             Input NHI: <b>ZKL2308</b><br>
@@ -263,7 +265,7 @@ For server end points and supported FHIR resource interactions refer to the Open
             Screenshots that clearly show immunisation events returned.  If the application is filtering the events by status and initially only displays the 'completed' events, then it must show that the user is able to display all events if needed.  e.g.<br><br>
   <img src="assets/images/search-api-air-reader8.png" alt="search-api-air-reader8" style="max-width:100%; height:auto;"/>
         </td>
-        <td></td>
+        <td>Mandatory</td>
     </tr>
   </tbody>
 </table>

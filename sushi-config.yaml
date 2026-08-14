@@ -97,7 +97,11 @@ menu:
     Onboarding: onboarding.html
     General Notes: generalNotes.html
   Compliance Testing:
-    Base API Tests (Access, Search and Read): complianceTestingBaseAPITests.html
+    Base API Tests (Access): complianceTestingBaseAPITests.html
+    Search and Read API Tests: complianceTestingReadAPITests.html
+    Create, Update, Upsert API Tests: complianceTestingWriteAPITests.html
+    NEMS Tests (Notifications): complianceTestingNemsTests.html
+    NZHTS Tests (Terminology): complianceTestingNzhtsTests.html
   Profiles: profiles.html
   API: API.html
   Extensions: extensions.html

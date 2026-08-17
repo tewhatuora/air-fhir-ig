@@ -35,3 +35,20 @@ __The default version of the IG and API is version 2.__ API subscribers using ve
 To specify the API version used the html header in the request `Api-Version` can be set to `["1", "2"]`, this will validate the payload against that version of the IG, and the response payload (if present) will adhere to that version of the IG.
 
 So a `search` request for version 1 of the IG will use the version 1 API and return results using version 1 of the IG. Simarly a `create` request with a version 2 header will have the payload verified against version 2 of the IG and the result will also adhere to version 2.
+
+i.e html request headers
+```
+...
+Content-Type: application/fhir+json
+Api-Version: 1
+...
+```
+
+example html response headers
+```
+...
+Content-Type: application/fhir+json
+Api-Version: 1
+...
+```
+

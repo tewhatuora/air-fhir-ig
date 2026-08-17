@@ -12,7 +12,7 @@ The create operation performs the following:
 
 ### Operation 
 ```
-POST https://api_endpoint/v2/fhir/Immunization
+POST https://api_endpoint/Immunization
 ```
 
 ### Request Headers

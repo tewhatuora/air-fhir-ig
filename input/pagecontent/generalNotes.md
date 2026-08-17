@@ -2,18 +2,18 @@
 Only JSON is supported by this implementation.
 
 ### Id and Identifiers
-Immunization resources in this implementation are uniquely identified by their id, which is ‘physical’ identity of the resource. Retrieving the Immunization resource can be done in two ways.
+Immunization resources in this implementation are uniquely identified by their id, which is the ‘physical’ identity of the resource. Retrieving the Immunization resource can be done in two ways.
 
 #### Read Resource by Id
-```
-GET https://api_endpoint/Immunization/{id}
-```
+
+`GET https://api_endpoint/Immunization/{id}` with parameters
+
 For further information see the [Read Immunisation Event](immunisationEventRead.html) item under the Use Cases menu.
 
 #### Search Immunisation Events
-```
-POST https://api_endpoint/Immunization/_search with parameters
-```
+
+`POST https://api_endpoint/Immunization/_search` with parameters
+
 For more information see the [Search Immunisation Events](immunisationEventSearch.html) item under the Use Cases menu.
 
 ### Additional search parameters
@@ -27,7 +27,7 @@ These exclude given status_reason(s) and status(es), enabling consuming applicat
 Certain operations allow for enrichment of the response bundle with referenced Patient, Location, Organization and Practitioner resources. If those resources are to be accessed, then onboarding to NHI and HPI is required.
 
 #### Count and Offset in DQ results
-For those with permission to view Data Quality (DQ) results, the AIR APIs default to returning 100 results in the search bundle e.g. `GET https://api_endpoint/Immunization/_search?_query=data-quality` will return the first 100 rows.
+For those with permission to view Data Quality (DQ) results, the AIR APIs default to returning 100 results in the search bundle e.g. `GET<endpoint>/Immunization/_search?_query=data-quality` will return the first 100 rows.
 
 To receive more than 100, and for paginated searching, use parameters _count and _offset.
 
@@ -36,15 +36,14 @@ To receive more than 100, and for paginated searching, use parameters _count and
 
 Example usage:
 
-- First request - `GET https://api_endpoint/Immunization/_search?_query=data-quality&_count=50`
-- Second request - `GET\/Immunization/_search?_query=data-quality&_count=50&_offset=50`
-- Third request - `GET\/Immunization/_search?_query=data-quality&_count=50&_offset=100`
+- First request - `GET/Immunization/_search?_query=data-quality&_count=50`
+- Second request - `GET/Immunization/_search?_query=data-quality&_count=50&_offset=50`
+- Third request - `GET/Immunization/_search?_query=data-quality&_count=50&_offset=100`
 
 ### dateTime support and UTC default
 The FHIR [dateTime](https://hl7.org/fhir/R4/datatypes.html#dateTime) data type is defined as: 
-```
-A date, date-time or partial date (e.g. just year or year + month) as used in human communication. The format is YYYY, YYYY-MM, YYYY-MM-DD or YYYY-MM-DDThh:mm:ss+zz:zz
-```
+<quot>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. The format is YYYY, YYYY-MM, YYYY-MM-DD or YYYY-MM-DDThh:mm:ss+zz:zz</quot>
+
 **AIR APIs do not support partial dates (YYYY, YYYY-MM) in Create/Update interactions.** dateTime values received by AIR with Day precision are preserved with Day precision on output (no time zone).
 
 If hours and minutes are provided in datetime values, the FHIR dateTime type requires time zone. While AIR accepts values with no time zone, UTC is the default.
@@ -56,13 +55,10 @@ Sometimes a person may have been added more than once to the NHI and been accide
 
 AIR retains the submitted NHI number on immunisation records.
 
-API Subscribers SHALL expect that AIR will include in search API responses and NEMS notifications records for all NHIs currently linked to the consumer, including live and dormant NHIs.
-
-When a NHI is moved to another patient then immunisation records associated with that NHI SHALL become associated with that patient.
-
-Update requests SHALL NOT be used to update the immunisation record NHI number. 
-
-The NHI returned in the response body to an Upsert request SHALL be used as the authoritative value for the record. They shall not assume that the NHI submitted in the request was stored. The meta tag `patient-identifier-immutable` is returned in the scenario where the NHI returned differs from that submitted.
+- API Subscribers SHALL expect that AIR will include in search API responses and NEMS notifications records for all NHIs currently linked to the consumer, including live and dormant NHIs.
+- When a NHI is moved to another patient then immunisation records associated with that NHI SHALL become associated with that patient.
+- Update requests SHALL NOT be used to update the immunisation record NHI number. 
+- The NHI returned in the response body to an Upsert request SHALL be used as the authoritative value for the record. They shall not assume that the NHI submitted in the request was stored. The meta tag `patient-identifier-immutable` is returned in the scenario where the NHI returned differs from that submitted.
 
 For further information about Live and Dormant identifiers refer to the [New Zealand NHI IG](https://nhi-ig.hip.digital.health.nz/general.html#linking-resources-and-dormant-identifiers).
 
@@ -199,16 +195,13 @@ Immunisation events containing issues cause DQ cases to be raised for follow-up 
 
 Each deviation is ranked and a score is calculated. Authorised applications receive DQ details in the [air-data-quality-assessment](StructureDefinition-air-data-quality-assessment.html) extension in responses to Create & Update interactions and the Immunization/_search operation.
 
-#### Exact Duplicates: status "entered-in-error" in response
-The status of the Immunization resource is returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
-
 #### Duplicates
 
 The PMS system shall correctly handle AIR outcomes in the following scenarios:
 
-* If an exact duplicate is detected in AIR during creation or upsert, AIR will return the record that survived duplicate resolution with meta tag "exact-duplicate-not-created". The PMS must handle scenarios where it already has this AIR Identifier on another record held locally.
-* If an exact duplicate is detected in AIR during update, the update will return the status in AIR of the target (updated) record, which will be entered-in-error with Status Reason SNOMED 445672005. This shall be reflected in the local record. In this scenario, AIR will emit a Duplicate Resolution event via NEMS that cites the AIR Identifiers for both events.
-* Another scenario exists, where a potential duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review while the status is kept as submitted. The PMS system is not expected to perform any action on this record during the create or update processes.
+* If an **exact** duplicate is detected in AIR during **creation or upsert**, AIR will return the record that survived duplicate resolution with meta tag "exact-duplicate-not-created". The PMS must handle scenarios where it already has this AIR Identifier on another record held locally.
+* If an **exact** duplicate is detected in AIR during **update,** the update will return the status in AIR of the target (updated) record, which will be entered-in-error with Status Reason SNOMED 445672005. This shall be reflected in the local record. In this scenario, AIR will emit a Duplicate Resolution event via NEMS that cites the AIR Identifiers for both events.
+* Another scenario exists, where a **potential** duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review while the status is kept as submitted. The PMS system is not expected to perform any action on this record during the create or update processes.
 * Administrative review of potential duplicates usually results in one record being kept. When this occurs, AIR will emit a Duplicate Resolution event via NEMS. An Update event (setting status to entered-in-error) is not emitted in this scenario.
 * When administrative review decides to keep both records with no other changes, the change of Data Quality status does not cause an Update event to be emitted via NEMS (other edits would emit an Update event). The potential duplicate will then have `meta.extension:air-data-quality-assessment.extension:dqStatus`="A" (Accepted).
 

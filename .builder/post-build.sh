@@ -14,4 +14,7 @@ yq -i ".info.version |= \"${VERSION}\"" immsot-ig-template-local/package/content
 
 ./.builder/scripts/transform_to_marketplace_spec.sh
 
+# copy the openapi spec into the published outputs
+cp immsot-ig-template-local/package/content/*.yaml output
+
 echo "✅ post-build.sh complete"

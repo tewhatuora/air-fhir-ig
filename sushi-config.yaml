@@ -4,7 +4,7 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: AIR-ig
-canonical: https://standards.digital.health.nz/fhir/air
+canonical: https://fhir-ig.digital.health.nz/air-v1
 name: air-api-fhir-immunisation
 title: Aotearoa Immunisation Register (AIR) FHIR Implementation Guide (API-V1)
 description: Implementation Guide for the FHIR artifacts associated with the Aotearoa Immunisation Register (AIR) programme. Based on FHIR r4.

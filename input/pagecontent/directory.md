@@ -49,7 +49,7 @@ This table provides a list of versions of the Aotearoa Immunisation Register (AI
 </thead>
 <tbody>
     <tr>
-        <td>2026&#8209;07&#8209;15</td><td>2</td><td> <a href="/api/index.html">2.0.0</a></td><td>
+        <td>2026&#8209;07&#8209;15</td><td>2</td><td> <a href="/air/index.html">2.0.0</a></td><td>
         <p>Latest version of the AIR API, to be used for any new integrations.</p>
         <p>Clients access the version 2 API by sending requests to the v2 URL given in the Open API Specification.</p>
         <p>The following changes were introduced in API version 2:</p>
@@ -69,21 +69,21 @@ This table provides a list of versions of the Aotearoa Immunisation Register (AI
         </ol>
     </li>
 </ol></td><td style="text-align: right;" class="index-links">
-    <a href="/api/index.html">api&#8209;v2&nbsp;Home</a><br/>
-    <a href="/api/full-ig.zip">download&nbsp;api&#8209;v2&nbsp;FHIR&nbsp;IG</a><br/>
-    <a href="/api/ImmSoTAPI.yaml">openapi&nbsp;spec</a>
+    <a href="/air/index.html">api&#8209;v2&nbsp;Home</a><br/>
+    <a href="/air/full-ig.zip">download&nbsp;api&#8209;v2&nbsp;FHIR&nbsp;IG</a><br/>
+    <a href="/air/ImmSoTAPI.yaml">openapi&nbsp;spec</a>
  </td>
     </tr>
     <tr>
-        <td>2026&#8209;07&#8209;15</td><td>1</td><td><a href="/api-v1/index.html">1.28.0</a></td>
+        <td>2026&#8209;07&#8209;15</td><td>1</td><td><a href="/air-v1/index.html">1.28.0</a></td>
         <td>
             <p>Latest version of the original AIR API.</p>
             <p>Clients access the v1 API by sending requests to the v1 URL given in the Open API Specification.</p>
         </td>
         <td style="text-align: right;" class="index-links">
-            <a href="/api-v1/index.html">api&#8209;v1&nbsp;Home</a><br/>
-            <a href="/api-v1/full-ig.zip">download&nbsp;api&#8209;v1&nbsp;FHIR IG</a><br/>
-            <a href="/api-v1/ImmSoTAPI.yaml">openapi&nbsp;spec</a>
+            <a href="/air-v1/index.html">api&#8209;v1&nbsp;Home</a><br/>
+            <a href="/air-v1/full-ig.zip">download&nbsp;api&#8209;v1&nbsp;FHIR IG</a><br/>
+            <a href="/air-v1/ImmSoTAPI.yaml">openapi&nbsp;spec</a>
         </td>
     </tr>
 </tbody>

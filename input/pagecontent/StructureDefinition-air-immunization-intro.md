@@ -3,4 +3,4 @@ The Aotearoa Immunisation Register (AIR) holds a collection of "Immunisation Eve
 
 This AIRImmunization profile is the primary vehicle used by the AIR FHIR API to transmit information about Immunisation Events.
 
-For more information about Scheduled Events in AIR, see this page: [Scheduled Events](/input/pagecontent/immunisation-events.html)
+For more information about Scheduled Events in AIR, see this page: [Scheduled Events](immunisation-events.html)

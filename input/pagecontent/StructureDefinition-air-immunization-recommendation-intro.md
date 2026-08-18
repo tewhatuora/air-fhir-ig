@@ -3,4 +3,4 @@ The Aotearoa Immunisation Register (AIR) holds a collection of "Scheduled Events
 
 This AIRImmunizationRecommendation profile is the primary vehicle used by the AIR FHIR API to transmit information about Scheduled Events.
 
-For more information about Scheduled Events in AIR, see this page: [Scheduled Events](/input/pagecontent/scheduled-events.html)
+For more information about Scheduled Events in AIR, see this page: [Scheduled Events](scheduled-events.html)

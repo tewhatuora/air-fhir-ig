@@ -14,14 +14,14 @@ The search API performs the following steps:
 
 1. If a target disease is provided, only immunisations for that disease will be returned.
 
-1. If one or more immuisation status reason codes is provided, only immunisations which do not contain those codes will be returned.
+1. If one or more immunisation status reason codes is provided, only immunisations which do not contain those codes will be returned.
 
 1. If one or more immunisation status codes is provided, only immunisations which do not contain those codes will be returned.
 
 1. Returns the latest version of the immunisation events as a FHIR bundle.
 
 ### Operation
-```
+```HTTP
 POST https://api_endpoint/Immunization/_search
 ```
 ### Request Headers
@@ -37,14 +37,14 @@ POST a payload with the following parameters
 * Exclude status reason (one or more system|code (or just code) from  [AIR Status Reason Code Value Set](ValueSet-air-status-reason-code.html)) (Optional)
 * Exclude immunisation status (one or more of: entered-in-error, completed, not-done) (Optional)
 
-~~~JavaScript
+```JavaScript
 patient: "ZZZ7541"
 patient: "Patient/ZZZ7541"
 patient: "https://api.hip.digital.health.nz/fhir/nhi/v2/Patient/ZZZ7541"
 target-disease: "http://snomed.info/sct|14189004,http://snomed.info/sct|66071002"
 status-reason:not-in: "https://standards.digital.health.nz/ns/air-status-reason-terms|GIVNOS,RESCHO,|HSTGIVN"
 status:not-in: "entered-in-error"
-~~~
+```
 
 ### Behaviour
 
@@ -59,7 +59,7 @@ status:not-in: "entered-in-error"
 ### Responses
 Content-Type: application/fhir+json
 
-#### Search returns results
+#### Search results example
 HTTP/1.1 200 OK
 
 ```json
@@ -1009,7 +1009,7 @@ HTTP/1.1 200 OK
 
 ```
 
-#### Response for suppressed consumer
+#### Response for consumer with Restricted Access
 HTTP/1.1 200 OK
 
 ```json
@@ -1037,11 +1037,5 @@ HTTP/1.1 200 OK
 ```
 
 ### Scope/s required
-Any FHIR scope that includes system/immunization.s , for example  
-system/immunization.cruds and/or system/immunization.s  
-
-To Include data quality results  
-
-Also have  
-
-air-admin/Immunization.cruds and/or air-admin/Immunization.s
+Any FHIR scope that includes system/immunization.s, for example  
+system/immunization.crus and/or system/immunization.s

@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eo pipefail
 
+echo Add ing custom history
+./.builder/scripts/post_updateHistory.sh
+
 echo running PlantUML ...
  ./.builder/scripts/genPlantumlImages.sh
 

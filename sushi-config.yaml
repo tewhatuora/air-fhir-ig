@@ -86,26 +86,26 @@ menu:
   Artifacts: artifacts.html
   Business Context: business-context.html
   Use Cases:
-    View Consumer Planned Events: careplanView.html
-    Immunisation Update Message: immunisationUpdateMessage.html
     Create Immunisation Event: immunisationEventCreate.html
     Read Immunisation Event: immunisationEventRead.html
     Update Immunisation Event: immunisationEventUpdate.html
-    Search Immunisation Events: immunisationEventSearch.html
     Upsert Immunisation Events: immunisationEventUpsert.html
+    Search Immunisation Events: immunisationEventSearch.html
+    View Consumer Planned Events: careplanView.html
+    Immunisation Update Message: immunisationUpdateMessage.html
   Important Information:
     Onboarding: onboarding.html
     General Notes: generalNotes.html
   Compliance Testing:
-    Base API Tests (Access, Search and Read): complianceTestingBaseAPITests.html
+    Base API Tests (Access): complianceTestingBaseAPITests.html
+    Search and Read API Tests: complianceTestingReadAPITests.html
+    Create, Update, Upsert API Tests: complianceTestingWriteAPITests.html
+    NEMS Tests (Notifications): complianceTestingNemsTests.html
+    NZHTS Tests (Terminology): complianceTestingNzhtsTests.html
   Profiles: profiles.html
   API: API.html
   Extensions: extensions.html
   Terminology: terminology.html
-  AIR Overview:
-    View Consumer Planned Events: careplanView.html
-    Immunisation Events: immunisations.html
-    Scheduled Events: scheduled-events.html
   Support:
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG: full-ig.zip

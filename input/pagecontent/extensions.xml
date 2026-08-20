@@ -32,7 +32,7 @@
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-antigen-group-extension.html'>air-antigen-group-extension</a></td>
-<td>https://fhir-ig.digital.health.nz/air-v1/StructureDefinition/air-antigen-group-extension</td>
+<td>https://fhir-ig-uat.digital.health.nz/air-v1/StructureDefinition/air-antigen-group-extension</td>
 <td>
 <div>Element</div>
 </td>
@@ -213,7 +213,7 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-schedule-type-extension.html'>air-schedule-type-extension</a></td>
-<td>https://fhir-ig.digital.health.nz/air-v1/StructureDefinition/air-schedule-type-extension</td>
+<td>https://fhir-ig-uat.digital.health.nz/air-v1/StructureDefinition/air-schedule-type-extension</td>
 <td>
 <div>Element</div>
 </td>
@@ -231,7 +231,7 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-series-type-extension.html'>air-series-type-extension</a></td>
-<td>https://fhir-ig.digital.health.nz/air-v1/StructureDefinition/air-series-type-extension</td>
+<td>https://fhir-ig-uat.digital.health.nz/air-v1/StructureDefinition/air-series-type-extension</td>
 <td>
 <div>Element</div>
 </td>
@@ -249,7 +249,7 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-timingAge-ISO8601-extension.html'>air-timingAge-ISO8601-extension</a></td>
-<td>https://fhir-ig.digital.health.nz/air-v1/StructureDefinition/air-timingAge-ISO8601-extension</td>
+<td>https://fhir-ig-uat.digital.health.nz/air-v1/StructureDefinition/air-timingAge-ISO8601-extension</td>
 <td>
 <div>Element</div>
 </td>
@@ -258,7 +258,7 @@ Presence of this extension on the AIR Patient indicates that the consumer <em>ha
 </tr>
 <tr>
 <td><a href='StructureDefinition-air-trigger-extension.html'>air-trigger-extension</a></td>
-<td>https://fhir-ig.digital.health.nz/air-v1/StructureDefinition/air-trigger-extension</td>
+<td>https://fhir-ig-uat.digital.health.nz/air-v1/StructureDefinition/air-trigger-extension</td>
 <td>
 <div>Element</div>
 </td>

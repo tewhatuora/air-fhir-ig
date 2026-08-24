@@ -52,9 +52,9 @@ Orchestration -> ImmSOTService : Forward /CarePlan/$view request
 
 ImmSOTService -> ImmSOTService : Validate token and permissions
 
-ImmSOTService -> ImmSOT_DB : Check whether Consumer is suppressed?
+ImmSOTService -> ImmSOT_DB : Check whether Consumer has restricted access?
 
-ImmSOT_DB -->ImmSOTService : Consumer is not  suppressed?
+ImmSOT_DB -->ImmSOTService : Consumer has not restricted access?
 
 ImmSOTService -> ImmSOT_DB : Find planned events, expected events, and immunization events
 

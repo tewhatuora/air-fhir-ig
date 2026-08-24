@@ -1,3 +1,5 @@
+**NOTE: THIS PAGE DESCRIBES FEATURES UNDERGOING DEVELOPMENT, SO IS PROVIDED FOR INFORMATION ONLY.**
+
 ### Introduction
 
 The FHIR CarePlan resource is a structured representation of a consumer’s assigned immunisation schedule, supporting coordination, tracking, and delivery of vaccinations across various antigen groups. Within the immunisation domain, each CarePlan defines a specific Antigen Group Vaccination (AGV) schedule for an individual and organises all related vaccination activities into a coherent and accessible format.

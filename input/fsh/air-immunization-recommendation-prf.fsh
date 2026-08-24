@@ -7,7 +7,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
 
-* ^purpose = "To communicate the details of a planned immunisation event. Planned events may be generated algorithmically based on a patient's characteristics and a published schedule or created by a health provider."
+* ^purpose = "To communicate details of a planned immunisation event. Planned events may be generated algorithmically based on a patient's characteristics, a published schedule and their immunisation history."
 * ^text.status = #additional
 * ^text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Individual Immunisation Plan</div>"
 

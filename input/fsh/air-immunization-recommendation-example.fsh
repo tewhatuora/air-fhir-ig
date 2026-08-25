@@ -16,6 +16,9 @@ Usage: #example
 * recommendation[0].id = "12345-asdf"
 * recommendation[0].extension[air-recommendation-id].valueString = "12345"
 * recommendation[0].forecastStatus = $forecastStatus#due
+* recommendation[0].forecastReason[0] = $AIRTerms#6W "6 weeks"
+* recommendation[0].forecastReason[1] = $AIRTerms#5 "Primary course"
+* recommendation[0].forecastReason[2] = $AIRTerms#Stn "Funded, if not otherwise specified"
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
 * recommendation[0].doseNumberString = "1"
@@ -47,6 +50,9 @@ Usage: #example
 //the recommendation for the 6 week PVC10
 * recommendation[1].extension[id].valueString = "67890"
 * recommendation[1].forecastStatus = $forecastStatus#due
+* recommendation[0].forecastReason[0] = $AIRTerms#6W "6 weeks"
+* recommendation[0].forecastReason[1] = $AIRTerms#5 "Primary course"
+* recommendation[0].forecastReason[2] = $AIRTerms#Stn "Funded, if not otherwise specified"
 * recommendation[1].vaccineCode =  $NZMT#31116301000116107 "PCV10" // MPUU (generic) for Synflorix
 * recommendation[1].series = "pcv10"
 * recommendation[1].doseNumberString = "1"

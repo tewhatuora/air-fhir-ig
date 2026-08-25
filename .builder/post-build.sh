@@ -1,8 +1,13 @@
 #!/bin/bash
 set -eo pipefail
 
-echo Add ing custom history
+echo Adding custom history
 ./.builder/scripts/post_updateHistory.sh
+
+if [[ ${ENV} == "uat" ]]; then
+    echo Update uat domain urls
+    ./.builder/scripts/post_updateurls.sh
+fi;
 
 echo running PlantUML ...
  ./.builder/scripts/genPlantumlImages.sh

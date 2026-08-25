@@ -50,9 +50,6 @@ Usage: #example
 //the recommendation for the 6 week PVC10
 * recommendation[1].extension[id].valueString = "67890"
 * recommendation[1].forecastStatus = $forecastStatus#due
-* recommendation[0].forecastReason[0] = $AIRTerms#6W "6 weeks"
-* recommendation[0].forecastReason[1] = $AIRTerms#5 "Primary course"
-* recommendation[0].forecastReason[2] = $AIRTerms#Stn "Funded, if not otherwise specified"
 * recommendation[1].vaccineCode =  $NZMT#31116301000116107 "PCV10" // MPUU (generic) for Synflorix
 * recommendation[1].series = "pcv10"
 * recommendation[1].doseNumberString = "1"

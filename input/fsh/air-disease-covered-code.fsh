@@ -11,7 +11,7 @@ Description: "Diseases that are covered by the immunization programmes and sched
 // Consumer-facing, short, friendly, display names have not been approved
 
 * $SCT#840539006 "COVID-19"
-* $SCT#397428000 "Diptheria"
+* $SCT#397430003 "Diphtheria"
 * $SCT#722722006 "Haemophilus Influenzae type b (Hib)"
 * $SCT#40468003 "Hepatitis A"
 * $SCT#66071002 "Hepatitis B"

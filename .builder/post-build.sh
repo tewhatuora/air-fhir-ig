@@ -4,7 +4,7 @@ set -eo pipefail
 echo Adding custom history
 ./.builder/scripts/post_updateHistory.sh
 
-if [[ ${ENV} == "uat" ]]; then
+if [[ ${ENV} == "uat" || ${ENV} == "prod" ]]; then
     echo Update uat domain urls
     ./.builder/scripts/post_updateurls.sh
 fi;

@@ -138,13 +138,6 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 // Added 15 March 24 per IMM-4502
 * insert ConceptMapEntry(48322461000116106, 99006, relatedto)
 
-// Added 21 Feb 2025 per IMM-5538
-* insert ConceptMapEntry(48606481000116100, 99006, relatedto)
-* insert ConceptMapEntry(48583461000116109, 99006, relatedto)
-* insert ConceptMapEntry(48606291000116104, 99006, relatedto)
-* insert ConceptMapEntry(48611851000116100, 99006, relatedto)
-* insert ConceptMapEntry(48606101000116102, 99006, relatedto)
-
 // the following five maps were removed per IMM-2881
 /*
 * insert ConceptMapEntry(46580601000116106, 115, relatedto)
@@ -154,7 +147,25 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10598271000116109, 119, relatedto)
 */
 
+// Added 19 Nov 2024 per IMM-5353
+* insert ConceptMapEntry(48407111000116100, 217, relatedto)
+* insert ConceptMapEntry(48407721000116108, 218, relatedto)
+* insert ConceptMapEntry(48408951000116102, 219, relatedto)
 
+// Added 21 Feb 2025 per IMM-5538
+* insert ConceptMapEntry(48606481000116100, 99006, relatedto)
+* insert ConceptMapEntry(48583461000116109, 99006, relatedto)
+* insert ConceptMapEntry(48606291000116104, 99006, relatedto)
+* insert ConceptMapEntry(48611851000116100, 99006, relatedto)
+* insert ConceptMapEntry(48606101000116102, 99006, relatedto)
+
+// Added 21 May 2025 per IMM-5782
+* insert ConceptMapEntry(45442391000116106, 93, relatedto)
+
+// Added 27 Nov 2025 per IMM-6433
+* insert ConceptMapEntry(48709091000116105, 219, relatedto)
+* insert ConceptMapEntry(48709061000116101, 218, relatedto)
+* insert ConceptMapEntry(48709151000116103, 217, relatedto)
 
 // Added 23 Feb 2026 per IMM-6615
 * insert ConceptMapEntry(48833691000116109, 99006, relatedto)

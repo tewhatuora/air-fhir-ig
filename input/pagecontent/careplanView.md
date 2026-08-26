@@ -1,11 +1,12 @@
+**NOTE: THIS PAGE DESCRIBES FEATURES UNDERGOING DEVELOPMENT, SO IS PROVIDED FOR INFORMATION ONLY.**
 
 ### Overview
 
 The '$view' interaction is used to obtain a point-in-time view of a consumer’s planned events, expected events and matching immunisation events. This method takes a consumer’s NHI identifier and returns the FHIR resources for the care plan and associated objects.
 
-* The request generates a bundle of CarePlan FHIR Resources that contain all planned activities ( i.e Planned Events and Expected Events) represented in an Immunization Recommendation FHIR Resource and their matching preformed activities represented in one or more Immunization FHIR Resources. All reflect a point-in-time list of Immunisation Planned Events and Expected Events across all Antigen Group Vaccination Schedules that have been assigned to that Consumer and are Active at the time of making the request.
+* The request generates a bundle of CarePlan FHIR Resources that contain all planned activities (i.e. Planned Events and Expected Events) represented in an Immunization Recommendation FHIR Resource and their matching preformed activities, represented in one or more Immunization FHIR Resources. All reflect a point-in-time list of Immunisation Planned Events and Expected Events across all Antigen Group Vaccination Schedules that have been assigned to that Consumer and are Active at the time of making the request.
 
-* By default, the API will return a point-in-time view of all Active (i.e. not Cancelled) Planned Events and Expected Events, past, present and future, that are assigned to the specified Consumer. The matching Consumers vaccination records will also be returned.
+* By default, the API will return a point-in-time view of all Active (i.e. not Cancelled) Planned Events and Expected Events, past, present and future, that are assigned to the specified Consumer. Matching vaccination records also will be returned.
 
 * Each CarePlan Resource presents one consumer AG schedule.
 
@@ -13,7 +14,7 @@ The '$view' interaction is used to obtain a point-in-time view of a consumer’s
 
 * Planned Events will be ordered by due date ascending.
 
-* If the Consumer with the NHI in the Search request is not on-boarded in ImmSOT then the consumer will be on-boarded , AGVS Schedules will be assigned and planned events will be created then the API logic will be executed and the planned events will be returned.
+* If the Consumer with the NHI in the Search request is not on-boarded in ImmSOT then the consumer will be on-boarded, AGVS Schedules will be assigned and planned events will be created. Then the API logic will be executed and the planned events will be returned.
 
 * If access is restricted to the NHI in the request or any linked NHIs (Live or Dormant), then an empty result will be returned, with a redacted code in the meta data.
 

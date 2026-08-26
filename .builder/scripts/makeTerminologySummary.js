@@ -87,7 +87,9 @@ let arVSHtml = []
 
 console.log('building terminology.md file..')
 arVSHtml.push("This page provides a list of the FHIR terminology artifacts defined as part of this implementation guide.");
-arVSHtml.push("<h3>Code Systems</h3>");
+arVSHtml.push("");
+arVSHtml.push("### Code Systems");
+arVSHtml.push("");
 arVSHtml.push("<table class='table table-bordered table-condensed'>");
 arVSHtml.push("<tr><th>Title</th><th>Description</th><th>Canonical url</th></tr>")
 console.log('sorting');
@@ -111,8 +113,9 @@ console.log(key);
 	}
 })
 arVSHtml.push("</table>");
-
-arVSHtml.push("<h3>ValueSets</h3>");
+arVSHtml.push("");
+arVSHtml.push("### ValueSets");
+arVSHtml.push("");
 arVSHtml.push("<table class='table table-bordered table-condensed'>");
 
 let hashVSDetailsSorted = sortObjectByKeys(hashVSDetails)
@@ -136,7 +139,9 @@ Object.keys(hashVSDetailsSorted).forEach(function(key) {
 })
 arVSHtml.push("</table>");
 
-arVSHtml.push("<h3>Concept Maps</h3>");
+arVSHtml.push("");
+arVSHtml.push("### Concept Maps");
+arVSHtml.push("");
 arVSHtml.push("<table class='table table-bordered table-condensed'>");
 
 let hashCMDetailsSorted = sortObjectByKeys(hashCMDetails)

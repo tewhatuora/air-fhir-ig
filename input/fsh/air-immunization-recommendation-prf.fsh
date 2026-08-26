@@ -37,6 +37,10 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 
 * recommendation.forecastStatus from air-forecast-status-code (preferred)
 
+* recommendation.forecastReason from air-indication-code (preferred)
+* recommendation.forecastReason ^short = "Vaccine recommendation indication and alternative indications"
+* recommendation.forecastReason ^definition = "Array containing vaccine recommendation indication and alternative indications. Primary indication will be returned as the first element in the array, followed by any alternative indications."
+
 // additional values will be needed here post-MVP
 * recommendation.dateCriterion.code from air-planned-event-date-type-code (preferred)
 

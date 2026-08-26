@@ -16,6 +16,9 @@ Usage: #example
 * recommendation[0].id = "12345-asdf"
 * recommendation[0].extension[air-recommendation-id].valueString = "12345"
 * recommendation[0].forecastStatus = $forecastStatus#due
+* recommendation[0].forecastReason[0] = $AIRTerms#6W "6 weeks"
+* recommendation[0].forecastReason[1] = $AIRTerms#5 "Primary course"
+* recommendation[0].forecastReason[2] = $AIRTerms#Stn "Funded, if not otherwise specified"
 * recommendation[0].vaccineCode =  $NZMT#29455411000116105 "DTaP-IPV-HepB/Hib" // MPUU [generic) for Infanrix Hexa 
 * recommendation[0].series = "DTaP-IPV-HepB/Hib"
 * recommendation[0].doseNumberString = "1"

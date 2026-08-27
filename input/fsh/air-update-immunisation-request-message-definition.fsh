@@ -13,7 +13,7 @@ Usage: #definition
 * focus[0].max = "1"
 
 * focus[1].code = #Immunisation
-* focus[1].profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+* focus[1].profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
 * focus[1].min = 1
 * focus[1].max = "1"
 

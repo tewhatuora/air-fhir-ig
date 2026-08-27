@@ -65,7 +65,7 @@ N/A
         "versionId": "1",
         "lastUpdated": "2023-09-14T01:32:28.986+00:00",
         "profile": [
-            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+            "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
         ]
     },
     "contained": [

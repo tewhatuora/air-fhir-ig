@@ -32,7 +32,7 @@ Description: "An example immunization resource containing the complete set of fi
 * meta.extension[=].valueDateTime = "2023-08-21T02:18:30.303+00:00"
 * meta.versionId = "2"
 * meta.lastUpdated = "2023-08-31T02:18:32.217+00:00"
-* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+* meta.profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
 
 * status = #completed
 * statusReason = $SCT#127785005

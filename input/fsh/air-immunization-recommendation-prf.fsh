@@ -4,7 +4,7 @@ Id:             air-immunization-recommendation
 Title:          "AIR Immunization Recommendation"
 Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events."
 
-* ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
+* ^url = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
 
 * ^purpose = "To communicate details of a planned immunisation event. Planned events may be generated algorithmically based on a patient's characteristics, a published schedule and their immunisation history."

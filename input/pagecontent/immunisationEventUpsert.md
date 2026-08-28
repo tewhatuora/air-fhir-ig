@@ -134,7 +134,7 @@ Returns the created or updated Immunization record. If there were any issues wit
                     "versionId": "1",
                     "lastUpdated": "2023-10-09T21:46:16.918+13:00",
                     "profile": [
-                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+                        "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
                     ]
                 },        
                 "patient": {

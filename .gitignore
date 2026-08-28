@@ -24,3 +24,8 @@ version.env
 node_modules
 package.json
 package-lock.json
+# generated files
+input/pagecontent/API.xml
+input/pagecontent/extensions.xml
+input/pagecontent/profiles.xml
+input/pagecontent/terminology.md

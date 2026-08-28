@@ -39,7 +39,7 @@ Usage: #example
 * meta.extension[=].extension.extension[=].valueCoding = #302 "Automatically matched by dose and indication"
 * meta.versionId = "2"
 * meta.lastUpdated = "2026-03-31T01:32:08.126+00:00"
-* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+* meta.profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
 * extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-age-given"
 * extension[=].extension[0].url = "years"
 * extension[=].extension[=].valueInteger = 0

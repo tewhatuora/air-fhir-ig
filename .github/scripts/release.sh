@@ -6,8 +6,7 @@ set -eo pipefail
 #  |  release pipeline
 #  |
 #  +--> remove -SNAPSHOT
-#  |\-> change canonical url from uat to prod  (https://fhir-ig-uat.digital.health.nz/ -> https://fhir-ig.digital.health.nz/)
-#  | 
+#  |
 #  +--> commit release version to UAT
 #  |
 #  +--> create tag (v1.2.3)
@@ -15,7 +14,6 @@ set -eo pipefail
 #  +--> create PR from release/tag into main
 #  |
 #  +--> increment version on UAT to 1.2.4-SNAPSHOT
-#   \-> change canonical url from back to uat  (https://fhir-ig-uat.digital.health.nz/)
 
 if [[ "${CI_COMMIT_BRANCH}" != "uat" && "${CI_COMMIT_BRANCH}" != "uat-V1" ]]; then
   echo "Expecting the branch to be either [uat/uat-V1] found ${CI_COMMIT_BRANCH}"
@@ -31,8 +29,7 @@ RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
 RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
-UAT_CANONICAL_URL=$(yq .canonical ${SUSHI_CONFIG_FILE})
-PROD_CANONICAL_URL="${UAT_CANONICAL_URL/fhir-ig-uat.digital.health.nz/fhir-ig.digital.health.nz}"
+
 
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git config user.name "github-actions[bot]"
@@ -64,7 +61,7 @@ echo "SUSHI_CONFIG_FILE=${SUSHI_CONFIG_FILE}"
 #####################
 
 echo "updating ${SUSHI_CONFIG_FILE} for release"
-yq -i '(.status = "active" | .releaseLabel = "release" | .version = '"\"${RELEASE_VERSION}\""' | .canonical = '"\"${PROD_CANONICAL_URL}\""' )' ${SUSHI_CONFIG_FILE}
+yq -i '(.status = "active" | .releaseLabel = "release" | .version = '"\"${RELEASE_VERSION}\""' )' ${SUSHI_CONFIG_FILE}
 git add ${SUSHI_CONFIG_FILE}
 
 #####################
@@ -108,7 +105,7 @@ fi
 
 echo "updating ${SUSHI_CONFIG_FILE} version to SNAPSHOT"
 yq -i '(. | select(has("version")).version |= (split(".") | '"${counter}"' |= ((. tag = "!!int") + 1) | join(".") + "-SNAPSHOT" ))' ${SUSHI_CONFIG_FILE}
-yq -i '(.status = "draft" | .releaseLabel = "ci-build" | | .canonical = '"\"${UAT_CANONICAL_URL}\""' )' ${SUSHI_CONFIG_FILE}
+yq -i '(.status = "draft" | .releaseLabel = "ci-build")' ${SUSHI_CONFIG_FILE}
 
 # resample version after change
 NEW_VERSION=$(yq .version ${SUSHI_CONFIG_FILE})

@@ -8,7 +8,7 @@ Usage: #definition
 * status = #draft
 * date = "2020-04-21"
 * focus[0].code = #Patient
-* focus[0].profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-patient"
+* focus[0].profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-patient"
 * focus[0].min = 0
 * focus[0].max = "1"
 
@@ -24,7 +24,7 @@ Usage: #definition
 * focus[3].code = #Practitioner
 * focus[3].min = 0
 * focus[3].max = "1"
-* focus[3].profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-practitioner"
+* focus[3].profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-practitioner"
 
 * eventCoding.system = "https://standards.digital.health.nz/ns/air-event-type"
 * eventCoding.code = #IMMUNISATION_UPDATE

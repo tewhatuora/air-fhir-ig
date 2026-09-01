@@ -37,8 +37,6 @@ while [ : ]; do
     esac
 done
 
-export ENV=uat
-
 ./.builder/scripts/_updatePublisher.sh -f -y
 
 echo running pre-build ...

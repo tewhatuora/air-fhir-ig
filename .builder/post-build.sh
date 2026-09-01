@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-echo Add ing custom history
+echo Adding custom history
 ./.builder/scripts/post_updateHistory.sh
 
 if [[ ${ENV} == "uat" || ${ENV} == "prod" ]]; then

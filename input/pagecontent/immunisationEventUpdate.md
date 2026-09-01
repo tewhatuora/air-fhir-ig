@@ -35,7 +35,7 @@ Post a full set of immunisation record details. See below for an example and ref
         "versionId": "1",
         "lastUpdated": "2023-03-08T03:26:00.970+00:00",
         "profile": [
-            "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
         ]
     },
     "location": {
@@ -321,7 +321,7 @@ If there were any issues with the update, the response will contain an Operation
         "versionId": "2",
         "lastUpdated": "2026-03-30T02:14:28.886+00:00",
         "profile": [
-            "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
         ]
     },
     "extension": [
@@ -506,7 +506,7 @@ The response to a create or update includes Match Quality information when an im
         "versionId": "2",
         "lastUpdated": "2026-03-31T01:32:08.126+00:00",
         "profile": [
-            "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
         ]
     },
     "contained": [

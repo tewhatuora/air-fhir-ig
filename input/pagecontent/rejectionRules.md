@@ -104,7 +104,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. There’s more than one dose number.</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.protocolApplied:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col 1003"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.protocolApplied:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col 1003"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -146,7 +146,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>3. It does not contain an immunisation event date.</td>
     <td>3. 422</td>
-    <td>3.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.occurrence[x]:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col 878"]}]}</td>
+    <td>3.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.occurrence[x]:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col 878"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -236,7 +236,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. There’s more than one diluent batch number</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.extension:Diluent:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col&nbsp;&nbsp;&nbsp;1122"]},{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Extension.extension:diluentLotNumber:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent|0.3.0)","location":["Immunization.extension[1]","Line&nbsp;&nbsp;&nbsp;1, Col 816"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.extension:Diluent:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization","Line&nbsp;&nbsp;&nbsp;1, Col&nbsp;&nbsp;&nbsp;1122"]},{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Extension.extension:diluentLotNumber:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent|0.3.0)","location":["Immunization.extension[1]","Line&nbsp;&nbsp;&nbsp;1, Col 816"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -290,19 +290,19 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. There’s more than one vaccine code</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.vaccineCode.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode","Line&nbsp;&nbsp;&nbsp;1, Col 766"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.vaccineCode.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode","Line&nbsp;&nbsp;&nbsp;1, Col 766"]}]}</td>
   </tr>
   <tr>
     <td></td>
     <td>2. The event does not have a vaccine code (Note - this is irrespective of&nbsp;&nbsp;&nbsp;whether vaccine system is present or not)</td>
     <td>2. 422</td>
-    <td>2.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.vaccineCode.coding.code:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col 701"]}]}</td>
+    <td>2.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.vaccineCode.coding.code:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col 701"]}]}</td>
   </tr>
   <tr>
     <td></td>
     <td>3. The event does not have a vaccine system (Note - this is irrespective&nbsp;&nbsp;&nbsp;of whether vaccine code is present or not)</td>
     <td>3. 422</td>
-    <td>3.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"warning","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"TERMINOLOGY_TX_SYSTEM_NO_CODE"}]},"diagnostics":"A&nbsp;&nbsp;&nbsp;code with no system has no defined meaning. A system should be&nbsp;&nbsp;&nbsp;provided","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col&nbsp;&nbsp;&nbsp;684"]},{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.vaccineCode.coding.system:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col 684"]}]}</td>
+    <td>3.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"warning","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"TERMINOLOGY_TX_SYSTEM_NO_CODE"}]},"diagnostics":"A&nbsp;&nbsp;&nbsp;code with no system has no defined meaning. A system should be&nbsp;&nbsp;&nbsp;provided","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col&nbsp;&nbsp;&nbsp;684"]},{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Minimum"}]},"diagnostics":"Immunization.vaccineCode.coding.system:&nbsp;&nbsp;&nbsp;minimum required = 1, but only found 0 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.vaccineCode.coding[0]","Line&nbsp;&nbsp;&nbsp;1, Col 684"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -338,7 +338,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. The event has more than one status_reason_code.</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.statusReason.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.statusReason","Line&nbsp;&nbsp;&nbsp;1, Col 781"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.statusReason.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.statusReason","Line&nbsp;&nbsp;&nbsp;1, Col 781"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -390,7 +390,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. The event has more than one route_code.</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.route.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.route","Line&nbsp;&nbsp;&nbsp;1, Col 1001"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.route.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.route","Line&nbsp;&nbsp;&nbsp;1, Col 1001"]}]}</td>
   </tr>
   <tr>
     <td></td>
@@ -448,7 +448,7 @@ The following rejection rules must be passed before an immunisation event can be
     <td></td>
     <td>1. The event has more than one body_site_code</td>
     <td>1. 422</td>
-    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.site.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.site","Line&nbsp;&nbsp;&nbsp;1, Col 1034"]}]}</td>
+    <td>1.&nbsp;&nbsp;&nbsp;{"resourceType":"OperationOutcome","issue":[{"severity":"error","code":"processing","details":{"coding":[{"system":"http://hl7.org/fhir/java-core-messageId","code":"Validation_VAL_Profile_Maximum"}]},"diagnostics":"Immunization.site.coding:&nbsp;&nbsp;&nbsp;max allowed = 1, but found 2 (from&nbsp;&nbsp;&nbsp;https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization|0.3.0)","location":["Immunization.site","Line&nbsp;&nbsp;&nbsp;1, Col 1034"]}]}</td>
   </tr>
   <tr>
     <td></td>

@@ -5,28 +5,27 @@ The "update" operation is used to update an existing immunisation event. This me
 The update operation performs the following:
 1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 1. Check if the version of the existing event in the request header If-Match matches the version of the event being updated. If the versions do not match, it returns an error with a message indicating that the received version in the request payload does not match the existing version.
-1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "identifier-not-updated" is returned in the response.
+1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "patient-identifier-immutable" is returned in the response.
 1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
 1. Create a new version of the event with the updated details and a new version number.
 1. Save the new version of the event to the database.
 1. Return the updated event and any validation issues identified in the meta sections.
-1. If in the request, dqIgnore meta extension value is set as true, then the update operation won’t consider data-quality check, thus the response won’t contain data-quality score and relevant information.
+1. If `dqIgnore` meta extension value is set as true in the request, then the update operation won’t perform data quality checks, in which case the response won’t contain a data quality score and relevant information.
 
 ### Operation
-
-PUT https://api_endpoint/v2/fhir/Immunization/:id
+```HTTP
+PUT https://api_endpoint/Immunization/{id}
+```
 
 ### Request Headers
 
 All the headers listed [here](requestHeaders.html) in addition to “If-Match” header with the value of the version of the immunisation record being updated.
 
-The client is expected to read the current version before update to avoid dirty read scenario. The “If-Match” header would be set to the latest version.
-
 ### Requests
 
 #### Update Immunisation- Excludes updating NHI
 ##### Request Body
-Post a full set of immunisation record details. See Below for a sample. The AIR Immunization FHIR Profile is [here](StructureDefinition-air-immunization.html).
+Post a full set of immunisation record details. See below for an example and refer to the [AIR Immunization Profile](StructureDefinition-air-immunization.html) for its structure definition.
 
 ```json
 {
@@ -273,7 +272,7 @@ Post a full set of immunisation record details. See Below for a sample. The AIR 
 ##### Response
 Returns the updated immunisation record. Data quality issues will be identified and sent as part of the response in the meta section of the resource, see the response sample payload below.
 
-If there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values. See [here](rejectionRules.html) for a list of the rules that must be adhered to for an Immunisation Event to be uploaded to ImmSOT.
+If there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values. See [Rejection Rules](rejectionRules.html) for rules that must be adhered to for an Immunisation Event to be uploaded to ImmSOT.
 
 ```json
 {
@@ -409,9 +408,11 @@ If there were any issues with the update, the response will contain an Operation
 }
 ```
 
-##### identifier-not-updated in the response
+##### patient-identifier-immutable in the response
 
-The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted in the response when the NHI number in the request does not match the NHI of the stored record. The updated record is stored with the existing NHI number not the one provided.
+An API client might only hold live NHI numbers, or it might lag a recent change to the patient record in the NHI. In such cases, the NHI number held by the client might differ from AIR. However, the NHI number cannot be changed via an update request without admin scope. 
+
+The `meta.tag` "patient-identifier-immutable" is inserted in the response when the NHI number in the request does not match the NHI of the stored record. The update is successful, but the updated record is stored with the existing NHI number, not the one provided in the update.
 
 ```json
 "meta" : {
@@ -428,7 +429,7 @@ The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted
 
 ##### Match Quality in response
 
-Response including Match quality
+The response to a create or update includes Match Quality information when an immunisation event has been matched with a consumer planned event, one based on a schedule.
 ```json
 {
     "resourceType": "Immunization",
@@ -710,4 +711,4 @@ Response including Match quality
 
 ##### Scope/s Required
 
-Any FHIR scope that includes system/immunization.u , for example system/immunization.cruds and/or system/immunization.u 
+Any FHIR scope that includes system/immunization.u, for example system/immunization.cruds and/or system/immunization.u 

@@ -420,7 +420,7 @@ The `meta.tag` "patient-identifier-immutable" is inserted in the response when t
     "tag" : [
         {
             "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
-            "code" : "identifier-not-updated",
+            "code" : "patient-identifier-immutable",
             "display" : "Patient identifier not updated - identifier is immutable for this operation"
         }
     ]

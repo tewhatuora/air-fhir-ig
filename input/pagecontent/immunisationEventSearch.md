@@ -109,7 +109,7 @@ HTTP/1.1 200 OK
                     "versionId": "3",
                     "lastUpdated": "2023-09-14T01:54:39.727+00:00",
                     "profile": [
-                        "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
                     ]
                 },
                 "contained": [
@@ -439,7 +439,7 @@ HTTP/1.1 200 OK
                     "versionId": "1",
                     "lastUpdated": "2023-09-14T01:26:46.626+00:00",
                     "profile": [
-                        "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
                     ]
                 },
                 "contained": [
@@ -889,7 +889,7 @@ HTTP/1.1 200 OK
                     "versionId": "1",
                     "lastUpdated": "2024-03-13T20:20:00.345+00:00",
                     "profile": [
-                        "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
                     ]
                 },
                 "extension": [

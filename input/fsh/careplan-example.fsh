@@ -34,7 +34,7 @@ Usage: #inline
 Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose1
 InstanceOf: ImmunizationRecommendation
 Usage: #inline
-* meta.profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization-recommendation"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * patient = Reference(Patient/ZET7992)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZET7992"
@@ -63,7 +63,7 @@ Usage: #inline
 Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose2
 InstanceOf: ImmunizationRecommendation
 Usage: #inline
-* meta.profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization-recommendation"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * patient = Reference(Patient/ZET7992)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * patient.identifier.value = "ZET7992"
@@ -141,7 +141,7 @@ Usage: #inline
 * meta.extension[=].extension.extension[=].valueCoding = #303 "Automatically matched by dose and alternative indication"
 * meta.versionId = "1"
 * meta.lastUpdated = "2025-08-04T15:12:41.892+12:00"
-* meta.profile = "https://fhir-ig.digital.health.nz/air/StructureDefinition/air-immunization"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
 * contained[0].resourceType = "RelatedPerson"
 * contained[=].id = "09c86dd5-64e9-414e-b97e-f6c2c1a4e65f"
 * contained[=].meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-related-person-prf"

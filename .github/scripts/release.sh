@@ -6,7 +6,7 @@ set -eo pipefail
 #  |  release pipeline
 #  |
 #  +--> remove -SNAPSHOT
-#  |
+#  | 
 #  +--> commit release version to UAT
 #  |
 #  +--> create tag (v1.2.3)
@@ -29,7 +29,6 @@ RELEASE_LABEL=$(yq .releaseLabel ${SUSHI_CONFIG_FILE})
 CURRENT_VERSION=$(yq '.version' ${SUSHI_CONFIG_FILE})
 RELEASE_VERSION="${CURRENT_VERSION%-SNAPSHOT}"
 CURRENT_VERSION_URL_FRIENDLY=$(/usr/bin/echo "${CURRENT_VERSION}" | tr -d .)
-
 
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git config user.name "github-actions[bot]"
@@ -105,7 +104,7 @@ fi
 
 echo "updating ${SUSHI_CONFIG_FILE} version to SNAPSHOT"
 yq -i '(. | select(has("version")).version |= (split(".") | '"${counter}"' |= ((. tag = "!!int") + 1) | join(".") + "-SNAPSHOT" ))' ${SUSHI_CONFIG_FILE}
-yq -i '(.status = "draft" | .releaseLabel = "ci-build")' ${SUSHI_CONFIG_FILE}
+yq -i '(.status = "draft" | .releaseLabel = "ci-build" )' ${SUSHI_CONFIG_FILE}
 
 # resample version after change
 NEW_VERSION=$(yq .version ${SUSHI_CONFIG_FILE})

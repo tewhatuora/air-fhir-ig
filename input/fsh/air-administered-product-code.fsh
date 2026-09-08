@@ -151,3 +151,7 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 * $NZMT#48843351000116107 "Influvac Tetra 2026"
 * $NZMT#48838141000116100 "Fluad 2026"
 * $NZMT#48864131000116105 "Fluzone 2026"
+
+// Added 8 Sept 2026 per IMM-7126
+* $NZMT#49011461000116107 "Comirnaty XFG (10mcg) SDV"
+* $NZMT#49060971000116102 "Qdenga"

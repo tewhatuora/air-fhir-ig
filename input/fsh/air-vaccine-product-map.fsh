@@ -100,6 +100,22 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(48407721000116108, 218, relatedto)
 * insert ConceptMapEntry(48408951000116102, 219, relatedto)
 
+// Added 19 Nov 2024 per IMM-5353
+* insert ConceptMapEntry(48407111000116100, 217, relatedto)
+* insert ConceptMapEntry(48407721000116108, 218, relatedto)
+* insert ConceptMapEntry(48408951000116102, 219, relatedto)
+// Added 21 May 2025 per IMM-5782
+* insert ConceptMapEntry(45442391000116106, 93, relatedto)
+
+// Added 27 Nov 2025 per IMM-6433
+* insert ConceptMapEntry(48709091000116105, 219, relatedto)
+* insert ConceptMapEntry(48709061000116101, 218, relatedto)
+* insert ConceptMapEntry(48709151000116103, 217, relatedto)
+
+// Added 8 Sept 2026 per IMM-7126
+* insert ConceptMapEntry(49011461000116107, 218, relatedto)
+* insert ConceptMapEntry(49060971000116102, 56, relatedto)
+
 * group[+].source = $NZMT
 * group[=].target = $NZVX
 
@@ -147,10 +163,6 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(10598271000116109, 119, relatedto)
 */
 
-// Added 19 Nov 2024 per IMM-5353
-* insert ConceptMapEntry(48407111000116100, 217, relatedto)
-* insert ConceptMapEntry(48407721000116108, 218, relatedto)
-* insert ConceptMapEntry(48408951000116102, 219, relatedto)
 
 // Added 21 Feb 2025 per IMM-5538
 * insert ConceptMapEntry(48606481000116100, 99006, relatedto)
@@ -159,20 +171,9 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 * insert ConceptMapEntry(48611851000116100, 99006, relatedto)
 * insert ConceptMapEntry(48606101000116102, 99006, relatedto)
 
-// Added 21 May 2025 per IMM-5782
-* insert ConceptMapEntry(45442391000116106, 93, relatedto)
-
-// Added 27 Nov 2025 per IMM-6433
-* insert ConceptMapEntry(48709091000116105, 219, relatedto)
-* insert ConceptMapEntry(48709061000116101, 218, relatedto)
-* insert ConceptMapEntry(48709151000116103, 217, relatedto)
 
 // Added 23 Feb 2026 per IMM-6615
 * insert ConceptMapEntry(48833691000116109, 99006, relatedto)
 * insert ConceptMapEntry(48843351000116107, 99006, relatedto)
 * insert ConceptMapEntry(48838141000116100, 99006, relatedto)
 * insert ConceptMapEntry(48864131000116105, 99006, relatedto)
-
-// Added 8 Sept 2026 per IMM-7126
-* insert ConceptMapEntry(49011461000116107, 218, relatedto)
-* insert ConceptMapEntry(49060971000116102, 56, relatedto)

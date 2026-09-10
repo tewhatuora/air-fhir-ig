@@ -6,7 +6,7 @@ set -eo pipefail
 #  |  release pipeline
 #  |
 #  +--> remove -SNAPSHOT
-#  | 
+#  |
 #  +--> commit release version to UAT
 #  |
 #  +--> create tag (v1.2.3)

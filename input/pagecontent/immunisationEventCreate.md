@@ -3,26 +3,27 @@
 The "create" operation is used to create a new immunisation event. This method performs validation checks to ensure that the event is valid before it is created.  
 
 The create operation performs the following:
-1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record
-1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
-1. Create the first version of the event with the details provided
+1. Checks that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create an immunisation record.
+1. Checks the event data against the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html). If the record is rejected, then it responds with errors in an OperationOutcome resource.
+1. With the Patient Identifier for the incoming event, compares to all existing events for that Patient. If an exact duplicate is found, then the record is accepted, but it sets the status to `entered-in-error` and status reason to 'Duplicate report'. For further information, see [Handling of Exact Duplicates](#handling-of-exact-duplicates).
+1. Creates the first version of the event with the details provided.
 1. Saves the new version of the event to the database.
-1. Returns the event and any validation errors in an operationOutcome.
+1. If successful, then returns the event record, including any Data Quality violations in a [Data Quality Assessment](StructureDefinition-air-data-quality-assessment.html) extension element. If unsuccessful, then responds with errors in an OperationOutcome resource.
 
 ### Operation 
-
-POST https://api_endpoint/v2/fhir/Immunization
-
+~~~http
+POST https://api_endpoint/Immunization
+~~~
 ### Request Headers
 
-All the headers listed in the request headers [here](requestHeaders.html)
+All headers listed in [Request Headers](requestHeaders.html).
 
 ### Request Body
 
-Post a full set of immunisation record details. See below. The FHIR specification for an AIR Immunization resource is at [AIR Immunization Profile](StructureDefinition-air-immunization.html)
+Post a full set of immunisation record details. See below. The FHIR specification for an AIR Immunization resource is at [AIR Immunization Profile](StructureDefinition-air-immunization.html).
 
 #### Sample Request Payload
-```json
+~~~json
 {
     "resourceType": "Immunization",
     "patient": {
@@ -252,20 +253,30 @@ Post a full set of immunisation record details. See below. The FHIR specificatio
         }
     ]
 }
-```
+~~~
 
 ### Behaviour
 
-* immunisation record is validated (validation rules that can lead to rejection of the submitted Immunisation Event are listed [here](rejectionRules.html), and rules that result in data quality warnings are listed [here](dataQualityRules.html))
-* If all the attributes / items in the immunisation record are valid, a new immunisation record is added to the repository, attached to the provided NHI, with the details populated from the request.
+#### Handling of Exact Duplicates
+
+With the Patient Identifier for the incoming event, AIR compares to all existing events for that Patient. If an exact match is found, then it creates a new record, however:
+* status is changed to "entered-in-error".
+* status reason is changed to "Duplicate report" (SNOMED code "445672005").
+
+The API Client must anticipate and handle this condition.
+
+#### Create new event
+
+* The immunisation record is validated. Validation rules that can lead to rejection of the submitted Immunisation Event are listed [here](rejectionRules.html), and rules that result in data quality warnings are listed [here](dataQualityRules.html))
+* If all attributes / items in the immunisation record pass the Rejection Rules, a new immunisation record attached to the provided NHI is added to the repository, with the details populated from the request.
 
 ### Response
-	
-Returns the created Immunization record. If there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
+
+The API returns the created Immunization record if successfully created. If any issues arose with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource indicates that the create operation failed, with an issue array providing details with severity and code values.
 
 #### Sample Response Payload, Immunisation Event created successfully
 
-```json
+~~~json
 {
     "resourceType": "Immunization",
     "id": "bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
@@ -663,13 +674,13 @@ Returns the created Immunization record. If there were any issues with the creat
         }
     ]
 }
-```
+~~~
 
 #### More examples of DQ's
 The DQ taken from the  `DQViolations` section
 
 ##### Diluent Expiry Date
-```json
+~~~json
 {
     "url": "DQViolation",
     "extension": [
@@ -695,10 +706,10 @@ The DQ taken from the  `DQViolations` section
         }
     ]
 }
-```
+~~~
 
 ##### Body Site
-```json
+~~~json
 {
     "url": "DQViolation",
     "extension": [
@@ -724,10 +735,10 @@ The DQ taken from the  `DQViolations` section
         }
     ]
 }
-```
+~~~
 
 ##### Health Worker
-```json
+~~~json
 {
     "url": "DQViolation",
     "extension": [
@@ -753,10 +764,10 @@ The DQ taken from the  `DQViolations` section
         }
     ]
 }
-```
+~~~
 
-##### Exact duplicate
-```json
+##### Potential duplicate
+~~~json
 {
     "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",
     "extension": [
@@ -803,14 +814,13 @@ The DQ taken from the  `DQViolations` section
         }
     ]
 }
-
-```
+~~~
 ### Operation failed
 
 Where the data provided causes a hard failure, an example being user resolvable, where the lot number exceeds the field length
 The http result will be 422 and the payload is an operation outcome error message.
 
-```json
+~~~json
 {
     "resourceType": "OperationOutcome",
     "issue": [
@@ -821,7 +831,7 @@ The http result will be 422 and the payload is an operation outcome error messag
         }
     ]
 }
-```
+~~~
 
 
 ### Scope/s required
@@ -829,21 +839,20 @@ The http result will be 422 and the payload is an operation outcome error messag
 Any FHIR scope that includes system/immunization.c , for example system/immunization.cruds and/or system/immunization.c
 
 ### Notes
-* The API will validate that there are no more than two identifiers received in the request payload for patient references
-* Return a reference to the Facility in the response if there is an identifier for a facility (i.e the system is "https://standards.digital.health.nz/ns/hpi-facility-id") 
-For example if the identifier we have for Facility is as following
-```json
+* The API will validate that no more than two identifiers were received in the request payload for patient references.
+* The API will return a reference to the Facility in the response if there is an identifier for a facility (i.e the system is "https://standards.digital.health.nz/ns/hpi-facility-id"). For example, if the identifier we have for Facility is as following
+~~~json
   {
       "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
       "value": "FZZ958-K"
   }
-```
+~~~
 
 Then the "reference" should be "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K"
 
-A full example for a location payload is below
+A full example for a location payload is below.
 
-```json
+~~~json
 "location": { 
   "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ958-K",
   "identifier": {
@@ -851,7 +860,7 @@ A full example for a location payload is below
       "value": "FZZ958-K"
   }     
 },
-```
-* The operation may return data quality violations based on the [data quality rules](dataQualityRules.html) 
+~~~
+* The operation may return data quality violations based on the [Data Quality Rules](dataQualityRules.html) 
 
-* The record can also be identified by ImmSOT as duplicate, see the details of this [here](duplicateRecordHandling.html)
+* The record can also be identified by ImmSOT as duplicate; see the details of this [here](duplicateRecordHandling.html).

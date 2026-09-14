@@ -1,4 +1,4 @@
-### Resource representation: Json### Resource representation: Json
+### Resource representation: Json
 Only JSON is supported by this implementation.
 
 ### Id and Identifiers
@@ -191,14 +191,14 @@ Errors fall into several categories that depend on the issue and request type.
 * Refer to the Use Cases pages for example responses.
 
 #### Data quality issue detection and remediation 
-The AIR applies further checks on data quality (DQ) as specified in [Data Quality Rules](dataQualityRules.html). These include possible and exact duplicates, deviations from ‘preferred’ value sets, inconsistent dates, data missing that should be provided under specific conditions, etc.
+The AIR applies further checks on data quality (DQ) as specified in [Data Quality Rules](dataQualityRules.html). These include Potential Duplicates, deviations from ‘preferred’ value sets, inconsistent dates, data missing that should be provided under specific conditions, etc.
 
 Immunisation events containing issues cause DQ cases to be raised for follow-up by the AIR support team. DQ cases are closed automatically when underlying issues are resolved.
 
 Each deviation is ranked and a score is calculated. Authorised applications receive DQ details in the [air-data-quality-assessment](StructureDefinition-air-data-quality-assessment.html) extension in responses to Create & Update interactions and the Immunization/_search operation.
 
 #### Exact Duplicates: status "entered-in-error" in response
-The status of the Immunization resource is returned as "entered-in-error" in the response when a Create or Update interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
+The status of the Immunization resource is returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
 
 ### HTTP Header Details
 #### Request Headers

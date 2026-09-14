@@ -766,7 +766,8 @@ The DQ taken from the  `DQViolations` section
 }
 ~~~
 
-##### Potential duplicate
+##### Potential Duplicate
+
 ~~~json
 {
     "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",

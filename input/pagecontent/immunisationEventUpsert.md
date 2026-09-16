@@ -22,8 +22,8 @@ It performs the following:
     * If a single existing immunisation event record is found, then it performs an Update of that record.
     * If no existing immunisation event record is found, then it performs a Create.
     * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
-4. Return the created or updated event and any validation issues identified in the meta sections.
-5. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "identifier-not-updated" is returned in the response.
+4. Return the created or updated event and any validation issues, identified in the meta sections.
+5. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the `meta.tag` "patient-identifier-immutable" is returned in the response.
 
 <div>
 <img src="assets/images/upsert-flow-digram.png" alt="Upsert Flow" style="max-width:100%; height:auto;"/>
@@ -31,15 +31,17 @@ It performs the following:
 
 ### Operation 
 
+```HTTP
 POST https://api_endpoint/v2/fhir/Immunization/$upsert
+```
 
 ### Request Headers
 
-All the headers listed in the request headers [here](requestHeaders.html)
+All headers listed in the [request headers](requestHeaders.html).
 
 ### Request Body
 
-Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is at [AIR Immunization Profile](StructureDefinition-air-immunization.html)
+Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is the [AIR Immunization Profile](StructureDefinition-air-immunization.html)
 
 #### Sample Request Payload
 ~~~json
@@ -89,15 +91,15 @@ Post a full set of immunisation resource details. See below. The FHIR specificat
 
 ### Behaviour
 
-For Immunisation Event in the request attempt to find an matching existing Immunisation Event that matches on NHI, Occurrence Date, Vaccine Code and Indication
+For the Immunisation Event in the request attempt to find an existing Immunisation Event that can be linked on NHI, Occurrence Date, Vaccine Code and Indication.
 
-* If no match found, create a new event
-* If single match found, update event
-* If multiple events found, create a new event (duplicate will be raised).
-* Failure to process any event, reject entire request
+* If no corresponding record found, create a new event.
+* If single record found, update that event.
+* If multiple events found, create a new event, raising a Potential Duplicate data quality violation.
+* Failure to process any event, reject entire request.
 
 ### Response
-	
+
 Returns the created or updated Immunization record. If there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
 
 #### Sample Response Payload,
@@ -176,9 +178,9 @@ Returns the created or updated Immunization record. If there were any issues wit
 }
 ~~~
 
-##### identifier-not-updated in the response
+##### patient-identifier-immutable in the response
 
-The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted in the response when the NHI number in the request does not match the NHI of the stored record. The updated record is stored with the existing NHI number not the one provided.
+The NHI number is immutable. When the NHI number in the request does not match the NHI of the stored record, then the `meta.tag` "patient-identifier-immutable" is inserted in the response. The updated record is stored with the existing NHI number, not the one provided.
 
 ```json
 "meta" : {
@@ -186,7 +188,7 @@ The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted
     "tag" : [
         {
             "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
-            "code" : "identifier-not-updated",
+            "code" : "patient-identifier-immutable",
             "display" : "Patient identifier not updated - identifier is immutable for this operation"
         }
     ]
@@ -198,11 +200,11 @@ The NHI number is immutable, the `meta.tag` "identifier-not-updated" is inserted
 Any FHIR scope that includes system/immunization.c or system/immunization.u, for example system/immunization.cruds or system/immunization.c
 
 ### Notes
-The API is invoked only when a PMS updates a record.
+The Upsert API may be invoked only when a PMS updates a record that was persisted in its local data store prior to the AIR API coming into use. The record would have been sent to the AIR via HL7 messaging, in which case it has yet to be linked to the AIR by the AIR Identifier. Applications that do not persist immunisation event records locally shall not use the Upsert API.
 
-* PMS determines whether the local record has an AIR ID
-* If the record has AIR ID, PMS calls Update API
-* If no AIR ID exists, PMS calls the Upsert API
-* ImmSot attempts to locate an existing immunisation event using matching rules
-* Based on match outcome, ImmSot creates or updates an event and returns a response with AIR ID
-* PMS updates its local record with the AIR ID
+* The PMS shall determine before calling $upsert whether the local record has an AIR Identifier.
+* If the record does have an AIR Identifier, then the PMS shall call the Update API instead. See [Update Immunisation Event](immunisationEventUpdate.html).
+* If the record does not have an AIR Identifier, then the PMS shall call the Upsert API.
+* When an $upsert request is received, AIR attempts to locate an existing immunisation event using linking rules.
+* Based on the outcome, AIR creates or updates an event and returns a response with AIR Identifier.
+* When the PMS receives a successful response from AIR, then the PMS shall update its local record with the AIR Identifier.

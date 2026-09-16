@@ -31,9 +31,9 @@ It performs the following:
 
 ### Operation 
 
-```HTTP
-POST https://api_endpoint/v2/fhir/Immunization/$upsert
-```
+~~~http
+POST https://api_endpoint/Immunization/$upsert
+~~~   
 
 ### Request Headers
 
@@ -41,7 +41,7 @@ All headers listed in the [request headers](requestHeaders.html).
 
 ### Request Body
 
-Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is the [AIR Immunization Profile](StructureDefinition-air-immunization.html)
+Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is the [AIR Immunization Profile](StructureDefinition-air-immunization.html).
 
 #### Sample Request Payload
 ~~~json

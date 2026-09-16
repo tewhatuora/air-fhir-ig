@@ -99,7 +99,7 @@ For the Immunisation Event in the request attempt to find an existing Immunisati
 * Failure to process any event, reject entire request.
 
 ### Response
-	
+
 Returns the created or updated Immunization record. If there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
 
 #### Sample Response Payload,

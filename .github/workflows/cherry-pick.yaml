@@ -1,0 +1,51 @@
+name: Cherry-pick to from uat to uat-V1
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - uat
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  cherry-pick:
+    # Only run when the PR was merged AND its title contains [cherry]
+    if: >
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.title, '[cherry]')
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout uat-V1
+        uses: actions/checkout@v4
+        with:
+          ref: uat-V1
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          BRANCH="cherry-pick/uat-V1/${{ github.event.pull_request.number }}"
+          git checkout -b "$BRANCH"
+
+          git cherry-pick "${{ github.event.pull_request.merge_commit_sha }}"
+
+          git push origin HEAD
+          echo "::notice::Create PR to merge to uat-V1 https://github.com/tewhatuora/air-fhir-ig/pull/new/$BRANCH "
+
+      # -- I think the gh api is only availble in workflows for the paid versions
+      # - name: Create PR
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     gh pr create \
+      #       --base uat \
+      #       --head "cherry-pick/${{ github.event.pull_request.number }}" \
+      #       --title "Cherry-pick: ${{ github.event.pull_request.title }}" \
+      #       --body "Automatically cherry-picked PR #${{ github.event.pull_request.number }} from main into uat."

@@ -1,8 +1,8 @@
 openapi: 3.0.4
 info:
   title: AIR ImmSoT API
-  description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
-  version: "2.0.0-SNAPSHOT"
+  description: "This API provides the ability to create, modify and retrieve Immunisation records and retrieve CarePlan immunisation plans/schedules from AIR ImmSoT for approved external system-to-system clients."
+  version: "1.27.0"
 servers:
   - url: https://api.air.digital.health.nz/s2s/fhir/R4
     description: PROD - External system-to-system endpoint for version 1
@@ -358,6 +358,41 @@ paths:
         - OAuth2Implicit:
             - system/Immunization.c
             - system/Immunization.u
+  /CarePlan/$view:
+    get:
+      operationId: viewCarePlans
+      description: |
+        Read a consumer's immunisation plan / schedule
+      parameters:
+        - $ref: '#/components/parameters/UserID'
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/X-Api-Key'
+        - $ref: '#/components/parameters/Api-Version'
+        - name: nhi
+          in: query
+          description: The NHI identifier of the patient/consumer
+          required: true
+          schema:
+            type: string
+          example: ZCZ1947
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/CarePlanBundle'
+        "400":
+          $ref: '#/components/responses/400'
+        "403":
+          $ref: '#/components/responses/403'
+        "429":
+          $ref: '#/components/responses/429'
+        "500":
+          $ref: '#/components/responses/500'
+      security:
+        - OAuth2Implicit:
+            - system/CarePlan.s
 components:
   schemas:
     Address:
@@ -511,6 +546,127 @@ components:
           maxItems: 1000
           items:
             $ref: '#/components/schemas/AirImmunization'
+    AirCarePlan:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        instantiatesCanonical:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        intent:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        subject:
+          type: object
+          properties:
+            reference:
+              type: string
+            identifier:
+              $ref: '#/components/schemas/Identifier'
+        period:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        created:
+          type: string
+          format: date-time
+        activity:
+          type: array
+          items:
+            type: object
+            properties:
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
+    AirImmunizationRecommendation:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum: [ImmunizationRecommendation]
+        meta:
+          type: object
+          properties:
+            profile:
+              type: array
+              items:
+                type: string
+        patient:
+          $ref: '#/components/schemas/LogicalReference'
+        date:
+          type: string
+          format: date-time
+        recommendation:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
+              vaccineCode:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              forecastStatus:
+                $ref: '#/components/schemas/CodeableConcept'
+              forecastReason:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              dateCriterion:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      $ref: '#/components/schemas/CodeableConcept'
+                    value:
+                      type: string
+                      format: date
+              series:
+                type: string
+              doseNumberPositiveInt:
+                type: integer
+    CarePlanBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        type:
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                oneOf:
+                  - $ref: "#/components/schemas/AirCarePlan"
+                  - $ref: "#/components/schemas/AirImmunization"
+                  - $ref: "#/components/schemas/AirImmunizationRecommendation"
     ContactPoint:
       type: object
       properties:
@@ -1615,6 +1771,23 @@ components:
       required: true
       schema:
         type: string
+    UserID:
+      name: UserID
+      in: header
+      description: An identifier of the end user who submitted this event
+      schema:
+        type: string
+      example: Lionel.Messi
+    Api-Version:
+      name: Api-Version
+      in: header
+      description: API version selector. If omitted, version 1 behaviour applies. Supported values are 1 and 2.
+      required: false
+      schema:
+        type: integer
+        enum: [1, 2]
+        default: 1
+      example: 2
     request-context:
       name: request-context
       in: header
@@ -2305,14 +2478,6 @@ components:
           - severity: error
             code: invariant
             diagnostics: Immunisation event date cannot be in the future
-    TooManyReuqest:
-      summary: A 429 response example
-      value:
-        resourceType: OperationOutcome
-        issue:
-          - severity: error
-            code: exception
-            diagnostics: Too many requests
     InternalError:
       summary: A 500 response example
       value:
@@ -3212,3 +3377,4 @@ components:
             system/Immunization.r: read scope
             system/Immunization.u: update scope
             system/Immunization.s: search scope
+            system/CarePlan.s: search scope for careplan

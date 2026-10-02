@@ -24,3 +24,5 @@ version.env
 node_modules
 package.json
 package-lock.json
+# generated
+/input/pagecontent/API.xml

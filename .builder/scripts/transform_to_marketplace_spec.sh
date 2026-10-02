@@ -23,7 +23,7 @@ trap 'rm -f "$TMP_FILE" "${TMP_FILE}.2"' EXIT
 
 # Step 1: keep only external paths and components that can be referenced.
 yq '
-.info.description = "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
+.info.description = "This API provides the ability to create, modify and retrieve Immunisation records and retrieve CarePlan immunisation plans/schedules from AIR ImmSoT for approved external system-to-system clients."
 |
 .servers = [
   {
@@ -56,7 +56,8 @@ yq '
   "/Immunization": .paths."/fhir/R4/Immunization",
   "/Immunization/{ID}": .paths."/fhir/R4/Immunization/{ID}",
   "/Immunization/_search": .paths."/fhir/R4/Immunization/_search",
-  "/Immunization/$upsert": .paths."/fhir/R4/Immunization/$upsert"
+  "/Immunization/$upsert": .paths."/fhir/R4/Immunization/$upsert",
+  "/CarePlan/$view": .paths."/fhir/R4/CarePlan/$view"
 }
 |
 .paths."/Immunization/{ID}" |= pick(["get", "put"])
@@ -65,6 +66,9 @@ yq '
   "Address",
   "AirImmunization",
   "AirImmunizationBundle",
+  "AirCarePlan",
+  "AirImmunizationRecommendation",
+  "CarePlanBundle",
   "ContactPoint",
   "Contained",
   "AirExtension",
@@ -150,7 +154,8 @@ yq '
   "system/Immunization.c",
   "system/Immunization.r",
   "system/Immunization.u",
-  "system/Immunization.s"
+  "system/Immunization.s",
+  "system/CarePlan.s"
 ])
 |
 .components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl = "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
@@ -160,6 +165,8 @@ yq '
   "X-Correlation-ID",
   "If-Match",
   "X-Api-Key",
+  "UserID",
+  "Api-Version",
   "request-context"
 ])
 ' "$INPUT" > "$TMP_FILE"
@@ -355,6 +362,14 @@ yq '
     "OAuth2Implicit": [
       "system/Immunization.c",
       "system/Immunization.u"
+    ]
+  }
+]
+|
+.paths."/CarePlan/$view".get.security = [
+  {
+    "OAuth2Implicit": [
+      "system/CarePlan.s"
     ]
   }
 ]

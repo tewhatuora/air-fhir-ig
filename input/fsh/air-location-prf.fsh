@@ -2,7 +2,7 @@ Profile: AIRLocation
 Parent: NzLocation
 Id: air-location
 Title: "AIR Location Profile"
-Description: "Ths profile constrains the NZ Location Profile to meet the requirements of AIR as documented at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3445141172/Immunisation+Event+Data+Fields."
+Description: "Ths profile constrains the NZ Location Profile to meet the requirements of AIR."
 
 * insert StandardMetadata
 

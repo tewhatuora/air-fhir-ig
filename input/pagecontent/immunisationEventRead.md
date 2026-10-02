@@ -3,16 +3,16 @@
 The "read" operation is used to read an immunisation event. This method takes an immunisation event id and returns back the FHIR resource for the immunization event.
 
 The read operation performs the following:
-1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
+1. Checks if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 
-1. Checks that the authorization token contains the required permission. If not, it returns an error message indicating that the user does not have the required scope to read an immunisation event
+1. Checks that the authorization token contains the required permission. If not, it returns an error message indicating that the user does not have the required scope to read an immunisation event.
 
-1. Return the latest version of the event as a FHIR [AIR-Immunization](StructureDefinition-air-immunization.html) resource
+1. Returns the latest version of the event as a FHIR [AIR Immunization](StructureDefinition-air-immunization.html) resource.
 
 ### Operation
 
 ~~~
-GET https://api_endpoint/v2/fhir/Immunization/id
+GET https://api_endpoint/Immunization/id
 ~~~
 
 ### Request Headers
@@ -29,7 +29,7 @@ N/A
 
 * The latest version of the Immunisation Event is returned.
 
-* If the NHI in the request or any linked NHIs (live or dormant) is suppressed an empty result is returned, with metadata indicating the information is redacted.
+* If the NHI in the request or any linked NHIs (live or dormant) has Restricted Access, an empty result is returned, with metadata indicating the information is redacted.
 
 ### Responses
 

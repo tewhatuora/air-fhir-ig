@@ -1,11 +1,12 @@
+**NOTE: THIS PAGE DESCRIBES FEATURES UNDERGOING DEVELOPMENT, SO IS PROVIDED FOR INFORMATION ONLY.**
 
-## View Consumer Planned Events
+### Overview
 
-The ‘$view’ API on the 'Careplan' profile used to view all the planned events contained within a Consumers vaccination schedule.
+The '$view' interaction is used to obtain a point-in-time view of a consumer’s planned events, expected events and matching immunisation events. This method takes a consumer’s NHI identifier and returns the FHIR resources for the care plan and associated objects.
 
-* The request generates a bundle of CarePlan FHIR Resources that contain all planned activities ( i.e Planned Events and Expected Events) represented in an Immunization Recommendation FHIR Resource and their matching preformed activities represented in one or more Immunization FHIR Resources. All reflect a point-in-time list of Immunisation Planned Events and Expected Events across all Antigen Group Vaccination Schedules that have been assigned to that Consumer and are Active at the time of making the request.
+* The request generates a bundle of CarePlan FHIR Resources that contain all planned activities (i.e. Planned Events and Expected Events) represented in an Immunization Recommendation FHIR Resource and their matching preformed activities, represented in one or more Immunization FHIR Resources. All reflect a point-in-time list of Immunisation Planned Events and Expected Events across all Antigen Group Vaccination Schedules that have been assigned to that Consumer and are Active at the time of making the request.
 
-* By default, the API will return a point-in-time view of all Active (i.e. not Cancelled) Planned Events and Expected Events, past, present and future, that are assigned to the specified Consumer. The matching Consumers vaccination records will also be returned.
+* By default, the API will return a point-in-time view of all Active (i.e. not Cancelled) Planned Events and Expected Events, past, present and future, that are assigned to the specified Consumer. Matching vaccination records also will be returned.
 
 * Each CarePlan Resource presents one consumer AG schedule.
 
@@ -13,13 +14,14 @@ The ‘$view’ API on the 'Careplan' profile used to view all the planned event
 
 * Planned Events will be ordered by due date ascending.
 
-* If the Consumer with the NHI in the Search request is not on-boarded in ImmSOT then the consumer will be on-boarded , AGVS Schedules will be assigned and planned events will be created then the API logic will be executed and the planned events will be returned.
+* If the Consumer with the NHI in the Search request is not on-boarded in ImmSOT then the consumer will be on-boarded, AGVS Schedules will be assigned and planned events will be created. Then the API logic will be executed and the planned events will be returned.
 
-* If the NHI in the request or any linked NHIs (Live or Dormant) is suppressed an empty result will be returned, with a redacted code in the meta data.
+* If access is restricted to the NHI in the request or any linked NHIs (Live or Dormant), then an empty result will be returned, with a redacted code in the meta data.
 
 * If a dormant NHI is used in the request the same results will be return as if the live NHI was used.
 
-### $view API Sequence Diagram – Normal Success Scenarios
+### Normal Success Scenarios
+#### $view API Sequence Diagram
 
 <div style="width: 100%; height: auto;">
   {% include careplan-view-success-sequence-diagram.svg %}
@@ -124,19 +126,19 @@ Response code is HTTP/1.1 200 Ok
 
 ```
 
-### $view API Sequence Diagram – Redacted Success Scenario
+#### $view API Sequence Diagram – Redacted Success Scenario
 
 <div style="width: 100%; height: auto;">
   {% include careplan-view-suppressed-sequence-diagram.svg %}
 </div>
 
-#### Redacted Success Response
+##### Redacted Success Response
 
 Response code is HTTP/1.1 200 Ok
 
 ImmSOT will return a success response with an empty result and will add an additional metadata security attribute with the value “REDACTED” as below.
 Consuming client applications can use this metadata tag to differentiate between an empty response (i.e ImmSOT does not have the data)
-and an empty result because the consumer immunisation information is suppressed.
+and an empty result because access to the consumer immunisation information is restricted.
 
 ```json
 {
@@ -159,14 +161,14 @@ and an empty result because the consumer immunisation information is suppressed.
 ```  
 
 
-### $view API Sequence Diagram – Failure Scenario
+#### $view API Sequence Diagram – Failure Scenario
 
 <div style="width: 100%; height: auto;">
  {% include careplan-view-failure-sequence-diagram.svg %}
 </div>
 
 
-#### Example Failure Response
+##### Example Failure Response
 Response code is HTTP/1.1 404 Not Found
 ```json 
 {

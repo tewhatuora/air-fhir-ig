@@ -2,12 +2,12 @@ Profile:        AIRImmunizationRecommendation
 Parent:         ImmunizationRecommendation
 Id:             air-immunization-recommendation
 Title:          "AIR Immunization Recommendation"
-Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events. The specification for this profile is available at https://mohits.atlassian.net/wiki/spaces/NIS/pages/3507781730/AIRImmunizationRecommendation+FHIR+API+into+ImmSOT."
+Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
 
-* ^purpose = "To communicate. the details of a planned immunisation event. Planned events may be generated algorithmically based on a patient's characteristics and a published schedule or created by a health provider."
+* ^purpose = "To communicate details of a planned immunisation event. Planned events may be generated algorithmically based on a patient's characteristics, a published schedule and their immunisation history."
 * ^text.status = #additional
 * ^text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Individual Immunisation Plan</div>"
 
@@ -36,6 +36,10 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * recommendation.contraindicatedVaccineCode 0..0
 
 * recommendation.forecastStatus from air-forecast-status-code (preferred)
+
+* recommendation.forecastReason from air-indication-code (preferred)
+* recommendation.forecastReason ^short = "Vaccine recommendation indication and alternative indications"
+* recommendation.forecastReason ^definition = "Array containing vaccine recommendation indication and alternative indications. Primary indication will be returned as the first element in the array, followed by any alternative indications."
 
 // additional values will be needed here post-MVP
 * recommendation.dateCriterion.code from air-planned-event-date-type-code (preferred)

@@ -52,8 +52,8 @@ database "ImmSOT DB" as ImmSOT_DB DATABASE_COLOR
 
   ImmSOTService -> ImmSOTService : Validate token and permissions
 
-  ImmSOTService -> ImmSOT_DB : Check NHI whther Consumer is suppressed?
-  ImmSOT_DB --> ImmSOTService : Consumer is suppressed
+  ImmSOTService -> ImmSOT_DB : Check NHI whther Consumer has restricted access?
+  ImmSOT_DB --> ImmSOTService : Consumer has restricted access
 
   ImmSOTService -> ImmSOTService : Generate redacted response
   ImmSOTService --> Orchestration : Return an empty bundle with redacted metadata security tag
@@ -65,6 +65,6 @@ database "ImmSOT DB" as ImmSOT_DB DATABASE_COLOR
     '=============================
 ' Footer
     '=============================
-    footer CarePlan/$view when NHI is suppressed
+    footer CarePlan/$view when NHI has restricted access
     
     @enduml

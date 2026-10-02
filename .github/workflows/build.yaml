@@ -24,3 +24,10 @@ jobs:
       - name: Run build inside container
         run: |
           docker run --rm -v "${{ github.workspace }}:/workspace" -w /workspace air-api-fhir-ig-dev:latest ./build-ig.sh
+
+      - name: Upload IG
+        uses: actions/upload-artifact@v4
+        with:
+          name: air-api-fhir-ig-build-${{ github.sha }}
+          path: output/
+          retention-days: 7          

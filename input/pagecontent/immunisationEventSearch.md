@@ -14,16 +14,16 @@ The search API performs the following steps:
 
 1. If a target disease is provided, only immunisations for that disease will be returned.
 
-1. If one or more immuisation status reason codes is provided, only immunisations which do not contain those codes will be returned.
+1. If one or more immunisation status reason codes is provided, only immunisations which do not contain those codes will be returned.
 
 1. If one or more immunisation status codes is provided, only immunisations which do not contain those codes will be returned.
 
 1. Returns the latest version of the immunisation events as a FHIR bundle.
 
 ### Operation
-
-POST https://api_endpoint/v2/fhir/Immunization/_search
-
+```http
+POST https://api_endpoint/Immunization/_search
+```
 ### Request Headers
 
 See [request headers](requestHeaders.html).
@@ -33,10 +33,11 @@ Content-Type: application/x-www-form-urlencoded
 
 POST a payload with the following parameters
 * Patient Identifier (NHI Number or full Patient URL reference) (Mandatory)
-* Target disease (SNOMED code from [AIR Disease Covered Value Set](ValueSet-air-disease-covered-code.html)) (Optional)
+* Target disease (SNOMED code from [AIR Diseases Covered](ValueSet-air-disease-covered-code.html) value set) (Optional)
 * Exclude status reason (one or more system|code (or just code) from  [AIR Status Reason Code Value Set](ValueSet-air-status-reason-code.html)) (Optional)
 * Exclude immunisation status (one or more of: entered-in-error, completed, not-done) (Optional)
-```json
+
+```JavaScript
 patient: "ZZZ7541"
 patient: "Patient/ZZZ7541"
 patient: "https://api.hip.digital.health.nz/fhir/nhi/v2/Patient/ZZZ7541"
@@ -47,19 +48,18 @@ status:not-in: "entered-in-error"
 
 ### Behaviour
 
-* Patient record/NHI is validated
+* Patient record/NHI is validated.
 * Immunisation records that belong to all the NHIs (live and dormant) that have the same consumer id matching the consumer id assigned to the NHI submitted in the request will be returned.
 * If a target disease is provided, only immunisations for that disease are returned.
 * If one or more status reasons are provided, only immunisations which do NOT contain any of those status reasons are returned.
 * If one or more statuses are provided, only immunisations which do NOT contain any of those statuses are returned.
 * If ImmSOT is unable to map a vaccine to the target disease provided (e.g. invalid disease code), no immunisations will be returned.
-* If admin scope is also present, then include the full data quality result with the response.
-* If access is restricted to the NHI in the Search request or any linked NHIs (live or dormant), then return an empty result, with redacted metadata.
+* If access is restricted to the NHI in the Search request or any linked NHIs (live or dormant), then an empty result will be returned, with redacted metadata.
 
 ### Responses
 Content-Type: application/fhir+json
 
-#### Search returns results
+#### Search results example
 HTTP/1.1 200 OK
 
 ```json
@@ -742,7 +742,88 @@ HTTP/1.1 200 OK
 }
 ```
 
+#### Search with invalid patient reference URL returns error response
+HTTP/1.1 400 Bad Request
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "processing",
+            "diagnostics": "Invalid URL path specified.  Valid URL is https://api.hip.digital.health.nz/fhir/nhi/v2/Patient"
+        }
+    ]
+}
+```
+
+#### Search with invalid patient relative reference returns error response
+HTTP/1.1 400 Bad Request
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "processing",
+            "diagnostics": "Random string in relative reference.  Relative reference should start with resource type 'Patient'"
+        }
+    ]
+}
+```
+
+#### Search with invalid NHI given returns error response
+HTTP/1.1 422 Unprocessable Entity
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "invariant",
+            "diagnostics": "The NHI number provided does not pass the NHI checksum. Please try searching again with a valid NHI number."
+        }
+    ]
+}
+```
+
+#### Search with incorrect resource type in reference parameter returns error response
+HTTP/1.1 400  Bad Request
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "processing",
+            "diagnostics": "Resource type in reference must be 'Patient'. Found: Subject"
+        }
+    ]
+}
+```
+
+#### Search with no NHI returns error response
+HTTP/1.1 400 Bad Request
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "processing",
+            "diagnostics": "Missing Patient NHI value to search."
+        }
+    ]
+}
+```
+
 #### Search returns results, including data quality information
+HTTP/1.1 200 OK
 
 ```json
 {
@@ -928,87 +1009,7 @@ HTTP/1.1 200 OK
 
 ```
 
-#### Search with invalid patient reference URL returns error response
-HTTP/1.1 400 Bad Request
-
-```json
-{
-    "resourceType": "OperationOutcome",
-    "issue": [
-        {
-            "severity": "error",
-            "code": "processing",
-            "diagnostics": "Invalid URL path specified.  Valid URL is https://api.hip.digital.health.nz/fhir/nhi/v1/Patient"
-        }
-    ]
-}
-```
-
-#### Search with invalid patient relative reference returns error response
-HTTP/1.1 400 Bad Request
-
-```json
-{
-    "resourceType": "OperationOutcome",
-    "issue": [
-        {
-            "severity": "error",
-            "code": "processing",
-            "diagnostics": "Random string in relative reference.  Relative reference should start with resource type 'Patient'"
-        }
-    ]
-}
-```
-
-#### Search with invalid NHI given returns error response
-HTTP/1.1 422 Unprocessable Entity
-
-```json
-{
-    "resourceType": "OperationOutcome",
-    "issue": [
-        {
-            "severity": "error",
-            "code": "invariant",
-            "diagnostics": "The NHI number provided does not pass the NHI checksum. Please try searching again with a valid NHI number."
-        }
-    ]
-}
-```
-
-#### Search with incorrect resource type in reference parameter returns error response
-HTTP/1.1 400  Bad Request
-
-```json
-{
-    "resourceType": "OperationOutcome",
-    "issue": [
-        {
-            "severity": "error",
-            "code": "processing",
-            "diagnostics": "Resource type in reference must be 'Patient'. Found: Subject"
-        }
-    ]
-}
-```
-
-#### Search with no NHI returns error response
-HTTP/1.1 400 Bad Request
-
-```json
-{
-    "resourceType": "OperationOutcome",
-    "issue": [
-        {
-            "severity": "error",
-            "code": "processing",
-            "diagnostics": "Missing Patient NHI value to search."
-        }
-    ]
-}
-```
-
-#### Response for suppressed consumer
+#### Response for consumer with Restricted Access
 HTTP/1.1 200 OK
 
 ```json
@@ -1037,10 +1038,4 @@ HTTP/1.1 200 OK
 
 ### Scope/s required
 Any FHIR scope that includes system/immunization.s , for example  
-system/immunization.cruds and/or system/immunization.s  
-
-To Include data quality results  
-
-Also have  
-
-air-admin/Immunization.cruds and/or air-admin/Immunization.s
+system/immunization.cruds and/or system/immunization.s

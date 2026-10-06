@@ -31,9 +31,9 @@ It performs the following:
 
 ### Operation 
 
-```HTTP
-POST https://api_endpoint/v2/fhir/Immunization/$upsert
-```
+~~~
+POST https://api_endpoint/Immunization/$upsert
+~~~
 
 ### Request Headers
 

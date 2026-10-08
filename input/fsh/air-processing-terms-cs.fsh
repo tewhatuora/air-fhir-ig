@@ -1,7 +1,7 @@
 CodeSystem: AIRProcessingTerms
 Id: air-processing-terms
 Title: "AIR Processing Terms"
-Description: "This Code System contains meta tags that AIR used to signal processing outcomes."
+Description: "This Code System contains meta tags that AIR uses to signal processing outcomes."
 
 * insert StandardMetadata
 

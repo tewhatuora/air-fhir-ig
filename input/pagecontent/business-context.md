@@ -10,13 +10,13 @@ Over their lifetime, New Zealanders can receive vaccinations from a range of hea
 
 AIR serves as a single point of truth for understanding overall immunisation coverage from a population health perspective or for planning targeted interventions. The AIR enables immunisation healthcare providers to access immunisation health records and make better decisions about whether a person should or should not receive a vaccination.
 
-The Immunisation API is a [RESTful API](https://build.fhir.org/http.html) that provides access to the AIR. The API supports industry-standard [FHIR](http://hl7.org/fhir/)&reg; representations in data of common entities, relationships, artefacts and events encountered in a health context, such as such as [Immunization](StructureDefinition-air-immunization.html), [Patient](StructureDefinition-air-patient.html), [Practitioner](StructureDefinition-air-practitioner.html) and so forth.
+The Immunisation API is a [RESTful API](https://build.fhir.org/http.html) that provides access to the AIR. The API supports industry-standard [FHIR](http://hl7.org/fhir/)&reg; representations in data of common entities, relationships, artefacts and events encountered in a health context, such as [Immunization](StructureDefinition-air-immunization.html), [Patient](StructureDefinition-air-patient.html), [Practitioner](StructureDefinition-air-practitioner.html) and so forth.
 
 For more context please visit the [Immunisation Programme](https://www.healthnz.govt.nz/about-us/what-we-do/programmes-and-initiatives/immunisation-programme) on the Health NZ website.
 
 ### History
 
-The [NIR](https://www.tewhatuora.govt.nz/for-the-health-sector/vaccine-information/national-immunisation-registers/national-immunisation-register/) was in place nationwide from 2005 until its retirement with the roll-out of AIR in December, 2023. Its original purpose was to collect comprehensive information about childhood immunisation rates, as well as support the MeNZB immunisation programme. As a consequence, a clear record of childhood immunisation for children born since 2005 was available, however comprehensive information about immunisation for people aged 15 years and over was not.
+The NIR was in place nationwide from 2005 until its retirement with the roll-out of AIR in December, 2023. Its original purpose was to collect comprehensive information about childhood immunisation rates, as well as support the MeNZB immunisation programme. As a consequence, a clear record of childhood immunisation for children born since 2005 was available, however comprehensive information about immunisation for people aged 15 years and over was not.
 
 AIR continues to be developed and expanded to meet the needs of its many stakeholders.
 
@@ -32,8 +32,8 @@ It reduces digital barriers and supports the health sector to deliver better imm
 
 The following are a few scenarios for which the Immunisation API might be used.
 - Immunisation administration (at practices, clinics and so on)
-- Consumer portals and apps - view own and dependent immunisation history
-- - Workforce onboarding – visibility and sharing of immunisation history
+- Consumer portals and apps - view own and dependant's immunisation history
+- Workforce onboarding – visibility and sharing of immunisation history
 - Hospitals – visibility of immunisation for in-patient care
 - Outreach for opportunistic vaccinations
 

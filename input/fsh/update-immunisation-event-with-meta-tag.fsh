@@ -8,7 +8,7 @@ Description: "Example immunisation update response with meta.tag"
 InstanceOf: Immunization
 Usage: #example
 * meta.tag[0].system = "https://standards.digital.health.nz/ns/air-processing-terms"
-* meta.tag[=].code = $AIRProcessingTerms#identifier-not-updated
+* meta.tag[=].code = $AIRProcessingTerms#patient-identifier-immutable
 * meta.tag[=].display = "Patient identifier not updated - identifier is immutable for this operation"
 * meta.extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system"
 * meta.extension[=].valueString = "HSAPP0010"

@@ -3,14 +3,16 @@
 The "update" operation is used to update an existing immunisation event. This method checks if the immunisation event with the given ID exists, and if it does, it updates the event with the new details provided. The method also performs validation checks to ensure that the updated event is valid before it is saved. Validation includes [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
 
 The update operation performs the following:
+1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to update an immunisation record.
 1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 1. Check if the version of the existing event in the request header If-Match matches the version of the event being updated. If the versions do not match, it returns an error with a message indicating that the received version in the request payload does not match the existing version.
-1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "patient-identifier-immutable" is returned in the response.
-1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html)
+1. Check the event data with the [Rejection Rules](rejectionRules.html). If invalid, it returns an error with a message indicating the problem.
+1. With the Patient Identifier for the incoming event, compare to all other existing events for that Patient. If an exact duplicate is found, then it sets incoming status to "entered-in-error" with status reason indicating a duplicate report and a duplicate resolution event is published via NEMS. See [Handling of Exact Duplicates](#handling-of-exact-duplicates).
 1. Create a new version of the event with the updated details and a new version number.
+1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "patient-identifier-immutable" will be returned in the response. See [patient-identifier-immutable in the response](#patient-identifier-immutable-in-the-response).
+1. Check the event data with the [Data Quality Rules](dataQualityRules.html). If `dqIgnore` meta extension value is set as true in the request, then the update operation won’t perform data quality checks, in which case the response won’t contain a data quality score and relevant information.
 1. Save the new version of the event to the database.
 1. Return the updated event and any validation issues identified in the meta sections.
-1. If `dqIgnore` meta extension value is set as true in the request, then the update operation won’t perform data quality checks, in which case the response won’t contain a data quality score and relevant information.
 
 ### Operation
 ```HTTP
@@ -19,14 +21,12 @@ PUT https://api_endpoint/Immunization/{id}
 
 ### Request Headers
 
-All the headers listed [here](requestHeaders.html) in addition to “If-Match” header with the value of the version of the immunisation record being updated.
+All headers listed [here](requestHeaders.html) are required in addition to “If-Match” header with the value of the version of the immunisation record being updated.
 
-### Requests
-
-#### Update Immunisation- Excludes updating NHI
-##### Request Body
+### Request Body
 Post a full set of immunisation record details. See below for an example and refer to the [AIR Immunization Profile](StructureDefinition-air-immunization.html) for its structure definition.
 
+#### Sample Request Payload
 ```json
 {
     "resourceType": "Immunization",
@@ -264,16 +264,44 @@ Post a full set of immunisation record details. See below for an example and ref
     ]
 }
 ```
-##### Behaviour
-* immunisation record is validated
-* If all the attributes / items in the immunisation record are valid, a new immunisation record with an updated version is added with the details populated in the request.
-* Some fields such as the NHI will be checked to verify that they have not changed from the previous version of the record.
+### Behaviour
+* Immunisation record is validated against the [Rejection Rules](rejectionRules.html).
+* If any exact duplicates are found, status and status reason are set accordingly. See [Handling of Exact Duplicates](#handling-of-exact-duplicates).
+* If all attributes / items in the immunisation record are valid, a new version of the immunisation record is added with the details populated in the request.
+* The NHI number is checked to verify it has not changed from the previous version of the record. See [patient-identifier-immutable in the response](#patient-identifier-immutable-in-the-response).
+* Immunisation record is validated against [Data Quality Rules](dataQualityRules.html).
+  * If any potential duplicates are found, then a data quality issue will be identified. See [Duplicate Record Handling](duplicateRecordHandling.html).
+  * The optional `dqIgnore` parameter in the request can be used to prevent data quality details appearing in the response. This is **not** recommended for interactive systems, in which end users SHOULD be given the opportunity to resolve issues and submit an update.
 
-##### Response
+#### Handling of Exact Duplicates
+With the Patient Identifier for the incoming event, AIR compares to all other existing events for all NHIs linked to that Patient. If an exact duplicate is found, then: 
+* It sets the incoming record's status to "entered-in-error" with status reason indicating a duplicate report. These values are stored in AIR and appear in the response per the example [below](#exact-duplicate-entered-in-error-example).
+* A duplicate resolution event is published via NEMS.
+* The API Client SHALL detect this condition and handle it accordingly.
+
+##### Exact Duplicate entered-in-error example
+
+HTTP status 200
+~~~json
+...
+"status": "entered-in-error",
+"statusReason": {
+    "coding": [
+        {
+            "system": "http://snomed.info/sct",
+            "code": "445672005",
+            "display": "Duplicate report"
+        }
+    ]
+}, ...
+~~~
+
+### Response
 Returns the updated immunisation record. Data quality issues will be identified and sent as part of the response in the meta section of the resource, see the response sample payload below.
 
 If there were any issues with the update, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the update operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values. See [Rejection Rules](rejectionRules.html) for a list of the rules that must be adhered to for an Immunisation Event to be uploaded to ImmSOT.
 
+#### Sample Response Payload, Immunisation Event updated successfully
 ```json
 {
     "resourceType": "Immunization",
@@ -711,4 +739,4 @@ The response to a create or update includes Match Quality information when an im
 
 ##### Scope/s Required
 
-Any FHIR scope that includes system/immunization.u , for example system/immunization.cruds and/or system/immunization.u 
+Any FHIR scope that includes system/immunization.u , for example system/immunization.crus and/or system/immunization.u 

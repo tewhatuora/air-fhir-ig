@@ -2,19 +2,19 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
-  version: "2.0.0-SNAPSHOT"
+  version: "2.0.0"
 servers:
   - url: https://api.air.digital.health.nz/s2s/fhir/R4
     description: PROD - External system-to-system endpoint for version 1
   - url: https://api.air.digital.health.nz/s2s/fhir/R4/v2
     description: PROD - External system-to-system endpoint for version 2
-  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4
+  - url: https://api.test.air.digital.health.nz/s2s/fhir/R4
     description: TEST - External system-to-system endpoint for version 1
-  - url: https://api.air-test.digital.health.nz/s2s/fhir/R4/v2
+  - url: https://api.test.air.digital.health.nz/s2s/fhir/R4/v2
     description: TEST - External system-to-system endpoint for version 2
-  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4
+  - url: https://api.uat.air.digital.health.nz/s2s/fhir/R4
     description: UAT - External system-to-system endpoint for version 1
-  - url: https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2
+  - url: https://api.uat.air.digital.health.nz/s2s/fhir/R4/v2
     description: UAT - External system-to-system endpoint for version 2
 paths:
   /Immunization:
@@ -25,7 +25,6 @@ paths:
         Returns either the created Immunization record or if there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
@@ -51,7 +50,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - OAuth2ClientCredentials:
             - system/Immunization.c
   /Immunization/{ID}:
     get:
@@ -61,7 +60,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       responses:
         "200":
@@ -84,7 +82,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - OAuth2ClientCredentials:
             - system/Immunization.r
     put:
       operationId: update
@@ -97,7 +95,6 @@ paths:
         - $ref: '#/components/parameters/ID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/If-Match'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
@@ -123,7 +120,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - OAuth2ClientCredentials:
             - system/Immunization.u
   /Immunization/_search:
     post:
@@ -131,7 +128,6 @@ paths:
       description: "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
         - name: patient
           in: query
@@ -177,10 +173,6 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum:
-                - entered-in-error
-                - completed
-                - not-done
           description: Used in standard search only. Exclude given status(s) [entered-in-error, completed, not-done]
           example: entered-in-error,completed
         - name: status
@@ -192,10 +184,6 @@ paths:
             maxItems: 1000
             items:
               type: string
-              enum:
-                - entered-in-error
-                - completed
-                - not-done
           description: Used in standard search only. Include only given status(s) [entered-in-error, completed, not-done]
           example: entered-in-error,completed
         - name: _include
@@ -312,7 +300,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - OAuth2ClientCredentials:
             - system/Immunization.s
   /Immunization/$upsert:
     post:
@@ -328,7 +316,6 @@ paths:
         4. Failure to process the event, reject the request
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         description: |
@@ -355,9 +342,24 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - OAuth2ClientCredentials:
             - system/Immunization.c
             - system/Immunization.u
+  /CarePlan/$view:
+    post:
+      parameters:
+        - $ref: '#/components/parameters/X-Correlation-ID'
+        - $ref: '#/components/parameters/request-context'
+        - name: nhi
+          in: query
+          required: true
+          description: The NHI identifier of the patient whose care plan is being viewed.
+          schema:
+            type: string
+          example: ZKN2155
+      security:
+        - OAuth2ClientCredentials:
+            - system/CarePlan.s
 components:
   schemas:
     Address:
@@ -511,6 +513,127 @@ components:
           maxItems: 1000
           items:
             $ref: '#/components/schemas/AirImmunization'
+    AirCarePlan:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        id:
+          type: string
+        instantiatesCanonical:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        intent:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        subject:
+          type: object
+          properties:
+            reference:
+              type: string
+            identifier:
+              $ref: '#/components/schemas/Identifier'
+        period:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        created:
+          type: string
+          format: date-time
+        activity:
+          type: array
+          items:
+            type: object
+            properties:
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
+    AirImmunizationRecommendation:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum: [ImmunizationRecommendation]
+        meta:
+          type: object
+          properties:
+            profile:
+              type: array
+              items:
+                type: string
+        patient:
+          $ref: '#/components/schemas/LogicalReference'
+        date:
+          type: string
+          format: date-time
+        recommendation:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              extension:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AirExtension'
+              vaccineCode:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              forecastStatus:
+                $ref: '#/components/schemas/CodeableConcept'
+              forecastReason:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeableConcept'
+              dateCriterion:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      $ref: '#/components/schemas/CodeableConcept'
+                    value:
+                      type: string
+                      format: date
+              series:
+                type: string
+              doseNumberString:
+                type: string
+    CarePlanBundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+        type:
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+              resource:
+                oneOf:
+                  - $ref: "#/components/schemas/AirCarePlan"
+                  - $ref: "#/components/schemas/AirImmunization"
+                  - $ref: "#/components/schemas/AirImmunizationRecommendation"
     ContactPoint:
       type: object
       properties:
@@ -1608,13 +1731,6 @@ components:
       schema:
         type: string
       example: "1"
-    X-Api-Key:
-      name: x-api-key
-      in: header
-      description: api-key
-      required: true
-      schema:
-        type: string
     request-context:
       name: request-context
       in: header
@@ -3196,19 +3312,16 @@ components:
       schema:
         type: string
   securitySchemes:
-    apikey_header:
-      type: apiKey
-      description: API key for the Gateway
-      name: x-api-key
-      in: header
-    OAuth2Implicit:
+    OAuth2ClientCredentials:
       type: oauth2
+      description: OAuth 2.0 client_credentials flow for system-to-system access.
       flows:
-        implicit:
-          authorizationUrl: https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token
+        clientCredentials:
+          tokenUrl: https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token
           scopes:
-            system/Immunization.crus: full create, read, update and search scopes
-            system/Immunization.c: create scope
-            system/Immunization.r: read scope
-            system/Immunization.u: update scope
-            system/Immunization.s: search scope
+            system/Immunization.crus: Full access to Immunization resources (create, read, update, search)
+            system/Immunization.c: Create Immunization resources
+            system/Immunization.r: Read Immunization resources
+            system/Immunization.u: Update Immunization resources
+            system/Immunization.s: Search Immunization resources
+            system/CarePlan.s: Search CarePlan resources

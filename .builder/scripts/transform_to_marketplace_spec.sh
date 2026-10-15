@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # Create a cut-down OpenAPI spec for external/marketplace clients.
+# Aligned with DSH marketplace spec v0.7.13.
 # Requires Mike Farah yq v4.x: https://github.com/mikefarah/yq
 
 INPUT="${1:-immsot-ig-template-local/package/content/ImmSoTAPI.yaml}"
@@ -21,9 +22,14 @@ fi
 TMP_FILE="$(mktemp)"
 trap 'rm -f "$TMP_FILE" "${TMP_FILE}.2"' EXIT
 
-# Step 1: keep only external paths and components that can be referenced.
+# Step 1: Set info, servers, paths, and keep only external schemas/params/responses/examples.
+# Servers aligned with DSH marketplace spec URL pattern.
+# Paths include CarePlan/$view for marketplace.
+# Parameters: NO X-Api-Key (gateway handles auth via bearer token).
 yq '
 .info.description = "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database for approved external system-to-system clients."
+|
+.info.version = "2.0.0"
 |
 .servers = [
   {
@@ -35,19 +41,19 @@ yq '
     "description": "PROD - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4",
     "description": "TEST - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "TEST - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4",
     "description": "UAT - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "UAT - External system-to-system endpoint for version 2"
   }
 ]
@@ -56,15 +62,21 @@ yq '
   "/Immunization": .paths."/fhir/R4/Immunization",
   "/Immunization/{ID}": .paths."/fhir/R4/Immunization/{ID}",
   "/Immunization/_search": .paths."/fhir/R4/Immunization/_search",
-  "/Immunization/$upsert": .paths."/fhir/R4/Immunization/$upsert"
+  "/Immunization/$upsert": .paths."/fhir/R4/Immunization/$upsert",
+  "/CarePlan/$view": .paths."/fhir/R4/CarePlan/$view"
 }
 |
 .paths."/Immunization/{ID}" |= pick(["get", "put"])
+|
+.paths."/CarePlan/$view" |= pick(["post"])
 |
 .components.schemas |= pick([
   "Address",
   "AirImmunization",
   "AirImmunizationBundle",
+  "AirCarePlan",
+  "AirImmunizationRecommendation",
+  "CarePlanBundle",
   "ContactPoint",
   "Contained",
   "AirExtension",
@@ -124,7 +136,7 @@ yq '
   "CreateSuccessDQPass",
   "CreateSuccessPotentialDuplicate",
   "InvalidData",
-  "TooManyRequest",
+  "TooManyReuqest",
   "InternalError",
   "NotFound",
   "CreatePayload",
@@ -141,41 +153,30 @@ yq '
 }
 |
 .components.securitySchemes |= pick([
-  "apikey_header",
-  "OAuth2Implicit"
+  "OAuth2ClientCredentials"
 ])
-|
-.components.securitySchemes.OAuth2Implicit.flows.implicit.scopes |= pick([
-  "system/Immunization.crus",
-  "system/Immunization.c",
-  "system/Immunization.r",
-  "system/Immunization.u",
-  "system/Immunization.s"
-])
-|
-.components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl = "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
 |
 .components.parameters |= pick([
   "ID",
   "X-Correlation-ID",
   "If-Match",
-  "X-Api-Key",
   "request-context"
 ])
 ' "$INPUT" > "$TMP_FILE"
 
-# Step 2: explicitly set operation parameters. This avoids brittle recursive deletes.
+# Step 2: Set operation parameters — aligned with DSH spec.
+# NO x-api-key on any endpoint (gateway handles auth via bearer token).
+# Only X-Correlation-ID and request-context on operations, plus ID/If-Match where needed.
+# Add CarePlan/$view parameters including nhi query param.
 yq '
 .paths."/Immunization".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/{ID}".get.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
@@ -183,19 +184,29 @@ yq '
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/If-Match"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/$upsert".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
+]
+|
+.paths."/CarePlan/$view".post.parameters = [
+  {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/request-context"},
+  {
+    "name": "nhi",
+    "in": "query",
+    "required": true,
+    "description": "The NHI identifier of the patient whose care plan is being viewed.",
+    "schema": {"type": "string"},
+    "example": "ZKN2155"
+  }
 ]
 |
 .paths."/Immunization/_search".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"},
   {
     "name": "patient",
@@ -231,7 +242,7 @@ yq '
     "in": "query",
     "required": false,
     "explode": false,
-    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string", "enum": ["entered-in-error", "completed", "not-done"]}},
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string"}},
     "description": "Used in standard search only. Exclude given status(s) [entered-in-error, completed, not-done]",
     "example": "entered-in-error,completed"
   },
@@ -240,7 +251,7 @@ yq '
     "in": "query",
     "required": false,
     "explode": false,
-    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string", "enum": ["entered-in-error", "completed", "not-done"]}},
+    "schema": {"type": "array", "maxItems": 1000, "items": {"type": "string"}},
     "description": "Used in standard search only. Include only given status(s) [entered-in-error, completed, not-done]",
     "example": "entered-in-error,completed"
   },
@@ -298,8 +309,8 @@ yq '
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 3: keep external standard _search behaviour and remove JSON/admin data-quality search.
-# Do not use example keys with spaces here; Mike Farah yq can lexer-fail on those in object literals.
+# Step 3: Rewrite _search description/requestBody for standard search only.
+# Set CarePlan/$view security.
 yq '
 .paths."/Immunization/_search".post.description = "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
 |
@@ -330,21 +341,39 @@ yq '
   }
 }
 |
-.paths."/Immunization/_search".post.security = [
+.paths."/CarePlan/$view".post.security = [
   {
-    "OAuth2Implicit": [
-      "system/Immunization.s"
+    "OAuth2ClientCredentials": [
+      "system/CarePlan.s"
     ]
   }
 ]
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 4: remove admin scopes from retained operation security blocks explicitly.
+# Step 4: Set all security blocks to client_credentials OAuth 2 (aligned with DSH spec).
+# Remove OAuth2Implicit — marketplace uses client_credentials with token URL.
+# Add CarePlan.s scope for the new CarePlan endpoint.
 yq '
+.paths."/Immunization".post.security = [
+  {
+    "OAuth2ClientCredentials": [
+      "system/Immunization.c"
+    ]
+  }
+]
+|
+.paths."/Immunization/{ID}".get.security = [
+  {
+    "OAuth2ClientCredentials": [
+      "system/Immunization.r"
+    ]
+  }
+]
+|
 .paths."/Immunization/{ID}".put.security = [
   {
-    "OAuth2Implicit": [
+    "OAuth2ClientCredentials": [
       "system/Immunization.u"
     ]
   }
@@ -352,16 +381,45 @@ yq '
 |
 .paths."/Immunization/$upsert".post.security = [
   {
-    "OAuth2Implicit": [
+    "OAuth2ClientCredentials": [
       "system/Immunization.c",
       "system/Immunization.u"
     ]
   }
 ]
+|
+.paths."/Immunization/_search".post.security = [
+  {
+    "OAuth2ClientCredentials": [
+      "system/Immunization.s"
+    ]
+  }
+]
+|
+.components.securitySchemes.OAuth2ClientCredentials = {
+  "type": "oauth2",
+  "description": "OAuth 2.0 client_credentials flow for system-to-system access.",
+  "flows": {
+    "clientCredentials": {
+      "tokenUrl": "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token",
+      "scopes": {
+        "system/Immunization.crus": "Full access to Immunization resources (create, read, update, search)",
+        "system/Immunization.c": "Create Immunization resources",
+        "system/Immunization.r": "Read Immunization resources",
+        "system/Immunization.u": "Update Immunization resources",
+        "system/Immunization.s": "Search Immunization resources",
+        "system/CarePlan.s": "Search CarePlan resources"
+      }
+    }
+  }
+}
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 5: write final output.
+# Step 5: Keep meta.tag and doseNumberString as-is from the internal spec.
+# These fields are retained in the marketplace spec per team decision.
+
+# Step 6: Write final output.
 mkdir -p "$(dirname "$OUTPUT")"
 cp "$TMP_FILE" "$OUTPUT"
 

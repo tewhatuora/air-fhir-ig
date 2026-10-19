@@ -18,8 +18,8 @@ It performs the following:
 
 1. Check that the authorization token contains the required permissions, if not it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
 1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
-1. With the Patient Identifier for the incoming event, compare to all other existing events for that Patient. If an exact duplicate is found, then return the _original_ record with `meta.tag` `exact-duplicate-not-created` and publish a duplicate resolution event via NEMS.
-1. Check if an immunisation event with the same primary attributes exists. These include: Patient Identifier, Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number.
+1. With the Patient Identifier (NHI number) for the incoming event, compare to other existing events for that Identifier. If an exact duplicate is found, then return the _original_ record with `meta.tag` `exact-duplicate-not-created` and publish a duplicate resolution event via NEMS.
+1. Check if an immunisation event with the same primary attributes exists. These include: Patient Identifier (all NHIs linked to that Patient), Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number.
     * If a single existing immunisation event record is found, then it performs an Update of that record.
     * If no existing immunisation event record is found, then it performs a Create.
     * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
@@ -89,7 +89,7 @@ Post a full set of immunisation resource details. See below. The FHIR specificat
 
 ### Behaviour
 
-With the Patient Identifier for the incoming event, AIR compares to all existing events for that Patient. If an exact match is found, then it does not create a new event, instead returning the _existing_ record marked with `meta.tag` `exact-duplicate-not-created` and a duplicate resolution event is published via NEMS citing both AIR Identifiers (Immunization.id).
+AIR compares to all existing events with the Patient Identifier for the incoming event. If an exact match is found, then it does not create a new event, instead returning the _existing_ record marked with `meta.tag` `exact-duplicate-not-created` and a duplicate resolution event is published via NEMS citing both AIR Identifiers (Immunization.id).
 
 See [Handling of Exact Duplicates](#handling-of-exact-duplicates) for an example response.
 
@@ -110,75 +110,73 @@ AIR returns the created or updated Immunization record. If there were any issues
 
 ~~~json
 {   
-                "resourceType": "Immunization",
-                "id": "c3640160-ad52-4aff-9bf3-fcf454c3962d",
-                "meta": {
-                    "extension": [
-                        {
-                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
-                            "valueString": "Postman"
-                        },
-                        {
-                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
-                            "valueString": "PostmanUser"
-                        },
-                        {
-                            "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
-                            "valueInstant": "2023-10-09T21:34:29.475+13:00"
-                        },
-                        {
-                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
-                            "valueString": "PostmanUser"
-                        },
-                        {
-                            "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
-                            "valueString": "Postman"
-                        }
-                    ],
-                    "versionId": "1",
-                    "lastUpdated": "2023-10-09T21:46:16.918+13:00",
-                    "profile": [
-                        "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
-                    ]
-                },        
-                "patient": {
-                    "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
-                    "identifier": {
-                        "system": "https://standards.digital.health.nz/ns/nhi-id",
-                        "value": "ZZZ7541"
-                    }
-                },
-                "occurrenceDateTime": "2023-01-29T00:00:00.000+13:00",
-                "location": {
-                    "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
-                    "identifier": {
-                        "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
-                        "value": "FZZ835-E"
-                    }
-                }, 
-                "status": "completed",
-                "statusReason": {
-                    "coding": [
-                        {
-                          "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
-                          "code": "GIVEN",
-                          "display": "Vaccination given"
-                        }
-                    ]
-                },
-                "vaccineCode": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/sid/cvx",
-                            "version": "1.0.0",
-                            "code": "03",
-                            "display": "MMR"
-                        }
-                    ],
-                    "text": "Priorix"
-                }
+    "resourceType": "Immunization",
+    "id": "c3640160-ad52-4aff-9bf3-fcf454c3962d",
+    "meta": {
+        "extension": [
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-source-system",
+                "valueString": "Postman"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-created-by",
+                "valueString": "PostmanUser"
+            },
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/firstCreated",
+                "valueInstant": "2023-10-09T21:34:29.475+13:00"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-by",
+                "valueString": "PostmanUser"
+            },
+            {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-modified-source-system",
+                "valueString": "Postman"
             }
+        ],
+        "versionId": "1",
+        "lastUpdated": "2023-10-09T21:46:16.918+13:00",
+        "profile": [
+            "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization"
+        ]
+    },        
+    "patient": {
+        "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZZZ7541",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "ZZZ7541"
         }
+    },
+    "occurrenceDateTime": "2023-01-29T00:00:00.000+13:00",
+    "location": {
+        "reference": "https://api.hip.digital.health.nz/fhir/hpi/v1/Location/FZZ835-E",
+        "identifier": {
+            "system": "https://standards.digital.health.nz/ns/hpi-facility-id",
+            "value": "FZZ835-E"
+        }
+    }, 
+    "status": "completed",
+    "statusReason": {
+        "coding": [
+            {
+              "system": "https://standards.digital.health.nz/ns/air-status-reason-terms",
+              "code": "GIVEN",
+              "display": "Vaccination given"
+            }
+        ]
+    },
+    "vaccineCode": {
+        "coding": [
+            {
+                "system": "http://hl7.org/fhir/sid/cvx",
+                "version": "1.0.0",
+                "code": "03",
+                "display": "MMR"
+            }
+        ],
+        "text": "Priorix"
+    }
 }
 ~~~
 

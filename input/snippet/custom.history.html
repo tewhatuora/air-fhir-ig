@@ -51,13 +51,24 @@ This table provides a list of versions of the Aotearoa Immunisation Register (AI
         Dose number in Immunization and ImmunizationRecommendation is now <code>doseNumberString</code>, previously <code>doseNumberPositiveInt</code>.
     </li>
     <li>
-        The latest existing record is returned if an exact duplicate is submitted via the Create API.
+        The latest existing record is returned if an exact duplicate is submitted via the <b>Create API</b> and <b>Upsert</b> operation.
         <ol>
             <li>
-                Given a POST to <code>/Immunization</code> (Create operation), when AIR detects an exact duplicate of the record submitted, then no change is made and AIR returns HTTP status code 201. The Immunization resource in the response contains the AIR Identifier (Immunization.id) of the most recent existing record and contains a meta tag that indicates what has occurred.
+                Given a POST to <code>/Immunization</code> (Create operation) or <code>/Immunization/$upsert</code> (conditional Create), when AIR detects an exact duplicate of the record submitted, then no change is made and AIR returns HTTP status code 201. The Immunization resource in the response contains the AIR Identifier (Immunization.id) of the most recent existing record and contains a meta tag that indicates what has occurred.
             </li>
             <li>
-                Previously, the status in the response was entered-in-error with HTTP status code 200.
+                Previously, for Create, and for Upsert when multiple exact matches found, the status in the response was entered-in-error with HTTP status code 200 and status reason "Duplicate report".
+            </li>
+        </ol>
+    </li>
+    <li>
+        The status is set to entered-in-error if an exact duplicate is submitted via the <b>Update API.</b>
+        <ol>
+            <li>
+                Given a PUT to <code>/Immunization/{id}</code> (Update operation), when AIR detects an exact duplicate of the record submitted, then the status in the response is entered-in-error with HTTP status code 200 and status reason "Duplicate report".
+            </li>
+            <li>
+                Previously, the record was saved with a Potential Duplicate data quality violation for administrative review.
             </li>
         </ol>
     </li>

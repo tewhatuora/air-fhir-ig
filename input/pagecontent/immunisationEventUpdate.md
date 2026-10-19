@@ -7,8 +7,9 @@ The update operation performs the following:
 1. Check if the immunisation event with the given ID exists. If it does not exist, returns an error with a message indicating that the event does not exist.
 1. Check if the version of the existing event in the request header If-Match matches the version of the event being updated. If the versions do not match, it returns an error with a message indicating that the received version in the request payload does not match the existing version.
 1. Check the event data with the [Rejection Rules](rejectionRules.html). If invalid, it returns an error with a message indicating the problem.
-1. With the Patient Identifier for the incoming event, compare to all other existing events for that Patient. If an exact duplicate is found, then it sets incoming status to "entered-in-error" with status reason indicating a duplicate report and a duplicate resolution event is published via NEMS. See [Handling of Exact Duplicates](#handling-of-exact-duplicates).
+1. With the Patient Identifier for the incoming event, compare to other existing events for that NHI. If an exact duplicate is found, then it sets incoming status to "entered-in-error" with status reason indicating a duplicate report and a duplicate resolution event is published via NEMS. See [Handling of Exact Duplicates](#handling-of-exact-duplicates).
 1. Create a new version of the event with the updated details and a new version number.
+1. If a potential duplicate is found, then it raises a Potential Duplicate data quality violation.
 1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the meta.tag "patient-identifier-immutable" will be returned in the response. See [patient-identifier-immutable in the response](#patient-identifier-immutable-in-the-response).
 1. Check the event data with the [Data Quality Rules](dataQualityRules.html). If `dqIgnore` meta extension value is set as true in the request, then the update operation won’t perform data quality checks, in which case the response won’t contain a data quality score and relevant information.
 1. Save the new version of the event to the database.
@@ -274,7 +275,7 @@ Post a full set of immunisation record details. See below for an example and ref
   * The optional `dqIgnore` parameter in the request can be used to prevent data quality details appearing in the response. This is **not** recommended for interactive systems, in which end users SHOULD be given the opportunity to resolve issues and submit an update.
 
 #### Handling of Exact Duplicates
-With the Patient Identifier for the incoming event, AIR compares to all other existing events for all NHIs linked to that Patient. If an exact duplicate is found, then: 
+With the Patient Identifier for the incoming event, AIR compares to other existing events for that NHI. If an exact duplicate is found, then: 
 * It sets the incoming record's status to "entered-in-error" with status reason indicating a duplicate report. These values are stored in AIR and appear in the response per the example [below](#exact-duplicate-entered-in-error-example).
 * A duplicate resolution event is published via NEMS.
 * The API Client SHALL detect this condition and handle it accordingly.

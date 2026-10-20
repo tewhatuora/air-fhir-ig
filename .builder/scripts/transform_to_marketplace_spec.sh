@@ -68,7 +68,7 @@ yq '
 |
 .paths."/Immunization/{ID}" |= pick(["get", "put"])
 |
-.paths."/CarePlan/$view" |= pick(["post"])
+.paths."/CarePlan/$view" |= pick(["get"])
 |
 .components.schemas |= pick([
   "Address",
@@ -192,7 +192,7 @@ yq '
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
-.paths."/CarePlan/$view".post.parameters = [
+.paths."/CarePlan/$view".get.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/request-context"},
   {
@@ -341,13 +341,30 @@ yq '
   }
 }
 |
-.paths."/CarePlan/$view".post.security = [
+.paths."/CarePlan/$view".get.security = [
   {
     "OAuth2ClientCredentials": [
-      "system/CarePlan.s"
+      "system/CarePlan.s",
+      "system/ImmunizationRecommendation.r",
+      "system/Immunization.r"
     ]
   }
 ]
+|
+.paths."/CarePlan/$view".get.responses = {
+  "200": {
+    "description": "Ok",
+    "content": {
+      "application/fhir+json": {
+        "schema": {"$ref": "#/components/schemas/CarePlanBundle"}
+      }
+    }
+  },
+  "400": {"$ref": "#/components/responses/400"},
+  "403": {"$ref": "#/components/responses/403"},
+  "429": {"$ref": "#/components/responses/429"},
+  "500": {"$ref": "#/components/responses/500"}
+}
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
@@ -408,7 +425,8 @@ yq '
         "system/Immunization.r": "Read Immunization resources",
         "system/Immunization.u": "Update Immunization resources",
         "system/Immunization.s": "Search Immunization resources",
-        "system/CarePlan.s": "Search CarePlan resources"
+        "system/CarePlan.s": "Search CarePlan resources",
+        "system/ImmunizationRecommendation.r": "Read ImmunizationRecommendation resources"
       }
     }
   }

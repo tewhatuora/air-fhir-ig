@@ -44,9 +44,14 @@ Potential duplicates can occur in almost all operations. When the record is iden
 
 **Update:** When an update submits an Exact or Potential Duplicate of another record, the matching record is updated and a Potential Duplicate quality violation is raised.
 
-**Bulk Update (HL Broker only):** both Add and Update messages to the broker (RXA-19 = 'A' or 'U') use Upsert logic in the AIR. This works by seeking a record to update and updates it if the only record meeting the criteria. If multiple update candidates are found, a new record is created with a Data Quality violation due to uncertainty about which one was the target. If no records meet the criteria, the submitted record is created.
+**Bulk Update (HL Broker only):** both Add and Update messages to the broker (RXA-19 = 'A' or 'U') use Upsert logic in the AIR.
+* This works by seeking a record to update and updates it if the only record meeting the criteria, avoiding duplication in most cases. If the source system has a duplicate or close copy, it will not map to AIR.
+* If multiple update candidates are found in AIR, a new record is created with a Data Quality violation due to uncertainty about which one was the target.
+* If no records meet the criteria, the submitted record is created.
 
-Delete messages (RXA-19 = 'D') are translated as having status 'entered-in-error'. The AIR finds one matching record and marks it entered-in-error. This risks clearing a Potential Duplicate violation and leaving AIR with a completed immunisation the PMS intended to remove.
+Delete messages (RXA-19 = 'D') are translated as having status 'entered-in-error'. The AIR finds one matching record and marks it entered-in-error.
+* If this was sent due to a duplicate record in the source system being invalidated, then it could invalidate the only record held in AIR.
+* Alternatively, if this clears a Potential Duplicate violation in AIR, AIR is left with a completed immunisation the PMS intended to remove.
 
 See the relevant Use Case pages for example responses. API clients are required to anticipate these outcomes and provide a suitable user experience when they occur. Note that significant changes have been made in version 2 of the API, aiming to reduce the frequency of duplicates and responses requiring user action.
 

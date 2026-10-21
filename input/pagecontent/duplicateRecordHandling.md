@@ -1,9 +1,7 @@
 ### Overview
 The AIR validates Immunisation Events during create and update operations to identify potential and exact duplicates. The definition of a duplicate is where ImmSOT holds multiple immunisation event records for one immunisation event.
 
-**Exact duplicates,** where all non-system fields are equal, are handled prior to being saved in the AIR. **Potential duplicates** are close copies that require administrative review to resolve some time later.
-
-In case of potential duplicate the immunisation records will be created or updated in ImmSOT and the matching immunisation records will be flagged as duplicate so that an Air Admin can retrieve them and work on fixing them later.
+**Exact duplicates,** where all non-system fields are equal, are handled prior to being saved in the AIR. **Potential duplicates** are close copies that require administrative review to resolve after being saved in the AIR.
 
 ### Eligibility criteria for duplicate checking
 Existing immunisation events satisfying these conditions with respect to the new immunisation event is eligible for duplicate checking:
@@ -31,32 +29,30 @@ Existing immunisation events satisfying these conditions with respect to the new
 
 * consumer - a consumer has one active NHI and may have many dormant NHIs. AIR needs to check if there’s potential duplicates across all NHIs for the consumer, not just the active NHI.
 * Vaccine CVX or NZVX code
-* Immunisation event date (occurrenceDateTime) same day NZ time, or same instant for CVX 43, CVX 93 and NZVX 99009
+* Immunisation event date (occurrenceDateTime) same day NZ time, or same instant for "double-dose" vaccines (CVX 43, CVX 93 and NZVX 99009)
 * conditionally dose number and/or indication
 
-The potential duplicate check is modified for "double dose" vaccines, requiring event time and body site exactly equal for them to be considered.
-
-Potential duplicates can occur in almost all operations. When the record is identified as potential duplicate, then the status of the record being created or updated does not change and the record is saved. The matching immunisation records will be flagged as duplicates so that an AIR Admin can retrieve and fix them later. At that point the status of one of them may change to "Entered in Error", resulting in a duplicate resolution event being published.
+Potential duplicates can occur any time. When the record is identified as potential duplicate, then the submitted status of the record being created or updated is kept and the record is saved. Matching immunisation records will be flagged as duplicates so that an AIR Admin can retrieve and resolve the issue. The Admin may change the status of one to "Entered in Error", triggering a 'delete' notification to the source PMS and the patient's enrolled GP.
 
 ### By Operation
 
 **Create:** When a record is identified as an exact duplicate during a create operation, the status of the updated record is changed to "Entered in Error" with status reason SNOMED 445672005, "Duplicate report". This leaves the duplicate unaffected.
 
-**Update:** When an update submits an Exact or Potential Duplicate of another record, the matching record is updated and a Potential Duplicate quality violation is raised.
+**Update:** When an update makes it an Exact or Potential Duplicate of another record, the submitted record is updated and a Potential Duplicate quality violation is raised.
 
-**Bulk Update (HL Broker only):** both Add and Update messages to the broker (RXA-19 = 'A' or 'U') use Upsert logic in the AIR.
-* This works by seeking a record to update and updates it if the only record meeting the criteria, avoiding duplication in most cases. If the source system has a duplicate or close copy, it will not map to AIR.
+**Bulk Update (HealthLink AIR Broker only):** both Add and Update HL7 messages to the broker (RXA-19 = 'A' or 'U') use Upsert logic in the AIR.
+* This works by seeking a record to update and updates it if the only record meeting the criteria, avoiding duplication in most cases. If the source system has a duplicate or close copy, AIR will have one record mapping to more than one at source.
 * If multiple update candidates are found in AIR, a new record is created with a Data Quality violation due to uncertainty about which one was the target.
 * If no records meet the criteria, the submitted record is created.
 
-Delete messages (RXA-19 = 'D') are translated as having status 'entered-in-error'. The AIR finds one matching record and marks it entered-in-error.
+Delete HL7 messages (RXA-19 = 'D') are translated as having status 'entered-in-error'. The AIR finds one matching record and marks it entered-in-error.
 * If this was sent due to a duplicate record in the source system being invalidated, then it could invalidate the only record held in AIR.
-* Alternatively, if this clears a Potential Duplicate violation in AIR, AIR is left with a completed immunisation the PMS intended to remove.
+* Alternatively, if this clears a Potential Duplicate violation in AIR, AIR could be left with a completed immunisation the PMS intended to remove.
 
 See the relevant Use Case pages for example responses. API clients are required to anticipate these outcomes and provide a suitable user experience when they occur. Note that significant changes have been made in version 2 of the API, aiming to reduce the frequency of duplicates and responses requiring user action.
 
 ### Duplicate Record Scenarios
-\* = changes in version 2 of the API from version 1 (this version).
+\* marks changes in version 2 of the API from version 1 (this version).
 
 <table border=>
  <tr>

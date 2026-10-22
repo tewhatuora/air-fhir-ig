@@ -181,7 +181,7 @@ The NHI number is immutable. When the NHI number in the request does not match t
 
 ```json
 "meta" : {
-    ...
+    ... // other meta elements
     "tag" : [
         {
             "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
@@ -189,7 +189,7 @@ The NHI number is immutable. When the NHI number in the request does not match t
             "display" : "Patient identifier not updated - identifier is immutable for this operation"
         }
     ]
-} ...
+}
 ```
 
 ### Scope/s required

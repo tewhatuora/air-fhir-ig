@@ -50,36 +50,36 @@ See the relevant Use Case pages for example responses. API clients are required 
 ### Duplicate Record Scenarios
 \* = change in version 2 of the API from version 1.
 
-<table>
+<table class="table table-bordered table-hover table-sm">
  <tr>
-  <th rowspan=2>Endpoint</th>
-  <th colspan=2>Potential Duplicate</th>
-  <th colspan=2>Exact Duplicate</th>
+  <th rowspan=2 style="background-color: #eeeeee">Endpoint</th>
+  <th colspan=2 style="background-color: #eeeeee">Potential Duplicate</th>
+  <th colspan=2 style="background-color: #eeeeee">Exact Duplicate</th>
  </tr>
  <tr>
-  <th>Normal behaviour</th>
-  <th>Double-Dose</th>
-  <th>Normal behaviour</th>
-  <th>Double-Dose</th>
+  <th style="background-color: #eeeeee">Normal behaviour</th>
+  <th style="background-color: #eeeeee">Double-Dose</th>
+  <th style="background-color: #eeeeee">Normal behaviour</th>
+  <th style="background-color: #eeeeee">Double-Dose</th>
  </tr>
  <tr>
-  <td>Create</td>
-  <td>Create new record, raise DQ</td>
-  <td>Create new record, no DQ</td>
-  <td colspan=2>Return existing record with meta tag, HTTP status 200*</td>
+  <td><div><p>Create</p></div></td>
+  <td><div><p>Create new record, raise DQ</p></div></td>
+  <td><div><p>Create new record, no DQ</p></div></td>
+  <td colspan=2><div><p>Return existing record with meta tag, HTTP status 200*</p></div></td>
  </tr>
  <tr>
-  <td>Update</td>
-  <td>Apply update, raise DQ</td>
-  <td>Apply update, no DQ</td>
-  <td colspan=2>entered-in-error, Duplicate report*</td>
+  <td><div><p>Update</p></div></td>
+  <td><div><p>Apply update, raise DQ</p></div></td>
+  <td><div><p>Apply update, no DQ</p></div></td>
+  <td colspan=2><div><p>entered-in-error, Duplicate report*</p></div></td>
  </tr>
  <tr>
-  <td>Upsert</td>
-  <td><b>Single match:</b> update existing record<br />
-    <b>Multiple matches:</b> create new record, raise DQ</b></td>
-  <td>If time and/or body site differ, create new record, no DQ</td>
+  <td><div><p>Upsert</p></div></td>
+  <td><div><p><b>Single match:</b> update existing record<br />
+    <b>Multiple matches:</b> create new record, raise DQ</b></p></div></td>
+  <td><div><p>If time and/or body site differ, create new record, no DQ</p></div></td>
   <td colspan=2><b>Single match:</b> return existing record with meta tag, HTTP status 200*<br/>
-    <b>Multiple matches:</b> return existing record with meta tag, HTTP status 200*</td>
+    <b>Multiple matches:</b> return existing record with meta tag, HTTP status 200*</p></div></td>
  </tr>
 </table>

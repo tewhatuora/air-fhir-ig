@@ -36,7 +36,7 @@ Potential duplicates can occur any time. When the record is identified as potent
 
 ### By Operation
 
-**Create:** When a record is identified as an exact duplicate during a create operation, the status of the updated record is changed to "Entered in Error" with status reason SNOMED 445672005, "Duplicate report". This leaves the duplicate unaffected.
+**Create:** When a record is identified as an exact duplicate during a create operation, the status of the submitted record is changed to "entered-in-error" with status reason SNOMED 445672005, "Duplicate report". This leaves the existing record unaffected.
 
 **Update:** When an update makes it an Exact or Potential Duplicate of another record, the submitted record is updated and a Potential Duplicate quality violation is raised.
 
@@ -59,7 +59,7 @@ See the relevant Use Case pages for example responses. API clients are required 
   <tr>
    <th rowspan=2 style="background-color: #eeeeee">Endpoint</th>
    <th colspan=2 style="background-color: #eeeeee">Potential Duplicate</th>
-   <th colspan=2 style="background-color: #eeeeee"Exact Duplicate</th>
+   <th colspan=2 style="background-color: #eeeeee">Exact Duplicate</th>
   </tr>
   <tr>
    <th style="background-color: #eeeeee">Normal behaviour</th>

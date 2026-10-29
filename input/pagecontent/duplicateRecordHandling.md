@@ -52,9 +52,9 @@ See the relevant Use Case pages for example responses. API clients are required 
 
 <table class="table table-bordered table-hover table-sm">
  <tr>
-  <th rowspan=2 style="background-color: #eeeeee">Endpoint</th>
-  <th colspan=2 style="background-color: #eeeeee">Potential Duplicate</th>
-  <th colspan=2 style="background-color: #eeeeee">Exact Duplicate</th>
+  <th rowspan="2" style="background-color: #eeeeee">Endpoint</th>
+  <th colspan="2" style="background-color: #eeeeee">Potential Duplicate</th>
+  <th colspan="2" style="background-color: #eeeeee">Exact Duplicate</th>
  </tr>
  <tr>
   <th style="background-color: #eeeeee">Normal behaviour</th>
@@ -66,20 +66,20 @@ See the relevant Use Case pages for example responses. API clients are required 
   <td><div><p>Create</p></div></td>
   <td><div><p>Create new record, raise DQ</p></div></td>
   <td><div><p>Create new record, no DQ</p></div></td>
-  <td colspan=2><div><p>Return existing record with meta tag, HTTP status 200*</p></div></td>
+  <td colspan="2"><div><p>Return existing record with meta tag, HTTP status 200*</p></div></td>
  </tr>
  <tr>
   <td><div><p>Update</p></div></td>
   <td><div><p>Apply update, raise DQ</p></div></td>
   <td><div><p>Apply update, no DQ</p></div></td>
-  <td colspan=2><div><p>entered-in-error, Duplicate report*</p></div></td>
+  <td colspan="2"><div><p>entered-in-error, Duplicate report*</p></div></td>
  </tr>
  <tr>
   <td><div><p>Upsert</p></div></td>
   <td><div><p><b>Single match:</b> update existing record<br />
-    <b>Multiple matches:</b> create new record, raise DQ</b></p></div></td>
+    <b>Multiple matches:</b> create new record, raise DQ</p></div></td>
   <td><div><p>If time and/or body site differ, create new record, no DQ</p></div></td>
-  <td colspan=2><b>Single match:</b> return existing record with meta tag, HTTP status 200*<br/>
+  <td colspan="2"><div><p><b>Single match:</b> return existing record with meta tag, HTTP status 200*<br/>
     <b>Multiple matches:</b> return existing record with meta tag, HTTP status 200*</p></div></td>
  </tr>
 </table>

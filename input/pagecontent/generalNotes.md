@@ -96,72 +96,72 @@ Immunisation status and statusReason SHOULD correspond, according to the table b
 <table class="table table-bordered table-hover table-sm">
   <thead>
     <tr>
-      <th>Scenario</th>
-      <th>Immunization.status</th>
-      <th>Immunization.statusReason</th>
-      <th>Business Rules</th>
+      <th style="background-color: #eeeeee">Scenario</th>
+      <th style="background-color: #eeeeee">Immunization.status</th>
+      <th style="background-color: #eeeeee">Immunization.statusReason</th>
+      <th style="background-color: #eeeeee">Business Rules</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Immunisation given in NZ</td>
-      <td>completed</td>
-      <td><em>null</em> or GIVEN</td>
-      <td>Body Site, Route, Vaccine lot number and Vaccine Expiration Date SHOULD have a value when statusReason = "GIVEN" or is null</td>
+      <td><div><p>Immunisation given in NZ</p></div></td>
+      <td><div><p>completed</p></div></td>
+      <td><div><p><em>null</em> or GIVEN</p></div></td>
+      <td><div><p>Body Site, Route, Vaccine lot number and Vaccine Expiration Date SHOULD have a value when statusReason = "GIVEN" or is null</p></div></td>
     </tr>
     <tr>
-      <td>Declined (permanent contraindication)</td>
-      <td>not-done</td>
-      <td>DMC</td>
+      <td><div><p>Declined (permanent contraindication)</p></div></td>
+      <td><div><p>not-done</p></div></td>
+      <td><div><p>DMC</p></div></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Declined by parent/guardian</td>
-      <td>not-done</td>
-      <td>DPC</td>
+      <td><div><p>Declined by parent/guardian</p></div></td>
+      <td><div><p>not-done</p></div></td>
+      <td><div><p>DPC</p></div></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Declined by individual</td>
-      <td>not-done</td>
-      <td>DIC</td>
+      <td><div><p>Declined by individual</p></div></td>
+      <td><div><p>not-done</p></div></td>
+      <td><div><p>DIC</p></div></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Immune</td>
-      <td>not-done</td>
-      <td>DNI</td>
-      <td>Marks the matching planned event as not required. Serology report SHOULD be contained.</td>
+      <td><div><p>Immune</p></div></td>
+      <td><div><p>not-done</p></div></td>
+      <td><div><p>DNI</p></div></td>
+      <td><div><p>Marks the matching planned event as not required. Serology report SHOULD be contained.</p></div></td>
     </tr>
     <tr>
-      <td>Closed not required</td>
-      <td>not-done</td>
-      <td>CPI</td>
-      <td>For HNZ internal use only. Marks the matching planned event as not required. No notification is sent to providers.</td>
+      <td><div><p>Closed not required</p></div></td>
+      <td><div><p>not-done</p></div></td>
+      <td><div><p>CPI</p></div></td>
+      <td><div><p>For HNZ internal use only. Marks the matching planned event as not required. No notification is sent to providers.</p></div></td>
     </tr>
     <tr>
-      <td>Alternative vaccination given</td>
-      <td>completed</td>
-      <td>ALTGIVN</td>
-      <td>This record identifies the vaccine replaced by an alternative, relevant only to NIS events. Deprecated, retained for backward compatibility.</td>
+      <td><div><p>Alternative vaccination given</p></div></td>
+      <td><div><p>completed</p></div></td>
+      <td><div><p>ALTGIVN</p></div></td>
+      <td><div><p>This record identifies the vaccine replaced by an alternative, relevant only to NIS events. Deprecated, retained for backward compatibility.</p></div></td>
     </tr>
     <tr>
-      <td>Given overseas</td>
-      <td>completed</td>
-      <td>GIVNOS</td>
-      <td>Immunisation not given in NZ. Lot numbers and expiry dates, route and site are optional.</td>
+      <td><div><p>Given overseas</p></div></td>
+      <td><div><p>completed</p></div></td>
+      <td><div><p>GIVNOS</p></div></td>
+      <td><div><p>Immunisation not given in NZ. Lot numbers and expiry dates, route and site are optional.</p></div></td>
     </tr>
     <tr>
-      <td>Historic vaccination</td>
-      <td>completed</td>
-      <td>HSTGIVN</td>
-      <td>Immunisation given in NZ prior to 2005 or was not recorded in NIR prior to December 2023, for which complete details are not available SHOULD have statusReason="HSTGIVN". Lot numbers and expiry dates, route and body site are optional.</td>
+      <td><div><p>Historic vaccination</p></div></td>
+      <td><div><p>completed</p></div></td>
+      <td><div><p>HSTGIVN</p></div></td>
+      <td><div><p>Immunisation given in NZ prior to 2005 or was not recorded in NIR prior to December 2023, for which complete details are not available SHOULD have statusReason="HSTGIVN". Lot numbers and expiry dates, route and body site are optional.</p></div></td>
     </tr>
     <tr>
-      <td>Deleted, invalidated, duplicate of a good record</td>
-      <td>entered-in-error</td>
-      <td><em>any</em></td>
-      <td>Does not match any planned event. Most fields are optional but should preserve any previous values.</td>
+      <td><div><p>Deleted, invalidated, duplicate of a good record</p></div></td>
+      <td><div><p>entered-in-error</p></div></td>
+      <td><div><p><em>any</em></p></div></td>
+      <td><div><p>Does not match any planned event. Most fields are optional but should preserve any previous values.</p></div></td>
     </tr>
   </tbody>
 </table>
@@ -230,132 +230,132 @@ Notes:
         <th>Notes</th>
       </tr>
       <tr>
-        <td>Consumer</td>
-        <td>GET</td>
-        <td>/Patient/{NHI}</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Returns information about the state of the consumer.</td>
+        <td><div><p>Consumer</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/Patient/{NHI}</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns information about the state of the consumer.</p></div></td>
       </tr>
       <tr>
-        <td>Consumer</td>
-        <td>POST</td>
-        <td>/Patient/{NHI}/$update-state</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Edits the consumer state information.</td>
+        <td><div><p>Consumer</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Patient/{NHI}/$update-state</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Edits the consumer state information.</p></div></td>
       </tr>
       <tr>
-        <td>Consumer</td>
-        <td>GET</td>
-        <td>/Patient/{NHI}/_history</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Returns all versions of an ImmSOT Consumer including modification information.</td>
+        <td><div><p>Consumer</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/Patient/{NHI}/_history</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns all versions of an ImmSOT Consumer including modification information.</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>GET</td>
-        <td>/Immunization/_search</td>
-        <td>Y</td>
-        <td>Y</td>
-        <td>Returns a list of immunisations the consumer has had</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/Immunization/_search</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns a list of immunisations the consumer has had</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>GET</td>
-        <td>/Immunization/{ID}/_history</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Returns all versions of this immunisation event</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/Immunization/{ID}/_history</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns all versions of this immunisation event</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>GET</td>
-        <td>/Immunization/{ID}</td>
-        <td>Y</td>
-        <td>Y</td>
-        <td>Returns latest version of this immunisation event only</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/Immunization/{ID}</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns latest version of this immunisation event only</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>POST</td>
-        <td>/Immunization</td>
-        <td>Y</td>
-        <td>Y</td>
-        <td>Records a new immunisation event</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Records a new immunisation event</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>PUT</td>
-        <td>/Immunization/{ID}</td>
-        <td>Y</td>
-        <td>Y</td>
-        <td>Edits an existing immunisation event</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>PUT</p></div></td>
+        <td><div><p>/Immunization/{ID}</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Edits an existing immunisation event</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>POST</td>
-        <td>/Immunization/$upsert</td>
-        <td>Y</td>
-        <td>Y</td>
-        <td>Create-or-update - performs a conditional update if the the record provided maps to one and only one existing record in the AIR, otherwise records a new immunisation event</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization/$upsert</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Create-or-update - performs a conditional update if the the record provided maps to one and only one existing record in the AIR, otherwise records a new immunisation event</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>POST</td>
-        <td>/Immunization/$process-message</td>
-        <td>HealthLink broker only</td>
-        <td>Y</td>
-        <td>Updates an existing acknowledgement from SENT to RECEIVED status. Supports co-existence with HL7 v2 messaging.</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization/$process-message</p></div></td>
+        <td><div><p>HealthLink broker only</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Updates an existing acknowledgement from SENT to RECEIVED status. Supports co-existence with HL7 v2 messaging.</p></div></td>
       </tr>
       <tr>
-        <td>Immunisation</td>
-        <td>POST</td>
-        <td>/Immunization/$bulk-update</td>
-        <td>HealthLink broker only</td>
-        <td>Y</td>
-        <td>Create new immunisation events and/or Upsert immunisation events based on a matching algorithm. Operation is atomic. Supports co-existence with HL7 v2 messaging.</td>
+        <td><div><p>Immunisation</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization/$bulk-update</p></div></td>
+        <td><div><p>HealthLink broker only</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Create new immunisation events and/or Upsert immunisation events based on a matching algorithm. Operation is atomic. Supports co-existence with HL7 v2 messaging.</p></div></td>
       </tr>
       <tr>
-        <td>Consumer Schedule</td>
-        <td>POST</td>
-        <td>/Immunization/{ID}/$match</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Matches an immunisation event to a planned event</td>
+        <td><div><p>Consumer Schedule</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization/{ID}/$match</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Matches an immunisation event to a planned event</p></div></td>
       </tr>
       <tr>
-        <td>Consumer Schedule</td>
-        <td>POST</td>
-        <td>/Immunization/{ID}/$unmatch</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Unmatches an immunisation event from a planned event</td>
+        <td><div><p>Consumer Schedule</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Immunization/{ID}/$unmatch</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Unmatches an immunisation event from a planned event</p></div></td>
       </tr>
       <tr>
-        <td>Consumer Schedule</td>
-        <td>POST</td>
-        <td>/Patient/{NHI}/$reassign-schedules</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Updates the immunisation plan of an ImmSOT Consumer by reassessing and reassigning their schedules.</td>
+        <td><div><p>Consumer Schedule</p></div></td>
+        <td><div><p>POST</p></div></td>
+        <td><div><p>/Patient/{NHI}/$reassign-schedules</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Updates the immunisation plan of an ImmSOT Consumer by reassessing and reassigning their schedules.</p></div></td>
       </tr>
       <tr>
-        <td>Consumer Schedule</td>
-        <td>GET</td>
-        <td>/ImmunizationRecommendation/$view</td>
-        <td>N</td>
-        <td>Y</td>
-        <td>Returns the planned events for the consumer</td>
+        <td><div><p>Consumer Schedule</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/ImmunizationRecommendation/$view</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Y</p></div></td>
+        <td><div><p>Returns the planned events for the consumer</p></div></td>
       </tr>
       <tr>
-        <td>Consumer Schedule</td>
-        <td>GET</td>
-        <td>/CarePlan/$view</td>
-        <td>N</td>
-        <td>Test only</td>
-        <td>Returns the planned events for the consumer</td>
+        <td><div><p>Consumer Schedule</p></div></td>
+        <td><div><p>GET</p></div></td>
+        <td><div><p>/CarePlan/$view</p></div></td>
+        <td><div><p>N</p></div></td>
+        <td><div><p>Test only</p></div></td>
+        <td><div><p>Returns the planned events for the consumer</p></div></td>
       </tr>
     </tbody>
   </table>

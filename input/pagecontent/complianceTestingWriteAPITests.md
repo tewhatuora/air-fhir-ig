@@ -8,11 +8,11 @@ Tests marked Mandatory / Recommended / Conditional for 'stateful clients' apply 
 <table class="table table-bordered table-hover table-sm">
   <thead>
     <tr>
-      <th>Reference</th>
-      <th>Test</th>
-      <th>Test Data Input</th>
-      <th>Compliance Test Evidence</th>
-      <th>Mandatory</th>
+      <th style="background-color: #eeeeee">Reference</th>
+      <th style="background-color: #eeeeee">Test</th>
+      <th style="background-color: #eeeeee">Test Data Input</th>
+      <th style="background-color: #eeeeee">Compliance Test Evidence</th>
+      <th style="background-color: #eeeeee">Mandatory</th>
     </tr>
   </thead>
   <tbody>
@@ -60,7 +60,7 @@ Tests marked Mandatory / Recommended / Conditional for 'stateful clients' apply 
           AND if the record is persisted locally, then the Application links the record using the AIR Identifier in the response.</td>
       <td>Subscriber's application sends an Immunisation Create request with all supported data elements for these scenarios:<br>
           1) status completed: statusReason GIVEN.<br>
-          2) status: not-done, statusReason: DNI, vaccineCode one of CVX 05, 43, 52 with serology report.<br>
+          2) status: not-done, statusReason: DNI, vaccineCode one of CVX 05, 43 with serology report.<br>
           API Version 1:<br>
           3.1) dose number 99<br>
           3.2) dose number 98<br>

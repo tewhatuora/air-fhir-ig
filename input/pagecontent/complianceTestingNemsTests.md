@@ -13,60 +13,57 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
 <table class="table table-bordered table-hover table-sm">
   <thead>
     <tr>
-      <th><b>Reference</b></td>
-      <th>Test</td>
-      <th>Test Data Input</td>
-      <th>Compliance Test Evidence</td>
-      <th>Mandatory</td>
+      <th style="background-color: #eeeeee">Reference</th>
+      <th style="background-color: #eeeeee">Test</th>
+      <th style="background-color: #eeeeee">Test Data Input</th>
+      <th style="background-color: #eeeeee">Compliance Test Evidence</th>
+      <th style="background-color: #eeeeee">Mandatory</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>AIR-Notif-1</th>
-      <td><b>GIVEN</b> EITHER a new immunisation event created in the AIR portal (entered on behalf of the facility where given) or another PMS ('given elsewhere' for a patient enrolled at the practice)<br>
+      <td><div><p><b>GIVEN</b> EITHER a new immunisation event created in the AIR portal (entered on behalf of the facility where given) or another PMS ('given elsewhere' for a patient enrolled at the practice)<br>
           OR an <strong>update to an immunisation event in AIR not yet held in the Application</strong><br>
           AND the immunisation event created or updated has the patient's <b>dormant</b> NHI number<br>
           AND the Application only has the patient's live NHI number recorded<br>
           <b>WHEN</b> NEMS publishes the event to the organisation's queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
-          AND the Application persists the new record under the correct patient.</td>
-      <td>Set-up procedure: AIR Product team creates or updates an immunisation event with the dormant NHI number for a patient enrolled at the Application's facility.<br>
-          Run procedure: the Application processes events from its NEMS queue.</td>
-      <td>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
-          <br>
-          Send a screenshot showing that the Immunisation record was created under the correct patient.</td>
-      <td>Mandatory (stateful clients)</td>
+          AND the Application persists the new record under the correct patient.</p></div></td>
+      <td><div><p>Set-up procedure: AIR Product team creates or updates an immunisation event with the dormant NHI number for a patient enrolled at the Application's facility.</p>
+          <p>Run procedure: the Application processes events from its NEMS queue.</p></div></td>
+      <td><div><p>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR.</p>
+          <p>Send a screenshot showing that the Immunisation record was created under the correct patient.</p></div></td>
+      <td><div><p>Mandatory (stateful clients)</p></div></td>
     </tr>
     <tr>
       <th>AIR-Notif-2</th>
-      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that is <strong>not linked</strong> to AIR<br>
+      <td><div><p><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that is <strong>not linked</strong> to AIR<br>
           <b>WHEN</b> the event is emitted via NEMS to my queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
           AND the Application links the local record using the AIR Identifier<br>
-          AND the Application updates the existing record.</td>
-      <td>Set-up procedure: AIR Product team updates an immunisation event that is was messaged prior to cut-over to APIs, or creates an exact copy in AIR of a record in the PMS.<br>
-          Run procedure: the Application processes events from its NEMS queue.</td>
-      <td>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
-          <br>
-          Send a screenshot showing that the Immunisation record was created.</td>
-      <td>Mandatory (stateful clients)</td>
+          AND the Application updates the existing record.</p></div></td>
+      <td><div><p>Set-up procedure: AIR Product team updates an immunisation event that is was messaged prior to cut-over to APIs, or creates an exact copy in AIR of a record in the PMS.</p>
+          <p>Run procedure: the Application processes events from its NEMS queue.</p></div></td>
+      <td><div><p>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR.</p>
+          <p>Send a screenshot showing that the Immunisation record was created.</p></div></td>
+      <td><div><p>Mandatory (stateful clients)</p></div></td>
     </tr>
     <tr>
       <th>AIR-Notif-3</th>
-      <td><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that <strong>is linked</strong> to AIR<br>
+      <td><div><p><b>GIVEN</b> an update in AIR or another PMS to an immunisation event record held locally in the PMS that <strong>is linked</strong> to AIR<br>
           <b>WHEN</b> the event is emitted via NEMS to my queue with the Immunisation Update Topic<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the notification<br>
-          AND the Application updates the existing record.</td>
-      <td>Set-up procedure: AIR Product team updates a 'given elsewhere' immunisation event.<br>
-          Run procedure: the Application processes events from its NEMS queue.</td>
-      <td>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
-          <br>
-          Send a screenshot showing that the Immunisation record was created.</td>
-      <td>Mandatory (stateful clients)</td>
+          AND the Application updates the existing record.</p></div></td>
+      <td><div><p>Set-up procedure: AIR Product team updates a 'given elsewhere' immunisation event.</p>
+          <p>Run procedure: the Application processes events from its NEMS queue.</p></div></td>
+      <td><div><p>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR.</p>
+          <p>Send a screenshot showing that the Immunisation record was created.</p></div></td>
+      <td><div><p>Mandatory (stateful clients)</p></div></td>
     </tr>
     <tr>
       <th>AIR-Notif-4</th>
-      <td><b>GIVEN</b> <strong>two</strong> immunisation records that were submitted using the Create API<br>
+      <td><div><p><b>GIVEN</b> <strong>two</strong> immunisation records that were submitted using the Create API<br>
           AND <strong>both</strong> <b>events are linked</b> to AIR<br>
           AND the events have the same patient identifier and vaccine<br>
           AND the events were completed on the same day NZ time<br>
@@ -77,20 +74,15 @@ Upon consuming a notification from the AIR, the PMS shall read the latest versio
           AND NEMS has published a <b>Duplicate Resolution</b> event notification citing AIR Identifiers for the two records<br>
           <b>THEN</b> the Application performs a GET operation to fetch the record in the IE notification<br>
           AND the Application updates the corresponding record<br>
-          AND the Application closes any tasks created to resolve the Potential Duplicate DQ reported earlier.</td>
-      <td>Set-up procedure: the Application submits two records. The second record will return a Data Quality result indicating a Potential Duplicate.<br>
-          <br>
-          <b>Note:</b> if validation rules prevent the Application creating the required condition, then request that the AIR Test Analyst create the second record &quot;on behalf of&quot; the facility.<br>
-          <br>
-          Run procedure: the AIR Test Analyst updates one of the records to entered-in-error, resolving the Potential Duplicate DQ.</td>
-      <td>Send the AIR Identifiers of the two records.<br>
-          <br>
-          Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR. <br>
-          <br>
-          Send a screenshot showing the Immunisation record that was invalidated on resolution of the potential duplicate.<br>
-          <br>
-          Optionally, send a screenshot showing the task to resolve the potential duplicate (depends on solution).</td>
-      <td>Mandatory (stateful clients)</td>
+          AND the Application closes any tasks created to resolve the Potential Duplicate DQ reported earlier.</p></div></td>
+      <td><div><p>Set-up procedure: the Application submits two records. The second record will return a Data Quality result indicating a Potential Duplicate.</p>
+          <p><b>Note:</b> if validation rules prevent the Application creating the required condition, then request that the AIR Test Analyst create the second record &quot;on behalf of&quot; the facility.</p>
+          <p>Run procedure: the AIR Test Analyst updates one of the records to entered-in-error, resolving the Potential Duplicate DQ.</p></div></td>
+      <td><div><p>Send the AIR Identifiers of the two records.</p>
+          <p>Send the x-correlation-ID header sent with the request and the AIR Identifier received from AIR.</p>
+          <p>Send a screenshot showing the Immunisation record that was invalidated on resolution of the potential duplicate.</p>
+          <p>Optionally, send a screenshot showing the task to resolve the potential duplicate (depends on solution).</p></div></td>
+      <td><div><p>Mandatory (stateful clients)</p></div></td>
     </tr>
   </tbody>
 </table>

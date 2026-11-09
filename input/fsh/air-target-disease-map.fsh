@@ -125,6 +125,9 @@ Description: "This map connects vaccine-preventable diseases (identified by SNOM
 * insert ConceptMapEntry(36653000, 94, relatedto)
 * insert ConceptMapEntry(38907003, 94, relatedto)
 
+// Added 9 Nov 2026 for Influenza A H5N8 Pandemic Vaccine
+* insert ConceptMapEntry(442438000, 322, relatedto)
+
 // The TPUU mappings have been commented out because they might not be needed any longer. If they are needed, they'll need to move to a different conceptMap since they now live in a different valueSet...
 /*
 * insert ConceptMapEntry(14189004, 10443641000116108, relatedto)

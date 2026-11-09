@@ -107,6 +107,9 @@ Description: "This map connects vaccine products as identified by the Therapeuti
 // Added 23 Oct 2026 per IMM-7272
 * insert ConceptMapEntry(49072271000116103, 56, relatedto)
 
+// Added 9 Nov 2026 for Influenza A H5N8 Pandemic Vaccine
+* insert ConceptMapEntry(48313821000116100, 322, relatedto)
+
 * group[+].source = $NZMT
 * group[=].target = $NZVX
 

@@ -10,22 +10,18 @@ Upon a successful response, AIR will return the AIR Identifier and current versi
 
 The upsert operation achieves the following:
 
-1. Deduplication where possible,
-1. Deterministic update behaviour, and
-1. Atomic processing (all-or-nothing).
+* Deduplication where possible,
+* Deterministic update behaviour, and
+* Atomic processing (all-or-nothing).
 
 It performs the following:
 
-1. Check that the authorization token contains the required permission, if not it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
-1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
-1. With the Patient Identifier (NHI number) for the incoming event, compare to other existing events for that NHI number. If more than one exact duplicate is found, then it sets incoming status to "entered-in-error" with status reason indicating a duplicate report. These values are returned in the response. Stateful API clients shall reflect this condition in the local record.
-1. Check if an immunisation event with the same primary attributes exists. These include: Patient Identifier, Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number.
-    * If a single existing immunisation event record is found, then it performs an Update of that record.
-    * If no existing immunisation event record is found, then it performs a Create.
-    * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
-    * See [Duplicate Record Handling](duplicateRecordHandling.html) for detail.
-1. Return the created or updated event and any validation issues, identified in the meta sections.
-1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the `meta.tag` "patient-identifier-immutable" is returned in the response.
+1. Checks the authorization token for required permissions.
+1. Checks the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
+1. Checks for exact duplicates, changing the status if found.
+1. Searches for a record to update that has the same primary attributes. If none or multiple are found, Create is performed.
+1. Checks if the NHI of the existing event matches the NHI of the event submitted. If they do not match, then a meta tag in the response will reflect this.
+1. Returns the created or updated event and any validation issues, identified in the meta sections.
 
 <div>
 <img src="assets/images/upsert-flow-digram.png" alt="Upsert Flow" style="max-width:100%; height:auto;"/>
@@ -33,7 +29,7 @@ It performs the following:
 
 ### Operation 
 
-~~~http
+~~~
 POST https://api_endpoint/Immunization/$upsert
 ~~~   
 
@@ -91,16 +87,23 @@ Post a full set of immunisation resource details. See below. The FHIR specificat
 
 ### Behaviour
 
-For the Immunisation Event in the request attempt to find an existing Immunisation Event that can be linked on NHI, Occurrence Date, Vaccine Code and Indication.
+When a request is received, the API performs the following:
 
-* If no corresponding record found, create a new event.
-* If single record found, update that event.
-* If multiple events found, create a new event, raising a Potential Duplicate data quality violation.
-* Failure to process any event, reject entire request.
+1. Checks that the authorization token contains the required permission. If it does not, then it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
+1. Checks the event data with the [Rejection Rules](rejectionRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
+1. Searches for exact duplicates of the record. If a single match is found, then it updates that record and returns its AIR Identifier. If more than one exact duplicate is found, then it sets incoming status to "entered-in-error" with status reason indicating a duplicate report and creates a new record. These values are returned in the response. Stateful API clients shall reflect this condition in the local record.
+1. Checks if an immunisation event with the same primary attributes exists. These include: Patient Identifier, Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number. The Patient Identifier may be any NHI number linked to the consumer.
+    * If no corresponding immunisation event record is found, then it creates a new record.
+    * If a single existing immunisation event record is found, then it updates that record.
+    * If multiple event records are found, then it creates a new record with a Data Quality violation.
+    * See [Duplicate Record Handling](duplicateRecordHandling.html) for detail.
+1. If an update, then it checks whether the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the `meta.tag` "patient-identifier-immutable" is returned in the response.
+1. Checks the created or updated event against the [Data Quality Rules](dataQualityRules.html).
+1. Returns the created or updated event and any validation issues, identified in the meta sections.
 
 ### Response
 
-Returns the created or updated Immunization record. If there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
+Returns the created or updated Immunization resource. If there were any failures, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
 
 #### Sample Response Payload,
 

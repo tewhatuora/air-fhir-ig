@@ -197,13 +197,17 @@ Each deviation is ranked and a score is calculated. Authorised applications rece
 
 #### Duplicates
 
-The PMS system shall correctly handle AIR outcomes in the following scenarios:
+**Exact duplicates,** where all non-system fields are equal, are handled prior to being saved in the AIR. **Potential duplicates** are close copies that require administrative review to resolve some time later.
 
-* If an **exact** duplicate is detected in AIR during **creation or upsert**, AIR will return the record that survived duplicate resolution with meta tag "exact-duplicate-not-created". The PMS must handle scenarios where it already has this AIR Identifier on another record held locally.
-* If an **exact** duplicate is detected in AIR during **update,** the update will return the status in AIR of the target (updated) record, which will be entered-in-error with Status Reason SNOMED 445672005. This shall be reflected in the local record. In this scenario, AIR will emit a Duplicate Resolution event via NEMS that cites the AIR Identifiers for both events.
-* Another scenario exists, where a **potential** duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review while the status is kept as submitted. The PMS system is not expected to perform any action on this record during the create or update processes.
-* Administrative review of potential duplicates usually results in one record being kept. When this occurs, AIR will emit a Duplicate Resolution event via NEMS. An Update event (setting status to entered-in-error) is not emitted in this scenario.
-* When administrative review decides to keep both records with no other changes, the change of Data Quality status does not cause an Update event to be emitted via NEMS (other edits would emit an Update event). The potential duplicate will then have `meta.extension:air-data-quality-assessment.extension:dqStatus`="A" (Accepted).
+API clients shall correctly handle AIR outcomes in the following scenarios and provide a suitable user experience:
+
+* If an **exact** duplicate is detected in AIR during **create** or **upsert**, AIR will return the existing record with a meta tag indicating what occurred. Stateful API clients (PMS's) must handle scenarios where it already has this AIR Identifier on another record held locally.
+* If an **exact** duplicate is detected in AIR during **update**, the status of the submitted record is set to entered-in-error with status reason "Duplicate report". AIR will return these values in the response. Stateful API clients shall reflect this in the local record. In this scenario, AIR will emit a Duplicate Resolution event via NEMS that cites the AIR Identifiers for both events.
+* Another scenario exists, where a **potential** duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review, while the status is kept as was submitted. The PMS system is not expected to perform any action on this record during the create or update processes.
+* Administrative review of potential duplicates usually results in one record being kept, the status of the other set to entered-in-error. When this occurs, AIR will emit a Duplicate Resolution event via NEMS. An Update event is not emitted in this scenario, if that is the only change.
+* When administrative review decides to keep both records, the change of Data Quality status alone does not cause an Update event to be emitted via NEMS. The potential duplicate will then have `meta.extension:air-data-quality-assessment.extension:dqStatus`="A" (Accepted) when retrieved from AIR.
+
+See [Duplicate Record Handling](duplicateRecordHandling.html) for duplicate check criteria and further requirements.
 
 ### HTTP Header Details
 #### Request Headers

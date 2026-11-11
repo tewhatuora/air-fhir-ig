@@ -155,3 +155,9 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 // Added 8 Sept 2026 per IMM-7126
 * $NZMT#49011461000116107 "Comirnaty XFG (10mcg) SDV"
 * $NZMT#49060971000116102 "Qdenga"
+
+// Added 23 Oct 2026 per IMM-7272
+* $NZMT#49072271000116103 "Dengvaxia"
+
+// Added 9 Nov 2026 for Influenza A H5N8 Pandemic Vaccine
+* $NZMT#48313821000116100 "Panvax H5N8"

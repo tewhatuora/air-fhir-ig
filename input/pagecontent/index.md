@@ -22,16 +22,10 @@ This IG depends on the [HL7(r) FHIR(r) New Zealand Base IG](http://build.fhir.or
 
 ### API IG versions
 
-Currently two major versions of the FHIR Implementation Guide are active, with corresponding API implementations: [API Version 1](/air-v1/index.html) and [API Version 2](/air/index.html). Key differences between versions are noted in the [Directory of Published Versions](directory.html).
+Currently two major versions of the FHIR Implementation Guide are active, with corresponding API implementations: [API Version 1](/air-v1/index.html) and [API Version 2](/air/index.html). Key differences between versions are noted in the [Directory of Published Versions](history.html).
 
 The payload is validated against the version of the IG requested, and the response payload (if present) will adhere to that version of the IG. 
 
 #### Default Version
 
 __The default version of the IG and API is version 2.__ API subscribers using versions previous to the default usually are expected to migrate to the current version within 1 year of Production release.
-
-#### Specify the API version
-
-To specify the API version used the html header in the request `Api-Version` can be set to `["1", "2"]`, this will validate the payload against that version of the IG, and the response payload (if present) will adhere to that version of the IG.
-
-So a `search` request for version 1 of the IG will use the version 1 API and return results using version 1 of the IG. Simarly a `create` request with a version 2 header will have the payload verified against version 2 of the IG and the result will also adhere to version 2.

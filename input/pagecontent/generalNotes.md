@@ -197,8 +197,19 @@ Immunisation events containing issues cause DQ cases to be raised for follow-up 
 
 Each deviation is ranked and a score is calculated. Authorised applications receive DQ details in the [air-data-quality-assessment](StructureDefinition-air-data-quality-assessment.html) extension in responses to Create & Update interactions and the Immunization/_search operation.
 
-#### Exact Duplicates: status "entered-in-error" in response
-The status of the Immunization resource is returned as "entered-in-error" in the response when a Create interaction is performed submitting data that exactly matches another record. An exact match is when all values are the same, apart from ModifiedSourceSystem, ModifiedBy, versionId and id. The source Application must recognise this response and invalidate its record accordingly.
+#### Duplicates
+
+**Exact duplicates,** where all non-system fields are equal, are handled prior to being saved in the AIR. **Potential duplicates** are close copies that require administrative review to resolve some time later.
+
+API clients shall correctly handle AIR outcomes in the following scenarios and provide a suitable user experience:
+
+* If an **exact** duplicate is detected in AIR during **create**, the status of the submitted record is set to entered-in-error with status reason "Duplicate report". AIR then saves the record and returns these values in the response. The source Application must recognise this response and invalidate its record accordingly.
+* If an **exact** duplicate is detected in AIR during **update**, the record is accepted and flagged in the AIR for administrative review, by raising a Potential Duplicate data quality violation. The API client system is not expected to perform any action on this record.
+* Another scenario exists, where a **potential** duplicate is detected. In such cases, the immunisation event will be created or updated successfully and flagged in the AIR for administrative review, while the status is kept as was submitted.
+* Administrative review of potential duplicates usually results in one record being kept, the status of the other set to entered-in-error. 
+* When a reviewer decides to keep both records, the change of Data Quality status alone does not cause an Update event to be published. The potential duplicate will then have `meta.extension:air-data-quality-assessment.extension:dqStatus`="A" (Accepted) when retrieved from AIR.
+
+See [Duplicate Record Handling](duplicateRecordHandling.html) for duplicate check criteria and further requirements.
 
 ### HTTP Header Details
 #### Request Headers

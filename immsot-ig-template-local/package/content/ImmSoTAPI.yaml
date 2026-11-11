@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records from AIR ImmSoT database. It also allows reading and updating consumer records. API versioning: Internal Health NZ consumers call https://air.api.digital.health.nz/fhir/R4. If Api-Version is omitted, version 1 behaviour applies. Api-Version=1 selects version 1 behaviour. Api-Version=2 selects version 2 behaviour. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4 for version 1. External consumers call https://api.air.digital.health.nz/s2s/fhir/R4/v2 for version 2. Both external paths are gateway routes that forward to the internal /fhir/R4 backend with the appropriate Api-Version header."
-  version: "2.0.0-SNAPSHOT"
+  version: "2.3.0-SNAPSHOT"
 servers:
   - url: https://air.api.digital.health.nz
     description: PROD - Internal Health NZ endpoint. /fhir/R4 with Api-Version omitted or Api-Version=1 uses version 1. /fhir/R4 with Api-Version=2 uses version 2.
@@ -355,7 +355,7 @@ paths:
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
-            - system/Immunization.c
+            - air-admin/Immunization.u
             - system/Immunization.u
   /fhir/R4/Immunization/{ID}/$unmatch:
     post:
@@ -400,7 +400,7 @@ paths:
           $ref: '#/components/responses/500'
       security:
         - OAuth2Implicit:
-            - system/Immunization.c
+            - air-admin/Immunization.u
             - system/Immunization.u
   /fhir/R4/Immunization/{ID}/_history:
     get:
@@ -741,13 +741,16 @@ paths:
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/Api-Version'
-        - name: nhi
+        - name: subject
           in: query
-          description: The NHI identifier of the patient/consumer
+          description: >-
+            FHIR Reference(Patient) identifying the consumer, e.g. Patient/ZCZ1947. Must resolve to resourceType
+            Patient. Absolute URLs are accepted only if they match the AIR Patient reference base; otherwise
+            rejected with 400.
           required: true
           schema:
             type: string
-          example: ZCZ1947
+          example: Patient/ZCZ1947
       responses:
         "200":
           description: Ok
@@ -766,6 +769,8 @@ paths:
       security:
         - OAuth2Implicit:
             - system/CarePlan.s
+            - system/ImmunizationRecommendation.r
+            - system/Immunization.r
 components:
   schemas:
     AcknowledgementBundle:
@@ -5451,3 +5456,5 @@ components:
             air-admin/Patient.u: update scope for consumer (admins only)
             air-admin/Patient.r: read scope for consumer (admins only)
             system/CarePlan.s: search scope for careplan
+            system/ImmunizationRecommendation.r: read/view scope for immunisation recommendation
+            system/ImmunizationRecommendation.u: reschedule scope for immunisation recommendation (not yet implemented)

@@ -1,6 +1,6 @@
 // ============================================================
 // AIR ImmSoT Capability Statement
-// Aligned with OpenAPI Spec v2.1.0
+// Aligned with OpenAPI Spec v2.3.0-SNAPSHOT
 // 
 // Versioning convention:
 //   - This CapabilityStatement version should match the OpenAPI spec version.
@@ -16,7 +16,7 @@ InstanceOf: CapabilityStatement
 Usage: #definition
 
 * url = "https://standards.digital.health.nz/fhir/air/CapabilityStatement/AIRCapabilityStatement"
-* version = "2.1.0"
+* version = "2.3.0-SNAPSHOT"
 * name = "AIRCapabilityStatement"
 * title = "AIR FHIR Server Capability Statement"
 * status = #active
@@ -140,7 +140,7 @@ To suppress data-quality re-evaluation for a known-good update, include in the r
 
 Returns all versions of an immunisation event as a FHIR history Bundle (type=history). Each bundle entry is a full Immunization resource snapshot at that version, including data-quality metadata in `meta.extension`.
 
-**Required scope:** `system/Immunization.r` or `air-admin/Immunization.r`
+**Required scope:** `air-admin/Immunization.r` + `system/Immunization.r`
 
 **Responses:**
 - `200 OK` – Bundle (type=history)
@@ -347,7 +347,7 @@ Manually matches an immunisation event to a planned event in the consumer's vacc
 
 Request body: FHIR Parameters with `version` (string), `plannedEventId` (string), and `reason.code` (string).
 
-**Required scope:** `system/Immunization.c` + `system/Immunization.u`
+**Required scope:** `air-admin/Immunization.u` + `system/Immunization.u`
 
 **Responses:** `200 OK` (Bundle), `400`, `403`, `429`, `500`"""
 
@@ -360,7 +360,7 @@ Manually unmatches an immunisation event from a planned event.
 
 Request body: same structure as `$match` with an unmatch reason code.
 
-**Required scope:** `system/Immunization.c` + `system/Immunization.u`
+**Required scope:** `air-admin/Immunization.u` + `system/Immunization.u`
 
 **Responses:** `200 OK` (Bundle), `400`, `403`, `429`, `500`"""
 
@@ -416,7 +416,7 @@ Reassigns a consumer's immunisation schedules. Cancels existing schedules (inclu
 
 Request body: FHIR Parameters with `reassignDate` (date).
 
-**Required scope:** `air-admin/Patient.u` or `system/Patient.u`
+**Required scope:** `air-admin/Patient.u` + `system/Patient.u`
 
 **Responses:** `200 OK` (Patient), `400`, `403`, `429`, `500`"""
 
@@ -438,18 +438,18 @@ Returns all versions of an ImmSoT consumer as a FHIR history Bundle. Each entry 
 * rest.resource[=].documentation = """Read a consumer's immunisation plan (schedule). Each CarePlan represents a single Antigen Group Vaccination (AGV) schedule and links planned ImmunizationRecommendation events and administered Immunization resources."""
 
 * rest.resource[=].interaction[0].code = #search-type
-* rest.resource[=].interaction[=].documentation = """**GET** `[base]/CarePlan/$view?nhi={NHI}`
+* rest.resource[=].interaction[=].documentation = """**GET** `[base]/CarePlan/$view?subject=Patient/{NHI}`
 
 Returns the consumer's full immunisation plan as a Bundle containing CarePlan, Immunization, and ImmunizationRecommendation resources.
 
-**Required scope:** `system/CarePlan.s`
+**Required scope:** `system/CarePlan.s` + `system/ImmunizationRecommendation.r` + `system/Immunization.r`
 
 **Responses:** `200 OK` (CarePlanBundle), `400`, `403`, `429`, `500`"""
 
-* rest.resource[=].searchParam[0].name = "nhi"
-* rest.resource[=].searchParam[=].definition = "https://standards.digital.health.nz/fhir/air/SearchParameter/CarePlan-nhi"
-* rest.resource[=].searchParam[=].type = #token
-* rest.resource[=].searchParam[=].documentation = "NHI identifier of the patient/consumer whose immunisation plan to retrieve. Required."
+* rest.resource[=].searchParam[0].name = "subject"
+* rest.resource[=].searchParam[=].definition = "https://standards.digital.health.nz/fhir/air/SearchParameter/CarePlan-subject"
+* rest.resource[=].searchParam[=].type = #reference
+* rest.resource[=].searchParam[=].documentation = "FHIR Reference(Patient) identifying the consumer whose immunisation plan to retrieve, e.g. `Patient/{NHI}`. Required."
 
 // ─── System-level Interactions ────────────────────────────────────────────────
 

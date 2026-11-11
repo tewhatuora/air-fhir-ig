@@ -25,6 +25,8 @@ trap 'rm -f "$TMP_FILE" "${TMP_FILE}.2"' EXIT
 yq '
 .info.description = "This API provides the ability to create, modify and retrieve Immunisation records and retrieve CarePlan immunisation plans/schedules from AIR ImmSoT for approved external system-to-system clients."
 |
+.info.version |= sub("-SNAPSHOT$"; "")
+|
 .servers = [
   {
     "url": "https://api.air.digital.health.nz/s2s/fhir/R4",
@@ -145,7 +147,6 @@ yq '
 }
 |
 .components.securitySchemes |= pick([
-  "apikey_header",
   "OAuth2Implicit"
 ])
 |
@@ -164,7 +165,6 @@ yq '
   "ID",
   "X-Correlation-ID",
   "If-Match",
-  "X-Api-Key",
   "UserID",
   "Api-Version",
   "request-context"
@@ -175,14 +175,12 @@ yq '
 yq '
 .paths."/Immunization".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/{ID}".get.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
@@ -190,19 +188,31 @@ yq '
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/If-Match"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/$upsert".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
+]
+|
+.paths."/CarePlan/$view".get.parameters = [
+  {"$ref": "#/components/parameters/UserID"},
+  {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/Api-Version"},
+  {"$ref": "#/components/parameters/request-context"},
+  {
+    "name": "subject",
+    "in": "query",
+    "required": true,
+    "description": "FHIR Reference(Patient) identifying the consumer, e.g. Patient/ZCZ1947. Must resolve to resourceType Patient. Absolute URLs are accepted only if they match the AIR Patient reference base; otherwise rejected with 400.",
+    "schema": {"type": "string"},
+    "example": "Patient/ZCZ1947"
+  }
 ]
 |
 .paths."/Immunization/_search".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"},
   {
     "name": "patient",

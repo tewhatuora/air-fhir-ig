@@ -2,7 +2,7 @@ openapi: 3.0.4
 info:
   title: AIR ImmSoT API
   description: "This API provides the ability to create, modify and retrieve Immunisation records and retrieve CarePlan immunisation plans/schedules from AIR ImmSoT for approved external system-to-system clients."
-  version: "2.0.0-SNAPSHOT"
+  version: "2.3.0"
 servers:
   - url: https://api.air.digital.health.nz/s2s/fhir/R4
     description: PROD - External system-to-system endpoint for version 1
@@ -25,7 +25,6 @@ paths:
         Returns either the created Immunization record or if there were any issues with the create, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the create operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
@@ -61,7 +60,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       responses:
         "200":
@@ -97,7 +95,6 @@ paths:
         - $ref: '#/components/parameters/ID'
         - $ref: '#/components/parameters/X-Correlation-ID'
         - $ref: '#/components/parameters/If-Match'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         content:
@@ -131,7 +128,6 @@ paths:
       description: "Search Immunisation records using the external standard search contract. Supported parameters are patient, target-disease, status-reason:not-in, status:not-in, status, _include, _include:iterate, organisation and location. Clients may search by NHI value or full Patient reference. Supported scenarios include POST _search with query parameters and no body, POST _search with application/x-www-form-urlencoded body containing patient=ZKN2155, and POST _search with application/x-www-form-urlencoded body containing patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155. JSON request bodies and admin data-quality search parameters are not supported in the marketplace specification."
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
         - name: patient
           in: query
@@ -328,7 +324,6 @@ paths:
         4. Failure to process the event, reject the request
       parameters:
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/request-context'
       requestBody:
         description: |
@@ -366,15 +361,15 @@ paths:
       parameters:
         - $ref: '#/components/parameters/UserID'
         - $ref: '#/components/parameters/X-Correlation-ID'
-        - $ref: '#/components/parameters/X-Api-Key'
         - $ref: '#/components/parameters/Api-Version'
-        - name: nhi
+        - $ref: '#/components/parameters/request-context'
+        - name: subject
           in: query
-          description: The NHI identifier of the patient/consumer
           required: true
+          description: FHIR Reference(Patient) identifying the consumer, e.g. Patient/ZCZ1947. Must resolve to resourceType Patient. Absolute URLs are accepted only if they match the AIR Patient reference base; otherwise rejected with 400.
           schema:
             type: string
-          example: ZCZ1947
+          example: Patient/ZCZ1947
       responses:
         "200":
           description: Ok
@@ -1764,13 +1759,6 @@ components:
       schema:
         type: string
       example: "1"
-    X-Api-Key:
-      name: x-api-key
-      in: header
-      description: api-key
-      required: true
-      schema:
-        type: string
     UserID:
       name: UserID
       in: header
@@ -3361,11 +3349,6 @@ components:
       schema:
         type: string
   securitySchemes:
-    apikey_header:
-      type: apiKey
-      description: API key for the Gateway
-      name: x-api-key
-      in: header
     OAuth2Implicit:
       type: oauth2
       flows:

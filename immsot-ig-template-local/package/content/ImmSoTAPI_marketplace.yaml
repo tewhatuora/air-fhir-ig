@@ -50,7 +50,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/Immunization.c
   /Immunization/{ID}:
     get:
@@ -82,7 +82,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/Immunization.r
     put:
       operationId: update
@@ -120,7 +120,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/Immunization.u
   /Immunization/_search:
     post:
@@ -308,7 +308,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/Immunization.s
   /Immunization/$upsert:
     post:
@@ -350,7 +350,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/Immunization.c
             - system/Immunization.u
   /CarePlan/$view:
@@ -384,7 +384,7 @@ paths:
         "500":
           $ref: '#/components/responses/500'
       security:
-        - OAuth2Implicit:
+        - client_credentials:
             - system/CarePlan.s
 components:
   schemas:
@@ -462,9 +462,9 @@ components:
           items:
             type: object
             properties:
-              doseNumberString:
-                description: 'Dose Number. If provided in the request, it will be retained in the response.'
-                type: string
+              doseNumberPositiveInt:
+                description: 'Dose Number. If provided in the request, it will be retained in the response. If not provided(null), it defaults to 98'
+                type: integer
         lotNumber:
           type: string
         expirationDate:
@@ -1936,7 +1936,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     UpdateSuccessDuplicateDQIdentified:
       summary: Updated with duplicate identified data quality issues
       value:
@@ -2107,7 +2107,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     CreateSuccessDQPass:
       summary: Created with no data quality issues
       value:
@@ -2264,7 +2264,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     CreateSuccessPotentialDuplicate:
       summary: Created as a potential duplicate
       value:
@@ -2435,7 +2435,7 @@ components:
                 version: '1'
                 code: '359953009'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     InvalidData:
       summary: A 422 response example
       value:
@@ -2447,6 +2447,14 @@ components:
           - severity: error
             code: invariant
             diagnostics: Immunisation event date cannot be in the future
+    TooManyReuqest:
+      summary: A 429 response example
+      value:
+        resourceType: OperationOutcome
+        issue:
+          - severity: error
+            code: exception
+            diagnostics: Too many requests
     InternalError:
       summary: A 500 response example
       value:
@@ -2479,7 +2487,7 @@ components:
               code: '03'
               version: 1.0.0
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
         lotNumber: '555123'
         expirationDate: '2024-01-31'
         contained:
@@ -2728,7 +2736,7 @@ components:
                 version: '1'
                 code: '161641000210109'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     UpdateDQIgnore:
       summary: Update request with DQ ignore flag set
       value:
@@ -2863,7 +2871,7 @@ components:
                 version: '1'
                 code: '161641000210109'
         protocolApplied:
-          - doseNumberString: '1'
+          - doseNumberPositiveInt: 1
     OrchestrationResult:
       summary: Search returns multiple records with enrichment
       value:
@@ -3292,7 +3300,7 @@ components:
                         - system: http://snomed.info/sct
                           code: '66071002'
                           display: Hepatitis B
-                  doseNumberString: '4'
+                  doseNumberPositiveInt: 4
             search:
               mode: match
     SearchNoMatch:
@@ -3330,15 +3338,20 @@ components:
       schema:
         type: string
   securitySchemes:
-    OAuth2Implicit:
+    client_credentials:
       type: oauth2
+      description: "Intended for the server-to-server authentication, this flow describes\
+        \ an approach when the client application acts on its own behalf rather than\
+        \ on behalf of any individual user. In most scenarios, this flow provides\
+        \ the means to allow users to specify their credentials in the client application,\
+        \ so it can access the resources under the client’s control"
       flows:
-        implicit:
-          authorizationUrl: https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token
+        clientCredentials:
+          tokenUrl: https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token
           scopes:
             system/Immunization.crus: full create, read, update and search scopes
             system/Immunization.c: create scope
             system/Immunization.r: read scope
-            system/Immunization.u: update scope
             system/Immunization.s: search scope
+            system/Immunization.u: update scope
             system/CarePlan.s: search scope for careplan

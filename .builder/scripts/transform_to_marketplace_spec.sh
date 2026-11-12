@@ -130,7 +130,7 @@ yq '
   "CreateSuccessDQPass",
   "CreateSuccessPotentialDuplicate",
   "InvalidData",
-  "TooManyRequest",
+  "TooManyReuqest",
   "InternalError",
   "NotFound",
   "CreatePayload",
@@ -146,20 +146,38 @@ yq '
   "value": "patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155"
 }
 |
-.components.securitySchemes |= pick([
-  "OAuth2Implicit"
-])
+# Restore the reference integer doseNumber field on AirImmunization and the
+# Immunization examples. AirImmunizationRecommendation keeps doseNumberString.
+.components.schemas.AirImmunization.properties.protocolApplied.items.properties = {
+  "doseNumberPositiveInt": {
+    "description": "Dose Number. If provided in the request, it will be retained in the response. If not provided(null), it defaults to 98",
+    "type": "integer"
+  }
+}
 |
-.components.securitySchemes.OAuth2Implicit.flows.implicit.scopes |= pick([
-  "system/Immunization.crus",
-  "system/Immunization.c",
-  "system/Immunization.r",
-  "system/Immunization.u",
-  "system/Immunization.s",
-  "system/CarePlan.s"
-])
+.components.schemas.AirImmunization.properties.protocolApplied.items.properties.doseNumberPositiveInt.description style="single"
 |
-.components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl = "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+(.components.examples | .. | select(has("doseNumberString"))) |= (.doseNumberPositiveInt = (.doseNumberString | to_number) | del(.doseNumberString))
+|
+.components.securitySchemes = {
+  "client_credentials": {
+    "type": "oauth2",
+    "description": "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__",
+    "flows": {
+      "clientCredentials": {
+        "tokenUrl": "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token",
+        "scopes": {
+          "system/Immunization.crus": "full create, read, update and search scopes",
+          "system/Immunization.c": "create scope",
+          "system/Immunization.r": "read scope",
+          "system/Immunization.s": "search scope",
+          "system/Immunization.u": "update scope",
+          "system/CarePlan.s": "search scope for careplan"
+        }
+      }
+    }
+  }
+}
 |
 .components.parameters |= pick([
   "ID",
@@ -345,7 +363,7 @@ yq '
 |
 .paths."/Immunization/_search".post.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.s"
     ]
   }
@@ -355,9 +373,25 @@ mv "${TMP_FILE}.2" "$TMP_FILE"
 
 # Step 4: remove admin scopes from retained operation security blocks explicitly.
 yq '
+.paths."/Immunization".post.security = [
+  {
+    "client_credentials": [
+      "system/Immunization.c"
+    ]
+  }
+]
+|
+.paths."/Immunization/{ID}".get.security = [
+  {
+    "client_credentials": [
+      "system/Immunization.r"
+    ]
+  }
+]
+|
 .paths."/Immunization/{ID}".put.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.u"
     ]
   }
@@ -365,7 +399,7 @@ yq '
 |
 .paths."/Immunization/$upsert".post.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.c",
       "system/Immunization.u"
     ]
@@ -374,7 +408,7 @@ yq '
 |
 .paths."/CarePlan/$view".get.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/CarePlan.s"
     ]
   }
@@ -382,7 +416,36 @@ yq '
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 5: write final output.
+# Step 5: emit the reference client_credentials description in its exact
+# wrapped form (yq would write it as a single long line).
+python3 - "$TMP_FILE" <<'PY'
+import sys
+
+path = sys.argv[1]
+with open(path, encoding="utf-8") as handle:
+    text = handle.read()
+
+placeholder = "      description: __MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+description = (
+    '      description: "Intended for the server-to-server authentication, this flow describes\\\n'
+    '        \\ an approach when the client application acts on its own behalf rather than\\\n'
+    '        \\ on behalf of any individual user. In most scenarios, this flow provides\\\n'
+    '        \\ the means to allow users to specify their credentials in the client application,\\\n'
+    '        \\ so it can access the resources under the client\u2019s control"'
+)
+
+if placeholder not in text:
+    sys.exit("ERROR: client_credentials description placeholder not found")
+
+text = text.replace(placeholder, description)
+if not text.endswith("\n"):
+    text += "\n"
+
+with open(path, "w", encoding="utf-8") as handle:
+    handle.write(text)
+PY
+
+# Step 6: write final output.
 mkdir -p "$(dirname "$OUTPUT")"
 cp "$TMP_FILE" "$OUTPUT"
 

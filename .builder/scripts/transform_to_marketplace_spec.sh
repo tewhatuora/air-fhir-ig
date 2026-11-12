@@ -165,8 +165,6 @@ yq '
   "ID",
   "X-Correlation-ID",
   "If-Match",
-  "UserID",
-  "Api-Version",
   "request-context"
 ])
 ' "$INPUT" > "$TMP_FILE"
@@ -197,9 +195,7 @@ yq '
 ]
 |
 .paths."/CarePlan/$view".get.parameters = [
-  {"$ref": "#/components/parameters/UserID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/Api-Version"},
   {"$ref": "#/components/parameters/request-context"},
   {
     "name": "subject",

@@ -37,19 +37,19 @@ yq '
     "description": "PROD - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4",
     "description": "TEST - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "TEST - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4",
     "description": "UAT - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "UAT - External system-to-system endpoint for version 2"
   }
 ]

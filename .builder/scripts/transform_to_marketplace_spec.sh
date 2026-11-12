@@ -25,6 +25,8 @@ trap 'rm -f "$TMP_FILE" "${TMP_FILE}.2"' EXIT
 yq '
 .info.description = "This API provides the ability to create, modify and retrieve Immunisation records and retrieve CarePlan immunisation plans/schedules from AIR ImmSoT for approved external system-to-system clients."
 |
+.info.version |= sub("-SNAPSHOT$"; "")
+|
 .servers = [
   {
     "url": "https://api.air.digital.health.nz/s2s/fhir/R4",
@@ -35,19 +37,19 @@ yq '
     "description": "PROD - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4",
     "description": "TEST - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-test.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.test.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "TEST - External system-to-system endpoint for version 2"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4",
     "description": "UAT - External system-to-system endpoint for version 1"
   },
   {
-    "url": "https://api.air-uat.digital.health.nz/s2s/fhir/R4/v2",
+    "url": "https://api.uat.air.digital.health.nz/s2s/fhir/R4/v2",
     "description": "UAT - External system-to-system endpoint for version 2"
   }
 ]
@@ -128,7 +130,7 @@ yq '
   "CreateSuccessDQPass",
   "CreateSuccessPotentialDuplicate",
   "InvalidData",
-  "TooManyRequest",
+  "TooManyReuqest",
   "InternalError",
   "NotFound",
   "CreatePayload",
@@ -144,29 +146,46 @@ yq '
   "value": "patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155"
 }
 |
-.components.securitySchemes |= pick([
-  "apikey_header",
-  "OAuth2Implicit"
-])
+# The marketplace spec is v2-oriented, where Immunization uses the string
+# doseNumberString field. The source spec documents both versions
+# (doseNumberPositiveInt for v1 and doseNumberString for v2), so restrict the
+# marketplace AirImmunization schema/examples to the v2 form here.
+# AirImmunizationRecommendation keeps doseNumberString (recommendations use the
+# string form in both versions).
+.components.schemas.AirImmunization.properties.protocolApplied.items.properties = {
+  "doseNumberString": {
+    "description": "Dose Number. If provided in the request, it will be retained in the response.",
+    "type": "string"
+  }
+}
 |
-.components.securitySchemes.OAuth2Implicit.flows.implicit.scopes |= pick([
+.components.schemas.AirImmunization.properties.protocolApplied.items.properties.doseNumberString.description style="single"
+|
+(.components.examples | .. | select(has("doseNumberPositiveInt"))) |= (.doseNumberString = (.doseNumberPositiveInt | tostring) | del(.doseNumberPositiveInt))
+|
+# The client_credentials scheme is defined in ImmSoTAPI.yaml (the source spec).
+# Keep that definition and only override the marketplace-specific token URL,
+# description and external scope subset here.
+.components.securitySchemes |= pick(["client_credentials"])
+|
+.components.securitySchemes.client_credentials.description = "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+|
+.components.securitySchemes.client_credentials.flows.clientCredentials.tokenUrl = "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+|
+.components.securitySchemes.client_credentials.flows.clientCredentials.scopes |= pick([
   "system/Immunization.crus",
   "system/Immunization.c",
   "system/Immunization.r",
-  "system/Immunization.u",
   "system/Immunization.s",
-  "system/CarePlan.s"
+  "system/Immunization.u",
+  "system/CarePlan.s",
+  "system/ImmunizationRecommendation.r"
 ])
-|
-.components.securitySchemes.OAuth2Implicit.flows.implicit.authorizationUrl = "https://api.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
 |
 .components.parameters |= pick([
   "ID",
   "X-Correlation-ID",
   "If-Match",
-  "X-Api-Key",
-  "UserID",
-  "Api-Version",
   "request-context"
 ])
 ' "$INPUT" > "$TMP_FILE"
@@ -175,14 +194,12 @@ yq '
 yq '
 .paths."/Immunization".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/{ID}".get.parameters = [
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
@@ -190,19 +207,29 @@ yq '
   {"$ref": "#/components/parameters/ID"},
   {"$ref": "#/components/parameters/X-Correlation-ID"},
   {"$ref": "#/components/parameters/If-Match"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
 ]
 |
 .paths."/Immunization/$upsert".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"}
+]
+|
+.paths."/CarePlan/$view".get.parameters = [
+  {"$ref": "#/components/parameters/X-Correlation-ID"},
+  {"$ref": "#/components/parameters/request-context"},
+  {
+    "name": "subject",
+    "in": "query",
+    "required": true,
+    "description": "FHIR Reference(Patient) identifying the consumer, e.g. Patient/ZCZ1947. Must resolve to resourceType Patient. Absolute URLs are accepted only if they match the AIR Patient reference base; otherwise rejected with 400.",
+    "schema": {"type": "string"},
+    "example": "Patient/ZCZ1947"
+  }
 ]
 |
 .paths."/Immunization/_search".post.parameters = [
   {"$ref": "#/components/parameters/X-Correlation-ID"},
-  {"$ref": "#/components/parameters/X-Api-Key"},
   {"$ref": "#/components/parameters/request-context"},
   {
     "name": "patient",
@@ -339,7 +366,7 @@ yq '
 |
 .paths."/Immunization/_search".post.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.s"
     ]
   }
@@ -349,9 +376,25 @@ mv "${TMP_FILE}.2" "$TMP_FILE"
 
 # Step 4: remove admin scopes from retained operation security blocks explicitly.
 yq '
+.paths."/Immunization".post.security = [
+  {
+    "client_credentials": [
+      "system/Immunization.c"
+    ]
+  }
+]
+|
+.paths."/Immunization/{ID}".get.security = [
+  {
+    "client_credentials": [
+      "system/Immunization.r"
+    ]
+  }
+]
+|
 .paths."/Immunization/{ID}".put.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.u"
     ]
   }
@@ -359,7 +402,7 @@ yq '
 |
 .paths."/Immunization/$upsert".post.security = [
   {
-    "OAuth2Implicit": [
+    "client_credentials": [
       "system/Immunization.c",
       "system/Immunization.u"
     ]
@@ -368,15 +411,87 @@ yq '
 |
 .paths."/CarePlan/$view".get.security = [
   {
-    "OAuth2Implicit": [
-      "system/CarePlan.s"
+    "client_credentials": [
+      "system/CarePlan.s",
+      "system/ImmunizationRecommendation.r",
+      "system/Immunization.r"
     ]
   }
 ]
 ' "$TMP_FILE" > "${TMP_FILE}.2"
 mv "${TMP_FILE}.2" "$TMP_FILE"
 
-# Step 5: write final output.
+# Step 5: emit the reference client_credentials description in its exact
+# wrapped form (yq would write it as a single long line).
+python3 - "$TMP_FILE" <<'PY'
+import sys
+
+path = sys.argv[1]
+with open(path, encoding="utf-8") as handle:
+    text = handle.read()
+
+placeholder_plain = "      description: __MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+placeholder_quoted = '      description: "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"'
+description = (
+    '      description: "Intended for the server-to-server authentication, this flow describes\\\n'
+    '        \\ an approach when the client application acts on its own behalf rather than\\\n'
+    '        \\ on behalf of any individual user. In most scenarios, this flow provides\\\n'
+    '        \\ the means to allow users to specify their credentials in the client application,\\\n'
+    '        \\ so it can access the resources under the client\u2019s control"'
+)
+
+if placeholder_quoted in text:
+    text = text.replace(placeholder_quoted, description, 1)
+elif placeholder_plain in text:
+    text = text.replace(placeholder_plain, description, 1)
+else:
+    sys.exit("ERROR: client_credentials description placeholder not found")
+if not text.endswith("\n"):
+    text += "\n"
+
+with open(path, "w", encoding="utf-8") as handle:
+    handle.write(text)
+PY
+
+# Step 5.5: guardrails. Fail the build rather than silently publish a
+# marketplace spec that has drifted from the external contract.
+if grep -qE 'OAuth2Implicit|authorizationUrl|implicit:' "$TMP_FILE"; then
+  echo "ERROR: marketplace spec contains an implicit OAuth flow; expected client_credentials only." >&2
+  exit 1
+fi
+
+if grep -q 'x-api-key' "$TMP_FILE"; then
+  echo "ERROR: marketplace spec must not expose the x-api-key header." >&2
+  exit 1
+fi
+
+yq -e '
+  (.components.securitySchemes | length) == 1 and
+  (.components.securitySchemes | has("client_credentials")) and
+  (.components.securitySchemes.client_credentials.flows | has("clientCredentials")) and
+  (.components.securitySchemes.client_credentials.flows | has("implicit") | not) and
+  (.components.parameters | has("UserID") | not) and
+  (.components.parameters | has("Api-Version") | not) and
+  (.components.examples | has("TooManyReuqest")) and
+  (.components.schemas.AirImmunization.properties.protocolApplied.items.properties | has("doseNumberString")) and
+  (.components.schemas.AirImmunization.properties.protocolApplied.items.properties | has("doseNumberPositiveInt") | not) and
+  (.components.schemas.AirImmunizationRecommendation.properties.recommendation.items.properties | has("doseNumberString"))
+' "$TMP_FILE" >/dev/null || {
+  echo "ERROR: marketplace spec failed contract guardrails (security scheme, parameters, examples, or doseNumber fields)." >&2
+  exit 1
+}
+
+yq -e '([.paths[][].security[]? | keys[]] | unique | join(",")) == "client_credentials"' "$TMP_FILE" >/dev/null || {
+  echo "ERROR: marketplace spec operations must all reference the client_credentials scheme." >&2
+  exit 1
+}
+
+if [ "$(tail -c 1 "$TMP_FILE" | wc -l)" -ne 1 ]; then
+  echo "ERROR: marketplace spec must end with a newline." >&2
+  exit 1
+fi
+
+# Step 6: write final output.
 mkdir -p "$(dirname "$OUTPUT")"
 cp "$TMP_FILE" "$OUTPUT"
 

@@ -81,19 +81,133 @@ console.log(`Generating OpenAPI spec from: ${INPUT_FSH}`);
 console.log(`  Version : ${version}`);
 console.log(`  Title   : ${csTitle}`);
 
-// ─── Parse operations from FSH ───────────────────────────────────────────────
-// We collect operation names and their documentation blocks.
-const operationDocs = {};
-const opNameRe = /rest\.(?:resource\[.\]\.)?operation\[.\]\.name\s*=\s*"([^"]+)"/g;
-let m;
-while ((m = opNameRe.exec(fsh)) !== null) {
-  const opName = m[1];
-  // Find doc immediately after
-  const after = fsh.slice(m.index);
-  const docMatch = after.match(/operation\[.\]\.documentation\s*=\s*"""([\s\S]*?)"""/);
-  if (docMatch) {
-    operationDocs[opName] = docMatch[1].trim();
+// ─── Parse operations + security scopes from FSH ─────────────────────────────
+// We collect operation names, their documentation blocks, and (where a
+// "**Required scope:**" line is present) the OpenAPI `security` array that line
+// implies. This means FSH is the single source of truth for scope requirements:
+// change the prose in capabilitystatement.fsh and the generated spec follows,
+// instead of the two drifting independently.
+
+// Tokenize the FSH into `* path = value` statements, correctly handling
+// triple-quoted (""") multi-line string values.
+function parseFshStatements(src) {
+  const lines = src.split('\n');
+  const statements = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    // Requires whitespace around the assignment "=" so FSH array-index
+    // brackets like "[=]" (no surrounding whitespace) aren't mistaken for it.
+    const m = line.match(/^\*\s+(\S+)\s+=\s+(.*)$/);
+    if (!m) { i++; continue; }
+    const path = m[1];
+    const rest = m[2];
+    let value;
+    const trimmed = rest.trim();
+    if (trimmed.startsWith('"""')) {
+      const afterOpen = trimmed.slice(3);
+      if (afterOpen.endsWith('"""') && afterOpen.length >= 3) {
+        value = afterOpen.slice(0, -3);
+      } else {
+        const bufLines = [afterOpen];
+        i++;
+        while (i < lines.length && !lines[i].includes('"""')) {
+          bufLines.push(lines[i]);
+          i++;
+        }
+        if (i < lines.length) {
+          const idx = lines[i].indexOf('"""');
+          bufLines.push(lines[i].slice(0, idx));
+        }
+        value = bufLines.join('\n');
+      }
+    } else {
+      const sm = trimmed.match(/^"([^"\\]*(\\.[^"\\]*)*)"/);
+      value = sm ? sm[1] : trimmed;
+    }
+    statements.push({ path, value });
+    i++;
   }
+  return statements;
+}
+
+// Parses a "**Required scope:** `a` + `b` or `c`" line into an OpenAPI
+// `security` array. "+" = AND (scopes combined in one requirement object);
+// " or " = OR (alternative requirement objects). Returns null if no such line
+// is present in the documentation block.
+function parseScopeSecurity(docText) {
+  if (!docText) return null;
+  const m = docText.match(/\*\*Required scope:\*\*\s*([^\n]+)/);
+  if (!m) return null;
+  const line = m[1].trim();
+  const orGroups = line.split(/\s+or\s+/i);
+  const security = orGroups.map((group) => {
+    const scopes = group
+      .split('+')
+      .map((s) => s.trim().replace(/^`|`$/g, ''))
+      .filter(Boolean);
+    return { client_credentials: scopes };
+  }).filter((req) => req.client_credentials.length > 0);
+  return security.length ? security : null;
+}
+
+const operationDocs = {};
+// docBlocks keys: "<ResourceType>:<operationName-or-interactionCode>" for
+// resource-level operations/interactions, or "_system:<operationName>" for
+// system-level (rest.operation[]) operations.
+const docBlocks = {};
+
+{
+  const statements = parseFshStatements(fsh);
+  let currentResource = null;
+  let currentOpName = null;
+  let currentInteractionCode = null;
+  let currentSystemOpName = null;
+
+  for (const st of statements) {
+    if (/rest\.resource\[[^\]]+\]\.type$/.test(st.path)) {
+      currentResource = st.value.replace(/^#/, '');
+      currentOpName = null;
+      currentInteractionCode = null;
+    } else if (/rest\.resource\[[^\]]+\]\.operation\[[^\]]+\]\.name$/.test(st.path)) {
+      currentOpName = st.value;
+      operationDocs._lastOpName = currentOpName; // for legacy lookups below
+    } else if (/rest\.resource\[[^\]]+\]\.interaction\[[^\]]+\]\.code$/.test(st.path)) {
+      currentInteractionCode = st.value.replace(/^#/, '');
+    } else if (/rest\.resource\[[^\]]+\]\.operation\[[^\]]+\]\.documentation$/.test(st.path) && currentOpName) {
+      operationDocs[currentOpName] = st.value.trim();
+      docBlocks[`${currentResource}:${currentOpName}`] = {
+        doc: st.value.trim(),
+        security: parseScopeSecurity(st.value),
+      };
+    } else if (/rest\.resource\[[^\]]+\]\.interaction\[[^\]]+\]\.documentation$/.test(st.path) && currentInteractionCode) {
+      docBlocks[`${currentResource}:${currentInteractionCode}`] = {
+        doc: st.value.trim(),
+        security: parseScopeSecurity(st.value),
+      };
+    } else if (/^rest\.operation\[[^\]]+\]\.name$/.test(st.path)) {
+      currentSystemOpName = st.value;
+    } else if (/^rest\.operation\[[^\]]+\]\.documentation$/.test(st.path) && currentSystemOpName) {
+      operationDocs[currentSystemOpName] = st.value.trim();
+      docBlocks[`_system:${currentSystemOpName}`] = {
+        doc: st.value.trim(),
+        security: parseScopeSecurity(st.value),
+      };
+    }
+  }
+  delete operationDocs._lastOpName;
+}
+
+// Returns the FSH-derived security array for a given resource+name, falling
+// back to `fallback` (and logging a warning) if the FSH has no parseable
+// "Required scope" line for that operation/interaction, so a missing/typo'd
+// scope line doesn't silently produce an empty security block.
+function scopeSecurity(resource, name, fallback) {
+  const key = `${resource}:${name}`;
+  const block = docBlocks[key];
+  if (block && block.security) return block.security;
+  console.warn(`  ⚠ No parseable "Required scope" found for ${key} — using fallback security block.`);
+  return fallback;
 }
 
 // ─── Shared components ────────────────────────────────────────────────────────
@@ -199,7 +313,7 @@ const openapi = {
           422: { $ref: '#/components/responses/422' },
           ...STD_ERRORS,
         },
-        security: [{ OAuth2: ['system/Immunization.c'] }],
+        security: scopeSecurity('Immunization', 'create', [{ client_credentials: ['system/Immunization.c'] }]),
       },
     },
 
@@ -229,7 +343,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Immunization.r'] }],
+        security: scopeSecurity('Immunization', 'read', [{ client_credentials: ['system/Immunization.r'] }]),
       },
 
       put: {
@@ -258,10 +372,10 @@ const openapi = {
           422: { $ref: '#/components/responses/422' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [
-          { OAuth2: ['system/Immunization.u'] },
-          { OAuth2: ['air-admin/Immunization.u'] },
-        ],
+        security: scopeSecurity('Immunization', 'update', [
+          { client_credentials: ['system/Immunization.u'] },
+          { client_credentials: ['air-admin/Immunization.u'] },
+        ]),
       },
     },
 
@@ -384,10 +498,10 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [
-          { OAuth2: ['system/Immunization.s'] },
-          { OAuth2: ['air-admin/Immunization.s'] },
-        ],
+        security: scopeSecurity('Immunization', 'search-type', [
+          { client_credentials: ['system/Immunization.s'] },
+          { client_credentials: ['air-admin/Immunization.s'] },
+        ]),
       },
     },
 
@@ -424,7 +538,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }],
+        security: scopeSecurity('Immunization', 'match', [{ client_credentials: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
       },
     },
 
@@ -461,7 +575,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }],
+        security: scopeSecurity('Immunization', 'unmatch', [{ client_credentials: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
       },
     },
 
@@ -490,10 +604,9 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [
-          { OAuth2: ['system/Immunization.r'] },
-          { OAuth2: ['air-admin/Immunization.r'] },
-        ],
+        security: scopeSecurity('Immunization', 'history-instance', [
+          { client_credentials: ['air-admin/Immunization.r', 'system/Immunization.r'] },
+        ]),
       },
     },
 
@@ -530,7 +643,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }],
+        security: scopeSecurity('Immunization', 'bulk-update', [{ client_credentials: ['system/Immunization.c', 'system/Immunization.u'] }]),
       },
     },
 
@@ -557,7 +670,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }],
+        security: scopeSecurity('Immunization', 'upsert', [{ client_credentials: ['system/Immunization.c', 'system/Immunization.u'] }]),
       },
     },
 
@@ -591,7 +704,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/MessageHeader.u'] }],
+        security: scopeSecurity('_system', 'process-message', [{ client_credentials: ['system/MessageHeader.u'] }]),
       },
     },
 
@@ -630,7 +743,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Patient.r'] }],
+        security: scopeSecurity('Patient', 'read', [{ client_credentials: ['system/Patient.r'] }]),
       },
     },
 
@@ -668,7 +781,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/Patient.u'] }],
+        security: scopeSecurity('Patient', 'update-state', [{ client_credentials: ['system/Patient.u'] }]),
       },
     },
 
@@ -704,10 +817,9 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [
-          { OAuth2: ['air-admin/Patient.u'] },
-          { OAuth2: ['system/Patient.u'] },
-        ],
+        security: scopeSecurity('Patient', 'reassign-schedules', [
+          { client_credentials: ['air-admin/Patient.u', 'system/Patient.u'] },
+        ]),
       },
     },
 
@@ -735,10 +847,10 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [
-          { OAuth2: ['air-admin/Patient.r'] },
-          { OAuth2: ['system/Patient.r'] },
-        ],
+        security: scopeSecurity('Patient', 'patient-history', [
+          { client_credentials: ['air-admin/Patient.r'] },
+          { client_credentials: ['system/Patient.r'] },
+        ]),
       },
     },
 
@@ -755,11 +867,11 @@ const openapi = {
           { $ref: '#/components/parameters/X-Api-Key' },
           { $ref: '#/components/parameters/Api-Version' },
           {
-            name: 'nhi',
+            name: 'subject',
             in: 'query',
             required: true,
-            description: 'The NHI identifier of the patient/consumer.',
-            schema: { type: 'string', example: 'ZCZ1947' },
+            description: 'FHIR Reference(Patient) identifying the consumer, e.g. `Patient/ZCZ1947`. Must resolve to resourceType `Patient`. Absolute URLs are accepted only if they match the AIR Patient reference base; otherwise rejected with `400`.',
+            schema: { type: 'string', example: 'Patient/ZCZ1947' },
           },
         ],
         responses: {
@@ -774,7 +886,88 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: [{ OAuth2: ['system/CarePlan.s'] }],
+        security: scopeSecurity('CarePlan', 'search-type', [{ client_credentials: ['system/CarePlan.s'] }]),
+      },
+    },
+
+    // GET /fhir/R4/ImmunizationRecommendation/$view
+    '/fhir/R4/ImmunizationRecommendation/$view': {
+      get: {
+        operationId: 'viewImmunizationRecommendation',
+        tags: ['ImmunizationRecommendation'],
+        summary: "View a consumer's immunisation recommendation / schedule",
+        description: [
+          "Returns the consumer's ImmunizationRecommendation resource, or an OperationOutcome (informational/not-found)",
+          'if there are no planned events, or a redacted ImmunizationRecommendation (meta marked redacted) if the',
+          'consumer is suppressed.',
+          '',
+          "**Note:** uses `nhi` rather than `subject` for historical reasons; inconsistent with `CarePlan/$view`.",
+          'Tracked for future alignment.',
+        ].join('\n'),
+        parameters: [
+          { $ref: '#/components/parameters/UserID' },
+          { $ref: '#/components/parameters/X-Correlation-ID' },
+          { $ref: '#/components/parameters/X-Api-Key' },
+          { $ref: '#/components/parameters/Api-Version' },
+          {
+            name: 'nhi',
+            in: 'query',
+            required: true,
+            description: "NON-STANDARD: plain NHI string identifying the patient/consumer. Compare with `CarePlan/$view`'s `subject` Reference(Patient) parameter — recommend aligning this to `subject` for FHIR conformance.",
+            schema: { type: 'string', example: 'ZCY8164' },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'ImmunizationRecommendation resource, OR an OperationOutcome (informational/not-found) if there are no planned events, OR a redacted ImmunizationRecommendation (meta marked redacted) if the consumer is suppressed.',
+            content: {
+              'application/fhir+json': {
+                schema: {
+                  oneOf: [
+                    { $ref: '#/components/schemas/ImmunizationRecommendation' },
+                    { $ref: '#/components/schemas/OperationOutcome' },
+                  ],
+                },
+              },
+            },
+          },
+          400: { $ref: '#/components/responses/400' },
+          403: { $ref: '#/components/responses/403' },
+          429: { $ref: '#/components/responses/429' },
+          500: { $ref: '#/components/responses/500' },
+        },
+        security: scopeSecurity('ImmunizationRecommendation', 'view', [{ client_credentials: ['system/ImmunizationRecommendation.r'] }]),
+      },
+    },
+
+    // POST /fhir/R4/ImmunizationRecommendation/$reschedule
+    '/fhir/R4/ImmunizationRecommendation/$reschedule': {
+      post: {
+        operationId: 'rescheduleImmunizationRecommendation',
+        tags: ['ImmunizationRecommendation'],
+        summary: 'Reschedule a planned immunisation event (NOT YET IMPLEMENTED)',
+        description: "⚠ **NOT YET IMPLEMENTED** ⚠ This operation is declared and security-gated, but the current service implementation throws `UnsupportedOperationException`. It is documented here so the spec doesn't overpromise — callers should **not** rely on this operation yet.",
+        parameters: [
+          { $ref: '#/components/parameters/X-Api-Key' },
+          { $ref: '#/components/parameters/Api-Version' },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            'application/fhir+json': {
+              schema: { $ref: '#/components/schemas/ImmunizationRecommendationReschedule' },
+            },
+          },
+        },
+        responses: {
+          501: {
+            description: 'Not implemented in the current codebase. Do not rely on this operation until it is confirmed as available.',
+            content: {
+              'application/fhir+json': { schema: { $ref: '#/components/schemas/OperationOutcome' } },
+            },
+          },
+        },
+        security: scopeSecurity('ImmunizationRecommendation', 'reschedule', [{ client_credentials: ['system/ImmunizationRecommendation.u'] }]),
       },
     },
   },
@@ -979,7 +1172,14 @@ const openapi = {
               type: 'object',
               properties: {
                 targetDisease: { $ref: '#/components/schemas/CodeableConceptArray' },
-                doseNumberString: { type: 'string' },
+                doseNumberPositiveInt: {
+                  type: 'integer',
+                  description: 'Dose number for v1 (`Api-Version: 1`).',
+                },
+                doseNumberString: {
+                  type: 'string',
+                  description: 'Dose number for v2 (`Api-Version: 2`).',
+                },
               },
             },
           },
@@ -1095,6 +1295,57 @@ const openapi = {
               properties: {
                 fullUrl:  { type: 'string' },
                 resource: { type: 'object', description: 'One of: CarePlan, Immunization, ImmunizationRecommendation.' },
+              },
+            },
+          },
+        },
+      },
+
+      ImmunizationRecommendation: {
+        type: 'object',
+        description: "FHIR ImmunizationRecommendation resource representing a consumer's planned/expected immunisation events. May carry a `meta.security` entry of `REDACTED` if returned for a suppressed consumer (see `CarePlan/$view`'s redaction behaviour for the equivalent pattern).",
+        properties: {
+          resourceType: { type: 'string', enum: ['ImmunizationRecommendation'] },
+          id: { type: 'string' },
+          meta: {
+            type: 'object',
+            properties: {
+              versionId: { type: 'string' },
+              lastUpdated: { type: 'string', format: 'date-time' },
+              security: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  properties: {
+                    system: { type: 'string' },
+                    code: { type: 'string' },
+                    display: { type: 'string' },
+                  },
+                },
+              },
+            },
+          },
+          patient: { $ref: '#/components/schemas/LogicalReference' },
+          recommendation: {
+            type: 'array',
+            items: { type: 'object', description: 'One planned/expected event entry (dose, due date, target disease, status).' },
+          },
+        },
+      },
+
+      ImmunizationRecommendationReschedule: {
+        type: 'object',
+        description: "Parameters resource for `$reschedule`. Not yet implemented — exact parameter shape is not finalised in the current service implementation.",
+        properties: {
+          resourceType: { type: 'string', enum: ['Parameters'] },
+          parameter: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                name: { type: 'string' },
+                valueString: { type: 'string' },
+                valueDate: { type: 'string', format: 'date' },
               },
             },
           },
@@ -1340,7 +1591,7 @@ const openapi = {
     },
 
     securitySchemes: {
-      OAuth2: {
+      client_credentials: {
         type: 'oauth2',
         description: 'OAuth2 client credentials. Obtain a bearer token then include as `Authorization: Bearer <token>`.',
         flows: {
@@ -1361,6 +1612,8 @@ const openapi = {
               'air-admin/Patient.r':      'Read consumer records (admin)',
               'air-admin/Patient.u':      'Update consumer records (admin)',
               'system/CarePlan.s':        'Search/view care plans',
+              'system/ImmunizationRecommendation.r': "Read/view a consumer's immunisation recommendation (schedule)",
+              'system/ImmunizationRecommendation.u': 'Reschedule a consumer\'s planned immunisation event (not yet implemented)',
               'system/MessageHeader.u':   'Process notification acknowledgements',
             },
           },
@@ -1379,6 +1632,7 @@ const openapi = {
     { name: 'Immunization', description: 'Immunisation event CRUD, search, history, and custom operations.' },
     { name: 'Patient',      description: 'ImmSoT consumer (patient) read, state update, schedule reassignment, and history.' },
     { name: 'CarePlan',     description: 'Consumer immunisation plan/schedule view.' },
+    { name: 'ImmunizationRecommendation', description: 'Consumer immunisation recommendation (schedule) view and rescheduling.' },
     { name: 'Messaging',    description: 'FHIR messaging – notification acknowledgement.' },
   ],
 };

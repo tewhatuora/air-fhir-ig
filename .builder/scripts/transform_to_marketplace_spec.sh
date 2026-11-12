@@ -178,7 +178,8 @@ yq '
   "system/Immunization.r",
   "system/Immunization.s",
   "system/Immunization.u",
-  "system/CarePlan.s"
+  "system/CarePlan.s",
+  "system/ImmunizationRecommendation.r"
 ])
 |
 .components.parameters |= pick([
@@ -411,7 +412,9 @@ yq '
 .paths."/CarePlan/$view".get.security = [
   {
     "client_credentials": [
-      "system/CarePlan.s"
+      "system/CarePlan.s",
+      "system/ImmunizationRecommendation.r",
+      "system/Immunization.r"
     ]
   }
 ]

@@ -386,6 +386,8 @@ paths:
       security:
         - client_credentials:
             - system/CarePlan.s
+            - system/ImmunizationRecommendation.r
+            - system/Immunization.r
 components:
   schemas:
     Address:
@@ -3355,3 +3357,4 @@ components:
             system/Immunization.s: search scope
             system/Immunization.u: update scope
             system/CarePlan.s: search scope for careplan
+            system/ImmunizationRecommendation.r: read/view scope for immunisation recommendation

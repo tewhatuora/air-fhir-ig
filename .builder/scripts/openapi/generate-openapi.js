@@ -146,8 +146,8 @@ function parseScopeSecurity(docText) {
       .split('+')
       .map((s) => s.trim().replace(/^`|`$/g, ''))
       .filter(Boolean);
-    return { OAuth2: scopes };
-  }).filter((req) => req.OAuth2.length > 0);
+    return { client_credentials: scopes };
+  }).filter((req) => req.client_credentials.length > 0);
   return security.length ? security : null;
 }
 
@@ -313,7 +313,7 @@ const openapi = {
           422: { $ref: '#/components/responses/422' },
           ...STD_ERRORS,
         },
-        security: scopeSecurity('Immunization', 'create', [{ OAuth2: ['system/Immunization.c'] }]),
+        security: scopeSecurity('Immunization', 'create', [{ client_credentials: ['system/Immunization.c'] }]),
       },
     },
 
@@ -343,7 +343,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Immunization', 'read', [{ OAuth2: ['system/Immunization.r'] }]),
+        security: scopeSecurity('Immunization', 'read', [{ client_credentials: ['system/Immunization.r'] }]),
       },
 
       put: {
@@ -373,8 +373,8 @@ const openapi = {
           500: { $ref: '#/components/responses/500' },
         },
         security: scopeSecurity('Immunization', 'update', [
-          { OAuth2: ['system/Immunization.u'] },
-          { OAuth2: ['air-admin/Immunization.u'] },
+          { client_credentials: ['system/Immunization.u'] },
+          { client_credentials: ['air-admin/Immunization.u'] },
         ]),
       },
     },
@@ -499,8 +499,8 @@ const openapi = {
           500: { $ref: '#/components/responses/500' },
         },
         security: scopeSecurity('Immunization', 'search-type', [
-          { OAuth2: ['system/Immunization.s'] },
-          { OAuth2: ['air-admin/Immunization.s'] },
+          { client_credentials: ['system/Immunization.s'] },
+          { client_credentials: ['air-admin/Immunization.s'] },
         ]),
       },
     },
@@ -538,7 +538,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Immunization', 'match', [{ OAuth2: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
+        security: scopeSecurity('Immunization', 'match', [{ client_credentials: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
       },
     },
 
@@ -575,7 +575,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Immunization', 'unmatch', [{ OAuth2: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
+        security: scopeSecurity('Immunization', 'unmatch', [{ client_credentials: ['air-admin/Immunization.u', 'system/Immunization.u'] }]),
       },
     },
 
@@ -605,7 +605,7 @@ const openapi = {
           500: { $ref: '#/components/responses/500' },
         },
         security: scopeSecurity('Immunization', 'history-instance', [
-          { OAuth2: ['air-admin/Immunization.r', 'system/Immunization.r'] },
+          { client_credentials: ['air-admin/Immunization.r', 'system/Immunization.r'] },
         ]),
       },
     },
@@ -643,7 +643,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Immunization', 'bulk-update', [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }]),
+        security: scopeSecurity('Immunization', 'bulk-update', [{ client_credentials: ['system/Immunization.c', 'system/Immunization.u'] }]),
       },
     },
 
@@ -670,7 +670,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Immunization', 'upsert', [{ OAuth2: ['system/Immunization.c', 'system/Immunization.u'] }]),
+        security: scopeSecurity('Immunization', 'upsert', [{ client_credentials: ['system/Immunization.c', 'system/Immunization.u'] }]),
       },
     },
 
@@ -704,7 +704,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('_system', 'process-message', [{ OAuth2: ['system/MessageHeader.u'] }]),
+        security: scopeSecurity('_system', 'process-message', [{ client_credentials: ['system/MessageHeader.u'] }]),
       },
     },
 
@@ -743,7 +743,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Patient', 'read', [{ OAuth2: ['system/Patient.r'] }]),
+        security: scopeSecurity('Patient', 'read', [{ client_credentials: ['system/Patient.r'] }]),
       },
     },
 
@@ -781,7 +781,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('Patient', 'update-state', [{ OAuth2: ['system/Patient.u'] }]),
+        security: scopeSecurity('Patient', 'update-state', [{ client_credentials: ['system/Patient.u'] }]),
       },
     },
 
@@ -818,7 +818,7 @@ const openapi = {
           500: { $ref: '#/components/responses/500' },
         },
         security: scopeSecurity('Patient', 'reassign-schedules', [
-          { OAuth2: ['air-admin/Patient.u', 'system/Patient.u'] },
+          { client_credentials: ['air-admin/Patient.u', 'system/Patient.u'] },
         ]),
       },
     },
@@ -848,8 +848,8 @@ const openapi = {
           500: { $ref: '#/components/responses/500' },
         },
         security: scopeSecurity('Patient', 'patient-history', [
-          { OAuth2: ['air-admin/Patient.r'] },
-          { OAuth2: ['system/Patient.r'] },
+          { client_credentials: ['air-admin/Patient.r'] },
+          { client_credentials: ['system/Patient.r'] },
         ]),
       },
     },
@@ -886,7 +886,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('CarePlan', 'search-type', [{ OAuth2: ['system/CarePlan.s'] }]),
+        security: scopeSecurity('CarePlan', 'search-type', [{ client_credentials: ['system/CarePlan.s'] }]),
       },
     },
 
@@ -936,7 +936,7 @@ const openapi = {
           429: { $ref: '#/components/responses/429' },
           500: { $ref: '#/components/responses/500' },
         },
-        security: scopeSecurity('ImmunizationRecommendation', 'view', [{ OAuth2: ['system/ImmunizationRecommendation.r'] }]),
+        security: scopeSecurity('ImmunizationRecommendation', 'view', [{ client_credentials: ['system/ImmunizationRecommendation.r'] }]),
       },
     },
 
@@ -967,7 +967,7 @@ const openapi = {
             },
           },
         },
-        security: scopeSecurity('ImmunizationRecommendation', 'reschedule', [{ OAuth2: ['system/ImmunizationRecommendation.u'] }]),
+        security: scopeSecurity('ImmunizationRecommendation', 'reschedule', [{ client_credentials: ['system/ImmunizationRecommendation.u'] }]),
       },
     },
   },
@@ -1172,7 +1172,14 @@ const openapi = {
               type: 'object',
               properties: {
                 targetDisease: { $ref: '#/components/schemas/CodeableConceptArray' },
-                doseNumberString: { type: 'string' },
+                doseNumberPositiveInt: {
+                  type: 'integer',
+                  description: 'Dose number for v1 (`Api-Version: 1`).',
+                },
+                doseNumberString: {
+                  type: 'string',
+                  description: 'Dose number for v2 (`Api-Version: 2`).',
+                },
               },
             },
           },
@@ -1584,7 +1591,7 @@ const openapi = {
     },
 
     securitySchemes: {
-      OAuth2: {
+      client_credentials: {
         type: 'oauth2',
         description: 'OAuth2 client credentials. Obtain a bearer token then include as `Authorization: Bearer <token>`.',
         flows: {

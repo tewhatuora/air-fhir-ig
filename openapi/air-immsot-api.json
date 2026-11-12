@@ -93,7 +93,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.c"
             ]
           }
@@ -160,7 +160,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.r"
             ]
           }
@@ -231,12 +231,12 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.u"
             ]
           },
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Immunization.u"
             ]
           }
@@ -423,12 +423,12 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.s"
             ]
           },
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Immunization.s"
             ]
           }
@@ -502,7 +502,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Immunization.u",
               "system/Immunization.u"
             ]
@@ -577,7 +577,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Immunization.u",
               "system/Immunization.u"
             ]
@@ -642,7 +642,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Immunization.r",
               "system/Immunization.r"
             ]
@@ -702,7 +702,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.c",
               "system/Immunization.u"
             ]
@@ -769,7 +769,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Immunization.c",
               "system/Immunization.u"
             ]
@@ -843,7 +843,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/MessageHeader.u"
             ]
           }
@@ -916,7 +916,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Patient.r"
             ]
           }
@@ -992,7 +992,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Patient.u"
             ]
           }
@@ -1062,7 +1062,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Patient.u",
               "system/Patient.u"
             ]
@@ -1115,12 +1115,12 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "air-admin/Patient.r"
             ]
           },
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/Patient.r"
             ]
           }
@@ -1185,7 +1185,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/CarePlan.s",
               "system/ImmunizationRecommendation.r",
               "system/Immunization.r"
@@ -1259,7 +1259,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/ImmunizationRecommendation.r"
             ]
           }
@@ -1306,7 +1306,7 @@
         },
         "security": [
           {
-            "OAuth2": [
+            "client_credentials": [
               "system/ImmunizationRecommendation.u"
             ]
           }
@@ -1658,8 +1658,13 @@
                 "targetDisease": {
                   "$ref": "#/components/schemas/CodeableConceptArray"
                 },
+                "doseNumberPositiveInt": {
+                  "type": "integer",
+                  "description": "Dose number for v1 (`Api-Version: 1`)."
+                },
                 "doseNumberString": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Dose number for v2 (`Api-Version: 2`)."
                 }
               }
             }
@@ -2451,7 +2456,7 @@
       }
     },
     "securitySchemes": {
-      "OAuth2": {
+      "client_credentials": {
         "type": "oauth2",
         "description": "OAuth2 client credentials. Obtain a bearer token then include as `Authorization: Bearer <token>`.",
         "flows": {

@@ -66,7 +66,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.c
   /fhir/R4/Immunization/{ID}:
     get:
@@ -101,7 +101,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.r
     put:
       operationId: update
@@ -138,9 +138,9 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.u
-        - OAuth2:
+        - client_credentials:
             - air-admin/Immunization.u
   /fhir/R4/Immunization/_search:
     post:
@@ -274,9 +274,9 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.s
-        - OAuth2:
+        - client_credentials:
             - air-admin/Immunization.s
   /fhir/R4/Immunization/{ID}/$match:
     post:
@@ -324,7 +324,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - air-admin/Immunization.u
             - system/Immunization.u
   /fhir/R4/Immunization/{ID}/$unmatch:
@@ -373,7 +373,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - air-admin/Immunization.u
             - system/Immunization.u
   /fhir/R4/Immunization/{ID}/_history:
@@ -407,7 +407,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - air-admin/Immunization.r
             - system/Immunization.r
   /fhir/R4/Immunization/$bulk-update:
@@ -463,7 +463,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.c
             - system/Immunization.u
   /fhir/R4/Immunization/$upsert:
@@ -510,7 +510,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Immunization.c
             - system/Immunization.u
   /fhir/R4/Immunization/$process-message:
@@ -564,7 +564,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/MessageHeader.u
   /fhir/R4/Patient/{NHI}:
     get:
@@ -606,7 +606,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Patient.r
   /fhir/R4/Patient/{NHI}/$update-state:
     post:
@@ -666,7 +666,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/Patient.u
   /fhir/R4/Patient/{NHI}/$reassign-schedules:
     post:
@@ -721,7 +721,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - air-admin/Patient.u
             - system/Patient.u
   /fhir/R4/Patient/{NHI}/_history:
@@ -762,9 +762,9 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - air-admin/Patient.r
-        - OAuth2:
+        - client_credentials:
             - system/Patient.r
   /fhir/R4/CarePlan/$view:
     get:
@@ -806,7 +806,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/CarePlan.s
             - system/ImmunizationRecommendation.r
             - system/Immunization.r
@@ -858,7 +858,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/ImmunizationRecommendation.r
   /fhir/R4/ImmunizationRecommendation/$reschedule:
     post:
@@ -887,7 +887,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OperationOutcome'
       security:
-        - OAuth2:
+        - client_credentials:
             - system/ImmunizationRecommendation.u
 components:
   parameters:
@@ -1127,8 +1127,12 @@ components:
             properties:
               targetDisease:
                 $ref: '#/components/schemas/CodeableConceptArray'
+              doseNumberPositiveInt:
+                type: integer
+                description: 'Dose number for v1 (`Api-Version: 1`).'
               doseNumberString:
                 type: string
+                description: 'Dose number for v2 (`Api-Version: 2`).'
         extension:
           $ref: '#/components/schemas/AirExtension'
         contained:
@@ -1659,7 +1663,7 @@ components:
           id:
             type: string
   securitySchemes:
-    OAuth2:
+    client_credentials:
       type: oauth2
       description: 'OAuth2 client credentials. Obtain a bearer token then include as `Authorization: Bearer <token>`.'
       flows:

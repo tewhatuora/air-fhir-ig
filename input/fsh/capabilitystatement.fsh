@@ -61,18 +61,18 @@ API version selection is controlled by the Api-Version header (values: 1 or 2, d
 * rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
 * rest.security.description = "OAuth2 client credentials flow. Obtain a bearer token from the token endpoint then include it as Authorization: Bearer <token>."
 
-// OAuth SMART extension (token + authorize endpoints)
+// OAuth SMART extension (token endpoint only; this API uses the client_credentials flow)
 * rest.security.extension.url = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"
 * rest.security.extension.extension[0].url = "token"
 * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
-* rest.security.extension.extension[+].url = "authorize"
-* rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
 
 // ─── Immunization Resource ────────────────────────────────────────────────────
 
 * rest.resource[0].type = #Immunization
 * rest.resource[=].profile = Canonical(AIRImmunization)
-* rest.resource[=].documentation = "Core immunisation event resource. All interactions operate on FHIR Immunization resources conforming to the AIRImmunization profile."
+* rest.resource[=].documentation = """Core immunisation event resource. All interactions operate on FHIR Immunization resources conforming to the AIRImmunization profile.
+
+`Immunization.protocolApplied.doseNumber` is version-specific: v1 (`Api-Version: 1`, the default) uses `doseNumberPositiveInt` (integer), while v2 (`Api-Version: 2`) uses `doseNumberString` (string)."""
 
 // CREATE - POST /Immunization
 * rest.resource[=].interaction[0].code = #create

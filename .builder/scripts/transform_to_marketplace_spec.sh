@@ -146,38 +146,40 @@ yq '
   "value": "patient=https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZKN2155"
 }
 |
-# Restore the reference integer doseNumber field on AirImmunization and the
-# Immunization examples. AirImmunizationRecommendation keeps doseNumberString.
+# The marketplace spec is v2-oriented, where Immunization uses the string
+# doseNumberString field. The source spec documents both versions
+# (doseNumberPositiveInt for v1 and doseNumberString for v2), so restrict the
+# marketplace AirImmunization schema/examples to the v2 form here.
+# AirImmunizationRecommendation keeps doseNumberString (recommendations use the
+# string form in both versions).
 .components.schemas.AirImmunization.properties.protocolApplied.items.properties = {
-  "doseNumberPositiveInt": {
-    "description": "Dose Number. If provided in the request, it will be retained in the response. If not provided(null), it defaults to 98",
-    "type": "integer"
+  "doseNumberString": {
+    "description": "Dose Number. If provided in the request, it will be retained in the response.",
+    "type": "string"
   }
 }
 |
-.components.schemas.AirImmunization.properties.protocolApplied.items.properties.doseNumberPositiveInt.description style="single"
+.components.schemas.AirImmunization.properties.protocolApplied.items.properties.doseNumberString.description style="single"
 |
-(.components.examples | .. | select(has("doseNumberString"))) |= (.doseNumberPositiveInt = (.doseNumberString | to_number) | del(.doseNumberString))
+(.components.examples | .. | select(has("doseNumberPositiveInt"))) |= (.doseNumberString = (.doseNumberPositiveInt | tostring) | del(.doseNumberPositiveInt))
 |
-.components.securitySchemes = {
-  "client_credentials": {
-    "type": "oauth2",
-    "description": "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__",
-    "flows": {
-      "clientCredentials": {
-        "tokenUrl": "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token",
-        "scopes": {
-          "system/Immunization.crus": "full create, read, update and search scopes",
-          "system/Immunization.c": "create scope",
-          "system/Immunization.r": "read scope",
-          "system/Immunization.s": "search scope",
-          "system/Immunization.u": "update scope",
-          "system/CarePlan.s": "search scope for careplan"
-        }
-      }
-    }
-  }
-}
+# The client_credentials scheme is defined in ImmSoTAPI.yaml (the source spec).
+# Keep that definition and only override the marketplace-specific token URL,
+# description and external scope subset here.
+.components.securitySchemes |= pick(["client_credentials"])
+|
+.components.securitySchemes.client_credentials.description = "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+|
+.components.securitySchemes.client_credentials.flows.clientCredentials.tokenUrl = "https://api.ppd.auth.digital.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+|
+.components.securitySchemes.client_credentials.flows.clientCredentials.scopes |= pick([
+  "system/Immunization.crus",
+  "system/Immunization.c",
+  "system/Immunization.r",
+  "system/Immunization.s",
+  "system/Immunization.u",
+  "system/CarePlan.s"
+])
 |
 .components.parameters |= pick([
   "ID",
@@ -425,7 +427,8 @@ path = sys.argv[1]
 with open(path, encoding="utf-8") as handle:
     text = handle.read()
 
-placeholder = "      description: __MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+placeholder_plain = "      description: __MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"
+placeholder_quoted = '      description: "__MARKETPLACE_CLIENT_CREDENTIALS_DESCRIPTION__"'
 description = (
     '      description: "Intended for the server-to-server authentication, this flow describes\\\n'
     '        \\ an approach when the client application acts on its own behalf rather than\\\n'
@@ -434,16 +437,56 @@ description = (
     '        \\ so it can access the resources under the client\u2019s control"'
 )
 
-if placeholder not in text:
+if placeholder_quoted in text:
+    text = text.replace(placeholder_quoted, description, 1)
+elif placeholder_plain in text:
+    text = text.replace(placeholder_plain, description, 1)
+else:
     sys.exit("ERROR: client_credentials description placeholder not found")
-
-text = text.replace(placeholder, description)
 if not text.endswith("\n"):
     text += "\n"
 
 with open(path, "w", encoding="utf-8") as handle:
     handle.write(text)
 PY
+
+# Step 5.5: guardrails. Fail the build rather than silently publish a
+# marketplace spec that has drifted from the external contract.
+if grep -qE 'OAuth2Implicit|authorizationUrl|implicit:' "$TMP_FILE"; then
+  echo "ERROR: marketplace spec contains an implicit OAuth flow; expected client_credentials only." >&2
+  exit 1
+fi
+
+if grep -q 'x-api-key' "$TMP_FILE"; then
+  echo "ERROR: marketplace spec must not expose the x-api-key header." >&2
+  exit 1
+fi
+
+yq -e '
+  (.components.securitySchemes | length) == 1 and
+  (.components.securitySchemes | has("client_credentials")) and
+  (.components.securitySchemes.client_credentials.flows | has("clientCredentials")) and
+  (.components.securitySchemes.client_credentials.flows | has("implicit") | not) and
+  (.components.parameters | has("UserID") | not) and
+  (.components.parameters | has("Api-Version") | not) and
+  (.components.examples | has("TooManyReuqest")) and
+  (.components.schemas.AirImmunization.properties.protocolApplied.items.properties | has("doseNumberString")) and
+  (.components.schemas.AirImmunization.properties.protocolApplied.items.properties | has("doseNumberPositiveInt") | not) and
+  (.components.schemas.AirImmunizationRecommendation.properties.recommendation.items.properties | has("doseNumberString"))
+' "$TMP_FILE" >/dev/null || {
+  echo "ERROR: marketplace spec failed contract guardrails (security scheme, parameters, examples, or doseNumber fields)." >&2
+  exit 1
+}
+
+yq -e '([.paths[][].security[]? | keys[]] | unique | join(",")) == "client_credentials"' "$TMP_FILE" >/dev/null || {
+  echo "ERROR: marketplace spec operations must all reference the client_credentials scheme." >&2
+  exit 1
+}
+
+if [ "$(tail -c 1 "$TMP_FILE" | wc -l)" -ne 1 ]; then
+  echo "ERROR: marketplace spec must end with a newline." >&2
+  exit 1
+fi
 
 # Step 6: write final output.
 mkdir -p "$(dirname "$OUTPUT")"

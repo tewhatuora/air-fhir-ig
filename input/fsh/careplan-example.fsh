@@ -8,32 +8,47 @@ Usage: #example
 * entry[=].resource = AGVS-Delay-3-6M-P-PCV13-1.0
 * entry[+].fullUrl = "https://localhost:8443/fhir/R4/ImmunizationRecommendation/AGVS-Delay-3-6M-P-PCV13-1.0-Dose1"
 * entry[=].resource = AGVS-Delay-3-6M-P-PCV13-1.0-Dose1
-* entry[+].fullUrl = "https://localhost:8443/fhir/R4/ImmunizationRecommendation/AGVS-Delay-3-6M-P-PCV13-1.0-Dose2"
-* entry[=].resource = AGVS-Delay-3-6M-P-PCV13-1.0-Dose2
+* entry[+].fullUrl = "https://localhost:8443/fhir/R4/ImmunizationRecommendation/AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-CPE"
+* entry[=].resource = AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-CPE
+* entry[+].fullUrl = "https://localhost:8443/fhir/R4/ImmunizationRecommendation/AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-EE"
+* entry[=].resource = AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-EE
 * entry[+].fullUrl = "https://localhost:8443/fhir/R4/Immunization/63e060f0-a878-4a8c-a432-6712d15b1266"
 * entry[=].resource = 63e060f0-a878-4a8c-a432-6712d15b1266
 
 Instance: AGVS-Delay-3-6M-P-PCV13-1.0
 InstanceOf: CarePlan
 Usage: #inline
+* identifier.system = "https://standards.digital.health.nz/ns/air-careplan-id"
+* identifier.use = #official
+* identifier.value = "482913-DELAYED-PRIMARY-1119254000"
 * instantiatesCanonical = "https://localhost:8443/fhir/R4/AIRAGVSPlanDefinition/Delay-3-6M-P-PCV13-1.0"
 * status = #active
 * intent = #plan
-* title = "PCV13 Immunisation Schedule for NHI ZET7992"
+* title = "PCV13 Immunisation Schedule"
 * description = "PCV13"
 * subject = Reference(https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZET7992)
 * subject.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * subject.identifier.value = "ZET7992"
 * period.start = "2023-11-11T13:00:00+13:00"
 * created = "2023-12-30T13:00:00+13:00"
-* activity[0].extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference"
-* activity[=].extension.valueReference = Reference(AGVS-Delay-3-6M-P-PCV13-1.0-Dose2)
-* activity[+].extension.url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity"
-* activity[=].extension.valueReference = Reference(63e060f0-a878-4a8c-a432-6712d15b1266)
+* activity[0].extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference"
+* activity[=].extension[=].valueReference = Reference(AGVS-Delay-3-6M-P-PCV13-1.0-Dose1)
+* activity[=].extension[+].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity"
+* activity[=].extension[=].valueReference = Reference(63e060f0-a878-4a8c-a432-6712d15b1266)
+* activity[+].extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference"
+* activity[=].extension[=].valueReference = Reference(AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-CPE)
+* activity[+].extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference"
+* activity[=].extension[=].valueReference = Reference(AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-EE)
 
 Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose1
 InstanceOf: ImmunizationRecommendation
 Usage: #inline
+* identifier[0].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
+* identifier[=].use = #official
+* identifier[=].value = "482913-DELAYED-PRIMARY-1119254000-1-CPE"
+* identifier[+].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
+* identifier[=].use = #temp
+* identifier[=].value = "8d133802-f22f-49f8-9a38-565c494a7630"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * patient = Reference(Patient/ZET7992)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -60,9 +75,15 @@ Usage: #inline
 * recommendation.series = "Delay 3-6M_P_PCV13_1.0"
 * recommendation.doseNumberString = "1"
 
-Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose2
+Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-CPE
 InstanceOf: ImmunizationRecommendation
 Usage: #inline
+* identifier[0].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
+* identifier[=].use = #official
+* identifier[=].value = "482913-DELAYED-PRIMARY-1119254000-2-CPE"
+* identifier[+].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
+* identifier[=].use = #temp
+* identifier[=].value = "21cdd4fc-8fad-417f-aa36-e2916a77ce4c"
 * meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * patient = Reference(Patient/ZET7992)
 * patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
@@ -88,7 +109,22 @@ Usage: #inline
 * recommendation[=].dateCriterion.value = "2024-03-23"
 * recommendation[=].series = "Delay 3-6M_P_PCV13_1.0"
 * recommendation[=].doseNumberString = "2"
-* recommendation[+].id = "bf16e22b-a03a-4b3f-8d29-7d0c9b747f9f"
+
+Instance: AGVS-Delay-3-6M-P-PCV13-1.0-Dose2-EE
+InstanceOf: ImmunizationRecommendation
+Usage: #inline
+* identifier[0].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
+* identifier[=].use = #official
+* identifier[=].value = "482913-DELAYED-PRIMARY-1119254000-2-EE"
+* identifier[+].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
+* identifier[=].use = #temp
+* identifier[=].value = "bf16e22b-a03a-4b3f-8d29-7d0c9b747f9f"
+* meta.profile = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
+* patient = Reference(Patient/ZET7992)
+* patient.identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
+* patient.identifier.value = "ZET7992"
+* date = "2025-08-05T17:00:56+12:00"
+* recommendation[0].id = "bf16e22b-a03a-4b3f-8d29-7d0c9b747f9f"
 * recommendation[=].extension[0].url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-scheduled-event"
 * recommendation[=].extension[=].extension.url = "type"
 * recommendation[=].extension[=].extension.valueCoding = $AIRPEType#EE

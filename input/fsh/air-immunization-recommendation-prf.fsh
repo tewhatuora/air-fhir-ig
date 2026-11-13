@@ -11,13 +11,26 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * ^text.status = #additional
 * ^text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Individual Immunisation Plan</div>"
 
-// removed identifier per IMM-3123
-* identifier 0..0
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #value
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #open
+* identifier contains 
+    plannedEvent 1..1 and
+    plannedEventRecord 0..1
+* identifier[plannedEvent].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
+* identifier[plannedEvent].use = #official
+* identifier[plannedEvent].value 1..1
+* identifier[plannedEventRecord].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
+* identifier[plannedEventRecord].use = #temp
+* identifier[plannedEventRecord].value 1..1
 
 * patient only Reference(air-patient)
 
 // removed authority per spec
 * authority 0..0
+
+* recommendation 1..1
 
 * recommendation.extension contains
     air-recommendation-id named id 1..1 and
@@ -25,7 +38,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
     air-agvs named antigen-group 1..1 and
     air-scheduled-event named air-scheduled-event 1..1
 
-* recommendation.id 1..1
+* recommendation.id 0..1
 
 * recommendation.vaccineCode from air-vaccine-product-code (preferred)
 

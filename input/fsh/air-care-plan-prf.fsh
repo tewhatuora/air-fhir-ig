@@ -9,8 +9,10 @@ Description: "This defines how a consumer’s assigned immunisation schedule is 
 * id 1..1
 * meta 0..1
 
-// removed identifier per IMM-3123 - we applied the same here as we did for the ImmunizationRecomendation
-* identifier 0..0
+* identifier 1..1
+* identifier.system = "https://standards.digital.health.nz/ns/air-careplan-id"
+* identifier.use = #official
+* identifier.value 1..1
 
 * instantiatesCanonical 0..1
 * instantiatesCanonical only Canonical(air-agvs-plan-definition)
@@ -24,7 +26,7 @@ Description: "This defines how a consumer’s assigned immunisation schedule is 
 * period 0..1
 * created 0..1
 
-* activity 0..1
+* activity 0..*
 
 // Remove both detail and reference
 * activity.detail 0..0
@@ -38,5 +40,5 @@ Description: "This defines how a consumer’s assigned immunisation schedule is 
 // Add extensions to link to Immunization and ImmunizationRecommendation
 * activity.extension contains
   air-performed-activity-extension named performedActivity 0..1 and
-  air-planned-activity-reference-extension named plannedActivityReference 0..1
+  air-planned-activity-reference-extension named plannedActivityReference 1..1
 

@@ -39,74 +39,116 @@ Response code is HTTP/1.1 200 Ok
   "link": [
     {
       "relation": "self",
-      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan?_include=*&patient=ZCZ1947"
+      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/$view?_include=*&nhi=ZET7992"
     }
   ],
   "entry": [
     {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/AGVSRotavirus-ZCZ1947",
+      "fullUrl": "urn:uuid:585856eb-d1be-405f-813c-4ecac6c6149d",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "AGVS-Rotavirus-ZCZ1947",
-        "meta": {
-          "versionId": "1"
-        },
-        "text": {
-          "status": "extensions",
-          "div": ""
-        },
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/air-careplan-id",
+            "use": "official",
+            "value": "482913-DELAYED-PRIMARY-1119254000"
+          }
+        ],
         "instantiatesUri": [
-          "https://air.api-dev.digital.health.nz/fhir/R4/AGVS-Rotavirus"
+          "https://air.api-dev.digital.health.nz/fhir/R4/AGVS-Delay-3-6M-P-PCV13"
         ],
         "status": "active",
         "intent": "plan",
-        "title": "Rotavirus Immunisation Schedule for Joe Bloggs",
-        "description": "This schedule shows the Rotavirus vaccination schedule per the NZ National Immunisation Schedule (NIS) for Joe Bloggs (NHI ZCZ1947) as at May 15, 2024...",
+        "title": "PCV13 Immunisation Schedule for NJoe Bloggs",
+        "description": "PCV13",
         "subject": {
-          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZCZ1947",
+          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZET7992",
           "identifier": {
             "system": "https://standards.digital.health.nz/ns/nhi-id",
-            "value": "ZCZ1947"
+            "value": "ZET7992"
           }
         },
-        "created": "2024-05-15",
+        "period": {
+          "start": "2023-11-11T13:00:00+13:00"
+        },
+        "created": "2023-12-30T13:00:00+13:00",
         "activity": [
           {
             "extension": [
               {
-                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity",
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference",
                 "valueReference": {
-                  "reference": "RV-ZCZ1947-1"
+                  "reference": "urn:uuid:55f29c25-9f99-4687-ba3f-a70e28a547df"
                 }
               },
               {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity",
+                "valueReference": {
+                  "reference": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/4c8a08da-24b6-46ce-ae72-add6234e4605"
+                }
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
                 "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference",
                 "valueReference": {
-                  "reference": "AGVS-RV-ZCZ1947-1"
+                  "reference": "urn:uuid:216aa073-a929-4565-986a-5b1e8391f294"
                 }
               }
             ]
           }
         ]
+        // ... rest of CarePlan resource
       },
       "search": {
         "mode": "match"
       }
     },
     {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/RV-ZCZ1947-1",
+      "fullUrl": "urn:uuid:55f29c25-9f99-4687-ba3f-a70e28a547df",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "RV-ZCZ1947-1"
-        // rest of the Immunization resource
+        "resourceType": "ImmunizationRecommendation",
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/air-planned-event-id",
+            "use": "official",
+            "value": "482913-DELAYED-PRIMARY-1119254000-1-CPE"
+          },
+          {
+            "system": "https://standards.digital.health.nz/ns/air-planned-event-record-id",
+            "use": "temp",
+            "value": "6839f1aa-bd5e-40a4-89f0-f193e0e92bd3"
+          }
+        ],
+        "patient": {
+          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZET7992",
+          "identifier": {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "ZET7992"
+          }
+        },
+        "recommendation": [
+          {
+            // exactly one: dose 1, GIVEN, due 2019-04-08
+            "extension": [
+              // air-recommendation-id, air-disease-covered, air-agvs, air-scheduled-event extensions
+            ]
+          }
+        ]
+        // ... rest of ImmunizationRecommendation resource
+      },
+      "search": {
+        "mode": "include"
       }
     },
     {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/ImmunizationRecommendation/AGVS-RV-ZCZ1947-1",
+      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/4c8a08da-24b6-46ce-ae72-add6234e4605",
       "resource": {
-        "resourceType": "ImmunizationRecommendation",
-        "id": "AGVS-RV-ZCZ1947-1"
-        // rest of the ImmunizationRecommendation resource
+        "resourceType": "Immunization",
+        "id": "4c8a08da-24b6-46ce-ae72-add6234e4605"
+        // ... rest of Immunization resource
       }
     }
   ]

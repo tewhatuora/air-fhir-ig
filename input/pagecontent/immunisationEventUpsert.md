@@ -4,28 +4,24 @@ The "upsert" operation is a conditional-create operation, which checks whether a
 
 The operation is used by a PMS (Practice Management System) where the AIR Identifier (Immunization.id) for the record is not yet known to the PMS and the record is updated locally.
 
-The method also performs validation checks to ensure that the event is valid before it is saved. Validation includes [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
+The operation also performs validation checks to ensure that the event is valid before it is saved. Validation includes [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
 
-Upon a successful response, AIR will return the AIR Identifier and current version number. The PMS system SHALL persist these values in its data store, so that subsequent updates use the Update operation.
+Upon a successful response, AIR will return the AIR Identifier and current version number. The PMS system shall persist these values in its data store, so that subsequent updates use the Update operation.
 
 The upsert operation achieves the following:
 
-1. Deduplication where possible,
-1. Deterministic update behaviour, and
-1. Atomic processing (all-or-nothing).
+* Deduplication where possible,
+* Deterministic update behaviour, and
+* Atomic processing (all-or-nothing).
 
 It performs the following:
 
-1. Check that the authorization token contains the required permissions, if not it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
-1. Check the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
-1. With the Patient Identifier (NHI number) for the incoming event, compare to other existing events for that Identifier. If an exact duplicate is found, then return the _original_ record with `meta.tag` `exact-duplicate-not-created` and publish a duplicate resolution event via NEMS.
-1. Check if an immunisation event with the same primary attributes exists. These include: Patient Identifier (all NHIs linked to that Patient), Vaccine Product, Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number.
-    * If a single existing immunisation event record is found, then it performs an Update of that record.
-    * If no existing immunisation event record is found, then it performs a Create.
-    * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
-    * See [Duplicate Record Handling](duplicateRecordHandling.html) for detail.
-1. Return the created or updated event and any validation issues, identified in the meta sections.
-1. Check if the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the `meta.tag` `patient-identifier-immutable` is returned in the response.
+1. Checks the authorization token for required permissions.
+1. Checks the event data with the [Rejection Rules](rejectionRules.html) and [Data Quality Rules](dataQualityRules.html).
+1. Checks for exact duplicates, returning the latest of those found.
+1. Searches for a record to update that has the same primary attributes. If none or multiple are found, Create is performed.
+1. Checks if the NHI of the existing event matches the NHI of the event submitted. If they do not match, then a meta tag in the response will reflect this.
+1. Returns the created or updated event and any validation issues, identified in the meta sections.
 
 <div>
 <img src="assets/images/upsert-flow-digram.png" alt="Upsert Flow" style="max-width:100%; height:auto;"/>
@@ -43,7 +39,7 @@ All headers listed in the [request headers](requestHeaders.html).
 
 ### Request Body
 
-Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is the [AIR Immunization Profile](StructureDefinition-air-immunization.html)
+Post a full set of immunisation resource details. See below. The FHIR specification for an AIR Immunization resource is the [AIR Immunization Profile](StructureDefinition-air-immunization.html).
 
 #### Sample Request Payload
 ~~~json
@@ -89,22 +85,26 @@ Post a full set of immunisation resource details. See below. The FHIR specificat
 
 ### Behaviour
 
-AIR compares to all existing events with the Patient Identifier for the incoming event. If an exact match is found, then it does not create a new event, instead returning the _existing_ record marked with `meta.tag` `exact-duplicate-not-created` and a duplicate resolution event is published via NEMS citing both AIR Identifiers (Immunization.id).
+When a request is received, the API performs the following:
 
-See [Handling of Exact Duplicates](#handling-of-exact-duplicates) for an example response.
-
-Following that, AIR attempts to find an existing record that can be linked on NHI, Event Date (occurrence\[x]), Vaccine Code and/or Indication.
-
-* If no corresponding record found, create a new event.
-* If single record found, update that event.
-* If multiple events found, create a new event, raising a Potential Duplicate data quality violation. See [Partial Duplicate response example](#partial-duplicate-response-example) for an example response.
-* Failure to process any event, reject entire request.
-
-For more about duplicates see [Duplicate Record Handling](duplicateRecordHandling.html).
+1. Checks that the authorization token contains the required permission. If it does not, then it returns an error message indicating that the user does not have the required scope to create or update an immunisation record.
+1. Checks the event data with the [Rejection Rules](rejectionRules.html). If rejected, it returns an error with an OperationOutcome describing the problem.
+1. Searches for exact duplicates of the record.
+    * If any are found, then it returns the latest _original_ record with `meta.tag` "exact-duplicate-not-created" and publishes a duplicate resolution event via NEMS. The original record is unaffected.
+    * See [Handling of Exact Duplicates](#handling-of-exact-duplicates) for an example response.
+1. Checks if an immunisation event with the same primary attributes exists. These include: Patient Identifier, Vaccine Product (CVX/NZVX), Event Date (conditionally exact instant), and conditionally Indications and/or Dose Number. The Patient Identifier may be any NHI number linked to the consumer.
+    * If no existing immunisation event record is found, then it performs a Create.
+    * If a single existing immunisation event record is found, then it performs an Update of that record.
+    * If multiple event records are found, then it performs a Create and adds Data Quality violation information to the event.
+    * See [Handling of Exact Duplicates](#handling-of-exact-duplicates) for an example response.
+    * See [Duplicate Record Handling](duplicateRecordHandling.html) for further detail.
+1. If an Update, then it checks whether the NHI of the existing event matches the NHI of the event being updated. If they do not match, the existing NHI is preserved and the `meta.tag` "patient-identifier-immutable" is returned in the response.
+1. Checks the created or updated event against the [Data Quality Rules](dataQualityRules.html).
+1. Returns the created or updated event and any validation issues, identified in the meta sections.
 
 ### Response
 
-AIR returns the created or updated Immunization record. If there were any issues with the operation, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
+AIR returns the created or updated Immunization resource. If there were any failures or it was rejected, the response will contain an OperationOutcome resource array. The OperationOutcome resource has an informational issue indicating that the upsert operation failed. The issue array of the OperationOutcome resource would contain additional issues with appropriate severity and code values.
 
 #### Sample Response Payload
 
@@ -186,7 +186,7 @@ The NHI number is immutable. When the NHI number in the request does not match t
 
 ```json
 "meta" : {
-    ...
+    ... // other meta elements
     "tag" : [
         {
             "system" : "https://standards.digital.health.nz/ns/air-processing-terms",
@@ -201,7 +201,7 @@ The NHI number is immutable. When the NHI number in the request does not match t
 
 The response upon identifying an exact duplicate is:
 * http response code 200
-* meta.tag `exact-duplicate-not-created`
+* `meta.tag` "exact-duplicate-not-created"
 * Immunization resource of the _original_ duplicate event in AIR including `resource.id`.
 
 ##### exact-duplicate-not-created meta.tag example
@@ -283,6 +283,7 @@ Any FHIR scope that includes system/immunization.c or system/immunization.u, for
 ### Notes
 The Upsert API may be invoked only when a PMS updates a record that was persisted in its local data store prior to the AIR API coming into use. The record would have been sent to the AIR via HL7 messaging, in which case it has yet to be linked to the AIR by the AIR Identifier. Applications that do not persist immunisation event records locally shall not use the Upsert API.
 
+* The PMS shall use the Create API when creating new records locally. See [Create Immunisation Event](immunisationEventCreate.html).
 * The PMS shall determine before calling $upsert whether the local record has an AIR Identifier.
 * If the record does have an AIR Identifier, then the PMS shall call the Update API instead. See [Update Immunisation Event](immunisationEventUpdate.html).
 * If the record does not have an AIR Identifier, then the PMS shall call the Upsert API.

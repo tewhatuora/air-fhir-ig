@@ -158,3 +158,6 @@ Description: "NZMT TPUU codes for use in populating the administeredProduct elem
 
 // Added 23 Oct 2026 per IMM-7272
 * $NZMT#49072271000116103 "Dengvaxia"
+
+// Added 9 Nov 2026 for Influenza A H5N8 Pandemic Vaccine
+* $NZMT#48313821000116100 "Panvax H5N8"

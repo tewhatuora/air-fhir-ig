@@ -692,6 +692,164 @@ The API returns the created Immunization record if successfully created. If any 
 }
 ~~~
 
+#### More examples of DQ's
+The DQ taken from the  `DQViolations` section
+
+##### Diluent Expiry Date
+~~~json
+{
+    "url": "DQViolation",
+    "extension": [
+        {
+            "url": "violationCode",
+            "valueString": "520"
+        },
+        {
+            "url": "violationType",
+            "valueString": "DataQuality"
+        },
+        {
+            "url": "violationMessage",
+            "valueString": "An immunisation event should have a diluent expiry date, and the diluent expiry date should not be before the immunisation event date."
+        },
+        {
+            "url": "violationElement",
+            "valueString": "Immunization.extension.where(url='https://standards.digital.health.nz/fhir/air/StructureDefinition/air-diluent').extension.where(url='diluentExpiryDate').valueDate"
+        },
+        {
+            "url": "violationWeighting",
+            "valueInteger": 1
+        }
+    ]
+}
+~~~
+
+##### Body Site
+~~~json
+{
+    "url": "DQViolation",
+    "extension": [
+        {
+            "url": "violationCode",
+            "valueString": "310"
+        },
+        {
+            "url": "violationType",
+            "valueString": "DataQuality"
+        },
+        {
+            "url": "violationMessage",
+            "valueString": "The body site code is unrecognised. A body site code should be part of the air-site-code value set."
+        },
+        {
+            "url": "violationElement",
+            "valueString": "Immunization.site"
+        },
+        {
+            "url": "violationWeighting",
+            "valueInteger": 1
+        }
+    ]
+}
+~~~
+
+##### Health Worker
+~~~json
+{
+    "url": "DQViolation",
+    "extension": [
+        {
+            "url": "violationCode",
+            "valueString": "430"
+        },
+        {
+            "url": "violationType",
+            "valueString": "DataQuality"
+        },
+        {
+            "url": "violationMessage",
+            "valueString": "One or more health worker is unrecognised. An immunisation event should have a health worker identification number that passes the checksum criteria when the system is https://standards.digital.health.nz/ns/hpi-person-id, or it should have a health worker identification number and the system https://standards.digital.health.nz/ns/air-vhw-id or https://standards.digital.health.nz/ns/medical-council-id or https://standards.digital.health.nz/ns/nursing-council-id or https://standards.digital.health.nz/ns/air-cir-id or https://standards.digital.health.nz/ns/pharmacy-council-id or https://standards.digital.health.nz/ns/paramedic-council-id or https://standards.digital.health.nz/ns/midwifery-council-id or https://HCA."
+        },
+        {
+            "url": "violationElement",
+            "valueString": "Immunization.performer[0].actor"
+        },
+        {
+            "url": "violationWeighting",
+            "valueInteger": 2
+        }
+    ]
+}
+~~~
+
+##### Potential Duplicate
+
+~~~json
+{
+    "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-data-quality-assessment",
+    "extension": [
+        {
+            "url": "dqScore",
+            "valueInteger": 100
+        },
+        {
+            "url": "dqLastUpdated",
+            "valueDateTime": "2026-04-06T21:24:17.294+00:00"
+        },
+        {
+            "url": "dqStatus",
+            "valueString": "I"
+        },
+        {
+            "url": "DQViolations",
+            "extension": [
+            {
+                "url": "DQViolation",
+                "extension": [
+                    {
+                        "url": "violationCode",
+                        "valueString": "800"
+                    },
+                    {
+                        "url": "violationType",
+                        "valueString": "duplicate"
+                    },
+                    {
+                        "url": "violationWeighting",
+                        "valueInteger": 0
+                    },
+                    {
+                        "url": "violationMessage",
+                        "valueString": "This Immunization resource has been identified as a duplicate of existing Immunization resources"
+                    },
+                    {
+                        "url": "violationElement",
+                        "valueString": "Immunization.where(id in 'c8a8b99f-f325-4fac-a90b-2e462744c19c')"
+                    }
+                ]
+            }]
+        }
+    ]
+}
+~~~
+### Operation failed
+
+Where the data provided causes a hard failure, an example being user resolvable, where the lot number exceeds the field length
+The http result will be 422 and the payload is an operation outcome error message.
+
+~~~json
+{
+    "resourceType": "OperationOutcome",
+    "issue": [
+        {
+            "severity": "error",
+            "code": "invariant",
+            "diagnostics": "Vaccine lot number cannot be greater than 50 characters"
+        }
+    ]
+}
+~~~
+
 
 ### Scope/s required
 

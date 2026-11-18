@@ -35,23 +35,24 @@ Response code is HTTP/1.1 200 Ok
 {
   "resourceType": "Bundle",
   "id": "AIRBundleCarePlanExample",
-  "type": "searchset",
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
   "link": [
     {
       "relation": "self",
-      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/$view?_include=*&nhi=ZET7992"
+      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/$view?nhi=ZET7992"
     }
   ],
   "entry": [
     {
-      "fullUrl": "urn:uuid:585856eb-d1be-405f-813c-4ecac6c6149d",
+      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/AGVS-Delay-3-6M-P-PCV13-1.0",
       "resource": {
         "resourceType": "CarePlan",
         "identifier": [
           {
             "system": "https://standards.digital.health.nz/ns/air-careplan-id",
             "use": "official",
-            "value": "482913-DELAYED-PRIMARY-1119254000"
+            "value": "482913-DELAYED-1119254000"
           }
         ],
         "instantiatesUri": [
@@ -101,9 +102,6 @@ Response code is HTTP/1.1 200 Ok
           }
         ]
         // ... rest of CarePlan resource
-      },
-      "search": {
-        "mode": "match"
       }
     },
     {
@@ -138,9 +136,6 @@ Response code is HTTP/1.1 200 Ok
           }
         ]
         // ... rest of ImmunizationRecommendation resource
-      },
-      "search": {
-        "mode": "include"
       }
     },
     {
@@ -160,10 +155,9 @@ Response code is HTTP/1.1 200 Ok
 ```json
 {
   "resourceType": "Bundle",
-  "type": "searchset",  
-  "entry": [
-    // No entries are returned in this case ...
-  ]
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
+  "entry": []
 }
 
 ```
@@ -178,14 +172,15 @@ Response code is HTTP/1.1 200 Ok
 
 Response code is HTTP/1.1 200 Ok
 
-ImmSOT will return a success response with an empty result and will add an additional metadata security attribute with the value “REDACTED” as below.
+ImmSOT will return a success response with an empty result and will add an additional metadata security attribute with the value "REDACTED" as below.
 Consuming client applications can use this metadata tag to differentiate between an empty response (i.e ImmSOT does not have the data)
 and an empty result because access to the consumer immunisation information is restricted.
 
 ```json
 {
   "resourceType": "Bundle",
-  "type": "searchset",
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
   "meta": {
     "security": [
       {
@@ -193,12 +188,9 @@ and an empty result because access to the consumer immunisation information is r
         "code": "REDACTED",
         "display": "redacted"
       }
-    ],
-    // No other meta information should be provided...
+    ]
   },
-  "entry": [
-    // No entries are returned in this case ...
-  ]
+  "entry": []
 }
 ```  
 

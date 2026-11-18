@@ -1,7 +1,7 @@
 Extension: AIRPlannedActivityReferenceExtension
 Id: air-planned-activity-reference-extension
 Title: "Planned Activity Reference Extension"
-Description: "This Planned Activity Reference adds an R5 field to the R4 CarePlan so that we can refer to an ImmunizationRecommendation."
+Description: "Mirrors FHIR R5 plannedActivityReference (0..1). References exactly one ImmunizationRecommendation resource that represents this activity. The reference equals the recommendation entry's fullUrl (urn:uuid)."
 
 * insert StandardMetadata
 
@@ -9,4 +9,4 @@ Description: "This Planned Activity Reference adds an R5 field to the R4 CarePla
 * value[x] only Reference(air-immunization-recommendation)
 
 * ^context.type = #element
-* ^context.expression = "CarePlan.activity.extension"
+* ^context.expression = "CarePlan.activity"

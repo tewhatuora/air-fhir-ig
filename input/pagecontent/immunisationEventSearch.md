@@ -74,12 +74,12 @@ HTTP/1.1 200 OK
     "link": [
         {
             "relation": "self",
-            "url": "https://localhost:8443/v2/fhir/Immunization/_search"
+            "url": "https://api.air.digital.health.nz/s2s/v2/fhir/Immunization/_search"
         }
     ],
     "entry": [
         {
-            "fullUrl": "https://localhost:8443/v2/fhir/Immunization/bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
+            "fullUrl": "https://api.air.digital.health.nz/s2s/v2/fhir/Immunization/bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
             "resource": {
                 "resourceType": "Immunization",
                 "id": "bb14c00e-83b7-494b-98aa-6b9295d2ea3a",
@@ -409,7 +409,7 @@ HTTP/1.1 200 OK
             }
         },
         {
-            "fullUrl": "https://localhost:8443/v2/fhir/Immunization/e5aba937-14a9-40fa-80cd-7e6c4d1305e1",
+            "fullUrl": "https://api.air.digital.health.nz/s2s/v2/fhir/Immunization/e5aba937-14a9-40fa-80cd-7e6c4d1305e1",
             "resource": {
                 "resourceType": "Immunization",
                 "id": "e5aba937-14a9-40fa-80cd-7e6c4d1305e1",
@@ -1030,7 +1030,7 @@ HTTP/1.1 200 OK
     "link": [
         {
             "relation": "self",
-            "url": "https://localhost:8443/v2/fhir/Immunization/_search"
+            "url": "https://api.air.digital.health.nz/s2s/v2/fhir/Immunization/_search"
         }
     ]
 }

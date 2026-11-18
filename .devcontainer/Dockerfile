@@ -41,7 +41,7 @@ RUN apt update --fix-missing \
     && apt install -y \
     neovim eza bat bash sudo ripgrep
    
-WORKDIR /workspaces
+WORKDIR /workspace
 
 # Set non-root user
 ARG USERNAME=vscode

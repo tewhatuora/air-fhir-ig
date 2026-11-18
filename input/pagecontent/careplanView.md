@@ -35,78 +35,115 @@ Response code is HTTP/1.1 200 Ok
 {
   "resourceType": "Bundle",
   "id": "AIRBundleCarePlanExample",
-  "type": "searchset",
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
   "link": [
     {
       "relation": "self",
-      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan?_include=*&patient=ZCZ1947"
+      "url": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/$view?nhi=ZET7992"
     }
   ],
   "entry": [
     {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/AGVSRotavirus-ZCZ1947",
+      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/CarePlan/AGVS-Delay-3-6M-P-PCV13-1.0",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "AGVS-Rotavirus-ZCZ1947",
-        "meta": {
-          "versionId": "1"
-        },
-        "text": {
-          "status": "extensions",
-          "div": ""
-        },
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/air-careplan-id",
+            "use": "official",
+            "value": "482913-DELAYED-1119254000"
+          }
+        ],
         "instantiatesUri": [
-          "https://air.api-dev.digital.health.nz/fhir/R4/AGVS-Rotavirus"
+          "https://air.api-dev.digital.health.nz/fhir/R4/AGVS-Delay-3-6M-P-PCV13"
         ],
         "status": "active",
         "intent": "plan",
-        "title": "Rotavirus Immunisation Schedule for Joe Bloggs",
-        "description": "This schedule shows the Rotavirus vaccination schedule per the NZ National Immunisation Schedule (NIS) for Joe Bloggs (NHI ZCZ1947) as at May 15, 2024...",
+        "title": "PCV13 Immunisation Schedule for NJoe Bloggs",
+        "description": "PCV13",
         "subject": {
-          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZCZ1947",
+          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZET7992",
           "identifier": {
             "system": "https://standards.digital.health.nz/ns/nhi-id",
-            "value": "ZCZ1947"
+            "value": "ZET7992"
           }
         },
-        "created": "2024-05-15",
+        "period": {
+          "start": "2023-11-11T13:00:00+13:00"
+        },
+        "created": "2023-12-30T13:00:00+13:00",
         "activity": [
           {
             "extension": [
               {
-                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity",
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference",
                 "valueReference": {
-                  "reference": "RV-ZCZ1947-1"
+                  "reference": "urn:uuid:55f29c25-9f99-4687-ba3f-a70e28a547df"
                 }
               },
               {
+                "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-performed-activity",
+                "valueReference": {
+                  "reference": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/4c8a08da-24b6-46ce-ae72-add6234e4605"
+                }
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
                 "url": "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-planned-activity-reference",
                 "valueReference": {
-                  "reference": "AGVS-RV-ZCZ1947-1"
+                  "reference": "urn:uuid:216aa073-a929-4565-986a-5b1e8391f294"
                 }
               }
             ]
           }
         ]
-      },
-      "search": {
-        "mode": "match"
+        // ... rest of CarePlan resource
       }
     },
     {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/RV-ZCZ1947-1",
-      "resource": {
-        "resourceType": "Immunization",
-        "id": "RV-ZCZ1947-1"
-        // rest of the Immunization resource
-      }
-    },
-    {
-      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/ImmunizationRecommendation/AGVS-RV-ZCZ1947-1",
+      "fullUrl": "urn:uuid:55f29c25-9f99-4687-ba3f-a70e28a547df",
       "resource": {
         "resourceType": "ImmunizationRecommendation",
-        "id": "AGVS-RV-ZCZ1947-1"
-        // rest of the ImmunizationRecommendation resource
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/air-planned-event-id",
+            "use": "official",
+            "value": "482913-DELAYED-PRIMARY-1119254000-1-CPE"
+          },
+          {
+            "system": "https://standards.digital.health.nz/ns/air-planned-event-record-id",
+            "use": "temp",
+            "value": "6839f1aa-bd5e-40a4-89f0-f193e0e92bd3"
+          }
+        ],
+        "patient": {
+          "reference": "https://api.hip.digital.health.nz/fhir/nhi/v1/Patient/ZET7992",
+          "identifier": {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "ZET7992"
+          }
+        },
+        "recommendation": [
+          {
+            // exactly one: dose 1, GIVEN, due 2019-04-08
+            "extension": [
+              // air-recommendation-id, air-disease-covered, air-agvs, air-scheduled-event extensions
+            ]
+          }
+        ]
+        // ... rest of ImmunizationRecommendation resource
+      }
+    },
+    {
+      "fullUrl": "https://air.api-dev.digital.health.nz/fhir/R4/Immunization/4c8a08da-24b6-46ce-ae72-add6234e4605",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "4c8a08da-24b6-46ce-ae72-add6234e4605"
+        // ... rest of Immunization resource
       }
     }
   ]
@@ -118,10 +155,9 @@ Response code is HTTP/1.1 200 Ok
 ```json
 {
   "resourceType": "Bundle",
-  "type": "searchset",  
-  "entry": [
-    // No entries are returned in this case ...
-  ]
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
+  "entry": []
 }
 
 ```
@@ -136,14 +172,15 @@ Response code is HTTP/1.1 200 Ok
 
 Response code is HTTP/1.1 200 Ok
 
-ImmSOT will return a success response with an empty result and will add an additional metadata security attribute with the value “REDACTED” as below.
+ImmSOT will return a success response with an empty result and will add an additional metadata security attribute with the value "REDACTED" as below.
 Consuming client applications can use this metadata tag to differentiate between an empty response (i.e ImmSOT does not have the data)
 and an empty result because the consumer immunisation information is restricted.
 
 ```json
 {
   "resourceType": "Bundle",
-  "type": "searchset",
+  "type": "collection",
+  "timestamp": "2025-08-05T17:00:56+12:00",
   "meta": {
     "security": [
       {
@@ -151,12 +188,9 @@ and an empty result because the consumer immunisation information is restricted.
         "code": "REDACTED",
         "display": "redacted"
       }
-    ],
-    // No other meta information should be provided...
+    ]
   },
-  "entry": [
-    // No entries are returned in this case ...
-  ]
+  "entry": []
 }
 ```  
 

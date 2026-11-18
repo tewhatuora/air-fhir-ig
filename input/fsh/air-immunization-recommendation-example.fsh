@@ -4,6 +4,12 @@ Title: "Planned Event Example"
 Description: "An AIR ImmunizationRecommendation showing scheduled events for a patient."
 Usage: #example
 
+* identifier[0].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
+* identifier[=].use = #official
+* identifier[=].value = "12345-NIS-PRIMARY-871761004-1-CPE"
+* identifier[+].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
+* identifier[=].use = #temp
+* identifier[=].value = "12345-asdf"
 * patient = Reference(pat)
 * date = "2021-01-20"
 

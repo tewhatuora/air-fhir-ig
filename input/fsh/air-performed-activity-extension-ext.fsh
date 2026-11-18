@@ -1,8 +1,7 @@
 Extension: AIRPerformedActivityExtension
 Id: air-performed-activity-extension
 Title: "Performed Activity Extension"
-Description: "This Performed Activity adds an R5 field to the R4 CarePlan so that we can refer to an Immunization."
-
+Description: "Mirrors FHIR R5 performedActivity. References Immunization resources that were matched to this planned activity. Each reference is the Immunization's absolute fullUrl. The extension itself is repeatable (0..*) in CarePlan.activity."
 
 * insert StandardMetadata
 
@@ -10,5 +9,5 @@ Description: "This Performed Activity adds an R5 field to the R4 CarePlan so tha
 * value[x] only Reference(air-immunization)
 
 * ^context.type = #element
-* ^context.expression = "CarePlan.activity.extension"
+* ^context.expression = "CarePlan.activity"
 

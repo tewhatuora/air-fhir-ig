@@ -2,16 +2,20 @@
   "name": "air-api-fhir-ig-dev",
   "initializeCommand": "docker build --network host -t air-api-fhir-ig-dev:localdev .devcontainer",
   "build": {
-    "dockerfile": "Dockerfile",   // path to your Dockerfile
+    "dockerfile": "Dockerfile",
     "target": "localdev",
     "args": {
-            "HTTP_PROXY": "${localEnv:http_proxy}", // "${localEnv:HTTP_PROXY}|"
-            "HTTPS_PROXY": "${localEnv:http_proxy}",
-            "NO_PROXY": "localhost,127.0.0.1,.local,.internal",
-            "network": "host"
-        },
-    "context": ".."                  // build context (usually project root)
+      "HTTP_PROXY": "${localEnv:http_proxy}",
+      "HTTPS_PROXY": "${localEnv:http_proxy}",
+      "NO_PROXY": "localhost,127.0.0.1,.local,.internal",
+      "network": "host"
+    },
+    "context": ".."
   },
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.defaultProfile.linux": "bash",
@@ -21,8 +25,8 @@
       }
     }
   },
-  "remoteUser": "vscode",      
-  "updateRemoteUserUID": true, // or whatever user you define in Dockerfile
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
   "runArgs": [
     "--network=host"
   ]

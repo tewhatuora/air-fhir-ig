@@ -2,7 +2,7 @@ Profile:        AIRImmunizationRecommendation
 Parent:         ImmunizationRecommendation
 Id:             air-immunization-recommendation
 Title:          "AIR Immunization Recommendation"
-Description:    "AIR uses this immunizationRecommendation profile to communicate the details of scheduled events."
+Description:    "AIR uses this ImmunizationRecommendation profile to communicate details of scheduled immunisation events in CarePlan/$view responses. Each recommendation represents one dose slot within a schedule."
 
 * ^url = "https://standards.digital.health.nz/fhir/air/StructureDefinition/air-immunization-recommendation"
 * insert StandardMetadata
@@ -14,31 +14,38 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 * identifier 1..*
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #open
+* identifier ^slicing.rules = #closed
 * identifier contains 
-    plannedEvent 1..1 and
+    plannedEvent 1..1 MS and
     plannedEventRecord 0..1
 * identifier[plannedEvent].system = "https://standards.digital.health.nz/ns/air-planned-event-id"
 * identifier[plannedEvent].use = #official
-* identifier[plannedEvent].value 1..1
+* identifier[plannedEvent].value 1..1 MS
+* identifier[plannedEvent] ^short = "Stable identifier = {consumerId}-{scheduleType}-{seriesType}-{antigenGroupCode}-{doseNumber}-{eventType}. Unchanged when AIR cancels and recreates event of same type."
 * identifier[plannedEventRecord].system = "https://standards.digital.health.nz/ns/air-planned-event-record-id"
 * identifier[plannedEventRecord].use = #temp
 * identifier[plannedEventRecord].value 1..1
 
+* patient 1..1 MS
 * patient only Reference(air-patient)
+* patient ^short = "NHI identifier"
 
 // removed authority per spec
 * authority 0..0
+
+* date 1..1 MS
+* date ^short = "When the plan was calculated"
 
 * recommendation 1..1
 
 * recommendation.extension contains
     air-recommendation-id named id 1..1 and
     air-disease-covered named disease-covered 1..* and
-    air-agvs named antigen-group 1..1 and
-    air-scheduled-event named air-scheduled-event 1..1
+    air-agvs named antigen-group 1..1 MS and
+    air-scheduled-event named air-scheduled-event 1..1 MS
 
 * recommendation.id 0..1
+* recommendation.id ^short = "Not used; identifier carries the stable key"
 
 * recommendation.vaccineCode from air-vaccine-product-code (preferred)
 
@@ -48,7 +55,9 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 // removed per spec
 * recommendation.contraindicatedVaccineCode 0..0
 
+* recommendation.forecastStatus 1..1 MS
 * recommendation.forecastStatus from air-forecast-status-code (preferred)
+* recommendation.forecastStatus ^short = "Value set depends on event type: air-planned-event-status (CPE/PPE) or air-expected-event-status (EE)"
 
 * recommendation.forecastReason from air-indication-code (preferred)
 * recommendation.forecastReason ^short = "Vaccine recommendation indication and alternative indications"
@@ -57,6 +66,7 @@ Description:    "AIR uses this immunizationRecommendation profile to communicate
 // additional values will be needed here post-MVP
 * recommendation.dateCriterion.code from air-planned-event-date-type-code (preferred)
 
+* recommendation.doseNumber[x] 1..1 MS
 * recommendation.doseNumber[x] only positiveInt
 
 * recommendation.seriesDoses[x] 0..0

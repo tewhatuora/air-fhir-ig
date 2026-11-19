@@ -22,7 +22,7 @@ Existing immunisation events satisfying these conditions with respect to the new
   * related person (NoK or accompanying adult) contact details,
   * actor (practitioner) identifiers and functions, and
   * serology results.
-* System fields not considered are the AIR Identifier, version, modified date and source system.
+* System fields not considered are the AIR Identifier, record versionId, modified date and source system.
 * **Exact duplicates likely are triggered by duplicate manual entry** or incorrect operational procedure, e.g. creating a new record instead of correcting a previous one.
 
 **Potential duplicate** Data Quality violations are raised when two or more immunisation events are not exact duplicates, yet match on:
@@ -45,7 +45,7 @@ Potential duplicates can occur any time. When the record is identified as potent
 * If multiple update candidates are found in AIR, a new record is created with a Data Quality violation due to uncertainty about which one was the target.
 * If no records meet the criteria, the submitted record is created.
 
-Delete HL7 messages (RXA-19 = 'D') are translated as having status 'entered-in-error'. The AIR finds one matching record and marks it entered-in-error.
+Delete HL7 messages (RXA-19 = 'D') are translated as having status 'entered-in-error' in FHIR. The AIR finds one matching record and marks it entered-in-error.
 * If this was sent due to a duplicate record in the source system being invalidated, then it could invalidate the only record held in AIR.
 * Alternatively, if this clears a Potential Duplicate violation in AIR, AIR could be left with a completed immunisation the PMS intended to remove.
 
